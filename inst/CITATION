@@ -1,0 +1,28 @@
+
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
+vers <- paste("R package version", meta$Version)
+
+citHeader("To cite the 'miceadds' package in publications use:")
+
+
+citEntry(entry="Manual",
+         title = "TAM: Some additional multiple imputation functions, 
+           especially for mice",
+         author = c(
+                   person(given = "Alexander",
+                          family = "Robitzsch"),
+                   person(given = "Simon",
+                          family = "Grund"),
+		person(given = c("Thorsten"),
+                          family = "Henke") ) ,
+         year = year,
+         note = vers,
+	 url = "https://CRAN.R-project.org/package=miceadds" ,
+         textVersion =
+         paste0("Robitzsch, A., Grund, S., & Henke, T. (",
+               year,
+               "). TAM: Some additional multiple imputation functions, 
+           especially for mice. ",
+               vers, ". https://CRAN.R-project.org/package=miceadds")
+	)
+

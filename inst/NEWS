@@ -1,0 +1,521 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+----------------------- miceadds NEWS -------------------------
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+miceadds:  Some additional multiple imputation functions, 
+           especially for mice
+
+
+                         (\-.
+                         / _`> .---------.
+                 _)     / _)=  |'-------'|
+                (      / _/    |O   O   o|
+                 `-.__(___)_   | o O . o |
+                               `---------'
+   
+                                          oo__
+                                         <;___)------
+                                    oo__   " "
+                                   <;___)------     oo__
+                                     " "           <;___)------
+                                                     " "
+
+Alexander Robitzsch, Simon Grund & Thorsten Henke
+
+Questions or suggestions about miceadds should be sent to
+
+Alexander Robitzsch
+robitzsch@ipn.uni-kiel.de
+
+In case of reporting a bug, please always provide a
+reproducible script.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CHANGELOG miceadds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 2.6  |  2017-06-24  |  Last: miceadds 2.6-3
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 2.5  |  2017-06-17  |  Last: miceadds 2.5-9
+---------------------------------------------------------------------
+
+NOTE  * fixed an incorrect description in the manual of 'micombine.F'
+        and 'micombine.chisquare' (thanks to Tobias Rolfes)
+NOTE  * dependency for writing SPSS data to the sjmisc packahe in 
+        save.data function has been changed to the sjlabelled package
+        because imported functions were moved from sjmisc to sjlabelled
+        (requested by the maintainer Daniel Luedecke)
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+---------------------------------------------------------------------
+VERSIONS miceadds 2.4  |  2017-04-19  |  Last: miceadds 2.4-12
+---------------------------------------------------------------------
+
+NOTE  * included argument 'draw.fixed' in 'mice.impute.2l.latentgroupmean.MCMC'
+        which allows to specify whether fixed effects parameters
+        should be sampled or not in imputation
+NOTE  * included 'mice.impute.2l.pls2' from previous miceadds versions
+        to ensure backward compatability 
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+---------------------------------------------------------------------
+Versions 2.3  -- 2017-02-21  --  CRAN miceadds 2.3-0
+---------------------------------------------------------------------
+
+NOTE  * updated incorrect examples in miceadds::micombine.chisquare
+        and miceadds::micombine.F (thanks to Nicholas Breitborde)
+NOTE  * restructured Rcpp functions
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: micombine.F (1), 
+        micombine.chisquare (2)
+
+---------------------------------------------------------------------
+Versions 2.2  -- 2017-01-11  --  CRAN miceadds 2.2-0
+---------------------------------------------------------------------
+
+FIXED * fixed bug in data processing 'mice.impute.pls' and 
+        'mice.impute.plausible.values'. Additional arguments 'envir_pos'
+        and 'extract_data' have been included (thanks to Peter Lenz).
+FIXED * fixed problems in 'mice.impute.pls' due to derived predictor 
+        variables such as interactions due to standard deviations of zero
+        (thanks to Peter Lenz)
+NOTE  * included some utility descriptiptive statistics functions 
+        'stats0', 'mean0', 'sd0', ...
+NOTE  * included correct attributes in 'scale_datlist' function for
+        objects of class datlist (thanks to Andrew Frank-Wilson)
+NOTE  * extended 'scale_datlist' function to handle multiple variables to
+        be standardized
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: stats0 (1), scale_datlist (3)
+
+---------------------------------------------------------------------
+Versions 2.1  -- 2016-11-25  --  CRAN miceadds 2.1-0
+---------------------------------------------------------------------
+
+NOTE  * added utility function 'filename_split' for splitting file names
+NOTE  * added utility function 'files_move' for moving files from one
+        directory into another directory 
+NOTE  * included starting values in imputations in the function
+        'mice.impute.2l.latentgroupmean.MCMC' which are obtained from 
+        previous iterations in MCMC imputation chain
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: filename_split (1), files_move (1)
+
+---------------------------------------------------------------------
+Versions 2.0  -- 2016-08-29  --  CRAN miceadds 2.0-0
+---------------------------------------------------------------------
+
+FIXED * fixed an incorrect calculation in D2 statistic which appeared
+        differently in literature (thanks to David Tian)
+NOTE  * allow now vectors of strings to specify file names in 'load.data'.
+        Also included the value NULL of the argument 'path' if a path
+        should not be specified in this argument.
+ADDED * included mice imputation method 'mice.impute.hotDeck' for 
+        probabilistic hot deck imputation
+FIXED * fixed a bug included in 'mice.impute.plausible.values' using 
+        likelihood objects which was recently introduced in miceadds 1.9
+FIXED * fixed a bug in predicted mean matching of two-level data in
+        function 'mice.impute.2l.pmm'
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: mice.impute.hotDeck (1)
+
+---------------------------------------------------------------------
+Versions 1.9  -- 2016-07-13  --  CRAN miceadds 1.9-0
+---------------------------------------------------------------------
+
+FIXED * fixed a bug in 'mice.impute.2l.binary'. Random slopes were
+        not properly handled in the previuos package version
+        (miceadds 1.8).
+ADDED * included lme4-based and blme-based imputation of normally 
+        distributed two-level data in 'mice.impute.2l.continuous' function.
+        Predictive mean matching for two-level data is also added
+        as the 'mice.impute.2l.pmm' function.
+ADDED * included imputation function '2lonly.function' for level 2
+        imputation based on (arbitrary) level 1 imputation function
+ADDED * added general group-wise imputation function 'mice.impute.bygroup'
+NOTE  * included t values and p values in output of 'pool_mi' for 
+        inference of multiply imputed datasets (due to a request on
+        R help list of Jennifer Lorenz)
+NOTE  * renamed PLS imputation method '2l.pls' into 'mice.impute.pls'
+NOTE  * renamed plausible value imputation method into
+        'mice.impute.plausible.values'
+NOTE  * renamed 'mice.impute.2l.eap' into 'mice.impute.eap'
+NOTE  * Defunct functions: 'mice.impute.2l.pls', 'mice.impute.2l.pls2',
+        'fast.groupmean', 'fast.groupsum', 'mice.impute.2l.plausible.values',
+        'mice.impute.2l.eap', 'mice.impute.2lonly.norm2', 
+        'mice.impute.2lonly.pmm2'
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: mice.impute.2l.lmer (1),
+        mice.impute.2lonly.function (1), mice.imputation.bygroup (1),
+        lm.cluster(1), mice.impute.pls (1)
+
+---------------------------------------------------------------------
+Versions 1.8  -- 2016-05-31  --  CRAN miceadds 1.8-0
+---------------------------------------------------------------------
+
+NOTE  * added argument 'subdir' in 'write.datlist' indicating whether
+        output should be written in a subdirectory or directly
+        into the working directory
+NOTE  * fixed a minor bug in creation of Mplus input files in
+        'write.mice.imputation' and 'write.datlist'
+NOTE  * deleted display of chi square approximation p value in 
+        'micombine.F' and 'micombine.chisquare' 
+        (after a discussion with Joanna Kaye)
+NOTE  * extended 'subset' methods for integer input of argument
+        'subset' which allows easier selection of rows by specifying
+        row indices
+NOTE  * changed dimnames handling in 'NMIwaldtest' which should have
+        no practical side effects
+ADDED * added utility functions 'ma.wtd.skewnessNA' and 
+        'ma.wtd.curtosisNA' for calculating skewness and curtosis
+        (due to a correspondence with Timo Ehmke)
+ADDED * added the function 'ma.wtd.quantileNA' for weighted quantile
+        calculation
+NOTE  * extended 'ma.wtd.statNA' functions to handle objects of
+        class 'BIFIEdata' from the BIFIEsurvey package
+NOTE  * renamed 'fast.groupmean' and 'fast.groupsum' into 'GroupMean'
+        and 'GroupSum' and added function 'GroupSD' for calculation
+        of group-wise standard deviations
+NOTE  * replace 'Hmisc::wtd.var' import by 'TAM::weighted_sd'
+NOTE  * shift Hmisc, inline, MBESS and pls packages from Imports 
+        to Suggests and removed bayesm from Imports
+NOTE  * rewrite of 'scan.vec' which avoids temporary file savings 
+NOTE  * extended 'micombine.cor' to nested multiply imputed datasets,
+        for objects of classes 'datlist' and 'nested.datlist' and
+        single datasets (optionally non-imputed), i.e. the input 
+        of 'micombine.cor' must not be mids objects
+NOTE  * added function 'micombine.cov' which has same functionality
+        as 'micombine.cor' 
+NOTE  * added attributes in 'datlist' and 'nested.datlist' for cases
+        of varying sample sizes in imputed datasets
+FIXED * added functionality of handling single imputed datasets in 
+        'pool_mi' function
+ADDED * added inference for partial correlation in 'micombine.cor'
+        using the argument 'partial' 
+FIXED * fixed an unnecessary warning message in 'datalist2mids' for
+        class checking (thanks to Janet Kwok) 
+ADDED * included imputation methode '2l.binary' of binary variable 
+        with two-level logistic regression models
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: subset.datlist (1), 
+        ma.wtd.statsNA (1,2,3,4), GroupMean (1), mi.combine.cor (1,2)
+
+---------------------------------------------------------------------
+Versions 1.7  -- 2016-02-18  --  CRAN miceadds 1.7-8
+---------------------------------------------------------------------
+
+NOTE  * allowed alternative specification of weighting variable in
+        'scale_datlist' which now allows for group-wise 
+        standardizations
+NOTE  * included arguments 'index' and 'systime' in 'save.data' for
+        automatic inclusion of indices and time stamps in saved 
+        datasets
+NOTE  * included argument 'se' in 'NMIcombine' function which can be
+        used if only standard errors instead of covariance matrices
+        are available
+ADDED * added utility function 'pool_mi' for inference of multiply
+        imputed datasets which has the same functionality as
+        'mice::pool' or 'mitools::MIcombine'. This function provides
+        summary, coef and vcov S3 methods.
+NOTE  * function 'datalist2mids' is now also accessible via
+        'datlist2mids' (which is more coherent to class 'datlist')
+NOTE  * defined 'pool_nmi' synonymously to 'NMIcombine'
+NOTE  * added S3 print method for 'datlist', 'nested.datlist',
+        'NestedImputationList'
+ADDED * added subsetting methods 'subset_datlist' (and the S3 method
+        subset) for multiply imputed datasets and 'subset_nested.datlist'
+        for nested multiply imputed datasets
+NOTE  * added further calculation of fraction of missing information for
+        nested multiply imputed datasets according to Harel and 
+        Schafer (2002) in 'NMIcombine' which can be assessed by the
+        argument 'method=2'.  
+NOTE  * extended imputation of latent group means to lme4-based imputation
+        in 'mice.impute.2l.latentgroupmean.ML' and MCMCglmm based 
+        imputation in 'mice.impute.2l.latentgroupmean.MCMC'
+NOTE  * added with and within methods for objects of class 'datlist'
+        and 'nested.datlist'
+ADDED * added convenience functions 'withPool_MI' and 'withPool_NMI' for
+        pooling (averaging) estimates for (nested) multiply imputed 
+        datasets
+ADDED * added utility function 'scan0' which is 'scan' with default
+        what='character'
+ADDED * added utility functions 'nestedList2List' and 'List2nestedList'
+        for list conversions
+ADDED * added functions 'nested.datlist2datlist' and 'datlist2nested.datlist'
+        for converting nested multiply and multiply imputed datasets
+NOTE  * extended argument 'type' in 'save.data' for saving a dataset in
+        multiple file formats
+NOTE  * added example for plausible value imputation in Amelia package
+        in draw.pv.ctt.Rd (Example 1) 
+NOTE  * added 'print' methods for 'mids.1chain' and 'mids.nmi' objects
+        (the method is equivalent to 'summary')
+NOTE  * exported 'write.fwf2' and 'read.fwf2' for writing and reading
+        files in fixed width format
+NOTE  * added utility function 'VariableNames2String' for handling
+        variable names which should be converted into strings
+ADDED * added utility function 'write.datlist' for writing multiply
+        imputed datasets
+ADDED * included function 'mi_dstat' for relating missingness
+        indicators to covariates
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: scale_datlist (1), save.data (1),
+        pool.mids.nmi (1,2), pool_mi (1), subset_datlist (1,2),
+        datlist2mids (1), with.miceadds (1,2), scan.vec (1),
+        nestedList2List (1), datlist_create (4), save.data (1),
+        draw.pv.ctt (1), write.fwf2 (1), data.graham (1,2),
+        VariableNames2String (1), write.datlist (1), mi_dstat (1)
+
+---------------------------------------------------------------------
+Versions 1.6  -- 2016-01-30  --  CRAN miceadds 1.6-0
+---------------------------------------------------------------------
+
+NOTE  * included argument 'X' in 'mids2datlist' and 'mids2mlwin' 
+        which allows the inclusion of further variables in list of 
+        multiply imputed datasets 
+NOTE  * output of function 'mids2datlist' is now of class 'datlist' 
+        or 'nested.datlist'
+ADDED * extended weighted statistics 'ma.wtd.statNA' to (nested)
+        multiply imputed datasets
+NOTE  * included 'datlist_create' and 'nested.datlist_create' utility
+        function 
+NOTE  * changed estimation method in imputation of latent group means
+        in 'mice.impute.2l.latentgroupmean' to MCMC estimation using
+        the MCMCglmm package
+ADDED * added 'scale_datlist' for adding a standardized variable to a
+        list of multiply imputed datasets
+NOTE  * cleaned namespace file and defined imported functions
+        in a more explicit way
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: mids2datlist (3), 
+        ma.wtd.statNA (1,2,3), datlist_create (1,2), scale_datlist (1,2), 
+        cxxfunction.copy (1) 
+
+---------------------------------------------------------------------
+Versions 1.5  -- 2015-11-21  --  CRAN miceadds 1.5-0
+---------------------------------------------------------------------
+
+NOTE  * changed function 'save.data' due to changes in a recent sjmisc
+        package update on CRAN
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+---------------------------------------------------------------------
+Versions 1.4  -- 2015-11-04  --  CRAN miceadds 1.4-0
+---------------------------------------------------------------------
+
+NOTE  * included argument 'suffix' in 'save.data' for easier 
+        inclusion of parts of file names when saving data
+FIXED * fixed a bug in imputation method '2l.latentgroupmean'
+        (reported by Simon Grund)
+ADDED * added Spearman rank correlation for 'micombine.cor' and
+        an example for statistical inference for Kendalls
+        tau (see 'micombine.cor', Example 2)
+        (suggested by Kathleen Gali)    
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: micombine.cor (2)
+
+---------------------------------------------------------------------
+Versions 1.3  -- 2015-07-10  --  CRAN miceadds 1.3-0
+---------------------------------------------------------------------
+
+ADDED * added imputation method 'grouped' for grouped (coarsed) data
+ADDED * included 'NMIcombine' function as an extension to
+        'MIcombine' (mitools package) to nested multiply
+        imputed datasets
+ADDED * included function 'NMIwaldtest' which performs a multi-
+        parameter Wald test for nested multiply imputed datasets
+NOTE  * added argument 'extend' in 'fast.groupmean' which is useful
+        for the inclusion of group means in original datasets
+ADDED * added D1 statistic (Wald test) 'MIwaldtest' as a 
+        multiparameter test for multiply imputed datasets
+FIXED * fixed a bug in 'lm.cluster' and 'glm.cluster'. 
+NOTE  * The 'cluster' argument in 'lm.cluster' now allows vector input.
+NOTE  * included datasets from missing data book of Graham (data.graham)        
+NOTE  * included some examples of the jomo package
+NOTE  * added argument 'NMI' in 'NMIcombine' function which now also
+        allows input for non-nested multiple imputation
+ADDED * added 'NMIextract' function as an extension of 'MIextract'
+        (mitools package) to nested multiply imputed datasets
+NOTE  * added utility function 'library_install' which loads packages
+        and conducts installations if required
+
+DATA  * included/modified datasets: data.ma06, data.graham
+EXAMP * included/modified examples: mice.impute.grouped (1),
+        pool.mids.nmi (1.4,1.5), NMIwaldtest (1,2), fast.groupmean (1),
+        lm.cluster (1,2), jomo2datlist (1), pool.mids.nmi (1),
+        library_install (1)
+
+---------------------------------------------------------------------
+Versions 1.2  -- 2015-05-20  --  CRAN miceadds 1.2-0
+---------------------------------------------------------------------
+
+NOTE  * fixed a bug in 'load.data' for loading datasets of type 'table'
+ADDED * included utility function 'mids2mlwin' for writing MLwiN files
+        (contributed by Thorsten Luka)
+NOTE  * added suggestions to sav file writing functions in haven and
+        sjmisc packages
+NOTE  * removed dependency on PSPP for writing sav files in 'save.data'.
+        Now, the function 'write_spss' from the sjmisc package is used.
+NOTE  * added further values in 'systime' function
+ADDED * added a utility function 'visitSequence.determine' for 
+        determining visit sequence for an imputation model when passive 
+        variables are involved
+ADDED * added function 'mice.nmi' for conducting nested multiple 
+        imputation generating objects of class 'mids.nmi'
+ADDED * extended 'complete' function from mice package for objects of
+        classes 'mids.1chain' (function 'complete.mids.1chain') and
+        'mids.nmi' (function 'complete.mids.nmi')
+ADDED * extended 'mids2datlist' for objects of class 'mids.nmi'
+ADDED * added 'with' S3 method for objects of class 'mids.1chain' and
+        'mids.nmi' producing objects of class 'mira' (defined in mice)
+        and 'mira.nmi'. For 'mira.nmi', a summary method is defined. 
+ADDED * added 'within' S3 methods for objects of class 'imputationList'
+        (which are defined in the mitools package) 
+ADDED * added statistical inference for nested multiply imputed datasets
+        in 'pool.mids.nmi' function
+ADDED * added functions 'lm.cluster' and 'glm.cluster' for cluster robust 
+        standard errors for 'lm' and 'glm' functions using the 
+        multiwaycov package (and the function 'cluster.vcov' therein)
+ADDED * added function 'NestedImputationList' function for creating objects
+        of class 'NestedImputationList'. S3 Methods 'with' and 'within' are
+        defined for operating on this list of lists of datasets.
+        The S3 method 'MIcombine' (from mitools package) is extended
+        to objects of class 'Nested ImputationResultList'.        
+             
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: write.pspp (1), save.data (1),
+        systime (1), visitSequence.determine (1), datalist2mids (1),
+        mice.nmi (1), complete.miceadds (1,2), mids2datlist (2),
+        with.miceadds (1,2), pool.mids.nmi (1), lm.cluster (1),
+        NestedImputationList (1)        
+
+---------------------------------------------------------------------
+Versions 1.1  -- 2015-02-23  --  CRAN miceadds 1.1-1
+---------------------------------------------------------------------
+
+NOTE  * extended 'datalist2mids' function to handle a single dataset
+ADDED * included plausible value imputation via a provided
+        individual likelihood 
+NOTE  * included row.names argument and missing value argumant
+        in 'save.data'
+        
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: mice.impute.2l.plausible.values (2)
+
+---------------------------------------------------------------------
+Versions 1.0  -- 2014-11-07  --  CRAN miceadds 1.0
+---------------------------------------------------------------------
+
+NOTE  * fixed a minor bug in write.pspp when a variable only
+        contains values of zero
+NOTE  * allow specification of a part of the file name in 'load.data';
+        the most recent file is loaded
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+---------------------------------------------------------------------
+Versions 0.14 -- 2014-07-30  --  CRAN miceadds 0.14-9
+---------------------------------------------------------------------
+
+ADDED * included Type 3 sum of squares in ANOVA in 'mi.anova'
+        (thanks to Florian Buchwald)
+ADDED * included a function 'load.Rdata2' which prevents from 
+        the definition of the output in the global environment
+        as in 'load.Rdata'       
+ADDED * included utility function 'load.data' and 'save.data'
+        for loading and saving data files from and to several formats
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: mi.anova (1), load.Rdata,
+        load.data, save.data
+
+---------------------------------------------------------------------
+Versions 0.13 -- 2014-06-27  --  CRAN miceadds 0.13-7
+---------------------------------------------------------------------
+
+ADDED * included several R utility functions
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+---------------------------------------------------------------------
+Versions 0.12 -- 2014-05-08  --  CRAN miceadds 0.12-9
+---------------------------------------------------------------------
+
+FIXED * included bug fixes for 'mice.impute.2lonly.pmm' (mice version
+        2.21) as 'mice.impute.2lonly.pmm2' in miceadds 
+        -> the same for 'mice.impute.2lonly.norm'
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+---------------------------------------------------------------------
+Versions 0.11 -- 2014-02-19  --  CRAN miceadds 0.11-121
+              [**** FIRST CRAN RELEASE ****]
+---------------------------------------------------------------------
+
+FIXED * fixed a bug in tw.mcmc.imputation for rows with only missings
+ADDED * included function write.pspp for writing SPSS files using PSPP
+ADDED * included predict method for kernelpls.fit2 function
+NOTE  * export and extended fast.groupmean function to include weights
+NOTE  * export mice.impute.2l.pls and mice.impute.2l.pls2
+FIXED * fixed a bug in the creation of interactions in 
+        mice.impute.2l.pls (thanks to Takuya Yanagida)
+NOTE  * included calculation of weighted covariance matrix with missing
+        entries in datasets
+ADDED * included mice.impute.pmm3, mice.impute.pmm4, mice.impute.pmm5 and
+        mice.impute.pmm6
+NOTE  * included scale2 as a faster substitute for the scale function in R
+ADDED * included mice.1chain as an alternative to the mice function
+        which multiply imputes data from a long chain
+ADDED * included imputation function 'mice.impute.2l.eap' for imputation
+        from a known (normal) posterior distribution
+ADDED * included function mids2datlist for conversion of a mids object
+        into a list of datasets 
+NOTE  * included datasets: all datasets contained in the package
+NOTE  * included examples: for all functions
+
+
+
+---------------------------------------------------------------------
+#### older miceadds versions (formerly micetrun)
+
+Versions 0.10 -- 2013-08-18
+Versions 0.8  -- 2012-10-18
+Versions 0.7  -- 2012-06-18
+Versions 0.6  -- 2011-11-29
+Versions 0.5  -- 2011-06-02
+Versions 0.4  -- 2008-05-31
+Versions 0.3  -- 2008-04-07
+Versions 0.2  -- 2008-03-27
+Versions 0.1  -- 2007-10-21
