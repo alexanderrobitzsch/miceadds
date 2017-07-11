@@ -5,8 +5,7 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
                         pviter = 15 , imputationWeights = rep(1, length(y)) , 
                         plausible.value.print = TRUE , 
                         pls.facs=NULL , interactions=NULL , quadratics =NULL , 
-						extract_data = TRUE , ...){  						
-	requireNamespace("MBESS")											
+						extract_data = TRUE , ...){  							
     #*******
 	# old arguments which are now excluded from the function
 	itemdiff=NULL ; item.resp = NULL ;
@@ -155,7 +154,7 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
 #			 mod <- lm( y.pv ~ xcov1a ) 	
             # draw regression parameters
             v <- stats::vcov(mod)
-            beta.star <- stats::coef(mod) + MASS::mvrnorm( 1, mu = rep(0,nrow(v) ) , Sigma = v )
+            beta.star <- stats::coef(mod) + mvtnorm::rmvnorm( 1, mean = rep(0,nrow(v) ) , sigma = v )
             # calculate residual variance in regression
             sigma2 <- mean( stats::residuals(mod)^2 )
             # fitted regression coefficients
@@ -217,14 +216,14 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
         #*******
         # plausible value imputation if alpha is estimated or known
         if (pvmethod  %in% c(1,2) ){
-            if (pvmethod == 2){  
+            if (pvmethod == 2){
+				TAM::require_namespace_msg("MBESS")														
                 alpha.est <- .cronbach.alpha( dat.scale )
-            cirel.type <- "Normal Theory"
-#            if (scale.type == "congeneric"){ cirel.type <- "Factor Analytic" }
-            cir <- MBESS::ci.reliability( data = dat.scale , type = cirel.type , interval.type = TRUE )
-            alpha.est <- cir$Estimated.reliability
-            alpha.se <- cir$SE.reliability
-                                }
+				cirel.type <- "Normal Theory"
+				cir <- MBESS::ci.reliability( data = dat.scale , type = cirel.type , interval.type = TRUE )
+				alpha.est <- cir$Estimated.reliability
+				alpha.se <- cir$SE.reliability
+            }
             if (pvmethod == 1){
                      alpha.known <- alpha[[vname]]
                      if ( is.list(  alpha.se  ) ){

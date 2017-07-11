@@ -74,33 +74,15 @@ importFrom(utils, write.table)
 import(mice)
 
 
-#***************************************************
-#************** Imports ****************************
- 
 
-importFrom(blme, bglmer)
-importFrom(blme, blmer)
-importFrom(car, Anova) 
+#***************************************************
+#************** Imports (own packages) *************
+
 importFrom(CDM, csink)
-importFrom(CDM, osink)
-importFrom(foreign, read.spss) 
-importFrom(grouped, grouped)
-importFrom(lme4, fixef)
-importFrom(lme4, getME)
-importFrom(lme4, glmer)
-importFrom(lme4, lmer)
-importFrom(lme4, ranef)
-importFrom(lme4, VarCorr)
-importFrom(MASS, mvrnorm)
-importFrom(MCMCglmm, MCMCglmm)
-importFrom(mitools, MIcombine)
-importFrom(mvtnorm, dmvnorm)
-importFrom(mvtnorm, rmvnorm)
-importFrom(multiwayvcov, cluster.vcov)
+importFrom(CDM, osink) 
 importFrom(sirt, parmsummary_extend)
 importFrom(sirt, rowKSmallest2.sirt)
-importFrom(sjlabelled, set_label)
-importFrom(sjlabelled, write_spss)
+importFrom(TAM, require_namespace_msg)
 importFrom(TAM, tam.pv)
 importFrom(TAM, tam.latreg)
 importFrom(TAM, weighted_mean)
@@ -108,6 +90,40 @@ importFrom(TAM, weighted_quantile)
 importFrom(TAM, weighted_sd)
 
 
+#***************************************************
+#************** Imports ****************************
+ 
+importFrom(blme, bglmer)
+importFrom(blme, blmer)
+importFrom(foreign, read.spss) 
+importFrom(lme4, fixef)
+importFrom(lme4, getME)
+importFrom(lme4, glmer)
+importFrom(lme4, lmer)
+importFrom(lme4, ranef)
+importFrom(lme4, VarCorr)
+importFrom(mitools, MIcombine)
+importFrom(mvtnorm, dmvnorm)
+importFrom(mvtnorm, rmvnorm)
+importFrom(sjlabelled, set_label)
+importFrom(sjlabelled, write_spss)
+
+
+
+
+#***************************************************
+#************** Suggests ***************************
+# requireNamespace("another_package")
+# TAM::require_namespace_msg("another_package")
+ 
+# importFrom(BIFIEsurvey, BIFIE.BIFIEcdata2BIFIEdata)
+# importFrom(BIFIEsurvey, BIFIE.BIFIEdata2datalist)
+# importFrom(car, Anova) 
+# importFrom(grouped, grouped)
+# importFrom(inline, getDynLib)
+# importFrom(MBESS, ci.reliability)
+# importFrom(MCMCglmm, MCMCglmm)
+# importFrom(multiwayvcov, cluster.vcov)
 
 
 

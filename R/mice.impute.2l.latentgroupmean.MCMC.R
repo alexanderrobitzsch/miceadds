@@ -4,6 +4,7 @@ mice.impute.2l.latentgroupmean.MCMC <- function (y, ry, x, type ,
                     mcmc.burnin=100, mcmc.adapt=100, mcmc.iter=1000 , 
 	          		draw.fixed = TRUE, EAP = FALSE , ...){  
 
+	TAM::require_namespace_msg("MCMCglmm")				
     # retrieve mice objects
     k <- get("k", envir=parent.frame())           # iteration
     i <- get("i", envir=parent.frame())           # imputation

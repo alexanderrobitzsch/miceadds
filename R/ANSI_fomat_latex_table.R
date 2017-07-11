@@ -33,14 +33,22 @@ ANSI_format_latex_table <- function(dat, round=NULL,
 			}
 		}						
 		for (cc in 1:NC){	# cc <- 1		
+
+
+		
 			if ( ! is.null(round) ){
 				dat_rr_cc <- round( dat[rr,cc] , round[cc] )
 				h1 <- sprintf( paste0("%." , round[cc] , "f" ) , dat_rr_cc )
-			}			
+				if (h1 == "-0"){
+					h1 <- "0"
+				}
+			}						
+						
 			z1 <- dat_rr_cc			
 			z2 <- abs(dat_rr_cc)
 			g1 <- log( z2 , 10 )
-
+		
+		
 #			if ( ! phantom_digit[cc] ){
 				if ( g1 < phantom_digit[cc] ){
 					h1 <- paste0("\\phantom{1}",h1)		
@@ -50,6 +58,7 @@ ANSI_format_latex_table <- function(dat, round=NULL,
 			if (phantom_minus[cc] & ( dat_rr_cc >= 0 ) ){
 				h1 <- paste0("\\phantom{-}",h1)		
 			}		
+						
 			# bold
 			if ( dat_rr_cc < bold_lower[cc]){
 				h1 <- paste0("\\mathbf{" , h1 , "}")
@@ -65,6 +74,7 @@ ANSI_format_latex_table <- function(dat, round=NULL,
 				g1 <- " "
 			}					
 			v2 <- paste0( v2 , " " ,  h1 , " " , g1)
+			
 		}
 		v2 <- paste0( v2 , " " , last_col[rr] )
 		v1 <- c( v1 , v2)

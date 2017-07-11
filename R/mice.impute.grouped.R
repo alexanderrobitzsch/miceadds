@@ -2,6 +2,7 @@
 ##################################################
 # imputation for grouped data
 mice.impute.grouped <- function (y, ry, x, low=NULL , upp=NULL ,  ...){
+    TAM::require_namespace_msg("grouped")
     x <- cbind(1, as.matrix(x) )
     newstate <- get( "newstate" , pos = parent.frame() )  
     vname <- get("vname", pos = parent.frame())

@@ -3,6 +3,11 @@ mi.anova <- function( mi.res , formula , type = 2 ){
     # mi.res  ... mids object (from mice imputation function)
     # formula ... formula for ANOVA model (variable names must be in colnames(mi.list[[1]]), ...
     # converting MICE object to mi.list
+	
+	if (type==3){
+		TAM::require_namespace_msg("car")
+	}	
+	
     mi.list <- mi.res
     if( class(mi.list) == "mids.1chain" ){	
 		mi.list <- mi.list$midsobj

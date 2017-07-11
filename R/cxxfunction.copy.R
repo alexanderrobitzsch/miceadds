@@ -1,7 +1,7 @@
 
 
 cxxfunction.copy <- function( cppfct , name ){
-    requireNamespace("inline")
+    TAM::require_namespace_msg("inline")
     g1 <- inline::getDynLib(cppfct)
     cppname <- gsub( "\\.dll" , "\\.cpp" ,  g1[["path"]] )
     h1 <- readLines( cppname )

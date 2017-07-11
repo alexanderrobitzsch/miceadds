@@ -3,7 +3,7 @@
 ##################################################
 # linear model for clustered data
 lm.cluster <- function( data , formula , cluster , ... ){
-	# requireNamespace("multiwayvcov")
+	TAM::require_namespace_msg("multiwayvcov")
 	mod <- stats::lm( data=data , formula=formula ,  ... )
 	if ( length(cluster) > 1 ){
 		v1 <- cluster 

@@ -51,7 +51,7 @@ ma.wtd.aux.data <- function(data , weights , vars = NULL ){
 	#--------------------
 	# conversion in case of class BIFIEdata
 	if ( class(data) == "BIFIEdata" ){
-	    requireNamespace("BIFIEsurvey")
+	    TAM::require_namespace_msg("BIFIEsurvey")
 		if ( is.null(vars) ){
 			vars <- data$variables
 		}

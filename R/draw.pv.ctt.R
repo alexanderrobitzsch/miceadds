@@ -83,7 +83,7 @@ draw.pv.ctt <- function( y , dat.scale = NULL , x=NULL , samp.pars = TRUE , alph
     if ( samp.pars ){ 
         v <- stats::vcov(mod)	
 		m <- rep(0, nrow(v) )
-		rn <- MASS::mvrnorm( 1 , mu = m , Sigma = v )
+		rn <- mvtnorm::rmvnorm( 1 , mean = m , sigma = v )
         beta.star <- stats::coef(mod) + rn				
         # draw new fitted y
 		if ( x0ind ){
