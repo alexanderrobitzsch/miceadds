@@ -128,11 +128,11 @@ and imputes normally distributed two-level data with a Bayesian MCMC approach,
 but relies on the \pkg{jomo} package instead of the \pkg{pan} package.
 The function \code{\link[micemd:mice.impute.2l.glm.norm]{micemd::mice.impute.2l.glm.norm}}
 has similar functionality like 
-\code{\link[mice:mice.impute.2l.continuous]{mice::mice.impute.2l.continuous}}
+\code{\link{mice.impute.2l.continuous}}
 and imputes normally distributed two-level data. The function 
 \code{\link[micemd:mice.impute.2l.glm.bin]{micemd::mice.impute.2l.glm.bin}}
 has similar functionality like 
-\code{\link[mice:mice.impute.2l.binary]{mice::mice.impute.2l.binary}}
+\code{\link{mice.impute.2l.binary}}
 and imputes binary two-level data.
 
 The \pkg{hmi} package imputes single-level and multilevel data and is also

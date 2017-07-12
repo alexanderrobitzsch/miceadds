@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 2.6-12
-Date: 2017-07-11 11:02:31
+Version: 2.6-15
+Date: 2017-07-12 10:15:10
 Author: 
     Alexander Robitzsch [aut, cre], Simon Grund [aut],
     Thorsten Henke [aut]
@@ -20,15 +20,15 @@ Description:
 Depends:
     R (>= 3.0), mice
 Imports: 
-    blme, CDM, foreign, graphics, lme4, methods, mitools, 
-    mvtnorm, Rcpp, sirt, sjlabelled, stats, TAM (>= 2.5-3), 
-    utils     
+    CDM, graphics, lme4, methods, mitools, mvtnorm, 
+    Rcpp, sirt, stats, TAM (>= 2.5-3), utils     
 LinkingTo: 
     Rcpp, RcppArmadillo
 Suggests: 
-    Amelia, BIFIEsurvey, car, grouped, haven, hmi, Hmisc, 
-    inline, jomo, MBESS, MCMCglmm, micemd, mitml, multiwayvcov, 
-    pan, pls, Zelig
+    Amelia, BIFIEsurvey, blme, car, foreign, grouped, 
+    haven, hmi, Hmisc, inline, jomo, MBESS, MCMCglmm, 
+    micemd, mitml, multiwayvcov, pan, pls, sjlabelled, 
+    Zelig
 URL: https://github.com/alexanderrobitzsch/miceadds
 License: 
     GPL (>= 2)

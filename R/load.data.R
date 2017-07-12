@@ -4,6 +4,9 @@
 # miceadds::load.data: load conveniently R objects of different data formats
 load.data <- function( filename , type="Rdata" , path=getwd() , 
 				spss.default=TRUE , ...){
+	if (type=="sav"){
+		TAM::require_namespace_msg("foreign")
+	}				
 	#*** the resulting object is dat4!	
 	dir <- path
 	file <- filename
@@ -31,7 +34,6 @@ load.data <- function( filename , type="Rdata" , path=getwd() ,
 	}
     #*** csv2 objects
 	if (type == "csv2" ){
-
 		dat4 <- utils::read.csv2( file_path(dir,file) , ... )
 	}
     #*** csv objects

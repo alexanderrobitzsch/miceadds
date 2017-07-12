@@ -93,9 +93,6 @@ importFrom(TAM, weighted_sd)
 #***************************************************
 #************** Imports ****************************
  
-importFrom(blme, bglmer)
-importFrom(blme, blmer)
-importFrom(foreign, read.spss) 
 importFrom(lme4, fixef)
 importFrom(lme4, getME)
 importFrom(lme4, glmer)
@@ -105,8 +102,7 @@ importFrom(lme4, VarCorr)
 importFrom(mitools, MIcombine)
 importFrom(mvtnorm, dmvnorm)
 importFrom(mvtnorm, rmvnorm)
-importFrom(sjlabelled, set_label)
-importFrom(sjlabelled, write_spss)
+
 
 
 
@@ -118,13 +114,17 @@ importFrom(sjlabelled, write_spss)
  
 # importFrom(BIFIEsurvey, BIFIE.BIFIEcdata2BIFIEdata)
 # importFrom(BIFIEsurvey, BIFIE.BIFIEdata2datalist)
+# importFrom(blme, bglmer)
+# importFrom(blme, blmer)
 # importFrom(car, Anova) 
+# importFrom(foreign, read.spss) 
 # importFrom(grouped, grouped)
 # importFrom(inline, getDynLib)
 # importFrom(MBESS, ci.reliability)
 # importFrom(MCMCglmm, MCMCglmm)
 # importFrom(multiwayvcov, cluster.vcov)
-
+# importFrom(sjlabelled, set_label)
+# importFrom(sjlabelled, write_spss)
 
 
 

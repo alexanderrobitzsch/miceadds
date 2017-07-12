@@ -6,7 +6,11 @@ save.data <- function( data , filename , type="Rdata" , path=getwd() ,
           row.names=FALSE , na = NULL , suffix = NULL , suffix_space = "__" , 
 		  index = FALSE , systime = FALSE ,  ...)
 {
-	#*** the resulting object is dat4!	
+	if (type=="sav"){
+		TAM::require_namespace_msg("sjlabelled")
+	}
+
+	#***
 	dir <- path
 	file <- filename	
 	if ( ! is.null(suffix) ){

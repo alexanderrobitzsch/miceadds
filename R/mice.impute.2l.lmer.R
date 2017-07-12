@@ -10,7 +10,12 @@ mice.impute.2l.lmer <- function(y, ry, x, type, intercept=TRUE,
 								  match_sampled_pars = FALSE ,
 								  blme_use = FALSE ,
 								  blme_args = NULL , 
-                                  ...){
+                                  ...)
+{
+
+	if (blme_use){
+		TAM::require_namespace_msg("blme")
+	}
 
 	# *** ...............................
 	# preliminary calculations

@@ -66,7 +66,7 @@ The code is adapted from
 See also \code{\link[foreign:write.foreign]{foreign::write.foreign}}. 
 
 For writing sav files see also \code{\link[haven:write_sav]{haven::write_sav}} 
-and  \code{\link[sjmisc:write_spss]{sjmisc::write_spss}}.
+and  \code{\link[sjlabelled:write_spss]{sjlabelled::write_spss}}.
 
 For convenient viewing \emph{sav} files we recommend the freeware
 program \emph{ViewSav}, see \url{http://www.asselberghs.dds.nl/stuff.htm}.

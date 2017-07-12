@@ -41,13 +41,13 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.6  |  2017-07-11  |  Last: miceadds 2.6-12
+VERSIONS miceadds 2.6  |  2017-07-12  |  Last: miceadds 2.6-15
 ---------------------------------------------------------------------
 
 NOTE  * removed MASS package from 'Imports'. 
-        Moved car, grouped, MCMCglmm and multiwayvcov packages from 
-        'Imports' to 'Suggests'. Included hmi and micemd package in
-        'Suggests'.
+        Moved blme, car, foreign, grouped, MCMCglmm, multiwayvcov 
+        and sjlabelled packages from 'Imports' to 'Suggests'. 
+        Included hmi and micemd packages in 'Suggests'.
 NOTE  * added comments about hmi and micemd packages in the manual
         of mice.impute.2l.lmer.Rd.
 

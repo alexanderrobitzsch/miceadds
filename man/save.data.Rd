@@ -31,7 +31,7 @@ This can be \code{Rdata} (for \R binary format, using
 \code{csv} (using \code{\link[utils:write.csv2]{utils::write.csv2}}), 
 \code{csv} (using \code{\link[utils:write.csv]{utils::write.csv}}),
 \code{table} (using \code{\link[utils:write.table]{utils::write.table}}) or 
-\code{sav} (using \code{\link[sjmisc:write_spss]{sjmisc::write_spss}}).
+\code{sav} (using \code{\link[sjlabelled:write_spss]{sjlabelled::write_spss}}).
   \code{type} can also be a vector if the data frame should be
   saved in multiple formats.
   	  }
@@ -51,7 +51,7 @@ and \code{type="csv2"} and is \code{"."} for \code{type="table"}.}
 }
 \item{\dots}{Further arguments to be passed to \code{save},
 	\code{write.csv2}, \code{write.csv}, \code{write.table}
-	or \code{sjmisc::write_spss}.
+	or \code{sjlabelled::write_spss}.
 }
 }
 
@@ -99,30 +99,30 @@ dat <- data.ma01
 pf2 <- "P:/ARb/temp_miceadds"
 
 # save data in Rdata format
-save.data( dat , filename="ma01data"  , type="Rdata" , path=pf2)
+miceadds::save.data( dat , filename="ma01data"  , type="Rdata" , path=pf2)
 
 # save data in table format without row and column names
-save.data( dat , filename="ma01data"  , type="table" , path=pf2 ,
+miceadds::save.data( dat , filename="ma01data"  , type="table" , path=pf2 ,
             row.names=FALSE , na =".", col.names=FALSE)
 
 # save data in csv2 format, including time stamp in file name
 # and row index and time stamp in saved data
-save.data( dat , filename="ma01data"  , type="csv2" , path=pf2 ,
-            row.names=FALSE , na ="" , suffix=systime()[5],
-            index = TRUE , systime = TRUE )
+miceadds::save.data( dat, filename="ma01data", type="csv2", path=pf2,
+            row.names=FALSE, na ="", suffix=systime()[5],
+            index = TRUE, systime = TRUE )
             
 # save data in sav format 
-save.data( dat , filename="ma02data"  , type="sav" ,  path=pf2 )
+miceadds::save.data( dat, filename="ma02data", type="sav",  path=pf2 )
 
 # save data file in different formats
 types <- c("Rdata" , "csv2" , "sav")
 sapply( types , FUN = function(type){
-    miceadds::save.data( dat , filename="ma02data"  , type= type ,  path=pf2 ,
+    miceadds::save.data( dat, filename="ma02data", type= type,  path=pf2,
                suffix = miceadds::systime()[3] , row.names=TRUE  )
                                     } )
 
 # save data frame in multiple file formats (sav, table and csv2)
-save.data( dat , filename="ma03data"  , type= c("sav","table","csv2") ,  path=pf2 ,
+miceadds::save.data( dat, filename="ma03data", type= c("sav","table","csv2"),  path=pf2 ,
             suffix = miceadds::systime()[7]  )
 }
 }
