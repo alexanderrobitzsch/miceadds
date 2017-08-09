@@ -154,7 +154,7 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
 #			 mod <- lm( y.pv ~ xcov1a ) 	
             # draw regression parameters
             v <- stats::vcov(mod)
-            beta.star <- stats::coef(mod) + mvtnorm::rmvnorm( 1, mean = rep(0,nrow(v) ) , sigma = v )
+            beta.star <- stats::coef(mod) + CDM::CDM_rmvnorm( 1, mean = rep(0,nrow(v) ) , sigma = v ) 
             # calculate residual variance in regression
             sigma2 <- mean( stats::residuals(mod)^2 )
             # fitted regression coefficients

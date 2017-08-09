@@ -41,7 +41,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.6  |  2017-07-12  |  Last: miceadds 2.6-15
+VERSIONS miceadds 2.6  |  2017-08-09  |  Last: miceadds 2.6-20
 ---------------------------------------------------------------------
 
 NOTE  * removed MASS package from 'Imports'. 
@@ -50,11 +50,11 @@ NOTE  * removed MASS package from 'Imports'.
         Included hmi and micemd packages in 'Suggests'.
 NOTE  * added comments about hmi and micemd packages in the manual
         of mice.impute.2l.lmer.Rd.
-
+ADDED * added functionality for string variables in 'write.fwf2'
+        (suggested by Tung Nguyen) 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
-
+EXAMP * included/modified examples: write.fwf2 (2)
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.5  |  2017-06-17  |  Last: miceadds 2.5-9

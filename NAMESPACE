@@ -78,6 +78,7 @@ import(mice)
 #***************************************************
 #************** Imports (own packages) *************
 
+importFrom(CDM, CDM_rmvnorm)
 importFrom(CDM, csink)
 importFrom(CDM, osink) 
 importFrom(sirt, parmsummary_extend)
@@ -101,8 +102,7 @@ importFrom(lme4, ranef)
 importFrom(lme4, VarCorr)
 importFrom(mitools, MIcombine)
 importFrom(mvtnorm, dmvnorm)
-importFrom(mvtnorm, rmvnorm)
-
+# importFrom(mvtnorm, rmvnorm) # replaced by CDM::CDM_rmvnorm
 
 
 

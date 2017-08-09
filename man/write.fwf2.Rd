@@ -21,7 +21,9 @@ read.fwf2( file , format.full , variables = NULL)
 
 \arguments{
   \item{dat}{
-Data frame (or numeric matrix)
+Data frame (or matrix). Variables can be numeric or strings. However,
+string length of string variables are not allowed to be larger
+than what is specified in \code{format.full}.
 }
   \item{format.full}{
 Vector with fixed width variable lengths
@@ -89,6 +91,14 @@ dat1 <- miceadds::read.fwf2( file = "testdata.dat" , format.full = c(6,6,8) ,
                variables = c("x","y","z") )
 # check differences between data frames
 dat - dat1
+
+#############################################################################
+# EXAMPLE 2: Write datasets containing some string variables in fwf format
+#############################################################################
+
+n <- 5
+dat <- data.frame( "x" = stats::runif(n , 0 , 9 ) , "y" = LETTERS[1:n] )
+write.fwf2(dat, format.full = c(4,2) , format.round = c(2,0) ,  file = "testdata")
 }	
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -114,10 +114,10 @@ library(haven)
 haven::write_sav( data , "example_data1a.sav" )      
 
 #****
-# write sav file using sjmisc package
-library(sjmisc)
-data <- sjmisc::set_label( data, attr(data, "variable.labels") )
-sjmisc::write_spss( data , "example_data1b.sav" )
+# write sav file using sjlabelled package
+library(sjlabelled)
+data <- sjlabelled::set_label( data, attr(data, "variable.labels") )
+sjlabelled::write_spss( data , "example_data1b.sav" )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
