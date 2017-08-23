@@ -10,7 +10,7 @@ jomo2datlist <- function( jomo.dataframe , variable="Imputation" ){
     ind <- which( colnames(dat) == variable )
     for ( mm in 1:M1){
         datlist[[mm]] <- dat[ dat$Imputation == mm , - ind ]
-                    }
+    }
     return(datlist)
 }
 

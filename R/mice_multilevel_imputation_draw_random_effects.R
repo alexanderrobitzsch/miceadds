@@ -6,8 +6,7 @@
 # covariance matrices Sigma (NR,NR,NG)
 
 mice_multilevel_imputation_draw_random_effects <- function( mu , Sigma ,
-		ridge = 1E-50 ){
-
+		ridge = 1E-20 ){
 	dim_Sigma <- dim(Sigma)
 	ngr <- dim_Sigma[3]
 	NR <- dim_Sigma[1]

@@ -7,6 +7,7 @@
 \alias{data.ma04}
 \alias{data.ma05}
 \alias{data.ma06}
+\alias{data.ma07}
 
 \docType{data}
 
@@ -26,6 +27,7 @@ data(data.ma03)
 data(data.ma04)
 data(data.ma05)
 data(data.ma06)
+data(data.ma07)
 }
 
 
@@ -138,6 +140,22 @@ with grouped values (coarse data or interval data).
 \code{ $ FC_low: num  10 5 5 5 5 0 0 5 5 0 ...} \cr
 \code{ $ FC_upp: num  15 10 10 10 10 100 100 10 10 100 ...} \cr
 
+\item Dataset \code{data.ma07}:
+
+This is a three-level dataset in which the variable \code{FC} is only available
+with grouped values (coarse data or interval data).
+
+
+\code{'data.frame':   1600 obs. of  9 variables:} \cr
+\code{ $ id3: num  1001 1001 1001 1001 1001 ...} \cr
+\code{ $ id2: num  101 101 101 101 101 101 101 101 101 101 ...} \cr
+\code{ $ id1: int  1 2 3 4 5 6 7 8 9 10 ...} \cr
+\code{ $ x1 : num  0.91 1.88 NA 1.52 0.93 0.51 2.11 0.99 2.42 NA ...} \cr
+\code{ $ x2 : num  -0.58 1.12 0.87 -0.01 -0.14 0.48 1.85 -0.9 0.93 0.63 ...} \cr
+\code{ $ y1 : num  1.66 1.66 1.66 1.66 1.66 1.66 1.66 1.66 1.66 1.66 ...} \cr
+\code{ $ y2 : num  0.96 0.96 0.96 0.96 0.96 0.96 0.96 0.96 0.96 0.96 ...} \cr
+\code{ $ z1 : num  -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 ...} \cr
+\code{ $ z2 : num  0.42 0.42 0.42 0.42 0.42 0.42 0.42 0.42 0.42 0.42 ...} \cr
 
 
 

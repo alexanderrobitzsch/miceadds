@@ -42,8 +42,6 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
                     }  
 		
     # define scale type
-#    scale.type <- .extract.list.arguments( micearg = scale.type , 
-#                           vname = vname , miceargdefault = "parallel" )
 	scale.type <- "parallel"
 	
     pls.facs <- mice_imputation_extract_list_arguments( micearg = pls.facs , 

@@ -3,7 +3,8 @@
 ################################################
 # create interactions
 create_interactions <- function (y_,xobs_,xall_,index_int_,min_int_cor_,maxcols_){ 
-	.Call("create_interactions_cpp", 
+	# .Call("create_interactions_cpp", 
+	.Call("miceadds_create_interactions_cpp", 
 		y_,xobs_,xall_,index_int_,min_int_cor_,maxcols_, 
 		PACKAGE = "miceadds")
 					}

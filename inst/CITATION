@@ -6,7 +6,7 @@ citHeader("To cite the 'miceadds' package in publications use:")
 
 
 citEntry(entry="Manual",
-         title = "TAM: Some additional multiple imputation functions, 
+         title = "miceadds: Some additional multiple imputation functions, 
            especially for mice",
          author = c(
                    person(given = "Alexander",
@@ -21,7 +21,7 @@ citEntry(entry="Manual",
          textVersion =
          paste0("Robitzsch, A., Grund, S., & Henke, T. (",
                year,
-               "). TAM: Some additional multiple imputation functions, 
+               "). miceadds: Some additional multiple imputation functions, 
            especially for mice. ",
                vers, ". https://CRAN.R-project.org/package=miceadds")
 	)

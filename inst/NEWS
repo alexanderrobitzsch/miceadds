@@ -41,6 +41,28 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
+VERSIONS miceadds 2.7  |  2017-08-23  |  Last: miceadds 2.7-10
+---------------------------------------------------------------------
+
+ADDED * added function 'jomo2mids' which converts imputation output 
+        of the jomo package into an object of class mids
+FIXED * fixed a bug in 'mice.impute.2l.pls2' which did not find 
+        a C routine in '.Call'
+ADDED * added imputation function 'mice.impute.ml.lmer' for imputation
+        models based on the linear mixed effects specification in
+        lme4. Hierarchical and non-hierarchical levels are allowed and
+        imputation at higher levels is accomodated.
+NOTE  * added utility functions 'ma_rmvnorm', 
+        'Rfunction_include_argument_values' and
+        'Rfunction_output_list_result_function'
+
+DATA  * included/modified datasets: data.ma07
+EXAMP * included/modified examples: jomo2datlist (1), 
+        mice.impute.ml.lmer (1), ma_rmvnorm (1),
+        Rfunction_include_argument_values (1)
+
+
+---------------------------------------------------------------------
 VERSIONS miceadds 2.6  |  2017-08-09  |  Last: miceadds 2.6-21
 ---------------------------------------------------------------------
 

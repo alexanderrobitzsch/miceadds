@@ -11,7 +11,7 @@ Based on Individual Likelihood
 This imputation function performs unidimensional plausible value
 imputation if (subject-wise) measurement errors or the reliability
 of the scale is known (Mislevy, 1991; see also Asparouhov & Muthen, 2010;
-Blackwell, Honaker & King, 2011, 2016a, 2016b).
+Blackwell, Honaker & King, 2011, 2017a, 2017b).
 The function also allows the input of an individual likelihood
 obtained by fitting an item response model.
 }
@@ -117,13 +117,13 @@ Blackwell, M., Honaker, J., & King, G. (2011).
 \emph{Multiple overimputation: A unified approach to measurement error and 
 missing data}. Technical Report. 
 
-Blackwell, M., Honaker, J., & King, G. (2016a). 
+Blackwell, M., Honaker, J., & King, G. (2017). 
 A unified approach to measurement error and missing data: Overview and
-applications. \emph{Sociological Methods & Research}, \bold{xx}, xxx-xxx. 
+applications. \emph{Sociological Methods & Research}, \bold{46}(3), 303-341. 
 
-Blackwell, M., Honaker, J., & King, G. (2016b). 
+Blackwell, M., Honaker, J., & King, G. (2017). 
 A unified approach to measurement error and missing data: Details and
-extensions. \emph{Sociological Methods & Research}, \bold{xx}, xxx-xxx.
+extensions. \emph{Sociological Methods & Research}, \bold{46}(3), 342-369.
 
 Mislevy, R. J. (1991). Randomization-based inference about latent variables 
 from complex samples. \emph{Psychometrika}, \bold{56}, 177-196.

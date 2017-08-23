@@ -6,7 +6,7 @@ mice.impute.2l.pls2 <- function(y, ry, x , type , pls.facs = NULL ,
                                 tricube.pmm.scale=NULL , min.int.cor = 0 , 
 								min.all.cor = 0 , N.largest = 0 ,
 								pls.title = NULL , print.dims= TRUE , 
-								pls.maxcols=5000 ,	... )
+								pls.maxcols=5000 ,	envir_pos = parent.frame() , ... )
        {
         #...........................................................................#
         # INPUT                                                                     #
@@ -32,23 +32,23 @@ mice.impute.2l.pls2 <- function(y, ry, x , type , pls.facs = NULL ,
 		time1 <- Sys.time()	
 		n <- NULL
         imputationWeights  <- nrow(x) * imputationWeights / sum(imputationWeights)
-        vname <- get("vname", pos = parent.frame()) # get variable name        
+        vname <- get("vname", pos = envir_pos ) # get variable name        
         
-        imp.temp <- get( "newstate" , pos = parent.frame() )
+        imp.temp <- get( "newstate" , pos = envir_pos )
    
 #          newstate <- list(it = k,  im = i,  co = j, dep = vname,  meth = theMethod,
 #                     log = oldstate$log)
         # extract PLS factors
-        pls.facs <- .extract.list.arguments( micearg = pls.facs , 
+        pls.facs <- mice_imputation_extract_list_arguments( micearg = pls.facs , 
                            vname = vname , miceargdefault = 20 )
         # extract PLS imputation method
-        pls.impMethod <- .extract.list.arguments( micearg = pls.impMethod , 
+        pls.impMethod <- mice_imputation_extract_list_arguments( micearg = pls.impMethod , 
                             vname = vname , miceargdefault = "pmm" )
         # extract scaling factor for scaling factor in tricube weighted estimation
-        tricube.pmm.scale <- .extract.list.arguments( micearg = tricube.pmm.scale , vname , 
+        tricube.pmm.scale <- mice_imputation_extract_list_arguments( micearg = tricube.pmm.scale , vname , 
                                 miceargdefault = .2 )
         # define minimal correlation for interactions
-        min.int.cor <- .extract.list.arguments( micearg = min.int.cor , vname , 
+        min.int.cor <- mice_imputation_extract_list_arguments( micearg = min.int.cor , vname , 
                                 miceargdefault = 0 ) 
 
 # cat("get all arguments") ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1	
@@ -496,25 +496,6 @@ mice.impute.2l.pls2 <- function(y, ry, x , type , pls.facs = NULL ,
         return(x1)
 }
 
-
-
-
-
-#*********************************************************************************
-# extract list argument
-.extract.list.arguments <- function( micearg , vname , miceargdefault ){
-        # micearg   ... name of mice argument
-        # vname     ... variable name
-        # miceargdefault    ... default for this variable
-        if( is.list(micearg) ){
-            if ( ! is.null(micearg[[vname]] ) ){
-                            micearg <- micearg[[vname]]
-                                    }  else   { micearg <- miceargdefault }                      
-                                   }
-        if ( is.null(micearg) )  {    micearg <- miceargdefault }       
-        return( micearg )
-            }
-#*****************************************************************************
 
 
 
