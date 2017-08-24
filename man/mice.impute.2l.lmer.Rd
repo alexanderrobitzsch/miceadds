@@ -111,6 +111,19 @@ Simon Grund, Alexander Robitzsch
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
+See \code{\link{mice.impute.ml.lmer}} for imputation for datasets with more than 
+two levels (e.g., three-level datasets or cross-classified datasets). 
+
+Variables at a higher level (e.g. at level 2) can be imputed using \code{2lonly}
+functions, for example the 
+\code{\link[mice:mice.impute.2lonly.norm]{mice::mice.impute.2lonly.norm}} function
+in the \pkg{mice} package or the general \code{\link{mice.impute.2lonly.function}}
+function in the \pkg{miceadds} package which using an already defined imputation
+method at level 1. If a level-2 variable for 3-level data should be imputed,
+then \code{\link{mice.impute.ml.lmer}} can also be used to impute this variable
+with a two-level imputation model in which level 1 corresponds to the original 
+level-2 units and level 2 corresponds to the original level-3 units.   
+
 See \code{\link[mice:mice.impute.2l.norm]{mice::mice.impute.2l.norm}} and
 \code{\link[mice:mice.impute.2l.pan]{mice::mice.impute.2l.pan}} for
 imputation functions in the \pkg{mice} package under fully conditional

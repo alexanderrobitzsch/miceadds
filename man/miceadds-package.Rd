@@ -11,9 +11,11 @@ Some Additional Multiple Imputation Functions, Especially for \pkg{mice}
     in \R.
     In addition to some utility functions, main features
     include plausible value imputation, multilevel 
-    imputation functions, imputation using partial least 
-    squares (PLS) for high dimensional predictors, nested 
-    multiple imputation.
+    imputation functions (arbitrary number of levels, 
+    hierarchical and non-hierarchical datasets), 
+    imputation using partial least squares (PLS) for 
+    high dimensional predictors, and nested multiple 
+    imputation.
 }
 
 \details{

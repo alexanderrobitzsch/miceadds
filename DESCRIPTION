@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 2.7-10
-Date: 2017-08-23 20:05:24
+Version: 2.7-15
+Date: 2017-08-24 10:44:36
 Author: 
     Alexander Robitzsch [aut, cre], Simon Grund [aut],
     Thorsten Henke [aut]
@@ -14,9 +14,11 @@ Description:
     in R.
     In addition to some utility functions, main features
     include plausible value imputation, multilevel 
-    imputation functions, imputation using partial least 
-    squares (PLS) for high dimensional predictors, nested 
-    multiple imputation.
+    imputation functions (arbitrary number of levels, 
+    hierarchical and non-hierarchical datasets), 
+    imputation using partial least squares (PLS) for 
+    high dimensional predictors, and nested multiple 
+    imputation.
 Depends:
     R (>= 3.0), mice
 Imports: 

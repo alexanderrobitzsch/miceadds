@@ -117,11 +117,11 @@ Blackwell, M., Honaker, J., & King, G. (2011).
 \emph{Multiple overimputation: A unified approach to measurement error and 
 missing data}. Technical Report. 
 
-Blackwell, M., Honaker, J., & King, G. (2017). 
+Blackwell, M., Honaker, J., & King, G. (2017a). 
 A unified approach to measurement error and missing data: Overview and
 applications. \emph{Sociological Methods & Research}, \bold{46}(3), 303-341. 
 
-Blackwell, M., Honaker, J., & King, G. (2017). 
+Blackwell, M., Honaker, J., & King, G. (2017b). 
 A unified approach to measurement error and missing data: Details and
 extensions. \emph{Sociological Methods & Research}, \bold{46}(3), 342-369.
 

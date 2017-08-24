@@ -1,6 +1,6 @@
 
 mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_levels,
-		pls.facs, min.int.cor, min.all.cor, interactions, quadratics )
+		pls.facs, min.int.cor, min.all.cor, interactions, quadratics, model )
 {
 	res <- mice_imputation_get_states( pos = pos )				
 	vname <- res$vname
@@ -12,9 +12,9 @@ mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_
 	if ( is.list( levels_id ) ){
 		levels_id <- levels_id[[ vname ]]
 	}
-	#--- random slopes
-	levi <- intersect( levels_id , random_slopes )
-	if ( is.null(levi) ){
+	#--- random slopes	
+	levi <- intersect( levels_id , names(random_slopes) )	
+	if ( ! is.null(levi) ){
 		random_slopes <- random_slopes[[ vname ]]
 	}		
 	if ( ! is.null(random_slopes) ){
@@ -42,12 +42,17 @@ mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_
 	
 	#--- quadratics
 	quadratics <- mice_imputation_extract_arguments_list(v1=quadratics, vname=vname)
+
+	#--- model
+    model <- mice_imputation_extract_list_arguments( micearg = model , vname=vname , 
+                                miceargdefault = "continuous" ) 
 	
 	#--- output
 	res <- list( vname=vname, p=p, type=type, data=data, levels_id=levels_id,
 					random_slopes=random_slopes, imp.temp=imp.temp,
 					vname_level=vname_level, pls.facs=pls.facs, min.int.cor=min.int.cor, 
-					min.all.cor=min.all.cor, interactions=interactions, quadratics=quadratics )
+					min.all.cor=min.all.cor, interactions=interactions, quadratics=quadratics,
+					model=model )
 	return(res)	
 }	
 	

@@ -11,7 +11,7 @@ This function is a general imputation function based on the linear mixed effects
 model as implemented in \code{lme4::lmer}. The imputation model can be hierarchical 
 or non-hierarchical and can be written in a general form 
 \eqn{\bold{y}=\bold{X} \bold{\beta} + \sum_{v=1}^V \bold{Z}_v \bold{u}_v} for \eqn{V} 
-multivariate random effects. While predictors can be selection by specifying the rows
+multivariate random effects. While predictors can be selected by specifying the rows
 in the predictor matrix in \code{mice::mice} (i.e., modification of \code{type}),
 the level of random effects can be specified with \code{levels_id} and random slopes
 can be selected with \code{random_slopes}. 
@@ -26,12 +26,13 @@ matrix \eqn{\bold{X}} are accomodated. By default, predictors at a lower level
 are automatically aggregated to the higher level and included as further
 predictors to maintain the multilevel structure in the data (Grund et al., xxxx;
 Enders et al., 2016; argument \code{aggregate_automatically=TRUE}). Further,
-interactions and quadratic effects can be defined by respective arguments. The dimension
+interactions and quadratic effects can be defined by respective arguments
+\code{interactions} and \code{quadratics}. The dimension
 of the matrix of predictors can be reduced by applying partial least squares regression, 
 see \code{\link{mice.impute.pls}}.    
 
 The function now only allows continuous data, ordinal data (\code{model="pmm"}) or
-binary data (\code{model="pmm"} or \code{model="binary"}). Nominal variables cannot (yet) 
+binary data (\code{model="pmm"} or \code{model="binary"}). Nominal variables cannot 
 be handled.   
 }
 
@@ -56,7 +57,7 @@ Vector of missing data pattern (\code{FALSE} -- missing,
 \code{TRUE} -- observed)
 }
   \item{x}{
-Matrix (\code{n} x \code{p}) of complete predictors.
+Matrix (\code{n} \eqn{\times} \code{p}) of complete predictors.
 }
 \item{type}{Predictor variables associated with fixed effects.
 }
@@ -87,7 +88,7 @@ covariance matrix of random effects}
 \code{glmer} should be displayed}
 
   \item{model}{
-Type of modeL. Can be \code{"continuous"} for normally distributed data,
+Type of model. Can be \code{"continuous"} for normally distributed data,
 \code{"binary"} for dichotomous data specifying a logistic mixed effects model
 and \code{"pmm"} for predictive mean matching.
 }
@@ -208,8 +209,7 @@ levels_id[["y1"]] <- c("id3")
 #----- specify random slopes
 random_slopes <- list()
 #** random slopes for variable x1
-random_slopes[["x1"]] <- list( "id2" = c("x2","y1") , 
-                               "id3" = c("y1") )
+random_slopes[["x1"]] <- list( "id2" = c("x2","y1"), "id3" = c("y1") )
 #** random slopes for variable y1
 random_slopes[["y1"]] <- list( "id3" = c("z1") )
 # if no random slopes should be specified, the corresponding entry can be left empty 
