@@ -153,8 +153,6 @@ mice.impute.2l.lmer <- function(y, ry, x, type, intercept=TRUE,
 	return(imp)
 }
 
-#.......
-# cat("* imputations dichotomous variables ") ; zz1 <- Sys.time(); print(zz1-zz0) ; zz0 <- zz1
 
 #----------------------------------
 # mice: predictive mean matching

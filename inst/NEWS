@@ -41,7 +41,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.7  |  2017-08-24  |  Last: miceadds 2.7-15
+VERSIONS miceadds 2.7  |  2017-08-24  |  Last: miceadds 2.7-19
 ---------------------------------------------------------------------
 
 ADDED * added function 'jomo2mids' which converts imputation output 

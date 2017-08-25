@@ -152,6 +152,3 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id , variables_levels=NUL
 	#--- output imputed values
 	return(imp)
 }
-
-#.......
-# cat("* imputations dichotomous variables ") ; zz1 <- Sys.time(); print(zz1-zz0) ; zz0 <- zz1

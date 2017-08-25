@@ -21,7 +21,7 @@ mice.impute.pls(y, ry, x, type, pls.facs = NULL,
 mice.impute.2l.pls2(y, ry, x, type, pls.facs = NULL, pls.impMethod="pmm", 
    pls.print.progress=TRUE, imputationWeights=rep(1, length(y)), pcamaxcols = 1E+09, 
    tricube.pmm.scale=NULL, min.int.cor = 0, min.all.cor=0, N.largest = 0, 
-   pls.title = NULL, print.dims = TRUE, pls.maxcols=5000, envir_pos = parent.frame(), ...)   
+   pls.title=NULL, print.dims=TRUE, pls.maxcols=5000, envir_pos=parent.frame(), ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

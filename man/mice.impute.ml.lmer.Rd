@@ -42,8 +42,8 @@ mice.impute.ml.lmer(y, ry, x, type, levels_id, variables_levels = NULL,
     random_slopes = NULL, aggregate_automatically = TRUE, intercept = TRUE, 
     groupcenter.slope = FALSE, draw.fixed = TRUE, random.effects.shrinkage = 1e-06, 
     glmer.warnings = TRUE, model = "continuous", donors = 3, match_sampled_pars = FALSE, 
-    blme_use = FALSE, blme_args = NULL, pls.facs = 0, interactions = NULL, quadratics = NULL, 
-    min.int.cor = 0, min.all.cor = 0, pls.print.progress = FALSE, ...)
+    blme_use = FALSE, blme_args = NULL, pls.facs = 0, interactions = NULL, 
+    quadratics = NULL, min.int.cor = 0, min.all.cor = 0, pls.print.progress = FALSE, ...)
 }
 
 
@@ -180,6 +180,9 @@ dat <- data.ma07
 # start with empty imputation
 imp0 <- mice::mice( dat , maxit=0)
 
+#****************************************************************************
+# Imputation model 1
+
 #----- specify levels of variables (only relevent for variables 
 #      with missing values)
 variables_levels <- miceadds:::mice_impute_create_type_vector( colnames(dat) , value="")
@@ -216,10 +219,28 @@ random_slopes[["y1"]] <- list( "id3" = c("z1") )
 # and only a random intercept is used in the imputation model
 
 #----- imputation in mice
-imp <- mice::mice( dat, maxit=10, m=5, imputationMethod=imputationMethod, 
+imp1 <- mice::mice( dat, maxit=10, m=5, imputationMethod=imputationMethod, 
             predictorMatrix=predmat, levels_id = levels_id,  random_slopes = random_slopes, 
             variables_levels=variables_levels )
-summary(imp)
+summary(imp1)
+
+#****************************************************************************
+# Imputation model 2
+
+#----- impute x1 with predictive mean matching and y1 with normally distributed residuals
+model <- list( x1 = "pmm" , y1 = "continuous" )
+
+#----- assume only random intercepts
+random_slopes <- NULL
+
+#---- create interactions with z2 for all predictors in imputation models for x1 and y1
+interactions <- list( "x1" = z2, "y1" = z2)
+
+#----- imputation in mice
+imp2 <- mice::mice( dat, imputationMethod=imputationMethod, predictorMatrix=predmat, 
+                levels_id=levels_id, random_slopes=random_slopes, 
+                variables_levels=variables_levels, model=model, interactions=interactions)
+summary(imp2)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
