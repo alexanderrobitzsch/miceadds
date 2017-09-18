@@ -1,3 +1,6 @@
+## File Name: micombine.F.R
+## File Version: 0.06
+## File Last Change: 2017-02-06 11:05:49
 micombine.F <- function( Fvalues , df1 , display = TRUE , version = 1 ){
     M <- length(Fvalues)        # number of imputations
     dk <- df1 * Fvalues         # 

@@ -1,3 +1,6 @@
+## File Name: tw.mcmc.imputation.R
+## File Version: 1.08
+## File Last Change: 2017-08-25 10:33:07
 tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
     # set N and J
     N <- nrow(data)
@@ -28,7 +31,7 @@ tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
         sd.alpha <-  sqrt( 1 / ( 1 / tau2 + rowSums( !is.na(data) ) / sig2 ) )
         alpha <- stats::rnorm( N , mean = mean.alpha , sd = sd.alpha )
         # sample beta 
-        mean.beta <- colSums( data - outer( alpha , rep( 1 , J ) ) , na.rm=T ) / colSums( ! is.na(data) )
+        mean.beta <- colSums( data - outer( alpha , rep( 1 , J ) ) , na.rm=TRUE ) / colSums( ! is.na(data) )
         sd.beta <- sqrt( sig2 / colSums( ! is.na(data) ) )
         beta <- stats::rnorm( J , mean = mean.beta , sd = sd.beta )
         # sample sigma2
@@ -59,4 +62,4 @@ tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
 	# restructure data
 	data0[ ind2, ] <- data.imp 
     return( data0 )
-    }
+}

@@ -1,3 +1,6 @@
+## File Name: crlrem.R
+## File Version: 1.03
+## File Last Change: 2017-02-17 09:56:44
 
 ######################################################
 # remove line endings

@@ -1,3 +1,6 @@
+## File Name: mice.impute.bygroup.R
+## File Version: 0.10
+## File Last Change: 2017-02-06 11:05:48
 
 mice.impute.bygroup <- function( y , ry , x , group , 
 		imputationFunction , ... ){

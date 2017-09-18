@@ -1,3 +1,6 @@
+## File Name: datalist2mids.R
+## File Version: 0.23
+## File Last Change: 2017-02-06 11:05:47
 datalist2mids <- function( dat.list , progress=TRUE ){
     
 	CALL <- match.call()

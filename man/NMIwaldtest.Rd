@@ -1,3 +1,7 @@
+%% File Name: NMIwaldtest.Rd
+%% File Version: 0.13
+%% File Last Change: 2017-02-06 11:12:50
+
 \name{NMIwaldtest}
 \alias{NMIwaldtest}
 \alias{create.designMatrices.waldtest}

@@ -1,3 +1,7 @@
+%% File Name: mice.impute.2l.lmer.Rd
+%% File Version: 0.24
+%% File Last Change: 2017-08-23 20:46:38
+
 \name{mice.impute.2l.lmer}
 \alias{mice.impute.2l.binary}
 \alias{mice.impute.2l.continuous}

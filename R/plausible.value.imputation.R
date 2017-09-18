@@ -1,3 +1,6 @@
+## File Name: plausible.value.imputation.R
+## File Version: 0.06
+## File Last Change: 2017-02-06 11:05:50
 plausible.value.imputation <- function( data , X , Z = NULL, beta0=rep(0,ncol(X)) , sig0=1 ,
                 b = b ,  a = rep(1 , length(b) ) , c = rep(0 , length(b) ),
                 theta.list=seq(-5,5,len=50) , cluster = NULL , 

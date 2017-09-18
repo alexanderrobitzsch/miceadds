@@ -1,3 +1,7 @@
+%% File Name: mice.impute.tricube.pmm.Rd
+%% File Version: 0.15
+%% File Last Change: 2017-02-06 11:12:49
+
 \name{mice.impute.tricube.pmm}
 \alias{mice.impute.tricube.pmm}
 \alias{mice.impute.tricube.pmm2}

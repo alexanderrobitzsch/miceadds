@@ -1,3 +1,6 @@
+## File Name: mice_multilevel_draw_binomial.R
+## File Version: 0.04
+## File Last Change: 2017-02-06 11:05:49
 
 ########################################################################
 # draw binomial data

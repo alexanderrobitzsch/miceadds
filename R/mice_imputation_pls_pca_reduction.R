@@ -1,3 +1,6 @@
+## File Name: mice_imputation_pls_pca_reduction.R
+## File Version: 0.02
+## File Last Change: 2017-02-06 11:05:49
 
 
 mice_imputation_pls_pca_reduction <- function(x , pcamaxcols ,

@@ -1,3 +1,6 @@
+## File Name: MIwaldtest.R
+## File Version: 0.04
+## File Last Change: 2017-02-06 11:05:49
 
 ########################################
 # MI Wald test

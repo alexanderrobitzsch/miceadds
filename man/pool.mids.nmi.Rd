@@ -1,3 +1,7 @@
+%% File Name: pool.mids.nmi.Rd
+%% File Version: 0.42
+%% File Last Change: 2017-02-06 11:12:50
+
 \name{pool.mids.nmi}
 \alias{pool.mids.nmi}
 \alias{summary.mipo.nmi}

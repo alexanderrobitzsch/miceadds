@@ -1,3 +1,6 @@
+## File Name: mice.impute.2l.continuous.R
+## File Version: 0.04
+## File Last Change: 2017-02-06 11:05:48
 
 mice.impute.2l.continuous <- function(y, ry, x, type, intercept=TRUE,
                                   groupcenter.slope=FALSE, draw.fixed=TRUE,

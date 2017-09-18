@@ -1,3 +1,6 @@
+## File Name: quantile0.R
+## File Version: 0.05
+## File Last Change: 2017-02-06 11:05:50
 
 
 quantile0 <- function(x, probs = seq(0, 1, 0.25), na.rm=TRUE){

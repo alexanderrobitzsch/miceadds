@@ -1,15 +1,25 @@
+%% File Name: mice.impute.weighted.pmm.Rd
+%% File Version: 0.15
+%% File Last Change: 2017-08-25 10:15:06
+
 \name{mice.impute.weighted.pmm}
 \alias{mice.impute.weighted.pmm}
+\alias{mice.impute.weighted.norm}
+
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Imputation by Weighted Predictive Mean Matching
+Imputation by Weighted Predictive Mean Matching or Weighted Normal Linear Regression
 }
 \description{
-Imputation by predictive mean matching using sampling weights.
+Imputation by predictive mean matching or normal linear regression
+using sampling weights.
 }
 \usage{
 mice.impute.weighted.pmm(y, ry, x, imputationWeights = NULL, 
       pls.facs = NULL, interactions = NULL, quadratics = NULL, ...)
+      
+mice.impute.weighted.norm(y, ry, x, ridge = 1e-05, pls.facs = NULL, 
+     imputationWeights = NULL, interactions = NULL, quadratics = NULL, ...)      
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{	
@@ -35,6 +45,9 @@ Optional vector of variables which should also be included as quadratic effects.
 }
   \item{\dots}{
 Further arguments to be passed
+}
+  \item{ridge}{
+Ridge parameter in the diagonal of \eqn{ \bold{X}'\bold{X}}
 }
 }
 
@@ -62,10 +75,10 @@ Alexander Robitzsch
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
-For imputation with the linear normal regression and sampling weights
-see \code{\link{mice.impute.weighted.norm}}.
-}
+% \seealso{
+% For imputation with the linear normal regression and sampling weights
+% see \code{\link{mice.impute.weighted.norm}}.
+% }
 
 \examples{
 \dontrun{

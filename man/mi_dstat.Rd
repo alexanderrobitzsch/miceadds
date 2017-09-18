@@ -1,3 +1,7 @@
+%% File Name: mi_dstat.Rd
+%% File Version: 0.06
+%% File Last Change: 2017-02-06 11:12:48
+
 \name{mi_dstat}
 \alias{mi_dstat}
 %- Also NEED an '\alias' for EACH other topic documented here.

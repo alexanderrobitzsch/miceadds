@@ -1,3 +1,6 @@
+## File Name: summary.mipo.nmi.R
+## File Version: 0.06
+## File Last Change: 2017-02-06 11:05:50
 
 #################################################################
 summary.mipo.nmi <- function(object, digits=4 ,  ...) {

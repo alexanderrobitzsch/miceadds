@@ -1,3 +1,6 @@
+## File Name: mice.impute.pmm6.R
+## File Version: 0.06
+## File Last Change: 2017-02-18 19:19:06
 mice.impute.pmm6 <- function (y, ry, x, donors=3 , noise = 10^5 , ridge = 10^(-5) , ...){
     x <- cbind(1, as.matrix(x))
 	# dummy response indicator 

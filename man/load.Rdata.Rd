@@ -1,3 +1,7 @@
+%% File Name: load.Rdata.Rd
+%% File Version: 0.15
+%% File Last Change: 2017-02-06 11:12:48
+
 \name{load.Rdata}
 \alias{load.Rdata}
 \alias{load.Rdata2}

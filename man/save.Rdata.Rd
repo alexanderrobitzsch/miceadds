@@ -1,3 +1,7 @@
+%% File Name: save.Rdata.Rd
+%% File Version: 0.05
+%% File Last Change: 2017-02-06 11:12:50
+
 \name{save.Rdata}
 \alias{save.Rdata}
 %- Also NEED an '\alias' for EACH other topic documented here.

@@ -1,3 +1,7 @@
+%% File Name: Rfunction_include_argument_values.Rd
+%% File Version: 0.01
+%% File Last Change: 2017-08-23 19:21:18
+
 \name{Rfunction_include_argument_values}
 \alias{Rfunction_include_argument_values}
 \alias{Rfunction_output_list_result_function}

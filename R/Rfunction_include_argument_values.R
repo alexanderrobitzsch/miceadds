@@ -1,3 +1,6 @@
+## File Name: Rfunction_include_argument_values.R
+## File Version: 0.03
+## File Last Change: 2017-04-13 17:43:58
 
 Rfunction_include_argument_values <- function(string, maxlen=80)
 {

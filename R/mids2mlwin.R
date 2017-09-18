@@ -1,3 +1,6 @@
+## File Name: mids2mlwin.R
+## File Version: 0.07
+## File Last Change: 2017-02-06 11:05:49
 mids2mlwin <- function(imp, file.prefix, path = getwd(), sep = " ", dec = ".", silent = FALSE,
   X = NULL )
 {

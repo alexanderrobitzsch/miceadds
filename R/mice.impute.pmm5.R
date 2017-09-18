@@ -1,3 +1,6 @@
+## File Name: mice.impute.pmm5.R
+## File Version: 1.05
+## File Last Change: 2017-02-06 11:05:48
 mice.impute.pmm5 <- function (y, ry, x, donors=3 , noise = 10^5 , 
 		ridge = 10^(-5) , ...){
     x <- cbind(1, as.matrix(x))

@@ -1,3 +1,6 @@
+## File Name: mice_multilevel_create_formula.R
+## File Version: 0.02
+## File Last Change: 2017-02-06 11:05:49
 
 
 mice_multilevel_create_formula <- function( 

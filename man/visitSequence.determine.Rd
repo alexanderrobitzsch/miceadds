@@ -1,3 +1,7 @@
+%% File Name: visitSequence.determine.Rd
+%% File Version: 0.04
+%% File Last Change: 2017-02-06 11:12:50
+
 \name{visitSequence.determine}
 \alias{visitSequence.determine}
 %- Also NEED an '\alias' for EACH other topic documented here.

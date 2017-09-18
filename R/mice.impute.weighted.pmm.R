@@ -1,3 +1,6 @@
+## File Name: mice.impute.weighted.pmm.R
+## File Version: 0.05
+## File Last Change: 2017-02-06 11:05:49
 mice.impute.weighted.pmm <- function (y, ry, x,  imputationWeights = NULL , 
                                     pls.facs = NULL ,  interactions = NULL , quadratics = NULL ,  ...){
     x <- cbind(1, as.matrix(x))

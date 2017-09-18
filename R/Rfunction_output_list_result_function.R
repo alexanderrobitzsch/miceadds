@@ -1,3 +1,6 @@
+## File Name: Rfunction_output_list_result_function.R
+## File Version: 0.01
+## File Last Change: 2017-06-05 12:11:20
 
 Rfunction_output_list_result_function <- function(string, mid = " <- res$")
 {

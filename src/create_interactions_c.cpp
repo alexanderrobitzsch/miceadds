@@ -1,3 +1,6 @@
+//// File Name: create_interactions_c.cpp
+//// File Version: 2.04
+//// File Last Change: 2017-05-12 15:11:02
 
 
 // [[Rcpp::depends(RcppArmadillo)]]

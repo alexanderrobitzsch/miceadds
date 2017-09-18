@@ -1,3 +1,6 @@
+## File Name: scan0.R
+## File Version: 0.07
+## File Last Change: 2017-02-06 11:05:50
 
 ####################################################
 scan.vector <- function( vec ){ 

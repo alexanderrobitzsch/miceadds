@@ -1,3 +1,6 @@
+## File Name: norm.draw3.R
+## File Version: 0.08
+## File Last Change: 2017-08-25 10:30:11
 
 
 
@@ -9,7 +12,7 @@
     xobs <- x[ry, ]
     yobs <- y[ry]
     xtx <- crossprod( xobs )
-    pen <- ridge * ( 1+0* diag(xtx) )	
+    pen <- ridge * xtx	
     v <- solve(xtx + diag(pen) )
     coef <- v %*%  crossprod(xobs,yobs)
     residuals <- yobs - xobs %*% coef

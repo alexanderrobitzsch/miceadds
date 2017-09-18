@@ -1,3 +1,7 @@
+%% File Name: write.pspp.Rd
+%% File Version: 0.26
+%% File Last Change: 2017-08-07 16:59:14
+
 \name{write.pspp}
 \alias{write.pspp}
 %- Also NEED an '\alias' for EACH other topic documented here.

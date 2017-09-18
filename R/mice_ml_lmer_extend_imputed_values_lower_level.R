@@ -1,3 +1,6 @@
+## File Name: mice_ml_lmer_extend_imputed_values_lower_level.R
+## File Version: 0.02
+## File Last Change: 2017-08-23 18:50:39
 
 mice_ml_lmer_extend_imputed_values_lower_level <- function( imp_upper , 
 	ry_lower, ry_upper, level_ids_lower , level_ids_upper , extend=TRUE)

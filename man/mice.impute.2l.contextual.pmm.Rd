@@ -1,8 +1,14 @@
+%% File Name: mice.impute.2l.contextual.pmm.Rd
+%% File Version: 0.19
+%% File Last Change: 2017-08-25 10:18:03
+
 \name{mice.impute.2l.contextual.pmm}
 \alias{mice.impute.2l.contextual.pmm}
+\alias{mice.impute.2l.contextual.norm}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Imputation by Predictive Mean Matching with Contextual Variables
+Imputation by Predictive Mean Matching or Normal Linear Regression
+with Contextual Variables
 }
 \description{
 This imputation method imputes a variable using linear regression
@@ -14,6 +20,9 @@ level is included as a further covariate.
 \usage{
 mice.impute.2l.contextual.pmm(y, ry, x, type, imputationWeights = NULL, 
      interactions = NULL, quadratics = NULL, ...)
+
+mice.impute.2l.contextual.norm(y, ry, x, type, ridge = 10^(-5), 
+   imputationWeights = NULL, interactions = NULL, quadratics = NULL, ...)     
 }
 %- maybe also 'usage' for other objects documented here.
 
@@ -45,6 +54,9 @@ Vector of variable names used for creating quadratic terms
 }
   \item{\dots}{
 Further arguments to be passed
+}
+  \item{ridge}{
+Ridge parameter in the diagonal of \eqn{ \bold{X}'\bold{X}}
 }
 }
 

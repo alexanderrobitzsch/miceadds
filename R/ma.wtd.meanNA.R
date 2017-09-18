@@ -1,3 +1,6 @@
+## File Name: ma.wtd.meanNA.R
+## File Version: 0.04
+## File Last Change: 2017-08-18 10:32:52
 
 
 

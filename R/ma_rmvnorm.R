@@ -1,3 +1,6 @@
+## File Name: ma_rmvnorm.R
+## File Version: 0.03
+## File Last Change: 2017-08-22 20:53:45
 
 ma_rmvnorm <- function(n, mu=NULL, sigma , eps = 1E-10 )
 {

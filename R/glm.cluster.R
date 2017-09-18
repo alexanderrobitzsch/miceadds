@@ -1,3 +1,6 @@
+## File Name: glm.cluster.R
+## File Version: 0.11
+## File Last Change: 2017-07-10 10:36:33
 
 
 ##################################################

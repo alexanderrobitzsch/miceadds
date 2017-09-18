@@ -1,3 +1,7 @@
+%% File Name: source.all.Rd
+%% File Version: 0.08
+%% File Last Change: 2017-02-06 11:12:50
+
 \name{source.all}
 \alias{source.all}
 %- Also NEED an '\alias' for EACH other topic documented here.

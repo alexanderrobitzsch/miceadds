@@ -1,3 +1,7 @@
+%% File Name: pool_mi.Rd
+%% File Version: 0.16
+%% File Last Change: 2017-02-06 11:12:50
+
 \name{pool_mi}
 \alias{pool_mi}
 \alias{summary.pool_mi}

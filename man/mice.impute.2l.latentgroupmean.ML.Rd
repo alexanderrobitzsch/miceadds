@@ -1,3 +1,7 @@
+%% File Name: mice.impute.2l.latentgroupmean.ML.Rd
+%% File Version: 1.16
+%% File Last Change: 2017-04-19 11:21:59
+
 \name{mice.impute.2l.latentgroupmean.ML}
 \alias{mice.impute.2l.latentgroupmean.ML}
 \alias{mice.impute.2l.latentgroupmean.MCMC}

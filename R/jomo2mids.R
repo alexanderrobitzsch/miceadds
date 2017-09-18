@@ -1,3 +1,6 @@
+## File Name: jomo2mids.R
+## File Version: 0.01
+## File Last Change: 2017-08-17 18:49:04
 
 
 jomo2mids <- function( jomo.dataframe , variable="Imputation" )

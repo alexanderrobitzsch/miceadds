@@ -1,3 +1,7 @@
+%% File Name: ma.scale2.Rd
+%% File Version: 0.18
+%% File Last Change: 2017-02-06 11:12:48
+
 \name{ma.scale2}
 \alias{ma.scale2}
 %- Also NEED an '\alias' for EACH other topic documented here.

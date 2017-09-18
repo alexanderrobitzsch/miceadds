@@ -1,3 +1,6 @@
+## File Name: mice_imputation_prepare_2l_functions.R
+## File Version: 0.12
+## File Last Change: 2017-02-06 11:05:49
 
 #############################################
 # This preparation function is copied as 

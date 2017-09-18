@@ -1,3 +1,6 @@
+## File Name: mice_imputation_pls_include_interactions.R
+## File Version: 0.07
+## File Last Change: 2017-02-06 11:05:49
 
 mice_imputation_pls_include_interactions <- function(pls.interactions , 
 	pls.print.progress, x , y , ry , type , min.int.cor , pls.maxcols)

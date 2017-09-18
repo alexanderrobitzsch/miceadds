@@ -40,6 +40,19 @@ CHANGELOG miceadds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+
+---------------------------------------------------------------------
+VERSIONS miceadds 2.8  |  2017-09-18  |  Last: miceadds 2.8-3
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.7  |  2017-08-24  |  Last: miceadds 2.7-19
 ---------------------------------------------------------------------
@@ -60,7 +73,6 @@ DATA  * included/modified datasets: data.ma07
 EXAMP * included/modified examples: jomo2datlist (1), 
         mice.impute.ml.lmer (1), ma_rmvnorm (1),
         Rfunction_include_argument_values (1)
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.6  |  2017-08-09  |  Last: miceadds 2.6-21

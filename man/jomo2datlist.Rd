@@ -1,3 +1,7 @@
+%% File Name: jomo2datlist.Rd
+%% File Version: 0.09
+%% File Last Change: 2017-08-17 19:01:55
+
 \name{jomo2datlist}
 \alias{jomo2datlist}
 \alias{jomo2mids}

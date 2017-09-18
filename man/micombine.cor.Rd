@@ -1,3 +1,7 @@
+%% File Name: micombine.cor.Rd
+%% File Version: 0.30
+%% File Last Change: 2017-02-06 11:12:49
+
 \name{micombine.cor}
 \alias{micombine.cor}
 \alias{micombine.cov}

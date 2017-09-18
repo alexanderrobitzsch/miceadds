@@ -1,3 +1,7 @@
+%% File Name: stats0.Rd
+%% File Version: 0.05
+%% File Last Change: 2017-02-06 11:12:50
+
 \name{stats0}
 \alias{stats0}
 \alias{max0}

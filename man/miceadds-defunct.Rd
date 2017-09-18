@@ -1,3 +1,7 @@
+%% File Name: miceadds-defunct.Rd
+%% File Version: 0.12
+%% File Last Change: 2017-04-19 11:41:11
+
 \name{miceadds-defunct}
 \alias{miceadds-defunct}
 \alias{mice.impute.2l.pls}

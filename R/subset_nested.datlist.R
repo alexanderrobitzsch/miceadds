@@ -1,3 +1,6 @@
+## File Name: subset_nested.datlist.R
+## File Version: 1.07
+## File Last Change: 2017-02-06 11:05:50
 
 #######################################################
 subset_nested.datlist <- function( datlist , subset = TRUE ,

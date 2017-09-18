@@ -1,3 +1,7 @@
+%% File Name: Reval.Rd
+%% File Version: 0.12
+%% File Last Change: 2017-02-06 11:12:50
+
 \name{Reval}
 \alias{Reval}
 

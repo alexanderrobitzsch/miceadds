@@ -1,3 +1,6 @@
+## File Name: ANSI_create_table.R
+## File Version: 0.42
+## File Last Change: 2017-02-07 17:32:30
 
 #######################################################################
 # create table with results

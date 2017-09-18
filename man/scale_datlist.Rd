@@ -1,3 +1,7 @@
+%% File Name: scale_datlist.Rd
+%% File Version: 0.16
+%% File Last Change: 2017-02-06 11:21:03
+
 \name{scale_datlist}
 \alias{scale_datlist}
 %- Also NEED an '\alias' for EACH other topic documented here.

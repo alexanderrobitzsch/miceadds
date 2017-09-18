@@ -1,3 +1,6 @@
+## File Name: create_interactions.R
+## File Version: 1.02
+## File Last Change: 2017-08-24 17:34:06
 
 ################################################
 # create interactions

@@ -1,3 +1,7 @@
+%% File Name: datalist2mids.Rd
+%% File Version: 0.21
+%% File Last Change: 2017-02-06 11:12:47
+
 \name{datlist2mids}
 \alias{datalist2mids}
 \alias{datlist2mids}

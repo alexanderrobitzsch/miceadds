@@ -1,3 +1,6 @@
+//// File Name: ma_scale.cpp
+//// File Version: 5.01
+//// File Last Change: 2017-02-17 09:37:11
 
 
 #include <Rcpp.h>

@@ -1,3 +1,6 @@
+## File Name: str_C.expand.grid.R
+## File Version: 0.04
+## File Last Change: 2017-02-06 11:05:50
 
 #************************************************
 # combine strings using expand.grid

@@ -1,3 +1,6 @@
+## File Name: files_move.R
+## File Version: 0.14
+## File Last Change: 2017-07-09 14:36:19
 
 files_move <- function( path1 , path2 , file_sep ="__", pattern = NULL)
 {

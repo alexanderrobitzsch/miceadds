@@ -1,3 +1,6 @@
+## File Name: ANSI_matrix_include_rows.R
+## File Version: 0.01
+## File Last Change: 2017-02-07 17:05:37
 
 ANSI_matrix_include_rows <- function(mat , empty , fill = ""){
 	dfr <- mat

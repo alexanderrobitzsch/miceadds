@@ -1,3 +1,6 @@
+## File Name: mice_imputation_include_cluster_effect.R
+## File Version: 0.02
+## File Last Change: 2017-02-06 11:05:49
 
 mice_imputation_include_cluster_effect <- function( x , y , ry , type )
 {
