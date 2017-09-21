@@ -1,6 +1,6 @@
 %% File Name: datalist2mids.Rd
-%% File Version: 0.21
-%% File Last Change: 2017-02-06 11:12:47
+%% File Version: 0.22
+%% File Last Change: 2017-09-19 19:56:49
 
 \name{datlist2mids}
 \alias{datalist2mids}
@@ -16,8 +16,8 @@ to a \code{\link[mice:mids]{mice::mids}} object.
 %% mids-class {mice}
 
 \usage{
-datlist2mids(dat.list, progress = TRUE)
-datalist2mids(dat.list, progress = TRUE)
+datlist2mids(dat.list, progress = FALSE)
+datalist2mids(dat.list, progress = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

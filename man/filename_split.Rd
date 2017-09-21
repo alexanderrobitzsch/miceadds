@@ -1,18 +1,23 @@
 %% File Name: filename_split.Rd
-%% File Version: 0.06
-%% File Last Change: 2017-02-06 11:12:48
+%% File Version: 0.11
+%% File Last Change: 2017-09-20 16:12:33
 
 \name{filename_split}
 \alias{filename_split}
+\alias{string_extract_part}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Splits a File Name into Parts
+Some Functionality for Strings and File Names
 }
 \description{
-Splits a file name into parts.
+The function \code{filename_split} splits a file name into parts.
+
+The function \code{string_extract_part} extracts a part of a string.
 }
 \usage{
 filename_split(file_name, file_sep = "__", file_ext = ".")
+
+string_extract_part( vec , part=1, sep="__" )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -25,13 +30,16 @@ Separator within file name
   \item{file_ext}{
 Separator for file extension
 }
+\item{vec}{Vector with strings}
+\item{part}{Integer indicating the part of the string to be selected}
+\item{sep}{String separator}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
 %}
 
 \value{
-List witrh components of the file name (see Examples).
+List with components of the file name (see Examples).
 }
 %\references{
 %% ~put references to the literature/web site here ~
@@ -52,14 +60,14 @@ List witrh components of the file name (see Examples).
 
 \examples{
 #############################################################################
-# EXAMPLE 1: Demonstration example
+# EXAMPLE 1: Demonstration example for filename_split
 #############################################################################	
 
 # file name
 file_name <- "pisa_all_waves_invariant_items_DATA_ITEMS_RENAMED__DESCRIPTIVES__2016-10-12_1000.csv"
 
 # apply function
-filename_split( file_name )
+miceadds::filename_split( file_name )
   ##  $file_name
   ##  [1] "pisa_all_waves_invariant_items_DATA_ITEMS_RENAMED__DESCRIPTIVES__2016-10-12_1000.csv"
   ##  $stem
@@ -70,6 +78,20 @@ filename_split( file_name )
   ##  [1] "csv"
   ##  $main
   ##  [1] "pisa_all_waves_invariant_items_DATA_ITEMS_RENAMED__DESCRIPTIVES.csv"
+    
+#############################################################################
+# EXAMPLE 2: Example string_extract_part
+#############################################################################
+
+vec <- c("ertu__DES" , "ztu__DATA" , "guzeuue745_ghshgk34__INFO", "zzu78347834_ghghwuz")
+
+miceadds::string_extract_part( vec=vec , part=1, sep="__" )
+miceadds::string_extract_part( vec=vec , part=2, sep="__" )
+  ##  > string_extract_part( vec=vec , part=1, sep="__" )
+  ##  [1] "ertu"                "ztu"                 "guzeuue745_ghshgk34"
+  ##  [4] "zzu78347834_ghghwuz"
+  ##  > string_extract_part( vec=vec , part=2, sep="__" )
+  ##  [1] "DES"  "DATA" "INFO" NA      
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

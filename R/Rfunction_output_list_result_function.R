@@ -1,6 +1,6 @@
 ## File Name: Rfunction_output_list_result_function.R
-## File Version: 0.01
-## File Last Change: 2017-06-05 12:11:20
+## File Version: 0.02
+## File Last Change: 2017-09-19 20:58:31
 
 Rfunction_output_list_result_function <- function(string, mid = " <- res$")
 {
@@ -10,10 +10,8 @@ Rfunction_output_list_result_function <- function(string, mid = " <- res$")
 	s1 <- gsub("\n" , "" , s1 )
 	s1 <- strsplit( s1 , split= "," , fixed = TRUE )[[1]]
 	NS <- length(s1)
-	# s2 <- gsub( " " , "" , s1 )
 	s2 <- ""
 	for (ss in 1:NS){
-		# ss <- 5
 		s3 <- strsplit( s1[ss] , split="=")
 		s3 <- gsub(" " , "" , s3[[1]][1] )
 		s2 <- paste0( s2 , "\n" , s3 , mid , s3 )

@@ -1,13 +1,13 @@
 ## File Name: datalist2mids.R
-## File Version: 0.23
-## File Last Change: 2017-02-06 11:05:47
-datalist2mids <- function( dat.list , progress=TRUE ){
+## File Version: 0.25
+## File Last Change: 2017-09-19 19:56:25
+
+datalist2mids <- function( dat.list , progress=FALSE ){
     
 	CALL <- match.call()
 	
 	#*** preliminary check whether dat.list of type
 	#    imputationList
-	# if ( class(dat.list) %in% "imputationList" ){
 	if ( inherits(dat.list , "imputationList" ) ){
 		dat.list <- dat.list$imputations
 	}
