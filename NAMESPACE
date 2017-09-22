@@ -186,8 +186,8 @@ export(mice.impute.2l.continuous)
 export(mice.impute.2l.eap)		# defunct
 export(mice.impute.2l.groupmean)
 export(mice.impute.2l.groupmean.elim)
-export(mice.impute.2l.latentgroupmean.MCMC)
-export(mice.impute.2l.latentgroupmean.ML)
+export(mice.impute.2l.latentgroupmean.mcmc)
+export(mice.impute.2l.latentgroupmean.ml)
 export(mice.impute.2l.plausible.values)	# defunct
 export(mice.impute.2l.pls)		# defunct
 export(mice.impute.2l.pls2)	

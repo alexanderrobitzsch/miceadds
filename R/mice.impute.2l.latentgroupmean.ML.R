@@ -1,10 +1,11 @@
-## File Name: mice.impute.2l.latentgroupmean.ML.R
-## File Version: 2.05
-## File Last Change: 2017-02-06 11:05:48
-mice.impute.2l.latentgroupmean.ML <- function (y, ry, x, type , 
+## File Name: mice.impute.2l.latentgroupmean.ml.R
+## File Version: 2.06
+## File Last Change: 2017-09-22 15:00:05
+mice.impute.2l.latentgroupmean.ml <- function (y, ry, x, type , 
                     pls.facs = NULL , imputationWeights = NULL ,
                     interactions = NULL , quadratics = NULL , 
-					EAP = FALSE , ...){  
+					EAP = FALSE , ...)
+{  
     # latent group mean
     cluster <- as.numeric( x[ , type == - 2] )
     covariates <- as.matrix( x[ , type == 1 ] )

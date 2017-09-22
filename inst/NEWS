@@ -42,13 +42,18 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.8  |  2017-09-21  |  Last: miceadds 2.8-9
+VERSIONS miceadds 2.8  |  2017-09-22  |  Last: miceadds 2.8-11
 ---------------------------------------------------------------------
 
 NOTE  * changed default value of argument 'progress' in 
         'datalist2mids' to FALSE
 NOTE  * included utility function 'in_CI'
 NOTE  * included utility function 'string_extract_part'
+NOTE  * changed imputation methods 'mice.impute.2l.latentgroupmean.ML' 
+        and 'mice.impute.2l.latentgroupmean.MCMC' to
+        'mice.impute.2l.latentgroupmean.ml' and 
+        'mice.impute.2l.latentgroupmean.mcmc'
+
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: in_CI (1), filenames_split (2)

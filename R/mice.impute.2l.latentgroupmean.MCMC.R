@@ -1,11 +1,12 @@
-## File Name: mice.impute.2l.latentgroupmean.MCMC.R
-## File Version: 3.24
-## File Last Change: 2017-07-10 10:37:32
-mice.impute.2l.latentgroupmean.MCMC <- function (y, ry, x, type , 
+## File Name: mice.impute.2l.latentgroupmean.mcmc.R
+## File Version: 3.25
+## File Last Change: 2017-09-22 14:58:42
+mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type , 
                     pls.facs = NULL , imputationWeights = NULL ,
                     interactions = NULL , quadratics = NULL , 
                     mcmc.burnin=100, mcmc.adapt=100, mcmc.iter=1000 , 
-	          		draw.fixed = TRUE, EAP = FALSE , ...){  
+	          		draw.fixed = TRUE, EAP = FALSE , ...)
+{  
 
 	TAM::require_namespace_msg("MCMCglmm")				
     # retrieve mice objects
