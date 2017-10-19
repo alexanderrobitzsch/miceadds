@@ -1,6 +1,6 @@
 %% File Name: mice.impute.2l.lmer.Rd
-%% File Version: 0.24
-%% File Last Change: 2017-08-23 20:46:38
+%% File Version: 0.26
+%% File Last Change: 2017-10-19 19:20:19
 
 \name{mice.impute.2l.lmer}
 \alias{mice.impute.2l.binary}
@@ -60,8 +60,9 @@ Matrix (\code{n} x \code{p}) of complete predictors.
 \item{type}{Type of predictor variable. The cluster identifier 
 has type \code{-2}, fixed effects predictors without a random slope
 type \code{1} and predictors with fixed effects and random effects
-have type \code{2}.
-}
+have type \code{2}. If the cluster mean should be included for a covariate,
+\code{3} should be chosen. The specification \code{4} includes the cluster mean, 
+the fixed effect and the random effect.}
   \item{intercept}{
 Optional logical indicating whether the intercept should be included.
 }
