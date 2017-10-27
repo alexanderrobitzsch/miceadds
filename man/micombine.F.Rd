@@ -1,6 +1,5 @@
 %% File Name: micombine.F.Rd
 %% File Version: 0.15
-%% File Last Change: 2017-06-01 12:50:56
 
 \name{micombine.F}
 \alias{micombine.F}

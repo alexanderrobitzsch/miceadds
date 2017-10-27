@@ -1,6 +1,5 @@
 %% File Name: data.allison.Rd
 %% File Version: 0.13
-%% File Last Change: 2017-02-06 11:12:47
 
 \name{data.allison}
 \alias{data.allison}

@@ -1,6 +1,5 @@
 %% File Name: VariableNames2String.Rd
 %% File Version: 0.03
-%% File Last Change: 2017-02-06 11:12:50
 
 \name{VariableNames2String}
 \alias{VariableNames2String}

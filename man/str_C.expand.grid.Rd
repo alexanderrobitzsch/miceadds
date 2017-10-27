@@ -1,6 +1,5 @@
 %% File Name: str_C.expand.grid.Rd
 %% File Version: 0.10
-%% File Last Change: 2017-02-06 11:12:50
 
 \name{str_C.expand.grid}
 \alias{str_C.expand.grid}

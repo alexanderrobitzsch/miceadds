@@ -1,6 +1,5 @@
 ## File Name: mice.impute.pls.R
 ## File Version: 3.24
-## File Last Change: 2017-02-06 11:05:48
 mice.impute.pls <- function(y, ry, x , type , pls.facs = NULL , 
                                 pls.impMethod = "pmm" ,
 								pls.impMethodArgs = NULL , 		

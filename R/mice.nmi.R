@@ -1,6 +1,5 @@
 ## File Name: mice.nmi.R
 ## File Version: 0.13
-## File Last Change: 2017-02-06 11:05:49
 
 ###############################################
 # nested multiple imputation

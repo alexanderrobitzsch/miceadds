@@ -1,6 +1,5 @@
 %% File Name: subset_datlist.Rd
 %% File Version: 0.28
-%% File Last Change: 2017-02-06 11:21:45
 
 \name{subset_datlist}
 \alias{subset_datlist}

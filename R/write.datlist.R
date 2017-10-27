@@ -1,6 +1,5 @@
 ## File Name: write.datlist.R
 ## File Version: 0.05
-## File Last Change: 2017-02-06 11:05:51
 #################################################
 write.datlist <- function( datlist, name , include.varnames = TRUE ,
 		type = "csv2" , separate = TRUE , Mplus = FALSE , round = NULL ,

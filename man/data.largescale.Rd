@@ -1,6 +1,5 @@
 %% File Name: data.largescale.Rd
 %% File Version: 0.18
-%% File Last Change: 2017-02-06 11:12:47
 
 \name{data.largescale}
 \alias{data.largescale}

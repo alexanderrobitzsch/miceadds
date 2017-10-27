@@ -1,6 +1,5 @@
 ## File Name: draw.pv.ctt.R
 ## File Version: 3.16
-## File Last Change: 2017-07-12 11:01:11
 draw.pv.ctt <- function( y , dat.scale = NULL , x=NULL , samp.pars = TRUE , alpha = NULL ,
                             sig.e = NULL , var.e=NULL , true.var = NULL ){ 
     #---------------------------------------------------------------------------##

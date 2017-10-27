@@ -1,8 +1,7 @@
-%% File Name: mice.impute.2l.lmer.Rd
-%% File Version: 0.26
-%% File Last Change: 2017-10-19 19:20:19
+%% File Name: mice_impute_2l_lmer.Rd
+%% File Version: 0.28
 
-\name{mice.impute.2l.lmer}
+\name{mice_impute_2l_lmer}
 \alias{mice.impute.2l.binary}
 \alias{mice.impute.2l.continuous}
 \alias{mice.impute.2l.pmm}
@@ -144,8 +143,10 @@ function \code{\link[micemd:mice.impute.2l.jomo]{micemd::mice.impute.2l.jomo}}
 has similar functionality like \code{\link[mice:mice.impute.2l.pan]{mice::mice.impute.2l.pan}}
 and imputes normally distributed two-level data with a Bayesian MCMC approach, 
 but relies on the \pkg{jomo} package instead of the \pkg{pan} package.
-The function \code{\link[micemd:mice.impute.2l.glm.norm]{micemd::mice.impute.2l.glm.norm}}
-has similar functionality like 
+The functions 
+\code{\link[mice:mice.impute.2l.lmer]{mice::mice.impute.2l.lmer}} and
+\code{\link[micemd:mice.impute.2l.glm.norm]{micemd::mice.impute.2l.glm.norm}}
+have similar functionality like 
 \code{\link{mice.impute.2l.continuous}}
 and imputes normally distributed two-level data. The function 
 \code{\link[micemd:mice.impute.2l.glm.bin]{micemd::mice.impute.2l.glm.bin}}

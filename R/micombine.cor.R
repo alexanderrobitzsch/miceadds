@@ -1,6 +1,5 @@
 ## File Name: micombine.cor.R
 ## File Version: 0.45
-## File Last Change: 2017-02-06 11:05:49
 
 #################################################################################
 # inference for correlations | nested multiply and multiply imputed datasets

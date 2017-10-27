@@ -1,6 +1,5 @@
 %% File Name: lm.cluster.Rd
 %% File Version: 0.25
-%% File Last Change: 2017-02-06 11:12:48
 
 \name{lm.cluster}
 \alias{lm.cluster}

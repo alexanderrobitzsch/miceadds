@@ -1,6 +1,5 @@
 ## File Name: cor_avoid_zero.R
 ## File Version: 0.03
-## File Last Change: 2017-02-06 11:05:47
 
 #--- computes correlation by avoiding division by zero
 #--- due to zero standard deviations

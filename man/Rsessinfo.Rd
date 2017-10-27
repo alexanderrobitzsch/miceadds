@@ -1,6 +1,5 @@
 %% File Name: Rsessinfo.Rd
 %% File Version: 0.05
-%% File Last Change: 2017-02-06 11:12:50
 
 \name{Rsessinfo}
 \alias{Rsessinfo}

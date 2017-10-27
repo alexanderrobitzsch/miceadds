@@ -1,6 +1,5 @@
 ## File Name: cxxfunction.copy.R
 ## File Version: 1.03
-## File Last Change: 2017-07-10 10:36:01
 
 
 cxxfunction.copy <- function( cppfct , name ){

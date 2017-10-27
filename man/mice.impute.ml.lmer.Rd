@@ -1,6 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
 %% File Version: 0.16
-%% File Last Change: 2017-08-24 14:19:15
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}

@@ -1,6 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
 %% File Version: 1.41
-%% File Last Change: 2017-02-06 11:12:48
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}

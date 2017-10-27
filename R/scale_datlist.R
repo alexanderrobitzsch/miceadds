@@ -1,6 +1,5 @@
 ## File Name: scale_datlist.R
 ## File Version: 0.23
-## File Last Change: 2017-02-06 11:05:50
 
 ##################################################################
 # application of scale for a list of multiply imputed datasets,

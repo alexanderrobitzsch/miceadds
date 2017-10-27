@@ -1,6 +1,5 @@
 %% File Name: library_install.Rd
 %% File Version: 0.06
-%% File Last Change: 2017-02-06 11:12:48
 
 \name{library_install}
 \alias{library_install}

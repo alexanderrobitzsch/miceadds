@@ -1,6 +1,5 @@
 ## File Name: pool.mids.nmi.R
 ## File Version: 0.12
-## File Last Change: 2017-02-06 11:05:50
 
 ###################################################
 # pooling function for nested multiple imputation objects

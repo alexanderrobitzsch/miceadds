@@ -1,6 +1,5 @@
 %% File Name: mice.impute.weighted.pmm.Rd
 %% File Version: 0.15
-%% File Last Change: 2017-08-25 10:15:06
 
 \name{mice.impute.weighted.pmm}
 \alias{mice.impute.weighted.pmm}

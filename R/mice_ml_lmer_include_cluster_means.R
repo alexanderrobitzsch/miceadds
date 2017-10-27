@@ -1,6 +1,5 @@
 ## File Name: mice_ml_lmer_include_cluster_means.R
 ## File Version: 0.11
-## File Last Change: 2017-08-23 19:47:16
 
 
 mice_ml_lmer_include_cluster_means <- function(y, ry, type, x, levels_id, aggregate_automatically,

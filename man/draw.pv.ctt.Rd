@@ -1,6 +1,5 @@
 %% File Name: draw.pv.ctt.Rd
 %% File Version: 1.16
-%% File Last Change: 2017-02-06 11:12:48
 
 \name{draw.pv.ctt}
 \alias{draw.pv.ctt}

@@ -1,6 +1,5 @@
 ## File Name: remove.lindep_miceadds.R
 ## File Version: 0.06
-## File Last Change: 2017-02-06 11:05:50
 
 ################################################
 # copied remove.lindep function from mice package

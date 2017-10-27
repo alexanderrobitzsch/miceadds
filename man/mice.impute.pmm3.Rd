@@ -1,6 +1,5 @@
 %% File Name: mice.impute.pmm3.Rd
 %% File Version: 1.15
-%% File Last Change: 2017-02-06 11:12:49
 
 \name{mice.impute.pmm3}
 \alias{mice.impute.pmm3}

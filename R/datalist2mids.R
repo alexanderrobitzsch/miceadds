@@ -1,6 +1,5 @@
 ## File Name: datalist2mids.R
 ## File Version: 0.25
-## File Last Change: 2017-09-19 19:56:25
 
 datalist2mids <- function( dat.list , progress=FALSE ){
     

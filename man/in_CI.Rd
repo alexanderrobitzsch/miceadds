@@ -1,6 +1,5 @@
 %% File Name: in_CI.Rd
 %% File Version: 0.04
-%% File Last Change: 2017-09-20 16:14:24
 
 \name{in_CI}
 \alias{in_CI}

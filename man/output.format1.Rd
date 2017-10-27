@@ -1,6 +1,5 @@
 %% File Name: output.format1.Rd
 %% File Version: 0.10
-%% File Last Change: 2017-02-06 11:12:50
 
 \name{output.format1}
 \alias{output.format1}

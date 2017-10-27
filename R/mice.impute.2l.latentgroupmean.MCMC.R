@@ -1,6 +1,5 @@
 ## File Name: mice.impute.2l.latentgroupmean.mcmc.R
 ## File Version: 3.25
-## File Last Change: 2017-09-22 14:58:42
 mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type , 
                     pls.facs = NULL , imputationWeights = NULL ,
                     interactions = NULL , quadratics = NULL , 

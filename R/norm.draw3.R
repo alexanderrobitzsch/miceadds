@@ -1,6 +1,5 @@
 ## File Name: norm.draw3.R
 ## File Version: 0.08
-## File Last Change: 2017-08-25 10:30:11
 
 
 

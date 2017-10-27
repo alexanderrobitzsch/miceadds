@@ -1,6 +1,5 @@
 %% File Name: ma_rmvnorm.Rd
 %% File Version: 0.03
-%% File Last Change: 2017-08-23 19:33:52
 
 \name{ma_rmvnorm}
 \alias{ma_rmvnorm}

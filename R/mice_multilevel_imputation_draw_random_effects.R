@@ -1,6 +1,5 @@
 ## File Name: mice_multilevel_imputation_draw_random_effects.R
 ## File Version: 0.05
-## File Last Change: 2017-08-22 21:31:05
 
 ################################################
 # draw of random effects

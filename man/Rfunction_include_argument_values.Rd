@@ -1,6 +1,5 @@
 %% File Name: Rfunction_include_argument_values.Rd
 %% File Version: 0.02
-%% File Last Change: 2017-09-20 13:58:47
 
 \name{Rfunction_include_argument_values}
 \alias{Rfunction_include_argument_values}

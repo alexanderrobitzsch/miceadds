@@ -1,6 +1,5 @@
 //// File Name: kernelpls_1dim_c.cpp
 //// File Version: 3.02
-//// File Last Change: 2017-02-17 09:26:02
 
 
 // [[Rcpp::depends(RcppArmadillo)]]

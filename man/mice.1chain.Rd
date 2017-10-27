@@ -1,6 +1,5 @@
 %% File Name: mice.1chain.Rd
 %% File Version: 0.27
-%% File Last Change: 2017-02-06 11:12:48
 
 \name{mice.1chain}
 \alias{mice.1chain}

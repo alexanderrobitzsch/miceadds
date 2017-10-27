@@ -1,6 +1,5 @@
 ## File Name: mice_multilevel_draw_rnorm1.R
 ## File Version: 0.02
-## File Last Change: 2017-02-06 11:05:49
 
 ########################################################################
 # draw a vector of random variables using a Cholesky decomposition

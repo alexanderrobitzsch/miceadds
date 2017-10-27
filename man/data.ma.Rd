@@ -1,6 +1,5 @@
 %% File Name: data.ma.Rd
 %% File Version: 0.28
-%% File Last Change: 2017-08-23 18:36:23
 
 \name{data.ma}
 \alias{data.ma}

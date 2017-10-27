@@ -1,10 +1,10 @@
-## File Name: mice.impute.2l.lmer.R
-## File Version: 0.29
+## File Name: mice_impute_2l_lmer.R
+## File Version: 0.32
 
 #########################################################################
 # main function for multilevel imputation with lme4 which
 # is just wrapper by methods "2l.continuous", "2l.binary" and "2l.pmm"
-mice.impute.2l.lmer <- function(y, ry, x, type, intercept=TRUE,
+mice_impute_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                                   groupcenter.slope=FALSE, draw.fixed=TRUE,
                                   random.effects.shrinkage=1E-6,
                                   glmer.warnings=TRUE, 
@@ -155,9 +155,11 @@ mice.impute.2l.lmer <- function(y, ry, x, type, intercept=TRUE,
 	return(imp)
 }
 
+mice.impute.2l.lmer <- mice_impute_2l_lmer
 
 #----------------------------------
 # mice: predictive mean matching
 
 ##            yhatobs <- x[ry,] %*% parm$coef
 ##            yhatmis <- x[!ry,] %*% parm$beta
+

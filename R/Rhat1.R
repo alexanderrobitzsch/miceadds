@@ -1,6 +1,5 @@
 ## File Name: Rhat1.R
 ## File Version: 1.03
-## File Last Change: 2017-02-06 11:05:50
 
 
 ####################################

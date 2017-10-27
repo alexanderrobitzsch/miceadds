@@ -1,6 +1,5 @@
 %% File Name: write.fwf2.Rd
 %% File Version: 0.07
-%% File Last Change: 2017-08-09 10:16:43
 
 \name{write.fwf2}
 \alias{write.fwf2}

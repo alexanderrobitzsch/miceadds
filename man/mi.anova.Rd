@@ -1,6 +1,5 @@
 %% File Name: mi.anova.Rd
 %% File Version: 0.13
-%% File Last Change: 2017-02-06 11:12:48
 
 \name{mi.anova}
 \alias{mi.anova}

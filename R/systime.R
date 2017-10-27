@@ -1,6 +1,5 @@
 ## File Name: systime.R
 ## File Version: 0.06
-## File Last Change: 2017-02-06 11:05:50
 
 ########################################################################
 # several variants for getting system time

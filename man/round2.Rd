@@ -1,6 +1,5 @@
 %% File Name: round2.Rd
 %% File Version: 0.14
-%% File Last Change: 2017-02-06 11:12:50
 
 \name{round2}
 \alias{round2}

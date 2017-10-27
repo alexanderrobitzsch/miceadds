@@ -1,6 +1,5 @@
 ## File Name: string_extract_part.R
 ## File Version: 0.03
-## File Last Change: 2017-09-22 15:36:22
 
 string_extract_part <- function( vec , part=1, sep="__" )
 {

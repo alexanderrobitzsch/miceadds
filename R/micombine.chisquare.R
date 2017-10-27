@@ -1,6 +1,5 @@
 ## File Name: micombine.chisquare.R
 ## File Version: 0.13
-## File Last Change: 2017-02-06 11:05:49
 micombine.chisquare <- function( dk , df , display = TRUE ,
 			version = 1){
         # INPUT:

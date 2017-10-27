@@ -1,6 +1,5 @@
 ## File Name: GroupMean.R
 ## File Version: 1.12
-## File Last Change: 2017-02-06 11:05:47
 GroupMean  <- function( data , group , weights=NULL , extend=FALSE){
 	groups <- sort( unique( group ) )
 	index.group <- match( group , groups )

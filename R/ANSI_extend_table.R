@@ -1,6 +1,5 @@
 ## File Name: ANSI_extend_table.R
 ## File Version: 0.13
-## File Last Change: 2016-05-08 13:19:24
 
 ###########################################
 ANSI_extend_table <- function( data , vars , subset , varindex="varindex" , 

@@ -1,6 +1,5 @@
 ## File Name: kernelpls.fit2.R
 ## File Version: 0.13
-## File Last Change: 2017-02-18 19:17:38
 #############################################
 # Rcpp version of kernel PLS regression
 kernelpls.fit2 <- function(X, Y, ncomp ){

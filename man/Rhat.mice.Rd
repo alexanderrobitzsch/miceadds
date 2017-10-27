@@ -1,6 +1,5 @@
 %% File Name: Rhat.mice.Rd
 %% File Version: 0.07
-%% File Last Change: 2017-02-06 11:12:50
 
 \name{Rhat.mice}
 \alias{Rhat.mice}

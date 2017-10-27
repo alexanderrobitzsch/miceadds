@@ -1,6 +1,5 @@
 ## File Name: pool.nmi.scalar.helper.R
 ## File Version: 0.26
-## File Last Change: 2017-02-06 11:05:50
 
 ################################################################
 pool.nmi.scalar.helper <- function( qhat , u , NV , NB , NW , comp_cov=TRUE ,

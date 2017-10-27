@@ -1,6 +1,5 @@
 ## File Name: mice.impute.2lonly.function.R
 ## File Version: 0.06
-## File Last Change: 2017-02-06 11:05:48
 
 
 

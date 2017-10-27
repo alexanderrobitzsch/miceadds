@@ -1,6 +1,5 @@
 ## File Name: tw.mcmc.imputation.R
 ## File Version: 1.08
-## File Last Change: 2017-08-25 10:33:07
 tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
     # set N and J
     N <- nrow(data)

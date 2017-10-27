@@ -1,6 +1,5 @@
 %% File Name: write.mice.imputation.Rd
 %% File Version: 0.14
-%% File Last Change: 2017-02-06 11:12:50
 
 \name{write.mice.imputation}
 \alias{write.mice.imputation}

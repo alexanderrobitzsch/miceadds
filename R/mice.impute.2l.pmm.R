@@ -1,6 +1,5 @@
 ## File Name: mice.impute.2l.pmm.R
-## File Version: 0.05
-## File Last Change: 2017-02-06 11:05:48
+## File Version: 0.06
 
 mice.impute.2l.pmm <- function(y, ry, x, type, intercept=TRUE,
                                   groupcenter.slope=FALSE, draw.fixed=TRUE,
@@ -8,9 +7,9 @@ mice.impute.2l.pmm <- function(y, ry, x, type, intercept=TRUE,
                                   glmer.warnings=TRUE, donors = 5 ,
 								  match_sampled_pars = TRUE ,
 								  blme_use = FALSE , blme_args = NULL , 
-                                  ...){
-
-	imp <- mice.impute.2l.lmer(y=y, ry=ry, x=x, type=type, 
+                                  ...)
+{
+	imp <- mice_impute_2l_lmer(y=y, ry=ry, x=x, type=type, 
 				intercept=intercept, groupcenter.slope=groupcenter.slope, 
 				draw.fixed=draw.fixed,
 				random.effects.shrinkage=random.effects.shrinkage,

@@ -1,6 +1,5 @@
 %% File Name: micombine.chisquare.Rd
 %% File Version: 0.16
-%% File Last Change: 2017-06-01 12:50:20
 
 \name{micombine.chisquare}
 \alias{micombine.chisquare}

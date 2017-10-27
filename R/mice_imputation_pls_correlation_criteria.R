@@ -1,6 +1,5 @@
 ## File Name: mice_imputation_pls_correlation_criteria.R
 ## File Version: 0.02
-## File Last Change: 2017-02-06 11:05:49
 
 
 mice_imputation_pls_correlation_criteria <- function( y , x , ry , use.ymat)

@@ -1,6 +1,5 @@
 %% File Name: with.miceadds.Rd
 %% File Version: 0.35
-%% File Last Change: 2017-02-06 11:12:50
 
 \name{with.miceadds}
 \alias{with.mids.1chain}

@@ -1,6 +1,5 @@
 %% File Name: datlist_create.Rd
 %% File Version: 0.12
-%% File Last Change: 2017-02-06 11:12:48
 
 \name{datlist_create}
 \alias{datlist_create}

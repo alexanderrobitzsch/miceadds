@@ -1,6 +1,5 @@
 ## File Name: save_data_calc_filename.R
 ## File Version: 0.01
-## File Last Change: 2017-06-12 12:45:19
 
 
 save_data_calc_filename <- function( file , type)

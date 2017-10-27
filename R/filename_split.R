@@ -1,6 +1,5 @@
 ## File Name: filename_split.R
 ## File Version: 0.04
-## File Last Change: 2017-02-06 11:05:47
 
 filename_split <- function( file_name , file_sep = "__" ,
 		file_ext = ".")

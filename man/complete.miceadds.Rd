@@ -1,6 +1,5 @@
 %% File Name: complete.miceadds.Rd
 %% File Version: 0.12
-%% File Last Change: 2017-02-06 11:12:47
 
 \name{complete.miceadds}
 \alias{complete.mids.nmi}

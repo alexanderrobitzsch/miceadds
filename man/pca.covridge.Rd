@@ -1,6 +1,5 @@
 %% File Name: pca.covridge.Rd
 %% File Version: 0.15
-%% File Last Change: 2017-02-06 11:12:50
 
 \name{pca.covridge}
 \alias{pca.covridge}

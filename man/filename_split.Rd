@@ -1,6 +1,5 @@
 %% File Name: filename_split.Rd
 %% File Version: 0.11
-%% File Last Change: 2017-09-20 16:12:33
 
 \name{filename_split}
 \alias{filename_split}

@@ -1,6 +1,5 @@
 //// File Name: ma_pmm6_csource.cpp
 //// File Version: 1.01
-//// File Last Change: 2017-02-17 09:32:54
 
 // [[Rcpp::depends(RcppArmadillo)]]
 

@@ -1,6 +1,5 @@
 ## File Name: index.dataframe.R
 ## File Version: 1.02
-## File Last Change: 2017-02-06 11:05:47
 
 				
 ####################################################

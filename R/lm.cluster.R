@@ -1,6 +1,5 @@
 ## File Name: lm.cluster.R
 ## File Version: 0.12
-## File Last Change: 2017-07-10 10:36:43
 
 
 ##################################################

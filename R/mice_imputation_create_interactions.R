@@ -1,6 +1,5 @@
 ## File Name: mice_imputation_create_interactions.R
 ## File Version: 1.05
-## File Last Change: 2017-02-18 19:19:42
 
 ################################################
 # create interactions

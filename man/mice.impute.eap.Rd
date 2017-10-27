@@ -1,6 +1,5 @@
 %% File Name: mice.impute.eap.Rd
 %% File Version: 0.16
-%% File Last Change: 2017-02-06 11:19:36
 
 \name{mice.impute.eap}
 \alias{mice.impute.eap}
