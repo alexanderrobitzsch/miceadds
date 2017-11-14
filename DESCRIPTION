@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 2.8-18
-Date: 2017-10-27 13:34:10
+Version: 2.8-21
+Date: 2017-11-14 13:56:20
 Author: 
     Alexander Robitzsch [aut, cre], Simon Grund [aut],
     Thorsten Henke [aut]
@@ -20,7 +20,7 @@ Description:
     high dimensional predictors, and nested multiple 
     imputation.
 Depends:
-    R (>= 3.0), mice (>= 2.46-0)
+    R (>= 3.0), mice
 Imports: 
     CDM (>= 5.8-5), graphics, lme4, methods, mitools, 
     mvtnorm, Rcpp, sirt, stats, TAM (>= 2.5-5), utils     

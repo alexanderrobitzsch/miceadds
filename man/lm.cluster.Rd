@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.25
+%% File Version: 0.26
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -150,7 +150,23 @@ mod <- lapply(  datlist, FUN = function(data){
 betas <- lapply( mod , FUN = function(rr){ coef(rr) } )
 vars <- lapply( mod , FUN = function(rr){ vcov(rr) } )
 # conduct statistical inference
-summary(pool_mi( qhat = betas, u = vars )) 
+summary( miceadds::pool_mi( qhat=betas, u=vars ) )
+
+#------ compute global F-test for hypothesis that all predictors have zero coefficient values 
+library(mitml)
+Nimp <- 6 # number of imputations
+np <- length(betas[[1]])   # number of parameters
+beta_names <- names(betas[[1]])
+# define vector of parameters for which constraints should be tested
+constraints <- beta_names[-1]
+# create input for mitml::testConstraints function
+qhat <- matrix( unlist(betas), ncol=Nimp)
+rownames(qhat) <- beta_names
+uhat <- array( unlist(vars), dim=c(np,np,Nimp))
+dimnames(uhat) <- list( beta_names, beta_names, NULL )
+# compute global F-test
+Ftest <- mitml::testConstraints( qhat=betas , uhat = vars, constraints= constraints )
+print(Ftest)
 }
 }
 
