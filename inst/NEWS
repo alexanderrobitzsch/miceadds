@@ -41,8 +41,20 @@ CHANGELOG miceadds
 
 
 
+
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.8  |  2017-11-14  |  Last: miceadds 2.8-21
+VERSIONS miceadds 2.9  |  2017-11-21  |  Last: miceadds 2.9-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 2.8  |  2017-11-20  |  Last: miceadds 2.8-24
 ---------------------------------------------------------------------
 
 NOTE  * changed default value of argument 'progress' in 
@@ -57,15 +69,11 @@ NOTE  * changed function name of internal function 'mice.impute.2l.lmer'
         'mice::mice.impute.2l.lmer' has been recently included in the 
         mice package
 NOTE  * added example for computing global F-test in 'lm.cluster'
-        (suggested by Thiemo Knaust)
-        
+        (suggested by Thiemo Knaust)        
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: in_CI (1), filenames_split (2),
         lm.cluster (2)
-
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.7  |  2017-08-24  |  Last: miceadds 2.7-19
