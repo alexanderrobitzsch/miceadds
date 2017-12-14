@@ -1,27 +1,25 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.42
+## File Version: 2.49
+
 mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  , 
-                        alpha.se = 0 ,
-                        scale.values = NULL , sig.e.miss = 1000000 , 
-						like=NULL , theta=NULL , normal.approx=NULL , 
-                        pviter = 15 , imputationWeights = rep(1, length(y)) , 
-                        plausible.value.print = TRUE , 
-                        pls.facs=NULL , interactions=NULL , quadratics =NULL , 
-						extract_data = TRUE , ...){  							
-    #*******
+			alpha.se = 0 ,scale.values = NULL , sig.e.miss = 1000000 , 
+			like=NULL , theta=NULL , normal.approx=NULL , 
+			pviter = 15 , imputationWeights = rep(1, length(y)), plausible.value.print = TRUE , 
+			pls.facs=NULL , interactions=NULL , quadratics =NULL, extract_data = TRUE , ...)
+{
+	#*******
 	# old arguments which are now excluded from the function
 	itemdiff=NULL ; item.resp = NULL ;
-    pvirt.iter = 30 ; pvirt.burnin =10 ; 
+	pvirt.iter = 30 ; pvirt.burnin =10 ; 
 	pvirt.printprogress <- TRUE
 	pvirt.printprogress <- FALSE
-	
+
 	#********
 	#--- extract arguments
 	pos <- parent.frame(n=1)
 
-	res <- mice_imputation_get_states( pos = pos )				
+	res <- mice_imputation_get_states( pos = pos )
 	vname <- res$vname
-	# newstate <- res$newstate	
 	newstate <- get( "newstate" , pos = pos )  
 
 	if (extract_data){
@@ -29,151 +27,145 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
 		y <- res$y
 		x <- res$x
 		ry <- res$ry
-		type <- res$type	
+		type <- res$type
 	}	
-    pvmethod <- 0
-    if ( ! is.null( scale.values[[ vname ]] )){ 
-			pvmethod <- 3 
-					} 
-    if ( ! is.null( like[[vname ]] )){ 
-			pvmethod <- 4 			
-			     }            
-    if (pvmethod == 0){
-          if ( ! is.null( alpha[[ vname ]] )){ pvmethod <- 1 }
-          if (  is.null( alpha[[vname ]] )){ pvmethod <- 2 }            
-                    }  
-		
-    # define scale type
+	pvmethod <- 0
+	if ( ! is.null( scale.values[[ vname ]] )){ 
+		pvmethod <- 3 
+	} 
+	if ( ! is.null( like[[vname ]] )){ 
+		pvmethod <- 4
+	} 
+	if (pvmethod == 0){
+		if ( ! is.null( alpha[[ vname ]] )){ pvmethod <- 1 }
+		if (  is.null( alpha[[vname ]] )){ pvmethod <- 2 }            
+	}  
+
+	# define scale type
 	scale.type <- "parallel"
-	
-    pls.facs <- mice_imputation_extract_list_arguments( micearg = pls.facs , 
-                           vname = vname , miceargdefault = NULL )
-    interactions <- mice_imputation_extract_list_arguments( micearg = interactions , 
-                           vname = vname , miceargdefault = NULL )
-    quadratics <- mice_imputation_extract_list_arguments( micearg = quadratics , 
-                           vname = vname , miceargdefault = NULL )
-					
-    ##############################################################
-    # Plausible value imputation according to the Rasch model
+	pls.facs <- mice_imputation_extract_list_arguments( micearg = pls.facs , 
+					vname = vname , miceargdefault = NULL )
+	interactions <- mice_imputation_extract_list_arguments( micearg = interactions , 
+						vname = vname , miceargdefault = NULL )
+	quadratics <- mice_imputation_extract_list_arguments( micearg = quadratics , 
+						vname = vname , miceargdefault = NULL )
+
+	##############################################################
+	# Plausible value imputation according to the Rasch model
 	# adapt this to include only the likelihood
 	##############################################################
-    if (pvmethod == 4){ 
-         res <- include.2l.predictors_v1( y=y, x=x , ry=ry , type=type , vname = vname , 
+	if (pvmethod == 4){ 
+		res <- include.2l.predictors_v1( y=y, x=x , ry=ry , type=type , vname = vname , 
 					newstate = newstate , ... )
-         X <- res$X
-		 # X <- res
-        #*+*+*+*
-        # PLS
-        if ( is.null(pls.facs) + is.null(interactions) + is.null(quadratics) < 3 ){
-            plsout <- mice_imputation_pls_helper( newstate = newstate , 
+		X <- res$X
+		#--- PLS
+		if ( is.null(pls.facs) + is.null(interactions) + is.null(quadratics) < 3 ){
+			plsout <- mice_imputation_pls_helper( newstate = newstate , 
 						vname = vname , pls.impMethod = "xplsfacs" , 
-                        x = X[,-1] , y = y , ry= rep(TRUE,length(y)) , 
+						x = X[,-1] , y = y , ry= rep(TRUE,length(y)) , 
 						imputationWeights = imputationWeights , 
-                        interactions = interactions, quadratics = quadratics ,  
+						interactions = interactions, quadratics = quadratics ,  
 						pls.facs = pls.facs ,  envir_pos = pos ,   ... )$yimp
-            X <- plsout[,-1]						
-        }
-        #*+*+* 
-         cluster <- res$cluster
-         # item response data matrix
-		 
-		 # extract theta grid and likelihood here!!
-         like <- as.matrix( like[[ vname ]] )		 
-         theta <- as.matrix( theta[[ vname ]] )		 
-		 if ( ! is.null( normal.approx[[ vname ]] ) ){
+			X <- plsout[,-1]
+		}
+		#*+*+* 
+		cluster <- res$cluster
+		# item response data matrix
+		like <- as.matrix( like[[ vname ]] )
+		theta <- as.matrix( theta[[ vname ]] )
+		if ( ! is.null( normal.approx[[ vname ]] ) ){
 			normal.approx <- normal.approx 
-					} else {
+		} else {
 			normal.approx <- TRUE
-						}
-		
-		 X <- X[,-1,drop=FALSE]	# exclude intercept
-		 
-		 #-- perform latent regression		 
-		 mod0 <- TAM::tam.latreg(like=like, theta=theta, Y = X ,
-								control=list( progress=FALSE )  )	
-		 #-- draw plausible values
-		 cat("\n")
-		 mod1 <- TAM::tam.pv( mod0 , normal.approx=normal.approx ,
-		 			nplausible=1 , samp.regr=TRUE 	)
-         # pv imputation				  
-   	     ximp <- mod1$pv[,2]
-	 
-                    }
-					
-    #############################################
-    # Plausible value imputation with known scale scores and standard errors
-    if (pvmethod == 3){ 
-        M.scale <- scale.values[[ vname ]][[ "M" ]]
-        SE.scale <- scale.values[[ vname ]][[ "SE" ]]
-        # compute true variance 
-        true.var <- var.ytrue <- stats::var( M.scale , na.rm=T)  - mean( (SE.scale[ ! is.na(M.scale) ])^2 , na.rm=T )
-        miss <- ( is.na(M.scale) ) | ( is.na(SE.scale ) )
-        M.scale[miss] <- Mscale <- mean( M.scale , na.rm=TRUE )
-        SE.scale[miss] <- sig.e.miss
-        # calculate initial means and variances of posterior distribution
-        EAP <- ( SE.scale^(-2)*M.scale + true.var^(-1)*Mscale )/( SE.scale^(-2) + true.var^(-1) )
-        Var.EAP <- 1 / ( SE.scale^(-2) + true.var^(-1) )  
+		}
+		X <- X[,-1,drop=FALSE]	# exclude intercept
+		#-- perform latent regression		 
+		mod0 <- TAM::tam.latreg(like=like, theta=theta, Y = X ,
+								control=list( progress=FALSE, ridge = 1e-5 )  )	
+		#-- draw plausible values
+		cat("\n")
+		mod1 <- TAM::tam.pv( mod0 , normal.approx=normal.approx, nplausible=1 , samp.regr=TRUE )
+		# extract pv imputation	
+		ximp <- mod1$pv[,2]
+	}
+
+	#############################################
+	# Plausible value imputation with known scale scores and standard errors
+	if (pvmethod == 3){ 
+		M.scale <- scale.values[[ vname ]][[ "M" ]]
+		SE.scale <- scale.values[[ vname ]][[ "SE" ]]
+		# compute true variance 
+		var.ytrue <- stats::var( M.scale , na.rm=TRUE)  - mean( (SE.scale[ ! is.na(M.scale) ])^2 , na.rm=TRUE )
+		true.var <- var.ytrue
+		miss <- ( is.na(M.scale) ) | ( is.na(SE.scale ) )
+		M.scale[miss] <- Mscale <- mean( M.scale , na.rm=TRUE )
+		SE.scale[miss] <- sig.e.miss
+		# calculate initial means and variances of posterior distribution
+		SE_scale_2 <- SE.scale^(-2)
+		EAP <- ( SE_scale_2*M.scale + true.var^(-1)*Mscale )/( SE_scale_2 + true.var^(-1) )
+		Var.EAP <- 1 / ( SE_scale_2 + true.var^(-1) )  
 		x1 <- x
-        # group mean where the actual observation is eliminated
-        if ( sum( type == -2 ) > 0 ){
-            x1b <- cbind( x[ , type== -2 ] , y )
-            gm <- mice.impute.2l.groupmean.elim(y = y , ry = FALSE * ry , x = x1b, type = c(-2,1) )						
-            x <- x1 <- cbind( x1 , gm )
+		# group mean where the actual observation is eliminated
+		if ( sum( type == -2 ) > 0 ){
+			x1b <- cbind( x[ , type== -2 ] , y )
+			gm <- mice.impute.2l.groupmean.elim(y = y , ry = FALSE * ry , x = x1b, type = c(-2,1) )	
+			x <- x1 <- cbind( x1 , gm )
 			type <- c( type , 1 )
 			i2 <- which( type == -2 )
 			x <- x[ , -i2]
-			type <- type[-i2]					
-                    }       
-        # group level predictors
+			type <- type[-i2]
+		}
+		# group level predictors
 		X <- x
-        #*+*+*+*
-        # PLS
-        if ( is.null(pls.facs) + is.null(interactions) + is.null(quadratics) < 3 ){
+		#*+*+*+*
+		# PLS
+		if ( is.null(pls.facs) + is.null(interactions) + is.null(quadratics) < 3 ){
 			if ( is.null(interactions) ){ 
 				interactions <- names(type)[ type == 4 ]
 			}			
 			plsout <- mice_imputation_pls_helper( newstate = newstate , vname = vname , 
-			      pls.impMethod = "xplsfacs" , x = X , y = y , 
-				  ry= rep(TRUE,length(y)) , imputationWeights = imputationWeights , 
-                  interactions = interactions, quadratics = quadratics , 
-				  pls.facs = pls.facs ,  envir_pos = pos , 
-				  ... )$yimp
-            X <- plsout[,-1]
-        }
-				
-        #*+*+* 
-#        cluster <- res$cluster
-        xcov1 <- xcov <- X
+					pls.impMethod = "xplsfacs" , x = X , y = y , 
+					ry= rep(TRUE,length(y)) , imputationWeights = imputationWeights , 
+					interactions = interactions, quadratics = quadratics , 
+					pls.facs = pls.facs ,  envir_pos = pos , ... )$yimp
+			X <- plsout[,-1]
+		}
+
+		#*+*+* 
+		xcov1 <- xcov <- X
 		xcov1 <- as.matrix(xcov1)
-        # begin iterations for drawing plausible values
-        for (iter in 1:pviter){ 
-            # draw plausible value for individuals
-            y.pv <- stats::rnorm( length(EAP) , mean = EAP , sd = sqrt( Var.EAP) )
-            # calculate linear regression
-            mod <- stats::lm( y.pv ~ xcov1 ) 
-#			 mod <- lm( y.pv ~ xcov1a ) 	
-            # draw regression parameters
-            v <- stats::vcov(mod)
-            beta.star <- stats::coef(mod) + CDM::CDM_rmvnorm( 1, mean = rep(0,nrow(v) ) , sigma = v ) 
-            # calculate residual variance in regression
-            sigma2 <- mean( stats::residuals(mod)^2 )
-            # fitted regression coefficients
-            yfitted <- cbind(1,xcov1) %*% stats::coef(mod)
-            # update posterior distribution
-            EAP <- ( SE.scale^(-2)*M.scale + sigma2^(-1)*yfitted )/( SE.scale^(-2) + sigma2^(-1) )
-            Var.EAP <- 1 / ( SE.scale^(-2) + sigma2^(-1) ) 
-            # draw plausible value
-            y.pv <- stats::rnorm( length(y) ,  mean = EAP , sd = sqrt( Var.EAP) )
-			if ( pvirt.printprogress ){  cat("*");  utils::flush.console()  }
-            # add mean plausible value
-            if ( sum( type==-2) ){ 
-                x1b <- cbind( x[ , type== -2 ] , y.pv )
-                gm <- mice.impute.2l.groupmean.elim(y = y , ry = FALSE * ry , x = x1b, type = c(-2,1) )
-                xcov1 <- cbind( xcov , gm )
-                            }
-                    }
-    ximp <- as.vector( y.pv )
-                }
+		# begin iterations for drawing plausible values
+		for (iter in 1:pviter){ 
+			# draw plausible value for individuals
+			y.pv <- stats::rnorm( length(EAP) , mean=EAP , sd = sqrt(Var.EAP) )
+			# calculate linear regression
+			mod <- stats::lm( y.pv ~ xcov1 )
+			# draw regression parameters
+			v <- stats::vcov(mod)
+			cmod <- stats::coef(mod)
+			beta.star <- cmod + ma_rmvnorm( n=1, mu=rep(0,nrow(v)), sigma= v) 
+			# calculate residual variance in regression
+			sigma2 <- mean( stats::residuals(mod)^2 )
+			# fitted regression coefficients
+			yfitted <- cbind(1,xcov1) %*% cmod
+			# update posterior distribution
+			EAP <- ( SE_scale_2*M.scale + sigma2^(-1)*yfitted )/( SE_scale_2 + sigma2^(-1) )
+			Var.EAP <- 1 / ( SE_scale_2 + sigma2^(-1) ) 
+			# draw plausible value
+			y.pv <- stats::rnorm( length(y) ,  mean = EAP , sd = sqrt(Var.EAP) )
+			if ( pvirt.printprogress ){  
+				cat("*")
+				utils::flush.console()  
+			}
+			# add mean plausible value
+			if ( sum( type==-2) ){ 
+				x1b <- cbind( x[ , type== -2 ] , y.pv )
+				gm <- mice.impute.2l.groupmean.elim(y = y , ry = FALSE * ry , x = x1b, type = c(-2,1) )
+				xcov1 <- cbind( xcov , gm )
+			}
+		}
+		ximp <- as.vector( y.pv )
+	}
     #############################################
     # PV imputation scale score according to CTT (parallel measurements)
     #    alpha is known or unknown
@@ -262,5 +254,5 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
                                 }
     
 	# return imputed values	
-    return(ximp)	
+	return(ximp)	
 }

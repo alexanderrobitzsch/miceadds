@@ -1,5 +1,5 @@
 ## File Name: Rfunction_include_argument_values.R
-## File Version: 0.06
+## File Version: 0.07
 
 Rfunction_include_argument_values <- function(string, maxlen=70)
 {
@@ -11,9 +11,8 @@ Rfunction_include_argument_values <- function(string, maxlen=70)
 	s1 <- strsplit( s1 , split= "," , fixed = TRUE )[[1]]
 	NS <- length(s1)
 	s2 <- gsub( " " , "" , s1 )
-	M0 <- 0
+	M0 <- nchar(a1[1])
 	for (ss in 1:NS){
-		# ss <- 5
 		s2[ss] <- gsub( " " , "" , s2[ss] )			
 		if ( length( grep("=" , s1[ss] ) ) == 0 ){
 			h1 <- gsub( " " , "" , s1[ss] )

@@ -43,13 +43,18 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.9  |  2017-11-21  |  Last: miceadds 2.9-1
+VERSIONS miceadds 2.9  |  2017-12-14  |  Last: miceadds 2.9-8
 ---------------------------------------------------------------------
 
-xxxx  *
+FIXED * replaced the modified pmm6() imputation method causing a bug
+        by a previous one (thanks to Peter Lenz)
+NOTE  * included ridge operator for covariance matrix of predictors
+        in mice.impute.plausible.values ()
+FIXED * fixed a bug in case of perfectly correlated regression
+        coefficients in mice.impute.plausible.values ()
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: mice.impute.plausible.values (3)
 
 
 
@@ -58,17 +63,17 @@ VERSIONS miceadds 2.8  |  2017-11-20  |  Last: miceadds 2.8-24
 ---------------------------------------------------------------------
 
 NOTE  * changed default value of argument 'progress' in 
-        'datalist2mids' to FALSE
-NOTE  * included utility functions 'in_CI' and 'string_extract_part'
-NOTE  * changed names of imputation methods 'mice.impute.2l.latentgroupmean.ML' 
-        and 'mice.impute.2l.latentgroupmean.MCMC' to
-        'mice.impute.2l.latentgroupmean.ml' and 
-        'mice.impute.2l.latentgroupmean.mcmc'
-NOTE  * changed function name of internal function 'mice.impute.2l.lmer' 
-        to 'mice_impute_2l_lmer' to avoid confusion because a function 
-        'mice::mice.impute.2l.lmer' has been recently included in the 
+        datalist2mids() to FALSE
+NOTE  * included utility functions in_CI() and string_extract_part()
+NOTE  * changed names of imputation methods mice.impute.2l.latentgroupmean.ML()
+        and mice.impute.2l.latentgroupmean.MCMC() to
+        mice.impute.2l.latentgroupmean.ml() and 
+        mice.impute.2l.latentgroupmean.mcmc()
+NOTE  * changed function name of internal function mice.impute.2l.lmer()
+        to mice_impute_2l_lmer() to avoid confusion because a function 
+        mice::mice.impute.2l.lmer() has been recently included in the 
         mice package
-NOTE  * added example for computing global F-test in 'lm.cluster'
+NOTE  * added example for computing global F-test in lm.cluster()
         (suggested by Thiemo Knaust)        
 
 DATA  * included/modified datasets: ---
@@ -79,17 +84,17 @@ EXAMP * included/modified examples: in_CI (1), filenames_split (2),
 VERSIONS miceadds 2.7  |  2017-08-24  |  Last: miceadds 2.7-19
 ---------------------------------------------------------------------
 
-ADDED * added function 'jomo2mids' which converts imputation output 
+ADDED * added function jomo2mids() which converts imputation output 
         of the jomo package into an object of class mids
-FIXED * fixed a bug in 'mice.impute.2l.pls2' which did not find 
-        a C routine in '.Call'
-ADDED * added imputation function 'mice.impute.ml.lmer' for imputation
+FIXED * fixed a bug in mice.impute.2l.pls2() which did not find 
+        a C routine in .Call()
+ADDED * added imputation function mice.impute.ml.lmer() for imputation
         models based on the linear mixed effects specification in
         lme4. Hierarchical and non-hierarchical levels are allowed and
         imputation at higher levels is accomodated.
-NOTE  * added utility functions 'ma_rmvnorm', 
-        'Rfunction_include_argument_values' and
-        'Rfunction_output_list_result_function'
+NOTE  * added utility functions ma_rmvnorm(), 
+        Rfunction_include_argument_values() and
+        Rfunction_output_list_result_function ()
 
 DATA  * included/modified datasets: data.ma07
 EXAMP * included/modified examples: jomo2datlist (1), 
