@@ -100,6 +100,7 @@ importFrom(lme4, glmer)
 importFrom(lme4, lmer)
 importFrom(lme4, ranef)
 importFrom(lme4, VarCorr)
+importFrom(MASS, ginv)
 importFrom(mitools, MIcombine)
 importFrom(mvtnorm, dmvnorm)
 # importFrom(mvtnorm, rmvnorm) # replaced by CDM::CDM_rmvnorm

@@ -43,7 +43,19 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.9  |  2017-12-14  |  Last: miceadds 2.9-8
+VERSIONS miceadds 2.10  |  2017-12-18  |  Last: miceadds 2.10-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 2.9  |  2017-12-18  |  Last: miceadds 2.9-15
 ---------------------------------------------------------------------
 
 FIXED * replaced the modified pmm6() imputation method causing a bug
@@ -55,8 +67,6 @@ FIXED * fixed a bug in case of perfectly correlated regression
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: mice.impute.plausible.values (3)
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.8  |  2017-11-20  |  Last: miceadds 2.8-24

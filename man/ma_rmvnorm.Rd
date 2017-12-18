@@ -1,5 +1,5 @@
 %% File Name: ma_rmvnorm.Rd
-%% File Version: 0.03
+%% File Version: 0.09
 
 \name{ma_rmvnorm}
 \alias{ma_rmvnorm}
@@ -59,7 +59,7 @@ Matrix of simulated values
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[mvtnorm:rmvnorm]{mvtnorm::rmvnorm}}
+\code{\link[MASS:mvrnorm]{MASS::mvrnorm}}
 }
 
 
