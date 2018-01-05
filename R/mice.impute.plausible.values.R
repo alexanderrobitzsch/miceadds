@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.49
+## File Version: 2.57
 
 mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  , 
 			alpha.se = 0 ,scale.values = NULL , sig.e.miss = 1000000 , 
@@ -103,7 +103,7 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
 		# calculate initial means and variances of posterior distribution
 		SE_scale_2 <- SE.scale^(-2)
 		EAP <- ( SE_scale_2*M.scale + true.var^(-1)*Mscale )/( SE_scale_2 + true.var^(-1) )
-		Var.EAP <- 1 / ( SE_scale_2 + true.var^(-1) )  
+		Var.EAP <- 1 / ( SE_scale_2 + true.var^(-1) )  	
 		x1 <- x
 		# group mean where the actual observation is eliminated
 		if ( sum( type == -2 ) > 0 ){
@@ -132,22 +132,34 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
 		}
 
 		#*+*+* 
+		ridge <- 1E-7		
 		xcov1 <- xcov <- X
 		xcov1 <- as.matrix(xcov1)
+		xcov1a <- cbind( 1 , xcov1 )
+		xtx <- crossprod(xcov1a)
+		diag(xtx) <- diag(xtx) * (1 + ridge)
+		xtx1 <- MASS::ginv(xtx)
+		# xtx1 <- solve(xtx)
+		
 		# begin iterations for drawing plausible values
 		for (iter in 1:pviter){ 
 			# draw plausible value for individuals
 			y.pv <- stats::rnorm( length(EAP) , mean=EAP , sd = sqrt(Var.EAP) )
+			xty <- crossprod(xcov1a, as.matrix(y.pv) )
+			
 			# calculate linear regression
-			mod <- stats::lm( y.pv ~ xcov1 )
-			# draw regression parameters
-			v <- stats::vcov(mod)
-			cmod <- stats::coef(mod)
-			beta.star <- cmod + ma_rmvnorm( n=1, mu=rep(0,nrow(v)), sigma= v) 
+			# mod <- stats::lm( y.pv ~ xcov1 )					
+			# v <- stats::vcov(mod)	
+			# cmod <- stats::coef(mod)
+			cmod <- xtx1 %*% xty
+			yfitted <- xcov1a %*% cmod
+			sigma2 <- mean( ( y.pv - yfitted )^2 )
+			v <- sigma2 * xtx1
+			beta.star <- as.vector(cmod) + ma_rmvnorm( n=1, mu=rep(0,nrow(v)), sigma= v) 
 			# calculate residual variance in regression
-			sigma2 <- mean( stats::residuals(mod)^2 )
+#			sigma2 <- mean( stats::residuals(mod)^2 )
 			# fitted regression coefficients
-			yfitted <- cbind(1,xcov1) %*% cmod
+			
 			# update posterior distribution
 			EAP <- ( SE_scale_2*M.scale + sigma2^(-1)*yfitted )/( SE_scale_2 + sigma2^(-1) )
 			Var.EAP <- 1 / ( SE_scale_2 + sigma2^(-1) ) 
