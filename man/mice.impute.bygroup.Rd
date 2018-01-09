@@ -1,18 +1,20 @@
 %% File Name: mice.impute.bygroup.Rd
-%% File Version: 0.08
+%% File Version: 0.12
 
 \name{mice.impute.bygroup}
 \alias{mice.impute.bygroup}
+
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Groupwise Imputation Function
 }
 \description{
-This function performs groupwise imputation for arbitrary 
+The function \code{mice.impute.bygroup} performs groupwise imputation for arbitrary 
 imputation methods defined in \pkg{mice}.
 }
 \usage{
 mice.impute.bygroup(y, ry, x, group, imputationFunction, ...)
+
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
