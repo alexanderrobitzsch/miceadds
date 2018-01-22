@@ -1,5 +1,5 @@
 %% File Name: mice.impute.plausible.values.Rd
-%% File Version: 0.34
+%% File Version: 0.36
 
 \name{mice.impute.plausible.values}
 \alias{mice.impute.plausible.values}
@@ -24,8 +24,8 @@ mice.impute.plausible.values(y, ry, x, type, alpha = NULL,
     alpha.se = 0, scale.values = NULL, sig.e.miss = 1e+06, 
     like=NULL , theta=NULL , normal.approx=NULL , 
     pviter = 15, imputationWeights = rep(1, length(y)), plausible.value.print = TRUE, 
-    pls.facs = NULL, interactions = NULL, 
-    quadratics = NULL, extract_data=TRUE, ...)
+    pls.facs = NULL, interactions = NULL, quadratics = NULL, extract_data=TRUE,
+    control_latreg = list( progress=FALSE, ridge = 1e-5 ),  ...)
 }
 
 %% like=NULL , theta=NULL , normal.approx=NULL , 
@@ -89,7 +89,8 @@ Vector of variable names used for creating interactions
 Vector of variable names used for creating quadratic terms
 }
 \item{extract_data}{Logical indicating whether input data should be extracted
-from parent environment within \code{\link[mice:mice]{mice::mice}}  routine}
+from parent environment within \code{\link[mice:mice]{mice::mice}} routine}
+\item{control_latreg}{Control arguments for \code{\link[TAM:tam.latreg]{TAM::tam.latreg}}}
   \item{\dots}{
 Further objects to be passed
 }

@@ -1,11 +1,12 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.638
+## File Version: 2.643
 
 mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  , 
 			alpha.se = 0 ,scale.values = NULL , sig.e.miss = 1000000 , 
 			like=NULL , theta=NULL , normal.approx=NULL , 
 			pviter = 15 , imputationWeights = rep(1, length(y)), plausible.value.print = TRUE , 
-			pls.facs=NULL , interactions=NULL , quadratics =NULL, extract_data = TRUE , ...)
+			pls.facs=NULL , interactions=NULL , quadratics =NULL, extract_data = TRUE ,
+			control_latreg = list( progress=FALSE, ridge = 1e-5 ) , ...)
 {
 	#*******
 	# old arguments which are now excluded from the function
@@ -55,7 +56,6 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
 	# adapt this to include only the likelihood
 	##############################################################
 	if (pvmethod == 4){ 
-cat("\n pvmethod = 4 \n ")	
 		res <- include.2l.predictors_v1( y=y, x=x , ry=ry , type=type , vname = vname , 
 					newstate = newstate , ... )
 		X <- res$X
@@ -80,9 +80,8 @@ cat("\n pvmethod = 4 \n ")
 			normal.approx <- TRUE
 		}
 		X <- X[,-1,drop=FALSE]	# exclude intercept
-		#-- perform latent regression		 
-		mod0 <- TAM::tam.latreg(like=like, theta=theta, Y = X ,
-								control=list( progress=FALSE, ridge = 1e-5 )  )	
+		#-- perform latent regression		 		
+		mod0 <- TAM::tam.latreg(like=like, theta=theta, Y = X, control=control_latreg )	
 		#-- draw plausible values
 		cat("\n")
 		mod1 <- TAM::tam.pv( tamobj=mod0 , normal.approx=normal.approx, nplausible=1 , samp.regr=TRUE )

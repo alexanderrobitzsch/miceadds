@@ -43,7 +43,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.10  |  2018-01-22  |  Last: miceadds 2.10-9
+VERSIONS miceadds 2.10  |  2018-01-22  |  Last: miceadds 2.10-11
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in mice.impute.bygroup() if only one predictor
@@ -54,6 +54,9 @@ NOTE  * modified mice.impute.bygroup() function for groupwise
         imputation with multilevel imputation methods ("2l" functions)
 NOTE  * fixed numerical instabilities in plausible values imputation
         method
+NOTE  * included argument 'control_latreg' in imputation method
+        'plausible.values' for providing control arguments for 
+        function TAM::tam.latreg()
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
