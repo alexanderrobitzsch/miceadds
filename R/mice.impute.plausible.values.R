@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.57
+## File Version: 2.638
 
 mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  , 
 			alpha.se = 0 ,scale.values = NULL , sig.e.miss = 1000000 , 
@@ -55,6 +55,7 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
 	# adapt this to include only the likelihood
 	##############################################################
 	if (pvmethod == 4){ 
+cat("\n pvmethod = 4 \n ")	
 		res <- include.2l.predictors_v1( y=y, x=x , ry=ry , type=type , vname = vname , 
 					newstate = newstate , ... )
 		X <- res$X
@@ -84,7 +85,7 @@ mice.impute.plausible.values <- function (y, ry, x, type , alpha = NULL  ,
 								control=list( progress=FALSE, ridge = 1e-5 )  )	
 		#-- draw plausible values
 		cat("\n")
-		mod1 <- TAM::tam.pv( mod0 , normal.approx=normal.approx, nplausible=1 , samp.regr=TRUE )
+		mod1 <- TAM::tam.pv( tamobj=mod0 , normal.approx=normal.approx, nplausible=1 , samp.regr=TRUE )
 		# extract pv imputation	
 		ximp <- mod1$pv[,2]
 	}

@@ -43,7 +43,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.10  |  2018-01-09  |  Last: miceadds 2.10-7
+VERSIONS miceadds 2.10  |  2018-01-22  |  Last: miceadds 2.10-9
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in mice.impute.bygroup() if only one predictor
@@ -52,6 +52,8 @@ FIXED * fixed a bug in mice.impute.bygroup() whoch was caused by using
         the recently included "wy" argument in the mice package
 NOTE  * modified mice.impute.bygroup() function for groupwise 
         imputation with multilevel imputation methods ("2l" functions)
+NOTE  * fixed numerical instabilities in plausible values imputation
+        method
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---

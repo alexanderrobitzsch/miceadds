@@ -1,5 +1,5 @@
 ## File Name: ANSI_create_table.R
-## File Version: 0.42
+## File Version: 0.43
 
 #######################################################################
 # create table with results
@@ -97,7 +97,9 @@ ANSI_create_table <- function (dat, criterion ,
 			ind <- intersect( ind , ind0 )
 				}	
 		if ( length(ind) > 1){
-			stop("Selected more than one line!\n")
+			cat("Selected more than one line!\n")
+			print(x[ind,])
+			stop()
 				}			
 		if ( length(ind) == 1 ){		
 			x1 <- x[ind,criterion]
