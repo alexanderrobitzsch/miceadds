@@ -1,5 +1,5 @@
 %% File Name: kernelpls.fit2.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{kernelpls.fit2}
 \alias{kernelpls.fit2}
@@ -39,7 +39,7 @@ Number of components to be extracted
 
 \value{
 The same list as in 
-\code{\link[pls:kernelpls.fit]{pls::kernelpls.fit}} 
+\code{{pls::kernelpls.fit}} 
 is produced.
 
 In addition, \eqn{R^2} measures are contained in

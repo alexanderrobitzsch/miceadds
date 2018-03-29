@@ -1,5 +1,5 @@
 %% File Name: mice.impute.tricube.pmm.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{mice.impute.tricube.pmm}
 \alias{mice.impute.tricube.pmm}
@@ -10,7 +10,7 @@ Imputation by Tricube Predictive Mean Matching
 }
 \description{
 This function performs tricube predictive mean matching (see
-\code{\link[Hmisc:aregImpute]{Hmisc::aregImpute}})
+\code{{Hmisc::aregImpute}})
 in which donors are weighted according to distances of predicted values.
 }
 \usage{
@@ -68,7 +68,7 @@ than \code{tricube.pmm}.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[Hmisc:aregImpute]{Hmisc::aregImpute}}
+\code{{Hmisc::aregImpute}}
 }
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 

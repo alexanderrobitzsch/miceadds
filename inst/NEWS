@@ -41,9 +41,19 @@ CHANGELOG miceadds
 
 
 
+---------------------------------------------------------------------
+VERSIONS miceadds 2.11  |  2018-03-29  |  Last: miceadds 2.11-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.10  |  2018-01-22  |  Last: miceadds 2.10-11
+VERSIONS miceadds 2.10  |  2018-03-29  |  Last: miceadds 2.10-14
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in mice.impute.bygroup() if only one predictor
@@ -57,11 +67,10 @@ NOTE  * fixed numerical instabilities in plausible values imputation
 NOTE  * included argument 'control_latreg' in imputation method
         'plausible.values' for providing control arguments for 
         function TAM::tam.latreg()
+NOTE  * excluded some packages from list of package 'Suggests'
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.9  |  2017-12-18  |  Last: miceadds 2.9-15
@@ -70,9 +79,9 @@ VERSIONS miceadds 2.9  |  2017-12-18  |  Last: miceadds 2.9-15
 FIXED * replaced the modified pmm6() imputation method causing a bug
         by a previous one (thanks to Peter Lenz)
 NOTE  * included ridge operator for covariance matrix of predictors
-        in mice.impute.plausible.values ()
+        in mice.impute.plausible.values()
 FIXED * fixed a bug in case of perfectly correlated regression
-        coefficients in mice.impute.plausible.values ()
+        coefficients in mice.impute.plausible.values()
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: mice.impute.plausible.values (3)

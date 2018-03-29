@@ -1,5 +1,5 @@
 %% File Name: mice_impute_2l_lmer.Rd
-%% File Version: 0.28
+%% File Version: 0.31
 
 \name{mice_impute_2l_lmer}
 \alias{mice.impute.2l.binary}
@@ -139,25 +139,24 @@ homogeneous residual variances.
 
 The \pkg{micemd} package provides further imputation methods for the \pkg{mice}
 package for imputing multilevel data with fully conditional specification. The
-function \code{\link[micemd:mice.impute.2l.jomo]{micemd::mice.impute.2l.jomo}}
-has similar functionality like \code{\link[mice:mice.impute.2l.pan]{mice::mice.impute.2l.pan}}
+function \code{{micemd::mice.impute.2l.jomo}}
+has similar functionality like \code{[mice:mice.impute.2l.pan]{mice::mice.impute.2l.pan}}
 and imputes normally distributed two-level data with a Bayesian MCMC approach, 
 but relies on the \pkg{jomo} package instead of the \pkg{pan} package.
 The functions 
 \code{\link[mice:mice.impute.2l.lmer]{mice::mice.impute.2l.lmer}} and
-\code{\link[micemd:mice.impute.2l.glm.norm]{micemd::mice.impute.2l.glm.norm}}
+\code{{micemd::mice.impute.2l.glm.norm}}
 have similar functionality like 
 \code{\link{mice.impute.2l.continuous}}
 and imputes normally distributed two-level data. The function 
-\code{\link[micemd:mice.impute.2l.glm.bin]{micemd::mice.impute.2l.glm.bin}}
-has similar functionality like 
-\code{\link{mice.impute.2l.binary}}
+\code{{micemd::mice.impute.2l.glm.bin}}
+has similar functionality like \code{\link{mice.impute.2l.binary}}
 and imputes binary two-level data.
 
 The \pkg{hmi} package imputes single-level and multilevel data and is also
 based on fully conditional specification. The package relies on the 
 MCMC estimation implemented in the \pkg{MCMCglmm} package. The imputation procedure
-can be run with the \code{\link[hmi:hmi]{hmi::hmi}} function.
+can be run with the \code{hmi::hmi} function.
 
 See the \pkg{pan} (\code{\link[pan:pan]{pan::pan}})
 and the \pkg{jomo} (\code{\link[jomo:jomo]{jomo::jomo}})

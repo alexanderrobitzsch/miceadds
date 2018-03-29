@@ -1,5 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
-%% File Version: 1.41
+%% File Version: 1.42
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}
@@ -98,7 +98,7 @@ object.
 Some functions for weighted statistics:	
 \code{\link[stats:weighted.mean]{stats::weighted.mean}},
 \code{\link[stats:cov.wt]{stats::cov.wt}},
-\code{\link[Hmisc:wtd.var]{Hmisc::wtd.var}},
+\code{{Hmisc::wtd.var}},
 \code{\link[TAM:weighted_quantile]{TAM::weighted_quantile}}, ...
 	
 See \code{\link{micombine.cor}} for statistical inference of correlation 
