@@ -1,13 +1,14 @@
-//// File Name: kernelpls_1dim_c.cpp
-//// File Version: 3.05
+//// File Name: miceadds_rcpp_kernelpls_1dim.cpp
+//// File Version: 3.06
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
 #include <RcppArmadillo.h>
-#include <Rcpp.h>
+// #include <Rcpp.h>
 
 using namespace Rcpp;
+using namespace arma;
 
 
 ///********************************************************************

@@ -1,5 +1,5 @@
-//// File Name: ma_scale.cpp
-//// File Version: 5.02
+//// File Name: miceadds_rcpp_scale.cpp
+//// File Version: 5.04
 
 
 #include <Rcpp.h>
@@ -7,9 +7,8 @@
 using namespace Rcpp;
 
 
-
 ///*******************************************
-/// Rcpp implementation of scale in R 
+/// Rcpp implementation of base::scale
 
 
 ///********************************************************************

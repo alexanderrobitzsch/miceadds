@@ -15,7 +15,6 @@ useDynLib(miceadds)
 importFrom(graphics, par)
 importFrom(graphics, plot)
 importFrom(methods, is)
-importFrom(Rcpp, evalCpp)
 importFrom(stats, aggregate)
 importFrom(stats, aov)
 importFrom(stats, as.formula)
@@ -104,6 +103,9 @@ importFrom(MASS, ginv)
 importFrom(mitools, MIcombine)
 importFrom(mvtnorm, dmvnorm)
 # importFrom(mvtnorm, rmvnorm) # replaced by CDM::CDM_rmvnorm
+importFrom(Rcpp, evalCpp)
+importFrom(Rcpp, sourceCpp)
+
 
 
 
@@ -251,6 +253,7 @@ export(scan.vector)
 export(scan0)
 export(sd0)
 export(source.all)
+export(source.Rcpp.all)
 export(stats0)
 export(str_C.expand.grid)
 export(string_extract_part)

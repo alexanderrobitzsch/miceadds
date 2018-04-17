@@ -1,17 +1,26 @@
 %% File Name: source.all.Rd
-%% File Version: 0.08
+%% File Version: 0.12
 
 \name{source.all}
 \alias{source.all}
+\alias{source.Rcpp.all}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-\R Utilities: Source All R Files Within a Directory
+\R Utilities: Source all R or \pkg{Rcpp} Files within a Directory
 }
+
 \description{
-Sources all \R files within a specified directory.
+The function \code{source.all} sources all \R files within a specified directory and
+is based on \code{\link[base:source]{base::source}}.
+
+The function \code{source.Rcpp.all} sources all \pkg{Rcpp} files within a specified directory
+and is based on \code{\link[Rcpp:sourceCpp]{Rcpp::sourceCpp}}.
 }
+
 \usage{
-source.all( path , grepstring="\\\\.R",  print.source=TRUE )
+source.all( path, grepstring="\\\\.R",  print.source=TRUE )
+
+source.Rcpp.all( path, file_names=NULL, ext="\\\\.cpp", excl="RcppExports" )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -25,6 +34,9 @@ Which strings should be looked for?
 \item{print.source}{
 An optional logical whether the source process printed on the console?
 }
+\item{file_names}{Optional vector of (parts of) file names}
+\item{ext}{File extension for \pkg{Rcpp} files}
+\item{excl}{String indicating which files should be omitted from sourcing}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~

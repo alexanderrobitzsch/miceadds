@@ -1,12 +1,13 @@
-//// File Name: ma_pmm6_csource.cpp
-//// File Version: 1.01
+//// File Name: miceadds_rcpp_pmm6.cpp
+//// File Version: 1.03
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
 #include <RcppArmadillo.h>
-#include <Rcpp.h>
+// #include <Rcpp.h>
 
 using namespace Rcpp;
+using namespace arma;
 
 
 ///********************************************************************
