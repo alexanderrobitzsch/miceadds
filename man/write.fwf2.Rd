@@ -1,5 +1,5 @@
 %% File Name: write.fwf2.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 \name{write.fwf2}
 \alias{write.fwf2}
@@ -55,9 +55,6 @@ File name
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~

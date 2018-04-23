@@ -1,5 +1,5 @@
 %% File Name: visitSequence.determine.Rd
-%% File Version: 0.04
+%% File Version: 0.05
 
 \name{visitSequence.determine}
 \alias{visitSequence.determine}
@@ -42,9 +42,7 @@ Updated vector of the visit sequence
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

@@ -1,5 +1,5 @@
 %% File Name: mids2mlwin.Rd
-%% File Version: 0.05
+%% File Version: 0.06
 
 \name{mids2mlwin}
 \alias{mids2mlwin}
@@ -41,7 +41,7 @@ imputed datasets.}
 %xxx
 %}
 \author{
-Thorsten Henke <mail@thorstenluka.de>
+Thorsten Henke
 }
 
 

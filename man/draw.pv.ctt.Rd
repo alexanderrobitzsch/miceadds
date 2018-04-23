@@ -1,5 +1,5 @@
 %% File Name: draw.pv.ctt.Rd
-%% File Version: 1.16
+%% File Version: 1.17
 
 \name{draw.pv.ctt}
 \alias{draw.pv.ctt}
@@ -80,9 +80,6 @@ Mislevy, R. J. (1991). Randomization-based inference about latent variables
 from complex samples. \emph{Psychometrika}, \bold{56}, 177-196.
 }
 
-\author{
-Alexander Robitzsch
-}
 
 \note{
 Plausible value imputation is also labeled as multiple overimputation

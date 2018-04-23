@@ -1,12 +1,17 @@
 ## File Name: Rfunction_include_argument_values.R
-## File Version: 0.07
+## File Version: 0.12
 
 Rfunction_include_argument_values <- function(string, maxlen=70)
 {
-
-	a1 <- strsplit( string , split= "(" , fixed = TRUE )[[1]]
+	ind1 <- string_find_first(string=string, symbol="(" )
+	# a1 <- strsplit( string , split= "(" , fixed = TRUE )[[1]]
+	a1 <- c( substring(string,1, ind1-1) ,
+				substring(string, ind1+1, nchar(string) ) )
 	s1 <- a1[2]
-	s1 <- strsplit( s1 , split= ")" , fixed = TRUE )[[1]][1]
+	
+	ind1 <- string_find_last(string=s1, symbol=")" )		
+	# s1 <- strsplit( s1 , split= ")" , fixed = TRUE )[[1]][1]
+	s1 <- substring(s1,1, ind1-1)	
 	s1 <- gsub("\n" , "" , s1 )
 	s1 <- strsplit( s1 , split= "," , fixed = TRUE )[[1]]
 	NS <- length(s1)

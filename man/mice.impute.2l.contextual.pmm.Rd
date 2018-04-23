@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.contextual.pmm.Rd
-%% File Version: 0.19
+%% File Version: 0.21
 
 \name{mice.impute.2l.contextual.pmm}
 \alias{mice.impute.2l.contextual.pmm}
@@ -72,9 +72,7 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 %%\references{
 %% ~put references to the literature/web site here ~
 %%}
-\author{
-Alexander Robitzsch
-}
+
 %%\note{
 %%  ~~further notes~~
 %%}

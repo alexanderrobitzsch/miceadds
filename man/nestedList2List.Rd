@@ -1,5 +1,5 @@
 %% File Name: nestedList2List.Rd
-%% File Version: 0.03
+%% File Version: 0.04
 
 
 
@@ -55,9 +55,6 @@ A list or a nested list
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 %\note{
 %%  ~~further notes~~
 %}

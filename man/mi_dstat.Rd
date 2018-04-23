@@ -1,5 +1,5 @@
 %% File Name: mi_dstat.Rd
-%% File Version: 0.06
+%% File Version: 0.07
 
 \name{mi_dstat}
 \alias{mi_dstat}
@@ -30,9 +30,7 @@ to columns.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

@@ -1,5 +1,5 @@
 %% File Name: source.all.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{source.all}
 \alias{source.all}
@@ -51,9 +51,7 @@ An optional logical whether the source process printed on the console?
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

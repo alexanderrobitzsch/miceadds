@@ -1,5 +1,5 @@
 %% File Name: mice.1chain.Rd
-%% File Version: 0.27
+%% File Version: 0.28
 
 \name{mice.1chain}
 \alias{mice.1chain}
@@ -113,10 +113,6 @@ A list with following entries
 %studies: a practical guide and simulated example. 
 %\emph{Psychological Methods}, \bold{13}, 279-313.
 
-
-\author{
-Alexander Robitzsch
-}
 
 \note{
 Multiple imputation can also be used for determining causal effects

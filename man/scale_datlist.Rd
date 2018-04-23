@@ -1,5 +1,5 @@
 %% File Name: scale_datlist.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{scale_datlist}
 \alias{scale_datlist}
@@ -62,9 +62,7 @@ A vector or a matrix
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

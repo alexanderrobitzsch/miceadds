@@ -1,5 +1,5 @@
 %% File Name: subset_datlist.Rd
-%% File Version: 0.28
+%% File Version: 0.29
 
 \name{subset_datlist}
 \alias{subset_datlist}
@@ -100,9 +100,7 @@ For nested multiply imputed datasets: Object of class
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
+
 
 \note{
 If subsetting is applied to objects of class \code{mids} (or \code{mids.1chain}), 

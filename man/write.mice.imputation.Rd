@@ -1,5 +1,5 @@
 %% File Name: write.mice.imputation.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{write.mice.imputation}
 \alias{write.mice.imputation}
@@ -75,9 +75,6 @@ as the prefix:
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~

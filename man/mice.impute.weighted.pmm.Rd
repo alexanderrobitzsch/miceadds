@@ -1,5 +1,5 @@
 %% File Name: mice.impute.weighted.pmm.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{mice.impute.weighted.pmm}
 \alias{mice.impute.weighted.pmm}
@@ -64,9 +64,6 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~

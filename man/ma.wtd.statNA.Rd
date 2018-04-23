@@ -1,5 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
-%% File Version: 1.42
+%% File Version: 1.43
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}
@@ -83,9 +83,8 @@ A vector or a matrix depending on the requested statistic.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
+
 \note{
 If \code{data} is of class \code{BIFIEdata} and no weights are
 specified, sample weights are extracted from the \code{BIFIEdata}

@@ -1,5 +1,5 @@
 %% File Name: GroupMean.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{GroupMean}
 \alias{GroupMean}
@@ -41,9 +41,7 @@ A data frame with groupwise calculated statistics
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

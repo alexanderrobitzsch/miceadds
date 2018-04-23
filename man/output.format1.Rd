@@ -1,5 +1,5 @@
 %% File Name: output.format1.Rd
-%% File Version: 0.10
+%% File Version: 0.11
 
 \name{output.format1}
 \alias{output.format1}
@@ -37,9 +37,7 @@ Generates a string output at the \R console
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %TO DO: include example here
 %}

@@ -1,5 +1,5 @@
 %% File Name: tw.imputation.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{tw.imputation}
 \alias{tw.imputation}
@@ -59,9 +59,7 @@ and questionnaires, and an accurate approximation.
 \emph{Computational Statistics & Data Analysis}, \bold{51}, 4013-4027.
 }
 
-\author{
-Alexander Robitzsch
-}
+
 
 %\note{
 %%  ~~further notes~~

@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.26
+%% File Version: 0.27
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -83,9 +83,7 @@ List with following entries
 %}
 
 
-\author{
-Alexander Robitzsch
-}
+
 
 %\note{
 %%  ~~further notes~~

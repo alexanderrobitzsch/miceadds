@@ -1,5 +1,5 @@
 %% File Name: grep.vec.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{grep.vec}
 \alias{grep.vec}
@@ -43,9 +43,7 @@ contain at least one of the strings in \code{pattern.vec}.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

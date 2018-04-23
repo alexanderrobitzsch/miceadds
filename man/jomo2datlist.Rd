@@ -1,5 +1,5 @@
 %% File Name: jomo2datlist.Rd
-%% File Version: 0.09
+%% File Version: 0.11
 
 \name{jomo2datlist}
 \alias{jomo2datlist}
@@ -37,9 +37,7 @@ List of multiply imputed datasets
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 
 %\note{
 %%  ~~further notes~~

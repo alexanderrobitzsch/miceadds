@@ -1,5 +1,5 @@
 %% File Name: complete.miceadds.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{complete.miceadds}
 \alias{complete.mids.nmi}
@@ -48,9 +48,7 @@ index of imputed dataset for \code{complete.mids.1chain}.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

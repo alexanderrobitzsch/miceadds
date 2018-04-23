@@ -1,5 +1,5 @@
 %% File Name: mice.impute.tricube.pmm.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{mice.impute.tricube.pmm}
 \alias{mice.impute.tricube.pmm}
@@ -56,9 +56,7 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
+
 
 \note{
 The imputation method \code{tricube.pmm2} is usually somewhat faster

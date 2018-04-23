@@ -1,5 +1,5 @@
 %% File Name: datlist_create.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{datlist_create}
 \alias{datlist_create}
@@ -68,9 +68,7 @@ Object of class \code{datlist} or \code{nested.datlist}
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
+
 
 %\note{
 %%  ~~further notes~~

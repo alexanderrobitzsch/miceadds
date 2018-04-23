@@ -1,5 +1,5 @@
 %% File Name: write.pspp.Rd
-%% File Version: 0.26
+%% File Version: 0.27
 
 \name{write.pspp}
 \alias{write.pspp}
@@ -54,9 +54,7 @@ A dataset in \emph{sav} format (SPSS format).
 
 
 \author{
-Alexander Robitzsch
-
-The code is adapted from 
+The code was adapted from 
 \url{https://stat.ethz.ch/pipermail/r-help/2006-January/085941.html}
 }
 %\note{

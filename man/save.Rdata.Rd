@@ -1,5 +1,5 @@
 %% File Name: save.Rdata.Rd
-%% File Version: 0.05
+%% File Version: 0.06
 
 \name{save.Rdata}
 \alias{save.Rdata}
@@ -42,9 +42,7 @@ be saved in csv format. The default is saving 1000 rows.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

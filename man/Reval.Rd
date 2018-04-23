@@ -1,11 +1,13 @@
 %% File Name: Reval.Rd
-%% File Version: 0.12
+%% File Version: 0.16
 
 \name{Reval}
 \alias{Reval}
 
 \alias{Revalpr}
 \alias{Revalprstr}
+\alias{Revalpr_round}
+\alias{Revalpr_maxabs}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
@@ -15,11 +17,19 @@
 This function evaluates a string as an \R expression.
 }
 \usage{
-Reval(Rstring, print.string=TRUE)
+Reval(Rstring, print.string=TRUE, n.eval.parent=1)
 
-Revalpr(Rstring, print.string=TRUE)	# = Reval( print(Rstring) )
+# Reval( print(Rstring) )
+Revalpr(Rstring, print.string=TRUE)	
 
-Revalprstr(Rstring, print.string=TRUE)   #  = Reval( print(str(Rstring)) )
+#  Reval( print(str(Rstring)) )
+Revalprstr(Rstring, print.string=TRUE)
+
+#  Reval( print(round(Rstring, digits)) )
+Revalpr_round( Rstring, digits=5, print.string=TRUE)
+
+#  Reval( print(max(abs(Rstring_x - Rstring_y)) ) )
+Revalpr_maxabs( Rstring_x, Rstring_y, print.string=TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -29,7 +39,14 @@ String which shall be evaluated in \R
   \item{print.string}{
 Should the string printed on the console?
 }
+\item{n.eval.parent}{Index of parent environment in which the \R
+command should be evaluated.
 }
+\item{digits}{Number of digits after decimal.}
+\item{Rstring_x}{String corrsponding to an \R object}
+\item{Rstring_y}{String corrsponding to an \R object}
+}
+
 \details{
 The string is evaluated in the parent environment. See 
 \code{\link[base:eval]{base::eval}}  for the definition of environments in \R.
@@ -44,9 +61,7 @@ The string is evaluated in the parent environment. See
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

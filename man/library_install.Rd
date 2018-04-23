@@ -1,5 +1,5 @@
 %% File Name: library_install.Rd
-%% File Version: 0.06
+%% File Version: 0.07
 
 \name{library_install}
 \alias{library_install}
@@ -41,9 +41,7 @@ Further arguments to be passed to
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

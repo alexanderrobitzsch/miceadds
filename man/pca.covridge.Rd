@@ -1,5 +1,5 @@
 %% File Name: pca.covridge.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{pca.covridge}
 \alias{pca.covridge}
@@ -52,9 +52,6 @@ Vector of standard deviations of factors (square root of eigenvalues)
 %}
 
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~

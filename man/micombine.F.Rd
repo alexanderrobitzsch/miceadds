@@ -1,5 +1,5 @@
 %% File Name: micombine.F.Rd
-%% File Version: 0.15
+%% File Version: 0.17
 
 \name{micombine.F}
 \alias{micombine.F}
@@ -53,11 +53,13 @@ The same output as in \code{\link{micombine.chisquare}}
 Allison, P. D. (2002). \emph{Missing data}. Newbury Park, CA: Sage.
 
 Enders, C. K. (2010). \emph{Applied missing data analysis}. Guilford Press.
+
+Grund, S., Luedtke, O., & Robitzsch, A. (2016). Pooling ANOVA results from 
+multiply imputed datasets: A simulation study. 
+\emph{Methodology, 12}, 75-88.
 }
 
-\author{
-Alexander Robitzsch
-}
+
 
 %\note{
 %%  ~~further notes~~

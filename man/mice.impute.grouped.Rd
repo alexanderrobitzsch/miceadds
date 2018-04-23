@@ -1,5 +1,5 @@
 %% File Name: mice.impute.grouped.Rd
-%% File Version: 0.08
+%% File Version: 0.09
 
 \name{mice.impute.grouped}
 \alias{mice.impute.grouped}
@@ -48,9 +48,6 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~

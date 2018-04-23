@@ -1,5 +1,5 @@
 %% File Name: save.data.Rd
-%% File Version: 0.25
+%% File Version: 0.26
 
 \name{save.data}
 \alias{save.data}
@@ -73,9 +73,7 @@ and \code{type="csv2"} and is \code{"."} for \code{type="table"}.}
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

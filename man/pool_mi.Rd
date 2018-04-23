@@ -1,5 +1,5 @@
 %% File Name: pool_mi.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{pool_mi}
 \alias{pool_mi}
@@ -67,9 +67,6 @@ Object of with similar output as produced by the
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~

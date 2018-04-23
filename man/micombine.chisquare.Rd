@@ -1,5 +1,5 @@
 %% File Name: micombine.chisquare.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{micombine.chisquare}
 \alias{micombine.chisquare}
@@ -59,10 +59,6 @@ A vector with following entries
 Allison, P. D. (2002). \emph{Missing data}. Newbury Park, CA: Sage.
 
 Enders, C. K. (2010). \emph{Applied missing data analysis}. Guilford Press.
-}
-
-\author{
-Alexander Robitzsch
 }
 
 %\note{

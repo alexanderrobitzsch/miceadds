@@ -1,5 +1,5 @@
 %% File Name: mi.anova.Rd
-%% File Version: 0.13
+%% File Version: 0.16
 
 \name{mi.anova}
 \alias{mi.anova}
@@ -10,7 +10,8 @@ Analysis of Variance for Multiply Imputed Data Sets (Using the \eqn{D_2} Statist
 \description{
 This function combines \eqn{F} values from analysis of variance using
 the \eqn{D_2} statistic which is based on combining \eqn{\chi^2} statistics
-(see Allison, 2001; \code{\link{micombine.F}}, \code{\link{micombine.chisquare}}).
+(see Allison, 2001, Grund et al., 2016;
+\code{\link{micombine.F}}, \code{\link{micombine.chisquare}}).
 }
 \usage{
 mi.anova(mi.res, formula, type=2)
@@ -42,12 +43,14 @@ A list with the following entries:
 
 \references{
 Allison, P. D. (2002). \emph{Missing data}. Newbury Park, CA: Sage.
+
+Grund, S., Luedtke, O., & Robitzsch, A. (2016). Pooling ANOVA results from 
+multiply imputed datasets: A simulation study. 
+\emph{Methodology, 12}, 75-88.
 }
 
 
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

@@ -1,5 +1,5 @@
 %% File Name: ma.scale2.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{ma.scale2}
 \alias{ma.scale2}
@@ -38,9 +38,6 @@ A matrix
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~

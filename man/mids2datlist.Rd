@@ -1,5 +1,5 @@
 %% File Name: mids2datlist.Rd
-%% File Version: 0.10
+%% File Version: 0.11
 
 \name{mids2datlist}
 \alias{mids2datlist}
@@ -35,9 +35,7 @@ List of multiply imputed datasets of classes
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 
 %\note{
 %%  ~~further notes~~

@@ -1,5 +1,5 @@
 %% File Name: datalist2mids.Rd
-%% File Version: 0.22
+%% File Version: 0.24
 
 \name{datlist2mids}
 \alias{datalist2mids}
@@ -43,11 +43,6 @@ An object of class \code{mids}
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-
-
-\author{
-Alexander Robitzsch
-}
 
 
 %\note{

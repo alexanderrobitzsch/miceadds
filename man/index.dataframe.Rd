@@ -1,5 +1,5 @@
 %% File Name: index.dataframe.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{index.dataframe}
 \alias{index.dataframe}
@@ -35,9 +35,7 @@ of the data frame?}
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

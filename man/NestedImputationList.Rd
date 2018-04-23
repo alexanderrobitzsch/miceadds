@@ -1,5 +1,5 @@
 %% File Name: NestedImputationList.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{NestedImputationList}
 \alias{NestedImputationList}
@@ -61,10 +61,6 @@ Object of class \code{mipo.nmi}.
 %}
 
 
-
-\author{
-Alexander Robitzsch
-}
 %\note{
 %%  ~~further notes~~
 %}

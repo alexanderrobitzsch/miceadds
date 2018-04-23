@@ -1,5 +1,5 @@
 %% File Name: load.Rdata.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{load.Rdata}
 \alias{load.Rdata}
@@ -47,9 +47,7 @@ Object name. This object will be a global variable in \R.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

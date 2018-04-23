@@ -1,5 +1,5 @@
 %% File Name: kernelpls.fit2.Rd
-%% File Version: 0.19
+%% File Version: 0.21
 
 \name{kernelpls.fit2}
 \alias{kernelpls.fit2}
@@ -56,8 +56,6 @@ Principal component and partial least squares regression in \R.
 }
 
 \author{
-Alexander Robitzsch
-
 This code is a \pkg{Rcpp} translation of the original 
 \code{pls::kernelpls.fit} function from the \pkg{pls} package
 (see Mevik & Wehrens, 2007). 

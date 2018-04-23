@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.23
+%% File Version: 2.24
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -128,9 +128,7 @@ Principal component and partial least squares regression in \R.
 \emph{Journal of Statistical Software}, \bold{18}, 1-24.
 }
 
-\author{
-Alexander Robitzsch
-}
+
 \note{
 The \code{mice.impute.2l.pls2} function is just included for reasons of
 backward compatability to former \pkg{miceadds} versions. 

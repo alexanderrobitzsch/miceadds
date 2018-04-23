@@ -1,5 +1,5 @@
 %% File Name: str_C.expand.grid.Rd
-%% File Version: 0.10
+%% File Version: 0.12
 
 \name{str_C.expand.grid}
 \alias{str_C.expand.grid}
@@ -29,9 +29,6 @@ A character vector
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~
@@ -61,11 +58,12 @@ str_C.expand.grid( x1 , indices=c(2,1,3) )
 \dontrun{
 ##***************************************************************************
 ## The function 'str_C.expand.grid' is currently defined as
-function( xlist , indices=NULL ){
+function( xlist , indices=NULL )
+{
      xeg <- expand.grid( xlist)
      if ( ! is.null(indices) ){	xeg <- xeg[ , indices ]}
      apply( xeg , 1 , FUN = function(vv){ paste0( vv , collapse="") } )
-		}
+}
 ##***************************************************************************
 }
 }

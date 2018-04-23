@@ -1,5 +1,5 @@
 %% File Name: write.datlist.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 \name{write.datlist}
 \alias{write.datlist}
@@ -65,9 +65,7 @@ Further arguments to be passed to \code{\link{save.data}}.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

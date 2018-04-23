@@ -1,5 +1,5 @@
 %% File Name: mice.impute.plausible.values.Rd
-%% File Version: 0.36
+%% File Version: 0.37
 
 \name{mice.impute.plausible.values}
 \alias{mice.impute.plausible.values}
@@ -133,10 +133,6 @@ Mislevy, R. J. (1991). Randomization-based inference about latent variables
 from complex samples. \emph{Psychometrika}, \bold{56}, 177-196.
 }
 
-
-\author{
-Alexander Robitzsch
-}
 
 
 \note{

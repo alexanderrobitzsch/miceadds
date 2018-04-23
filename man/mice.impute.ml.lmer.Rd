@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -149,10 +149,6 @@ Grund, S., Luedtke, O., & Robitzsch, A. (xxxx). Multiple imputation of multileve
 data in organizational research. \emph{Organizational Research Methods, xx}, xxx-xxx.
 }
 
-
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~

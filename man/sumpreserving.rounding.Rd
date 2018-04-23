@@ -1,5 +1,5 @@
 %% File Name: sumpreserving.rounding.Rd
-%% File Version: 0.08
+%% File Version: 0.09
 
 \name{sumpreserving.rounding}
 \alias{sumpreserving.rounding}
@@ -39,9 +39,7 @@ Should the sum be preserved?
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

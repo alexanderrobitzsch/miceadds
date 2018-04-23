@@ -1,5 +1,5 @@
 %% File Name: stats0.Rd
-%% File Version: 0.05
+%% File Version: 0.06
 
 \name{stats0}
 \alias{stats0}
@@ -58,9 +58,7 @@ A vector or a matrix
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

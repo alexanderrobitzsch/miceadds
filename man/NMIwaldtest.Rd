@@ -1,5 +1,5 @@
 %% File Name: NMIwaldtest.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{NMIwaldtest}
 \alias{NMIwaldtest}
@@ -81,10 +81,6 @@ imputation. \emph{Journal of the American Statistical Association},
 \bold{102}, 1462-1471.
 }
 
-
-\author{
-Alexander Robitzsch
-}
 
 \note{
 The function \code{create.designMatrices.waldtest} is a helper

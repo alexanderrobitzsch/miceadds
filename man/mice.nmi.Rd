@@ -1,5 +1,5 @@
 %% File Name: mice.nmi.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{mice.nmi}
 \alias{mice.nmi}
@@ -55,9 +55,7 @@ Rubin, D. B. (2003). Nested multiple imputation of NMES via partially
 incompatible MCMC. \emph{Statistica Neerlandica}, \bold{57(1)}, 3-18.
 }
 
-\author{
-Alexander Robitzsch
-}
+
 
 %\note{
 %%  ~~further notes~~

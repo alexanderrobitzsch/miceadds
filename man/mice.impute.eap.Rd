@@ -1,5 +1,5 @@
 %% File Name: mice.impute.eap.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{mice.impute.eap}
 \alias{mice.impute.eap}
@@ -54,9 +54,6 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~

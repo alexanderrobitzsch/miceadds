@@ -1,5 +1,5 @@
 %% File Name: micombine.cor.Rd
-%% File Version: 0.30
+%% File Version: 0.31
 
 \name{micombine.cor}
 \alias{micombine.cor}
@@ -55,9 +55,7 @@ by requesting \code{attr(result,"r_matrix")}.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

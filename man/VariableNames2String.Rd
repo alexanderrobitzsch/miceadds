@@ -1,5 +1,5 @@
 %% File Name: VariableNames2String.Rd
-%% File Version: 0.03
+%% File Version: 0.04
 
 \name{VariableNames2String}
 \alias{VariableNames2String}
@@ -37,9 +37,7 @@ String with line breaks
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2lonly.function.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{mice.impute.2lonly.function}
 \alias{mice.impute.2lonly.function}
@@ -121,9 +121,6 @@ imp1 <- mice::mice( as.matrix(dfr) , m = 1 , predictorMatrix = predM1 ,
 }
 
 
-\author{
-Alexander Robitzsch
-}
 
 
 

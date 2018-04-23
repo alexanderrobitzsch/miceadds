@@ -1,5 +1,5 @@
 %% File Name: Rsessinfo.Rd
-%% File Version: 0.05
+%% File Version: 0.06
 
 \name{Rsessinfo}
 \alias{Rsessinfo}
@@ -24,9 +24,7 @@ session info
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

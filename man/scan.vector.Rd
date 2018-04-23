@@ -1,5 +1,5 @@
 %% File Name: scan.vector.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{scan.vec}
 \alias{scan.vec}
@@ -48,9 +48,7 @@ See \code{\link[base:scan]{base::scan}}.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

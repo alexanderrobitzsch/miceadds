@@ -19,7 +19,7 @@ The CRAN version can be installed from within R using:
 utils::install.packages("miceadds")
 ```
 
-#### GitHub version `miceadds` 2.11-3 (2018-04-17)
+#### GitHub version `miceadds` 2.11-9 (2018-04-23)
 
 The version hosted [here](https://github.com/alexanderrobitzsch/miceadds) is the development version of `miceadds`. 
 The GitHub version can be installed using `devtools` as:

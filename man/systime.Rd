@@ -1,5 +1,5 @@
 %% File Name: systime.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{systime}
 \alias{systime}
@@ -23,9 +23,7 @@ A vector with entries of system time (see Examples).
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

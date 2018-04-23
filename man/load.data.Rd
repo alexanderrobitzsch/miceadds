@@ -1,5 +1,5 @@
 %% File Name: load.data.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{load.data}
 \alias{load.data}
@@ -63,9 +63,7 @@ included in \code{filename}.}
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

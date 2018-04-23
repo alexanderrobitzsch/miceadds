@@ -1,5 +1,5 @@
 %% File Name: round2.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{round2}
 \alias{round2}
@@ -32,9 +32,7 @@ Vector with rounded values
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}

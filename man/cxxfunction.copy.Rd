@@ -1,5 +1,5 @@
 %% File Name: cxxfunction.copy.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{cxxfunction.copy}
 \alias{cxxfunction.copy}
@@ -37,9 +37,7 @@ Eddelbuettel, D. & Francois, R. (2011). Rcpp: Seamless R and C++ integration.
 \emph{Journal of Statistical Software}, \bold{40(8)}, 1-18.
 }
 
-\author{
-Alexander Robitzsch
-}
+
 
 %\note{
 %%  ~~further notes~~
