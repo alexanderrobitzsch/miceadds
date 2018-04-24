@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -25,7 +25,7 @@ All predictor variables are aggregated to the corresponding level of the variabl
 to be imputed.   
 
 Several strategies for the specification of the design
-matrix \eqn{\bold{X}} are accomodated. By default, predictors at a lower level
+matrix \eqn{\bold{X}} are accommodated. By default, predictors at a lower level
 are automatically aggregated to the higher level and included as further
 predictors to maintain the multilevel structure in the data (Grund et al., xxxx;
 Enders et al., 2016; argument \code{aggregate_automatically=TRUE}). Further,

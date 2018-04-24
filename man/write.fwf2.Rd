@@ -1,5 +1,5 @@
 %% File Name: write.fwf2.Rd
-%% File Version: 0.08
+%% File Version: 0.09
 
 \name{write.fwf2}
 \alias{write.fwf2}
@@ -12,7 +12,7 @@ Reading and Writing Files in Fixed Width Format
 
 \description{
 Reads and writes files in fixed width format. The functions are written
-for being more performant than \code{\link[utils:read.fwf]{utils::read.fwf}}.
+for being more efficient than \code{\link[utils:read.fwf]{utils::read.fwf}}.
 }
 
 \usage{

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.24
+%% File Version: 2.25
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -131,7 +131,7 @@ Principal component and partial least squares regression in \R.
 
 \note{
 The \code{mice.impute.2l.pls2} function is just included for reasons of
-backward compatability to former \pkg{miceadds} versions. 
+backward compatibility to former \pkg{miceadds} versions. 
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

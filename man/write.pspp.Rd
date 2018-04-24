@@ -1,5 +1,5 @@
 %% File Name: write.pspp.Rd
-%% File Version: 0.27
+%% File Version: 0.28
 
 \name{write.pspp}
 \alias{write.pspp}
@@ -36,7 +36,7 @@ Maximum number of digits after decimal
 \item{as.factors}{A logical indicating whether all factors and string entries
 should be treated as factors in the output file.}
 \item{use.bat}{A logical indicating whether PSPP executed via a batch file in 
-	the DOS mode (\code{TRUE}) or directly envoked via the \code{system} command
+	the DOS mode (\code{TRUE}) or directly invoked via the \code{system} command
      from within \R (\code{FALSE}).
 	}
 }

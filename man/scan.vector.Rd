@@ -1,5 +1,5 @@
 %% File Name: scan.vector.Rd
-%% File Version: 0.15
+%% File Version: 0.17
 
 \name{scan.vec}
 \alias{scan.vec}
@@ -11,7 +11,7 @@
 \R Utilities: Scan a Character Vector
 }
 \description{
-The functioon \code{scan.vec} function splits a string into a character 
+The function \code{scan.vec} function splits a string into a character 
 vector. The function \code{scan0} is the 
 \code{\link[base:scan]{base::scan}} function using the default
 \code{what="character"}.
@@ -25,7 +25,7 @@ scan0(file="", ...)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{vec}{
-A string which should be splitted according to blanks
+A string which should be split according to blanks
 }
 \item{file}{
 File to be scanned. See \code{\link[base:scan]{base::scan}}.
