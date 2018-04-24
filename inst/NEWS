@@ -42,7 +42,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.11  |  2018-04-24  |  Last: miceadds 2.11-11
+VERSIONS miceadds 2.11  |  2018-04-24  |  Last: miceadds 2.11-12
 ---------------------------------------------------------------------
 
 ADDED * included utility Rcpp sourcing function source.Rcpp.all()
@@ -50,7 +50,8 @@ NOTE  * included utility functions Revalpr_maxabs() and
         Revalpr_round()
 FIXED * fixed bug in Rfunction_include_argument_values() when some
         arguments contain parentheses
-        
+FIXED * fixed a bugs in mice.1chain() with implausible input arguments
+        (commnuicated by Linying Ji)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
