@@ -14,6 +14,6 @@ version <- function(pkg="miceadds"){
 .onAttach <- function(libname,pkgname){
   d <- utils::packageDescription("miceadds")
   packageStartupMessage( 
-			paste0( "* " , d$Package," " , d$Version," (",d$Date,")") 
-								)
+            paste0( "* " , d$Package," " , d$Version," (",d$Date,")") 
+                                )
 }

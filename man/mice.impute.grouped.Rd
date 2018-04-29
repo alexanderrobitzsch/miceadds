@@ -57,15 +57,15 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 
 \seealso{
 This function uses the \code{\link[grouped:grouped]{grouped::grouped}}
-function in the \pkg{grouped} package.	
+function in the \pkg{grouped} package.    
 }
 
 \examples{
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Imputation of grouped data
-#############################################################################	
-	
+#############################################################################    
+    
 data(data.ma06)
 data <- data.ma06
 
@@ -93,7 +93,7 @@ upp <- list("FC_imp" = data$FC_upp )
 
 # perform imputation
 imp <- mice::mice( data , imputationMethod = impM , predictorMatrix = predM , 
-	    m=1 , maxit=3 , allow.na=TRUE ,  low=low , upp=upp)
+        m=1 , maxit=3 , allow.na=TRUE ,  low=low , upp=upp)
 head( mice::complete(imp))
 }
 }

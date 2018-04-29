@@ -118,7 +118,7 @@ impMethod[ c("idstud","idclass")] <- ""
 # Here, variance homogeneity of residuals is assumed (contrary to
 # the 2l.norm imputation method in the mice package).
 impMethod[ c("Dscore" , "Mscore") ] <- "2l.pan"
-predM[ c("Dscore","Mscore") , "misei" ] <- 2	# random slopes on 'misei'
+predM[ c("Dscore","Mscore") , "misei" ] <- 2    # random slopes on 'misei'
 predM[  , "idclass" ] <- -2
 
 # For imputing 'manote' and 'denote' use contextual effects (i.e. cluszer means)

@@ -72,7 +72,7 @@ datlist2 <- miceadds::mids2datlist( imp2 )
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2		
+datlist <- data.timss2        
    # list of 5 datasets containing 5 plausible values
 
 # remove first four variables

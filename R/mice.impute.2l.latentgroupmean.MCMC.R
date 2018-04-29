@@ -4,10 +4,10 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type ,
                     pls.facs = NULL , imputationWeights = NULL ,
                     interactions = NULL , quadratics = NULL , 
                     mcmc.burnin=100, mcmc.adapt=100, mcmc.iter=1000 , 
-	          		draw.fixed = TRUE, EAP = FALSE , ...)
+                      draw.fixed = TRUE, EAP = FALSE , ...)
 {  
 
-	TAM::require_namespace_msg("MCMCglmm")				
+    TAM::require_namespace_msg("MCMCglmm")                
     # retrieve mice objects
     k <- get("k", envir=parent.frame())           # iteration
     i <- get("i", envir=parent.frame())           # imputation
@@ -45,7 +45,7 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type ,
         # aggregate covariates
         cov2 <- cbind( cluster , covariates )
         covaggr <- mice.impute.2l.groupmean( y , ry , x = cov2 , 
-	  		type = c(-2 , rep(1,ncol(covariates) ) ) ,
+              type = c(-2 , rep(1,ncol(covariates) ) ) ,
                        grmeanwarning=FALSE )
         colnames(covaggr) <- colnames(covariates)
         # aggregation at level 2
@@ -67,7 +67,7 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type ,
         if( ! is.null( plsout$yimp ) ){ 
             covaggr.l2r <- as.matrix(plsout$yimp[,-1])
             covaggr <- as.matrix( covaggr.l2r[ match( cluster , covaggr.l2[,1] ) , ] )
-                }		
+                }        
 
         # model input
         rownames(covaggr) <- NULL # prevent warning
@@ -122,6 +122,6 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type ,
     # match cluster indices
     ind <- match( cluster , a1[,1] )
     ximp <- stats::rnorm( nrow(a1) , mean = a1[,3]+a1[,5] , 
-				sd = (1-EAP)*sqrt(a1[,6]) )[ ind ]
+                sd = (1-EAP)*sqrt(a1[,6]) )[ ind ]
     return(ximp)
 }

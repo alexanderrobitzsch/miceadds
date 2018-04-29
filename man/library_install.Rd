@@ -55,7 +55,7 @@ Further arguments to be passed to
 \dontrun{
 # try to load packages PP and MCMCglmm
 library_install( pkg =  c("PP" , "MCMCglmm") )   
-}	
+}    
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

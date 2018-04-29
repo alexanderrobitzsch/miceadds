@@ -23,10 +23,10 @@ MIcombine.NestedImputationResultList <- function(results, ...){
   dimnames(u)[[2]] <- paste0("Within_Imp" , 1:NW )  
   for (bb in 1:NB){
     for (ww in 1:NW){
-	     u[bb,ww,,] <- vcov( results[[bb]][[ww]] )
-		 qhat[bb,ww,] <- coef( results[[bb]][[ww]] )
-					}
-				}
+         u[bb,ww,,] <- vcov( results[[bb]][[ww]] )
+         qhat[bb,ww,] <- coef( results[[bb]][[ww]] )
+                    }
+                }
   rval <- pool.nmi.scalar.helper( qhat , u , NV , NB , NW )
   rval$Nimp <- Nimp
   # rval$vcov <- rval$Tm

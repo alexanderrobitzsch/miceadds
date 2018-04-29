@@ -67,14 +67,14 @@ imputation it can only be a list.}
     \code{u} if it is provided.
 }
 \item{NMI}{Optional logical indicating whether the \code{NMIcombine}
-	function should be applied for results of 
-	nested multiply imputed datasets.
-	It is set to \code{FALSE} if only a list results of multiply imputed 
+    function should be applied for results of 
+    nested multiply imputed datasets.
+    It is set to \code{FALSE} if only a list results of multiply imputed 
 datasets is available.} 
 \item{comp_cov}{Optional logical indicating whether covariances between
 parameter estimates should be estimated.}
 \item{is_list}{Optional logical indicating whether \code{qhat} and \code{u}
-	are provided as lists as an input. If \code{is_list=FALSE},
+    are provided as lists as an input. If \code{is_list=FALSE},
 appropriate arrays can be used as input.}
 \item{results}{A list of objects}
 \item{expr}{An expression}
@@ -110,7 +110,7 @@ Object of class \code{mipo.nmi} with following entries
 \references{
 Harel, O., & Schafer, J. (2002). \emph{Two stage multiple imputation}. 
 Joint Statistical Meetings - Biometrics Section.
-	
+    
 Harel, O., & Schafer, J. (2003). \emph{Multiple imputation in two stages}. 
 In Proceedings of Federal Committee on Statistical Methodology 2003 Conference.
 
@@ -283,7 +283,7 @@ summary(pmod1c)   # method = 2
 summary(pmod2)
 summary(pmod3a)
 summary(pmod3b)
-}	
+}    
 }
 
 

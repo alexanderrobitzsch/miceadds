@@ -33,7 +33,7 @@ Logical indicating whether variables should be saved
 File type of datasets to be saved, see \code{\link{save.data}}. 
 }
 \item{separate}{Logical indicating whether imputed datasets
-	should be written in separate files.
+    should be written in separate files.
 }
   \item{Mplus}{
 Logical indicating whether files should be written for usage

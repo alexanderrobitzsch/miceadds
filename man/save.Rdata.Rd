@@ -56,7 +56,7 @@ be saved in csv format. The default is saving 1000 rows.
 \examples{
 \dontrun{
 dfr <- matrix( 2*1:12-3 , 4 ,3 )
-save.Rdata( dfr , "dataframe_test" )}	
+save.Rdata( dfr , "dataframe_test" )}    
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

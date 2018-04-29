@@ -3,10 +3,10 @@
 
 ###########################################
 ANSI_extend_table <- function( data , vars , subset , varindex="varindex" , 
-			varname="value")
+            varname="value")
 {
-	x <- data
-	# subset of a dataset
+    x <- data
+    # subset of a dataset
     r <- if (missing(subset)){ 
         rep_len(TRUE, nrow(x))
     } else {
@@ -17,18 +17,18 @@ ANSI_extend_table <- function( data , vars , subset , varindex="varindex" ,
         r & !is.na(r)
     }
     x <- x[r,]
-    data <- x 	
-			
-	NV <- length(vars)
-	vars0 <- setdiff( colnames(data) , vars )		
-	dfr <- NULL
-	NC <- length(vars0)
-	for (vv in 1:NV){
-		# vv <- 1
-		dfr0 <- data.frame( data[ , vars0] , vars[vv] , data[ , vars[vv] ] )
-		colnames(dfr0)[ NC + 1:2 ] <- c(varindex, varname )
-		dfr <- rbind( dfr , dfr0)
-	}
-	return(dfr)
+    data <- x     
+            
+    NV <- length(vars)
+    vars0 <- setdiff( colnames(data) , vars )        
+    dfr <- NULL
+    NC <- length(vars0)
+    for (vv in 1:NV){
+        # vv <- 1
+        dfr0 <- data.frame( data[ , vars0] , vars[vv] , data[ , vars[vv] ] )
+        colnames(dfr0)[ NC + 1:2 ] <- c(varindex, varname )
+        dfr <- rbind( dfr , dfr0)
+    }
+    return(dfr)
 }
-############################################			
+############################################            

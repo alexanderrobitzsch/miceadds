@@ -35,10 +35,10 @@ Matrix (\code{n} x \code{p}) of complete covariates.
 \item{donors}{Number of donors used for random sampling of nearest
 neighbors in imputation}
 \item{method}{Method used for computation of weights in distance function.
-	Options are the Mahalanobis metric (\code{method="Mahalanobis"}),
-	weighted by correlations of covariates with the outcome
-	(\code{method="cor"}) and weighting by linear regression
-	coefficients (\code{method="lm"}).
+    Options are the Mahalanobis metric (\code{method="Mahalanobis"}),
+    weighted by correlations of covariates with the outcome
+    (\code{method="cor"}) and weighting by linear regression
+    coefficients (\code{method="lm"}).
 }
   \item{\dots}{
 Further arguments to be passed
@@ -78,7 +78,7 @@ See also the packages \pkg{hot.deck} and
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Hot deck imputation NHANES dataset
-#############################################################################	
+#############################################################################    
 
 data(nhanes, package="mice")
 dat <- nhanes

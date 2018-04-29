@@ -144,7 +144,7 @@ plot( imp.mi1 , plot.burnin=TRUE ) # trace plot including burnin iterations
 
 # select mids object
 imp.mi2 <- imp.mi1$midsobj
-summary(imp.mi2)	# summary of mids
+summary(imp.mi2)    # summary of mids
 
 # apply mice functionality lm.mids
 mod <- with( imp.mi2 , stats::lm( bmi ~ age ) )

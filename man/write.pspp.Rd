@@ -36,9 +36,9 @@ Maximum number of digits after decimal
 \item{as.factors}{A logical indicating whether all factors and string entries
 should be treated as factors in the output file.}
 \item{use.bat}{A logical indicating whether PSPP executed via a batch file in 
-	the DOS mode (\code{TRUE}) or directly invoked via the \code{system} command
+    the DOS mode (\code{TRUE}) or directly invoked via the \code{system} command
      from within \R (\code{FALSE}).
-	}
+    }
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~

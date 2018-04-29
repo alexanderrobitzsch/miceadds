@@ -60,7 +60,7 @@ be specified as a list defining different numbers of factors
 for all variables to be imputed.
 }
   \item{pls.impMethod}{Imputation method used for in PLS estimation.
-  	  Any imputation method can be used except if \code{imputationWeights}
+        Any imputation method can be used except if \code{imputationWeights}
   is provided. Then, only \code{norm} and \code{pmm} are available.
 The method \code{xplsfacs} creates only PLS factors of the regression
 model. 
@@ -144,7 +144,7 @@ backward compatibility to former \pkg{miceadds} versions.
 \dontrun{
 #############################################################################
 # EXAMPLE 1: PLS imputation method for internet data
-#############################################################################	
+#############################################################################    
 
 data(data.internet)
 dat <- data.internet

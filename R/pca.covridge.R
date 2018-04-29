@@ -8,7 +8,7 @@ pca.covridge <- function( x , ridge = 1E-10 ){
     sdev <- pcax$sdev
     D <- diag( pcax$sdev^2)
     # scores <- t( t(L) %*%  t( x ) )  # = x %*% L
-	scores <- x %*% L
+    scores <- x %*% L
     res <- list( "loadings" = L , "scores" = scores , 
                 "sdev" = sdev )
     return(res)            

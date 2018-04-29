@@ -37,7 +37,7 @@ A vector with entries of system time (see Examples).
 #############################################################################
 # EXAMPLE 1: Output of systime
 #############################################################################
-	
+    
 systime()
   ##  
   ##  > miceadds::systime()

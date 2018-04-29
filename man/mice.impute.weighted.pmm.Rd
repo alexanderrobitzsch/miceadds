@@ -21,11 +21,11 @@ mice.impute.weighted.norm(y, ry, x, ridge = 1e-05, pls.facs = NULL,
      imputationWeights = NULL, interactions = NULL, quadratics = NULL, ...)      
 }
 %- maybe also 'usage' for other objects documented here.
-\arguments{	
+\arguments{    
  \item{y}{Incomplete data vector of length \code{n}}  
 \item{ry}{
-	Vector of missing data pattern (\code{FALSE} -- missing,
-	\code{TRUE} -- observed)
+    Vector of missing data pattern (\code{FALSE} -- missing,
+    \code{TRUE} -- observed)
   }
 \item{x}{Matrix (\code{n} x \code{p}) of complete covariates.
 }
@@ -81,7 +81,7 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 #############################################################################
 # EXAMPLE 1: Imputation using sample weights
 #############################################################################
-	
+    
 data( data.ma01)
 set.seed(977)
 

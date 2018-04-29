@@ -20,7 +20,7 @@ These functions have been removed or replaced in the \pkg{miceadds}
 package. 
 }
 
-\usage{	
+\usage{    
 fast.groupmean(...)
 fast.groupsum(...)
 mice.impute.2l.eap(...)
@@ -31,12 +31,12 @@ mice.impute.2lonly.pmm2(...)
 }
 
 \arguments{
-	\item{\dots}{Arguments to be passed.}
+    \item{\dots}{Arguments to be passed.}
 }
 
 \details{
 The \code{fast.groupmean} function has been replaced by
-\code{\link{GroupMean}}.	
+\code{\link{GroupMean}}.    
 
 The \code{fast.groupsum} function has been replaced by
 \code{\link{GroupSum}}.

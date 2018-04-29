@@ -2,6 +2,6 @@
 ## File Version: 0.02
 
 var0 <- function(x, na.rm=TRUE){
-	sd1 <- stats0( x = x , FUN = stats::var , na.rm=na.rm )
-	return(sd1)
+    sd1 <- stats0( x = x , FUN = stats::var , na.rm=na.rm )
+    return(sd1)
 }

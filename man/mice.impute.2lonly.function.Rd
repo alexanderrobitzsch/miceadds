@@ -18,7 +18,7 @@ defined imputation function at level 1 in \pkg{mice}.
 
 
 \usage{
-mice.impute.2lonly.function(y, ry, x, type, imputationFunction, ...)	
+mice.impute.2lonly.function(y, ry, x, type, imputationFunction, ...)    
 }
 
 
@@ -36,8 +36,8 @@ mice.impute.2lonly.function(y, ry, x, type, imputationFunction, ...)
   Predictors must be specified by '1'.}
 
  \item{imputationFunction}{Imputation function for \pkg{mice}. Any
- 	 imputation method which is defined at level 1 can be used
- 	 for level 2 imputation.
+      imputation method which is defined at level 1 can be used
+      for level 2 imputation.
  } 
   
   \item{...}{Other named arguments.}
@@ -91,9 +91,9 @@ v <- rep( round( runif( G , 0 , 3 ) ) , each=n )
 x <-  stats::rnorm( G*n )
 y <- y1 + beta  * x + .2 * w + .1 * v
 dfr0 <- dfr <- data.frame( "group" = rep(1:G , each=n ) , "x" = x , "y" = y , 
-		"w" = w , "v" = v )
+        "w" = w , "v" = v )
 dfr[ rho.miss * x + rnorm( G*n , sd = sqrt( 1 - rho.miss ) ) < qnorm( missrate ) , 
-		"y" ] <- NA
+        "y" ] <- NA
 dfr[ rep( rnorm(G) , each=n ) < qnorm( missrate ) , "w" ] <- NA
 dfr[ rep( rnorm(G) , each=n ) < qnorm( missrate ) , "v" ] <- NA
 
@@ -126,7 +126,7 @@ imp1 <- mice::mice( as.matrix(dfr) , m = 1 , predictorMatrix = predM1 ,
 
 
 % \seealso{
-% ccc	
+% ccc    
 % }
 
 

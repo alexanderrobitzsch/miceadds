@@ -18,11 +18,11 @@ with.mids.1chain <- function(data, expr, ...) {
     for (i in 1:data$m) {
         data.i <- mice::complete(data, i)
         analyses[[i]] <- eval( expr = substitute(expr), envir = data.i, 
-					enclos = parent.frame())        
+                    enclos = parent.frame())        
         if (is.expression(analyses[[i]])){ 
             analyses[[i]] <- eval(expr = analyses[[i]], 
-						envir = data.i, enclos = parent.frame())
-										}
+                        envir = data.i, enclos = parent.frame())
+                                        }
     }
     # return the complete data analyses as a list of length nimp
     object <- list(call = call, call1 = data$call, nmis = data$nmis, analyses = analyses)

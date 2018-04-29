@@ -74,14 +74,14 @@ Functions for analyses of nested multiply imputed datasets:
 
 
 \examples{
-\dontrun{	
+\dontrun{    
 #############################################################################
 # EXAMPLE 1: Nested multiple imputation for TIMSS data
 #############################################################################
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2		
+datlist <- data.timss2        
    # list of 5 datasets containing 5 plausible values
 
 #** define imputation method and predictor matrix

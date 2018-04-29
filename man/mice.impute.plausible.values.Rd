@@ -32,15 +32,15 @@ mice.impute.plausible.values(y, ry, x, type, alpha = NULL,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
 \item{y}{
-	Incomplete data vector of length \code{n}
+    Incomplete data vector of length \code{n}
 }
   \item{ry}{
-  	Vector of missing data pattern (\code{FALSE} -- missing,
-  	\code{TRUE} -- observed)
+      Vector of missing data pattern (\code{FALSE} -- missing,
+      \code{TRUE} -- observed)
 }
 \item{x}{
-	Matrix (\code{n} \eqn{\times} \code{p}) of complete covariates.
-}	
+    Matrix (\code{n} \eqn{\times} \code{p}) of complete covariates.
+}    
   \item{type}{
 Type of predictor variables. \code{type=3} refers to items belonging to
 a scale to be imputed. A cluster (grouping) variable is defined by
@@ -67,7 +67,7 @@ A standard error of measurement for cases with missing values on a scale
 \item{like}{Individual likelihood evaluated at \code{theta}}
 \item{theta}{Grid of unidimensional latent variable}
 \item{normal.approx}{Logical indicating whether the
-individual posterior should be approximated by a normal distribution}	 
+individual posterior should be approximated by a normal distribution}     
   \item{pviter}{
 Number of iterations in each imputation which should be run until the
 plausible values are drawn
@@ -116,7 +116,7 @@ A vector of length \code{nrow(x)} containing imputed plausible values.
 \references{
 Asparouhov, T., & Muthen, B. (2010). \emph{Plausible values for latent variables 
 using Mplus}. Technical Report. \url{https://www.statmodel.com/papers.shtml}
-	
+    
 Blackwell, M., Honaker, J., & King, G. (2011). 
 \emph{Multiple overimputation: A unified approach to measurement error and 
 missing data}. Technical Report. 
@@ -155,7 +155,7 @@ models.
 #############################################################################
 # EXAMPLE 1: Plausible value imputation for data.ma04 | 2 scales
 #############################################################################
-	
+    
 data(data.ma04)
 dat <- data.ma04
 
@@ -230,7 +230,7 @@ dat11 <- mice::complete( imp , 1 )
 imp2 <- miceadds::mice.1chain( dat , predictorMatrix = predM , burnin=10 , iter=20 , Nimp=4 , 
           alpha.se = alpha.se ,  imputationMethod = impMethod ,  allow.na = TRUE  , alpha = alpha,
           scale.values = scale.values  )
-summary(imp2)	
+summary(imp2)    
 
 #-------------
 #*** Imputation Model 3: Imputation including  group level variables

@@ -2,9 +2,9 @@
 ## File Version: 1.06
 Rhat.mice <- function( mice.object){ 
         #############################################################################
-#	if (class( mice.object) == "mids.1chain"){	
-#		mice.object <- mice.object$midsobj		
-#		}
+#    if (class( mice.object) == "mids.1chain"){    
+#        mice.object <- mice.object$midsobj        
+#        }
     chainMean <- mice.object$chainMean
     chainVar <- mice.object$chainVar
     dcM <- dim(chainMean)

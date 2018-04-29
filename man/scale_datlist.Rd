@@ -76,11 +76,11 @@ A vector or a matrix
 
 
 \examples{
-\dontrun{	
+\dontrun{    
 #############################################################################
 # EXAMPLE 1: Standardized variables in list of multiply imputed datasets
 #############################################################################
-	
+    
 data(data.ma02)
 datlist <- data.ma02
 
@@ -107,7 +107,7 @@ miceadds::ma.wtd.sdNA(data=datlist1a, weights = datlist[[1]]$studwgt , vars = "h
 # -> define a weighting variable at first
 datlist0 <- mitools::imputationList( datlist )
 datlist2a <- miceadds::within.imputationList( datlist0 , {
-	         # define weighting variable
+             # define weighting variable
                  wgt_books <- 1 * ( books <= 3 )
                     } )
 
@@ -171,7 +171,7 @@ imp2 <- miceadds::datlist2mids(sdatlist)
 #*** compare descriptive statistics of objects
 round( miceadds::mean0( mice::complete(imp, action=1) ) , 2 )
 round( miceadds::mean0( mice::complete(imp2, action=1) ) , 2 )
-}	
+}    
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -14,8 +14,8 @@ using namespace arma;
 ///** ma_pmm6_C
 // [[Rcpp::export]]
 Rcpp::NumericVector ma_pmm6_C( Rcpp::NumericVector y , Rcpp::NumericVector ry01, 
-	Rcpp::NumericMatrix x , double ridge, Rcpp::NumericVector coefu1, 
-	Rcpp::NumericVector donorsample ){
+    Rcpp::NumericMatrix x , double ridge, Rcpp::NumericVector coefu1, 
+    Rcpp::NumericVector donorsample ){
    
      // y // varlist only one variable  
      //  ry01(ry01_); // varlist only one variable  
@@ -38,7 +38,7 @@ Rcpp::NumericVector ma_pmm6_C( Rcpp::NumericVector y , Rcpp::NumericVector ry01,
      arma::colvec yobs = yA.rows(ind_obs) ;        
      arma::mat xtx = arma::mat( arma::trans(xobs) * xobs ) ;  
      for (int ii=0;ii<k;ii++){ 
-     	xtx(ii,ii)=xtx(ii,ii)+ridge;
+         xtx(ii,ii)=xtx(ii,ii)+ridge;
      }  
      arma::mat xinv = arma::inv( xtx ) ;  
      arma::mat coef2 = arma::mat( xinv * arma::trans(xobs) * yobs ) ;  

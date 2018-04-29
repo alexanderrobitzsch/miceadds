@@ -9,9 +9,9 @@ scan.vector <- function( vec ){
     return(vec)
 }
 scan.vec <- scan.vector
-####################################################				
+####################################################                
 # scan function with default what = "character"
 scan0 <- function( file="" , ...){
-	scan( file=file , what="character" , ...)			
+    scan( file=file , what="character" , ...)            
 }
-#########################################################		
+#########################################################        

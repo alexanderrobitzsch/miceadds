@@ -61,7 +61,7 @@ str_C.expand.grid( x1 , indices=c(2,1,3) )
 function( xlist , indices=NULL )
 {
      xeg <- expand.grid( xlist)
-     if ( ! is.null(indices) ){	xeg <- xeg[ , indices ]}
+     if ( ! is.null(indices) ){    xeg <- xeg[ , indices ]}
      apply( xeg , 1 , FUN = function(vv){ paste0( vv , collapse="") } )
 }
 ##***************************************************************************

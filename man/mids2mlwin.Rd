@@ -52,7 +52,7 @@ data(nhanes)
 imp <- mice::mice(nhanes)
 # write files to MLwiN
 mids2mlwin(imp, file.prefix="nhanes" )
-}	
+}    
 }
 
 %\seealso{

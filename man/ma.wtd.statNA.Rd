@@ -94,12 +94,12 @@ object.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-Some functions for weighted statistics:	
+Some functions for weighted statistics:    
 \code{\link[stats:weighted.mean]{stats::weighted.mean}},
 \code{\link[stats:cov.wt]{stats::cov.wt}},
 \code{{Hmisc::wtd.var}},
 \code{\link[TAM:weighted_quantile]{TAM::weighted_quantile}}, ...
-	
+    
 See \code{\link{micombine.cor}} for statistical inference of correlation 
 coefficients.
 }
@@ -157,7 +157,7 @@ implist <- mitools::imputationList(datlist)
 # weighted means
 ma.wtd.meanNA(datlist)
 ma.wtd.meanNA(implist)
-ma.wtd.meanNA(imp)	
+ma.wtd.meanNA(imp)    
 
 # weighted quantiles
 ma.wtd.quantileNA( implist, weights=data.ma05$studwgt, vars = c("manote","Dscore")) 
@@ -236,7 +236,7 @@ summary(bdat)
 # skewness
 ma.wtd.skewnessNA( bdat , vars = c("ASMMAT" , "books" ) )
 
-}	
+}    
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

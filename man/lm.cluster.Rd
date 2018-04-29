@@ -123,7 +123,7 @@ mod2 <- miceadds::glm.cluster( data = dat , formula = highmath ~ hisei + female 
                 cluster = "idschool" , family="binomial")
 coef(mod2)
 vcov(mod2)
-summary(mod2)		
+summary(mod2)        
 
 \dontrun{
 #############################################################################

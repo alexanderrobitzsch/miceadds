@@ -37,7 +37,7 @@ This can be \code{Rdata} (for \R binary format, using
 \code{sav} (using \code{\link[sjlabelled:write_spss]{sjlabelled::write_spss}}).
   \code{type} can also be a vector if the data frame should be
   saved in multiple formats.
-  	  }
+        }
 \item{path}{Directory from which the dataset should be loaded}
 \item{row.names}{Optional logical indicating whether row names
 should be included in saved \code{csv} or \code{csv2} files.}
@@ -46,15 +46,15 @@ and \code{type="csv2"} and is \code{"."} for \code{type="table"}.}
 \item{suffix}{Optional suffix in file name.}
 \item{suffix_space}{Optional place holder if a suffix is used.}
 \item{index}{Optional logical indicating whether an index should be
-	included in the first column using the function
-	\code{\link{index.dataframe}}.
+    included in the first column using the function
+    \code{\link{index.dataframe}}.
 }
 \item{systime}{If \code{index=TRUE}, this optional logical indicates
-	whether a time stamp should be included in the second column.
+    whether a time stamp should be included in the second column.
 }
 \item{\dots}{Further arguments to be passed to \code{save},
-	\code{write.csv2}, \code{write.csv}, \code{write.table}
-	or \code{sjlabelled::write_spss}.
+    \code{write.csv2}, \code{write.csv}, \code{write.table}
+    or \code{sjlabelled::write_spss}.
 }
 }
 
@@ -90,8 +90,8 @@ for saving/writing \R data frames.
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Save dataset data.ma01
-#############################################################################	
-	
+#############################################################################    
+    
 #*** use data.ma01 as an example for writing data files using save.data
 data(data.ma01)
 dat <- data.ma01

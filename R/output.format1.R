@@ -11,7 +11,7 @@ output.format1 <- function( stringtype , label , rep.N = 1 , stringlength = 70){
     cat(h1)
     cat( label )
     cat(h1)
-	cat("\n")
+    cat("\n")
 }
 #---------------------------------------------------------------------------
 

@@ -128,7 +128,7 @@ Imputation functions in \pkg{miceadds}:
 }
 
 
-\examples{	
+\examples{    
 #############################################################################
 # EXAMPLE 1: One chain nhanes data | application of 'with' and 'within'
 #############################################################################
@@ -211,7 +211,7 @@ for (ll in 1:M){
 imp1 <- miceadds::mice.nmi( datlist ,  m=4 , maxit=3 )
 summary(imp1)
 # apply linear model and use summary method for all analyses of imputed datasets
-res1 <- with( imp1 , stats::lm( ASMMAT ~ migrant + female ) )	
+res1 <- with( imp1 , stats::lm( ASMMAT ~ migrant + female ) )    
 summary(res1)
 
 # convert mids.nmi object into an object of class NestedImputationList

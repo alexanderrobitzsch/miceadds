@@ -26,7 +26,7 @@ data(data.allison.usnews)
 
 
 \format{
-	
+    
 \itemize{
 \item Data \code{data.allison.gssexp}: 
 

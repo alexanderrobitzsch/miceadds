@@ -60,7 +60,7 @@ dat <- data.internet
 
 # z-standardize all variables in this dataset
 zdat <- miceadds::ma.scale2( dat , missings=TRUE )
-	
+    
 \dontrun{
 #############################################################################
 # SIMULATED EXAMPLE 2: Speed comparison for many cases and many variables
@@ -76,12 +76,12 @@ x <- round( x , 2 )
 
 # compare computation times for 10 replications
 B <- 10
-    s1 <- Sys.time()		# scale in R
+    s1 <- Sys.time()        # scale in R
 for (bb in 1:B){    
     res <- scale(x)
 } ; s2 <- Sys.time() ; d1 <- s2-s1
 
-    s1 <- Sys.time()		# scale in miceadds
+    s1 <- Sys.time()        # scale in miceadds
 for (bb in 1:B){    
     res1 <- miceadds::ma.scale2(x)
 } ; s2 <- Sys.time() ; d2 <- s2-s1

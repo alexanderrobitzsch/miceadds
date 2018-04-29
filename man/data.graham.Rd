@@ -131,7 +131,7 @@ data(data.graham.ex8c)
 \code{ $ posatt71: int  1 1 1 1 1 2 1 NA NA NA ...} \cr
 \code{ $ alc8    : int  1 8 4 8 5 7 1 3 5 3 ...} \cr
 }
-	
+    
 }
 
 %\details{
@@ -150,7 +150,7 @@ Graham, J. W. (2012). \emph{Missing data}. New York: Springer.
 }
 
 \examples{
-\dontrun{	
+\dontrun{    
 library(mitools)
 library(mice)
 library(Amelia)

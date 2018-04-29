@@ -32,8 +32,8 @@ data(data.internet)
 
 \details{
 The following text is copied from 
-\url{http://people.few.eur.nl/groenen/Data/index.htm}	
-	
+\url{http://people.few.eur.nl/groenen/Data/index.htm}    
+    
 The data set is based on a questionnaire on attitudes towards the Internet. It
 consists of evaluations of 22 statements about the Internet by 281 students at
 Erasmus University Rotterdam. These data were gathered around 2002
@@ -52,7 +52,7 @@ Each variable (statement) is coded as follows:
 5. Slightly agree \cr
 6. Agree \cr
 7. Completely agree \cr
-	
+    
 Internet items:
 
  1. Paying using Internet is safe\cr

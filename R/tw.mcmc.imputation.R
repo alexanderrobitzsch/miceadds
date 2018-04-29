@@ -4,17 +4,17 @@ tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
     # set N and J
     N <- nrow(data)
     J <- ncol(data)
-	data0 <- data
-	round.near <- integer
+    data0 <- data
+    round.near <- integer
     # Two-way imputed data (with original non-MCMC procedure)
     data.imp1 <- tw.imputation( data )
-	# eliminate cases with exclusively missings
-	ind1 <- which( rowMeans(is.na(data0)) == 1 )
-	ind2 <- setdiff( 1:(nrow(data)) , ind1 )
-	if ( length(ind1) > 0 ){
-		data <- data[ -ind1 , ]
-		data.imp1 <- data.imp1[ -ind1,]
-						}	
+    # eliminate cases with exclusively missings
+    ind1 <- which( rowMeans(is.na(data0)) == 1 )
+    ind2 <- setdiff( 1:(nrow(data)) , ind1 )
+    if ( length(ind1) > 0 ){
+        data <- data[ -ind1 , ]
+        data.imp1 <- data.imp1[ -ind1,]
+                        }    
     # set initial values
     mu <- mean( as.matrix(data.imp1 ) , na.rm=TRUE )
     beta <- colMeans( data.imp1 , na.rm=TRUE) - mu
@@ -58,7 +58,7 @@ tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
         data.imp[ data.imp < mindat ] <- mindat
         data.imp[ data.imp > maxdat ] <- maxdat
         }
-	# restructure data
-	data0[ ind2, ] <- data.imp 
+    # restructure data
+    data0[ ind2, ] <- data.imp 
     return( data0 )
 }

@@ -1,12 +1,12 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.18
+%% File Version: 0.21
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
 %- Also NEED an '\alias' for EACH other topic documented here.
 
 \title{
-Multilevel Imputation in \pkg{lme4}
+Multilevel Imputation Using \pkg{lme4}
 }
 
 \description{
@@ -34,9 +34,10 @@ interactions and quadratic effects can be defined by respective arguments
 of the matrix of predictors can be reduced by applying partial least squares regression, 
 see \code{\link{mice.impute.pls}}.    
 
-The function now only allows continuous data, ordinal data (\code{model="pmm"}) or
-binary data (\code{model="pmm"} or \code{model="binary"}). Nominal variables cannot 
-be handled.   
+The function now only allows continuous data (\code{model="continuous"}), 
+ordinal data (\code{model="pmm"}) or
+binary data (\code{model="pmm"} or \code{model="binary"}). Nominal variables with 
+missing values cannot (yet) be handled.   
 }
 
 

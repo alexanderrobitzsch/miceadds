@@ -14,12 +14,12 @@ mice_imputation_extract_list_arguments <- function( micearg , vname , miceargdef
         if ( ! is.null(micearg[[vname]] ) ){
             micearg <- micearg[[vname]]
         } else { 
-			micearg <- miceargdefault 
-		}                      
+            micearg <- miceargdefault 
+        }                      
     }
     if ( is.null(micearg) ){
-		micearg <- miceargdefault 
-	}       
+        micearg <- miceargdefault 
+    }       
     return( micearg )
 }
 #*****************************************************************************

@@ -17,7 +17,7 @@ vector. The function \code{scan0} is the
 \code{what="character"}.
 }
 \usage{
-scan.vec(vec)	
+scan.vec(vec)    
 scan.vector(vec)
 
 scan0(file="", ...)
@@ -32,7 +32,7 @@ File to be scanned. See \code{\link[base:scan]{base::scan}}.
 }
 \item{\dots}{
 Further arguments to be passed.
-See \code{\link[base:scan]{base::scan}}.	
+See \code{\link[base:scan]{base::scan}}.    
 }
 }
 %\details{
@@ -62,8 +62,8 @@ See \code{\link[base:scan]{base::scan}}.
 \examples{
 #############################################################################
 # EXAMPLE 1: Example scan.vec | reading a string
-#############################################################################	
-	
+#############################################################################    
+    
 vars <- miceadds::scan.vector( "female urbgrad  groesse  Nausg    grpgroesse   privat  ")
 vars
   ## [1] "female"     "urbgrad"    "groesse"    "Nausg"      "grpgroesse"

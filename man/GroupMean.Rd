@@ -16,9 +16,9 @@ Calculates some groupwise descriptive statistics
 \usage{
 GroupMean(data, group, weights=NULL, extend=FALSE)
 
-GroupSum(data, group, weights=NULL, extend=FALSE)	
+GroupSum(data, group, weights=NULL, extend=FALSE)    
 
-GroupSD(data, group, weights=NULL, extend=FALSE)	
+GroupSD(data, group, weights=NULL, extend=FALSE)    
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

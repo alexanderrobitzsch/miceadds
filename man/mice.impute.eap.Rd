@@ -69,8 +69,8 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Imputation based on known posterior distribution
-#############################################################################	
-	
+#############################################################################    
+    
 data(data.ma03)
 dat <- data.ma03
 

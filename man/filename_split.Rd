@@ -60,7 +60,7 @@ List with components of the file name (see Examples).
 \examples{
 #############################################################################
 # EXAMPLE 1: Demonstration example for filename_split
-#############################################################################	
+#############################################################################    
 
 # file name
 file_name <- "pisa_all_waves_invariant_items_DATA_ITEMS_RENAMED__DESCRIPTIVES__2016-10-12_1000.csv"

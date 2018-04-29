@@ -47,7 +47,7 @@ plausible.value.draw <- function( data , X , beta0 , sig0 , b = b ,
     # one draw of plausible values
     if (pvdraw == FALSE ){ pvdraw <- NULL } else { 
                 pvdraw <- matrix( stats::rnorm( n*pvdraw , mean = rep(EAP,each=pvdraw) , 
-						sd = rep(SD.Post,each=pvdraw) ) , ncol=pvdraw , byrow=T )
+                        sd = rep(SD.Post,each=pvdraw) ) , ncol=pvdraw , byrow=T )
                          }
     # results
     res <- list( "posterior.density" = dens.total , "EAP" = EAP , "SE.EAP" = SD.Post ,

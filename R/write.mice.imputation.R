@@ -5,39 +5,39 @@
 write.mice.imputation <- function( mi.res , name , include.varnames = TRUE , long = TRUE , 
                            mids2spss = TRUE , spss.dec = "," , dattype = NULL ){
 
-		
-		ismids <- TRUE
-		if ( inherits(mi.res ,"mids.1chain" ) ) {
-                mi.res0 <- mi.res		
-				mi.res <- mi.res$midsobj 
-				mi.res$chainMean <- mi.res0$chainMean
-				mi.res$chainVar <- mi.res0$chainVar					
-				ismids <- FALSE
-						}
-		
+        
+        ismids <- TRUE
+        if ( inherits(mi.res ,"mids.1chain" ) ) {
+                mi.res0 <- mi.res        
+                mi.res <- mi.res$midsobj 
+                mi.res$chainMean <- mi.res0$chainMean
+                mi.res$chainVar <- mi.res0$chainVar                    
+                ismids <- FALSE
+                        }
+        
         # pf.subf <- file.path( getwd() , paste("IMP_" , name , sep=""))
-		pf.subf <- file.path( getwd() , paste( name , sep=""))
-		
+        pf.subf <- file.path( getwd() , paste( name , sep=""))
+        
         dir.create(pf.subf)                 # define subdirectory
         # write legend of variables
         writeLines( colnames(mi.res$data) , 
-		      file.path( pf.subf , paste( name , "__LEGEND.txt" , sep="") ))
+              file.path( pf.subf , paste( name , "__LEGEND.txt" , sep="") ))
         l1 <- paste( name , "__IMPDATA" , 1:mi.res$m , ".dat" , sep="")
         utils::write.table( l1 , file.path( pf.subf , 
-		                  paste( name , "__IMP_LIST.txt" , sep="") ) , 
-				       col.names=F , row.names=F , quote=F)
+                          paste( name , "__IMP_LIST.txt" , sep="") ) , 
+                       col.names=F , row.names=F , quote=F)
         # save summary in subdirectory
         sink( file.path( pf.subf , paste( name , "__IMP_SUMMARY.txt" , sep="") ) , split=TRUE )
         cat( paste(Sys.time()) , "\n\n" , pf.subf , "\n\n" )
             print( summary( mi.res ) ) 
         cat("\n\n") ; 
         ####
-	    if ( ismids ){
+        if ( ismids ){
         if ( ( mi.res$m > 1 ) & ( dim(mi.res$chainMean)[2]  > 1 )){    
-				h1 <- Rhat.mice( mi.res ) 
-				for (vv in seq(2,ncol(h1))){ h1[,vv] <- round( h1[,vv] , 3 ) }
-				print(h1)
-						} }
+                h1 <- Rhat.mice( mi.res ) 
+                for (vv in seq(2,ncol(h1))){ h1[,vv] <- round( h1[,vv] , 3 ) }
+                print(h1)
+                        } }
         print( utils::citation()) ; 
         print( utils::citation( "mice" ) ); 
         print(Sys.info()) ; 
@@ -71,10 +71,10 @@ write.mice.imputation <- function( mi.res , name , include.varnames = TRUE , lon
                                 }
         # Mplus-Body                
         if ( ! include.varnames ){
-		
-			vars <- colnames(mi.res$data) 		
-			vars2 <- VariableNames2String( vars , breaks=60)
-		
+        
+            vars <- colnames(mi.res$data)         
+            vars2 <- VariableNames2String( vars , breaks=60)
+        
             l1 <- c("TITLE: xxxx ;" , "" , "DATA: " , "" ,
                     paste( "FILE IS " , name , "__IMP_LIST.txt;" , sep=""),  "TYPE = IMPUTATION;"  , "" , 
                         "VARIABLE:" , "" , "NAMES ARE" , 
@@ -87,10 +87,10 @@ write.mice.imputation <- function( mi.res , name , include.varnames = TRUE , lon
         # write predictorMatrix and imputationMethod
         utils::write.csv2( mi.res$method  , file.path( pf.subf , paste( name , "__IMPMETHOD.csv" , sep="")) , quote=F)
         utils::write.csv2( mi.res$predictorMatrix  , file.path( pf.subf , paste( name , "__PREDICTORMATRIX.csv" , sep="")) , quote=F)               
-		# write mice object as a Rdata object
-		save( mi.res , file=file.path( pf.subf , paste( name , ".Rdata" , sep="") ) )
-		# save list of imputed datasets
-		datlist <- mids2datlist( mi.res )
-		save( datlist , file=file.path( pf.subf , paste( name , "__DATALIST.Rdata" , sep="") ) )		
+        # write mice object as a Rdata object
+        save( mi.res , file=file.path( pf.subf , paste( name , ".Rdata" , sep="") ) )
+        # save list of imputed datasets
+        datlist <- mids2datlist( mi.res )
+        save( datlist , file=file.path( pf.subf , paste( name , "__DATALIST.Rdata" , sep="") ) )        
         }
 #########################################################################

@@ -33,9 +33,9 @@ of freedom).
 A logical indicating whether results should be displayed at the console 
 }
 \item{version}{Integer indicating which calculation formula should be used.
-	The default \code{version=1} refers to the correct formula as in Enders (2010),
-	while \code{version=0} uses an incorrect formula as printed in Allison (2001).
-	The incorrect calculation \code{version=0} was included in \pkg{miceadds} versions
+    The default \code{version=1} refers to the correct formula as in Enders (2010),
+    while \code{version=0} uses an incorrect formula as printed in Allison (2001).
+    The incorrect calculation \code{version=0} was included in \pkg{miceadds} versions
 smaller than version 2.0. 
 See also \emph{http://statisticalhorizons.com/wp-content/uploads/2012/01/combchi.sas}.
 }

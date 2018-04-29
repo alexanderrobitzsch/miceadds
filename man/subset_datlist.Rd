@@ -42,7 +42,7 @@ subset_datlist(datlist, subset = TRUE, select = NULL, expr_subset = NULL ,
                      index = NULL , ...)
                      
 subset_nested.datlist( datlist , subset = TRUE, select = NULL , expr_subset = NULL, 
-	  index_between = NULL , index_within = NULL , toclass = "nested.datlist" ,
+      index_between = NULL , index_within = NULL , toclass = "nested.datlist" ,
           simplify = FALSE )
          
 \method{subset}{nested.datlist}(x, subset , select = NULL , expr_subset = NULL, 
@@ -78,7 +78,7 @@ The object class in which the datasets should be saved.
 \item{index_between}{Index for between nest datasets}
 \item{index_within}{Index for within nest datasets}
 \item{simplify}{Optional logical indicating whether a nested multiply
-	imputed dataset should be simplified to a multiplied imputed dataset.
+    imputed dataset should be simplified to a multiplied imputed dataset.
 }
 \item{x}{Object containing multiply imputed or nested multiply imputed
 datasets}

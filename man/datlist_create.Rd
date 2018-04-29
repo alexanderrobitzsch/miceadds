@@ -48,7 +48,7 @@ For \code{nested.datlist_create}: nested list of datasets,
 \code{nested.datlist}
 }
 \item{datlist}{Object of classes \code{datlist}, \code{imputationList},
-	\code{nested.datlist} or \code{NestedImputationList}.
+    \code{nested.datlist} or \code{NestedImputationList}.
 }
 \item{Nimp}{Vector of length 2 containing numbers of between
 and within imputations.}

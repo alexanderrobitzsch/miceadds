@@ -8,8 +8,8 @@ mice.impute.weighted.norm <- function(y, ry, x, ridge = .00001 , pls.facs = NULL
     xobs <- x[ry,]
     yobs <- y[ry]
     if ( is.null( imputationWeights ) ){ 
-		imputationWeights <- rep(1 , length(y) ) 
-	}
+        imputationWeights <- rep(1 , length(y) ) 
+    }
     weights.obs <- imputationWeights[ ry   ]
     # standardize all weights to one
     weights.obs <- length(weights.obs) * weights.obs / sum( weights.obs )
@@ -26,12 +26,12 @@ mice.impute.weighted.norm <- function(y, ry, x, ridge = .00001 , pls.facs = NULL
    
     if ( is.null(pls.facs) ){ 
         parm <- mice_imputation_weighted_norm_draw( yobs = yobs , xobs = xobs , 
-						ry = ry , y = y , x = x ,
-                        weights.obs = weights.obs , ... )   		
+                        ry = ry , y = y , x = x ,
+                        weights.obs = weights.obs , ... )           
         yimp <- x[!ry,  ] %*% parm$beta + stats::rnorm(sum(!ry)) * parm$sigma
     }
     return(yimp)
 }
 
-	
-	
+    
+    

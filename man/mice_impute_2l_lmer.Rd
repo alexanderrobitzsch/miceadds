@@ -36,7 +36,7 @@ mice.impute.2l.continuous(y, ry, x, type, intercept=TRUE,
 mice.impute.2l.pmm(y, ry, x, type, intercept=TRUE, 
     groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
     glmer.warnings=TRUE, donors = 5 , match_sampled_pars = TRUE , 
-    blme_use = FALSE , blme_args = NULL , ... )	
+    blme_use = FALSE , blme_args = NULL , ... )    
     
 mice.impute.2l.binary(y, ry, x, type, intercept=TRUE, 
     groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
@@ -175,11 +175,11 @@ package.
 
 #--- simulate missing values
 set.seed(976)
-G <- 30		# number of groups
-n <- 8		# number of persons per group
-iccx <- .2	# intra-class correlation X
-iccy <- .3	# latent intra-class correlation binary outcome
-bx <- .4	# regression coefficient
+G <- 30        # number of groups
+n <- 8        # number of persons per group
+iccx <- .2    # intra-class correlation X
+iccy <- .3    # latent intra-class correlation binary outcome
+bx <- .4    # regression coefficient
 threshy <- stats::qnorm(.70)  # threshold for y
 x <- rep( rnorm( G , sd = sqrt( iccx) ) , each=n )  +
             rnorm(G*n , sd = sqrt( 1 - iccx) )

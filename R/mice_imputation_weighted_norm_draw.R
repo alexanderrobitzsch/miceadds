@@ -1,16 +1,16 @@
 ## File Name: mice_imputation_weighted_norm_draw.R
 ## File Version: 0.03
-	
+    
 #***** .weighted.norm.draw *******************
 mice_imputation_weighted_norm_draw <- function( yobs , xobs , ry , y , x , 
-	weights.obs , ridge = .00001 , ... ){
+    weights.obs , ridge = .00001 , ... ){
     WW <- diag( weights.obs )
     # X'*W*X
     xtx <- t(xobs) %*% WW %*% xobs
     pen <- ridge * diag(xtx)
     if (length(pen)==1){
-		pen <- matrix(pen)
-	}
+        pen <- matrix(pen)
+    }
     v <- solve(xtx + diag(pen))
     # V * ( X'*W*Y)
     coef <- t(yobs %*% WW %*% xobs %*% v)

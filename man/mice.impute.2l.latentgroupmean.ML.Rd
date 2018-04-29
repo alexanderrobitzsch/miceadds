@@ -30,12 +30,12 @@ individuals within the same group.
 \usage{
 mice.impute.2l.latentgroupmean.ml(y, ry, x, type, pls.facs = NULL, 
     imputationWeights = NULL, interactions = NULL, quadratics = NULL, 
-    EAP=FALSE, ...)	
-	
+    EAP=FALSE, ...)    
+    
 mice.impute.2l.latentgroupmean.mcmc(y, ry, x, type, pls.facs = NULL, 
     imputationWeights = NULL, interactions = NULL, quadratics = NULL, 
     mcmc.burnin=100, mcmc.adapt=100, mcmc.iter=1000, draw.fixed=TRUE, EAP=FALSE, ...)
-	
+    
 mice.impute.2l.groupmean(y, ry, x, type, grmeanwarning = TRUE, ...)
 
 mice.impute.2l.groupmean.elim(y, ry, x, type, ...)
@@ -107,7 +107,7 @@ A vector of length \code{y} containing imputed group means.
 Croon, M. A., & van Veldhoven, M. J. (2007). Predicting group-level outcome 
 variables from variables measured at the individual level: a latent variable 
 multilevel model. \emph{Psychological Methods}, \bold{12}, 45-57.
-	
+    
 Luedtke, O., Marsh, H. W., Robitzsch, A., Trautwein, U., Asparouhov, T., & 
 Muthen, B. (2008). The multilevel latent covariate model: a new, more 
 reliable approach to group-level effects in contextual studies. 
@@ -136,8 +136,8 @@ Alexander Robitzsch, Simon Grund
 #############################################################################
 # EXAMPLE 1: Two-level imputation data.ma05 dataset with imputation
 #            of a latent group mean
-#############################################################################	
-	
+#############################################################################    
+    
 data(data.ma05)
 dat <- data.ma05
 

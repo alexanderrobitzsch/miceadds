@@ -18,11 +18,11 @@ tw.imputation <- function( data , integer = FALSE ){
         tw[ tw > m2 ] <- m2
         tw.raw <- data
         tw.raw[ is.na(data)  ] <- tw[ is.na(data) ]
-		if (integer ){ 
-			gt <- tw.raw - floor(tw.raw)
-			tw1 <- matrix( stats::rbinom(  as.matrix(gt) , 1 , prob = as.matrix(gt) ) , 
-			               ncol = p , byrow=FALSE)
-			tw.item <- floor(tw.raw) +  tw1	
-			  } else { tw.item <- tw.raw }
+        if (integer ){ 
+            gt <- tw.raw - floor(tw.raw)
+            tw1 <- matrix( stats::rbinom(  as.matrix(gt) , 1 , prob = as.matrix(gt) ) , 
+                           ncol = p , byrow=FALSE)
+            tw.item <- floor(tw.raw) +  tw1    
+              } else { tw.item <- tw.raw }
         return( tw.item )
         }

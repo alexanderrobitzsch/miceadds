@@ -58,7 +58,7 @@ index of imputed dataset for \code{complete.mids.1chain}.
 \seealso{
 See also the corresponding \code{\link[mice:complete]{mice::complete}} function
 and \code{\link[mitml:mitmlComplete]{mitml::mitmlComplete}}. 
-	
+    
 Imputation methods: \code{\link{mice.nmi}}, \code{\link{mice.1chain}} 
 }
 
@@ -71,7 +71,7 @@ Imputation methods: \code{\link{mice.nmi}}, \code{\link{mice.1chain}}
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2		
+datlist <- data.timss2        
 
 # remove first four variables
 M <- length(datlist)

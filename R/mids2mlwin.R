@@ -14,9 +14,9 @@ mids2mlwin <- function(imp, file.prefix, path = getwd(), sep = " ", dec = ".", s
   write(x = impnames, file = f1 , append = T, ncolumns = m, sep = "\t")
   for (k in 1:m){
     h1 <- mice::complete(imp, k)
-	if ( ! is.null(X) ){
-		h1 <- data.frame(  X , h1	)										
-	  				   }	
+    if ( ! is.null(X) ){
+        h1 <- data.frame(  X , h1    )                                        
+                         }    
     utils::write.table(x = h1 , file = impnames[k], dec = dec, sep = sep, 
                 col.names = F, row.names = F, quote = F, eol = "\n", )
   }

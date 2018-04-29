@@ -35,18 +35,18 @@ This can be \code{Rdata} (for \R binary format, using \code{\link{load.Rdata2}})
 \code{csv2} (using \code{\link[utils:read.csv]{utils::read.csv}}),
 \code{table} (using \code{\link[utils:read.table]{utils::read.table}}; the dataset
 must have the file extension \code{dat} or \code{txt}) or 
-\code{sav} (using \code{\link[foreign:read.spss]{foreign::read.spss}}).	  
-  	  }
+\code{sav} (using \code{\link[foreign:read.spss]{foreign::read.spss}}).      
+        }
 \item{path}{Directory from which the dataset should be loaded.
 It can also be set to \code{NULL} if the absolute path is already
 included in \code{filename}.}
 \item{spss.default}{Optional logical which is only applied
-	for \code{type="sav"} indicating whether the arguments
-	\code{to.data.frame=TRUE} and \code{use.value.labels=FALSE}
-	are used.}
+    for \code{type="sav"} indicating whether the arguments
+    \code{to.data.frame=TRUE} and \code{use.value.labels=FALSE}
+    are used.}
 \item{\dots}{Further arguments to be passed to \code{load.Rdata2},
-	\code{read.csv2}, \code{read.csv}, \code{read.table}
-	or \code{foreign::read.spss}.
+    \code{read.csv2}, \code{read.csv}, \code{read.table}
+    or \code{foreign::read.spss}.
 }
 }
 
