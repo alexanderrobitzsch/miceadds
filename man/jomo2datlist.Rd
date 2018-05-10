@@ -1,5 +1,5 @@
 %% File Name: jomo2datlist.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{jomo2datlist}
 \alias{jomo2datlist}
@@ -61,7 +61,7 @@ dat <- nhanes
 imp1 <- jomo::jomo1con(Y = dat , nburn=100, nbetween=10, nimp=5)
 # convert into a list of datasets
 datlist1 <- miceadds::jomo2datlist(imp1)
-# convert into mids object    
+# convert into mids object
 datlist2 <- miceadds::jomo2datlist(imp1)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

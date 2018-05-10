@@ -1,5 +1,5 @@
 %% File Name: pool.mids.nmi.Rd
-%% File Version: 0.43
+%% File Version: 0.44
 
 \name{pool.mids.nmi}
 \alias{pool.mids.nmi}
@@ -16,7 +16,7 @@ Pooling for Nested Multiple Imputation
 }
 
 \description{
-Statistical inference for scalar parameters for nested multiply imputed 
+Statistical inference for scalar parameters for nested multiply imputed
 datasets (Rubin, 2003; Harel & Schafer, 2002, 2003; Reiter & Raghanuthan, 2007;
 Harel, 2007).
 
@@ -34,7 +34,7 @@ NMIcombine( qhat , u=NULL , se = NULL , NMI=TRUE, comp_cov=TRUE, is_list=TRUE,
        method = 1)
 
 pool_nmi( qhat , u=NULL , se = NULL , NMI=TRUE, comp_cov=TRUE, is_list=TRUE,
-       method = 1)       
+       method = 1)
 
 NMIextract(results, expr, fun)
 
@@ -67,10 +67,10 @@ imputation it can only be a list.}
     \code{u} if it is provided.
 }
 \item{NMI}{Optional logical indicating whether the \code{NMIcombine}
-    function should be applied for results of 
+    function should be applied for results of
     nested multiply imputed datasets.
-    It is set to \code{FALSE} if only a list results of multiply imputed 
-datasets is available.} 
+    It is set to \code{FALSE} if only a list results of multiply imputed
+datasets is available.}
 \item{comp_cov}{Optional logical indicating whether covariances between
 parameter estimates should be estimated.}
 \item{is_list}{Optional logical indicating whether \code{qhat} and \code{u}
@@ -108,21 +108,21 @@ Object of class \code{mipo.nmi} with following entries
 
 
 \references{
-Harel, O., & Schafer, J. (2002). \emph{Two stage multiple imputation}. 
+Harel, O., & Schafer, J. (2002). \emph{Two stage multiple imputation}.
 Joint Statistical Meetings - Biometrics Section.
-    
-Harel, O., & Schafer, J. (2003). \emph{Multiple imputation in two stages}. 
+
+Harel, O., & Schafer, J. (2003). \emph{Multiple imputation in two stages}.
 In Proceedings of Federal Committee on Statistical Methodology 2003 Conference.
 
-Harel, O. (2007). Inferences on missing information under multiple imputation 
-and two-stage multiple imputation. \emph{Statistical Methodology}, 
+Harel, O. (2007). Inferences on missing information under multiple imputation
+and two-stage multiple imputation. \emph{Statistical Methodology},
 \bold{4(1)}, 75-89.
 
-Reiter, J. P., & Raghunathan, T. E. (2007). The multiple adaptations of 
-multiple imputation. \emph{Journal of the American Statistical Association}, 
+Reiter, J. P., & Raghunathan, T. E. (2007). The multiple adaptations of
+multiple imputation. \emph{Journal of the American Statistical Association},
 \bold{102(480)}, 1462-1471.
 
-Rubin, D. B. (2003). Nested multiple imputation of NMES via partially 
+Rubin, D. B. (2003). Nested multiple imputation of NMES via partially
 incompatible MCMC. \emph{Statistica Neerlandica}, \bold{57(1)}, 3-18.
 }
 
@@ -135,11 +135,11 @@ incompatible MCMC. \emph{Statistica Neerlandica}, \bold{57(1)}, 3-18.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[mice:pool]{mice::pool}}, 
+\code{\link[mice:pool]{mice::pool}},
 \code{\link[mitools:MIcombine]{mitools::MIcombine}},
 \code{\link[mitools:MIextract]{mitools::MIextract}}
 
-\code{\link{mice.nmi}}, 
+\code{\link{mice.nmi}},
 \code{\link{MIcombine.NestedImputationResultList}}
 }
 
@@ -152,13 +152,13 @@ incompatible MCMC. \emph{Statistica Neerlandica}, \bold{57(1)}, 3-18.
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2         
+datlist <- data.timss2
 # remove first four variables
 M <- length(datlist)
 for (ll in 1:M){
     datlist[[ll]] <- datlist[[ll]][ , -c(1:4) ]
                }
-                
+
 #***************
 # (1) nested multiple imputation using mice
 imp1 <- miceadds::mice.nmi( datlist ,  m=3 , maxit=2 )
@@ -169,13 +169,13 @@ summary(imp1)
 res1 <- with( imp1 , stats::lm( ASMMAT ~ migrant + female ) ) # fit
 pres1 <- miceadds::pool.mids.nmi( res1 )  # pooling
 summary(pres1)  # summary
-coef(pres1) 
+coef(pres1)
 vcov(pres1)
 
 #***************
 # (3) second linear regression: likesc ~ migrant + books
 res2 <- with( imp1 , stats::lm( likesc ~ migrant + books  ) )
-pres2 <- miceadds::pool.mids.nmi( res2 ) 
+pres2 <- miceadds::pool.mids.nmi( res2 )
 summary(pres2)
 
 #***************
@@ -193,11 +193,11 @@ str(datlist2, max.level=1)
 
 # double application of lapply to the list of list of nested imputed datasets
 res4 <- lapply( datlist2 , FUN = function(dl){
-    lapply( dl , FUN = function(data){ 
+    lapply( dl , FUN = function(data){
             stats::lm( ASMMAT ~ migrant + books  , data = data )
                                 } )
                 }  )
-                
+
 # extract coefficients
 qhat <- lapply( res4 , FUN = function(bb){
             lapply( bb , FUN = function(ww){
@@ -205,22 +205,22 @@ qhat <- lapply( res4 , FUN = function(bb){
                         } )
                 } )
 # shorter function
-NMIextract( results=res4 , fun=coef )                
+NMIextract( results=res4 , fun=coef )
 
 # extract covariance matrices
 u <- lapply( res4 , FUN = function(bb){
             lapply( bb , FUN = function(ww){
                     vcov(ww)
                         } )
-                } )        
+                } )
 # shorter function
-NMIextract( results=res4 , fun=vcov )                               
+NMIextract( results=res4 , fun=vcov )
 
 # apply statistical inference using the NMIcombine function
-pres4 <- miceadds::NMIcombine( qhat=qhat , u=u )                
+pres4 <- miceadds::NMIcombine( qhat=qhat , u=u )
 summary(pres4)
 
-#--- statistical inference if only standard errors are available     
+#--- statistical inference if only standard errors are available
 # extract standard errors
 se <- lapply( res4 , FUN = function(bb){
             lapply( bb , FUN = function(ww){
@@ -228,12 +228,12 @@ se <- lapply( res4 , FUN = function(bb){
                 sww <- summary(ww)
                 sww$coef[,"Std. Error"]
                         } )
-                } )        
+                } )
 se
 # apply NMIcombine function
-pres4b <- miceadds::NMIcombine( qhat=qhat , se=se )                
+pres4b <- miceadds::NMIcombine( qhat=qhat , se=se )
 # compare results
-summary(pres4b)  
+summary(pres4b)
 summary(pres4)
 
 #############################################################################
@@ -263,7 +263,7 @@ semod <- lapply( mod , FUN = function(mm){
                         } )
 # extract covariance matrix
 vmod <- mitools::MIextract( mod , fun = vcov)
-                        
+
 #*** pooling with NMIcombine with se (1a) and vcov (1b) as input
 pmod1a <- miceadds::NMIcombine( qhat = cmod , se = semod , NMI = FALSE )
 pmod1b <- miceadds::NMIcombine( qhat = cmod , u = vmod , NMI = FALSE )
@@ -283,7 +283,7 @@ summary(pmod1c)   # method = 2
 summary(pmod2)
 summary(pmod3a)
 summary(pmod3b)
-}    
+}
 }
 
 

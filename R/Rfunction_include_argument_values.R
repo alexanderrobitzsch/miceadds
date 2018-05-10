@@ -1,5 +1,5 @@
 ## File Name: Rfunction_include_argument_values.R
-## File Version: 0.12
+## File Version: 0.13
 
 Rfunction_include_argument_values <- function(string, maxlen=70)
 {
@@ -8,17 +8,17 @@ Rfunction_include_argument_values <- function(string, maxlen=70)
     a1 <- c( substring(string,1, ind1-1) ,
                 substring(string, ind1+1, nchar(string) ) )
     s1 <- a1[2]
-    
-    ind1 <- string_find_last(string=s1, symbol=")" )        
+
+    ind1 <- string_find_last(string=s1, symbol=")" )
     # s1 <- strsplit( s1 , split= ")" , fixed = TRUE )[[1]][1]
-    s1 <- substring(s1,1, ind1-1)    
+    s1 <- substring(s1,1, ind1-1)
     s1 <- gsub("\n" , "" , s1 )
     s1 <- strsplit( s1 , split= "," , fixed = TRUE )[[1]]
     NS <- length(s1)
     s2 <- gsub( " " , "" , s1 )
     M0 <- nchar(a1[1])
     for (ss in 1:NS){
-        s2[ss] <- gsub( " " , "" , s2[ss] )            
+        s2[ss] <- gsub( " " , "" , s2[ss] )
         if ( length( grep("=" , s1[ss] ) ) == 0 ){
             h1 <- gsub( " " , "" , s1[ss] )
             s2[ss] <- paste0( h1 , "=" , h1 )

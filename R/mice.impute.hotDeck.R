@@ -1,9 +1,9 @@
 ## File Name: mice.impute.hotDeck.R
-## File Version: 0.04
-mice.impute.hotDeck <- function (y, ry, x, donors=5 , 
+## File Version: 0.05
+mice.impute.hotDeck <- function (y, ry, x, donors=5 ,
     method = "Mahalanobis" , ...)
 {
-    
+
     N1 <- sum(ry)
     N0 <- sum(!ry)
     #*** center x variables
@@ -42,7 +42,7 @@ mice.impute.hotDeck <- function (y, ry, x, donors=5 ,
             X0_nn <- matrix( X0[nn,] , nrow=N1 , ncol=NV , byrow=TRUE )
             Xdist_nn <- X0_nn - X1
             distmat[nn,] <- rowSums( W0 * Xdist_nn^2 )
-        }        
+        }
     }
     #***** matching
     m1 <- sirt::rowKSmallest2.sirt(matr=distmat , K=donors )$smallind
@@ -50,8 +50,8 @@ mice.impute.hotDeck <- function (y, ry, x, donors=5 ,
     #*** imputed values
     yimp <- y[ry2][g1]
     #--- output
-    return(yimp)    
+    return(yimp)
 }
 
-    
-    
+
+

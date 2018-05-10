@@ -1,5 +1,5 @@
 %% File Name: in_CI.Rd
-%% File Version: 0.04
+%% File Version: 0.05
 
 \name{in_CI}
 \alias{in_CI}
@@ -8,8 +8,8 @@
 Indicator Function for Analyzing Coverage
 }
 \description{
-Indicator function for analyzing coverage. The output indicates whether a 
-value lies within a computed confidence interval. 
+Indicator function for analyzing coverage. The output indicates whether a
+value lies within a computed confidence interval.
 }
 \usage{
 in_CI(est, se, true, level = 0.95, df = Inf)

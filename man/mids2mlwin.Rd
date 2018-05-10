@@ -1,5 +1,5 @@
 %% File Name: mids2mlwin.Rd
-%% File Version: 0.06
+%% File Version: 0.07
 
 \name{mids2mlwin}
 \alias{mids2mlwin}
@@ -23,12 +23,12 @@ mids2mlwin(imp, file.prefix, path = getwd(), sep = " ", dec = ".", silent = FALS
    \item{sep}{The separator between the data fields.}
 
   \item{dec}{The decimal separator for numerical data.}
-  
+
   \item{silent}{A logical flag stating whether the names of
   the files should be printed.}
 
   \item{X}{Optional data frame of variables to be included in
-imputed datasets.}  
+imputed datasets.}
 }
 \value{
   The return value is \code{NULL}.
@@ -52,7 +52,7 @@ data(nhanes)
 imp <- mice::mice(nhanes)
 # write files to MLwiN
 mids2mlwin(imp, file.prefix="nhanes" )
-}    
+}
 }
 
 %\seealso{

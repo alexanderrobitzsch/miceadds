@@ -1,5 +1,5 @@
 %% File Name: mice.impute.weighted.pmm.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{mice.impute.weighted.pmm}
 \alias{mice.impute.weighted.pmm}
@@ -14,15 +14,15 @@ Imputation by predictive mean matching or normal linear regression
 using sampling weights.
 }
 \usage{
-mice.impute.weighted.pmm(y, ry, x, imputationWeights = NULL, 
+mice.impute.weighted.pmm(y, ry, x, imputationWeights = NULL,
       pls.facs = NULL, interactions = NULL, quadratics = NULL, ...)
-      
-mice.impute.weighted.norm(y, ry, x, ridge = 1e-05, pls.facs = NULL, 
-     imputationWeights = NULL, interactions = NULL, quadratics = NULL, ...)      
+
+mice.impute.weighted.norm(y, ry, x, ridge = 1e-05, pls.facs = NULL,
+     imputationWeights = NULL, interactions = NULL, quadratics = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
-\arguments{    
- \item{y}{Incomplete data vector of length \code{n}}  
+\arguments{
+ \item{y}{Incomplete data vector of length \code{n}}
 \item{ry}{
     Vector of missing data pattern (\code{FALSE} -- missing,
     \code{TRUE} -- observed)
@@ -81,7 +81,7 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 #############################################################################
 # EXAMPLE 1: Imputation using sample weights
 #############################################################################
-    
+
 data( data.ma01)
 set.seed(977)
 
@@ -100,7 +100,7 @@ meth[ c("paredu" , "books" , "migrant" ) ] <- "weighted.norm"
 pm <- imp0$predictorMatrix
 pm[ , 1:3 ] <- 0
 # do imputation
-imp <- mice::mice( dat , predictorMatrix=pm , imputationMethod=meth , 
+imp <- mice::mice( dat , predictorMatrix=pm , imputationMethod=meth ,
            imputationWeights= dat[,"studwgt"] , m=3 , maxit=5)
 }
 }

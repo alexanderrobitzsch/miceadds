@@ -1,5 +1,5 @@
 %% File Name: mice.impute.grouped.Rd
-%% File Version: 0.09
+%% File Version: 0.10
 
 \name{mice.impute.grouped}
 \alias{mice.impute.grouped}
@@ -8,7 +8,7 @@
 Imputation of a Variable with Grouped Values
 }
 \description{
-Imputes a variable with continuous values 
+Imputes a variable with continuous values
 whose original values are only available as grouped values.
 }
 
@@ -57,22 +57,22 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 
 \seealso{
 This function uses the \code{\link[grouped:grouped]{grouped::grouped}}
-function in the \pkg{grouped} package.    
+function in the \pkg{grouped} package.
 }
 
 \examples{
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Imputation of grouped data
-#############################################################################    
-    
+#############################################################################
+
 data(data.ma06)
 data <- data.ma06
 
 # define the variable "FC_imp" which should contain the variables to be imputed
 data$FC_imp <- NA
 V <- ncol(data)
-# variables not to be used for imputation 
+# variables not to be used for imputation
 vars_elim <-  c("id" , "FC","FC_low","FC_upp")
 
 # define imputation methods
@@ -92,7 +92,7 @@ low <- list("FC_imp" = data$FC_low )
 upp <- list("FC_imp" = data$FC_upp )
 
 # perform imputation
-imp <- mice::mice( data , imputationMethod = impM , predictorMatrix = predM , 
+imp <- mice::mice( data , imputationMethod = impM , predictorMatrix = predM ,
         m=1 , maxit=3 , allow.na=TRUE ,  low=low , upp=upp)
 head( mice::complete(imp))
 }

@@ -1,5 +1,5 @@
 %% File Name: datalist2mids.Rd
-%% File Version: 0.24
+%% File Version: 0.25
 
 \name{datlist2mids}
 \alias{datalist2mids}
@@ -90,10 +90,10 @@ summary( mice::pool( mod ) )
 library(Zelig)
 mod2 <- Zelig::zelig( bmi ~ age , model="ls" , data=a.out , cite=FALSE)
 summary(mod2)
-  ##  Model: Combined Imputations 
-  ##              Estimate Std.Error z value Pr(>|z|)    
+  ##  Model: Combined Imputations
+  ##              Estimate Std.Error z value Pr(>|z|)
   ##  (Intercept)   30.625     2.627  11.658  0.00000 ***
-  ##  age           -2.281     1.323  -1.723  0.08482    
+  ##  age           -2.281     1.323  -1.723  0.08482
   ##  ---
   ##  Signif. codes:  '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -107,7 +107,7 @@ summary( mitools::MIcombine( mod3 ) )
   ##        MIcombine.default(mod3)
   ##                results       se    (lower     upper) missInfo
   ##  (Intercept) 30.624652 2.626886 25.304594 35.9447092     51 %
-  ##  age         -2.280607 1.323355 -4.952051  0.3908368     49 % 
+  ##  age         -2.280607 1.323355 -4.952051  0.3908368     49 %
 }
 }
 

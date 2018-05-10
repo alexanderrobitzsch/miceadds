@@ -1,5 +1,5 @@
 ## File Name: nested.datlist2datlist.R
-## File Version: 0.04
+## File Version: 0.05
 
 ##########################################################
 # converts a nested list of multiply imputed
@@ -8,9 +8,9 @@ nested.datlist2datlist <- function(datlist){
         CALL <- match.call()
         if (inherits(datlist,"NestedImputationList")){
             is_NestedImputationList <- TRUE
-            datlist <- datlist$imputations 
+            datlist <- datlist$imputations
                 } else {
-            is_NestedImputationList <- FALSE                    
+            is_NestedImputationList <- FALSE
                 }
         Nimp <- c( length(datlist) , length(datlist[[1]] ) )
         names(Nimp) <- c("Between" , "Within")
@@ -31,10 +31,10 @@ nested.datlist2datlist <- function(datlist){
                             } else {
             datlist0 <- mitools::imputationList(datlist0)
             datlist0$call <- CALL
-                                }                            
-        return(datlist0)                        
+                                }
+        return(datlist0)
                 }
-##########################################################                
+##########################################################
 
 ####################################################
 # datlist -> nested.datlist
@@ -42,29 +42,29 @@ datlist2nested.datlist <- function(datlist, Nimp){
         CALL <- match.call()
         if (inherits(datlist,"imputationList")){
             is_imputationList <- TRUE
-            datlist <- datlist$imputations 
+            datlist <- datlist$imputations
                 } else {
-            is_imputationList <- FALSE                    
+            is_imputationList <- FALSE
                 }
 
         PP <- Nimp[1] * Nimp[2]
         datlist1 <- as.list( 1:Nimp[1] )
-        datlist2 <- as.list( 1:Nimp[2] )        
+        datlist2 <- as.list( 1:Nimp[2] )
         vv <- 1
-        for (bb in 1:Nimp[1] ){        
+        for (bb in 1:Nimp[1] ){
             for (ww in 1:Nimp[2] ){
                     datlist2[[ww]] <- datlist[[vv]]
                     vv <- vv + 1
                                 }
-            datlist1[[bb]] <- datlist2                
+            datlist1[[bb]] <- datlist2
                             }
-        if ( ! is_imputationList){                    
-            datlist1 <- nested.datlist_create(datlist1)                    
+        if ( ! is_imputationList){
+            datlist1 <- nested.datlist_create(datlist1)
             attr(datlist1,"call") <- CALL
-                                } else {                                
-            datlist1 <- NestedImputationList(datlist1)                    
-            datlist1$call <- CALL                                                            
-                                }                            
-        return(datlist1)                        
+                                } else {
+            datlist1 <- NestedImputationList(datlist1)
+            datlist1$call <- CALL
+                                }
+        return(datlist1)
                 }
-#####################################################                
+#####################################################

@@ -1,5 +1,5 @@
 ## File Name: Rsessinfo.R
-## File Version: 0.03
+## File Version: 0.04
 
 
 ####################################################
@@ -7,7 +7,7 @@
 Rsessinfo <- function(){
     si <- Sys.info()
     si2 <- utils::sessionInfo()
-    paste0( si2$R.version$version.string , " " , si2$R.version$system 
+    paste0( si2$R.version$version.string , " " , si2$R.version$system
              , " | nodename = " , si["nodename"] , " | login = " , si["login"] )
             }
 ####################################################

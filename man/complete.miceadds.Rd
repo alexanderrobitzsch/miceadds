@@ -1,5 +1,5 @@
 %% File Name: complete.miceadds.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{complete.miceadds}
 \alias{complete.mids.nmi}
@@ -57,9 +57,9 @@ index of imputed dataset for \code{complete.mids.1chain}.
 
 \seealso{
 See also the corresponding \code{\link[mice:complete]{mice::complete}} function
-and \code{\link[mitml:mitmlComplete]{mitml::mitmlComplete}}. 
-    
-Imputation methods: \code{\link{mice.nmi}}, \code{\link{mice.1chain}} 
+and \code{\link[mitml:mitmlComplete]{mitml::mitmlComplete}}.
+
+Imputation methods: \code{\link{mice.nmi}}, \code{\link{mice.1chain}}
 }
 
 
@@ -71,14 +71,14 @@ Imputation methods: \code{\link{mice.nmi}}, \code{\link{mice.1chain}}
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2        
+datlist <- data.timss2
 
 # remove first four variables
 M <- length(datlist)
 for (ll in 1:M){
     datlist[[ll]] <- datlist[[ll]][ , -c(1:4) ]
                 }
-                
+
 #***************
 # (1) nested multiple imputation using mice
 imp1 <- miceadds::mice.nmi( datlist ,  m=4 , maxit=3 )
@@ -104,7 +104,7 @@ data(nhanes, package="mice")
 # nhanes data in one chain
 imp1 <- miceadds::mice.1chain( nhanes , burnin=5 , iter=40 , Nimp=4 ,
           imputationMethod=rep("norm" , 4 ) )
-    
+
 # extract first imputed dataset
 dati1 <- miceadds::complete.mids.1chain( imp1 , action=1 )
 }

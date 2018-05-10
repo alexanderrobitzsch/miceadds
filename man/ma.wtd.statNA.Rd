@@ -1,5 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
-%% File Version: 1.43
+%% File Version: 1.44
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}
@@ -36,15 +36,15 @@ ma.wtd.skewnessNA(data, weights = NULL , vars = NULL , method = "unbiased" )
 
 ma.wtd.curtosisNA(data, weights = NULL , vars = NULL , method = "unbiased" )
 
-ma.wtd.quantileNA( data , weights = NULL , vars = NULL , type = 7 , 
+ma.wtd.quantileNA( data , weights = NULL , vars = NULL , type = 7 ,
           probs = seq(0,1,.25) )
 }
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-Numeric data vector or data frame or objects of one of the 
-classes \code{datlist}, 
+Numeric data vector or data frame or objects of one of the
+classes \code{datlist},
 \code{imputationList}, \code{mids}, \code{mids.1chain},
 \code{nested.datlist},
 \code{NestedImputationList} or \code{BIFIEdata}.
@@ -58,7 +58,7 @@ choosing the divisor \eqn{(n-1)} (\code{method="unbiased"})
 instead of \eqn{n} (\code{method="ML"}). See
 \code{\link[stats:cov.wt]{stats::cov.wt}} for further details.
 }
-\item{type}{Quantile type. This specification follows 
+\item{type}{Quantile type. This specification follows
 \code{\link[TAM:weighted_quantile]{TAM::weighted_quantile}}
 }
 \item{probs}{Vector of probabilities used for calculation of quantiles.}
@@ -94,13 +94,13 @@ object.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-Some functions for weighted statistics:    
+Some functions for weighted statistics:
 \code{\link[stats:weighted.mean]{stats::weighted.mean}},
 \code{\link[stats:cov.wt]{stats::cov.wt}},
 \code{{Hmisc::wtd.var}},
 \code{\link[TAM:weighted_quantile]{TAM::weighted_quantile}}, ...
-    
-See \code{\link{micombine.cor}} for statistical inference of correlation 
+
+See \code{\link{micombine.cor}} for statistical inference of correlation
 coefficients.
 }
 %% include links to other packages
@@ -114,10 +114,10 @@ data(data.ma01)
 dat <- as.matrix(data.ma01[,-c(1:3)])
 
 # weighted mean
-ma.wtd.meanNA( dat , weights=data.ma01$studwgt  ) 
+ma.wtd.meanNA( dat , weights=data.ma01$studwgt  )
 
 # weighted SD
-ma.wtd.sdNA( dat , weights=data.ma01$studwgt  ) 
+ma.wtd.sdNA( dat , weights=data.ma01$studwgt  )
 
 # weighted covariance for selected variables
 ma.wtd.covNA( dat , weights=data.ma01$studwgt , vars = c("books","hisei") )
@@ -131,7 +131,7 @@ ma.wtd.skewnessNA( dat[,"books"] , weights=data.ma01$studwgt )
 TAM::weighted_skewness( x=dat[,"books"] , w=data.ma01$studwgt )
 
 # weighted curtosis
-ma.wtd.curtosisNA( dat , weights=data.ma01$studwgt , vars = c("books","hisei") ) 
+ma.wtd.curtosisNA( dat , weights=data.ma01$studwgt , vars = c("books","hisei") )
 # result in TAM
 TAM::weighted_curtosis( dat[,"books"] , w=data.ma01$studwgt )
 TAM::weighted_curtosis( dat[,"hisei"] , w=data.ma01$studwgt )
@@ -157,10 +157,10 @@ implist <- mitools::imputationList(datlist)
 # weighted means
 ma.wtd.meanNA(datlist)
 ma.wtd.meanNA(implist)
-ma.wtd.meanNA(imp)    
+ma.wtd.meanNA(imp)
 
 # weighted quantiles
-ma.wtd.quantileNA( implist, weights=data.ma05$studwgt, vars = c("manote","Dscore")) 
+ma.wtd.quantileNA( implist, weights=data.ma05$studwgt, vars = c("manote","Dscore"))
 
 #############################################################################
 # EXAMPLE 3: Weighted statistics nested multiply imputed dataset
@@ -188,7 +188,7 @@ diag(predM) <- 0
 predM[ , vars_unused ] <- 0
 
 # object of class mids.nmi
-imp1 <- miceadds::mice.nmi( datlist , imputationMethod=impMethod , predictorMatrix=predM, 
+imp1 <- miceadds::mice.nmi( datlist , imputationMethod=impMethod , predictorMatrix=predM,
                 m=4 , maxit=3 )
 # object of class nested.datlist
 datlist <- miceadds::mids2datlist(imp1)
@@ -212,11 +212,11 @@ data(data.timssrep, package="BIFIEsurvey")
 # create BIFIEdata object
 bdat <- BIFIEsurvey::BIFIE.data( data.list=data.timss1 , wgt= data.timss1[[1]]$TOTWGT ,
             wgtrep=data.timssrep[, -1 ] )
-summary(bdat)            
+summary(bdat)
 # create BIFIEdata object in a compact way
 bdat2 <- BIFIEsurvey::BIFIE.data( data.list=data.timss1 , wgt= data.timss1[[1]]$TOTWGT ,
             wgtrep=data.timssrep[, -1 ] , cdata=TRUE)
-summary(bdat2)  
+summary(bdat2)
 
 # compute skewness
 ma.wtd.skewnessNA( bdat , vars = c("ASMMAT" , "books" ) )
@@ -232,11 +232,11 @@ data(data.timssrep, package="BIFIEsurvey")
 # nested imputed dataset, save it in compact format
 bdat <- BIFIE.data( data.list=data.timss4 , wgt= data.timss4[[1]][[1]]$TOTWGT ,
             wgtrep=data.timssrep[, -1 ] , NMI=TRUE , cdata=TRUE )
-summary(bdat)            
+summary(bdat)
 # skewness
 ma.wtd.skewnessNA( bdat , vars = c("ASMMAT" , "books" ) )
 
-}    
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

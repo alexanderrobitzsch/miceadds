@@ -1,5 +1,5 @@
 %% File Name: write.fwf2.Rd
-%% File Version: 0.09
+%% File Version: 0.10
 
 \name{write.fwf2}
 \alias{write.fwf2}
@@ -66,7 +66,7 @@ File name
 \code{\link[utils:read.fwf]{utils::read.fwf}}
 }
 \examples{
-\dontrun{    
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Write and read a file in fixed width format
 #############################################################################
@@ -87,7 +87,7 @@ write.fwf2( dat , format.full=format.full, format.round=format.round ,
                 file = "testdata" )
 
 # read the data
-dat1 <- miceadds::read.fwf2( file = "testdata.dat" , format.full = c(6,6,8) , 
+dat1 <- miceadds::read.fwf2( file = "testdata.dat" , format.full = c(6,6,8) ,
                variables = c("x","y","z") )
 # check differences between data frames
 dat - dat1
@@ -99,7 +99,7 @@ dat - dat1
 n <- 5
 dat <- data.frame( "x" = stats::runif(n , 0 , 9 ) , "y" = LETTERS[1:n] )
 write.fwf2(dat, format.full = c(4,2) , format.round = c(2,0) ,  file = "testdata")
-}    
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

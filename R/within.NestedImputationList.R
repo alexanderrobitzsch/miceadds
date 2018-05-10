@@ -1,5 +1,5 @@
 ## File Name: within.NestedImputationList.R
-## File Version: 0.13
+## File Version: 0.14
 
 
 #########################################################
@@ -7,8 +7,8 @@ within.NestedImputationList <- function (data, expr, ...){
    res <- data
    imp <- res$imputations
    CALL <- res$call
-   NB <- length(imp)   
-   NW <- length(imp[[1]])         
+   NB <- length(imp)
+   NW <- length(imp[[1]])
    for (ii in 1:NB){
       for (ww in 1:NW){
        # this function is simply a copy of within.data.frame
@@ -20,14 +20,14 @@ within.NestedImputationList <- function (data, expr, ...){
         l <- l[!sapply(l, is.null)]
         nD <- length(del <- setdiff(names(data), (nl <- names(l))))
         data[nl] <- l
-        if (nD) 
-            data[del] <- if (nD == 1) 
+        if (nD)
+            data[del] <- if (nD == 1)
                 NULL
             else vector("list", nD)
         imp[[ii]][[ww]] <- data
                     }
-              }                                    
-    res$imputations <- imp        
+              }
+    res$imputations <- imp
     res <- NestedImputationList(imp)
     res$call <- CALL
     return(res)

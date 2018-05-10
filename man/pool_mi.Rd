@@ -1,5 +1,5 @@
 %% File Name: pool_mi.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{pool_mi}
 \alias{pool_mi}
@@ -153,7 +153,7 @@ mod6a <- lavaan::sem( lavmodel , data = imp1[[1]] )
 summary(mod6a)
 # analysis based on all datasets using with
 mod6b <- lapply( imp1 , FUN = function(data){
-           res <- lavaan::sem( lavmodel , data = data ) 
+           res <- lavaan::sem( lavmodel , data = data )
            return(res)
                 } )
 # extract parameters and covariance matrices
@@ -167,16 +167,16 @@ qhat <- lapply( mod6b , FUN = function(ll){
         parnames <- paste0( h1$lhs , h1$op , h1$rhs )
         v1 <- h1$est
         names(v1) <- parnames
-        return(v1)    
+        return(v1)
      } )
 se <- lapply( mod6b , FUN = function(ll){
         h1 <- lavaan::parameterEstimates(ll)
         parnames <- paste0( h1$lhs , h1$op , h1$rhs )
         v1 <- h1$se
         names(v1) <- parnames
-        return(v1)    
-     } ) 
-res6c <- miceadds::pool_mi( qhat = qhat , se = se )     
+        return(v1)
+     } )
+res6c <- miceadds::pool_mi( qhat = qhat , se = se )
 
 # function runMI in semTools package
 res6d <- semTools::runMI(model=lavmodel , data = imp1 , m = length(imp1) )
@@ -184,16 +184,16 @@ res6d <- semTools::runMI(model=lavmodel , data = imp1 , m = length(imp1) )
 # perform inference with mitml package
 se2 <- lapply( se , FUN = function(ss){  ss^2  } )  # input variances
 res6e <- mitml::testEstimates(qhat=qhat, uhat=se2)
-         
+
 #*** complete model estimation and inference in mitml
 
 # convert into object of class mitml.list
-ml02 <- mitml::as.mitml.list( data.ma02)    
+ml02 <- mitml::as.mitml.list( data.ma02)
 # estimate regression
-mod7 <- with( ml02 , stats::lm( read ~ hisei + female ) ) 
+mod7 <- with( ml02 , stats::lm( read ~ hisei + female ) )
 # inference
 res7 <- mitml::testEstimates( mod7 )
-            
+
 #*** model comparison
 summary(res1)
 summary(res2)

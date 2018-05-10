@@ -1,5 +1,5 @@
 %% File Name: mice.impute.tricube.pmm.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{mice.impute.tricube.pmm}
 \alias{mice.impute.tricube.pmm}
@@ -81,7 +81,7 @@ data(nhanes, package="mice")
 set.seed(9090)
 
 #*** Model 1: Use default of tricube predictive mean matching
-varnames <- colnames(nhanes) 
+varnames <- colnames(nhanes)
 VV <- length(varnames)
 imputationMethod <- rep("tricube.pmm2" , VV )
 names(imputationMethod) <- varnames

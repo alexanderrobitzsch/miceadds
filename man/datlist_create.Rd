@@ -1,5 +1,5 @@
 %% File Name: datlist_create.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{datlist_create}
 \alias{datlist_create}
@@ -83,19 +83,19 @@ Object of class \code{datlist} or \code{nested.datlist}
 \examples{
 \dontrun{
 ## The function datlist_create is currently defined as
-function (datasets) 
+function (datasets)
 {
     class(datasets) <- "datlist"
     return(datasets)
   }
-  
+
 #############################################################################
 # EXAMPLE 1: Create object of class datlist
 #############################################################################
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2      
+datlist <- data.timss2
 
 # class datlist
 obj1 <- miceadds::datlist_create(data.timss2)
@@ -126,7 +126,7 @@ str(imp2c)
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2      
+datlist <- data.timss2
    # list of 5 datasets containing 5 plausible values
 
 #** define imputation method and predictor matrix
@@ -149,7 +149,7 @@ diag(predM) <- 0
 predM[ , vars_unused ] <- 0
 
 # object of class nmi
-imp1 <- miceadds::mice.nmi( datlist , imputationMethod=impMethod , predictorMatrix=predM, 
+imp1 <- miceadds::mice.nmi( datlist , imputationMethod=impMethod , predictorMatrix=predM,
                 m=4 , maxit=3 )
 # object of class nested.datlist
 imp2 <- miceadds::mids2datlist(imp1)
@@ -178,7 +178,7 @@ datlist2b <- miceadds::nested.datlist2datlist(datlist1b)  # class imputationList
 # convert into a nested list with 2 between nests and 10 within nests
 datlist3a <- miceadds::datlist2nested.datlist(datlist2a, Nimp=c(2,10) )
 datlist3b <- miceadds::datlist2nested.datlist(datlist2b, Nimp=c(4,5) )
-}  
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

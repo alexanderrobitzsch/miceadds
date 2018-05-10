@@ -1,5 +1,5 @@
 %% File Name: GroupMean.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{GroupMean}
 \alias{GroupMean}
@@ -16,9 +16,9 @@ Calculates some groupwise descriptive statistics
 \usage{
 GroupMean(data, group, weights=NULL, extend=FALSE)
 
-GroupSum(data, group, weights=NULL, extend=FALSE)    
+GroupSum(data, group, weights=NULL, extend=FALSE)
 
-GroupSD(data, group, weights=NULL, extend=FALSE)    
+GroupSD(data, group, weights=NULL, extend=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -49,7 +49,7 @@ A data frame with groupwise calculated statistics
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[mitml:clusterMeans]{mitml::clusterMeans}} 
+\code{\link[mitml:clusterMeans]{mitml::clusterMeans}}
 
 \code{\link[base:rowsum]{base::rowsum}},
 \code{\link[stats:aggregate]{stats::aggregate}},

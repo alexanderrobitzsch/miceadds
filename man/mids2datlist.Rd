@@ -1,15 +1,15 @@
 %% File Name: mids2datlist.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{mids2datlist}
 \alias{mids2datlist}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Converting a \code{mids}, \code{mids.1chain} or \code{mids.nmi} 
+Converting a \code{mids}, \code{mids.1chain} or \code{mids.nmi}
 Object in a Dataset List
 }
 \description{
-Converts a \code{mids}, \code{mids.1chain} or \code{mids.nmi} 
+Converts a \code{mids}, \code{mids.1chain} or \code{mids.nmi}
 object in a dataset list.
 }
 \usage{
@@ -18,7 +18,7 @@ mids2datlist(midsobj, X = NULL)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{midsobj}{
-Object of class \code{mids}, \code{mids.1chain} or \code{mids.nmi} 
+Object of class \code{mids}, \code{mids.1chain} or \code{mids.nmi}
 }
 \item{X}{Optional data frame of variables to be included in
 imputed datasets.}
@@ -72,7 +72,7 @@ datlist2 <- miceadds::mids2datlist( imp2 )
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2        
+datlist <- data.timss2
    # list of 5 datasets containing 5 plausible values
 
 # remove first four variables
@@ -80,7 +80,7 @@ M <- length(datlist)
 for (ll in 1:M){
     datlist[[ll]] <- datlist[[ll]][ , -c(1:4) ]
                 }
-                
+
 #***************
 # (1) nested multiple imputation using mice
 imp1 <- miceadds::mice.nmi( datlist ,  m=4 , maxit=3 )

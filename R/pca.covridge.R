@@ -1,5 +1,5 @@
 ## File Name: pca.covridge.R
-## File Version: 0.05
+## File Version: 0.06
 pca.covridge <- function( x , ridge = 1E-10 ){
     cx <- stats::cov(x)
     diag(cx) <- diag(cx) + ridge
@@ -9,7 +9,7 @@ pca.covridge <- function( x , ridge = 1E-10 ){
     D <- diag( pcax$sdev^2)
     # scores <- t( t(L) %*%  t( x ) )  # = x %*% L
     scores <- x %*% L
-    res <- list( "loadings" = L , "scores" = scores , 
+    res <- list( "loadings" = L , "scores" = scores ,
                 "sdev" = sdev )
-    return(res)            
+    return(res)
 }

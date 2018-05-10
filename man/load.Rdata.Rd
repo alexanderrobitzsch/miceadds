@@ -1,5 +1,5 @@
 %% File Name: load.Rdata.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{load.Rdata}
 \alias{load.Rdata}
@@ -68,7 +68,7 @@ See also: \code{\link[base:load]{base::load}}, \code{\link[base:save]{base::save
 # load a data frame in the file "data_s3.Rdata" and save this
 # as the object "dat.s3"
 load.Rdata( filename = "data_s3.Rdata" , "dat.s3" )
-head(dat.s3) 
+head(dat.s3)
 
 # Alternatively one can use the function
 dat.s3 <- miceadds::load.Rdata2( filename = "data_s3.Rdata")

@@ -1,22 +1,22 @@
 ## File Name: load.data.R
-## File Version: 0.29
+## File Version: 0.30
 
 
 #########################################################################
 # miceadds::load.data: load conveniently R objects of different data formats
-load.data <- function( filename , type="Rdata" , path=getwd() , 
+load.data <- function( filename , type="Rdata" , path=getwd() ,
                 spss.default=TRUE , ...){
     if (type=="sav"){
         TAM::require_namespace_msg("foreign")
-    }                
-    #*** the resulting object is dat4!    
+    }
+    #*** the resulting object is dat4!
     dir <- path
     file <- filename
-    
-    i1 <- grep.vec( c("Rdata" , "RData" , "csv" , "csv2" , "table" , "sav" ) , 
+
+    i1 <- grep.vec( c("Rdata" , "RData" , "csv" , "csv2" , "table" , "sav" ) ,
                     file ,  "OR" )$x
-    if ( length(i1) == 0 ){                            
-        files <- list.files( dir , filename )            
+    if ( length(i1) == 0 ){
+        files <- list.files( dir , filename )
         files <- grep.vec( filename , files , "AND")$x
     } else {
         files <- file
@@ -25,12 +25,12 @@ load.data <- function( filename , type="Rdata" , path=getwd() ,
     if ( type=="table" ){
         files <- grep.vec( c("dat","txt") , files , "OR" )$x
         type1 <- "dat"
-    }        
+    }
     files <- grep( gsub("csv2","csv" , type1) , files , value=TRUE)
     file <- max(files)
     cat( paste0( "*** Load " , file , "\n"))
 
-    #*** Rdata objects    
+    #*** Rdata objects
     if (type %in% c("Rdata","RData") ){
         dat4 <- load.Rdata2( filename=file , path=dir )
     }
@@ -52,10 +52,10 @@ load.data <- function( filename , type="Rdata" , path=getwd() ,
             dat4 <- foreign::read.spss( file_path(dir,file) , ... )
         }
         if ( spss.default){
-            dat4 <- foreign::read.spss( file_path(dir,file) , 
+            dat4 <- foreign::read.spss( file_path(dir,file) ,
                 to.data.frame=TRUE , use.value.labels=FALSE , ... )
-        }            
-    }                
+        }
+    }
     return(dat4)
 }
-#########################################################################            
+#########################################################################

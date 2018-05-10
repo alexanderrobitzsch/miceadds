@@ -1,5 +1,5 @@
 %% File Name: stats0.Rd
-%% File Version: 0.06
+%% File Version: 0.07
 
 \name{stats0}
 \alias{stats0}
@@ -19,7 +19,7 @@ Descriptive Statistics for a Vector or a Data Frame
 Applies descriptive statistics to a vector or a data frame. The function
 \code{stats0} is a general function. This function is used for extending
 the basic descriptive statistics functions from the \pkg{base} and
-\pkg{stats} package. The function \code{prop_miss} computes the proportion 
+\pkg{stats} package. The function \code{prop_miss} computes the proportion
 of missing data for each variable.
 }
 
@@ -67,7 +67,7 @@ A vector or a matrix
 
 \seealso{
 \code{\link[base:max]{base::max}},
-\code{\link[base:mean]{base::mean}}, 
+\code{\link[base:mean]{base::mean}},
 \code{\link[base:min]{base::min}},
 \code{\link[stats:quantile]{stats::quantile}},
 \code{\link[stats:sd]{stats::sd}},
@@ -77,7 +77,7 @@ A vector or a matrix
 \examples{
 #############################################################################
 # EXAMPLE 1: Descriptive statistics toy datasets
-#############################################################################    
+#############################################################################
 
 #--- simulate vector y and data frame dat
 set.seed(765)

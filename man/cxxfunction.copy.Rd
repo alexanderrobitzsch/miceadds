@@ -1,5 +1,5 @@
 %% File Name: cxxfunction.copy.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{cxxfunction.copy}
 \alias{cxxfunction.copy}
@@ -47,7 +47,7 @@ Eddelbuettel, D. & Francois, R. (2011). Rcpp: Seamless R and C++ integration.
 
 
 \seealso{
-\code{\link[inline:cxxfunction]{inline::cxxfunction}} 
+\code{\link[inline:cxxfunction]{inline::cxxfunction}}
 }
 \examples{
 \dontrun{
@@ -57,7 +57,7 @@ Eddelbuettel, D. & Francois, R. (2011). Rcpp: Seamless R and C++ integration.
 
 library(Rcpp)
 library(inline)
-    
+
 # define Rcpp file
 code1 <- "
     // input array A
@@ -65,7 +65,7 @@ code1 <- "
     // Rcpp::IntegerVector dimAA(dimA);
     int nrows = AA.nrow();
     int ncolumns = AA.ncol();
-    Rcpp::NumericMatrix Alogis(nrows,ncolumns)  ; 
+    Rcpp::NumericMatrix Alogis(nrows,ncolumns)  ;
     // compute logistic distribution
     for (int ii=0; ii<nrows; ii++){
         Rcpp::NumericVector h1=AA.row(ii) ;
@@ -73,11 +73,11 @@ code1 <- "
         for (int jj=0;jj<ncolumns;jj++){
             Alogis(ii,jj) = res[jj] ;
                         }
-                    }                
+                    }
     return( wrap(Alogis) );
     "
 # compile Rcpp code
-fct_rcpp <- inline::cxxfunction( signature( A= "matrix"), code1, 
+fct_rcpp <- inline::cxxfunction( signature( A= "matrix"), code1,
               plugin = "Rcpp", verbose=TRUE )
 # copy function and save it as object 'calclogis'
 name <- "calclogis"  # name of the function

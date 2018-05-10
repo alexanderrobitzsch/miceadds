@@ -1,18 +1,18 @@
 ## File Name: VariableNames2String.R
-## File Version: 0.04
+## File Version: 0.05
 #############################################################
 VariableNames2String <- function( vars , breaks = 80 , sep=" "){
-    vars2 <- vars    
+    vars2 <- vars
     # define breaks
     NS <- length(sep)
     V <- length(vars)
-    dfr <- data.frame( "index" = 1:V , "variable"=vars , 
+    dfr <- data.frame( "index" = 1:V , "variable"=vars ,
             "nchar" = nchar(vars) , "nsep" = NS )
     dfr$sum1 <- dfr$nchar + dfr$nsep
     dfr$sum2 <- cumsum(dfr$sum1)
     dfr$sum3 <- 0
     dfr$line <- 1
-    
+
     ii <- 1
     cum_index <- dfr$sum2[ii]
     line_ii <- dfr$line[ii]
@@ -28,7 +28,7 @@ VariableNames2String <- function( vars , breaks = 80 , sep=" "){
         dfr$sum3[ii] <- cum_index
         vars2 <- paste0( vars2 , vars[ii] , sep )
             }
-    # vars2 <- paste0(vars2 , "\n")        
+    # vars2 <- paste0(vars2 , "\n")
     return(vars2)
         }
-#############################################################        
+#############################################################

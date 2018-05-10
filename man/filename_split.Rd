@@ -1,5 +1,5 @@
 %% File Name: filename_split.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{filename_split}
 \alias{filename_split}
@@ -60,7 +60,7 @@ List with components of the file name (see Examples).
 \examples{
 #############################################################################
 # EXAMPLE 1: Demonstration example for filename_split
-#############################################################################    
+#############################################################################
 
 # file name
 file_name <- "pisa_all_waves_invariant_items_DATA_ITEMS_RENAMED__DESCRIPTIVES__2016-10-12_1000.csv"
@@ -77,7 +77,7 @@ miceadds::filename_split( file_name )
   ##  [1] "csv"
   ##  $main
   ##  [1] "pisa_all_waves_invariant_items_DATA_ITEMS_RENAMED__DESCRIPTIVES.csv"
-    
+
 #############################################################################
 # EXAMPLE 2: Example string_extract_part
 #############################################################################
@@ -90,7 +90,7 @@ miceadds::string_extract_part( vec=vec , part=2, sep="__" )
   ##  [1] "ertu"                "ztu"                 "guzeuue745_ghshgk34"
   ##  [4] "zzu78347834_ghghwuz"
   ##  > string_extract_part( vec=vec , part=2, sep="__" )
-  ##  [1] "DES"  "DATA" "INFO" NA      
+  ##  [1] "DES"  "DATA" "INFO" NA
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

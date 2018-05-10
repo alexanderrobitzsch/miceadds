@@ -1,5 +1,5 @@
 %% File Name: micombine.cor.Rd
-%% File Version: 0.31
+%% File Version: 0.32
 
 \name{micombine.cor}
 \alias{micombine.cor}
@@ -9,15 +9,15 @@
 Inference for Correlations and Covariances for Multiply Imputed Datasets
 }
 \description{
-Statistical inference for correlations and covariances 
+Statistical inference for correlations and covariances
 for multiply imputed datasets
 }
 \usage{
 micombine.cor(mi.res, variables = NULL, conf.level = 0.95,
      method="pearson", nested = FALSE , partial = NULL )
-     
+
 micombine.cov(mi.res, variables = NULL, conf.level = 0.95,
-     nested = FALSE )     
+     nested = FALSE )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -45,7 +45,7 @@ object \code{partial}.}
 %}
 \value{
 A data frame containing the coefficients (\code{r}, \code{cov}) and its
-corresponding standard error (\code{rse}, \code{cov_se}), 
+corresponding standard error (\code{rse}, \code{cov_se}),
 fraction of missing information
 (\code{fmi}) and a \eqn{t} value (\code{t}).
 
@@ -92,19 +92,19 @@ res <- miceadds::micombine.cor(mi.res=imp.mi, variables = c(4,2,3) )
   ##   3 -0.4376  0.4239
 
 # extract matrix with correlations and its standard errors
-attr(res, "r_matrix")  
+attr(res, "r_matrix")
 attr(res, "rse_matrix")
-  
-# inference for covariance  
-res2 <- miceadds::micombine.cov(mi.res=imp.mi, variables = c(4,2,3) )  
+
+# inference for covariance
+res2 <- miceadds::micombine.cov(mi.res=imp.mi, variables = c(4,2,3) )
 
 # inference can also be conducted for non-imputed data
 res3 <- miceadds::micombine.cov(mi.res= nhanes , variables = c(4,2,3) )
 
 #############################################################################
 # EXAMPLE 2: nhanes data | comparing different correlation coefficients
-#############################################################################  
-  
+#############################################################################
+
 library(psych)
 library(mitools)
 
@@ -126,7 +126,7 @@ tau1$r[1,2]    # estimate
 tau1$se     # standard error
 
 # results of Kendalls tau for all imputed datasets
-res3 <- with( data=imp1 , 
+res3 <- with( data=imp1 ,
         expr = psych::corr.test( x = cbind( chl , bmi ) , method="kendall") )
 # extract estimates
 betas <- lapply( res3$analyses , FUN = function(ll){ ll$r[1,2] } )

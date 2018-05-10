@@ -1,10 +1,10 @@
 ## File Name: plausible.value.draw.R
-## File Version: 0.06
-plausible.value.draw <- function( data , X , beta0 , sig0 , b = b , 
-                    a = rep(1 , length(b) ) , c = rep(0 , length(b) ) , 
+## File Version: 0.07
+plausible.value.draw <- function( data , X , beta0 , sig0 , b = b ,
+                    a = rep(1 , length(b) ) , c = rep(0 , length(b) ) ,
                     theta.list = seq(-5,5,len=40) , pvdraw = 1 ){
     #........................................................................
-    # INPUT:                                                            
+    # INPUT:
     # data      ... matrix of dichotomous item responses
     # X         ... matrix of covariates (background variables)
     # beta0     ... estimated beta coefficients
@@ -45,8 +45,8 @@ plausible.value.draw <- function( data , X , beta0 , sig0 , b = b ,
     # SD of posterior distribution
     SD.Post <- sqrt( rowSums( theta.listM^2 * dens.total ) -  EAP^2 )
     # one draw of plausible values
-    if (pvdraw == FALSE ){ pvdraw <- NULL } else { 
-                pvdraw <- matrix( stats::rnorm( n*pvdraw , mean = rep(EAP,each=pvdraw) , 
+    if (pvdraw == FALSE ){ pvdraw <- NULL } else {
+                pvdraw <- matrix( stats::rnorm( n*pvdraw , mean = rep(EAP,each=pvdraw) ,
                         sd = rep(SD.Post,each=pvdraw) ) , ncol=pvdraw , byrow=T )
                          }
     # results

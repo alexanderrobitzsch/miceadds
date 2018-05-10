@@ -1,5 +1,5 @@
 %% File Name: nestedList2List.Rd
-%% File Version: 0.04
+%% File Version: 0.05
 
 
 
@@ -18,8 +18,8 @@ Converts a nested list into a list (and vice versa).
 }
 
 \usage{
-nestedList2List(nestedList)    
-    
+nestedList2List(nestedList)
+
 List2nestedList(List, N_between, N_within = NULL, loop_within = TRUE)
 }
 
@@ -27,7 +27,7 @@ List2nestedList(List, N_between, N_within = NULL, loop_within = TRUE)
 
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-\item{nestedList}{A nested list}    
+\item{nestedList}{A nested list}
   \item{List}{
 A list
 }
@@ -68,7 +68,7 @@ A list or a nested list
 \examples{
 #############################################################################
 # EXAMPLE 1: List conversions using a small example
-#############################################################################    
+#############################################################################
 
 # define a nestedList
 nestedList <- as.list(1:3)

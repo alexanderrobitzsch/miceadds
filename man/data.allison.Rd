@@ -1,5 +1,5 @@
 %% File Name: data.allison.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{data.allison}
 \alias{data.allison}
@@ -26,9 +26,9 @@ data(data.allison.usnews)
 
 
 \format{
-    
+
 \itemize{
-\item Data \code{data.allison.gssexp}: 
+\item Data \code{data.allison.gssexp}:
 
 \code{'data.frame':   2991 obs. of  14 variables:} \cr
 \code{ $ AGE     : num  33 59 NA 59 21 22 40 25 41 45 ...} \cr
@@ -110,7 +110,7 @@ data(data.allison.hip)
   ##   6   2    2   1    1   1    0  2.222
 
 library(reshape)
-hip.wide <- reshape::reshape(data.allison.hip, idvar = "SID", timevar = "WAVE", 
+hip.wide <- reshape::reshape(data.allison.hip, idvar = "SID", timevar = "WAVE",
                 direction = "wide")
   ##   > head(hip.wide , 2)
   ##     SID ADL.1 PAIN.1 SRH.1 WALK.1 CESD.1 ADL.2 PAIN.2 SRH.2 WALK.2 CESD.2 ADL.3

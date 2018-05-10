@@ -1,15 +1,15 @@
 ## File Name: Rhat.mice.R
-## File Version: 1.06
-Rhat.mice <- function( mice.object){ 
+## File Version: 1.07
+Rhat.mice <- function( mice.object){
         #############################################################################
-#    if (class( mice.object) == "mids.1chain"){    
-#        mice.object <- mice.object$midsobj        
+#    if (class( mice.object) == "mids.1chain"){
+#        mice.object <- mice.object$midsobj
 #        }
     chainMean <- mice.object$chainMean
     chainVar <- mice.object$chainVar
     dcM <- dim(chainMean)
     dfr <- data.frame(matrix( 0 , nrow= dcM[1] , ncol= 4 ))
-    for (vv in 1:dcM[1] ){ 
+    for (vv in 1:dcM[1] ){
         # vv <- 1
         dfr[vv,3] <- Rhat( chainMean[vv,,] )
         dfr[vv,4] <- Rhat( chainVar[vv,,] )

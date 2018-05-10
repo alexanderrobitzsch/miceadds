@@ -1,19 +1,19 @@
 ## File Name: mice_imputation_create_interactions.R
-## File Version: 1.05
+## File Version: 1.06
 
 ################################################
 # create interactions
-mice_imputation_create_interactions <- function (y_, xobs_, xall_, 
+mice_imputation_create_interactions <- function (y_, xobs_, xall_,
     index_int_, min_int_cor_, maxcols_ )
-{ 
+{
     res <- create_interactions_cpp(
                 y_, xobs_, xall_, index_int_, min_int_cor_, maxcols_ )
         # List of 5
-        # $ index_int   
-        # $ xint        
-        # $ allcorrs    
-        # $ min_int_cor 
-        #  $ N_interactions                
+        # $ index_int
+        # $ xint
+        # $ allcorrs
+        # $ min_int_cor
+        #  $ N_interactions
     r1 <- res$allcorrs
     r1[ is.na( r1[,1] ) , 1] <- 0
     #---- remove some interactions with SD = 0
@@ -26,6 +26,6 @@ mice_imputation_create_interactions <- function (y_, xobs_, xall_,
         res$N_interactions <- ncol(xint)
         res$xint <- xint
         res$allcorrs <- r1
-    }    
+    }
     return(res)
 }

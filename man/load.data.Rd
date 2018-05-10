@@ -1,5 +1,5 @@
 %% File Name: load.data.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{load.data}
 \alias{load.data}
@@ -24,18 +24,18 @@ load.data( filename , type="Rdata" , path=getwd() , spss.default=TRUE , ...)
 \arguments{
 \item{filename}{
 Name of the data file (matrix or data frame). This can also be a part
-of the file name and the most recent file is loaded. 
+of the file name and the most recent file is loaded.
 \code{filename} can also be a vector which strings and a file
-is loaded which contains all the specified strings. 
+is loaded which contains all the specified strings.
 }
   \item{type}{
 The type of file in which the data frame or matrix should be loaded.
-This can be \code{Rdata} (for \R binary format, using \code{\link{load.Rdata2}}), 
-\code{csv} (using \code{\link[utils:read.csv2]{utils::read.csv2}}), 
+This can be \code{Rdata} (for \R binary format, using \code{\link{load.Rdata2}}),
+\code{csv} (using \code{\link[utils:read.csv2]{utils::read.csv2}}),
 \code{csv2} (using \code{\link[utils:read.csv]{utils::read.csv}}),
 \code{table} (using \code{\link[utils:read.table]{utils::read.table}}; the dataset
-must have the file extension \code{dat} or \code{txt}) or 
-\code{sav} (using \code{\link[foreign:read.spss]{foreign::read.spss}}).      
+must have the file extension \code{dat} or \code{txt}) or
+\code{sav} (using \code{\link[foreign:read.spss]{foreign::read.spss}}).
         }
 \item{path}{Directory from which the dataset should be loaded.
 It can also be set to \code{NULL} if the absolute path is already
@@ -73,8 +73,8 @@ included in \code{filename}.}
 \seealso{
 See also \code{\link{load.Rdata}} for loading \R data frames.
 
-See \code{\link{save.Rdata}} and \code{\link{save.data}} 
-for saving/writing \R data frames. 
+See \code{\link{save.Rdata}} and \code{\link{save.data}}
+for saving/writing \R data frames.
 }
 
 

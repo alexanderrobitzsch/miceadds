@@ -1,23 +1,23 @@
 ## File Name: remove.lindep_miceadds.R
-## File Version: 0.06
+## File Version: 0.07
 
 ################################################
 # copied remove.lindep function from mice package
 
-remove.lindep_miceadds <- function(x, y, ry, eps = 1e-04, maxcor = 0.99, 
+remove.lindep_miceadds <- function(x, y, ry, eps = 1e-04, maxcor = 0.99,
         allow.na = FALSE, ...) {
     if (ncol(x) == 0)
         return(NULL)
     if (eps <= 0)
         stop("\n Argument 'eps' must be positive.")
     xobs <- x[ry, , drop = FALSE]
-    
+
     updateLog_frame <- 2
-    
+
     if (allow.na) {
         if (sum(ry) == 0) {
             # escape for columns with only missing data  SvB 10/3/2011
-#            updateLog(out = "No observed cases, predictor removal skipped", 
+#            updateLog(out = "No observed cases, predictor removal skipped",
 #                        frame = updateLog_frame )
             return(rep(TRUE, ncol(x)))
         }
@@ -28,7 +28,7 @@ remove.lindep_miceadds <- function(x, y, ry, eps = 1e-04, maxcor = 0.99,
     highcor <- suppressWarnings((unlist(apply(xobs, 2, cor, yobs)) < maxcor))
     keep <- keep & highcor
     if (all(!keep))
-#        updateLog(out = "All predictors are constant or have too high correlation.", 
+#        updateLog(out = "All predictors are constant or have too high correlation.",
 #                    frame = updateLog_frame )
     if (length(keep) == 1) keep[1] <- TRUE  # SvB 19/1/14
     k <- sum(keep)
@@ -59,7 +59,7 @@ remove.lindep_miceadds <- function(x, y, ry, eps = 1e-04, maxcor = 0.99,
 #    s <- get("state", parent.frame(frame))
 #    r <- get("loggedEvents", parent.frame(frame))
 #
-#    rec <- data.frame(it = s$it, im = s$im, co = s$co, dep = s$dep, 
+#    rec <- data.frame(it = s$it, im = s$im, co = s$co, dep = s$dep,
 #            meth = ifelse(is.null(meth), s$meth, meth), out = ifelse(is.null(out),
 #                    "", out))
 #

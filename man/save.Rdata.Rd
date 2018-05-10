@@ -1,5 +1,5 @@
 %% File Name: save.Rdata.Rd
-%% File Version: 0.06
+%% File Version: 0.07
 
 \name{save.Rdata}
 \alias{save.Rdata}
@@ -25,7 +25,7 @@ Name of the \R object to be saved
 Directory for saving the object
 }
   \item{part.numb}{
-Number of rows of the data frame which should also 
+Number of rows of the data frame which should also
 be saved in csv format. The default is saving 1000 rows.
 }
 }
@@ -56,7 +56,7 @@ be saved in csv format. The default is saving 1000 rows.
 \examples{
 \dontrun{
 dfr <- matrix( 2*1:12-3 , 4 ,3 )
-save.Rdata( dfr , "dataframe_test" )}    
+save.Rdata( dfr , "dataframe_test" )}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

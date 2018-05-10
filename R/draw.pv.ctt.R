@@ -1,7 +1,7 @@
 ## File Name: draw.pv.ctt.R
-## File Version: 3.16
+## File Version: 3.17
 draw.pv.ctt <- function( y , dat.scale = NULL , x=NULL , samp.pars = TRUE , alpha = NULL ,
-                            sig.e = NULL , var.e=NULL , true.var = NULL ){ 
+                            sig.e = NULL , var.e=NULL , true.var = NULL ){
     #---------------------------------------------------------------------------##
     # INPUT:                                                                    ##
     # y         ...  vector of scale scores                                     ##
@@ -19,10 +19,10 @@ draw.pv.ctt <- function( y , dat.scale = NULL , x=NULL , samp.pars = TRUE , alph
     #                       sig.e is specified)                                 ##
     #----------------------------------------------------------------------------#
     # calculate Cronbach's Alpha if alpha == NULL
-    if ( ! is.null(var.e) ){ 
+    if ( ! is.null(var.e) ){
         sig.e <- sqrt( var.e )
-    }    
-    if (  is.null(alpha) & is.null(sig.e)  ){ 
+    }
+    if (  is.null(alpha) & is.null(sig.e)  ){
         alpha <- .cronbach.alpha( dat.scale )
     }
     #******
@@ -36,22 +36,22 @@ draw.pv.ctt <- function( y , dat.scale = NULL , x=NULL , samp.pars = TRUE , alph
         x0ind <- TRUE
         x0 <- scale( x , scale=FALSE )
         mod <- stats::lm( y0 ~ as.matrix(x0) )
-    } else { 
-        mod <- stats::lm( y0 ~ 1 ) 
+    } else {
+        mod <- stats::lm( y0 ~ 1 )
         x0ind <- FALSE
-    }                
+    }
     # determine fitted y (regression model)
     yfitted <- mod$fitted
     smod <- summary(mod)
     # calculate true variance of scale
-    if ( is.null(sig.e) ){   
-        var.ytrue <- stats::var(y,na.rm=TRUE) * alpha 
+    if ( is.null(sig.e) ){
+        var.ytrue <- stats::var(y,na.rm=TRUE) * alpha
     }
-    if ( ( ! is.null(sig.e) ) & ( ! is.null( true.var ) ) ){ 
-        var.ytrue <- true.var 
+    if ( ( ! is.null(sig.e) ) & ( ! is.null( true.var ) ) ){
+        var.ytrue <- true.var
     }
-    if ( ( ! is.null(sig.e) ) & ( is.null( true.var ) ) ){ 
-        var.ytrue <- stats::var(y , na.rm=TRUE ) - mean( sig.e^2 , na.rm=TRUE)                 
+    if ( ( ! is.null(sig.e) ) & ( is.null( true.var ) ) ){
+        var.ytrue <- stats::var(y , na.rm=TRUE ) - mean( sig.e^2 , na.rm=TRUE)
         }
     # calculate residual variance in the regression model
     sig2.th.y1 <-  var.ytrue * ( 1 - smod$r.squared )
@@ -61,37 +61,37 @@ draw.pv.ctt <- function( y , dat.scale = NULL , x=NULL , samp.pars = TRUE , alph
 
     # correction ARb 2013-11-04
     # define alpha if it is not already defined
-    if ( is.null(alpha) ){  
-        alpha <- 1 - mean( sig.e^2 , na.rm=TRUE) / vary  
-    }    
+    if ( is.null(alpha) ){
+        alpha <- 1 - mean( sig.e^2 , na.rm=TRUE) / vary
+    }
     sig2.th.y <- max( 1E-5 , sig2.th.y - vary*(1-alpha) )
-    
+
     # draw new residual variance
-    if ( samp.pars ){ 
+    if ( samp.pars ){
         N <- length(y)
         sig2.th.y <- N * sig2.th.y / stats::rchisq(1, N )
     }
     # calculate measurement error variance
-    if (is.null(sig.e) ){ 
+    if (is.null(sig.e) ){
         sig2.e <- stats::var(y) * ( 1 - alpha )
-    } else {   
+    } else {
         sig2.e <- sig.e^2
-        sig2.e <- ifelse( is.na(sig2.e) , 
+        sig2.e <- ifelse( is.na(sig2.e) ,
                     1000 * mean( sig2.e , na.rm=TRUE) , sig2.e )
-    }                            
+    }
     # calculate conditional reliability
-    rho.c <- sig2.th.y / ( sig2.th.y + sig2.e ) 
+    rho.c <- sig2.th.y / ( sig2.th.y + sig2.e )
     # draw regression parameter
-    if ( samp.pars ){ 
-        v <- stats::vcov(mod)    
+    if ( samp.pars ){
+        v <- stats::vcov(mod)
         m <- rep(0, nrow(v) )
-        rn <- CDM::CDM_rmvnorm( 1 , mean = m , sigma = v ) 
-        beta.star <- stats::coef(mod) + rn                
+        rn <- CDM::CDM_rmvnorm( 1 , mean = m , sigma = v )
+        beta.star <- stats::coef(mod) + rn
         # draw new fitted y
         if ( x0ind ){
             yfitted <- cbind(1,x0) %*% beta.star
         } else {
-            yfitted <- beta.star                                            
+            yfitted <- beta.star
         }
     }
     #................................
@@ -109,8 +109,8 @@ draw.pv.ctt <- function( y , dat.scale = NULL , x=NULL , samp.pars = TRUE , alph
     h2 <- round( stats::var(y.pv, na.rm=TRUE) , 4 )
     cat( "Observed variance:" , h1 , "\n")
     cat( "Sampled PV variance:" , h2 , "\n")
-    cat( "PV Reliability:" , round(h2 / h1 ,4  ) , "\n")    
-    cat( "Conditional Reliability of Y given X:" , 
+    cat( "PV Reliability:" , round(h2 / h1 ,4  ) , "\n")
+    cat( "Conditional Reliability of Y given X:" ,
             round( mean(rho.c , na.rm=TRUE) ,4  ) , "\n")
     return( y.pv )
 }
@@ -118,7 +118,7 @@ draw.pv.ctt <- function( y , dat.scale = NULL , x=NULL , samp.pars = TRUE , alph
 # define options where y can have missing values
 # take care that y0 is then defined only on observed responses
 ###################################################################
-    
+
 #############################################
 #############################################
 # unstandardized estimate of Cronbach's alpha

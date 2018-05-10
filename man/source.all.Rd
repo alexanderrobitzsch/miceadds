@@ -1,5 +1,5 @@
 %% File Name: source.all.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{source.all}
 \alias{source.all}
@@ -28,7 +28,7 @@ source.Rcpp.all( path, file_names=NULL, ext="\\\\.cpp", excl="RcppExports" )
 Path where the files are located
 }
 \item{grepstring}{
-Which strings should be looked for? 
+Which strings should be looked for?
 \code{grepstring} can also be a vector.
 }
 \item{print.source}{

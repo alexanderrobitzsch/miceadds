@@ -1,5 +1,5 @@
 %% File Name: visitSequence.determine.Rd
-%% File Version: 0.05
+%% File Version: 0.06
 
 \name{visitSequence.determine}
 \alias{visitSequence.determine}
@@ -66,9 +66,9 @@ V <- ncol(dat)
 
 # define initial vector of imputation methods
 impMethod <- rep("norm" , V)
-names(impMethod) <- colnames(dat) 
+names(impMethod) <- colnames(dat)
 # define variable names and imputation method for passive variables in a data frame
-dfr.impMeth <- data.frame( "variable" = NA , 
+dfr.impMeth <- data.frame( "variable" = NA ,
                   "impMethod" =  NA )
 dfr.impMeth[1,] <- c("v1_v1" , "~ I(v1^2)" )
 dfr.impMeth[2,] <- c("v2_v4" , "~ I(v2*v4)" )

@@ -1,5 +1,5 @@
 %% File Name: write.pspp.Rd
-%% File Version: 0.28
+%% File Version: 0.29
 
 \name{write.pspp}
 \alias{write.pspp}
@@ -14,7 +14,7 @@ To use this function, download and install PSPP at first:
 }
 
 \usage{
-write.pspp(data, datafile, pspp.path, decmax = 6, 
+write.pspp(data, datafile, pspp.path, decmax = 6,
    as.factors=TRUE , use.bat=FALSE)
 }
 
@@ -24,7 +24,7 @@ write.pspp(data, datafile, pspp.path, decmax = 6,
 Data frame
 }
   \item{datafile}{
-Name of the output file (without file ending) 
+Name of the output file (without file ending)
 }
   \item{pspp.path}{
 Path where the PSPP executable is located, e.g.
@@ -35,7 +35,7 @@ Maximum number of digits after decimal
 }
 \item{as.factors}{A logical indicating whether all factors and string entries
 should be treated as factors in the output file.}
-\item{use.bat}{A logical indicating whether PSPP executed via a batch file in 
+\item{use.bat}{A logical indicating whether PSPP executed via a batch file in
     the DOS mode (\code{TRUE}) or directly invoked via the \code{system} command
      from within \R (\code{FALSE}).
     }
@@ -54,7 +54,7 @@ A dataset in \emph{sav} format (SPSS format).
 
 
 \author{
-The code was adapted from 
+The code was adapted from
 \url{https://stat.ethz.ch/pipermail/r-help/2006-January/085941.html}
 }
 %\note{
@@ -64,9 +64,9 @@ The code was adapted from
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also \code{\link[foreign:write.foreign]{foreign::write.foreign}}. 
+See also \code{\link[foreign:write.foreign]{foreign::write.foreign}}.
 
-For writing sav files see also \code{\link[haven:write_sav]{haven::write_sav}} 
+For writing sav files see also \code{\link[haven:write_sav]{haven::write_sav}}
 and  \code{\link[sjlabelled:write_spss]{sjlabelled::write_spss}}.
 
 For convenient viewing \emph{sav} files we recommend the freeware
@@ -87,7 +87,7 @@ data <- data.frame( "pid" = 1000+1:5 , "height" = round(rnorm( 5 ),4) ,
 #****
 # (2) define variable labels
 v1 <- rep( "" , ncol(data) )
-names(v1) <-  colnames(data) 
+names(v1) <-  colnames(data)
 attr( data , "variable.labels" ) <- v1
 attr(data,"variable.labels")["pid"] <- "Person ID"
 attr(data,"variable.labels")["height"] <- "Height of a person"
@@ -101,18 +101,18 @@ attr( data$y , "value.labels" ) <- v1
 
 #****
 # (4a) run PSPP to produce a sav file
-write.pspp( data , datafile = "example_data1" ,  
-        pspp.path = "C:/Program Files (x86)/PSPP/bin/" ) 
+write.pspp( data , datafile = "example_data1" ,
+        pspp.path = "C:/Program Files (x86)/PSPP/bin/" )
 
 #****
 # (4b) produce strings instead of factors
 write.pspp( data , datafile = "example_data2" ,
         pspp.path = "C:/Program Files (x86)/PSPP/bin/"  , as.factors=FALSE )
-        
+
 #****
 # write sav file using haven package
 library(haven)
-haven::write_sav( data , "example_data1a.sav" )      
+haven::write_sav( data , "example_data1a.sav" )
 
 #****
 # write sav file using sjlabelled package

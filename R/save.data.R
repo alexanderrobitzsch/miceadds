@@ -1,11 +1,11 @@
 ## File Name: save.data.R
-## File Version: 0.25
+## File Version: 0.26
 
 
 #########################################################################
 # miceadds: saving data
-save.data <- function( data , filename , type="Rdata" , path=getwd() , 
-          row.names=FALSE , na = NULL , suffix = NULL , suffix_space = "__" , 
+save.data <- function( data , filename , type="Rdata" , path=getwd() ,
+          row.names=FALSE , na = NULL , suffix = NULL , suffix_space = "__" ,
           index = FALSE , systime = FALSE ,  ...)
 {
     if (type=="sav"){
@@ -14,35 +14,35 @@ save.data <- function( data , filename , type="Rdata" , path=getwd() ,
 
     #***
     dir <- path
-    file <- filename    
+    file <- filename
     if ( ! is.null(suffix) ){
         file <- paste0( file , suffix_space , suffix )
     }
     #*** add index in data frame if requested
-    if ( index){ 
+    if ( index){
         data <- index.dataframe(data , systime=systime)
     }
-    
-    
+
+
     #*** missing handling
 #    if ( is.null(na) ){
-#        na <- switch( type , 
-#                    "csv" = "" , 
+#        na <- switch( type ,
+#                    "csv" = "" ,
 #                    "csv2" = "" ,
 #                    "table" = "." )
 #                        }
 #    type2 <- type
-#    if ( type == "csv2" ){ 
-#            type2 <- "csv" 
+#    if ( type == "csv2" ){
+#            type2 <- "csv"
 #                    }
-#    if ( type == "table" ){ 
-#            type2 <- "dat" 
+#    if ( type == "table" ){
+#            type2 <- "dat"
 #                }
     # i1 <- grep( type2 , file )
-    
+
     file0 <- file
-                
-    #*** Rdata objects    
+
+    #*** Rdata objects
     if ( "Rdata" %in% type  ){
         file <- save_data_calc_filename( file=file0 , type="Rdata")
         save( data , file= file.path( dir , file ) )
@@ -69,8 +69,8 @@ save.data <- function( data , filename , type="Rdata" , path=getwd() ,
     if ( "sav" %in% type ){
         file <- save_data_calc_filename( file=file0 , type="sav")
         data <- sjlabelled::set_label( data, lab= attr(data, "variable.labels") )
-        sjlabelled::write_spss( data , file.path( dir , file ) )        
-    }                
+        sjlabelled::write_spss( data , file.path( dir , file ) )
+    }
 }
-#########################################################################            
-    
+#########################################################################
+

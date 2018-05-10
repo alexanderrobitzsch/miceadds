@@ -1,5 +1,5 @@
 %% File Name: Rfunction_include_argument_values.Rd
-%% File Version: 0.02
+%% File Version: 0.03
 
 \name{Rfunction_include_argument_values}
 \alias{Rfunction_include_argument_values}
@@ -10,7 +10,7 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 
 \title{
-Utility Functions for Writing \R Functions 
+Utility Functions for Writing \R Functions
 }
 \description{
 Utility functions for writing \R functions.
@@ -19,7 +19,7 @@ Utility functions for writing \R functions.
 ## include argument values in a function input
 Rfunction_include_argument_values(string, maxlen = 70)
 
-## assign objects to entries in a list 
+## assign objects to entries in a list
 Rfunction_output_list_result_function(string, mid = " <- res$")
 }
 
@@ -73,7 +73,7 @@ string <- "
           mice.impute.2l.pls2(y, ry, x , type , pls.facs = pls.facs  ))
           "
 cat( Rfunction_include_argument_values(string) )
-  ##    mice.impute.2l.pls2( y=y, ry=ry, x=x, type=type, pls.facs=pls.facs ) 
+  ##    mice.impute.2l.pls2( y=y, ry=ry, x=x, type=type, pls.facs=pls.facs )
 
 ##**** assignment to objects as entries in a list
 
@@ -81,7 +81,7 @@ string <- "
           list( vname=vname, p, type=type, data=data, levels_id )
           "
 cat( Rfunction_output_list_result_function( string ) )
-  ##  
+  ##
   ##  vname <- res$vname
   ##  p <- res$p
   ##  type <- res$type

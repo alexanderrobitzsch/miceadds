@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.27
+%% File Version: 0.28
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -19,9 +19,9 @@ Cluster Robust Standard Errors for Linear Models and General Linear Models
 
 \description{
 Computes cluster robust standard errors for linear models
-(\code{\link[stats:lm]{stats::lm}}) and general linear models 
-(\code{\link[stats:glm]{stats::glm}}) using the 
-\code{\link[multiwayvcov:cluster.vcov]{multiwayvcov::cluster.vcov}} 
+(\code{\link[stats:lm]{stats::lm}}) and general linear models
+(\code{\link[stats:glm]{stats::glm}}) using the
+\code{\link[multiwayvcov:cluster.vcov]{multiwayvcov::cluster.vcov}}
 function in the \pkg{multiwayvcov} package.
 }
 
@@ -57,7 +57,7 @@ Variable name for cluster variable contained in \code{data} or a vector
 with cluster identifiers
 }
   \item{\dots}{
-Further arguments to be passed to \code{\link[stats:lm]{stats::lm}} and 
+Further arguments to be passed to \code{\link[stats:lm]{stats::lm}} and
 \code{\link[stats:glm]{stats::glm}}
 }
   \item{object}{
@@ -106,24 +106,24 @@ data(data.ma01)
 dat <- data.ma01
 
 #*** Model 1: Linear regression
-mod1 <- miceadds::lm.cluster( data = dat , formula = read ~ hisei + female , 
+mod1 <- miceadds::lm.cluster( data = dat , formula = read ~ hisei + female ,
                cluster = "idschool" )
 coef(mod1)
 vcov(mod1)
 summary(mod1)
 
 # estimate Model 1, but cluster is provided as a vector
-mod1b <- miceadds::lm.cluster( data = dat, formula = read ~ hisei + female, 
+mod1b <- miceadds::lm.cluster( data = dat, formula = read ~ hisei + female,
                  cluster = dat$idschool)
 summary(mod1b)
 
 #*** Model 2: Logistic regression
 dat$highmath <- 1 * ( dat$math > 600 )   # create dummy variable
-mod2 <- miceadds::glm.cluster( data = dat , formula = highmath ~ hisei + female , 
+mod2 <- miceadds::glm.cluster( data = dat , formula = highmath ~ hisei + female ,
                 cluster = "idschool" , family="binomial")
 coef(mod2)
 vcov(mod2)
-summary(mod2)        
+summary(mod2)
 
 \dontrun{
 #############################################################################
@@ -141,7 +141,7 @@ datlist <- miceadds::mids2datlist( imp )
 
 # linear regression with cluster robust standard errors
 mod <- lapply(  datlist, FUN = function(data){
-            miceadds::lm.cluster( data=data , formula=denote ~ migrant+ misei , 
+            miceadds::lm.cluster( data=data , formula=denote ~ migrant+ misei ,
                     cluster = dat$idclass )
             }  )
 # extract parameters and covariance matrix
@@ -150,7 +150,7 @@ vars <- lapply( mod , FUN = function(rr){ vcov(rr) } )
 # conduct statistical inference
 summary( miceadds::pool_mi( qhat=betas, u=vars ) )
 
-#------ compute global F-test for hypothesis that all predictors have zero coefficient values 
+#------ compute global F-test for hypothesis that all predictors have zero coefficient values
 library(mitml)
 Nimp <- 6 # number of imputations
 np <- length(betas[[1]])   # number of parameters

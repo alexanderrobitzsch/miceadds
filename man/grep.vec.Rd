@@ -1,5 +1,5 @@
 %% File Name: grep.vec.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{grep.vec}
 \alias{grep.vec}
@@ -66,7 +66,7 @@ grep.vec( pattern.vec=c("a","f") , x=vec )
 # search for entries in vec which contain 'a' or 'f'
 grep.vec( pattern.vec=c("a","f") , x=vec , operator="OR")
   ##   $x
-  ##   [1] "abcd" "aedf" "cdf" 
+  ##   [1] "abcd" "aedf" "cdf"
   ##   $index.x
   ##   [1] 1 3 4
 }

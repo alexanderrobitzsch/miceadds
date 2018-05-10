@@ -1,5 +1,5 @@
 %% File Name: ma_rmvnorm.Rd
-%% File Version: 0.09
+%% File Version: 0.10
 
 \name{ma_rmvnorm}
 \alias{ma_rmvnorm}
@@ -40,7 +40,7 @@ Trimming constant for zero variances
 
 \value{
 Matrix of simulated values
-}                        
+}
 
 %\references{
 %% ~put references to the literature/web site here ~

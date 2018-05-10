@@ -1,5 +1,5 @@
 %% File Name: Rhat.mice.Rd
-%% File Version: 0.09
+%% File Version: 0.10
 
 \name{Rhat.mice}
 \alias{Rhat.mice}
@@ -28,8 +28,8 @@ Data frame containing the Rhat statistic for mean and variances for all variable
 of the Markov chains used for imputation
 }
 \references{
-Gelman, A., & Hill, J. (2007). 
-\emph{Data analysis using regression and multilevel/hierarchical models}. 
+Gelman, A., & Hill, J. (2007).
+\emph{Data analysis using regression and multilevel/hierarchical models}.
 Cambridge University Press.
 }
 
@@ -45,7 +45,7 @@ Cambridge University Press.
 \examples{
 \dontrun{
 #############################################################################
-# EXAMPLE 1: Rhat statistic for nhanes data 
+# EXAMPLE 1: Rhat statistic for nhanes data
 #############################################################################
 
 library(mice)

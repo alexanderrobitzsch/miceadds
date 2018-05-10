@@ -1,26 +1,26 @@
 ## File Name: with.mids.1chain.R
-## File Version: 0.02
+## File Version: 0.03
 
 
 #******************************************************************************
 # with function for objects of class mids
 with.mids.1chain <- function(data, expr, ...) {
     # adapted from with.mids.1chain
-    call <- match.call()   
-    if (class(data) != "mids.1chain"){ 
-        stop("The data must have class mids.1chain")     
+    call <- match.call()
+    if (class(data) != "mids.1chain"){
+        stop("The data must have class mids.1chain")
                                     }
-    data <- data$midsobj    
+    data <- data$midsobj
     #-----------------------------
     # original code from with.mids from mice package
-    analyses <- as.list(1:data$m)    
+    analyses <- as.list(1:data$m)
     # do the repeated analysis, store the result.
     for (i in 1:data$m) {
         data.i <- mice::complete(data, i)
-        analyses[[i]] <- eval( expr = substitute(expr), envir = data.i, 
-                    enclos = parent.frame())        
-        if (is.expression(analyses[[i]])){ 
-            analyses[[i]] <- eval(expr = analyses[[i]], 
+        analyses[[i]] <- eval( expr = substitute(expr), envir = data.i,
+                    enclos = parent.frame())
+        if (is.expression(analyses[[i]])){
+            analyses[[i]] <- eval(expr = analyses[[i]],
                         envir = data.i, enclos = parent.frame())
                                         }
     }

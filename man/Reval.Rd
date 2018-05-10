@@ -1,5 +1,5 @@
 %% File Name: Reval.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{Reval}
 \alias{Reval}
@@ -20,7 +20,7 @@ This function evaluates a string as an \R expression.
 Reval(Rstring, print.string=TRUE, n.eval.parent=1)
 
 # Reval( print(Rstring) )
-Revalpr(Rstring, print.string=TRUE)    
+Revalpr(Rstring, print.string=TRUE)
 
 #  Reval( print(str(Rstring)) )
 Revalprstr(Rstring, print.string=TRUE)
@@ -50,7 +50,7 @@ from calculation}
 }
 
 \details{
-The string is evaluated in the parent environment. See 
+The string is evaluated in the parent environment. See
 \code{\link[base:eval]{base::eval}}  for the definition of environments in \R.
 }
 %\value{
@@ -76,15 +76,15 @@ The string is evaluated in the parent environment. See
 \examples{
 # This function is simply a shortage function
 # See the definition of this function:
-Reval <- function( Rstring , print.string=TRUE){ 
+Reval <- function( Rstring , print.string=TRUE){
     if (print.string){ cat( paste( Rstring ) , "\n"  ) }
         eval.parent( parse( text = paste( Rstring )) , n=1 )
             }
-  
+
 Reval( "a <- 2^3" )
-  ## a <- 2^3 
+  ## a <- 2^3
 a
-  ## [1] 8  
+  ## [1] 8
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

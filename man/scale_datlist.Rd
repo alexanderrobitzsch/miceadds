@@ -1,5 +1,5 @@
 %% File Name: scale_datlist.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{scale_datlist}
 \alias{scale_datlist}
@@ -11,13 +11,13 @@ Single Datasets
 }
 
 \description{
-Adds a standardized variable to a list of multiply imputed datasets or 
+Adds a standardized variable to a list of multiply imputed datasets or
 a single dataset. This function extends \code{\link[base:scale]{base::scale}}
 for a data frame to a list of multiply imputed datasets.
 }
 
 \usage{
-scale_datlist(datlist, orig_var, trafo_var, weights = NULL, M = 0, SD = 1, 
+scale_datlist(datlist, orig_var, trafo_var, weights = NULL, M = 0, SD = 1,
     digits = NULL)
 }
 
@@ -26,7 +26,7 @@ scale_datlist(datlist, orig_var, trafo_var, weights = NULL, M = 0, SD = 1,
 \arguments{
   \item{datlist}{
 A data frame, a list of multiply imputed datasets of one of the classes
-\code{datlist} or \code{imputationList} or a list of nested multiply 
+\code{datlist} or \code{imputationList} or a list of nested multiply
 imputed datasets of one of the classes \code{nested_datlist} or
 \code{NestedImputationList}.
 }
@@ -76,11 +76,11 @@ A vector or a matrix
 
 
 \examples{
-\dontrun{    
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Standardized variables in list of multiply imputed datasets
 #############################################################################
-    
+
 data(data.ma02)
 datlist <- data.ma02
 
@@ -95,8 +95,8 @@ miceadds::ma.wtd.sdNA(data=datlist, weights = datlist[[1]]$studwgt , vars = "his
 mean( unlist( lapply( datlist , FUN = function(data){
         sqrt( Hmisc::wtd.var( data$hisei , data$studwgt ) ) } ) ) )
 
-# standardize variable hisei to M=100 and SD=15        
-datlist1a <- miceadds::scale_datlist( datlist=datlist, orig_var="hisei", 
+# standardize variable hisei to M=100 and SD=15
+datlist1a <- miceadds::scale_datlist( datlist=datlist, orig_var="hisei",
                trafo_var="hisei100", weights = datlist[[1]]$studwgt , M=100, SD=15 )
 
 # check mean and SD
@@ -121,21 +121,21 @@ miceadds::ma.wtd.sdNA(data=datlist1a, weights = datlist[[1]]$studwgt , vars = "h
 
 #--- transformation for a single dataset
 dat0 <- datlist[[1]]
-dat0a <- miceadds::scale_datlist( datlist=dat0 , orig_var="hisei" , trafo_var="hisei100" , 
+dat0a <- miceadds::scale_datlist( datlist=dat0 , orig_var="hisei" , trafo_var="hisei100" ,
                     weights = dat0$studwgt , M=100, SD=15 )
-stats::weighted.mean( dat0a[,"hisei"] ,  w = dat0a$studwgt )                    
+stats::weighted.mean( dat0a[,"hisei"] ,  w = dat0a$studwgt )
 stats::weighted.mean( dat0a[,"hisei100"] ,  w = dat0a$studwgt )
 sqrt( Hmisc::wtd.var( dat0a[,"hisei100"] ,  weights = dat0a$studwgt ) )
 
 #--- Standardizations for objects of class imputationList
 datlist2 <- mitools::imputationList(datlist)   # object class conversion
-datlist2a <- miceadds::scale_datlist( datlist=datlist2 , orig_var="hisei", 
+datlist2a <- miceadds::scale_datlist( datlist=datlist2 , orig_var="hisei",
                  trafo_var="hisei100", weights = datlist[[1]]$studwgt , M=100, SD=15 )
-               
+
 #############################################################################
 # EXAMPLE 2: Standardized variables in list of nested multiply imputed datasets
 #############################################################################
-               
+
 # nested multiply imputed dataset in BIFIEsurvey package
 data(data.timss4, package="BIFIEsurvey")
 datlist <- data.timss4
@@ -171,7 +171,7 @@ imp2 <- miceadds::datlist2mids(sdatlist)
 #*** compare descriptive statistics of objects
 round( miceadds::mean0( mice::complete(imp, action=1) ) , 2 )
 round( miceadds::mean0( mice::complete(imp2, action=1) ) , 2 )
-}    
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

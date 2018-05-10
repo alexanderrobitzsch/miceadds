@@ -1,5 +1,5 @@
 %% File Name: data.graham.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{data.graham}
 \alias{data.graham}
@@ -34,7 +34,7 @@ data(data.graham.ex8c)
 
 
 \itemize{
-\item Dataset \code{data.graham.ex3}: 
+\item Dataset \code{data.graham.ex3}:
 
 \code{'data.frame':   2756 obs. of  20 variables:} \cr
 \code{ $ school  : int  1 1 1 1 1 1 1 1 1 1 ...} \cr
@@ -59,7 +59,7 @@ data(data.graham.ex8c)
 \code{ $ alc9    : int  3 NA 7 NA 5 7 NA 6 6 7 ...} \cr
 
 
-\item Dataset \code{data.graham.ex6}: 
+\item Dataset \code{data.graham.ex6}:
 
 \code{'data.frame':   2756 obs. of  9 variables:} \cr
 \code{ $ school  : int  1 1 1 1 1 1 1 1 1 1 ...} \cr
@@ -74,7 +74,7 @@ data(data.graham.ex8c)
 
 
 
-\item Dataset \code{data.graham.ex8a}: 
+\item Dataset \code{data.graham.ex8a}:
 
 \code{'data.frame':   1023 obs. of  20 variables:} \cr
 \code{ $ skill1 : int  28 29 27 29 29 NA NA NA 29 NA ...} \cr
@@ -111,7 +111,7 @@ data(data.graham.ex8c)
 
 
 
-\item Dataset \code{data.graham.ex8c}: 
+\item Dataset \code{data.graham.ex8c}:
 
 \code{'data.frame':   2756 obs. of  16 variables:} \cr
 \code{ $ s1      : int  1 1 1 1 1 1 1 1 1 1 ...} \cr
@@ -131,7 +131,7 @@ data(data.graham.ex8c)
 \code{ $ posatt71: int  1 1 1 1 1 2 1 NA NA NA ...} \cr
 \code{ $ alc8    : int  1 8 4 8 5 7 1 3 5 3 ...} \cr
 }
-    
+
 }
 
 %\details{
@@ -140,7 +140,7 @@ data(data.graham.ex8c)
 
 
 \source{
-The datasets were downloaded from 
+The datasets were downloaded from
 http://methodology.psu.edu/pubs/books/missing.
 }
 
@@ -150,7 +150,7 @@ Graham, J. W. (2012). \emph{Missing data}. New York: Springer.
 }
 
 \examples{
-\dontrun{    
+\dontrun{
 library(mitools)
 library(mice)
 library(Amelia)
@@ -166,7 +166,7 @@ dat <- dat[,1:10]
 vars <- colnames(dat)
 V <- length(vars)
 # remove persons with completely missing data
-dat <- dat[ rowMeans( is.na(dat) ) < 1 , ] 
+dat <- dat[ rowMeans( is.na(dat) ) < 1 , ]
 summary(dat)
 
 # some descriptive statistics
@@ -223,12 +223,12 @@ print(datlist1a)
 
 # Note that variables must have values from 1 to N
 # use categorize function from sirt package here
-dat.categ <- sirt::categorize( dat , categorical=colnames(dat) , lowest=1 ) 
+dat.categ <- sirt::categorize( dat , categorical=colnames(dat) , lowest=1 )
 dat0 <- dat.categ$data
 
 # imputation in jomo treating all variables as categorical
 Y_numcat <- apply( dat0 , 2 , max , na.rm=TRUE )
-imp1b <- jomo::jomo1cat(Y.cat = dat0, Y.numcat = Y_numcat, nburn=100, 
+imp1b <- jomo::jomo1cat(Y.cat = dat0, Y.numcat = Y_numcat, nburn=100,
                  nbetween=10, nimp=5)
 
 # recode original categories
@@ -251,10 +251,10 @@ imp1b1 <- jomo::jomo(Y = dat , nburn=30, nbetween=10, nimp=5)
 #****************************
 # compare frequency tables for both imputation packages
 fun_prop <- function( variable ){
-            t1 <- table(variable) 
-            t1 / sum(t1) 
+            t1 <- table(variable)
+            t1 / sum(t1)
                 }
-                
+
 # variable rskreb71
 res1a <-  with( datlist1a , fun_prop(rskreb71) )
 res1b <-  with( datlist1b , fun_prop(rskreb71) )

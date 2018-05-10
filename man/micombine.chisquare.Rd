@@ -1,5 +1,5 @@
 %% File Name: micombine.chisquare.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{micombine.chisquare}
 \alias{micombine.chisquare}
@@ -35,7 +35,7 @@ An optional logical indicating whether results should be printed at the
     The default \code{version=1} refers to the correct formula as in Enders (2010),
     while \code{version=0} uses an incorrect formula as printed in Allison (2001).
     The incorrect calculation \code{version=0} was included in \pkg{miceadds} versions
-smaller than version 2.0. 
+smaller than version 2.0.
 See also \emph{http://statisticalhorizons.com/wp-content/uploads/2012/01/combchi.sas}.
 }
 }
@@ -83,7 +83,7 @@ dk <- c(24.957, 18.051, 18.812, 17.362, 21.234, 18.615, 19.84)
 dk.comb <- miceadds::micombine.chisquare(dk=dk, df=4 )
   ##  Combination of Chi Square Statistics for Multiply Imputed Data
   ##  Using 7 Imputed Data Sets
-  ##  F(4, 482.06)=4.438     p=0.00157  
+  ##  F(4, 482.06)=4.438     p=0.00157
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

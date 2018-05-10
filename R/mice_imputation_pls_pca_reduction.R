@@ -1,28 +1,28 @@
 ## File Name: mice_imputation_pls_pca_reduction.R
-## File Version: 0.02
+## File Version: 0.03
 
 
 mice_imputation_pls_pca_reduction <- function(x , pcamaxcols ,
     pls.print.progress)
-{                        
+{
     if ( ncol(x) > pcamaxcols ){
         a0 <- Sys.time()
         NX <- nrow(x)
         xdims <- min( pcamaxcols , NX-2 )
-        if( pls.print.progress ){ 
+        if( pls.print.progress ){
             cat("\nDimension reduction with Principal Components Analysis\n")
             if (pcamaxcols > 1){
-                cat("Dimension of X:" , NX , " -> Dimension reduction to " , 
+                cat("Dimension of X:" , NX , " -> Dimension reduction to " ,
                         xdims , "dimensions\n")
             }
             if (pcamaxcols < 1){
-                cat("Dimension of X:" , NX , " -> Dimension reduction to " , 
+                cat("Dimension of X:" , NX , " -> Dimension reduction to " ,
                         100 * pcamaxcols , "% of total variance\n")
             }
-        }                
+        }
         x <- as.matrix(x)
         xpca <- pca.covridge(x=x)
-        varexpl <- xpca$sdev^2 
+        varexpl <- xpca$sdev^2
         varexpl <- cumsum( varexpl / sum( varexpl) * 100 )
         xdims <- which( varexpl > 100*pcamaxcols )[1]
         if (pls.print.progress){
@@ -34,7 +34,7 @@ mice_imputation_pls_pca_reduction <- function(x , pcamaxcols ,
         if (pls.print.progress){
             cat("\nTime needed:" , a1-a0 , "\n")
         }
-    }            
+    }
     #--- output
     return(x)
 }

@@ -1,9 +1,9 @@
 ## File Name: latent.regression.em.R
-## File Version: 0.16
-latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) , 
-                                beta.init=rep(0,ncol(X)) , sigma.init =1 , 
-                                b = b , a= rep(1 , length(b)) , c= rep(0 , length(b)) , 
-                                max.parchange=.0001 , 
+## File Version: 0.17
+latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
+                                beta.init=rep(0,ncol(X)) , sigma.init =1 ,
+                                b = b , a= rep(1 , length(b)) , c= rep(0 , length(b)) ,
+                                max.parchange=.0001 ,
                                 theta.list = seq(-5,5,len=50) , maxiter = 300 ){
     #.....................................................................................#
     # INPUT:                                                                              #
@@ -37,8 +37,8 @@ latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
         # Calculation of residual sd
         sigma <- sqrt( mean( weights* ( pv1$SE.EAP^2 + stats::resid(mod)^2 ) ) )
         parchange <- max( abs(sigma - sig0) , abs( cmod - beta0) )
-        cat( paste("Iteration " , iter,": max parm. change " , round( parchange , 8 ) ,sep="") , " # Regr. Coeff. " , 
-                                        as.vector(cmod) , "\n") ; 
+        cat( paste("Iteration " , iter,": max parm. change " , round( parchange , 8 ) ,sep="") , " # Regr. Coeff. " ,
+                                        as.vector(cmod) , "\n") ;
         utils::flush.console()
         # parameter update
         sig0 <- sigma ; beta0 <- cmod ; iter <- iter + 1
@@ -50,18 +50,18 @@ latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
     colnames(scoefs) <- c("est" , "se.simple" , "se" , "t" , "p" )
     rownames(scoefs) <- names(beta0)
     scoefs[,1] <- beta0
-    for (vv in 1:V){   
+    for (vv in 1:V){
         xvv <- X[,vv]
         scoefs[vv,2] <- sqrt( 1 / sum( weights * xvv^2  / sigma^2 ) )
-        h1 <- weights * xvv^2  / sigma^2 * ( 1 - pv1$SE.EAP^2 / sigma^2 )    
+        h1 <- weights * xvv^2  / sigma^2 * ( 1 - pv1$SE.EAP^2 / sigma^2 )
         h1[ h1<0] <- 0
-        scoefs[vv,3] <- sqrt( 1 / sum( h1 ) )    
-    }    
+        scoefs[vv,3] <- sqrt( 1 / sum( h1 ) )
+    }
     scoefs$t <- scoefs$est / scoefs$se
     scoefs$p <- 2 * ( 1 - stats::pnorm( abs( scoefs$t ) ) )
-    if ( ! is.null( colnames(X) ) ){ 
+    if ( ! is.null( colnames(X) ) ){
         rownames(scoefs) <- colnames(X)   # use column names of X
-    } 
+    }
     #********
     # list of results
     res <- list( "iterations" = iter - 1, "maxiter" = maxiter , "max.parchange" = max.parchange ,
@@ -69,9 +69,9 @@ latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
     return(res)
 }
 
-    
-    
-    
+
+
+
 #.........................................................................
 # sample parameters for latent regression model
 .sampling.latent.regression <- function( pv , X , Z=rep(1,length(pv)) ){
@@ -94,7 +94,7 @@ latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
         mod1 <- stats::lm( residuals.mod ~ 0 + Z )
         summary(mod1)
         # sample gamma coefficients for heteroscedasticity
-        samp.gamma <- CDM::CDM_rmvnorm( 1, mean = stats::coef(mod1) , sigma = stats::vcov(mod1) ) 
+        samp.gamma <- CDM::CDM_rmvnorm( 1, mean = stats::coef(mod1) , sigma = stats::vcov(mod1) )
         res$fitted.sigma <- sqrt( stats::fitted(mod1) )
         res$lm.latent.regression <- mod
         res$lm.residualsd <- mod1

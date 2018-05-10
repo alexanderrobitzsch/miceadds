@@ -1,5 +1,5 @@
 %% File Name: mice.impute.bygroup.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{mice.impute.bygroup}
 \alias{mice.impute.bygroup}
@@ -9,7 +9,7 @@
 Groupwise Imputation Function
 }
 \description{
-The function \code{mice.impute.bygroup} performs groupwise imputation for arbitrary 
+The function \code{mice.impute.bygroup} performs groupwise imputation for arbitrary
 imputation methods defined in \pkg{mice}.
 }
 \usage{
@@ -19,7 +19,7 @@ mice.impute.bygroup(y, ry, x, group, imputationFunction, ...)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
     \item{y}{Incomplete data vector of length \code{n}}
-    
+
   \item{ry}{
 Vector of missing data pattern (\code{FALSE} -- missing,
 \code{TRUE} -- observed)
@@ -27,7 +27,7 @@ Vector of missing data pattern (\code{FALSE} -- missing,
 \item{x}{Matrix (\code{n} x \code{p}) of complete
  covariates.}
 \item{group}{
-Name of grouping variable 
+Name of grouping variable
 }
   \item{imputationFunction}{
 Imputation method for \pkg{mice}
@@ -61,8 +61,8 @@ Vector of imputed values
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Cluster-specific imputation for some variables
-#############################################################################    
-    
+#############################################################################
+
 data( data.ma01 )
 dat <- data.ma01
 # use sub-dataset
@@ -76,9 +76,9 @@ predictorMatrix[ , c("idstud", "studwgt","urban" ) ] <- 0
 imputationMethod <- rep("norm" , V)
 names(imputationMethod) <- colnames(dat)
 
-#** groupwise imputation of variable books 
+#** groupwise imputation of variable books
 imputationMethod["books"] <- "bygroup"
-# specify name of the grouping variable ('idschool') and imputation method ('norm') 
+# specify name of the grouping variable ('idschool') and imputation method ('norm')
 group <- list( "books" = "idschool" )
 imputationFunction <- list("books" = "norm" )
 

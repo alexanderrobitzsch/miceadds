@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_include_cluster_effect.R
-## File Version: 0.02
+## File Version: 0.03
 
 mice_imputation_include_cluster_effect <- function( x , y , ry , type )
 {
@@ -16,7 +16,7 @@ mice_imputation_include_cluster_effect <- function( x , y , ry , type )
         type <- c( type , 1 )
         names(type)[ length(type) ] <- newname
         # check whether x10 and x0 are really needed here
-    }                            
+    }
     res <- list( x = x , type = type )
     return(res)
 }

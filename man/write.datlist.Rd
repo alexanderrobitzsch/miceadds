@@ -1,5 +1,5 @@
 %% File Name: write.datlist.Rd
-%% File Version: 0.08
+%% File Version: 0.09
 
 \name{write.datlist}
 \alias{write.datlist}
@@ -12,8 +12,8 @@ Writes a list of multiply imputed datasets.
 }
 
 \usage{
-write.datlist(datlist, name, include.varnames = TRUE, type = "csv2", 
-     separate = TRUE , Mplus = FALSE, round = NULL, Rdata = TRUE, 
+write.datlist(datlist, name, include.varnames = TRUE, type = "csv2",
+     separate = TRUE , Mplus = FALSE, round = NULL, Rdata = TRUE,
      subdir = TRUE , ...)
 }
 
@@ -30,7 +30,7 @@ Name of files to be saved
 Logical indicating whether variables should be saved
 }
   \item{type}{
-File type of datasets to be saved, see \code{\link{save.data}}. 
+File type of datasets to be saved, see \code{\link{save.data}}.
 }
 \item{separate}{Logical indicating whether imputed datasets
     should be written in separate files.
@@ -73,7 +73,7 @@ Further arguments to be passed to \code{\link{save.data}}.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also \code{\link[mice:mids2mplus]{mice::mids2mplus}},  
+See also \code{\link[mice:mids2mplus]{mice::mids2mplus}},
 \code{\link[mice:mids2spss]{mice::mids2spss}} and
 \code{\link{write.mice.imputation}} for writing objects of class
 \code{mids}.
@@ -86,7 +86,7 @@ writing imputed datasets in \pkg{Amelia}.
 \examples{
 \dontrun{
 #############################################################################
-# EXAMPLE 1: Write data list imputed in mice 
+# EXAMPLE 1: Write data list imputed in mice
 #############################################################################
 
 data(data.ma01)
@@ -103,14 +103,14 @@ impMeth <- imp0$method
 impMeth[ impMeth == "pmm" ] <- "norm"
 
 # do imputations in mice
-imp <- mice::mice( dat , predictorMatrix = predM , imputationMethod=impMeth, 
+imp <- mice::mice( dat , predictorMatrix = predM , imputationMethod=impMeth,
             m=3 , maxit=4 )
 
 # write imputed data in format "csv2" and round after 4 digits
 write.datlist( datlist = imp , name = "mice_imp_csv2" , round = 4 )
 # write imputed data in R binary format
 write.datlist( datlist = imp , name = "mice_imp_Rdata" , type="Rdata")
-# write data for Mplus usage 
+# write data for Mplus usage
 write.datlist( datlist = imp , name = "mice_imp_Mplus" , Mplus = TRUE , round = 5)
 }
 }

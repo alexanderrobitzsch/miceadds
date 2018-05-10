@@ -1,5 +1,5 @@
 ## File Name: pool.mids.nmi.R
-## File Version: 0.12
+## File Version: 0.13
 
 ###################################################
 # pooling function for nested multiple imputation objects
@@ -20,19 +20,19 @@ pool.mids.nmi <- function( object , method="largesample" ){
             pool_results[[bb]] <- mice::pool( anal2 , method=method)
         }
 
-        pool1 <- pool_results[[1]]$u[1,,]        
-        
+        pool1 <- pool_results[[1]]$u[1,,]
+
         NV <- nrow(pool1)
         cn <- colnames(pool)
         v1 <- vcov( object$analyses[[1]][[1]] )
         if ( ! is.null( rownames(v1) ) ){
             cn <- rownames(v1)
         }
-        
+
         # collect parameter estimates
         qhat <- array( NA , dim=c( NB , NW , NV ) )
         dimnames(qhat)[[3]] <- cn
-        dimnames(qhat)[[1]] <- paste0("Between_Imp" , 1:NB ) 
+        dimnames(qhat)[[1]] <- paste0("Between_Imp" , 1:NB )
         dimnames(qhat)[[2]] <- paste0("Within_Imp" , 1:NW )
         for (bb in 1:NB){
             qhat[bb,,] <- pool_results[[bb]]$qhat
@@ -41,13 +41,13 @@ pool.mids.nmi <- function( object , method="largesample" ){
         # collect estimated variance matrices
         u <- array( NA , dim=c( NB , NW , NV , NV) )
         dimnames(u)[[4]] <- dimnames(u)[[3]] <- cn
-        dimnames(u)[[1]] <- paste0("Between_Imp" , 1:NB ) 
+        dimnames(u)[[1]] <- paste0("Between_Imp" , 1:NB )
         dimnames(u)[[2]] <- paste0("Within_Imp" , 1:NW )
 
         for (bb in 1:NB){
             u[bb,,,] <- pool_results[[bb]]$u
         }
-        
+
         #*************************
         # summary statistics
         fit <- pool.nmi.scalar.helper( qhat , u , NV , NB , NW )
@@ -55,11 +55,11 @@ pool.mids.nmi <- function( object , method="largesample" ){
         class(fit) <- "mipo.nmi"
         return(fit)
 }
-###########################################################################            
+###########################################################################
 # coef and vcov method
 coef.mipo.nmi <- function( object , ... ){
     return(object$qbar)
 }
 vcov.mipo.nmi <- function( object , ... ){
     return(object$Tm)
-}        
+}

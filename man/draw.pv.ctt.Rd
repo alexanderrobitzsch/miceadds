@@ -1,5 +1,5 @@
 %% File Name: draw.pv.ctt.Rd
-%% File Version: 1.17
+%% File Version: 1.18
 
 \name{draw.pv.ctt}
 \alias{draw.pv.ctt}
@@ -11,13 +11,13 @@ Plausible Value Imputation Using a Known Measurement Error Variance
 
 \description{
 This function provides unidimensional plausible value imputation with a
-known measurement error variance or classical test theory (Mislevy, 1991). 
-The reliability of the scale is estimated by Cronbach's Alpha or can be 
-provided by the user. 
+known measurement error variance or classical test theory (Mislevy, 1991).
+The reliability of the scale is estimated by Cronbach's Alpha or can be
+provided by the user.
 }
 
 \usage{
-draw.pv.ctt(y, dat.scale = NULL, x=NULL, samp.pars = TRUE, 
+draw.pv.ctt(y, dat.scale = NULL, x=NULL, samp.pars = TRUE,
       alpha = NULL, sig.e = NULL, var.e=NULL , true.var = NULL)
 }
 
@@ -37,7 +37,7 @@ Matrix of item responses
 Matrix of covariates
 }
   \item{samp.pars}{
-An optional logical indicating whether scale parameters 
+An optional logical indicating whether scale parameters
 (reliability or measurement error standard deviation) should be sampled
 }
   \item{alpha}{
@@ -46,7 +46,7 @@ Reliability estimate of the scale. The default of
 as a reliability estimate.
 }
   \item{sig.e}{
-Optional vector of the standard deviation of the error. 
+Optional vector of the standard deviation of the error.
 Note that it is \emph{not} the error variance.
 }
   \item{var.e}{
@@ -63,7 +63,7 @@ The linear model is assumed for drawing plausible values of a variable
 \eqn{Y} contaminated by measurement error. Assuming \eqn{Y= \theta + e}
 and a linear regression model for \eqn{\theta}
 \deqn{ \theta = \bold{X} \beta + \epsilon}
-(plausible value) imputations from the posterior distribution 
+(plausible value) imputations from the posterior distribution
 \eqn{P( \theta | Y , \bold{X} )} are drawn. See Mislevy (1991) for details.
  }
 
@@ -72,11 +72,11 @@ A vector with plausible values
 }
 
 \references{
-Blackwell, M., Honaker, J., & King, G. (2011). 
-\emph{Multiple overimputation: A unified approach to measurement error and 
-missing data}. Technical Report. 
-    
-Mislevy, R. J. (1991). Randomization-based inference about latent variables 
+Blackwell, M., Honaker, J., & King, G. (2011).
+\emph{Multiple overimputation: A unified approach to measurement error and
+missing data}. Technical Report.
+
+Mislevy, R. J. (1991). Randomization-based inference about latent variables
 from complex samples. \emph{Psychometrika}, \bold{56}, 177-196.
 }
 
@@ -89,7 +89,7 @@ Plausible value imputation is also labeled as multiple overimputation
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also 
+See also
 \code{\link[sirt:plausible.value.imputation.raschtype]{sirt::plausible.value.imputation.raschtype}}
 for plausible value imputation.
 
@@ -143,7 +143,7 @@ library(Amelia)
 # define data frame
 dat <- data.frame( "x"=x , "y"=y , "theta"= theta_obs )
 # generate observation-level priors for theta
-priors <- cbind( 1:n , 3 , theta_obs , sig.e )  
+priors <- cbind( 1:n , 3 , theta_obs , sig.e )
              # 3 indicates column index for theta
 overimp <- priors[,1:2]
 # run Amelia
@@ -152,7 +152,7 @@ imp <- Amelia::amelia( dat , priors = priors , overimp=overimp, m = 10)
 datlist <- miceadds::datlist_create( imp$imputations )
 withPool_MI( with( datlist , stats::var(theta) ) )
 stats::var(theta)       # compare with true variance
-mod <- with( datlist ,  stats::lm( theta ~ x + y ) ) 
+mod <- with( datlist ,  stats::lm( theta ~ x + y ) )
 mitools::MIcombine(mod)
 }
 }

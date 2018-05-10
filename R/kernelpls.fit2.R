@@ -1,5 +1,5 @@
 ## File Name: kernelpls.fit2.R
-## File Version: 0.13
+## File Version: 0.14
 #############################################
 # Rcpp version of kernel PLS regression
 kernelpls.fit2 <- function(X, Y, ncomp ){
@@ -21,7 +21,7 @@ kernelpls.fit2 <- function(X, Y, ncomp ){
     Y <- Y - rep(Ymeans, each = nobj)
     # apply Rcpp function
     res <- kernelpls_1dim(Y,X , comp=ncomp)
-    .attach.environment( res=res , envir=e1 )    
+    .attach.environment( res=res , envir=e1 )
     #****
     # output management copied from kernelpls.fit function
     # from the pls package
@@ -72,12 +72,12 @@ kernelpls.fit2 <- function(X, Y, ncomp ){
 .attach.environment <- function( res , envir ){
     CC <- length(res)
     for (cc in 1:CC){
-        assign( names(res)[cc] , res[[cc]] , envir=envir )        
+        assign( names(res)[cc] , res[[cc]] , envir=envir )
     }
 }
 ########################################################
 # Call to Rcpp function
-kernelpls_1dim <- function (Y,X,comp){ 
+kernelpls_1dim <- function (Y,X,comp){
     res <- kernelpls_1dim_C(Y,X,comp)
     return(res)
 }

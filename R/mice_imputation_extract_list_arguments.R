@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_extract_list_arguments.R
-## File Version: 0.14
+## File Version: 0.15
 
 
 
@@ -13,13 +13,13 @@ mice_imputation_extract_list_arguments <- function( micearg , vname , miceargdef
     if( is.list(micearg) ){
         if ( ! is.null(micearg[[vname]] ) ){
             micearg <- micearg[[vname]]
-        } else { 
-            micearg <- miceargdefault 
-        }                      
+        } else {
+            micearg <- miceargdefault
+        }
     }
     if ( is.null(micearg) ){
-        micearg <- miceargdefault 
-    }       
+        micearg <- miceargdefault
+    }
     return( micearg )
 }
 #*****************************************************************************

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.hotDeck.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{mice.impute.hotDeck}
 \alias{mice.impute.hotDeck}
@@ -9,7 +9,7 @@ Imputation of a Variable Using Probabilistic Hot Deck Imputation
 }
 \description{
 Imputes a variable under a random draw from a pool of donors
-defined by a distance function. Uncertainty with respect 
+defined by a distance function. Uncertainty with respect
 to the creation of donor pools is introduced by drawing a Bootstrap
 sample (approximate Bayesian Bootstrap, ABB)
 from observations with complete data (see Andridge & Little, 2010).
@@ -54,7 +54,7 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 }
 
 \references{
-Andridge, R. R., &  and Little, R. J. A. (2010). 
+Andridge, R. R., &  and Little, R. J. A. (2010).
 A review of hot deck imputation for survey non-response.
 \emph{International Statistical Review}, \bold{78}, 40-64.
 }
@@ -78,7 +78,7 @@ See also the packages \pkg{hot.deck} and
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Hot deck imputation NHANES dataset
-#############################################################################    
+#############################################################################
 
 data(nhanes, package="mice")
 dat <- nhanes

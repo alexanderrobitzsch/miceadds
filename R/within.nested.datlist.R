@@ -1,5 +1,5 @@
 ## File Name: within.nested.datlist.R
-## File Version: 1.03
+## File Version: 1.04
 
 
 #########################################################
@@ -7,8 +7,8 @@ within.nested.datlist <- function (data, expr, ...){
    res <- data
    CALL <- attr(res,"call")
    imp <- res
-   NB <- length(imp)   
-   NW <- length(imp[[1]])         
+   NB <- length(imp)
+   NW <- length(imp[[1]])
    for (ii in 1:NB){
       for (ww in 1:NW){
        # this function is simply a copy of within.data.frame
@@ -20,13 +20,13 @@ within.nested.datlist <- function (data, expr, ...){
         l <- l[!sapply(l, is.null)]
         nD <- length(del <- setdiff(names(data), (nl <- names(l))))
         data[nl] <- l
-        if (nD) 
-            data[del] <- if (nD == 1) 
+        if (nD)
+            data[del] <- if (nD == 1)
                 NULL
             else vector("list", nD)
         imp[[ii]][[ww]] <- data
                     }
-              }                                    
+              }
 
     res <- nested.datlist_create( imp )
     attr(res,"call") <- CALL

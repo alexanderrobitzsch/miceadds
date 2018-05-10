@@ -1,5 +1,5 @@
 %% File Name: NMIwaldtest.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{NMIwaldtest}
 \alias{NMIwaldtest}
@@ -15,8 +15,8 @@ Wald Test for Nested Multiply Imputed Datasets
 
 \description{
 Performs a Wald test for nested multiply imputed datasets (\code{NMIwaldtest})
-and ordinary multiply imputed datasets (\code{MIwaldtest}), 
-see Reiter and Raghanuthan (2007). 
+and ordinary multiply imputed datasets (\code{MIwaldtest}),
+see Reiter and Raghanuthan (2007).
 The correspondent statistic is also called the \eqn{D_1} statistic.
 
 The function \code{create.designMatrices.waldtest} is a helper function
@@ -77,7 +77,7 @@ List with following entries
 
 \references{
 Reiter, J. P. and Raghunathan, T. E. (2007). The multiple adaptations of multiple
-imputation. \emph{Journal of the American Statistical Association}, 
+imputation. \emph{Journal of the American Statistical Association},
 \bold{102}, 1462-1471.
 }
 
@@ -102,13 +102,13 @@ function for the creation of design matrices.
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2         
+datlist <- data.timss2
 # remove first four variables
 M <- length(datlist)
 for (ll in 1:M){
     datlist[[ll]] <- datlist[[ll]][ , -c(1:4) ]
                }
-                
+
 #***************
 # (1) nested multiple imputation using mice
 imp1 <- miceadds::mice.nmi( datlist ,  m=3 , maxit=2 )
@@ -135,7 +135,7 @@ wres1b <- miceadds::NMIwaldtest( qhat=qhat , u=u , testnull=testnull )
 summary(wres1b)
 
 #**** Model 2: Multivariate linear regression
-res2 <- with( imp1 , stats::lm( cbind( ASMMAT , ASSSCI ) ~ 
+res2 <- with( imp1 , stats::lm( cbind( ASMMAT , ASSSCI ) ~
                            0 + I(1*(female==1)) + I(1*(female==0))   ) )
 pres2 <- miceadds::pool.mids.nmi( res2 )
 summary(pres2)

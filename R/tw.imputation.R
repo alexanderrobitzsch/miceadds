@@ -1,9 +1,9 @@
 ## File Name: tw.imputation.R
-## File Version: 0.07
+## File Version: 0.08
 tw.imputation <- function( data , integer = FALSE ){
         n <- nrow(data)
-        p <- ncol(data)        
-        # person mean      
+        p <- ncol(data)
+        # person mean
         pm <- rowMeans( data , na.rm = TRUE )
         # item mean
         im <- colMeans( data , na.rm = TRUE )
@@ -18,11 +18,11 @@ tw.imputation <- function( data , integer = FALSE ){
         tw[ tw > m2 ] <- m2
         tw.raw <- data
         tw.raw[ is.na(data)  ] <- tw[ is.na(data) ]
-        if (integer ){ 
+        if (integer ){
             gt <- tw.raw - floor(tw.raw)
-            tw1 <- matrix( stats::rbinom(  as.matrix(gt) , 1 , prob = as.matrix(gt) ) , 
+            tw1 <- matrix( stats::rbinom(  as.matrix(gt) , 1 , prob = as.matrix(gt) ) ,
                            ncol = p , byrow=FALSE)
-            tw.item <- floor(tw.raw) +  tw1    
+            tw.item <- floor(tw.raw) +  tw1
               } else { tw.item <- tw.raw }
         return( tw.item )
         }

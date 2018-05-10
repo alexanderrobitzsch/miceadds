@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.contextual.pmm.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{mice.impute.2l.contextual.pmm}
 \alias{mice.impute.2l.contextual.pmm}
@@ -11,17 +11,17 @@ with Contextual Variables
 }
 \description{
 This imputation method imputes a variable using linear regression
-with predictive mean matching as the imputation method. 
-Including a contextual effects means that an aggregated variable at a cluster 
+with predictive mean matching as the imputation method.
+Including a contextual effects means that an aggregated variable at a cluster
 level is included as a further covariate.
 }
 
 \usage{
-mice.impute.2l.contextual.pmm(y, ry, x, type, imputationWeights = NULL, 
+mice.impute.2l.contextual.pmm(y, ry, x, type, imputationWeights = NULL,
      interactions = NULL, quadratics = NULL, ...)
 
-mice.impute.2l.contextual.norm(y, ry, x, type, ridge = 10^(-5), 
-   imputationWeights = NULL, interactions = NULL, quadratics = NULL, ...)     
+mice.impute.2l.contextual.norm(y, ry, x, type, ridge = 10^(-5),
+   imputationWeights = NULL, interactions = NULL, quadratics = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 
@@ -80,7 +80,7 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-For imputations at level 2 variables see 
+For imputations at level 2 variables see
 \code{\link[mice:mice.impute.2lonly.norm]{mice::mice.impute.2lonly.norm}}
 and \code{\link[mice:mice.impute.2lonly.pmm]{mice::mice.impute.2lonly.pmm}}.
 }
@@ -104,7 +104,7 @@ predM <- imp0$pred
 # exclude student IDs
 predM[ , "idstud"] <- 0
 # define idclass as the cluster variable (type=-2)
-predM[ , "idclass" ] <- -2  
+predM[ , "idclass" ] <- -2
 
 # initialize with norm method
 impMethod <- rep( "norm" , length(imp0$method) )
@@ -144,7 +144,7 @@ predM[ c("sprengel","groesse") , "idclass" ] <- -2
 
 # do imputation
 imp <- mice::mice( dat , predictorMatrix = predM , m = 3 ,  maxit = 4 ,
-           imputationMethod = impMethod  , paniter=100)           
+           imputationMethod = impMethod  , paniter=100)
 summary(imp)
 }
 }

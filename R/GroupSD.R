@@ -1,13 +1,13 @@
 ## File Name: GroupSD.R
-## File Version: 0.03
+## File Version: 0.04
 
 
 
-        
+
 
 #############################################################
 # group SD
-GroupSD <- function( data , group , weights=NULL , extend=FALSE){    
+GroupSD <- function( data , group , weights=NULL , extend=FALSE){
     m1 <- GroupSum( data=data^2 , group = group , weights=weights , extend=extend )
     m2 <- GroupSum( data=1+0*data , group = group , weights=weights , extend=extend )
     m3 <- GroupMean( data=data , group = group , weights=weights , extend=extend )
@@ -15,5 +15,5 @@ GroupSD <- function( data , group , weights=NULL , extend=FALSE){
     res <- abs(res)
     res <- sqrt( res )
     res <- data.frame( m1[,1] , res)
-    return(res)    
+    return(res)
 }

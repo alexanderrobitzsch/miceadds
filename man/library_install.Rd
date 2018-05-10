@@ -1,5 +1,5 @@
 %% File Name: library_install.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 \name{library_install}
 \alias{library_install}
@@ -23,13 +23,13 @@ library_install( pkg , ... )
 Vector with package names
 }
   \item{\dots}{
-Further arguments to be passed to 
+Further arguments to be passed to
 \code{\link[utils:install.packages]{install.packages}}
 }
 }
 
 %\details{
-%The string is evaluated in the parent environment. See 
+%The string is evaluated in the parent environment. See
 %}
 %\value{
 %%  ~Describe the value returned
@@ -54,8 +54,8 @@ Further arguments to be passed to
 \examples{
 \dontrun{
 # try to load packages PP and MCMCglmm
-library_install( pkg =  c("PP" , "MCMCglmm") )   
-}    
+library_install( pkg =  c("PP" , "MCMCglmm") )
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

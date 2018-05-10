@@ -1,5 +1,5 @@
 ## File Name: glm.cluster.R
-## File Version: 0.11
+## File Version: 0.12
 
 
 ##################################################
@@ -8,21 +8,21 @@ glm.cluster <- function( data , formula , cluster , ... ){
     TAM::require_namespace_msg("multiwayvcov")
     mod <- stats::glm( data=data , formula=formula ,  ... )
     if ( length(cluster) > 1 ){
-        v1 <- cluster 
+        v1 <- cluster
     } else {
         v1 <- data[,cluster]
-    }    
-    dfr <- data.frame( cluster = v1 ) 
-    vcov2 <- multiwayvcov::cluster.vcov( model = mod , cluster = dfr)    
+    }
+    dfr <- data.frame( cluster = v1 )
+    vcov2 <- multiwayvcov::cluster.vcov( model = mod , cluster = dfr)
     res <- list( "glm_res" = mod , "vcov" = vcov2 )
     class(res) <- "glm.cluster"
     return(res)
 }
-###################################################            
+###################################################
 coef.glm.cluster <- function( object , ... ){
     coef( object$glm_res)
 }
-####################################################            
+####################################################
 vcov.glm.cluster <- function( object , ... ){
     object$vcov
 }
@@ -38,4 +38,4 @@ summary.glm.cluster <- function( object , ... ){
     print(csmod)
     invisible(csmod)
 }
-#######################################################            
+#######################################################

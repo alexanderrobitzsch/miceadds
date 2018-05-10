@@ -1,5 +1,5 @@
 ## File Name: grep.vec.R
-## File Version: 1.02
+## File Version: 1.03
 
 ##################################################
 # vector version of grep
@@ -18,4 +18,4 @@ grep.vec <- function( pattern.vec , x , operator="AND"){
         res <- list( "x" = x , "index.x" = index.x )
         return(res)
         }
-##################################################    
+##################################################

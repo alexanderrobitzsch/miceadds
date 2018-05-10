@@ -1,5 +1,5 @@
 %% File Name: mi.anova.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{mi.anova}
 \alias{mi.anova}
@@ -25,7 +25,7 @@ Object of class \code{mids} or \code{mids.1chain}
 Formula for \code{lm} function. Note that this can be also a string.
 }
 \item{type}{
-Type for ANOVA calculations. For \code{type=3}, the 
+Type for ANOVA calculations. For \code{type=3}, the
 \code{\link[car:Anova]{car::Anova}} function
 from the \pkg{car} package is used.
 }
@@ -44,8 +44,8 @@ A list with the following entries:
 \references{
 Allison, P. D. (2002). \emph{Missing data}. Newbury Park, CA: Sage.
 
-Grund, S., Luedtke, O., & Robitzsch, A. (2016). Pooling ANOVA results from 
-multiply imputed datasets: A simulation study. 
+Grund, S., Luedtke, O., & Robitzsch, A. (2016). Pooling ANOVA results from
+multiply imputed datasets: A simulation study.
 \emph{Methodology, 12}, 75-88.
 }
 

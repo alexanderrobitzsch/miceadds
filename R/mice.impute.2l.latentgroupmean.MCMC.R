@@ -1,13 +1,13 @@
 ## File Name: mice.impute.2l.latentgroupmean.mcmc.R
-## File Version: 3.25
-mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type , 
+## File Version: 3.26
+mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type ,
                     pls.facs = NULL , imputationWeights = NULL ,
-                    interactions = NULL , quadratics = NULL , 
-                    mcmc.burnin=100, mcmc.adapt=100, mcmc.iter=1000 , 
+                    interactions = NULL , quadratics = NULL ,
+                    mcmc.burnin=100, mcmc.adapt=100, mcmc.iter=1000 ,
                       draw.fixed = TRUE, EAP = FALSE , ...)
-{  
+{
 
-    TAM::require_namespace_msg("MCMCglmm")                
+    TAM::require_namespace_msg("MCMCglmm")
     # retrieve mice objects
     k <- get("k", envir=parent.frame())           # iteration
     i <- get("i", envir=parent.frame())           # imputation
@@ -17,7 +17,7 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type ,
     if( !exists("storeState.latentgroupmean.MCMC", where=parent.frame()) ){
       assign("storeState.latentgroupmean.MCMC", list(), pos=parent.frame())
     }
-    
+
     # retrieve state for current variable/imputation
     storeState.latentgroupmean.MCMC <- get("storeState.latentgroupmean.MCMC", envir=parent.frame())
 
@@ -40,11 +40,11 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type ,
     y <- x[ , type == 2 ]
 
     # distinguish cases with and without covariates
-    if ( sum( type == 1 ) > 0 ){ 
+    if ( sum( type == 1 ) > 0 ){
 
         # aggregate covariates
         cov2 <- cbind( cluster , covariates )
-        covaggr <- mice.impute.2l.groupmean( y , ry , x = cov2 , 
+        covaggr <- mice.impute.2l.groupmean( y , ry , x = cov2 ,
               type = c(-2 , rep(1,ncol(covariates) ) ) ,
                        grmeanwarning=FALSE )
         colnames(covaggr) <- colnames(covariates)
@@ -56,18 +56,18 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type ,
         colnames(h1) <- colnames(covaggr)
 
         # PLS interactions and quadratics
-        newstate <- get( "newstate" , pos = parent.frame() )  
-        vname <- get("vname", pos = parent.frame()) # get variable name         
-        plsout <- mice_imputation_pls_helper( newstate = newstate , vname = vname , pls.impMethod = "xplsfacs" , 
-                        x = h1 , y = y.l2[,2] , ry= ( ! is.na(y.l2[,2] )) , 
-                        imputationWeights = rep( 1 , nrow(covaggr.l2)) , 
+        newstate <- get( "newstate" , pos = parent.frame() )
+        vname <- get("vname", pos = parent.frame()) # get variable name
+        plsout <- mice_imputation_pls_helper( newstate = newstate , vname = vname , pls.impMethod = "xplsfacs" ,
+                        x = h1 , y = y.l2[,2] , ry= ( ! is.na(y.l2[,2] )) ,
+                        imputationWeights = rep( 1 , nrow(covaggr.l2)) ,
                         interactions = interactions, quadratics = quadratics ,  pls.facs = pls.facs ,  ... )
 
         # imputation PLS
-        if( ! is.null( plsout$yimp ) ){ 
+        if( ! is.null( plsout$yimp ) ){
             covaggr.l2r <- as.matrix(plsout$yimp[,-1])
             covaggr <- as.matrix( covaggr.l2r[ match( cluster , covaggr.l2[,1] ) , ] )
-                }        
+                }
 
         # model input
         rownames(covaggr) <- NULL # prevent warning
@@ -121,7 +121,7 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type ,
 
     # match cluster indices
     ind <- match( cluster , a1[,1] )
-    ximp <- stats::rnorm( nrow(a1) , mean = a1[,3]+a1[,5] , 
+    ximp <- stats::rnorm( nrow(a1) , mean = a1[,3]+a1[,5] ,
                 sd = (1-EAP)*sqrt(a1[,6]) )[ ind ]
     return(ximp)
 }

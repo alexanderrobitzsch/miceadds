@@ -1,5 +1,5 @@
 %% File Name: files_move.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{files_move}
 \alias{files_move}
@@ -8,7 +8,7 @@
 Moves Files from One Directory to Another Directory
 }
 \description{
-Moves older (defined in alphanumeric order) files from one 
+Moves older (defined in alphanumeric order) files from one
 directory to another directory.
 }
 
@@ -63,7 +63,7 @@ Pattern in file names to be searched for
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Move older files in '__ARCHIVE' directory
-#############################################################################    
+#############################################################################
 
 # specify path
 path1 <- "p:/IPN/Projects/PISA/Trend_2015/2__Data/All_Waves/"

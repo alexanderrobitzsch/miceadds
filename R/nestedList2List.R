@@ -1,5 +1,5 @@
 ## File Name: nestedList2List.R
-## File Version: 0.03
+## File Version: 0.04
 
 ###############################################
 # converts a nested list into a list
@@ -8,7 +8,7 @@ nestedList2List <- function(nestedList){
     # count number of elements
     M <- 0
     for (bb in 1:NB){
-       M <- M + length(nestedList[[bb]])    
+       M <- M + length(nestedList[[bb]])
     }
     # create new list object
     list1 <- as.list(1:M)
@@ -20,6 +20,6 @@ nestedList2List <- function(nestedList){
             vv <- vv + 1
         }
     }
-    return(list1)    
+    return(list1)
 }
-#################################################    
+#################################################

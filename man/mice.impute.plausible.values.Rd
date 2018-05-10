@@ -1,5 +1,5 @@
 %% File Name: mice.impute.plausible.values.Rd
-%% File Version: 0.37
+%% File Version: 0.38
 
 \name{mice.impute.plausible.values}
 \alias{mice.impute.plausible.values}
@@ -20,15 +20,15 @@ obtained by fitting an item response model.
 }
 
 \usage{
-mice.impute.plausible.values(y, ry, x, type, alpha = NULL, 
-    alpha.se = 0, scale.values = NULL, sig.e.miss = 1e+06, 
-    like=NULL , theta=NULL , normal.approx=NULL , 
-    pviter = 15, imputationWeights = rep(1, length(y)), plausible.value.print = TRUE, 
+mice.impute.plausible.values(y, ry, x, type, alpha = NULL,
+    alpha.se = 0, scale.values = NULL, sig.e.miss = 1e+06,
+    like=NULL , theta=NULL , normal.approx=NULL ,
+    pviter = 15, imputationWeights = rep(1, length(y)), plausible.value.print = TRUE,
     pls.facs = NULL, interactions = NULL, quadratics = NULL, extract_data=TRUE,
     control_latreg = list( progress=FALSE, ridge = 1e-5 ),  ...)
 }
 
-%% like=NULL , theta=NULL , normal.approx=NULL , 
+%% like=NULL , theta=NULL , normal.approx=NULL ,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
 \item{y}{
@@ -40,7 +40,7 @@ mice.impute.plausible.values(y, ry, x, type, alpha = NULL,
 }
 \item{x}{
     Matrix (\code{n} \eqn{\times} \code{p}) of complete covariates.
-}    
+}
   \item{type}{
 Type of predictor variables. \code{type=3} refers to items belonging to
 a scale to be imputed. A cluster (grouping) variable is defined by
@@ -54,11 +54,11 @@ Model 3 of Example 1).
 }
   \item{alpha.se}{
 Optional numeric value of the standard error of the \code{alpha}
-reliability estimate if in every iteration a new reliability 
+reliability estimate if in every iteration a new reliability
 should be sampled.
 }
   \item{scale.values}{
-A list consisting of scale values of scale values and its 
+A list consisting of scale values of scale values and its
 corresponding standard errors (see Example 1).
 }
   \item{sig.e.miss}{
@@ -67,7 +67,7 @@ A standard error of measurement for cases with missing values on a scale
 \item{like}{Individual likelihood evaluated at \code{theta}}
 \item{theta}{Grid of unidimensional latent variable}
 \item{normal.approx}{Logical indicating whether the
-individual posterior should be approximated by a normal distribution}     
+individual posterior should be approximated by a normal distribution}
   \item{pviter}{
 Number of iterations in each imputation which should be run until the
 plausible values are drawn
@@ -102,7 +102,7 @@ The linear model is assumed for drawing plausible values of a variable
 \eqn{Y} contaminated by measurement error. Assuming \eqn{Y= \theta + e}
 and a linear regression model for \eqn{\theta}
 \deqn{ \theta = \bold{X} \beta + \epsilon}
-(plausible value) imputations from the posterior distribution 
+(plausible value) imputations from the posterior distribution
 \eqn{P( \theta | Y , \bold{X} )} are drawn. See Mislevy (1991) for details.
 }
 
@@ -114,22 +114,22 @@ A vector of length \code{nrow(x)} containing imputed plausible values.
 
 
 \references{
-Asparouhov, T., & Muthen, B. (2010). \emph{Plausible values for latent variables 
+Asparouhov, T., & Muthen, B. (2010). \emph{Plausible values for latent variables
 using Mplus}. Technical Report. \url{https://www.statmodel.com/papers.shtml}
-    
-Blackwell, M., Honaker, J., & King, G. (2011). 
-\emph{Multiple overimputation: A unified approach to measurement error and 
-missing data}. Technical Report. 
 
-Blackwell, M., Honaker, J., & King, G. (2017a). 
+Blackwell, M., Honaker, J., & King, G. (2011).
+\emph{Multiple overimputation: A unified approach to measurement error and
+missing data}. Technical Report.
+
+Blackwell, M., Honaker, J., & King, G. (2017a).
 A unified approach to measurement error and missing data: Overview and
-applications. \emph{Sociological Methods & Research}, \bold{46}(3), 303-341. 
+applications. \emph{Sociological Methods & Research}, \bold{46}(3), 303-341.
 
-Blackwell, M., Honaker, J., & King, G. (2017b). 
+Blackwell, M., Honaker, J., & King, G. (2017b).
 A unified approach to measurement error and missing data: Details and
 extensions. \emph{Sociological Methods & Research}, \bold{46}(3), 342-369.
 
-Mislevy, R. J. (1991). Randomization-based inference about latent variables 
+Mislevy, R. J. (1991). Randomization-based inference about latent variables
 from complex samples. \emph{Psychometrika}, \bold{56}, 177-196.
 }
 
@@ -155,7 +155,7 @@ models.
 #############################################################################
 # EXAMPLE 1: Plausible value imputation for data.ma04 | 2 scales
 #############################################################################
-    
+
 data(data.ma04)
 dat <- data.ma04
 
@@ -213,12 +213,12 @@ alpha.se <- list( "scale1" = .05 )  # sample alpha with a standard deviation of 
 # means and SE's of scale scores are assumed to be known
 M.scale2 <- rowMeans( dat[  , paste("B",1:5,sep="")  ] )
 # M.scale2[ is.na( m1) ] <- mean( M.scale2 , na.rm=TRUE )
-SE.scale2 <- rep( sqrt( stats::var(M.scale2,na.rm=T)*(1-.8) ) , nrow(dat) ) 
+SE.scale2 <- rep( sqrt( stats::var(M.scale2,na.rm=T)*(1-.8) ) , nrow(dat) )
 # => heterogeneous measurement errors are allowed
 scale.values <- list( "scale2" = list( "M" = M.scale2 , "SE" = SE.scale2 ) )
 
 #*** Imputation Model 1: Imputation four using parallel chains
-imp1 <- mice::mice( dat , predictorMatrix = predM , m = 4, maxit = 5 ,  
+imp1 <- mice::mice( dat , predictorMatrix = predM , m = 4, maxit = 5 ,
           alpha.se = alpha.se ,  imputationMethod = impMethod ,  allow.na = TRUE  , alpha = alpha,
           scale.values = scale.values  )
 summary(imp1)
@@ -227,10 +227,10 @@ summary(imp1)
 dat11 <- mice::complete( imp , 1 )
 
 #*** Imputation Model 2: Imputation using one long chain
-imp2 <- miceadds::mice.1chain( dat , predictorMatrix = predM , burnin=10 , iter=20 , Nimp=4 , 
+imp2 <- miceadds::mice.1chain( dat , predictorMatrix = predM , burnin=10 , iter=20 , Nimp=4 ,
           alpha.se = alpha.se ,  imputationMethod = impMethod ,  allow.na = TRUE  , alpha = alpha,
           scale.values = scale.values  )
-summary(imp2)    
+summary(imp2)
 
 #-------------
 #*** Imputation Model 3: Imputation including  group level variables
@@ -243,7 +243,7 @@ predM[ "scale2" , "group" ] <- -2
 predM[ "scale2" , c("V7","A1") ] <- 2
 
 # perform single imputation (m=1)
-imp <- mice::mice( dat , predictorMatrix = predM , m = 1 , maxit=10 , 
+imp <- mice::mice( dat , predictorMatrix = predM , m = 1 , maxit=10 ,
             imputationMethod = impMethod ,  allow.na = TRUE  , alpha = alpha,
             scale.values = scale.values )
 dat10 <- mice::complete(imp)
@@ -308,7 +308,7 @@ likeX2 <- IRTLikelihood.cfa( data= X.err , cfaobj=mod12)
 str(likeX2)
 
 #-- create data input for mice package
-data <- data.frame( "PVA" = NA , "X1" = X[,1] , "X2" = NA  ) 
+data <- data.frame( "PVA" = NA , "X1" = X[,1] , "X2" = NA  )
 vars <- colnames(data)
 V <- length(vars)
 predictorMatrix <- 1 - diag(V)
@@ -321,14 +321,14 @@ imputationMethod[c("PVA","X2")] <- "plausible.values"
 # likelihood and theta grid of plausible value derived from IRT model
 like <- list( "PVA" = likePV  , "X2" = likeX2 )
 theta <- list( "PVA" = attr(likePV,"theta") ,
-                "X2" = attr(likeX2 , "theta") )                     
+                "X2" = attr(likeX2 , "theta") )
 #-- initial imputations
 data.init <- data
 data.init$PVA <- mod11$person$EAP
 data.init$X2 <- X.err[,"X2"]
 
 #-- imputation using the mice and miceadds package
-imp1 <- mice::mice( as.matrix(data) , predictorMatrix = predictorMatrix , m = 4, 
+imp1 <- mice::mice( as.matrix(data) , predictorMatrix = predictorMatrix , m = 4,
             maxit = 6 , imputationMethod = imputationMethod ,  allow.na = TRUE ,
             theta=theta , like=like , data.init=data.init )
 summary(imp1)

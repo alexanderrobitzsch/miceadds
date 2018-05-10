@@ -1,11 +1,11 @@
 ## File Name: with.NestedImputationList.R
-## File Version: 0.04
+## File Version: 0.05
 
 ##################################################################
 # with function for a nested imputation list
 with.NestedImputationList <- function(data, expr,fun,...){
   pf<-parent.frame()
-  NB <- data$Nimp["Between"]  
+  NB <- data$Nimp["Between"]
   results0 <- as.list( seq( 1 , NB) )
   data0 <- data
   for (bb in 1:NB){
@@ -29,11 +29,11 @@ with.NestedImputationList <- function(data, expr,fun,...){
       } else {
         attr(results,"call")<-sys.call(-1)
       }
-      
+
         results0[[bb]] <- results
         #*************************************************
         }
     class(results0) <- "NestedImputationResultList"
-    return(results0) 
+    return(results0)
 }
 ####################################################################

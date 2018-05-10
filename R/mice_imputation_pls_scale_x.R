@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_scale_x.R
-## File Version: 0.03
+## File Version: 0.04
 
 mice_imputation_pls_scale_x <- function( x , imputationWeights , use_weights)
 {
@@ -11,7 +11,7 @@ mice_imputation_pls_scale_x <- function( x , imputationWeights , use_weights)
         SDx <- sqrt( colSums( iW * x^2 ) / colSums(iW) - Mx^2  )
         x0 <- x <- ( x - outer( rep(1,n) , t(Mx) ) ) / outer( rep(1,n) , t(SDx) )
     } else {  # without weights
-        x0 <- x <- ma.scale2( x )        
+        x0 <- x <- ma.scale2( x )
     }
     return(x)
 }

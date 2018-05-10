@@ -1,5 +1,5 @@
 ## File Name: zzz.R
-## File Version: 0.10
+## File Version: 0.11
 #  zzz.R
 #
 # This function is simply copied from mice package.
@@ -13,7 +13,7 @@ version <- function(pkg="miceadds"){
 # on attach TAM
 .onAttach <- function(libname,pkgname){
   d <- utils::packageDescription("miceadds")
-  packageStartupMessage( 
-            paste0( "* " , d$Package," " , d$Version," (",d$Date,")") 
+  packageStartupMessage(
+            paste0( "* " , d$Package," " , d$Version," (",d$Date,")")
                                 )
 }

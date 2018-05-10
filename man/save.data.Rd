@@ -1,5 +1,5 @@
 %% File Name: save.data.Rd
-%% File Version: 0.26
+%% File Version: 0.27
 
 \name{save.data}
 \alias{save.data}
@@ -16,7 +16,7 @@ or matrices.
 }
 
 \usage{
-save.data( data, filename, type="Rdata", path=getwd(), row.names=FALSE, na=NULL, 
+save.data( data, filename, type="Rdata", path=getwd(), row.names=FALSE, na=NULL,
       suffix = NULL , suffix_space = "__" , index = FALSE , systime = FALSE , ...)
 }
 
@@ -30,10 +30,10 @@ Name of data file
   \item{type}{
 The type of file in which the data frame or matrix should be loaded.
 This can be \code{Rdata} (for \R binary format, using
-\code{\link[base:save]{base::save}}, 
-\code{csv} (using \code{\link[utils:write.csv2]{utils::write.csv2}}), 
+\code{\link[base:save]{base::save}},
+\code{csv} (using \code{\link[utils:write.csv2]{utils::write.csv2}}),
 \code{csv} (using \code{\link[utils:write.csv]{utils::write.csv}}),
-\code{table} (using \code{\link[utils:write.table]{utils::write.table}}) or 
+\code{table} (using \code{\link[utils:write.table]{utils::write.table}}) or
 \code{sav} (using \code{\link[sjlabelled:write_spss]{sjlabelled::write_spss}}).
   \code{type} can also be a vector if the data frame should be
   saved in multiple formats.
@@ -81,8 +81,8 @@ and \code{type="csv2"} and is \code{"."} for \code{type="table"}.}
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See \code{\link{load.Rdata}} and \code{\link{load.data}} 
-for saving/writing \R data frames. 
+See \code{\link{load.Rdata}} and \code{\link{load.data}}
+for saving/writing \R data frames.
 }
 
 
@@ -90,8 +90,8 @@ for saving/writing \R data frames.
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Save dataset data.ma01
-#############################################################################    
-    
+#############################################################################
+
 #*** use data.ma01 as an example for writing data files using save.data
 data(data.ma01)
 dat <- data.ma01
@@ -111,8 +111,8 @@ miceadds::save.data( dat , filename="ma01data"  , type="table" , path=pf2 ,
 miceadds::save.data( dat, filename="ma01data", type="csv2", path=pf2,
             row.names=FALSE, na ="", suffix=systime()[5],
             index = TRUE, systime = TRUE )
-            
-# save data in sav format 
+
+# save data in sav format
 miceadds::save.data( dat, filename="ma02data", type="sav",  path=pf2 )
 
 # save data file in different formats

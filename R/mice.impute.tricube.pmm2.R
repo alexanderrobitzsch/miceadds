@@ -1,15 +1,15 @@
 ## File Name: mice.impute.tricube.pmm2.R
-## File Version: 0.10
+## File Version: 0.11
 mice.impute.tricube.pmm2 <- function (y, ry, x, tricube.pmm.scale= .2 , tricube.boot = FALSE , ...){
     NM <- NULL
-    x <- cbind(1, as.matrix(x))    
+    x <- cbind(1, as.matrix(x))
     # print some informations
-    vname <- get("vname", pos = parent.frame()) # get variable name        
-    
-    t1 <- mice_imputation_extract_list_arguments( micearg = tricube.pmm.scale , 
+    vname <- get("vname", pos = parent.frame()) # get variable name
+
+    t1 <- mice_imputation_extract_list_arguments( micearg = tricube.pmm.scale ,
                            vname = vname , miceargdefault = .2 )
-    
-    cat( "\n" , paste( vname , "  Imputation Method tricube.pmm with scaling factor" , 
+
+    cat( "\n" , paste( vname , "  Imputation Method tricube.pmm with scaling factor" ,
             t1 , "\n"))
     parm <- .norm.draw2(y, ry, x, ...)
     yhatobs <- x[ry, ] %*% parm$coef
@@ -21,26 +21,26 @@ mice.impute.tricube.pmm2 <- function (y, ry, x, tricube.pmm.scale= .2 , tricube.
         y1 <- y[ry] ; x1 <- x[ry,]
         B <- length(y1)
         ind <- sample( 1:B , replace = TRUE )
-        parm2 <- .norm.draw2(y = y1[ind] , ry = rep(TRUE,B) , x = x1[ind,] , ...)    
-        yhatmis <- x[!ry, ] %*% parm2$beta        
+        parm2 <- .norm.draw2(y = y1[ind] , ry = rep(TRUE,B) , x = x1[ind,] , ...)
+        yhatmis <- x[!ry, ] %*% parm2$beta
                 }
     #***
     # R2 calculations
         R2.orig <- 1 - sum( ( y[ry] - yhatobs )^2 ) / sum( ( y[ry] - ymean)^2 )
-#        r21 <- 1 - sum( ( y[ry] - yhatobs )^2 ) / sum( ( y[ry] - ymean )^2  )    
-        R2.samp <- 1 - sum( ( y[ry] - x[ry, ] %*% parm$beta )^2 ) / sum( ( y[ry] - ymean)^2 ) 
+#        r21 <- 1 - sum( ( y[ry] - yhatobs )^2 ) / sum( ( y[ry] - ymean )^2  )
+        R2.samp <- 1 - sum( ( y[ry] - x[ry, ] %*% parm$beta )^2 ) / sum( ( y[ry] - ymean)^2 )
         cat( paste( "  R2 (original data): " , round(R2.orig,4)  , "\n"))
-        cat( paste( "  R2 (sampled coefficients): " , round(R2.samp,4)  , "\n"))    
-        
-#        cat( paste( "  R2 (original data): calc2 " , round( r21,4)  , "\n"))                
-                
-        if ( tricube.boot ){ 
-                R2.boot <- 1 - sum( ( x[ry, ] %*% parm2$beta - y[ry] )^2 ) / sum( ( y[ry] - ymean)^2 )         
-                cat( paste( "  R2 (Bootstrap): " , round(R2.boot,4)  , "\n"))    
+        cat( paste( "  R2 (sampled coefficients): " , round(R2.samp,4)  , "\n"))
+
+#        cat( paste( "  R2 (original data): calc2 " , round( r21,4)  , "\n"))
+
+        if ( tricube.boot ){
+                R2.boot <- 1 - sum( ( x[ry, ] %*% parm2$beta - y[ry] )^2 ) / sum( ( y[ry] - ymean)^2 )
+                cat( paste( "  R2 (Bootstrap): " , round(R2.boot,4)  , "\n"))
                     }
     #***
     # extract scale parameter for tricube pmm
-    vname <- get("vname", pos = parent.frame()) 
+    vname <- get("vname", pos = parent.frame())
 
     utils::flush.console()
     # doing tricube pmm
@@ -53,7 +53,7 @@ mice.impute.tricube.pmm2 <- function (y, ry, x, tricube.pmm.scale= .2 , tricube.
     fg1 <- min( d00[ d00 > 0 ] )
     d0 <- d0 + matrix( stats::runif( nrow(d0)*ncol(d0) , 0 , fg1/10000000 ) , ncol=ncol(d0) )
     # DONOR1
-    rmin1 <- apply( d0 , 1 , min )    
+    rmin1 <- apply( d0 , 1 , min )
     d0 <- d0 + DM*( d0 == outer( rmin1 , rep(1,ncol(d0)) ) )
     # DONOR2
     rmin2 <- apply( d0 , 1 , min )
@@ -68,7 +68,7 @@ mice.impute.tricube.pmm2 <- function (y, ry, x, tricube.pmm.scale= .2 , tricube.
     d[ d > 1 ] <- 1
     d <- ( 1 - d^3 )^3
     # redefine donorset
-    eps <- .000001 
+    eps <- .000001
     d <- d  + eps * ( dg == outer( rmin1 , xd ) )
     d <- d  + eps * ( dg == outer( rmin2 , xd ) )
     d <- d  + eps * ( dg == outer( rmin3 , xd )    )
@@ -79,9 +79,9 @@ mice.impute.tricube.pmm2 <- function (y, ry, x, tricube.pmm.scale= .2 , tricube.
     RU <- stats::runif( nrow(d)  )
     # write a function which calculates the index when random
     # number exceeded cumulated probability the first time
-    matr <- probcs2    
+    matr <- probcs2
     xy <- outer( RU , rep( 1,ncol(matr)) )
-    xy <- matr - xy    
+    xy <- matr - xy
     xy[ xy < 0 ] <- 1.01
     indvec <- apply( xy , 1 , which.min )
     indvec <- ifelse( indvec == 0 , NM , indvec )

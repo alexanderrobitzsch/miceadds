@@ -1,5 +1,5 @@
 ## File Name: mice_multilevel_imputation_draw_random_effects.R
-## File Version: 0.05
+## File Version: 0.06
 
 ################################################
 # draw of random effects
@@ -18,7 +18,7 @@ mice_multilevel_imputation_draw_random_effects <- function( mu , Sigma ,
         u[,1] <- stats::rnorm(ngr, mean=mu[,1], sd= sqrt(Sigma[1,1,]) )
     } else {
         for(i in 1:ngr){
-            #-- compute covariance matrix with ridge        
+            #-- compute covariance matrix with ridge
             Sigma1 <- Sigma[,,i] + diag(ridge,NR)
             # Cholesky matrix of Sigma1
             Sigma_chol <- chol(Sigma1)
@@ -28,4 +28,4 @@ mice_multilevel_imputation_draw_random_effects <- function( mu , Sigma ,
         }
     }
     return(u)
-}    
+}

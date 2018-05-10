@@ -1,5 +1,5 @@
 %% File Name: kernelpls.fit2.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{kernelpls.fit2}
 \alias{kernelpls.fit2}
@@ -34,12 +34,12 @@ Number of components to be extracted
 }
 
 %\details{
-% 
+%
 %}
 
 \value{
-The same list as in 
-\code{{pls::kernelpls.fit}} 
+The same list as in
+\code{{pls::kernelpls.fit}}
 is produced.
 
 In addition, \eqn{R^2} measures are contained in
@@ -47,18 +47,18 @@ In addition, \eqn{R^2} measures are contained in
 }
 
 \references{
-Dayal, B., & Macgregor, J. F. (1997). Improved PLS algorithms. 
+Dayal, B., & Macgregor, J. F. (1997). Improved PLS algorithms.
 \emph{Journal of Chemometrics}, \bold{11}, 73-85.
 
-Mevik, B. H., & Wehrens, R. (2007). The \pkg{pls} package: 
-Principal component and partial least squares regression in \R. 
+Mevik, B. H., & Wehrens, R. (2007). The \pkg{pls} package:
+Principal component and partial least squares regression in \R.
 \emph{Journal of Statistical Software}, \bold{18}, 1-24.
 }
 
 \author{
-This code is a \pkg{Rcpp} translation of the original 
+This code is a \pkg{Rcpp} translation of the original
 \code{pls::kernelpls.fit} function from the \pkg{pls} package
-(see Mevik & Wehrens, 2007). 
+(see Mevik & Wehrens, 2007).
 }
 
 %\note{

@@ -1,5 +1,5 @@
 %% File Name: mice.1chain.Rd
-%% File Version: 0.28
+%% File Version: 0.29
 
 \name{mice.1chain}
 \alias{mice.1chain}
@@ -17,16 +17,16 @@ multiply impute a dataset using a long chain instead of multiple parallel chains
 which is the approach employed in \code{mice::mice}.
 }
 \usage{
-mice.1chain(data, burnin = 10, iter = 20, Nimp = 10, 
-   method = vector("character", length = ncol(data)), 
-   predictorMatrix = (1 - diag(1, ncol(data))), 
-   visitSequence = (1:ncol(data))[apply(is.na(data), 2, any)], 
-   form = vector("character", length = ncol(data)), 
-   post = vector("character", length = ncol(data)), 
-   defaultMethod = c("pmm", "logreg", "polyreg", "polr"), 
-   diagnostics = TRUE, printFlag = TRUE, seed = NA, imputationMethod = NULL, 
+mice.1chain(data, burnin = 10, iter = 20, Nimp = 10,
+   method = vector("character", length = ncol(data)),
+   predictorMatrix = (1 - diag(1, ncol(data))),
+   visitSequence = (1:ncol(data))[apply(is.na(data), 2, any)],
+   form = vector("character", length = ncol(data)),
+   post = vector("character", length = ncol(data)),
+   defaultMethod = c("pmm", "logreg", "polyreg", "polr"),
+   diagnostics = TRUE, printFlag = TRUE, seed = NA, imputationMethod = NULL,
    defaultImputationMethod = NULL, data.init = NULL, ...)
-   
+
 \method{summary}{mids.1chain}(object,...)
 
 \method{print}{mids.1chain}(x, ...)
@@ -98,19 +98,19 @@ See \code{\link[mice:mice]{mice::mice}}
 \value{
 A list with following entries
 
-  \item{midsobj}{Objects of class \code{mids}}  
+  \item{midsobj}{Objects of class \code{mids}}
   \item{datlist}{List of multiply imputed datasets}
   \item{datalong}{Original and imputed dataset in the long format}
   \item{implist}{List of \code{mids} objects for every imputation}
   \item{chainMpar}{Trace of means for all imputed variables}
-  \item{chainVarpar}{Trace of variances for all imputed variables}    
+  \item{chainVarpar}{Trace of variances for all imputed variables}
 }
 
 
 %\references{
 %}
-%Schafer, J. L., & Kang, J. (2008). Average causal effects from nonrandomized 
-%studies: a practical guide and simulated example. 
+%Schafer, J. L., & Kang, J. (2008). Average causal effects from nonrandomized
+%studies: a practical guide and simulated example.
 %\emph{Psychological Methods}, \bold{13}, 279-313.
 
 
@@ -138,7 +138,7 @@ set.seed(9090)
 # nhanes data in one chain
 imp.mi1 <- miceadds::mice.1chain( nhanes , burnin=5 , iter=40 , Nimp=4 ,
     imputationMethod=rep("norm" , 4 ) )
-summary(imp.mi1)       # summary of mids.1chain   
+summary(imp.mi1)       # summary of mids.1chain
 plot( imp.mi1 ) # trace plot excluding burnin iterations
 plot( imp.mi1 , plot.burnin=TRUE ) # trace plot including burnin iterations
 
@@ -167,8 +167,8 @@ summary( imp.mi1$midsobj )
 #############################################################################
 # EXAMPLE 3: Multiple imputation with counterfactuals for estimating
 #            causal effects (average treatment effects)
-# Schafer, J. L., & Kang, J. (2008). Average causal effects from nonrandomized 
-#    studies: a practical guide and simulated example. 
+# Schafer, J. L., & Kang, J. (2008). Average causal effects from nonrandomized
+#    studies: a practical guide and simulated example.
 #    Psychological Methods, 13, 279-313.
 #############################################################################
 
@@ -187,7 +187,7 @@ names(impmethod) <- colnames(dat)
 # define predictor matrix
 pm <- 4*(1 - diag( ncol(dat) ) )    # 4 - use all interactions
 rownames(pm) <- colnames(pm) <- colnames(dat)
-pm[ c( "read.migrant0" , "read.migrant1") , ] <- 0 
+pm[ c( "read.migrant0" , "read.migrant1") , ] <- 0
 # do not use counterfactuals for 'read' as a predictor
 pm[ , "read.migrant0"] <- 0
 pm[ , "read.migrant1"] <- 0
@@ -239,14 +239,14 @@ smod3a <- summary( mice::pool(mod3a) )
   ##   (Intercept) -22.54 7.498 -3.007 4.315  0.03602 -42.77 -2.311   NA 0.9652 0.9521
 
 #*** Model 3b: Like Model 3a but using student weights
-mod3b <- with( imp , stats::lm( I( read.migrant1 - read.migrant0) ~ 1 , 
+mod3b <- with( imp , stats::lm( I( read.migrant1 - read.migrant0) ~ 1 ,
                         weights= data.ma01$studwgt ) )
 smod3b <- summary( mice::pool(mod3b) )
   ##   > smod3b
   ##                  est    se      t  df Pr(>|t|)  lo 95  hi 95 nmis    fmi lambda
   ##   (Intercept) -21.88 7.605 -2.877 4.3  0.04142 -42.43 -1.336   NA 0.9662 0.9535
 
-#*** Model 4: Average treatment effect on the treated (ATT, migrants) 
+#*** Model 4: Average treatment effect on the treated (ATT, migrants)
 #             and non-treated (ATN, non-migrants)
 mod4 <- with( imp , stats::lm( I( read.migrant1 - read.migrant0) ~ 0 + as.factor( migrant) )   )
 smod4 <- summary( mice::pool(mod4) )

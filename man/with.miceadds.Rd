@@ -1,5 +1,5 @@
 %% File Name: with.miceadds.Rd
-%% File Version: 0.35
+%% File Version: 0.36
 
 \name{with.miceadds}
 \alias{with.mids.1chain}
@@ -84,15 +84,15 @@ for (nested) multiply imputed datasets.}
 
 \code{with.datlist}: List of class \code{imputationResultList}.
 
-\code{with.NestedImputationList} or \code{with.nested.datlist}: List of class 
+\code{with.NestedImputationList} or \code{with.nested.datlist}: List of class
 \code{NestedImputationResultList}.
 
 \code{within.imputationList}: List of class \code{imputationList}.
 
-\code{within.NestedImputationList}: List of class 
+\code{within.NestedImputationList}: List of class
 \code{NestedImputationList}.
 
-\code{withPool_MI} or \code{withPool_NMI}: Vector or matrix with 
+\code{withPool_MI} or \code{withPool_NMI}: Vector or matrix with
 pooled estimates
 }
 
@@ -100,7 +100,7 @@ pooled estimates
 %% ~put references to the literature/web site here ~
 %}
 \author{
-Slightly modified code of \code{\link[mice:with.mids]{mice::with.mids}}, 
+Slightly modified code of \code{\link[mice:with.mids]{mice::with.mids}},
 \code{\link[mice:summary.mira]{mice::summary.mira}},
 \code{\link[base:within.data.frame]{base::within.data.frame}}
 }
@@ -123,12 +123,12 @@ See the corresponding functionality in \pkg{base}, \pkg{mice},
 
 \code{\link[mice:summary.mira]{mice::summary.mira}},
 
-Imputation functions in \pkg{miceadds}: 
+Imputation functions in \pkg{miceadds}:
 \code{\link{mice.1chain}}, \code{\link{mice.nmi}}
 }
 
 
-\examples{    
+\examples{
 #############################################################################
 # EXAMPLE 1: One chain nhanes data | application of 'with' and 'within'
 #############################################################################
@@ -152,9 +152,9 @@ withPool_MI(res2)
 
 # with method for datlist
 imp1 <- miceadds::datlist_create(imp)
-res2b <- with( imp1 , fun = function(data){ 
+res2b <- with( imp1 , fun = function(data){
                     dfr <- data.frame("M" = colMeans(data) ,
-                             "Q5" = apply( data, 2, stats::quantile, .05 ),   
+                             "Q5" = apply( data, 2, stats::quantile, .05 ),
                              "Q95" = apply( data, 2, stats::quantile, .95 ) )
                     return(dfr)
                         } )
@@ -180,14 +180,14 @@ datlist2b <- miceadds::datlist_create( datlist2 )
 mod1a <- with( datlist2 , expr = stats::lm( hyp ~ age.D3 ) )
 # do the same but now with a function argument
 mod1b <- with( datlist2 , fun = function(data){
-                    stats::lm( data$hyp ~ data$age.D3 ) 
-                        } )                       
+                    stats::lm( data$hyp ~ data$age.D3 )
+                        } )
 # apply the same model for object datlist2b
 mod2a <- with( datlist2b , expr = lm( hyp ~ age.D3 ) )
 mod2b <- with( datlist2b , fun = function(data){
-                    stats::lm( data$hyp ~ data$age.D3 ) 
+                    stats::lm( data$hyp ~ data$age.D3 )
                         } )
-                                        
+
 mitools::MIcombine(mod1a)
 mitools::MIcombine(mod1b)
 mitools::MIcombine(mod2a)
@@ -199,19 +199,19 @@ mitools::MIcombine(mod2b)
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2        
+datlist <- data.timss2
 
 # remove first four variables
 M <- length(datlist)
 for (ll in 1:M){
     datlist[[ll]] <- datlist[[ll]][ , -c(1:4) ]
                 }
-                
+
 # nested multiple imputation using mice
 imp1 <- miceadds::mice.nmi( datlist ,  m=4 , maxit=3 )
 summary(imp1)
 # apply linear model and use summary method for all analyses of imputed datasets
-res1 <- with( imp1 , stats::lm( ASMMAT ~ migrant + female ) )    
+res1 <- with( imp1 , stats::lm( ASMMAT ~ migrant + female ) )
 summary(res1)
 
 # convert mids.nmi object into an object of class NestedImputationList
@@ -234,24 +234,24 @@ datlist2 <- within( datlist1 , {
 
 # include random number in each dataset
 N <- attr( datlist1b , "nobs")
-datlist3 <- within( datlist1b , {                  
+datlist3 <- within( datlist1b , {
                 rn <- stats::runif( N , 0, .5 )
-                    } )                   
-                    
+                    } )
+
 #-- some applications of withPool_NMI
 # mean and SD
-res3a <- with( imp1 , c( "m1"= mean(ASMMAT) , "sd1" = stats::sd(ASMMAT) ) ) 
-withPool_NMI(res3a)  
+res3a <- with( imp1 , c( "m1"= mean(ASMMAT) , "sd1" = stats::sd(ASMMAT) ) )
+withPool_NMI(res3a)
 # quantiles
 vars <- c("ASMMAT" , "lang" , "scsci")
 res3b <- with( datlist1b , fun = function(data){
                 dat <- data[,vars]
                 res0 <- sapply( vars , FUN = function(vv){
-                    stats::quantile( dat[,vv] , probs = c(.25 , .50 , .75) )        
+                    stats::quantile( dat[,vv] , probs = c(.25 , .50 , .75) )
                                     } )
                 t(res0)
-                    } )                                 
-withPool_NMI(res3b)                                          
+                    } )
+withPool_NMI(res3b)
 }
 }
 

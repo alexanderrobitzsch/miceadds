@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.latentgroupmean.ml.Rd
-%% File Version: 1.21
+%% File Version: 1.23
 
 \name{mice.impute.2l.latentgroupmean.ml}
 \alias{mice.impute.2l.latentgroupmean.ml}
@@ -12,15 +12,15 @@
 Imputation of Latent and Manifest Group Means for Multilevel Data
 }
 \description{
-The imputation method \code{2l.latentgroupmean} imputes a latent group mean 
+The imputation method \code{2l.latentgroupmean} imputes a latent group mean
 assuming an infinite population of subjects within a group
-(see Luedtke et al., 2008 or Croon & van Veldhoven, 2007). 
-Therefore, unreliability of group means when treating subjects as 
+(see Luedtke et al., 2008 or Croon & van Veldhoven, 2007).
+Therefore, unreliability of group means when treating subjects as
 indicators is taken into account.
 
-The imputation method \code{mice.impute.2l.groupmean} just imputes (i.e. computes) 
-the manifest group mean. See also 
-\code{\link[mice:mice.impute.2lonly.mean]{mice::mice.impute.2lonly.mean}}. 
+The imputation method \code{mice.impute.2l.groupmean} just imputes (i.e. computes)
+the manifest group mean. See also
+\code{\link[mice:mice.impute.2lonly.mean]{mice::mice.impute.2lonly.mean}}.
 
 The imputation method \code{mice.impute.2l.groupmean.elim} computes the
 group mean eliminating the subject under study from the calculation.
@@ -28,14 +28,14 @@ Therefore, this imputation method will lead to different values of
 individuals within the same group.
 }
 \usage{
-mice.impute.2l.latentgroupmean.ml(y, ry, x, type, pls.facs = NULL, 
-    imputationWeights = NULL, interactions = NULL, quadratics = NULL, 
-    EAP=FALSE, ...)    
-    
-mice.impute.2l.latentgroupmean.mcmc(y, ry, x, type, pls.facs = NULL, 
-    imputationWeights = NULL, interactions = NULL, quadratics = NULL, 
+mice.impute.2l.latentgroupmean.ml(y, ry, x, type, pls.facs = NULL,
+    imputationWeights = NULL, interactions = NULL, quadratics = NULL,
+    EAP=FALSE, ...)
+
+mice.impute.2l.latentgroupmean.mcmc(y, ry, x, type, pls.facs = NULL,
+    imputationWeights = NULL, interactions = NULL, quadratics = NULL,
     mcmc.burnin=100, mcmc.adapt=100, mcmc.iter=1000, draw.fixed=TRUE, EAP=FALSE, ...)
-    
+
 mice.impute.2l.groupmean(y, ry, x, type, grmeanwarning = TRUE, ...)
 
 mice.impute.2l.groupmean.elim(y, ry, x, type, ...)
@@ -60,7 +60,7 @@ Type of predictor variables. \code{type=-2} refers to the cluster variable,
 should be calculated. Predictors with \code{type=1} denote all other variables.
 }
   \item{pls.facs}{
-Number of factors used for PLS regression (optional). 
+Number of factors used for PLS regression (optional).
 }
   \item{imputationWeights}{
 Optional vector of sample weights.
@@ -90,11 +90,11 @@ Further arguments to be passed.
 
 
 \details{
-The imputation of the latent group mean uses the 
+The imputation of the latent group mean uses the
 \code{\link[lme4:lmer]{lme4::lmer}} function of the \pkg{lme4} package
 for \code{mice.impute.2l.latentgroupmean.ml} and the
 \code{\link[MCMCglmm:MCMCglmm]{MCMCglmm::MCMCglmm}} function
-of the \pkg{MCMCglmm} package for \code{mice.impute.2l.latentgroupmean.ml}. 
+of the \pkg{MCMCglmm} package for \code{mice.impute.2l.latentgroupmean.ml}.
 Latent group mean imputation also follows
 Mislevy (1991).
 }
@@ -104,22 +104,22 @@ A vector of length \code{y} containing imputed group means.
 }
 
 \references{
-Croon, M. A., & van Veldhoven, M. J. (2007). Predicting group-level outcome 
-variables from variables measured at the individual level: a latent variable 
+Croon, M. A., & van Veldhoven, M. J. (2007). Predicting group-level outcome
+variables from variables measured at the individual level: a latent variable
 multilevel model. \emph{Psychological Methods}, \bold{12}, 45-57.
-    
-Luedtke, O., Marsh, H. W., Robitzsch, A., Trautwein, U., Asparouhov, T., & 
-Muthen, B. (2008). The multilevel latent covariate model: a new, more 
-reliable approach to group-level effects in contextual studies. 
+
+Luedtke, O., Marsh, H. W., Robitzsch, A., Trautwein, U., Asparouhov, T., &
+Muthen, B. (2008). The multilevel latent covariate model: a new, more
+reliable approach to group-level effects in contextual studies.
 \emph{Psychological Methods}, \bold{13}, 203-229.
 
-Mislevy, R. J. (1991). Randomization-based inference about latent variables 
+Mislevy, R. J. (1991). Randomization-based inference about latent variables
 from complex samples. \emph{Psychometrika}, \bold{56}, 177-196.
 }
 
-\author{
-Alexander Robitzsch, Simon Grund
-}
+%\author{
+%Alexander Robitzsch, Simon Grund
+%}
 
 %\note{
 %%  ~~further notes~~
@@ -136,8 +136,8 @@ Alexander Robitzsch, Simon Grund
 #############################################################################
 # EXAMPLE 1: Two-level imputation data.ma05 dataset with imputation
 #            of a latent group mean
-#############################################################################    
-    
+#############################################################################
+
 data(data.ma05)
 dat <- data.ma05
 
@@ -155,7 +155,7 @@ predM <- imp$pred
 # exclude student ISs
 predM[ , "idstud"] <- 0
 # idclass is the cluster identifier
-predM[ , "idclass" ] <- -2  
+predM[ , "idclass" ] <- -2
 
 # define imputation methods
 impMethod <- imp$method

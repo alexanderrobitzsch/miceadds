@@ -1,14 +1,14 @@
 ## File Name: mice_imputation_prepare_2l_functions.R
-## File Version: 0.12
+## File Version: 0.13
 
 #############################################
-# This preparation function is copied as 
+# This preparation function is copied as
 # part from the mice:::sampler function
 mice_imputation_prepare_2l_functions <- function( vname , envir , ... )
-{   
+{
     p <- get("p" , envir = envir )
     newstate <- get("newstate" , envir = envir )
-    j <- newstate$co    
+    j <- newstate$co
     r <- get("r" , envir = envir )
 
     #*****************************************
@@ -24,13 +24,13 @@ mice_imputation_prepare_2l_functions <- function( vname , envir , ... )
             y <- p$data[, j]
             ry <- r[, j]
             type <- p$predictorMatrix[j, predictors]
-            nam <- vname    
+            nam <- vname
             keep <- remove.lindep_miceadds(x, y, ry, ...)
             x <- x[, keep, drop = FALSE]
             type <- type[keep]
         }
     #****** END: copy from mice
-    #*****************************************    
-    res <- list( y = y , x = x , ry = ry , type = type)    
+    #*****************************************
+    res <- list( y = y , x = x , ry = ry , type = type)
     return(res)
 }

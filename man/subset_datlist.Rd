@@ -1,5 +1,5 @@
 %% File Name: subset_datlist.Rd
-%% File Version: 0.29
+%% File Version: 0.30
 
 \name{subset_datlist}
 \alias{subset_datlist}
@@ -32,20 +32,20 @@ cases and variables in datasets.
 subset_datlist(datlist, subset = TRUE, select = NULL, expr_subset = NULL ,
         index = NULL, toclass = "datlist")
 
-\method{subset}{datlist}(x, subset, select = NULL, expr_subset = NULL , 
+\method{subset}{datlist}(x, subset, select = NULL, expr_subset = NULL ,
                      index = NULL , ...)
 \method{subset}{imputationList}(x, subset, select = NULL, expr_subset = NULL ,
                      index = NULL , ...)
-\method{subset}{mids}(x, subset, select = NULL, expr_subset = NULL, 
+\method{subset}{mids}(x, subset, select = NULL, expr_subset = NULL,
                      index = NULL , ...)
 \method{subset}{mids.1chain}(x, subset, select = NULL, expr_subset = NULL ,
                      index = NULL , ...)
-                     
-subset_nested.datlist( datlist , subset = TRUE, select = NULL , expr_subset = NULL, 
+
+subset_nested.datlist( datlist , subset = TRUE, select = NULL , expr_subset = NULL,
       index_between = NULL , index_within = NULL , toclass = "nested.datlist" ,
           simplify = FALSE )
-         
-\method{subset}{nested.datlist}(x, subset , select = NULL , expr_subset = NULL, 
+
+\method{subset}{nested.datlist}(x, subset , select = NULL , expr_subset = NULL,
                 index_between = NULL, index_within = NULL, simplify=FALSE , ...)
 \method{subset}{NestedImputationList}(x, subset , select = NULL , expr_subset = NULL,
                 index_between = NULL, index_within = NULL, simplify=FALSE , ...)
@@ -90,7 +90,7 @@ datasets}
 %}
 
 \value{
-For multiply imputed datasets: Object of class \code{datlist}, 
+For multiply imputed datasets: Object of class \code{datlist},
 \code{imputationList} or \code{mids} \cr
 For nested multiply imputed datasets: Object of class
 \code{nested.datlist} or \code{NestedImputationList}.
@@ -103,14 +103,14 @@ For nested multiply imputed datasets: Object of class
 
 
 \note{
-If subsetting is applied to objects of class \code{mids} (or \code{mids.1chain}), 
+If subsetting is applied to objects of class \code{mids} (or \code{mids.1chain}),
 then informations about the imputation procedure are lost.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[base:subset]{base::subset}} 
+\code{\link[base:subset]{base::subset}}
 }
 
 
@@ -137,7 +137,7 @@ datlist1d
 datlist2a <- miceadds::subset_datlist( datlist1a , index = c(5,3,7) )
 datlist2a
 # convert to class imputationList
-datlist2b <- miceadds::subset_datlist( datlist1a , index = c(5,3,7), 
+datlist2b <- miceadds::subset_datlist( datlist1a , index = c(5,3,7),
                       toclass = "imputationList")
 datlist2b
 # convert to class mids
@@ -148,7 +148,7 @@ datlist2c
 # select some variables
 datlist3a <- miceadds::subset_datlist( datlist1a , select = c("idstud" , "books")  )
 datlist3a
-# Because datlist1b is a datlist it is equivalent to 
+# Because datlist1b is a datlist it is equivalent to
 datlist3b <- subset( datlist1b , select = c("idstud" , "books")  )
 datlist3b
 # operating on imputationList class
@@ -158,17 +158,17 @@ datlist3c
 datlist3d <- miceadds::subset_datlist( datlist1d , select = c("idstud" , "books")  )
 datlist3d
 # selection of rows and columns in multiply imputed datasets
-datlist4a <- miceadds::subset_datlist( datlist1a , index = 1:5 , 
-                  subset = datlist1a[[1]]$idschool < 1067 , 
+datlist4a <- miceadds::subset_datlist( datlist1a , index = 1:5 ,
+                  subset = datlist1a[[1]]$idschool < 1067 ,
                   select = c("idstud" , "idschool","hisei") )
 datlist4a
 # convert to class mids
-datlist4b <- miceadds::subset_datlist( datlist1a , index = 1:5 , 
-                  subset = datlist1a[[1]]$idschool < 1067 , 
+datlist4b <- miceadds::subset_datlist( datlist1a , index = 1:5 ,
+                  subset = datlist1a[[1]]$idschool < 1067 ,
                   select = c("idstud" , "idschool","hisei") , toclass = "mids" )
 datlist4b
 # The same functionality, but now applying to object of class mids datlist1d
-datlist4c <- subset( datlist1d , index = 1:5 , subset = datlist1a[[1]]$idschool < 1067, 
+datlist4c <- subset( datlist1d , index = 1:5 , subset = datlist1a[[1]]$idschool < 1067,
                      select = c("idstud" , "idschool","hisei")  )
 datlist4c
 
@@ -179,7 +179,7 @@ datlist5a <- miceadds::subset_datlist( datlist1a ,  expr_subset = migrant == 1 )
 datlist5a
 
 # select the first 100 cases
-datlist6a <- miceadds::subset_datlist( datlist1a , select = c("idstud" , "books"), 
+datlist6a <- miceadds::subset_datlist( datlist1a , select = c("idstud" , "books"),
                        subset=1:100 )
 datlist6a
 
@@ -209,7 +209,7 @@ datlist2c <- subset( datlist1b , index_between = c(1,3,4))
 datlist2c
 # select rows and columns
 sel_cases <- datlist1a[[1]][[1]]$JKZONE <= 42
-datlist3a <- subset( datlist1a , subset = sel_cases , 
+datlist3a <- subset( datlist1a , subset = sel_cases ,
                  select = c("IDSTUD","books", "ASMMAT") )
 datlist3a
 # remove within nest

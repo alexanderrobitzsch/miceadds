@@ -1,5 +1,5 @@
 %% File Name: NestedImputationList.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{NestedImputationList}
 \alias{NestedImputationList}
@@ -22,7 +22,7 @@ Statistical models can be estimated with the function
 The \code{\link[mitools:MIcombine]{mitools::MIcombine}}
 method can be used for objects of class
 \code{NestedImputationResultList} which are the output of
-\code{\link{with.NestedImputationList}}. 
+\code{\link{with.NestedImputationList}}.
 }
 
 \usage{
@@ -51,7 +51,7 @@ List of lists of datasets which are created by nested multiple imputation.
 \value{
 Function \code{NestedImputationList}: Object of class \code{NestedImputationList}.
 
-Function \code{MIcombine.NestedImputationList}: 
+Function \code{MIcombine.NestedImputationList}:
 Object of class \code{mipo.nmi}.
 }
 
@@ -79,19 +79,19 @@ Object of class \code{mipo.nmi}.
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Nested multiple imputation and conversion into an object of class
-#            NestedImputationList 
+#            NestedImputationList
 #############################################################################
 
 library(BIFIEsurvey)
 data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2      
+datlist <- data.timss2
 
 # remove first four variables
 M <- length(datlist)
 for (ll in 1:M){
     datlist[[ll]] <- datlist[[ll]][ , -c(1:4) ]
                 }
-                
+
 # nested multiple imputation using mice
 imp1 <- miceadds::mice.nmi( datlist ,  m=3 , maxit=2 )
 summary(imp1)

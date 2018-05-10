@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pmm3.Rd
-%% File Version: 1.16
+%% File Version: 1.17
 
 \name{mice.impute.pmm3}
 \alias{mice.impute.pmm3}
@@ -13,7 +13,7 @@ Imputation by Predictive Mean Matching (in \pkg{miceadds})
 }
 \description{
 This function imputes values by predictive mean matching like
-the \code{\link[mice:mice.impute.pmm]{mice::mice.impute.pmm}}  
+the \code{\link[mice:mice.impute.pmm]{mice::mice.impute.pmm}}
 method in the \pkg{mice} package.
 }
 
@@ -28,16 +28,16 @@ mice.impute.pmm6(y, ry, x, donors = 3, noise = 10^5, ridge = 10^(-5), ...)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
     \item{y}{Incomplete data vector of length \code{n}}
-    
+
   \item{ry}{
 Vector of missing data pattern (\code{FALSE} -- missing,
 \code{TRUE} -- observed)
 }
 
-  
+
   \item{x}{Matrix (\code{n} x \code{p}) of complete
   covariates.}
-  
+
     \item{donors}{
 Number of donors used for imputation
 }
@@ -55,12 +55,12 @@ Further arguments to be passed
 
 
 \details{
-The imputation method \code{pmm3} imitates 
+The imputation method \code{pmm3} imitates
 \code{\link[mice:mice.impute.pmm]{mice::mice.impute.pmm}} imputation method
-in \pkg{mice}. 
+in \pkg{mice}.
 
 The imputation method \code{pmm4} ignores ties in predicted \eqn{y} values.
-With many predictors, this does not probably implies any substantial problem. 
+With many predictors, this does not probably implies any substantial problem.
 
 The imputation method \code{pmm5} suffers from the same problem. Contrary to
 the other PMM methods, it searches \eqn{D} donors (specified by \code{donors})
@@ -100,7 +100,7 @@ matching.
 \dontrun{
 #############################################################################
 # SIMULATED EXAMPLE 1: Two variables x and y with missing y
-#############################################################################    
+#############################################################################
 set.seed(1413)
 
 rho <- .6   # correlation between x and y
@@ -122,18 +122,18 @@ impmethod <- rep("pmm" , 2 )
 names(impmethod) <- colnames(dat)
 
 # pmm (in mice)
-imp1 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 , imputationMethod=impmethod) 
+imp1 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 , imputationMethod=impmethod)
 # pmm3 (in miceadds)
-imp3 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 , 
+imp3 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 ,
            imputationMethod=gsub("pmm","pmm3" ,impmethod)  )
 # pmm4 (in miceadds)
-imp4 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 , 
+imp4 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 ,
            imputationMethod=gsub("pmm","pmm4" ,impmethod)  )
 # pmm5 (in miceadds)
-imp5 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 , 
+imp5 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 ,
            imputationMethod=gsub("pmm","pmm5" ,impmethod)  )
 # pmm6 (in miceadds)
-imp6 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 , 
+imp6 <- mice::mice( as.matrix(dat) , m=1 , maxit=1 ,
            imputationMethod=gsub("pmm","pmm6" ,impmethod)  )
 
 dat.imp1 <- mice::complete( imp1 , 1 )
@@ -147,14 +147,14 @@ dfr <- NULL
 dfr <- rbind( dfr , c( mean( y.com ) , mean( y , na.rm=TRUE ) , mean( dat.imp1$y)  ,
     mean( dat.imp3$y) , mean( dat.imp4$y)  , mean( dat.imp5$y)  ,  mean( dat.imp6$y)  ) )
 # SD
-dfr <- rbind( dfr , c( stats::sd( y.com ) , stats::sd( y , na.rm=TRUE ) , 
-      stats::sd( dat.imp1$y), stats::sd( dat.imp3$y) , stats::sd( dat.imp4$y), 
+dfr <- rbind( dfr , c( stats::sd( y.com ) , stats::sd( y , na.rm=TRUE ) ,
+      stats::sd( dat.imp1$y), stats::sd( dat.imp3$y) , stats::sd( dat.imp4$y),
       stats::sd( dat.imp5$y)  , stats::sd( dat.imp6$y) ) )
 # correlations
-dfr <- rbind( dfr , c( stats::cor( x,y.com ), 
-    stats::cor( x[ ! is.na(y) ] , y[ ! is.na(y) ] ) , 
-    stats::cor( dat.imp1$x , dat.imp1$y) , stats::cor( dat.imp3$x , dat.imp3$y) , 
-    stats::cor( dat.imp4$x , dat.imp4$y) , stats::cor( dat.imp5$x , dat.imp5$y)  , 
+dfr <- rbind( dfr , c( stats::cor( x,y.com ),
+    stats::cor( x[ ! is.na(y) ] , y[ ! is.na(y) ] ) ,
+    stats::cor( dat.imp1$x , dat.imp1$y) , stats::cor( dat.imp3$x , dat.imp3$y) ,
+    stats::cor( dat.imp4$x , dat.imp4$y) , stats::cor( dat.imp5$x , dat.imp5$y)  ,
     stats::cor( dat.imp6$x , dat.imp6$y)
         ) )
 rownames(dfr) <- c("M_y" , "SD_y" , "cor_xy" )

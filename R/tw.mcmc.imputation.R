@@ -1,5 +1,5 @@
 ## File Name: tw.mcmc.imputation.R
-## File Version: 1.08
+## File Version: 1.09
 tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
     # set N and J
     N <- nrow(data)
@@ -14,7 +14,7 @@ tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
     if ( length(ind1) > 0 ){
         data <- data[ -ind1 , ]
         data.imp1 <- data.imp1[ -ind1,]
-                        }    
+                        }
     # set initial values
     mu <- mean( as.matrix(data.imp1 ) , na.rm=TRUE )
     beta <- colMeans( data.imp1 , na.rm=TRUE) - mu
@@ -29,7 +29,7 @@ tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
                             ( 1 / tau2 + rowSums( ! is.na(data) ) / sig2 )
         sd.alpha <-  sqrt( 1 / ( 1 / tau2 + rowSums( !is.na(data) ) / sig2 ) )
         alpha <- stats::rnorm( N , mean = mean.alpha , sd = sd.alpha )
-        # sample beta 
+        # sample beta
         mean.beta <- colSums( data - outer( alpha , rep( 1 , J ) ) , na.rm=TRUE ) / colSums( ! is.na(data) )
         sd.beta <- sqrt( sig2 / colSums( ! is.na(data) ) )
         beta <- stats::rnorm( J , mean = mean.beta , sd = sd.beta )
@@ -38,20 +38,20 @@ tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
         scale.S <- sum( ( data - outer( alpha , rep(1,J) ) - outer( rep(1,N) , beta ) )^2  , na.rm=T ) / nu
         sig2 <- nu * scale.S / stats::rchisq( 1 , df = nu )
         # sample mu
-        mu <- stats::rnorm( 1 , mean = mean( alpha  ) , sd = sqrt( tau2 / N ) ) 
+        mu <- stats::rnorm( 1 , mean = mean( alpha  ) , sd = sqrt( tau2 / N ) )
         # sample tau
         nu <- N
-        scale.S <- sum( ( alpha - mu )^2 ) / N 
+        scale.S <- sum( ( alpha - mu )^2 ) / N
         tau2 <- nu * scale.S / stats::rchisq( 1 , df = nu )
-        }    
+        }
     # impute missing data
-    mean.X <- outer( alpha , rep(1,J) ) + outer( rep(1,N) , beta ) 
+    mean.X <- outer( alpha , rep(1,J) ) + outer( rep(1,N) , beta )
     sd.X <- sqrt( sig2 )
     data.imp2 <- matrix( stats::rnorm( N*J , mean = mean.X , sd = sd.X ) , ncol=J)
     data.imp <- data
     data.imp[ is.na( data ) ] <- data.imp2[ is.na(data) ]
     # Round to the nearest integer
-    if (round.near){    
+    if (round.near){
         mindat <- min( data , na.rm=T)
         maxdat <- max( data , na.rm=T)
         data.imp <- round( data.imp )
@@ -59,6 +59,6 @@ tw.mcmc.imputation <- function( data , iter = 100 , integer = FALSE ){
         data.imp[ data.imp > maxdat ] <- maxdat
         }
     # restructure data
-    data0[ ind2, ] <- data.imp 
+    data0[ ind2, ] <- data.imp
     return( data0 )
 }

@@ -1,9 +1,9 @@
 ## File Name: fisher2cor.R
-## File Version: 0.04
+## File Version: 0.05
 
 ##################################################
 # back transform fisher correlations
-fisher2cor <- function(z){ 
+fisher2cor <- function(z){
     c1 <- ( exp(2*z) - 1 )/ ( exp(2*z) + 1 )
     return(c1)
 }

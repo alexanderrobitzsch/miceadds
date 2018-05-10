@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_arrange_cluster_identifiers.R
-## File Version: 0.02
+## File Version: 0.03
 
 
 mice_ml_lmer_arrange_cluster_identifiers <- function( levels_id , data )
@@ -14,7 +14,7 @@ mice_ml_lmer_arrange_cluster_identifiers <- function( levels_id , data )
         clus_unique <- unique(clus)
         clus_unique__[[ll]] <- clus_unique
         ngr[[ll]] <- length(clus_unique)
-    }        
+    }
     #---- output
     res <- list( NL = NL , clus = clus__ , ngr = ngr , clus_unique = clus_unique__ )
     return(res)

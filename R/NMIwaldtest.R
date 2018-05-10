@@ -1,5 +1,5 @@
 ## File Name: NMIwaldtest.R
-## File Version: 0.15
+## File Version: 0.16
 
 
 ##############################################################
@@ -10,7 +10,7 @@ NMIwaldtest <- function( qhat , u , Cdes = NULL , rdes = NULL ,
         if ( class(qhat) == "array" ){
             qhat <- qhat2list(qhat)
                     }
-        # convert u into a list            
+        # convert u into a list
         if ( class(u) == "array" ){
             u <- u2list(u)
                     }
@@ -29,7 +29,7 @@ NMIwaldtest <- function( qhat , u , Cdes = NULL , rdes = NULL ,
         NB <- length( qhat )
         NW <- length( qhat[[1]] )
         NV <- length( qhat[[1]][[1]] )
-        
+
         # qhat and u for linear forms
         qhat0 <- qhat
         u0 <- u
@@ -39,7 +39,7 @@ NMIwaldtest <- function( qhat , u , Cdes = NULL , rdes = NULL ,
                 qhat[[bb]][[ww]] <- ( Cdes %*% qhat0[[bb]][[ww]] - rdes )[,1]
                 u[[bb]][[ww]] <- Cdes %*% u00 %*% t(Cdes)
                             }
-                        }    
+                        }
         #***********
         # statistical inference
         eps <- 1E-20
@@ -50,25 +50,25 @@ NMIwaldtest <- function( qhat , u , Cdes = NULL , rdes = NULL ,
         Wm <- res0$Wm
         k <- nrow(Cdes)
         # quadratic form
-        uinv <- solve(ubar)        
+        uinv <- solve(ubar)
         rmb <- (1+1/NB)*sum(diag( Bm %*% uinv )) / k
         rmw <- (1-1/NW)*sum(diag( Wm %*% uinv )) / k
         stat <- t(qbar) %*% uinv %*% qbar
         stat <- stat / ( k * ( 1 + rmb + rmw ) )
         stat <- stat[1,1]
-        df1 <- k    
+        df1 <- k
         df2 <- rmb^2 / ( NB - 1 + eps ) / ( 1 + rmw + rmb )^2 +
                    rmw^2 / ( NB*( NW - 1 + eps) ) / ( 1 + rmw + rmb )^2
-        df2 <- k / df2 
-        
+        df2 <- k / df2
+
         stat <- data.frame( "F" = stat , "df1" = df1 ,
-                              "df2" = df2 , 
-                              "pval" = 1 - stats::pf( stat , df1=df1 , df2 = df2 ) )                    
+                              "df2" = df2 ,
+                              "pval" = 1 - stats::pf( stat , df1=df1 , df2 = df2 ) )
         res <- list( stat=stat , linear_hyp = res0 ,
                     qhat = qhat , u=u , Cdes = Cdes , rdes=rdes )
         class(res) <- "NMIwaldtest"
-        return(res)                    
-                    
+        return(res)
+
                     }
 ##############################################################
 summary.NMIwaldtest <- function(object, digits=4 ,...){
@@ -88,7 +88,7 @@ summary.NMIwaldtest <- function(object, digits=4 ,...){
 ################################################################
 # convert qhat into a list
 qhat2list <- function( qhat ){
-            qhat0 <- qhat            
+            qhat0 <- qhat
             dq <- dim(qhat)
             NB <- dq[1]
             NW <- dq[2]

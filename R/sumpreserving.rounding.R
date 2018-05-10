@@ -1,12 +1,12 @@
 ## File Name: sumpreserving.rounding.R
-## File Version: 0.07
+## File Version: 0.08
 
 
 ############################################################
 
 
-sumpreserving.rounding <- 
-function (data, digits = 0 , preserve = TRUE ) 
+sumpreserving.rounding <-
+function (data, digits = 0 , preserve = TRUE )
 {
     ism <- ( is.matrix(data) ) | ( is.data.frame(data) )
     if (ism) {
@@ -15,7 +15,7 @@ function (data, digits = 0 , preserve = TRUE )
         data.r[, 1] <- round(data[, 1], digits)
             err.r[, 1] <- data[, 1] - data.r[, 1]
             for (dd in 2:DD) {
-                data.r[, dd] <- round(data[, dd] + rowSums(err.r[, 1:(dd - 
+                data.r[, dd] <- round(data[, dd] + rowSums(err.r[, 1:(dd -
                     1),drop=FALSE]), digits)
                 err.r[, dd] <- data[, dd] - data.r[, dd]
                     }
@@ -31,7 +31,7 @@ function (data, digits = 0 , preserve = TRUE )
             data.r[1] <- round(data[1], digits)
                 err.r[1] <- data[1] - data.r[1]
                 for (dd in 2:DD) {
-                    data.r[dd] <- round(data[dd] + sum(err.r[1:(dd - 
+                    data.r[dd] <- round(data[dd] + sum(err.r[1:(dd -
                         1)]), digits)
                     err.r[dd] <- data[dd] - data.r[dd]
                     }

@@ -1,5 +1,5 @@
 ## File Name: with.nested.datlist.R
-## File Version: 1.03
+## File Version: 1.04
 
 ##################################################################
 # with function for a nested imputation list
@@ -14,13 +14,13 @@ with.nested.datlist <- function(data, expr,fun,...){
       #**************************************
       # This code is copied from the with.imputationList
       # function from the mitools package
-      if ( ! is.null(match.call()$expr) ){  
+      if ( ! is.null(match.call()$expr) ){
         expr <- substitute(expr)
         results <- lapply(data, function(dataset){
                         eval(expr, dataset, enclos=pf)
                         } )
                 } else {
-                
+
         results <- lapply(data, FUN=fun ,...)
       }
 
@@ -30,11 +30,11 @@ with.nested.datlist <- function(data, expr,fun,...){
       } else {
         attr(results,"call")<-sys.call(-1)
       }
-      
+
         results0[[bb]] <- results
         #*************************************************
         }
     class(results0) <- "NestedImputationResultList"
-    return(results0) 
+    return(results0)
 }
 ####################################################################

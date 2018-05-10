@@ -1,5 +1,5 @@
 %% File Name: data.largescale.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{data.largescale}
 \alias{data.largescale}
@@ -10,7 +10,7 @@ Large-scale Dataset for Testing Purposes (Many Cases, Few Variables)
 }
 
 \description{
-Large-scale dataset with many cases and few variables 
+Large-scale dataset with many cases and few variables
 included for testing purposes.
 }
 
@@ -21,7 +21,7 @@ data(data.largescale)
 \format{
   A data frame with 14000 observations on the following 13 variables.
   The format is
-  
+
 \code{'data.frame':   14000 obs. of  13 variables:} \cr
 \code{ $ id: num  1e+07 1e+07 1e+07 1e+07 1e+07 ...} \cr
 \code{ $ D1: num  0 0 0 0 1 0 0 0 0 0 ...} \cr

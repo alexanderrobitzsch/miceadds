@@ -1,5 +1,5 @@
 ## File Name: write_fwf2_format2.R
-## File Version: 0.02
+## File Version: 0.03
 
 #----------------------------------------------------------------
 # utility function for formatting output in write.fwf2
@@ -16,7 +16,7 @@ write_fwf2_format2 <- function( vec1 , ff , fr )
             vec2 <- round( vec2 , fr )
         }
         blank.vv <- paste( rep( " " , ff ) , collapse="" )
-        vec2 <- paste( substring( blank.vv , 1 , ff - nchar(paste(vec2)) ) , vec2 , sep="")    
+        vec2 <- paste( substring( blank.vv , 1 , ff - nchar(paste(vec2)) ) , vec2 , sep="")
     } else {
         d.vv <- round( vec1  , fr ) + 10^(-(fr+1))
         blank.vv <- paste( rep( " " , ff+1 ) , collapse="" )

@@ -1,5 +1,5 @@
 ## File Name: mice_multilevel_doCall_suppressWarnings.R
-## File Version: 0.02
+## File Version: 0.03
 
 #######################################################
 # calls a function and suppresses warnings if requested
@@ -13,4 +13,4 @@ mice_multilevel_doCall_suppressWarnings <- function( what , args , warnings = TR
             )
     }
     return(res)
-}    
+}

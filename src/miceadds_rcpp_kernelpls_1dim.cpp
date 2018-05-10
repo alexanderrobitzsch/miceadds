@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_kernelpls_1dim.cpp
-//// File Version: 3.06
+//// File Version: 3.12
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -13,19 +13,19 @@ using namespace arma;
 
 ///********************************************************************
 ///** kernelplsaux
-// [[Rcpp::export]]           
-Rcpp::List kernelplsaux(Rcpp::NumericMatrix Yr, Rcpp::NumericMatrix Xr, 
+// [[Rcpp::export]]
+Rcpp::List kernelplsaux(Rcpp::NumericMatrix Yr, Rcpp::NumericMatrix Xr,
     Rcpp::NumericVector nc)
 {
-    int nobj = Xr.nrow(); 
+    int nobj = Xr.nrow();
     int npred = Xr.ncol();
     int nresp = Yr.ncol() ;
     int ncomp = nc[0] ;
-    double eps_add = 1e-10 ; 
+    double eps_add = 1e-10 ;
     arma::mat X(Xr.begin(), nobj, npred, false);       // reuses memory and avoids extra copy
-    arma::mat Y(Yr.begin(), nobj, nresp , false); 
+    arma::mat Y(Yr.begin(), nobj, nresp , false);
     // define matrices
-    arma::mat R = arma::zeros( npred , ncomp  ); 
+    arma::mat R = arma::zeros( npred , ncomp  );
     arma::mat P = arma::zeros( npred , ncomp  );
     arma::mat tQ = arma::zeros( ncomp , nresp  );
     arma::mat B = arma::zeros( npred , ncomp  );
@@ -45,9 +45,9 @@ Rcpp::List kernelplsaux(Rcpp::NumericMatrix Yr, Rcpp::NumericMatrix Xr,
     arma::mat tmp12 ;
     arma::mat W = P ;
     arma::mat U = arma::zeros( nobj , ncomp );
-    arma::mat TT = arma::zeros( nobj , ncomp );    
+    arma::mat TT = arma::zeros( nobj , ncomp );
     arma::mat tsqs = arma::ones( ncomp , 1 ) ;
-    arma::mat fitted = arma::zeros( nobj , ncomp );    
+    arma::mat fitted = arma::zeros( nobj , ncomp );
 
     //    XtY <- crossprod(X, Y)
     arma::mat XtY = arma::mat( arma::trans(X) * Y ) ;
@@ -56,8 +56,7 @@ Rcpp::List kernelplsaux(Rcpp::NumericMatrix Yr, Rcpp::NumericMatrix Xr,
     for (int aa=0;aa<ncomp;++aa){
         //    ## 2.
         //    w.a <- XtY / sqrt(c(crossprod(XtY)))
-        wa = arma::mat( XtY / repmat( sqrt( arma::trans(XtY) * XtY + eps_add ) ,
-                    npred,1) ) ;
+        wa = arma::mat( XtY / arma::repmat( arma::sqrt( arma::trans(XtY) * XtY + eps_add ), npred,1) );
         //        ## 3.
         //        r.a <- w.a
         //            for (j in 1:(a - 1))
@@ -91,24 +90,22 @@ Rcpp::List kernelplsaux(Rcpp::NumericMatrix Yr, Rcpp::NumericMatrix Xr,
         R.col(aa) = ra ;
         P.col(aa) = pa ;
         tQ.row(aa) = qa ;
-        B.col(aa) = arma::mat( 
+        B.col(aa) = arma::mat(
                 R( arma::span(0,npred-1) , arma::span(0,aa) ) *
                 tQ( arma::span(0,aa) , arma::span(0,0) )
-            ) ; 
+            ) ;
         // # !stripped
         // tsqs[a] <- tsq
         tsqs( aa , 0 ) = tsq(0,0) ;
         //     ## Extra step to calculate Y scores:
         //     u.a <- Y %*% q.a / c(crossprod(q.a)) # Ok for nresp == 1 ??
-        //    ua = arma::mat( ( Y * qa ) / 
-        //        arma::repmat( trans(qa) * qa  , nobj , 1 ) ) ;        
-        // correction ARb 2013-11-12    
-        ua = arma::mat( ( Y * qa ) / 
-            arma::repmat( arma::trans(qa) * qa  + eps_add , nobj , 1 ) ) ;        
+        //    ua = arma::mat( ( Y * qa ) /
+        //        arma::repmat( trans(qa) * qa  , nobj , 1 ) ) ;
+        ua = arma::mat( (Y*qa) / arma::repmat( arma::trans(qa)*qa + eps_add, nobj, 1) );
         //     ## make u orth to previous X scores:
         //     if (a > 1) u.a <- u.a - TT %*% (crossprod(TT, u.a) / tsqs)
         if (aa > 0 ){
-            ua = ua - arma::mat(  TT * ( ( arma::trans(TT) * ua ) / ( tsqs + eps_add ) ) );    
+            ua = ua - arma::mat( TT * ( (arma::trans(TT)*ua) / ( tsqs + eps_add ) ));
         }
         //     U[,a] <- u.a
         U.col(aa) = ua ;
@@ -129,32 +126,32 @@ Rcpp::List kernelplsaux(Rcpp::NumericMatrix Yr, Rcpp::NumericMatrix Xr,
     return Rcpp::List::create(
                 Rcpp::Named("Y_used") = Y,
                 Rcpp::Named("X_used") = X ,
-                Rcpp::Named("R") = R , 
-                Rcpp::Named("P") = P , 
+                Rcpp::Named("R") = R ,
+                Rcpp::Named("P") = P ,
                 Rcpp::Named("tQ") = tQ ,
-                Rcpp::Named("B")=B , 
+                Rcpp::Named("B")=B ,
                 Rcpp::Named("XtY") = XtY ,
-                Rcpp::Named("wa") = wa , 
-                Rcpp::Named("ra")=ra , 
+                Rcpp::Named("wa") = wa ,
+                Rcpp::Named("ra")=ra ,
                 Rcpp::Named("ta")=ta ,
-                Rcpp::Named("tsq") = tsq , 
-                Rcpp::Named("pa")=pa , 
+                Rcpp::Named("tsq") = tsq ,
+                Rcpp::Named("pa")=pa ,
                 Rcpp::Named("qa")=qa ,
-                Rcpp::Named("W")=W , 
-                Rcpp::Named("U")=U , 
+                Rcpp::Named("W")=W ,
+                Rcpp::Named("U")=U ,
                 Rcpp::Named("TT")=TT ,
-                Rcpp::Named("tsqs")=tsqs , 
-                Rcpp::Named("fitted")=fitted 
+                Rcpp::Named("tsqs")=tsqs ,
+                Rcpp::Named("fitted")=fitted
             ) ;
 }
 
 ///********************************************************************
 ///** kernelpls_1dim_C
-// [[Rcpp::export]]    
-Rcpp::List kernelpls_1dim_C( Rcpp::NumericMatrix Yr, 
+// [[Rcpp::export]]
+Rcpp::List kernelpls_1dim_C( Rcpp::NumericMatrix Yr,
     Rcpp::NumericMatrix Xr, Rcpp::NumericVector nc )
 {
-    // run PLS algorithm 'kernelplsaux'  
+    // run PLS algorithm 'kernelplsaux'
     Rcpp::List res = kernelplsaux(Yr , Xr,  nc);
     return res;
 }
