@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_scale.cpp
-//// File Version: 5.06
+//// File Version: 5.07
 
 
 #include <Rcpp.h>
@@ -30,7 +30,7 @@ Rcpp::NumericMatrix scale2_C( Rcpp::NumericMatrix x )
             sdvv += std::pow( x(ii,vv) , 2.0 ) ;
         }
         mvv = mvv / n ;
-        sdvv = std::sqrt( ( sdvv - n * mvv*mvv )/(n-1));
+        sdvv = std::sqrt( ( sdvv - n * mvv*mvv )/(n-1.0));
         // define standardization
         y(_,vv) = ( x(_,vv) - mvv ) / ( sdvv + eps_add ) ;
     }
@@ -65,7 +65,7 @@ Rcpp::NumericMatrix scale2_NA_C( Rcpp::NumericMatrix x )
             }
         }
         mvv = mvv / nvv ;
-        sdvv = std::sqrt( ( sdvv - nvv * mvv*mvv )/(nvv - 1 ) ) ;
+        sdvv = std::sqrt( ( sdvv - nvv * mvv*mvv )/(nvv - 1.0 ) ) ;
         // define standardization
         y(_,vv) = ( x(_,vv) - mvv ) / ( sdvv + eps_add ) ;
     }

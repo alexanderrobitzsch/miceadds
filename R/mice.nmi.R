@@ -1,14 +1,13 @@
 ## File Name: mice.nmi.R
-## File Version: 0.14
+## File Version: 0.15
 
 ###############################################
 # nested multiple imputation
-mice.nmi <- function( datlist , type="mice" , ... ){
-
+mice.nmi <- function( datlist , type="mice" , ... )
+{
     CALL <- match.call()
     ND <- length(datlist)
     imp <- list()
-
     cat("------ NESTED MULTIPLE IMPUTATION ------\n")
     for (dd in 1:ND){
         data <- datlist[[dd]]

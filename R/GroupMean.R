@@ -1,6 +1,8 @@
 ## File Name: GroupMean.R
-## File Version: 1.13
-GroupMean  <- function( data , group , weights=NULL , extend=FALSE){
+## File Version: 1.14
+
+GroupMean  <- function( data , group , weights=NULL , extend=FALSE)
+{
     groups <- sort( unique( group ) )
     index.group <- match( group , groups )
     if ( is.null(weights) ){
@@ -14,8 +16,8 @@ GroupMean  <- function( data , group , weights=NULL , extend=FALSE){
     data1 <- data1 / Ngroup
     data1 <- data.frame( "group" = groups , data1 )
     if (extend){
-       data1 <- data1[ index.group , ]
-       rownames(data1) <- NULL
+        data1 <- data1[ index.group , ]
+        rownames(data1) <- NULL
     }
     return(data1)
 }

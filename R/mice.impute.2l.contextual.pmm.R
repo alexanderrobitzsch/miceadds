@@ -1,7 +1,10 @@
 ## File Name: mice.impute.2l.contextual.pmm.R
-## File Version: 0.07
-mice.impute.2l.contextual.pmm <- function (y, ry, x, type , imputationWeights = NULL ,
-                interactions=NULL , quadratics = NULL , ...){
+## File Version: 0.08
+
+mice.impute.2l.contextual.pmm <- function (y, ry, x, type , 
+            imputationWeights = NULL , interactions=NULL , 
+            quadratics = NULL , ...)
+{
     res <- mice_imputation_get_states( pos = parent.frame(n=1) )
     vname <- res$vname
     newstate <- res$newstate

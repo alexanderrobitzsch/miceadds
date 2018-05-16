@@ -1,10 +1,11 @@
 ## File Name: complete.miceadds.R
-## File Version: 0.07
+## File Version: 0.08
 
 
 #######################################################
 # complete function for nested multiple imputation
-complete.mids.nmi <- function( x , action = c(1,1) ){
+complete.mids.nmi <- function( x , action = c(1,1) )
+{
     if ( x$type == "mice" ){
         x1 <- x$imp
         data <- mice::complete( x1[[ action[1] ]] , action = action[2] )
@@ -19,7 +20,8 @@ complete.mids.nmi <- function( x , action = c(1,1) ){
 
 #######################################################
 # complete function for objects of class mids.1chain
-complete.mids.1chain <- function( x , action = 1 ){
+complete.mids.1chain <- function( x , action = 1 )
+{
     mice::complete( x$midsobj , action=action )
 }
 #######################################################

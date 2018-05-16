@@ -1,11 +1,10 @@
 ## File Name: ma.wtd.meanNA.R
-## File Version: 0.05
-
-
+## File Version: 0.06
 
 ########################################################
 # weighted mean
-ma.wtd.meanNA <- function( data , weights = NULL  , vars = NULL ){
+ma.wtd.meanNA <- function( data , weights = NULL  , vars = NULL )
+{
     #*** pre-processing
     res <- ma.wtd.aux.data(data=data , weights=weights , vars = vars )
     data <- res$data
@@ -22,9 +21,9 @@ ma.wtd.meanNA <- function( data , weights = NULL  , vars = NULL ){
         sumweight <- colSums( dataResp * weights )
         M_vars <- colSums( data1 *  weights ) / sumweight
         res[ii,] <- M_vars
-                    }
+    }
     res <- colMeans(res)
     names(res) <- colnames(data[[1]])
-    return( res )
-        }
+    return(res)
+}
 #########################################################

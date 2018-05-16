@@ -1,10 +1,11 @@
 ## File Name: ma.wtd.corNA.R
-## File Version: 0.03
+## File Version: 0.04
 
 
 ###############################################################################
 # weighted correlation using cov2cor function
-ma.wtd.corNA <- function( data , weights = NULL , vars = NULL , method="unbiased" ){
+ma.wtd.corNA <- function( data , weights = NULL , vars = NULL , method="unbiased" )
+{
     #*** pre-processing
     res <- ma.wtd.aux.data(data=data , weights=weights , vars = vars )
     data <- res$data
@@ -19,7 +20,7 @@ ma.wtd.corNA <- function( data , weights = NULL , vars = NULL , method="unbiased
         data1 <- data[[ii]]
         if ( ! is.null(vars) ){
             data1 <- data1[ , vars , drop=FALSE ]
-                                }
+        }
         dataResp <- 1 - is.na( data1 )
         data1[ is.na(data1) ] <- 0
         data1 <- as.matrix( data1 )
@@ -40,10 +41,10 @@ ma.wtd.corNA <- function( data , weights = NULL , vars = NULL , method="unbiased
             wgtadj <- ( covWXY^2 - crossprod( dataResp * weights^2 ) ) / covWXY^2
             wgtadj <- 1 / wgtadj
             covXY <- wgtadj * covXY
-                                }
+        }
         res[ii,,] <- stats::cov2cor( covXY )
-                    }
-        res <- colMeans(res)
-        return( res )
-            }
+    }
+    res <- colMeans(res)
+    return( res )
+}
 ################################################################

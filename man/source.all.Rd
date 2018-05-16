@@ -1,9 +1,10 @@
 %% File Name: source.all.Rd
-%% File Version: 0.14
+%% File Version: 0.18
 
 \name{source.all}
 \alias{source.all}
 \alias{source.Rcpp.all}
+\alias{rcpp_create_header_file}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 \R Utilities: Source all R or \pkg{Rcpp} Files within a Directory
@@ -15,12 +16,17 @@ is based on \code{\link[base:source]{base::source}}.
 
 The function \code{source.Rcpp.all} sources all \pkg{Rcpp} files within a specified directory
 and is based on \code{\link[Rcpp:sourceCpp]{Rcpp::sourceCpp}}.
+
+The function \code{rcpp_create_header_file} creates a cpp header file for a \pkg{Rcpp}
+file.
 }
 
 \usage{
 source.all( path, grepstring="\\\\.R",  print.source=TRUE )
 
 source.Rcpp.all( path, file_names=NULL, ext="\\\\.cpp", excl="RcppExports" )
+
+rcpp_create_header_file(file_name, pack=NULL, path=getwd() )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -37,10 +43,15 @@ An optional logical whether the source process printed on the console?
 \item{file_names}{Optional vector of (parts of) file names}
 \item{ext}{File extension for \pkg{Rcpp} files}
 \item{excl}{String indicating which files should be omitted from sourcing}
+\item{file_name}{File name}
+\item{pack}{Optional string for package}
+\item{path}{Optional directory}
 }
-%\details{
-%%  ~~ If necessary, more details than the description above ~~
-%}
+\details{
+For loading header files, the line \code{// [include_header_file]} has to be included
+before loading the header file using a line of the form
+\code{#include "my_function.h"}.
+}
 %\value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use

@@ -1,8 +1,9 @@
 ## File Name: GroupSum.R
-## File Version: 1.03
+## File Version: 1.04
 
 
-GroupSum <- function( data , group , weights=NULL , extend=FALSE){
+GroupSum <- function( data , group , weights=NULL , extend=FALSE)
+{
     groups <- sort( unique( group ) )
     index.group <- match( group , groups )
     if ( is.null(weights) ){
@@ -13,8 +14,8 @@ GroupSum <- function( data , group , weights=NULL , extend=FALSE){
     colnames(data1) <- colnames(data)
     data1 <- data.frame( "group" = groups , data1 )
     if (extend){
-       data1 <- data1[ index.group , ]
-       rownames(data1) <- NULL
+        data1 <- data1[ index.group , ]
+        rownames(data1) <- NULL
     }
     return(data1)
 }

@@ -1,13 +1,13 @@
 ## File Name: datlist_create.R
-## File Version: 0.27
+## File Version: 0.28
 #################################################
 # create datlist
-datlist_create <- function(datasets){
+datlist_create <- function(datasets)
+{
     CALL <- match.call()
     # if ( class(datasets) %in% c("mids","mids.1chain") ){
-    if ( inherits( datasets , "mids")  |
-            inherits( datasets , "mids.1chain")    ){
-                datasets <- mids2datlist(datasets)
+    if ( inherits( datasets , "mids") | inherits( datasets , "mids.1chain") ){
+        datasets <- mids2datlist(datasets)
     }
     # if ( class(datasets) %in% "imputationList" ){
     if ( inherits(datasets , "imputationList" ) ) {
@@ -26,7 +26,8 @@ datlist_create <- function(datasets){
     return(datasets)
 }
 #**************** print method ***********************
-print.datlist <- function(x,...){
+print.datlist <- function(x,...)
+{
     cat("Object of class 'datlist'\nCall: ")
     print( attr(x,"call"))
     cat("MI data with", attr(x,"Nimp") ,"datasets\n")

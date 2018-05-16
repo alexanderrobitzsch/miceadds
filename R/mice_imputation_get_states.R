@@ -1,7 +1,8 @@
 ## File Name: mice_imputation_get_states.R
-## File Version: 0.04
+## File Version: 0.05
 
-mice_imputation_get_states <- function( pos= parent.frame(n=1) ){
+mice_imputation_get_states <- function( pos= parent.frame(n=1) )
+{
     if ( is.null(pos) ){
         pos <- parent.frame()
     }

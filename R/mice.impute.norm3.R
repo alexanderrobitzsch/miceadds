@@ -1,5 +1,5 @@
 ## File Name: mice.impute.norm3.R
-## File Version: 0.07
+## File Version: 0.08
 
 mice.impute.norm3 <- function (y, ry, x, wy = NULL, ridge = 10^(-5) , ...)
 {

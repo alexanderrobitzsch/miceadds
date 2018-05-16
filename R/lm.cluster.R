@@ -1,11 +1,27 @@
 ## File Name: lm.cluster.R
-## File Version: 0.13
+## File Version: 0.27
 
 
 ##################################################
 # linear model for clustered data
-lm.cluster <- function( data , formula , cluster , ... ){
+lm.cluster <- function( data , formula , cluster , ... )
+{
     TAM::require_namespace_msg("multiwayvcov")
+    #*** to be included in future versions
+    if (FALSE){
+        X <- stats::model.matrix( object=formula, data=data )
+        t1 <- stats::terms(formula)
+        resp_var <- paste( t1[[2]] )
+        sel_X <- as.numeric( dimnames(X)[[1]] )
+        y <- data[ sel_X, resp_var ]
+        weights <- weights[ sel_X ]
+        sel <- which( ! is.na(y) )
+        weights <- weights[sel]
+        X <- X[sel, , drop=FALSE]
+        y <- y[sel]
+        mod <- stats::lm.wfit(x=X, y=y, w=weights)
+    }
+    # fit linear model
     mod <- stats::lm( data=data , formula=formula ,  ... )
     if ( length(cluster) > 1 ){
         v1 <- cluster
@@ -24,7 +40,7 @@ coef.lm.cluster <- function( object , ... ){
 }
 ####################################################
 vcov.lm.cluster <- function( object , ... ){
-     object$vcov
+    object$vcov
 }
 ####################################################
 summary.lm.cluster <- function( object , ... ){

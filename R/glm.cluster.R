@@ -1,10 +1,11 @@
 ## File Name: glm.cluster.R
-## File Version: 0.12
+## File Version: 0.13
 
 
 ##################################################
 # linear model for clustered data
-glm.cluster <- function( data , formula , cluster , ... ){
+glm.cluster <- function( data , formula , cluster , ... )
+{
     TAM::require_namespace_msg("multiwayvcov")
     mod <- stats::glm( data=data , formula=formula ,  ... )
     if ( length(cluster) > 1 ){
