@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_sampling_functions.cpp
-//// File Version: 0.02
+//// File Version: 0.09
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -71,22 +71,35 @@ arma::mat miceadds_rcpp_riwishart(int df, arma::mat S)
 ///********************************************************************
 
 ///********************************************************************
-///** miceadds_rcpp_rtnorm
+///** miceadds_rcpp_rtnorm_double
 // [[Rcpp::export]]
-arma::colvec miceadds_rcpp_rtnorm( Rcpp::IntegerVector y, arma::colvec mu,
-            arma::colvec sigma, arma::colvec lower, arma::colvec upper )
+double miceadds_rcpp_rtnorm_double( double mu, double sigma, double lower, 
+        double upper )
 {
-    int N = y.size();
-    arma::colvec z(N);
-    Rcpp::NumericVector val = Rcpp::runif(N);
     double y1=0;
     double y2=0;
     double temp=0;
+    Rcpp::NumericVector val = Rcpp::runif(1);
+    y1 = R::pnorm( lower, mu, sigma, 1, 0);
+    y2 = R::pnorm( upper, mu, sigma, 1, 0);
+    temp = y1 + val[0] * ( y2 - y1 );
+    double z = R::qnorm(temp, mu, sigma, 1, 0 );
+    //--- output
+    return z;
+}
+///********************************************************************
+
+///********************************************************************
+///** miceadds_rcpp_rtnorm
+// [[Rcpp::export]]
+arma::colvec miceadds_rcpp_rtnorm( arma::colvec mu,
+            arma::colvec sigma, arma::colvec lower, arma::colvec upper )
+{
+    int N = mu.size();
+    arma::colvec z(N);
     for (int nn=0; nn<N; nn++){
-        y1 = R::pnorm(lower(nn,0), mu(nn,0), sigma(nn,0), 1, 0);
-        y2 = R::pnorm(upper(nn,0), mu(nn,0), sigma(nn,0), 1, 0);
-        temp = y1 + val[nn] * ( y2 - y1 );
-        z(nn,0) = R::qnorm(temp, mu(nn,0), sigma(nn,0), 1, 0 );
+        z(nn,0) = miceadds_rcpp_rtnorm_double(mu(nn,0), sigma(nn,0), 
+                        lower(nn,0), upper(nn,0) );
     }
     //--- output
     return z;

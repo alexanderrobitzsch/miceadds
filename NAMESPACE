@@ -154,6 +154,7 @@ export(fast.groupsum)		# defunct
 export(filename_split)
 export(files_move)
 export(glm.cluster)
+export(grepvec)
 export(grep.vec)
 export(grep_leading)
 export(grepvec_leading)

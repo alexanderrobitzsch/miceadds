@@ -309,17 +309,36 @@ namespace miceadds {
         return Rcpp::as<arma::mat >(rcpp_result_gen);
     }
 
-    inline arma::colvec miceadds_rcpp_rtnorm(Rcpp::IntegerVector y, arma::colvec mu, arma::colvec sigma, arma::colvec lower, arma::colvec upper) {
-        typedef SEXP(*Ptr_miceadds_rcpp_rtnorm)(SEXP,SEXP,SEXP,SEXP,SEXP);
+    inline double miceadds_rcpp_rtnorm_double(double mu, double sigma, double lower, double upper) {
+        typedef SEXP(*Ptr_miceadds_rcpp_rtnorm_double)(SEXP,SEXP,SEXP,SEXP);
+        static Ptr_miceadds_rcpp_rtnorm_double p_miceadds_rcpp_rtnorm_double = NULL;
+        if (p_miceadds_rcpp_rtnorm_double == NULL) {
+            validateSignature("double(*miceadds_rcpp_rtnorm_double)(double,double,double,double)");
+            p_miceadds_rcpp_rtnorm_double = (Ptr_miceadds_rcpp_rtnorm_double)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_rtnorm_double");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_miceadds_rcpp_rtnorm_double(Shield<SEXP>(Rcpp::wrap(mu)), Shield<SEXP>(Rcpp::wrap(sigma)), Shield<SEXP>(Rcpp::wrap(lower)), Shield<SEXP>(Rcpp::wrap(upper)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<double >(rcpp_result_gen);
+    }
+
+    inline arma::colvec miceadds_rcpp_rtnorm(arma::colvec mu, arma::colvec sigma, arma::colvec lower, arma::colvec upper) {
+        typedef SEXP(*Ptr_miceadds_rcpp_rtnorm)(SEXP,SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_rtnorm p_miceadds_rcpp_rtnorm = NULL;
         if (p_miceadds_rcpp_rtnorm == NULL) {
-            validateSignature("arma::colvec(*miceadds_rcpp_rtnorm)(Rcpp::IntegerVector,arma::colvec,arma::colvec,arma::colvec,arma::colvec)");
+            validateSignature("arma::colvec(*miceadds_rcpp_rtnorm)(arma::colvec,arma::colvec,arma::colvec,arma::colvec)");
             p_miceadds_rcpp_rtnorm = (Ptr_miceadds_rcpp_rtnorm)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_rtnorm");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_rtnorm(Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(mu)), Shield<SEXP>(Rcpp::wrap(sigma)), Shield<SEXP>(Rcpp::wrap(lower)), Shield<SEXP>(Rcpp::wrap(upper)));
+            rcpp_result_gen = p_miceadds_rcpp_rtnorm(Shield<SEXP>(Rcpp::wrap(mu)), Shield<SEXP>(Rcpp::wrap(sigma)), Shield<SEXP>(Rcpp::wrap(lower)), Shield<SEXP>(Rcpp::wrap(upper)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();

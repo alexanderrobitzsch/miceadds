@@ -42,7 +42,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.11  |  2018-05-16  |  Last: miceadds 2.11-70
+VERSIONS miceadds 2.11  |  2018-05-16  |  Last: miceadds 2.11-77
 ---------------------------------------------------------------------
 
 ADDED * included utility Rcpp sourcing function source.Rcpp.all()

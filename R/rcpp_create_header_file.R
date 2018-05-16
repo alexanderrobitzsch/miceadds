@@ -1,5 +1,5 @@
 ## File Name: rcpp_create_header_file.R
-## File Version: 0.04
+## File Version: 0.07
 
 rcpp_create_header_file <- function(file_name, pack=NULL, path=getwd() )
 {
@@ -32,7 +32,7 @@ rcpp_create_header_file <- function(file_name, pack=NULL, path=getwd() )
     header_name <- gsub("\\." , "" , toupper( paste0( pack1, "_" , file_name0 , "_H" ) ) )
     res0 <- paste0( "#ifndef " , header_name )
     res0[2] <- paste0( "#define " , header_name )
-    res3 <- c( "", res0, " ", res1 , res2 , "", "#endif")
+    res3 <- c( "", res0, " ", res1, res2, "", paste0( "#endif // ", header_name ) )
     file_name2 <- gsub("\\.cpp" , "\\.h", file_name1)
     writeLines( res3 , file.path( path, file_name2) )
 }

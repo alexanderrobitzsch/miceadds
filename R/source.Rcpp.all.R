@@ -1,5 +1,5 @@
 ## File Name: source.Rcpp.all.R
-## File Version: 0.29
+## File Version: 0.31
 
 # function for sourcing Rcpp files
 source.Rcpp.all <- function( path, file_names=NULL, ext = "\\.cpp", excl = "RcppExports",
@@ -44,7 +44,7 @@ source.Rcpp.all <- function( path, file_names=NULL, ext = "\\.cpp", excl = "Rcpp
         ind_ff <- grep( string_header, out_ff, fixed=TRUE)
         rem <- FALSE
         for (ii in ind_ff){
-            ii <- ind_ff[1]
+            # ii <- ind_ff[1]
             entry <- strsplit( out_ff[ii+1] , split="\"" )[[1]]
             entry[2] <- gsub( "\\.h" , "", entry[2] )
             files_ii <- list.files(path, "\\.h")

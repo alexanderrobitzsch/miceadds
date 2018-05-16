@@ -1,5 +1,5 @@
 %% File Name: source.all.Rd
-%% File Version: 0.18
+%% File Version: 0.21
 
 \name{source.all}
 \alias{source.all}
@@ -24,7 +24,8 @@ file.
 \usage{
 source.all( path, grepstring="\\\\.R",  print.source=TRUE )
 
-source.Rcpp.all( path, file_names=NULL, ext="\\\\.cpp", excl="RcppExports" )
+source.Rcpp.all( path, file_names=NULL, ext="\\\\.cpp", excl="RcppExports",
+   remove_temp_file = FALSE )
 
 rcpp_create_header_file(file_name, pack=NULL, path=getwd() )
 }
@@ -43,9 +44,10 @@ An optional logical whether the source process printed on the console?
 \item{file_names}{Optional vector of (parts of) file names}
 \item{ext}{File extension for \pkg{Rcpp} files}
 \item{excl}{String indicating which files should be omitted from sourcing}
+\item{remove_temp_file}{Logical indicating whether temporary \pkg{Rcpp}
+files should be removed.}
 \item{file_name}{File name}
 \item{pack}{Optional string for package}
-\item{path}{Optional directory}
 }
 \details{
 For loading header files, the line \code{// [include_header_file]} has to be included
