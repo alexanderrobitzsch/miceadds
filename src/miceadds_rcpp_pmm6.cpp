@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_pmm6.cpp
-//// File Version: 1.07
+//// File Version: 1.09
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -11,9 +11,9 @@ using namespace arma;
 
 
 ///********************************************************************
-///** ma_pmm6_C
+///** miceadds_rcpp_impute_pmm6
 // [[Rcpp::export]]
-Rcpp::NumericVector ma_pmm6_C( Rcpp::NumericVector y , Rcpp::NumericVector ry01,
+Rcpp::NumericVector miceadds_rcpp_impute_pmm6( Rcpp::NumericVector y , Rcpp::NumericVector ry01,
     Rcpp::NumericMatrix x , double ridge, Rcpp::NumericVector coefu1,
     Rcpp::NumericVector donorsample )
 {
