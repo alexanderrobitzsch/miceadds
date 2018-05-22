@@ -1,11 +1,11 @@
 ## File Name: rcpp_create_header_file.R
-## File Version: 0.12
+## File Version: 0.13
 
 rcpp_create_header_file <- function(file_name, pack=NULL, path=getwd() )
 {
     files <- list.files( path, "\\.cpp")
     file_name1 <- max( grep( file_name, files, value=TRUE ) )
-    
+
     out <- readLines( file.path( path, file_name1 ) )
     ind1 <- grep_leading( "#include", out )
     ind2 <- grep_leading( "using namespace", out )

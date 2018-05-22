@@ -43,10 +43,10 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.12  |  2018-05-22  |  Last: miceadds 2.12-1
+VERSIONS miceadds 2.12  |  2018-05-22  |  Last: miceadds 2.12-3
 ---------------------------------------------------------------------
 
-xxxx  *
+NOTE  * internal restructure functions NMIwaldtest(), MIwaldtest()
 
 
 DATA  * included/modified datasets: ---

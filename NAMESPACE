@@ -78,6 +78,7 @@ import(mice)
 #***************************************************
 #************** Imports (own packages) *************
 
+importFrom(CDM, cdm_print_summary_data_frame)
 importFrom(CDM, CDM_rmvnorm)
 importFrom(CDM, csink)
 importFrom(CDM, osink) 
