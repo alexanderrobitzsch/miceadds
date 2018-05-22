@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.latentgroupmean.ml.Rd
-%% File Version: 1.23
+%% File Version: 1.27
 
 \name{mice.impute.2l.latentgroupmean.ml}
 \alias{mice.impute.2l.latentgroupmean.ml}
@@ -28,15 +28,15 @@ Therefore, this imputation method will lead to different values of
 individuals within the same group.
 }
 \usage{
-mice.impute.2l.latentgroupmean.ml(y, ry, x, type, pls.facs = NULL,
-    imputationWeights = NULL, interactions = NULL, quadratics = NULL,
+mice.impute.2l.latentgroupmean.ml(y, ry, x, type, pls.facs=NULL,
+    imputationWeights=NULL, interactions=NULL, quadratics=NULL,
     EAP=FALSE, ...)
 
-mice.impute.2l.latentgroupmean.mcmc(y, ry, x, type, pls.facs = NULL,
-    imputationWeights = NULL, interactions = NULL, quadratics = NULL,
+mice.impute.2l.latentgroupmean.mcmc(y, ry, x, type, pls.facs=NULL,
+    imputationWeights=NULL, interactions=NULL, quadratics=NULL,
     mcmc.burnin=100, mcmc.adapt=100, mcmc.iter=1000, draw.fixed=TRUE, EAP=FALSE, ...)
 
-mice.impute.2l.groupmean(y, ry, x, type, grmeanwarning = TRUE, ...)
+mice.impute.2l.groupmean(y, ry, x, type, grmeanwarning=TRUE, ...)
 
 mice.impute.2l.groupmean.elim(y, ry, x, type, ...)
 }
@@ -144,23 +144,23 @@ dat <- data.ma05
 # include manifest group mean for 'Mscore'
 dat$M.Mscore <- NA
 # include latent group group for 'Mscore'
-dat$LM.Mscore <- NA    # => LM: latent group mean
+dat$LM.Mscore <- NA    #=> LM: latent group mean
 
 # empty imputation
-imp <- mice( dat , m=0 , maxit=0 )
+imp <- mice( dat, m=0, maxit=0 )
 summary(imp)
 
 # define predictor matrix
 predM <- imp$pred
 # exclude student ISs
-predM[ , "idstud"] <- 0
+predM[, "idstud"] <- 0
 # idclass is the cluster identifier
-predM[ , "idclass" ] <- -2
+predM[, "idclass" ] <- -2
 
 # define imputation methods
 impMethod <- imp$method
 # initialize with norm
-impMethod <- rep( "norm" , length(impMethod) )
+impMethod <- rep( "norm", length(impMethod) )
 names(impMethod) <- names( imp$method )
 impMethod[ c("idstud","idclass")] <- ""
 
@@ -170,44 +170,44 @@ impMethod[ c("idstud","idclass")] <- ""
 # Use a random slope model for Dscore and Mscore as the imputation method.
 # Here, variance homogeneity of residuals is assumed (contrary to
 # the 2l.norm imputation method in the mice package).
-impMethod[ c("Dscore" , "Mscore") ] <- "2l.pan"
-predM[ c("Dscore","Mscore") , "misei" ] <- 2    # random slopes on 'misei'
-predM[  , "idclass" ] <- -2
+impMethod[ c("Dscore", "Mscore") ] <- "2l.pan"
+predM[ c("Dscore","Mscore"), "misei" ] <- 2    # random slopes on 'misei'
+predM[, "idclass" ] <- -2
 
 # For imputing 'manote' and 'denote' use contextual effects (i.e. cluster means)
 # of variables 'misei' and 'migrant'
-impMethod[ c("denote" , "manote") ] <- "2l.contextual.pmm"
-predM[ c("denote" , "manote") , c("misei","migrant")] <- 2
+impMethod[ c("denote", "manote") ] <- "2l.contextual.pmm"
+predM[ c("denote", "manote"), c("misei","migrant")] <- 2
 
 # Use no cluster variable 'idclass' for imputation of 'misei'
 impMethod[ "misei"] <- "norm"
-predM[ "misei" , "idclass"] <- 0 # use no multilevel imputation model
+predM[ "misei", "idclass"] <- 0 # use no multilevel imputation model
 
 # Variable migrant: contextual effects of Dscore and misei
 impMethod[ "migrant"] <- "2l.contextual.pmm"
-predM[ "migrant" , c("Dscore" ,  "misei" ) ] <- 2
-predM[ "migrant" , "idclass" ] <- -2
+predM[ "migrant", c("Dscore",  "misei" ) ] <- 2
+predM[ "migrant", "idclass" ] <- -2
 
 #****
 # CLASS LEVEL (Level 2)
 # impute 'sprengel' and 'groesse' at the level of classes
 impMethod[ "sprengel"] <- "2lonly.pmm2"
 impMethod[ "groesse"] <- "2lonly.norm2"
-predM[ c("sprengel","groesse") , "idclass" ] <- -2
+predM[ c("sprengel","groesse"), "idclass" ] <- -2
 
 # manifest group mean for Mscore
 impMethod[ "M.Mscore" ] <- "2l.groupmean"
 # latent group mean for Mscore
 impMethod[ "LM.Mscore" ] <- "2l.latentgroupmean.ml"
-predM[ "M.Mscore" , "Mscore" ] <- 2
+predM[ "M.Mscore", "Mscore" ] <- 2
 
 # covariates for latent group mean of 'Mscore'
-predM[ "LM.Mscore" , "Mscore" ] <- 2
-predM[ "LM.Mscore" , c( "Dscore" , "sprengel" ) ] <- 1
+predM[ "LM.Mscore", "Mscore" ] <- 2
+predM[ "LM.Mscore", c( "Dscore", "sprengel" ) ] <- 1
 
 # do imputations
-imp <- mice::mice( dat , predictorMatrix = predM , m =3 ,  maxit = 4 ,
-         imputationMethod = impMethod  , allow.na = TRUE , pan.iter=100)
+imp <- mice::mice( dat, predictorMatrix=predM, m=3,  maxit=4,
+         imputationMethod=impMethod, allow.na=TRUE, pan.iter=100)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

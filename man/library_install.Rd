@@ -1,5 +1,5 @@
 %% File Name: library_install.Rd
-%% File Version: 0.08
+%% File Version: 0.12
 
 \name{library_install}
 \alias{library_install}
@@ -14,7 +14,7 @@ yet installed, they will be automatically installed by this function using
 \code{\link[utils:install.packages]{install.packages}}.
 }
 \usage{
-library_install( pkg , ... )
+library_install( pkg, ... )
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -54,7 +54,7 @@ Further arguments to be passed to
 \examples{
 \dontrun{
 # try to load packages PP and MCMCglmm
-library_install( pkg =  c("PP" , "MCMCglmm") )
+library_install( pkg=c("PP", "MCMCglmm") )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

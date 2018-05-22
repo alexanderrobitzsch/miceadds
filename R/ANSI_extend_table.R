@@ -1,8 +1,8 @@
 ## File Name: ANSI_extend_table.R
-## File Version: 0.16
+## File Version: 0.18
 
 ###########################################
-ANSI_extend_table <- function( data , vars , subset , varindex="varindex" ,
+ANSI_extend_table <- function( data, vars, subset, varindex="varindex",
             varname="value")
 {
     x <- data
@@ -20,14 +20,14 @@ ANSI_extend_table <- function( data , vars , subset , varindex="varindex" ,
     data <- x
 
     NV <- length(vars)
-    vars0 <- setdiff( colnames(data) , vars )
+    vars0 <- setdiff( colnames(data), vars )
     dfr <- NULL
     NC <- length(vars0)
     for (vv in 1:NV){
         # vv <- 1
-        dfr0 <- data.frame( data[ , vars0] , vars[vv] , data[ , vars[vv] ] )
+        dfr0 <- data.frame( data[, vars0], vars[vv], data[, vars[vv] ] )
         colnames(dfr0)[ NC + 1:2 ] <- c(varindex, varname )
-        dfr <- rbind( dfr , dfr0)
+        dfr <- rbind( dfr, dfr0)
     }
     return(dfr)
 }

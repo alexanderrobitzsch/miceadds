@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.22
+%% File Version: 0.25
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -42,12 +42,12 @@ missing values cannot (yet) be handled.
 
 
 \usage{
-mice.impute.ml.lmer(y, ry, x, type, levels_id, variables_levels = NULL,
-    random_slopes = NULL, aggregate_automatically = TRUE, intercept = TRUE,
-    groupcenter.slope = FALSE, draw.fixed = TRUE, random.effects.shrinkage = 1e-06,
-    glmer.warnings = TRUE, model = "continuous", donors = 3, match_sampled_pars = FALSE,
-    blme_use = FALSE, blme_args = NULL, pls.facs = 0, interactions = NULL,
-    quadratics = NULL, min.int.cor = 0, min.all.cor = 0, pls.print.progress = FALSE, ...)
+mice.impute.ml.lmer(y, ry, x, type, levels_id, variables_levels=NULL,
+    random_slopes=NULL, aggregate_automatically=TRUE, intercept=TRUE,
+    groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1e-06,
+    glmer.warnings=TRUE, model="continuous", donors=3, match_sampled_pars=FALSE,
+    blme_use=FALSE, blme_args=NULL, pls.facs=0, interactions=NULL,
+    quadratics=NULL, min.int.cor=0, min.all.cor=0, pls.print.progress=FALSE, ...)
 }
 
 
@@ -178,24 +178,24 @@ dat <- data.ma07
 # variables at level 3 (identifier id3): z1 (some missings), z2 (complete)
 
 # start with empty imputation
-imp0 <- mice::mice( dat , maxit=0)
+imp0 <- mice::mice( dat, maxit=0)
 
 #****************************************************************************
 # Imputation model 1
 
 #----- specify levels of variables (only relevent for variables
 #      with missing values)
-variables_levels <- miceadds:::mice_impute_create_type_vector( colnames(dat) , value="")
+variables_levels <- miceadds:::mice_impute_create_type_vector( colnames(dat), value="")
  # leave variables at lowest level blank (i.e., "")
 variables_levels[ c("y1","y2") ] <- "id2"
 variables_levels[ c("z1","z2") ] <- "id3"
 
 #----- specify predictor matrix
 predmat <- imp0$predictorMatrix
-predmat[ , c("id2", "id3") ] <- 0
+predmat[, c("id2", "id3") ] <- 0
 # set -2 for cluster identifier for level 3 variable z1
 # because "2lonly" function is used
-predmat[ "z1" , "id3" ] <- -2
+predmat[ "z1", "id3" ] <- -2
 
 #----- specify imputation methods
 imputationMethod <- imp0$method
@@ -205,22 +205,22 @@ imputationMethod[c("z1")] <- "2lonly.norm"
 #----- specify hierarchical structure of imputation models
 levels_id <- list()
 #** hierarchical structure for variable x1
-levels_id[["x1"]] <- c("id2" , "id3")
+levels_id[["x1"]] <- c("id2", "id3")
 #** hierarchical structure for variable y1
 levels_id[["y1"]] <- c("id3")
 
 #----- specify random slopes
 random_slopes <- list()
 #** random slopes for variable x1
-random_slopes[["x1"]] <- list( "id2" = c("x2","y1"), "id3" = c("y1") )
+random_slopes[["x1"]] <- list( "id2"=c("x2","y1"), "id3"=c("y1") )
 #** random slopes for variable y1
-random_slopes[["y1"]] <- list( "id3" = c("z1") )
+random_slopes[["y1"]] <- list( "id3"=c("z1") )
 # if no random slopes should be specified, the corresponding entry can be left empty
 # and only a random intercept is used in the imputation model
 
 #----- imputation in mice
 imp1 <- mice::mice( dat, maxit=10, m=5, imputationMethod=imputationMethod,
-            predictorMatrix=predmat, levels_id = levels_id,  random_slopes = random_slopes,
+            predictorMatrix=predmat, levels_id=levels_id,  random_slopes=random_slopes,
             variables_levels=variables_levels )
 summary(imp1)
 
@@ -228,13 +228,13 @@ summary(imp1)
 # Imputation model 2
 
 #----- impute x1 with predictive mean matching and y1 with normally distributed residuals
-model <- list( x1 = "pmm" , y1 = "continuous" )
+model <- list( x1="pmm", y1="continuous" )
 
 #----- assume only random intercepts
 random_slopes <- NULL
 
 #---- create interactions with z2 for all predictors in imputation models for x1 and y1
-interactions <- list( "x1" = z2, "y1" = z2)
+interactions <- list( "x1"=z2, "y1"=z2)
 
 #----- imputation in mice
 imp2 <- mice::mice( dat, imputationMethod=imputationMethod, predictorMatrix=predmat,

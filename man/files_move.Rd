@@ -1,5 +1,5 @@
 %% File Name: files_move.Rd
-%% File Version: 0.12
+%% File Version: 0.15
 
 \name{files_move}
 \alias{files_move}
@@ -13,7 +13,7 @@ directory to another directory.
 }
 
 \usage{
-files_move(path1, path2, file_sep = "__", pattern = NULL)
+files_move(path1, path2, file_sep="__", pattern=NULL)
 }
 
 
@@ -68,9 +68,9 @@ Pattern in file names to be searched for
 # specify path
 path1 <- "p:/IPN/Projects/PISA/Trend_2015/2__Data/All_Waves/"
 # specify target directory which is an archive
-path2 <- file.path( path1 , "__ARCHIVE" )
+path2 <- file.path( path1, "__ARCHIVE" )
 # move files
-files_move( path1 , path2 )
+files_move( path1, path2 )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

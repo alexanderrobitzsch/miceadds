@@ -1,5 +1,5 @@
 %% File Name: write.datlist.Rd
-%% File Version: 0.09
+%% File Version: 0.12
 
 \name{write.datlist}
 \alias{write.datlist}
@@ -12,9 +12,9 @@ Writes a list of multiply imputed datasets.
 }
 
 \usage{
-write.datlist(datlist, name, include.varnames = TRUE, type = "csv2",
-     separate = TRUE , Mplus = FALSE, round = NULL, Rdata = TRUE,
-     subdir = TRUE , ...)
+write.datlist(datlist, name, include.varnames=TRUE, type="csv2",
+     separate=TRUE, Mplus=FALSE, round=NULL, Rdata=TRUE,
+     subdir=TRUE, ...)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -93,25 +93,25 @@ data(data.ma01)
 dat <- as.matrix(data.ma01)
 
 # start with empty imputation
-imp0 <- mice::mice( dat , maxit=0)
+imp0 <- mice::mice( dat, maxit=0)
 
 # modify predictor matrix
 predM <- imp0$predictorMatrix
-predM[ , c("idschool" , "idstud" ) ] <- 0
+predM[, c("idschool", "idstud" ) ] <- 0
 # modify imputation method
 impMeth <- imp0$method
-impMeth[ impMeth == "pmm" ] <- "norm"
+impMeth[ impMeth=="pmm" ] <- "norm"
 
 # do imputations in mice
-imp <- mice::mice( dat , predictorMatrix = predM , imputationMethod=impMeth,
-            m=3 , maxit=4 )
+imp <- mice::mice( dat, predictorMatrix=predM, imputationMethod=impMeth,
+            m=3, maxit=4 )
 
 # write imputed data in format "csv2" and round after 4 digits
-write.datlist( datlist = imp , name = "mice_imp_csv2" , round = 4 )
+write.datlist( datlist=imp, name="mice_imp_csv2", round=4 )
 # write imputed data in R binary format
-write.datlist( datlist = imp , name = "mice_imp_Rdata" , type="Rdata")
+write.datlist( datlist=imp, name="mice_imp_Rdata", type="Rdata")
 # write data for Mplus usage
-write.datlist( datlist = imp , name = "mice_imp_Mplus" , Mplus = TRUE , round = 5)
+write.datlist( datlist=imp, name="mice_imp_Mplus", Mplus=TRUE, round=5)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

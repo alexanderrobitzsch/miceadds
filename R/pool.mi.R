@@ -1,11 +1,11 @@
 ## File Name: pool.mi.R
-## File Version: 0.27
+## File Version: 0.31
 ##############################################################
 # Inference for multiply imputed datasets
 # The following code is copied from the mice package
 # and slightly modified.
-pool_mi <- function( qhat , u=NULL , se=NULL ,
-                dfcom = 1E7 , method="smallsample" ){
+pool_mi <- function( qhat, u=NULL, se=NULL,
+                dfcom=1E7, method="smallsample" ){
     #****
     # qhat    ... List of parameter vectors
     # u        ... List of covariance matrices
@@ -27,15 +27,15 @@ pool_mi <- function( qhat , u=NULL , se=NULL ,
     q1 <- qhat[[1]]
     names1 <- names(q1)
     qhat <- unlist(qhat)
-    qhat <- matrix( qhat , nrow=m , ncol=k , byrow=TRUE )
+    qhat <- matrix( qhat, nrow=m, ncol=k, byrow=TRUE )
     qbar <- colMeans(qhat)
     u0 <- u
-    u <- array( 0 , dim = c(m,k,k) )
+    u <- array( 0, dim=c(m,k,k) )
     for (ii in 1:m){
         u[ii,,] <- u0[[ii]]
     }
     ubar <- apply( u, c(2, 3), mean )
-    e <- qhat - matrix(qbar, nrow = m, ncol = k, byrow = TRUE)
+    e <- qhat - matrix(qbar, nrow=m, ncol=k, byrow=TRUE)
     b <- ( t(e) %*% e )/(m - 1 + eps )
     t <- ubar + (1 + 1/m) * b
     r <- (1 + 1/m) * diag(b/ubar)
@@ -52,17 +52,17 @@ pool_mi <- function( qhat , u=NULL , se=NULL ,
     #----
     # include t values and standard errors
     tval <- qbar / sqrt( diag(t) )
-    pval <- 2 * stats::pt( - abs(tval) , df = df )
+    pval <- 2 * stats::pt( - abs(tval), df=df )
     names(tval) <- names(pval) <- names1
 
     #********************************
     # class mipo
     res <- list(
-        nmis = NA ,
-        m = m, qhat = qhat, u = u, qbar = qbar,
-        ubar = ubar, b = b, t = t, r = r, dfcom = dfcom, df = df,
-        fmi = fmi, lambda = lambda, tval = tval , pval = pval ,
-        qhat_names = names1 , call = CALL)
+        nmis=NA,
+        m=m, qhat=qhat, u=u, qbar=qbar,
+        ubar=ubar, b=b, t=t, r=r, dfcom=dfcom, df=df,
+        fmi=fmi, lambda=lambda, tval=tval, pval=pval,
+        qhat_names=names1, call=CALL)
     class(res) <- "pool_mi"
     return(res)
 }
@@ -74,7 +74,7 @@ mice_df <- function (m, lambda, dfcom, method){
     dfold <- (m - 1 + eps )/lambda^2
     dfobs <- (dfcom + 1)/(dfcom + 3) * dfcom * (1 - lambda)
     df <- dfold * dfobs/(dfold + dfobs)
-    if (method != "smallsample"){
+    if (method !="smallsample"){
         df <- dfold
     }
     return(df)
@@ -85,8 +85,8 @@ summary.pool_mi <-function(object,alpha=0.05, ...){
   cat("Multiple imputation results:\nCall: ")
 #   lapply(object$call, function(a) {cat("      ");print(a)})
   print(object$call)
-  out <- data.frame( results= object$qbar ,
-                   se= sqrt(diag( object$t))
+  out <- data.frame( results=object$qbar,
+                   se=sqrt(diag( object$t))
                          )
   crit <- stats::qt(alpha/2,object$df, lower.tail=FALSE)
   out$t <- object$tval

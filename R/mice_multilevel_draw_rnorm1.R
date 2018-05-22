@@ -1,10 +1,10 @@
 ## File Name: mice_multilevel_draw_rnorm1.R
-## File Version: 0.03
+## File Version: 0.05
 
 ########################################################################
 # draw a vector of random variables using a Cholesky decomposition
 # input mean vector and covariance matrix
-mice_multilevel_draw_rnorm1 <- function( mu  , Sigma){
+mice_multilevel_draw_rnorm1 <- function( mu, Sigma){
     #----
     #b.star <- b.star + as.vector( t(chol(vcov(fit))) %*% rnorm(length(b.star)) )
     NP <- length(mu)

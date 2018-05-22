@@ -1,5 +1,5 @@
 %% File Name: nestedList2List.Rd
-%% File Version: 0.05
+%% File Version: 0.07
 
 
 
@@ -20,7 +20,7 @@ Converts a nested list into a list (and vice versa).
 \usage{
 nestedList2List(nestedList)
 
-List2nestedList(List, N_between, N_within = NULL, loop_within = TRUE)
+List2nestedList(List, N_between, N_within=NULL, loop_within=TRUE)
 }
 
 
@@ -82,7 +82,7 @@ v2 <- miceadds::nestedList2List( nestedList)
 ## reconvert list v2 into a nested list, looping within first
 v3 <- miceadds::List2nestedList(v2, N_between=5)
 # looping between first
-v4 <- miceadds::List2nestedList(v2, N_between=5, loop_within = FALSE)
+v4 <- miceadds::List2nestedList(v2, N_between=5, loop_within=FALSE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

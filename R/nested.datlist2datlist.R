@@ -1,5 +1,5 @@
 ## File Name: nested.datlist2datlist.R
-## File Version: 0.05
+## File Version: 0.06
 
 ##########################################################
 # converts a nested list of multiply imputed
@@ -12,8 +12,8 @@ nested.datlist2datlist <- function(datlist){
                 } else {
             is_NestedImputationList <- FALSE
                 }
-        Nimp <- c( length(datlist) , length(datlist[[1]] ) )
-        names(Nimp) <- c("Between" , "Within")
+        Nimp <- c( length(datlist), length(datlist[[1]] ) )
+        names(Nimp) <- c("Between", "Within")
         PP <- Nimp[1] * Nimp[2]
         datlist0 <- as.list( 1:PP )
         vv <- 1

@@ -1,5 +1,5 @@
 %% File Name: pool.mids.nmi.Rd
-%% File Version: 0.44
+%% File Version: 0.48
 
 \name{pool.mids.nmi}
 \alias{pool.mids.nmi}
@@ -28,13 +28,13 @@ and \code{NMIextract} functions are extensions of
 
 
 \usage{
-pool.mids.nmi(object, method = "largesample")
+pool.mids.nmi(object, method="largesample")
 
-NMIcombine( qhat , u=NULL , se = NULL , NMI=TRUE, comp_cov=TRUE, is_list=TRUE,
-       method = 1)
+NMIcombine( qhat, u=NULL, se=NULL, NMI=TRUE, comp_cov=TRUE, is_list=TRUE,
+       method=1)
 
-pool_nmi( qhat , u=NULL , se = NULL , NMI=TRUE, comp_cov=TRUE, is_list=TRUE,
-       method = 1)
+pool_nmi( qhat, u=NULL, se=NULL, NMI=TRUE, comp_cov=TRUE, is_list=TRUE,
+       method=1)
 
 NMIextract(results, expr, fun)
 
@@ -151,22 +151,22 @@ incompatible MCMC. \emph{Statistica Neerlandica}, \bold{57(1)}, 3-18.
 #############################################################################
 
 library(BIFIEsurvey)
-data(data.timss2 , package="BIFIEsurvey" )
+data(data.timss2, package="BIFIEsurvey" )
 datlist <- data.timss2
 # remove first four variables
 M <- length(datlist)
 for (ll in 1:M){
-    datlist[[ll]] <- datlist[[ll]][ , -c(1:4) ]
+    datlist[[ll]] <- datlist[[ll]][, -c(1:4) ]
                }
 
 #***************
 # (1) nested multiple imputation using mice
-imp1 <- miceadds::mice.nmi( datlist ,  m=3 , maxit=2 )
+imp1 <- miceadds::mice.nmi( datlist,  m=3, maxit=2 )
 summary(imp1)
 
 #***************
 # (2) first linear regression: ASMMAT ~ migrant + female
-res1 <- with( imp1 , stats::lm( ASMMAT ~ migrant + female ) ) # fit
+res1 <- with( imp1, stats::lm( ASMMAT ~ migrant + female ) ) # fit
 pres1 <- miceadds::pool.mids.nmi( res1 )  # pooling
 summary(pres1)  # summary
 coef(pres1)
@@ -174,14 +174,14 @@ vcov(pres1)
 
 #***************
 # (3) second linear regression: likesc ~ migrant + books
-res2 <- with( imp1 , stats::lm( likesc ~ migrant + books  ) )
+res2 <- with( imp1, stats::lm( likesc ~ migrant + books  ) )
 pres2 <- miceadds::pool.mids.nmi( res2 )
 summary(pres2)
 
 #***************
 # (4) some descriptive statistics using the mids.nmi object
-res3 <- with( imp1 , c( "M_lsc"=mean(likesc) , "SD_lsc"= stats::sd(likesc) ) )
-pres3 <- miceadds::NMIcombine( qhat = res3$analyses )
+res3 <- with( imp1, c( "M_lsc"=mean(likesc), "SD_lsc"=stats::sd(likesc) ) )
+pres3 <- miceadds::NMIcombine( qhat=res3$analyses )
 summary(pres3)
 
 #*************
@@ -192,38 +192,38 @@ datlist2 <- miceadds::mids2datlist( imp1 )
 str(datlist2, max.level=1)
 
 # double application of lapply to the list of list of nested imputed datasets
-res4 <- lapply( datlist2 , FUN = function(dl){
-    lapply( dl , FUN = function(data){
-            stats::lm( ASMMAT ~ migrant + books  , data = data )
+res4 <- lapply( datlist2, FUN=function(dl){
+    lapply( dl, FUN=function(data){
+            stats::lm( ASMMAT ~ migrant + books, data=data )
                                 } )
                 }  )
 
 # extract coefficients
-qhat <- lapply( res4 , FUN = function(bb){
-            lapply( bb , FUN = function(ww){
+qhat <- lapply( res4, FUN=function(bb){
+            lapply( bb, FUN=function(ww){
                     coef(ww)
                         } )
                 } )
 # shorter function
-NMIextract( results=res4 , fun=coef )
+NMIextract( results=res4, fun=coef )
 
 # extract covariance matrices
-u <- lapply( res4 , FUN = function(bb){
-            lapply( bb , FUN = function(ww){
+u <- lapply( res4, FUN=function(bb){
+            lapply( bb, FUN=function(ww){
                     vcov(ww)
                         } )
                 } )
 # shorter function
-NMIextract( results=res4 , fun=vcov )
+NMIextract( results=res4, fun=vcov )
 
 # apply statistical inference using the NMIcombine function
-pres4 <- miceadds::NMIcombine( qhat=qhat , u=u )
+pres4 <- miceadds::NMIcombine( qhat=qhat, u=u )
 summary(pres4)
 
 #--- statistical inference if only standard errors are available
 # extract standard errors
-se <- lapply( res4 , FUN = function(bb){
-            lapply( bb , FUN = function(ww){
+se <- lapply( res4, FUN=function(bb){
+            lapply( bb, FUN=function(ww){
                 # ww <- res4[[1]][[1]]
                 sww <- summary(ww)
                 sww$coef[,"Std. Error"]
@@ -231,7 +231,7 @@ se <- lapply( res4 , FUN = function(bb){
                 } )
 se
 # apply NMIcombine function
-pres4b <- miceadds::NMIcombine( qhat=qhat , se=se )
+pres4b <- miceadds::NMIcombine( qhat=qhat, se=se )
 # compare results
 summary(pres4b)
 summary(pres4)
@@ -250,36 +250,36 @@ print(imp)
 imp1 <- miceadds::datlist2mids( imp )
 
 # apply linear model based on imputationList
-mod <- with( imp , stats::lm( read ~ hisei + female ) )
+mod <- with( imp, stats::lm( read ~ hisei + female ) )
 # same linear model based on mids object
-mod1 <- with( imp1 , stats::lm( read ~ hisei + female ) )
+mod1 <- with( imp1, stats::lm( read ~ hisei + female ) )
 
 # extract coefficients
-cmod <- mitools::MIextract( mod , fun = coef)
+cmod <- mitools::MIextract( mod, fun=coef)
 # extract standard errors
-semod <- lapply( mod , FUN = function(mm){
+semod <- lapply( mod, FUN=function(mm){
                 smm <- summary(mm)
                 smm$coef[,"Std. Error"]
                         } )
 # extract covariance matrix
-vmod <- mitools::MIextract( mod , fun = vcov)
+vmod <- mitools::MIextract( mod, fun=vcov)
 
 #*** pooling with NMIcombine with se (1a) and vcov (1b) as input
-pmod1a <- miceadds::NMIcombine( qhat = cmod , se = semod , NMI = FALSE )
-pmod1b <- miceadds::NMIcombine( qhat = cmod , u = vmod , NMI = FALSE )
+pmod1a <- miceadds::NMIcombine( qhat=cmod, se=semod, NMI=FALSE )
+pmod1b <- miceadds::NMIcombine( qhat=cmod, u=vmod, NMI=FALSE )
 # use method 2 which should conform to MI inference of mice::pool
-pmod1c <- miceadds::NMIcombine( qhat = cmod , u = vmod , NMI = FALSE , method=2)
+pmod1c <- miceadds::NMIcombine( qhat=cmod, u=vmod, NMI=FALSE, method=2)
 
 #*** pooling with mitools::MIcombine function
-pmod2 <- mitools::MIcombine( results = cmod , variances = vmod )
+pmod2 <- mitools::MIcombine( results=cmod, variances=vmod )
 #*** pooling with mice::pool function
 pmod3a <- mice::pool( mod1 )
 pmod3b <- mice::pool( mod1, method="Rubin")
 
 #--- compare results
-summary(pmod1a)   # method = 1  (the default)
-summary(pmod1b)   # method = 1  (the default)
-summary(pmod1c)   # method = 2
+summary(pmod1a)   # method=1  (the default)
+summary(pmod1b)   # method=1  (the default)
+summary(pmod1c)   # method=2
 summary(pmod2)
 summary(pmod3a)
 summary(pmod3b)

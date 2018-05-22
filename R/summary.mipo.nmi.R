@@ -1,14 +1,14 @@
 ## File Name: summary.mipo.nmi.R
-## File Version: 0.07
+## File Version: 0.10
 
 #################################################################
-summary.mipo.nmi <- function(object, digits=4 ,  ...) {
+summary.mipo.nmi <- function(object, digits=4,  ...) {
     # adapted from summary.mipo from mice package
     x <- object
-    table <- array( x$qbar, dim = c(length(x$qbar), 10) )
+    table <- array( x$qbar, dim=c(length(x$qbar), 10) )
     dimnames(table) <- list(labels(x$qbar),
             c("est", "se", "t", "df", "Pr(>|t|)", "lo 95", "hi 95",
-                    "fmi" , "fmi_Betw" , "fmi_Within"))
+                    "fmi", "fmi_Betw", "fmi_Within"))
     table[, 2] <- sqrt( diag(x$Tm) )
     table[, 3] <- table[, 1]/table[, 2]
     table[, 4] <- x$df
@@ -27,14 +27,14 @@ summary.mipo.nmi <- function(object, digits=4 ,  ...) {
                         }
     if ( ! is.null( object$u_NULL ) ){
         if ( object$u_NULL){
-            table <- table[ , "est" , drop=FALSE ]
+            table <- table[, "est", drop=FALSE ]
                         }
                     }
 
 
     table0 <- table
-    for (vv in seq(1 , ncol(table) ) ){
-        table[,vv] <- round( table[,vv] , digits=digits )
+    for (vv in seq(1, ncol(table) ) ){
+        table[,vv] <- round( table[,vv], digits=digits )
                             }
     print(table)
     invisible(table0)

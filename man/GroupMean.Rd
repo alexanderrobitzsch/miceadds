@@ -1,5 +1,5 @@
 %% File Name: GroupMean.Rd
-%% File Version: 0.22
+%% File Version: 0.25
 
 \name{GroupMean}
 \alias{GroupMean}
@@ -65,25 +65,25 @@ data( data.ma02 )
 dat <- data.ma02[[1]] # select first dataset
 
 #--- group means for read and math
-GroupMean( dat[ , c("read","math") ] , group=dat$idschool )
+GroupMean( dat[, c("read","math") ], group=dat$idschool )
 # using rowsum
-a1 <- base::rowsum( dat[ , c("read","math") ] , dat$idschool )
-a2 <- base::rowsum( 1+0*dat[ , c("read","math") ] , dat$idschool )
+a1 <- base::rowsum( dat[, c("read","math") ], dat$idschool )
+a2 <- base::rowsum( 1+0*dat[, c("read","math") ], dat$idschool )
 (a1/a2)[1:10,]
 # using aggregate
-stats::aggregate(  dat[ , c("read","math") ] , list(dat$idschool) , mean )[1:10,]
+stats::aggregate(  dat[, c("read","math") ], list(dat$idschool), mean )[1:10,]
 
 #--- extend group means to original dataset
-GroupMean( dat[ , c("read","math") ] , group=dat$idschool , extend =TRUE )
+GroupMean( dat[, c("read","math") ], group=dat$idschool, extend=TRUE )
 # using ave
-stats::ave( dat[ , "read" ] , dat$idschool  )
-stats::ave( dat[ , "read" ] , dat$idschool , FUN = mean )
+stats::ave( dat[, "read" ], dat$idschool  )
+stats::ave( dat[, "read" ], dat$idschool, FUN=mean )
 
 \dontrun{
 #--- group standard deviations
-GroupSD( dat[ , c("read","math") ] , group=dat$idschool)[1:10,]
+GroupSD( dat[, c("read","math") ], group=dat$idschool)[1:10,]
 # using aggregate
-stats::aggregate(  dat[ , c("read","math") ] , list(dat$idschool) , sd )[1:10,]
+stats::aggregate(  dat[, c("read","math") ], list(dat$idschool), sd )[1:10,]
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

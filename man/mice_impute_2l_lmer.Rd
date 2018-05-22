@@ -1,5 +1,5 @@
 %% File Name: mice_impute_2l_lmer.Rd
-%% File Version: 0.33
+%% File Version: 0.37
 
 \name{mice_impute_2l_lmer}
 \alias{mice.impute.2l.binary}
@@ -31,16 +31,16 @@ See Snijders and Bosker (2012) and Zinn (2013) for details.
 \usage{
 mice.impute.2l.continuous(y, ry, x, type, intercept=TRUE,
     groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
-    glmer.warnings=TRUE, blme_use = FALSE , blme_args = NULL , ... )
+    glmer.warnings=TRUE, blme_use=FALSE, blme_args=NULL, ... )
 
 mice.impute.2l.pmm(y, ry, x, type, intercept=TRUE,
     groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
-    glmer.warnings=TRUE, donors = 5 , match_sampled_pars = TRUE ,
-    blme_use = FALSE , blme_args = NULL , ... )
+    glmer.warnings=TRUE, donors=5, match_sampled_pars=TRUE,
+    blme_use=FALSE, blme_args=NULL, ... )
 
 mice.impute.2l.binary(y, ry, x, type, intercept=TRUE,
     groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
-    glmer.warnings=TRUE, blme_use = FALSE , blme_args = NULL , ... )
+    glmer.warnings=TRUE, blme_use=FALSE, blme_args=NULL, ... )
 }
 
 
@@ -181,43 +181,43 @@ iccx <- .2    # intra-class correlation X
 iccy <- .3    # latent intra-class correlation binary outcome
 bx <- .4    # regression coefficient
 threshy <- stats::qnorm(.70)  # threshold for y
-x <- rep( rnorm( G , sd = sqrt( iccx) ) , each=n )  +
-            rnorm(G*n , sd = sqrt( 1 - iccx) )
-y <- bx * x + rep( rnorm( G , sd = sqrt( iccy) ) , each=n )  +
-                rnorm(G*n , sd = sqrt( 1 - iccy) )
+x <- rep( rnorm( G, sd=sqrt( iccx) ), each=n )  +
+            rnorm(G*n, sd=sqrt( 1 - iccx) )
+y <- bx * x + rep( rnorm( G, sd=sqrt( iccy) ), each=n )  +
+                rnorm(G*n, sd=sqrt( 1 - iccy) )
 y <- 1 * ( y > threshy )
-dat <- data.frame( group = 100+rep(1:G , each=n) , x = x , y = y )
+dat <- data.frame( group=100+rep(1:G, each=n), x=x, y=y )
 
 #* create some missings
 dat1 <- dat
-dat1[ seq( 1 , G*n , 3 ) ,"y" ]  <- NA
-dat1[ dat1$group == 2 , "y" ] <- NA
+dat1[ seq( 1, G*n, 3 ),"y" ]  <- NA
+dat1[ dat1$group==2, "y" ] <- NA
 
 #--- prepare imputation in mice
 vars <- colnames(dat1)
 V <- length(vars)
 #* predictor matrix
-predmat <- matrix( 0 , nrow=V , ncol=V)
+predmat <- matrix( 0, nrow=V, ncol=V)
 rownames(predmat) <- colnames(predmat) <- vars
-predmat["y" , ] <- c(-2,2,0)
+predmat["y", ] <- c(-2,2,0)
 #* imputation methods
 impmeth <- rep("",V)
 names(impmeth) <- vars
 impmeth["y"] <- "2l.binary"
 
 #** imputation with logistic regression ('2l.binary')
-imp1 <- mice::mice( data = as.matrix(dat1) , imputationMethod = impmeth ,
-                predictorMatrix = predmat , maxit = 1 , m = 5 )
+imp1 <- mice::mice( data=as.matrix(dat1), imputationMethod=impmeth,
+                predictorMatrix=predmat, maxit=1, m=5 )
 #** imputation with predictive mean matching ('2l.pmm')
 impmeth["y"] <- "2l.pmm"
-imp2 <- mice::mice( data = as.matrix(dat1) , imputationMethod = impmeth ,
-                predictorMatrix = predmat , maxit = 1 , m = 5 )
+imp2 <- mice::mice( data=as.matrix(dat1), imputationMethod=impmeth,
+                predictorMatrix=predmat, maxit=1, m=5 )
 
 #** imputation with logistic regression using blme package
-blme_args <- list( "cov.prior" = "invwishart")
-imp3 <- mice::mice( data = as.matrix(dat1) , imputationMethod = impmeth ,
-                predictorMatrix = predmat , maxit = 1 , m = 5 ,
-                blme_use = TRUE , blme_args = blme_args )
+blme_args <- list( "cov.prior"="invwishart")
+imp3 <- mice::mice( data=as.matrix(dat1), imputationMethod=impmeth,
+                predictorMatrix=predmat, maxit=1, m=5,
+                blme_use=TRUE, blme_args=blme_args )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

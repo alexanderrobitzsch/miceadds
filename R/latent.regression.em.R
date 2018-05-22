@@ -1,10 +1,10 @@
 ## File Name: latent.regression.em.R
-## File Version: 0.17
-latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
-                                beta.init=rep(0,ncol(X)) , sigma.init =1 ,
-                                b = b , a= rep(1 , length(b)) , c= rep(0 , length(b)) ,
-                                max.parchange=.0001 ,
-                                theta.list = seq(-5,5,len=50) , maxiter = 300 ){
+## File Version: 0.21
+latent.regression.em <- function( data, X, weights=rep(1,nrow(data)),
+                                beta.init=rep(0,ncol(X)), sigma.init=1,
+                                b=b, a=rep(1, length(b)), c=rep(0, length(b)),
+                                max.parchange=.0001,
+                                theta.list=seq(-5,5,len=50), maxiter=300 ){
     #.....................................................................................#
     # INPUT:                                                                              #
     # data          ... item response matrix                                              #
@@ -29,25 +29,25 @@ latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
     iter <- 1 ; parchange <- 1000
     while( ( parchange > max.parchange ) & ( iter < maxiter ) ){
         # estimate posterior density
-        pv1 <- plausible.value.draw( data=data , X=X , beta0 =beta0  , sig0 =sig0 ,
-                     b = b , a=a , c = c , theta.list = theta.list , pvdraw= FALSE )
+        pv1 <- plausible.value.draw( data=data, X=X, beta0=beta0, sig0=sig0,
+                     b=b, a=a, c=c, theta.list=theta.list, pvdraw=FALSE )
         # estimate latent regression model (linear model)
-        mod <- stats::lm( pv1$EAP ~ 0 + X , weights = weights)
+        mod <- stats::lm( pv1$EAP ~ 0 + X, weights=weights)
         cmod <- stats::coef(mod)
         # Calculation of residual sd
         sigma <- sqrt( mean( weights* ( pv1$SE.EAP^2 + stats::resid(mod)^2 ) ) )
-        parchange <- max( abs(sigma - sig0) , abs( cmod - beta0) )
-        cat( paste("Iteration " , iter,": max parm. change " , round( parchange , 8 ) ,sep="") , " # Regr. Coeff. " ,
-                                        as.vector(cmod) , "\n") ;
+        parchange <- max( abs(sigma - sig0), abs( cmod - beta0) )
+        cat( paste("Iteration ", iter,": max parm. change ", round( parchange, 8 ),sep=""), " # Regr. Coeff. ",
+                                        as.vector(cmod), "\n") ;
         utils::flush.console()
         # parameter update
         sig0 <- sigma ; beta0 <- cmod ; iter <- iter + 1
     }
     # standard errors for regression coefficients
     V <- ncol(X)    # number of X variables (predictors)
-    scoefs <- matrix( 0 , nrow=V , ncol=5 )
+    scoefs <- matrix( 0, nrow=V, ncol=5 )
     scoefs <- data.frame(scoefs)
-    colnames(scoefs) <- c("est" , "se.simple" , "se" , "t" , "p" )
+    colnames(scoefs) <- c("est", "se.simple", "se", "t", "p" )
     rownames(scoefs) <- names(beta0)
     scoefs[,1] <- beta0
     for (vv in 1:V){
@@ -64,8 +64,8 @@ latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
     }
     #********
     # list of results
-    res <- list( "iterations" = iter - 1, "maxiter" = maxiter , "max.parchange" = max.parchange ,
-                "coef" = beta0 , "summary.coef" = scoefs , "sigma" = sigma )
+    res <- list( "iterations"=iter - 1, "maxiter"=maxiter, "max.parchange"=max.parchange,
+                "coef"=beta0, "summary.coef"=scoefs, "sigma"=sigma )
     return(res)
 }
 
@@ -74,18 +74,18 @@ latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
 
 #.........................................................................
 # sample parameters for latent regression model
-.sampling.latent.regression <- function( pv , X , Z=rep(1,length(pv)) ){
+.sampling.latent.regression <- function( pv, X, Z=rep(1,length(pv)) ){
         # INPUT:
         # pv        ... draw of plausible values
         # X         ... matrix of covariates for latent regression model
-        #                 intercept is not automatically included => create vector of ones!!
+        #                 intercept is not automatically included=> create vector of ones!!
         # Z         ... matrix of covariates for explaining residual variance
         #.............................................................
         # latent regression model
         mod <- stats::lm( pv ~ 0 + X )
-        res <- list( "est.beta" = stats::coef(mod) , "vcov.beta" = stats::vcov(mod) )
+        res <- list( "est.beta"=stats::coef(mod), "vcov.beta"=stats::vcov(mod) )
         # sample beta parameter
-        res$samp.beta <- CDM::CDM_rmvnorm( 1, mean = res$est.beta , sigma = res$vcov.beta )
+        res$samp.beta <- CDM::CDM_rmvnorm( 1, mean=res$est.beta, sigma=res$vcov.beta )
         # residual standard deviation
         n <- nrow(X)
         p <- ncol(X)
@@ -94,7 +94,7 @@ latent.regression.em <- function( data , X , weights = rep(1,nrow(data)) ,
         mod1 <- stats::lm( residuals.mod ~ 0 + Z )
         summary(mod1)
         # sample gamma coefficients for heteroscedasticity
-        samp.gamma <- CDM::CDM_rmvnorm( 1, mean = stats::coef(mod1) , sigma = stats::vcov(mod1) )
+        samp.gamma <- CDM::CDM_rmvnorm( 1, mean=stats::coef(mod1), sigma=stats::vcov(mod1) )
         res$fitted.sigma <- sqrt( stats::fitted(mod1) )
         res$lm.latent.regression <- mod
         res$lm.residualsd <- mod1

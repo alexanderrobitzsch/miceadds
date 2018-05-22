@@ -1,17 +1,17 @@
 ## File Name: ma.wtd.meanNA.R
-## File Version: 0.06
+## File Version: 0.10
 
 ########################################################
 # weighted mean
-ma.wtd.meanNA <- function( data , weights = NULL  , vars = NULL )
+ma.wtd.meanNA <- function( data, weights=NULL, vars=NULL )
 {
     #*** pre-processing
-    res <- ma.wtd.aux.data(data=data , weights=weights , vars = vars )
+    res <- ma.wtd.aux.data(data=data, weights=weights, vars=vars )
     data <- res$data
     weights <- res$weights
     M <- length(data)
     #*** weighted means
-    res <- matrix( NA , nrow=M , ncol= ncol(data[[1]]) )
+    res <- matrix( NA, nrow=M, ncol=ncol(data[[1]]) )
     for (ii in 1:M){
         data1 <- data[[ii]]
         dataResp <- 1 - is.na( data1 )

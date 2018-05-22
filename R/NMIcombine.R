@@ -1,11 +1,11 @@
 ## File Name: NMIcombine.R
-## File Version: 0.25
+## File Version: 0.29
 
 #################################################
 # extension of MIcombine function to nested
 # multiply imputed datasets
-NMIcombine <- function( qhat , u = NULL , se = NULL ,
-         NMI=TRUE, comp_cov=TRUE , is_list = TRUE, method=1 ){
+NMIcombine <- function( qhat, u=NULL, se=NULL,
+         NMI=TRUE, comp_cov=TRUE, is_list=TRUE, method=1 ){
 
     u_NULL <- is.null(u)
     u0 <- u
@@ -59,10 +59,10 @@ NMIcombine <- function( qhat , u = NULL , se = NULL ,
     u0 <- u
 
     # collect parameter estimates
-    qhat <- array( NA , dim=c( NB , NW , NV ) )
+    qhat <- array( NA, dim=c( NB, NW, NV ) )
     dimnames(qhat)[[3]] <- names(qhat0[[1]][[1]])
-    dimnames(qhat)[[1]] <- paste0("Between_Imp" , 1:NB )
-    dimnames(qhat)[[2]] <- paste0("Within_Imp" , 1:NW )
+    dimnames(qhat)[[1]] <- paste0("Between_Imp", 1:NB )
+    dimnames(qhat)[[2]] <- paste0("Within_Imp", 1:NW )
 
     for (bb in 1:NB){
        for (ww in 1:NW){
@@ -71,10 +71,10 @@ NMIcombine <- function( qhat , u = NULL , se = NULL ,
                     }
 
     # collect estimated variance matrices
-    u <- array( 0 , dim=c( NB , NW , NV , NV) )
+    u <- array( 0, dim=c( NB, NW, NV, NV) )
     dimnames(u)[[4]] <- dimnames(u)[[3]] <- dimnames(qhat)[[3]]
-    dimnames(u)[[1]] <- paste0("Between_Imp" , 1:NB )
-    dimnames(u)[[2]] <- paste0("Within_Imp" , 1:NW )
+    dimnames(u)[[1]] <- paste0("Between_Imp", 1:NB )
+    dimnames(u)[[2]] <- paste0("Within_Imp", 1:NW )
     if ( ! is.null(u0) ){
         for (bb in 1:NB){
            for (ww in 1:NW){
@@ -82,7 +82,7 @@ NMIcombine <- function( qhat , u = NULL , se = NULL ,
                             }
                         }
                     }
-            }  ## end is_list == TRUE
+            }  ## end is_list==TRUE
     #*********************************************
 
     if ( ! is.null(se) ){
@@ -90,15 +90,15 @@ NMIcombine <- function( qhat , u = NULL , se = NULL ,
         NB <- dim_qhat[1]
         NW <- dim_qhat[2]
         NV <- dim_qhat[3]
-        u <- array( 0 , dim=c( NB , NW , NV , NV) )
+        u <- array( 0, dim=c( NB, NW, NV, NV) )
         dimnames(u)[[4]] <- dimnames(u)[[3]] <- dimnames(qhat)[[3]]
-        dimnames(u)[[1]] <- paste0("Between_Imp" , 1:NB )
-        dimnames(u)[[2]] <- paste0("Within_Imp" , 1:NW )
+        dimnames(u)[[1]] <- paste0("Between_Imp", 1:NB )
+        dimnames(u)[[2]] <- paste0("Within_Imp", 1:NW )
 
         for (bb in 1:NB){
            for (ww in 1:NW){
                 h1 <- se[[bb]][[ww]]
-                h2 <- matrix( 0 , nrow=NV , ncol=NV)
+                h2 <- matrix( 0, nrow=NV, ncol=NV)
                 diag(h2) <- h1^2
                 u[bb,ww,,] <- h2
                             }
@@ -115,19 +115,19 @@ NMIcombine <- function( qhat , u = NULL , se = NULL ,
 
     #*****************************************
     # NMI inference
-    res <- pool.nmi.scalar.helper( qhat=qhat , u=u , NV=NV , NB=NB , NW=NW ,
-                comp_cov=comp_cov , method=method)
+    res <- pool.nmi.scalar.helper( qhat=qhat, u=u, NV=NV, NB=NB, NW=NW,
+                comp_cov=comp_cov, method=method)
 
     if ( is.null(u0) ){
-        vars <- c("ubar" , "Wm" , "Bm" , "Tm" , # "df" ,
-                    "lambda" , "lambda_Between" ,
+        vars <- c("ubar", "Wm", "Bm", "Tm", # "df",
+                    "lambda", "lambda_Between",
                     "lambda_Within" )
         for (vv in vars){
             res[[vv]] <- NA * res[[vv]]
                         }
                 }
 
-    res$Nimp <- c("Between"=NB , "Within" = NW )
+    res$Nimp <- c("Between"=NB, "Within"=NW )
     res$u_NULL <- u_NULL
     class(res) <- "mipo.nmi"
     return(res)

@@ -1,27 +1,27 @@
 ## File Name: NMIwaldtest.R
-## File Version: 0.16
+## File Version: 0.20
 
 
 ##############################################################
 # Wald test for nested multiply imputed datasets
-NMIwaldtest <- function( qhat , u , Cdes = NULL , rdes = NULL ,
-                    testnull = NULL ){
+NMIwaldtest <- function( qhat, u, Cdes=NULL, rdes=NULL,
+                    testnull=NULL ){
         # convert qhat into a list if necessary
-        if ( class(qhat) == "array" ){
+        if ( class(qhat)=="array" ){
             qhat <- qhat2list(qhat)
                     }
         # convert u into a list
-        if ( class(u) == "array" ){
+        if ( class(u)=="array" ){
             u <- u2list(u)
                     }
         if ( ! is.null(testnull) ){
             k <- length(testnull)
             pars <- names( qhat[[1]][[1]] )
-            des <- create.designMatrices.waldtest( pars = pars , k=k)
+            des <- create.designMatrices.waldtest( pars=pars, k=k)
             Cdes <- des$Cdes
             rdes <- des$rdes
             for (ii in 1:k){
-                Cdes[ ii , testnull[ii] ] <- 1
+                Cdes[ ii, testnull[ii] ] <- 1
                             }
                         }
         #**************************************
@@ -43,7 +43,7 @@ NMIwaldtest <- function( qhat , u , Cdes = NULL , rdes = NULL ,
         #***********
         # statistical inference
         eps <- 1E-20
-        res0 <- NMIcombine( qhat , u )
+        res0 <- NMIcombine( qhat, u )
         ubar <- res0$ubar
         qbar <- res0$qbar
         Bm <- res0$Bm
@@ -61,26 +61,26 @@ NMIwaldtest <- function( qhat , u , Cdes = NULL , rdes = NULL ,
                    rmw^2 / ( NB*( NW - 1 + eps) ) / ( 1 + rmw + rmb )^2
         df2 <- k / df2
 
-        stat <- data.frame( "F" = stat , "df1" = df1 ,
-                              "df2" = df2 ,
-                              "pval" = 1 - stats::pf( stat , df1=df1 , df2 = df2 ) )
-        res <- list( stat=stat , linear_hyp = res0 ,
-                    qhat = qhat , u=u , Cdes = Cdes , rdes=rdes )
+        stat <- data.frame( "F"=stat, "df1"=df1,
+                              "df2"=df2,
+                              "pval"=1 - stats::pf( stat, df1=df1, df2=df2 ) )
+        res <- list( stat=stat, linear_hyp=res0,
+                    qhat=qhat, u=u, Cdes=Cdes, rdes=rdes )
         class(res) <- "NMIwaldtest"
         return(res)
 
                     }
 ##############################################################
-summary.NMIwaldtest <- function(object, digits=4 ,...){
+summary.NMIwaldtest <- function(object, digits=4,...){
     obji <- object$stat
     V <- ncol(obji)
     for (vv in 1:V){
-        obji[,vv] <- round( obji[,vv] , digits )
+        obji[,vv] <- round( obji[,vv], digits )
                     }
     cat("Wald Test\n")
     print(obji)
     cat("\nLinear Hypotheses\n")
-    summary(object$linear_hyp , digits=digits)
+    summary(object$linear_hyp, digits=digits)
             }
 ###############################################################
 
@@ -100,7 +100,7 @@ qhat2list <- function( qhat ){
                 qhat1 <- as.list(1:NW)
                 names(qhat1) <- paste0("W_index",1:NW)
                for (ww in 1:NW){
-                    q1 <- qhat0[ bb , ww ,]
+                    q1 <- qhat0[ bb, ww,]
                     names(q1) <- parnames
                     qhat1[[ww]] <- q1
                     # names(qhat1)[[ww]] <- parnames
@@ -121,7 +121,7 @@ u2list <- function( u ){
             for (bb in 1:NB){
                 u1 <- as.list(1:NW)
                for (ww in 1:NW){
-                    u1[[ww]] <- u0[ bb , ww , ,]
+                    u1[[ww]] <- u0[ bb, ww,,]
                             }
                 u[[bb]] <- u1
                         }

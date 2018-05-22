@@ -1,5 +1,5 @@
 %% File Name: mice.impute.weighted.pmm.Rd
-%% File Version: 0.17
+%% File Version: 0.21
 
 \name{mice.impute.weighted.pmm}
 \alias{mice.impute.weighted.pmm}
@@ -14,11 +14,11 @@ Imputation by predictive mean matching or normal linear regression
 using sampling weights.
 }
 \usage{
-mice.impute.weighted.pmm(y, ry, x, imputationWeights = NULL,
-      pls.facs = NULL, interactions = NULL, quadratics = NULL, ...)
+mice.impute.weighted.pmm(y, ry, x, imputationWeights=NULL,
+      pls.facs=NULL, interactions=NULL, quadratics=NULL, ...)
 
-mice.impute.weighted.norm(y, ry, x, ridge = 1e-05, pls.facs = NULL,
-     imputationWeights = NULL, interactions = NULL, quadratics = NULL, ...)
+mice.impute.weighted.norm(y, ry, x, ridge=1e-05, pls.facs=NULL,
+     imputationWeights=NULL, interactions=NULL, quadratics=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -87,21 +87,21 @@ set.seed(977)
 
 # select subsample
 dat <- as.matrix(data.ma01)
-dat <- dat[ 1:1000 , ]
+dat <- dat[ 1:1000, ]
 
 # empty imputation
-imp0 <- mice::mice( dat , m=0 , maxit=0)
+imp0 <- mice::mice( dat, m=0, maxit=0)
 
 # redefine imputation methods
 meth <- imp0$method
-meth[ meth == "pmm"  ] <- "weighted.pmm"
-meth[ c("paredu" , "books" , "migrant" ) ] <- "weighted.norm"
+meth[ meth=="pmm"  ] <- "weighted.pmm"
+meth[ c("paredu", "books", "migrant" ) ] <- "weighted.norm"
 # redefine predictor matrix
 pm <- imp0$predictorMatrix
-pm[ , 1:3 ] <- 0
+pm[, 1:3 ] <- 0
 # do imputation
-imp <- mice::mice( dat , predictorMatrix=pm , imputationMethod=meth ,
-           imputationWeights= dat[,"studwgt"] , m=3 , maxit=5)
+imp <- mice::mice( dat, predictorMatrix=pm, imputationMethod=meth,
+           imputationWeights=dat[,"studwgt"], m=3, maxit=5)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

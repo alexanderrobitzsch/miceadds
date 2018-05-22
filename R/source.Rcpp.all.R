@@ -1,8 +1,8 @@
 ## File Name: source.Rcpp.all.R
-## File Version: 0.31
+## File Version: 0.36
 
 # function for sourcing Rcpp files
-source.Rcpp.all <- function( path, file_names=NULL, ext = "\\.cpp", excl = "RcppExports",
+source.Rcpp.all <- function( path, file_names=NULL, ext="\\.cpp", excl="RcppExports",
     remove_temp_file=FALSE)
 {
     files0 <- files <- list.files( path, ext )
@@ -12,18 +12,17 @@ source.Rcpp.all <- function( path, file_names=NULL, ext = "\\.cpp", excl = "Rcpp
     }
     if (is.null(file_names)){
         file_names <- strsplit( files, split="__")
-        file_names <- unlist( lapply( file_names , FUN = function(ll){ ll[[1]][1] } ) )
+        file_names <- unlist( lapply( file_names, FUN=function(ll){ ll[[1]][1] } ) )
     }
     #*** search corresponding files
     NF <- length(file_names)
     file_source <- NULL
     for (ff in 1:NF){
         file_name <- file_names[ff]
-        #file <- list.files( path , file_name )
-        file <- grep( file_name , files0, value=TRUE)
+        file <- grep( file_name, files0, value=TRUE)
         file_source <- c( file_source, file )
     }
-    s1 <- lapply( strsplit( file_source, split = "__" ), FUN = function(ll){ ll[[1]][1] } )
+    s1 <- lapply( strsplit( file_source, split="__" ), FUN=function(ll){ ll[[1]][1] } )
     file_source <- unique(unlist(s1))
 
     nmax <- length(file_source)
@@ -36,27 +35,26 @@ source.Rcpp.all <- function( path, file_names=NULL, ext = "\\.cpp", excl = "Rcpp
 
     for ( nn in seq_len(NF) ){
         file1 <- file_source[nn]
-        file <- max( grep( file1 , files , value=TRUE) )
+        file <- max( grep( file1, files, value=TRUE) )
         file0 <- file
-        cat( paste0( "\n**** source " , file , " \n\n") )
+        cat( paste0( "\n**** source ", file, " \n\n") )
         utils::flush.console()
-        out_ff <- readLines( file.path( path , file ) )
+        out_ff <- readLines( file.path( path, file ) )
         ind_ff <- grep( string_header, out_ff, fixed=TRUE)
         rem <- FALSE
         for (ii in ind_ff){
-            # ii <- ind_ff[1]
-            entry <- strsplit( out_ff[ii+1] , split="\"" )[[1]]
-            entry[2] <- gsub( "\\.h" , "", entry[2] )
+            entry <- strsplit( out_ff[ii+1], split="\"" )[[1]]
+            entry[2] <- gsub( "\\.h", "", entry[2] )
             files_ii <- list.files(path, "\\.h")
             e2 <- max( grep(entry[2], files_ii, value=TRUE) )
-            entry2 <- paste0( entry[1] , " \"", e2 , "\"" )
-            out_ff[ii+1] <- entry2            
+            entry2 <- paste0( entry[1], " \"", e2, "\"" )
+            out_ff[ii+1] <- entry2
             file0 <- "_temp.cpp"
             file00 <- list.files(path, file0)
             change <- TRUE
             if ( length(file00) > 0 ){
                 out_ff00 <- readLines( file.path( path, file00 ) )
-                if ( mean( out_ff00 == out_ff ) == 1 ){
+                if ( mean( out_ff00==out_ff )==1 ){
                     change <- FALSE
                 }
             }
@@ -65,9 +63,9 @@ source.Rcpp.all <- function( path, file_names=NULL, ext = "\\.cpp", excl = "Rcpp
             }
             rem <- TRUE
         }
-        Rcpp::sourceCpp( file.path( path , file0 ) , showOutput = TRUE )
+        Rcpp::sourceCpp( file.path( path, file0 ), showOutput=TRUE )
         if (rem & remove_temp_file){
-            file.remove( file.path( path , file0 ) )
+            file.remove( file.path( path, file0 ) )
         }
         utils::flush.console()
     }

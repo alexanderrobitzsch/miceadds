@@ -1,5 +1,5 @@
 %% File Name: write.fwf2.Rd
-%% File Version: 0.10
+%% File Version: 0.14
 
 \name{write.fwf2}
 \alias{write.fwf2}
@@ -18,7 +18,7 @@ for being more efficient than \code{\link[utils:read.fwf]{utils::read.fwf}}.
 \usage{
 write.fwf2(dat, format.full, format.round, file)
 
-read.fwf2( file , format.full , variables = NULL)
+read.fwf2( file, format.full, variables=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 
@@ -77,18 +77,18 @@ setwd(path)
 
 # define a data frame
 set.seed(9876)
-dat <- data.frame( "x" = seq( 1 , 21 , len=5) , "y" = stats::runif( 5 ) ,
-            "z" = stats::rnorm( 5 ) )
+dat <- data.frame( "x"=seq( 1, 21, len=5), "y"=stats::runif( 5 ),
+            "z"=stats::rnorm( 5 ) )
 
 # save data frame in fixed width format
-format.full <- c(6 , 6 , 8 )
-format.round <- c( 0 , 2 , 3 )
-write.fwf2( dat , format.full=format.full, format.round=format.round ,
-                file = "testdata" )
+format.full <- c(6, 6, 8 )
+format.round <- c( 0, 2, 3 )
+write.fwf2( dat, format.full=format.full, format.round=format.round,
+                file="testdata" )
 
 # read the data
-dat1 <- miceadds::read.fwf2( file = "testdata.dat" , format.full = c(6,6,8) ,
-               variables = c("x","y","z") )
+dat1 <- miceadds::read.fwf2( file="testdata.dat", format.full=c(6,6,8),
+               variables=c("x","y","z") )
 # check differences between data frames
 dat - dat1
 
@@ -97,8 +97,8 @@ dat - dat1
 #############################################################################
 
 n <- 5
-dat <- data.frame( "x" = stats::runif(n , 0 , 9 ) , "y" = LETTERS[1:n] )
-write.fwf2(dat, format.full = c(4,2) , format.round = c(2,0) ,  file = "testdata")
+dat <- data.frame( "x"=stats::runif(n, 0, 9 ), "y"=LETTERS[1:n] )
+write.fwf2(dat, format.full=c(4,2), format.round=c(2,0),  file="testdata")
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

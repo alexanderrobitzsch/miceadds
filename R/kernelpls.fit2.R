@@ -1,5 +1,5 @@
 ## File Name: kernelpls.fit2.R
-## File Version: 0.14
+## File Version: 0.17
 #############################################
 # Rcpp version of kernel PLS regression
 kernelpls.fit2 <- function(X, Y, ncomp ){
@@ -16,17 +16,17 @@ kernelpls.fit2 <- function(X, Y, ncomp ){
     }
     ## Center variables:
     Xmeans <- colMeans(X)
-    X <- X - rep(Xmeans, each = nobj)
+    X <- X - rep(Xmeans, each=nobj)
     Ymeans <- colMeans(Y)
-    Y <- Y - rep(Ymeans, each = nobj)
+    Y <- Y - rep(Ymeans, each=nobj)
     # apply Rcpp function
-    res <- kernelpls_1dim(Y,X , comp=ncomp)
-    .attach.environment( res=res , envir=e1 )
+    res <- kernelpls_1dim(Y,X, comp=ncomp)
+    .attach.environment( res=res, envir=e1 )
     #****
     # output management copied from kernelpls.fit function
     # from the pls package
     residuals <- - fitted + c(Y)
-    fitted <- fitted + rep(Ymeans, each = nobj) # Add mean
+    fitted <- fitted + rep(Ymeans, each=nobj) # Add mean
     ## Add dimnames:
     objnames <- dnX[[1]]
     if ( is.null(objnames) ){
@@ -40,28 +40,28 @@ kernelpls.fit2 <- function(X, Y, ncomp ){
     dimnames(R) <- dimnames(W) <- dimnames(P) <-
                             list(prednames, compnames)
     dimnames(tQ) <- list(compnames, respnames)
-    dimnames(B) <- list(prednames , nCompnames)
+    dimnames(B) <- list(prednames, nCompnames)
     dimnames(fitted) <- dimnames(residuals) <-
                             list(objnames,  nCompnames)
     class(TT) <- class(U) <- "scores"
     class(P) <- class(W) <- class(tQ) <- "loadings"
 
-    res <- list(coefficients = B,
-                scores = TT, loadings = P,
-                loading.weights = W,
-                Yscores = U, Yloadings = t(tQ),
-                projection = R,
-                Xmeans = Xmeans, Ymeans = Ymeans,
-                fitted.values = fitted, residuals = residuals,
-                Xvar = colSums(P * P) * tsqs,
-                Xtotvar = sum(X * X) )
+    res <- list(coefficients=B,
+                scores=TT, loadings=P,
+                loading.weights=W,
+                Yscores=U, Yloadings=t(tQ),
+                projection=R,
+                Xmeans=Xmeans, Ymeans=Ymeans,
+                fitted.values=fitted, residuals=residuals,
+                Xvar=colSums(P * P) * tsqs,
+                Xtotvar=sum(X * X) )
     # R^2 measures
     R2 <- cumsum(res$Xvar) / res$Xtotvar
-    R21 <- sapply( 1:ncomp , FUN = function(cc){
+    R21 <- sapply( 1:ncomp, FUN=function(cc){
              1 - stats::var( Y[,1] -  res$fitted.values[,cc] ) / stats::var( Y[,1] )
           } )
-    R2 <- rbind( R2 , R21)
-    rownames(R2) <- c("R2(X)" , "R2(Y)")
+    R2 <- rbind( R2, R21)
+    rownames(R2) <- c("R2(X)", "R2(Y)")
     colnames(R2) <- compnames
     res$R2 <- R2
     class(res) <- "kernelpls.fit2"
@@ -69,10 +69,10 @@ kernelpls.fit2 <- function(X, Y, ncomp ){
 }
 #######################################################
 # attach all elements in a list in a local environment
-.attach.environment <- function( res , envir ){
+.attach.environment <- function( res, envir ){
     CC <- length(res)
     for (cc in 1:CC){
-        assign( names(res)[cc] , res[[cc]] , envir=envir )
+        assign( names(res)[cc], res[[cc]], envir=envir )
     }
 }
 ########################################################

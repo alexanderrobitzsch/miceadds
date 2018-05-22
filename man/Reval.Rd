@@ -1,5 +1,5 @@
 %% File Name: Reval.Rd
-%% File Version: 0.19
+%% File Version: 0.22
 
 \name{Reval}
 \alias{Reval}
@@ -76,9 +76,9 @@ The string is evaluated in the parent environment. See
 \examples{
 # This function is simply a shortage function
 # See the definition of this function:
-Reval <- function( Rstring , print.string=TRUE){
-    if (print.string){ cat( paste( Rstring ) , "\n"  ) }
-        eval.parent( parse( text = paste( Rstring )) , n=1 )
+Reval <- function( Rstring, print.string=TRUE){
+    if (print.string){ cat( paste( Rstring ), "\n"  ) }
+        eval.parent( parse( text=paste( Rstring )), n=1 )
             }
 
 Reval( "a <- 2^3" )

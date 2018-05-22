@@ -1,11 +1,11 @@
 ## File Name: subset_nested.datlist.R
-## File Version: 1.08
+## File Version: 1.12
 
 #######################################################
-subset_nested.datlist <- function( datlist , subset = TRUE ,
-                select = NULL , expr_subset = NULL ,
-                index_between = NULL , index_within = NULL ,
-                toclass = "nested.datlist" , simplify = FALSE ){
+subset_nested.datlist <- function( datlist, subset=TRUE,
+                select=NULL, expr_subset=NULL,
+                index_between=NULL, index_within=NULL,
+                toclass="nested.datlist", simplify=FALSE ){
         CALL <- match.call()
 
 
@@ -51,7 +51,7 @@ subset_nested.datlist <- function( datlist , subset = TRUE ,
         IMB <- length(index_between)
         IMW <- length(index_within)
 
-        if( is.null(select) & ( mean( subset ) == 1 ) ){
+        if( is.null(select) & ( mean( subset )==1 ) ){
             apply_select <- FALSE
                         } else {
             apply_select <- TRUE
@@ -72,11 +72,11 @@ subset_nested.datlist <- function( datlist , subset = TRUE ,
         for (jj in 1:IMW){
             d1 <- datlist[[ index_between[ii] ]][[ index_within[jj] ]]
             if (is_expr){
-                 # h1 <- with( data=d1 , { expr1 } )
+                 # h1 <- with( data=d1, { expr1 } )
                  subset <- eval(expr1, d1, enclos=pf)
                         }
             if (apply_select){
-                    d1 <- subset( d1 , subset=subset , select=select , drop=FALSE)
+                    d1 <- subset( d1, subset=subset, select=select, drop=FALSE)
                              }
             datlist2[[ii]][[jj]] <- d1
                         }
@@ -86,12 +86,12 @@ subset_nested.datlist <- function( datlist , subset = TRUE ,
         #************
         # create object classes
         #---- class datlist
-        if (toclass == "nested.datlist" ){
+        if (toclass=="nested.datlist" ){
             datlist2 <- nested.datlist_create(datlist2)
             a2 <- attr(datlist2,"Nimp")
             # simplify within nest
             if ( simplify){
-                if ( a2[2] == 1 ){
+                if ( a2[2]==1 ){
                     IB <- a2[1]
                     datlist3 <- as.list(1:IB)
                     for (ii in 1:IB){
@@ -103,7 +103,7 @@ subset_nested.datlist <- function( datlist , subset = TRUE ,
                     }
             # simplify between nest
             if ( simplify){
-                if ( a2[1] == 1){
+                if ( a2[1]==1){
                     datlist2 <- datlist_create( datlist2[[1]] )
                             }
                         }
@@ -111,14 +111,14 @@ subset_nested.datlist <- function( datlist , subset = TRUE ,
             attr(datlist2,"call") <- CALL
                                    }
         #---- class imputationList
-        if (toclass == "NestedImputationList" ){
+        if (toclass=="NestedImputationList" ){
             datlist2 <- NestedImputationList(datlist2)
             datlist2$call <- CALL
 
             a2 <- datlist2$Nimp
             # simplify within nest
             if ( simplify){
-                if ( a2[2] == 1 ){
+                if ( a2[2]==1 ){
                     IB <- a2[1]
                     datlist3 <- as.list(1:IB)
                     for (ii in 1:IB){
@@ -130,7 +130,7 @@ subset_nested.datlist <- function( datlist , subset = TRUE ,
                     }
             # simplify between nest
             if ( simplify){
-                if ( a2[1] == 1){
+                if ( a2[1]==1){
                     datlist2 <- mitools::imputationList( datlist2$imputations[[1]] )
                             }
                         }
@@ -144,16 +144,16 @@ subset_nested.datlist <- function( datlist , subset = TRUE ,
 
 ############################################################
 # object of class nested.datlist
-subset.nested.datlist <- function( x , subset ,
-                    select = NULL , expr_subset = NULL ,
-                index_between = NULL , index_within = NULL ,
-                simplify=FALSE , ... ){
+subset.nested.datlist <- function( x, subset,
+                    select=NULL, expr_subset=NULL,
+                index_between=NULL, index_within=NULL,
+                simplify=FALSE, ... ){
         CALL <- match.call()
         if (missing(subset)){  subset <- TRUE    }
-        datlist2 <- subset_nested.datlist( datlist = x , subset = subset ,
-                       select = select , index_between = index_between ,
-                       index_within = index_within , simplify = simplify ,
-                       toclass = "nested.datlist")
+        datlist2 <- subset_nested.datlist( datlist=x, subset=subset,
+                       select=select, index_between=index_between,
+                       index_within=index_within, simplify=simplify,
+                       toclass="nested.datlist")
         attr(datlist2,"call") <- CALL
         return(datlist2)
                 }
@@ -161,16 +161,16 @@ subset.nested.datlist <- function( x , subset ,
 
 #---------------------------------------------------------------
 # object of class imputationList
-subset.NestedImputationList <- function( x , subset ,
-                    select = NULL , expr_subset = NULL ,
-                index_between = NULL , index_within = NULL ,
-                simplify = FALSE , ... ){
+subset.NestedImputationList <- function( x, subset,
+                    select=NULL, expr_subset=NULL,
+                index_between=NULL, index_within=NULL,
+                simplify=FALSE, ... ){
         CALL <- match.call()
         if (missing(subset)){  subset <- TRUE    }
-        datlist2 <- subset_nested.datlist( datlist = x , subset = subset ,
-                       select = select , index_between = index_between ,
-                       index_within = index_within , simplify = simplify ,
-                       toclass = "NestedImputationList")
+        datlist2 <- subset_nested.datlist( datlist=x, subset=subset,
+                       select=select, index_between=index_between,
+                       index_within=index_within, simplify=simplify,
+                       toclass="NestedImputationList")
         datlist2$call <- CALL
         return(datlist2)
                 }

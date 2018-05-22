@@ -1,10 +1,10 @@
 ## File Name: mice_ml_lmer_define_lmer_function.R
-## File Version: 0.02
+## File Version: 0.04
 
 mice_ml_lmer_define_lmer_function <- function( model, blme_use )
 {
     #*** include arguments for lmer model
-    if ( model == "binary"){
+    if ( model=="binary"){
         lmer_family <- stats::binomial(link="logit")
         if ( blme_use){
             lmer_function <- blme::bglmer

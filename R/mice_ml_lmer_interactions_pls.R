@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_interactions_pls.R
-## File Version: 0.02
+## File Version: 0.05
 
 mice_ml_lmer_interactions_pls <- function(type, interactions, quadratics,
         y,ry, x, pls.facs,     pls.print.progress, min.int.cor, pos,
@@ -15,8 +15,8 @@ mice_ml_lmer_interactions_pls <- function(type, interactions, quadratics,
         nx <- ncol(x)
         colnames(x) <- paste0("plsf",1:nx)
     }
-    type <- mice_impute_create_type_vector( variables = colnames(x) , value = 1)
+    type <- mice_impute_create_type_vector( variables=colnames(x), value=1)
     #--- output
-    res <- list( x=x, type = type)
+    res <- list( x=x, type=type)
     return(res)
 }

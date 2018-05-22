@@ -1,5 +1,5 @@
 %% File Name: load.data.Rd
-%% File Version: 0.22
+%% File Version: 0.25
 
 \name{load.data}
 \alias{load.data}
@@ -16,7 +16,7 @@ or matrices.
 }
 
 \usage{
-load.data( filename , type="Rdata" , path=getwd() , spss.default=TRUE , ...)
+load.data( filename, type="Rdata", path=getwd(), spss.default=TRUE, ...)
 }
 
 
@@ -82,7 +82,7 @@ for saving/writing \R data frames.
 \dontrun{
 # load a data frame in the file "data_s3.Rdata" and save this
 # as the object "dat.s3"
-dat.s3 <- miceadds::load.data( filename = "data_s3.Rdata" , type = "Rdata" )
+dat.s3 <- miceadds::load.data( filename="data_s3.Rdata", type="Rdata" )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

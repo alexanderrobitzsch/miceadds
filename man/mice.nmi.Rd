@@ -1,5 +1,5 @@
 %% File Name: mice.nmi.Rd
-%% File Version: 0.15
+%% File Version: 0.19
 
 \name{mice.nmi}
 \alias{mice.nmi}
@@ -16,7 +16,7 @@ Performs nested multiple imputation (Rubin, 2003) for the functions
 The function \code{mice.nmi} generates an object of class \code{mids.nmi}.
 }
 \usage{
-mice.nmi(datlist, type = "mice", ...)
+mice.nmi(datlist, type="mice", ...)
 
 \method{summary}{mids.nmi}(object, ...)
 
@@ -80,7 +80,7 @@ Functions for analyses of nested multiply imputed datasets:
 #############################################################################
 
 library(BIFIEsurvey)
-data(data.timss2 , package="BIFIEsurvey" )
+data(data.timss2, package="BIFIEsurvey" )
 datlist <- data.timss2
    # list of 5 datasets containing 5 plausible values
 
@@ -93,26 +93,26 @@ vars <- colnames(data)
 vars_unused <- miceadds::scan.vec("IDSTUD TOTWGT  JKZONE  JKREP" )
 
 #- define imputation method
-impMethod <- rep("norm" , V )
+impMethod <- rep("norm", V )
 names(impMethod) <- vars
 impMethod[ vars_unused ] <- ""
 
 #- define predictor matrix
-predM <- matrix( 1 , V , V )
+predM <- matrix( 1, V, V )
 colnames(predM) <- rownames(predM) <- vars
 diag(predM) <- 0
-predM[ , vars_unused ] <- 0
+predM[, vars_unused ] <- 0
 
 #***************
 # (1) nested multiple imputation using mice
-imp1 <- miceadds::mice.nmi( datlist , imputationMethod=impMethod , predictorMatrix=predM,
-                m=4 , maxit=3 )
+imp1 <- miceadds::mice.nmi( datlist, imputationMethod=impMethod, predictorMatrix=predM,
+                m=4, maxit=3 )
 summary(imp1)
 
 #***************
 # (2) nested multiple imputation using mice.1chain
-imp2 <- miceadds::mice.nmi( datlist , imputationMethod=impMethod , predictorMatrix=predM ,
-            Nimp=4 , burnin=10 ,iter =22, type="mice.1chain")
+imp2 <- miceadds::mice.nmi( datlist, imputationMethod=impMethod, predictorMatrix=predM,
+            Nimp=4, burnin=10,iter=22, type="mice.1chain")
 summary(imp2)
 }
 }

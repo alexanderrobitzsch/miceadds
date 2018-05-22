@@ -1,9 +1,9 @@
 ## File Name: pool.mids.nmi.R
-## File Version: 0.13
+## File Version: 0.16
 
 ###################################################
 # pooling function for nested multiple imputation objects
-pool.mids.nmi <- function( object , method="largesample" ){
+pool.mids.nmi <- function( object, method="largesample" ){
 
         call <- match.call()
         Nimp <- object$Nimp
@@ -15,9 +15,9 @@ pool.mids.nmi <- function( object , method="largesample" ){
         for (bb in 1:NB){
         #    bb <- 1
             anal.bb <- anal[[bb]]
-            anal2 <- list( "analyses" = anal.bb )
+            anal2 <- list( "analyses"=anal.bb )
             class(anal2) <- "mira"
-            pool_results[[bb]] <- mice::pool( anal2 , method=method)
+            pool_results[[bb]] <- mice::pool( anal2, method=method)
         }
 
         pool1 <- pool_results[[1]]$u[1,,]
@@ -30,19 +30,19 @@ pool.mids.nmi <- function( object , method="largesample" ){
         }
 
         # collect parameter estimates
-        qhat <- array( NA , dim=c( NB , NW , NV ) )
+        qhat <- array( NA, dim=c( NB, NW, NV ) )
         dimnames(qhat)[[3]] <- cn
-        dimnames(qhat)[[1]] <- paste0("Between_Imp" , 1:NB )
-        dimnames(qhat)[[2]] <- paste0("Within_Imp" , 1:NW )
+        dimnames(qhat)[[1]] <- paste0("Between_Imp", 1:NB )
+        dimnames(qhat)[[2]] <- paste0("Within_Imp", 1:NW )
         for (bb in 1:NB){
             qhat[bb,,] <- pool_results[[bb]]$qhat
         }
 
         # collect estimated variance matrices
-        u <- array( NA , dim=c( NB , NW , NV , NV) )
+        u <- array( NA, dim=c( NB, NW, NV, NV) )
         dimnames(u)[[4]] <- dimnames(u)[[3]] <- cn
-        dimnames(u)[[1]] <- paste0("Between_Imp" , 1:NB )
-        dimnames(u)[[2]] <- paste0("Within_Imp" , 1:NW )
+        dimnames(u)[[1]] <- paste0("Between_Imp", 1:NB )
+        dimnames(u)[[2]] <- paste0("Within_Imp", 1:NW )
 
         for (bb in 1:NB){
             u[bb,,,] <- pool_results[[bb]]$u
@@ -50,16 +50,16 @@ pool.mids.nmi <- function( object , method="largesample" ){
 
         #*************************
         # summary statistics
-        fit <- pool.nmi.scalar.helper( qhat , u , NV , NB , NW )
+        fit <- pool.nmi.scalar.helper( qhat, u, NV, NB, NW )
         fit$Nimp <- Nimp
         class(fit) <- "mipo.nmi"
         return(fit)
 }
 ###########################################################################
 # coef and vcov method
-coef.mipo.nmi <- function( object , ... ){
+coef.mipo.nmi <- function( object, ... ){
     return(object$qbar)
 }
-vcov.mipo.nmi <- function( object , ... ){
+vcov.mipo.nmi <- function( object, ... ){
     return(object$Tm)
 }

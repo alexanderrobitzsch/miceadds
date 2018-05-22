@@ -1,5 +1,5 @@
 %% File Name: tw.imputation.Rd
-%% File Version: 0.16
+%% File Version: 0.19
 
 \name{tw.imputation}
 \alias{tw.imputation}
@@ -14,9 +14,9 @@ Two-way imputation using the simple method of Sijtsma and van der Ark (2003)
 and the MCMC based imputation of van Ginkel et al. (2007).
 }
 \usage{
-tw.imputation(data, integer = FALSE)
+tw.imputation(data, integer=FALSE)
 
-tw.mcmc.imputation(data, iter = 100, integer = FALSE)
+tw.mcmc.imputation(data, iter=100, integer=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -33,9 +33,9 @@ The default is \code{FALSE}.
 \details{
 For persons \eqn{p} and items \eqn{i}, the two-way imputation is conducted
 by posing a linear model of tau-equivalent measurements:
-\deqn{X_{pi} = \theta_p + b_i + \varepsilon_{ij} }
+\deqn{X_{pi}=\theta_p + b_i + \varepsilon_{ij} }
 If the score \eqn{X_{pi}} is missing then it is imputed by
-\deqn{\hat{X}_{pi} = \tilde{X}_p + b_i } where \eqn{\tilde{X}_p} is the
+\deqn{\hat{X}_{pi}=\tilde{X}_p + b_i } where \eqn{\tilde{X}_p} is the
 person mean of person \eqn{p} of the remaining items with observed responses.
 
 The two-way imputation can also be seen as a scaling procedure to obtain
@@ -95,7 +95,7 @@ dat.imp[ 278:281,]
 \dontrun{
 #***
 # Model 2: Two-way imputation method using MCMC
-dat.imp <- miceadds::tw.mcmc.imputation( data , iter=3)
+dat.imp <- miceadds::tw.mcmc.imputation( data, iter=3)
 dat.imp[ 278:281,]
   ##       IN9     IN10     IN11     IN12
   ##   278   5 6.089222 5.000000 3.017244

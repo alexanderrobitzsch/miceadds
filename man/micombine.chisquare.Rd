@@ -1,5 +1,5 @@
 %% File Name: micombine.chisquare.Rd
-%% File Version: 0.18
+%% File Version: 0.20
 
 \name{micombine.chisquare}
 \alias{micombine.chisquare}
@@ -15,7 +15,7 @@ This function is also denoted as the \eqn{D_2} statistic.
 }
 
 \usage{
-micombine.chisquare(dk, df, display = TRUE, version=1)
+micombine.chisquare(dk, df, display=TRUE, version=1)
 }
 %- maybe also 'usage' for other objects documented here.
 

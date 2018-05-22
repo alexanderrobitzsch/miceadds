@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_sampling_functions.cpp
-//// File Version: 0.09
+//// File Version: 0.10
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -73,7 +73,7 @@ arma::mat miceadds_rcpp_riwishart(int df, arma::mat S)
 ///********************************************************************
 ///** miceadds_rcpp_rtnorm_double
 // [[Rcpp::export]]
-double miceadds_rcpp_rtnorm_double( double mu, double sigma, double lower, 
+double miceadds_rcpp_rtnorm_double( double mu, double sigma, double lower,
         double upper )
 {
     double y1=0;
@@ -98,7 +98,7 @@ arma::colvec miceadds_rcpp_rtnorm( arma::colvec mu,
     int N = mu.size();
     arma::colvec z(N);
     for (int nn=0; nn<N; nn++){
-        z(nn,0) = miceadds_rcpp_rtnorm_double(mu(nn,0), sigma(nn,0), 
+        z(nn,0) = miceadds_rcpp_rtnorm_double(mu(nn,0), sigma(nn,0),
                         lower(nn,0), upper(nn,0) );
     }
     //--- output

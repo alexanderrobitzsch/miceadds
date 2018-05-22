@@ -1,5 +1,5 @@
 %% File Name: mice.impute.grouped.Rd
-%% File Version: 0.10
+%% File Version: 0.14
 
 \name{mice.impute.grouped}
 \alias{mice.impute.grouped}
@@ -13,7 +13,7 @@ whose original values are only available as grouped values.
 }
 
 \usage{
-mice.impute.grouped(y, ry, x, low=NULL , upp=NULL ,  ...)
+mice.impute.grouped(y, ry, x, low=NULL, upp=NULL,  ...)
 }
 
 
@@ -73,27 +73,27 @@ data <- data.ma06
 data$FC_imp <- NA
 V <- ncol(data)
 # variables not to be used for imputation
-vars_elim <-  c("id" , "FC","FC_low","FC_upp")
+vars_elim <-  c("id", "FC","FC_low","FC_upp")
 
 # define imputation methods
-impM <- rep("norm" , V)
+impM <- rep("norm", V)
 names(impM) <- colnames(data)
 impM[  vars_elim ] <- ""
 impM[ "FC_imp" ] <- "grouped"
 
 # define predictor matrix
-predM <- 1 - diag( 0 , V)
+predM <- 1 - diag( 0, V)
 rownames(predM) <- colnames(predM) <- colnames(data)
 predM[vars_elim, ] <- 0
 predM[,vars_elim] <- 0
 
 # define lower and upper boundaries of the grouping intervals
-low <- list("FC_imp" = data$FC_low )
-upp <- list("FC_imp" = data$FC_upp )
+low <- list("FC_imp"=data$FC_low )
+upp <- list("FC_imp"=data$FC_upp )
 
 # perform imputation
-imp <- mice::mice( data , imputationMethod = impM , predictorMatrix = predM ,
-        m=1 , maxit=3 , allow.na=TRUE ,  low=low , upp=upp)
+imp <- mice::mice( data, imputationMethod=impM, predictorMatrix=predM,
+        m=1, maxit=3, allow.na=TRUE,  low=low, upp=upp)
 head( mice::complete(imp))
 }
 }

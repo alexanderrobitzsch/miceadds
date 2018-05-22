@@ -1,5 +1,5 @@
 %% File Name: datlist_create.Rd
-%% File Version: 0.14
+%% File Version: 0.15
 
 \name{datlist_create}
 \alias{datlist_create}
@@ -94,7 +94,7 @@ function (datasets)
 #############################################################################
 
 library(BIFIEsurvey)
-data(data.timss2 , package="BIFIEsurvey" )
+data(data.timss2, package="BIFIEsurvey" )
 datlist <- data.timss2
 
 # class datlist
@@ -109,7 +109,7 @@ data(nhanes2, package="mice")
 set.seed(990)
 
 # nhanes2 data imputation
-imp1 <- miceadds::mice.1chain( nhanes2 , burnin=5 , iter=25 , Nimp=5 )
+imp1 <- miceadds::mice.1chain( nhanes2, burnin=5, iter=25, Nimp=5 )
 # object of class datlist
 imp2 <- miceadds::mids2datlist(imp1)
 # alternatively, one can use datlist_create
@@ -125,7 +125,7 @@ str(imp2c)
 #############################################################################
 
 library(BIFIEsurvey)
-data(data.timss2 , package="BIFIEsurvey" )
+data(data.timss2, package="BIFIEsurvey" )
 datlist <- data.timss2
    # list of 5 datasets containing 5 plausible values
 
@@ -138,19 +138,19 @@ vars <- colnames(data)
 vars_unused <- miceadds::scan.vec("IDSTUD TOTWGT  JKZONE  JKREP" )
 
 #- define imputation method
-impMethod <- rep("norm" , V )
+impMethod <- rep("norm", V )
 names(impMethod) <- vars
 impMethod[ vars_unused ] <- ""
 
 #- define predictor matrix
-predM <- matrix( 1 , V , V )
+predM <- matrix( 1, V, V )
 colnames(predM) <- rownames(predM) <- vars
 diag(predM) <- 0
-predM[ , vars_unused ] <- 0
+predM[, vars_unused ] <- 0
 
 # object of class nmi
-imp1 <- miceadds::mice.nmi( datlist , imputationMethod=impMethod , predictorMatrix=predM,
-                m=4 , maxit=3 )
+imp1 <- miceadds::mice.nmi( datlist, imputationMethod=impMethod, predictorMatrix=predM,
+                m=4, maxit=3 )
 # object of class nested.datlist
 imp2 <- miceadds::mids2datlist(imp1)
 # object of class NestedImputationList
@@ -163,7 +163,7 @@ imp4 <- miceadds::nested.datlist_create(imp3)
 #############################################################################
 
 library(BIFIEsurvey)
-data(data.timss4 , package="BIFIEsurvey" )
+data(data.timss4, package="BIFIEsurvey" )
 datlist <- data.timss4
 
 # object of class nested.datlist

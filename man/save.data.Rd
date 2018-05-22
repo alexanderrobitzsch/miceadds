@@ -1,5 +1,5 @@
 %% File Name: save.data.Rd
-%% File Version: 0.27
+%% File Version: 0.31
 
 \name{save.data}
 \alias{save.data}
@@ -17,7 +17,7 @@ or matrices.
 
 \usage{
 save.data( data, filename, type="Rdata", path=getwd(), row.names=FALSE, na=NULL,
-      suffix = NULL , suffix_space = "__" , index = FALSE , systime = FALSE , ...)
+      suffix=NULL, suffix_space="__", index=FALSE, systime=FALSE, ...)
 }
 
 
@@ -100,31 +100,31 @@ dat <- data.ma01
 pf2 <- "P:/ARb/temp_miceadds"
 
 # save data in Rdata format
-miceadds::save.data( dat , filename="ma01data"  , type="Rdata" , path=pf2)
+miceadds::save.data( dat, filename="ma01data", type="Rdata", path=pf2)
 
 # save data in table format without row and column names
-miceadds::save.data( dat , filename="ma01data"  , type="table" , path=pf2 ,
-            row.names=FALSE , na =".", col.names=FALSE)
+miceadds::save.data( dat, filename="ma01data", type="table", path=pf2,
+            row.names=FALSE, na=".", col.names=FALSE)
 
 # save data in csv2 format, including time stamp in file name
 # and row index and time stamp in saved data
 miceadds::save.data( dat, filename="ma01data", type="csv2", path=pf2,
-            row.names=FALSE, na ="", suffix=systime()[5],
-            index = TRUE, systime = TRUE )
+            row.names=FALSE, na="", suffix=systime()[5],
+            index=TRUE, systime=TRUE )
 
 # save data in sav format
 miceadds::save.data( dat, filename="ma02data", type="sav",  path=pf2 )
 
 # save data file in different formats
-types <- c("Rdata" , "csv2" , "sav")
-sapply( types , FUN = function(type){
-    miceadds::save.data( dat, filename="ma02data", type= type,  path=pf2,
-               suffix = miceadds::systime()[3] , row.names=TRUE  )
+types <- c("Rdata", "csv2", "sav")
+sapply( types, FUN=function(type){
+    miceadds::save.data( dat, filename="ma02data", type=type,  path=pf2,
+               suffix=miceadds::systime()[3], row.names=TRUE  )
                                     } )
 
 # save data frame in multiple file formats (sav, table and csv2)
-miceadds::save.data( dat, filename="ma03data", type= c("sav","table","csv2"),  path=pf2 ,
-            suffix = miceadds::systime()[7]  )
+miceadds::save.data( dat, filename="ma03data", type=c("sav","table","csv2"),  path=pf2,
+            suffix=miceadds::systime()[7]  )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

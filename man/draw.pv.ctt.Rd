@@ -1,5 +1,5 @@
 %% File Name: draw.pv.ctt.Rd
-%% File Version: 1.18
+%% File Version: 1.22
 
 \name{draw.pv.ctt}
 \alias{draw.pv.ctt}
@@ -17,8 +17,8 @@ provided by the user.
 }
 
 \usage{
-draw.pv.ctt(y, dat.scale = NULL, x=NULL, samp.pars = TRUE,
-      alpha = NULL, sig.e = NULL, var.e=NULL , true.var = NULL)
+draw.pv.ctt(y, dat.scale=NULL, x=NULL, samp.pars=TRUE,
+      alpha=NULL, sig.e=NULL, var.e=NULL, true.var=NULL)
 }
 
 
@@ -60,11 +60,11 @@ True score variance
 
 \details{
 The linear model is assumed for drawing plausible values of a variable
-\eqn{Y} contaminated by measurement error. Assuming \eqn{Y= \theta + e}
+\eqn{Y} contaminated by measurement error. Assuming \eqn{Y=\theta + e}
 and a linear regression model for \eqn{\theta}
-\deqn{ \theta = \bold{X} \beta + \epsilon}
+\deqn{ \theta=\bold{X} \beta + \epsilon}
 (plausible value) imputations from the posterior distribution
-\eqn{P( \theta | Y , \bold{X} )} are drawn. See Mislevy (1991) for details.
+\eqn{P( \theta | Y, \bold{X} )} are drawn. See Mislevy (1991) for details.
  }
 
 \value{
@@ -110,30 +110,30 @@ priors, see \code{\link[Amelia:moPrep]{Amelia::moPrep}} and
 
 set.seed(899)
 n <- 5000       # number of students
-x <- round( stats::runif( n , 0 ,1 ) )
+x <- round( stats::runif( n, 0,1 ) )
 y <- stats::rnorm(n)
 # simulate true score theta
 theta <- .6 + .4*x + .5 * y + stats::rnorm(n)
 # simulate observed score by adding measurement error
-sig.e <- rep( sqrt(.40) , n )
-theta_obs <- theta + stats::rnorm( n , sd=sig.e)
+sig.e <- rep( sqrt(.40), n )
+theta_obs <- theta + stats::rnorm( n, sd=sig.e)
 
 # calculate alpha
 ( alpha <- stats::var( theta ) / stats::var( theta_obs ) )
 # [1] 0.7424108
-# => Ordinarily, sig.e or alpha will be known, assumed or estimated by using items,
+#=> Ordinarily, sig.e or alpha will be known, assumed or estimated by using items,
 #    replications or an appropriate measurement model.
 
 # create matrix of predictors
-X <- as.matrix( cbind(x , y ) )
+X <- as.matrix( cbind(x, y ) )
 
 # plausible value imputation with scale score
-imp1 <- miceadds::draw.pv.ctt( y=theta_obs , x = X , sig.e =sig.e )
+imp1 <- miceadds::draw.pv.ctt( y=theta_obs, x=X, sig.e=sig.e )
 # check results
 stats::lm( imp1 ~ x + y )
 
 # imputation with alpha as an input
-imp2 <- miceadds::draw.pv.ctt( y=theta_obs , x = X , alpha = .74 )
+imp2 <- miceadds::draw.pv.ctt( y=theta_obs, x=X, alpha=.74 )
 stats::lm( imp2 ~ x + y )
 
 \dontrun{
@@ -141,18 +141,18 @@ stats::lm( imp2 ~ x + y )
 library(Amelia)
 
 # define data frame
-dat <- data.frame( "x"=x , "y"=y , "theta"= theta_obs )
+dat <- data.frame( "x"=x, "y"=y, "theta"=theta_obs )
 # generate observation-level priors for theta
-priors <- cbind( 1:n , 3 , theta_obs , sig.e )
+priors <- cbind( 1:n, 3, theta_obs, sig.e )
              # 3 indicates column index for theta
 overimp <- priors[,1:2]
 # run Amelia
-imp <- Amelia::amelia( dat , priors = priors , overimp=overimp, m = 10)
+imp <- Amelia::amelia( dat, priors=priors, overimp=overimp, m=10)
 # create object of class datlist and evaluate results
 datlist <- miceadds::datlist_create( imp$imputations )
-withPool_MI( with( datlist , stats::var(theta) ) )
+withPool_MI( with( datlist, stats::var(theta) ) )
 stats::var(theta)       # compare with true variance
-mod <- with( datlist ,  stats::lm( theta ~ x + y ) )
+mod <- with( datlist,  stats::lm( theta ~ x + y ) )
 mitools::MIcombine(mod)
 }
 }

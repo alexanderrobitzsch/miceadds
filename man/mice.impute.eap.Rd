@@ -1,5 +1,5 @@
 %% File Name: mice.impute.eap.Rd
-%% File Version: 0.18
+%% File Version: 0.22
 
 \name{mice.impute.eap}
 \alias{mice.impute.eap}
@@ -80,25 +80,25 @@ vars <- colnames(dat)
 dat1 <- as.matrix( dat[,vars] )
 
 # define imputation methods
-impmethod <- rep( "pmm" , length(vars ))
+impmethod <- rep( "pmm", length(vars ))
 names(impmethod) <- vars
 # define plausible value imputation based on EAP and SEEAP for 'math_PV'
 impmethod[ "math_PV" ] <- "eap"
-eap <- list( "math_PV" = list( "M" = dat$math_EAP  , "SE" = dat$math_SEEAP  ) )
+eap <- list( "math_PV"=list( "M"=dat$math_EAP, "SE"=dat$math_SEEAP  ) )
 # define predictor matrix
 pM <- 1 - diag(1,length(vars))
 rownames(pM) <- colnames(pM) <- vars
-pM[,c("idstud","math_EAP" , "math_SEEAP") ] <- 0
+pM[,c("idstud","math_EAP", "math_SEEAP") ] <- 0
     # remove some variables from imputation model
 
 # imputation using three parallel chains
-imp1 <- mice::mice( dat1 , m=3 , maxit=5 , imputationMethod=impmethod ,
-               predictorMatrix = pM , allow.na =TRUE , eap=eap )
+imp1 <- mice::mice( dat1, m=3, maxit=5, imputationMethod=impmethod,
+               predictorMatrix=pM, allow.na=TRUE, eap=eap )
 summary(imp1)   # summary
 
 # imputation using one long chain
-imp2 <- miceadds::mice.1chain( dat1 , burnin=10 , iter=20 , Nimp =3,
-            imputationMethod=impmethod, predictorMatrix = pM ,  allow.na =TRUE , eap=eap)
+imp2 <- miceadds::mice.1chain( dat1, burnin=10, iter=20, Nimp=3,
+            imputationMethod=impmethod, predictorMatrix=pM,  allow.na=TRUE, eap=eap)
 summary(imp2)    # summary
 }
 }

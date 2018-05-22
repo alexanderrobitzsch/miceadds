@@ -1,5 +1,5 @@
 %% File Name: source.all.Rd
-%% File Version: 0.21
+%% File Version: 0.24
 
 \name{source.all}
 \alias{source.all}
@@ -25,7 +25,7 @@ file.
 source.all( path, grepstring="\\\\.R",  print.source=TRUE )
 
 source.Rcpp.all( path, file_names=NULL, ext="\\\\.cpp", excl="RcppExports",
-   remove_temp_file = FALSE )
+   remove_temp_file=FALSE )
 
 rcpp_create_header_file(file_name, pack=NULL, path=getwd() )
 }
@@ -79,7 +79,7 @@ before loading the header file using a line of the form
 # define path
 path <- "c:/myfiles/"
 # source all files containing the string 'Rex'
-source.all( path , "Rex" )}
+source.all( path, "Rex" )}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

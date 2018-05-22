@@ -1,5 +1,5 @@
 %% File Name: NestedImputationList.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{NestedImputationList}
 \alias{NestedImputationList}
@@ -28,7 +28,7 @@ method can be used for objects of class
 \usage{
 NestedImputationList( datasets )
 
-\method{print}{NestedImputationList}(x , ...)
+\method{print}{NestedImputationList}(x, ...)
 
 \method{MIcombine}{NestedImputationResultList}(results, ...)
 }
@@ -83,17 +83,17 @@ Object of class \code{mipo.nmi}.
 #############################################################################
 
 library(BIFIEsurvey)
-data(data.timss2 , package="BIFIEsurvey" )
+data(data.timss2, package="BIFIEsurvey" )
 datlist <- data.timss2
 
 # remove first four variables
 M <- length(datlist)
 for (ll in 1:M){
-    datlist[[ll]] <- datlist[[ll]][ , -c(1:4) ]
+    datlist[[ll]] <- datlist[[ll]][, -c(1:4) ]
                 }
 
 # nested multiple imputation using mice
-imp1 <- miceadds::mice.nmi( datlist ,  m=3 , maxit=2 )
+imp1 <- miceadds::mice.nmi( datlist,  m=3, maxit=2 )
 summary(imp1)
 
 # create object of class NestedImputationList
@@ -101,7 +101,7 @@ datlist1 <- miceadds::mids2datlist( imp1 )
 datlist1 <- miceadds::NestedImputationList( datlist1 )
 
 # estimate linear model using with
-res1 <- with( datlist1 , stats::lm( ASMMAT ~ female + migrant ) )
+res1 <- with( datlist1, stats::lm( ASMMAT ~ female + migrant ) )
 # pool results
 mres1 <- mitools::MIcombine( res1 )
 summary(mres1)

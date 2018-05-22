@@ -1,5 +1,5 @@
 %% File Name: pca.covridge.Rd
-%% File Version: 0.17
+%% File Version: 0.20
 
 \name{pca.covridge}
 \alias{pca.covridge}
@@ -16,7 +16,7 @@ parameter is added on the diagonal of the covariance matrix.
 
 
 \usage{
-pca.covridge(x, ridge = 1E-10 )
+pca.covridge(x, ridge=1E-10 )
 }
 
 
@@ -80,7 +80,7 @@ data(data.internet)
 dat <- as.matrix( data.internet)
 
 # single imputation in mice
-imp <- mice::mice( dat , m=1 , maxit=10 )
+imp <- mice::mice( dat, m=1, maxit=10 )
 
 # apply PCA
 pca.imp <- miceadds::pca.covridge( complete(imp) )
@@ -92,7 +92,7 @@ pca.imp <- miceadds::pca.covridge( complete(imp) )
 pca2.imp <- stats::princomp( complete(imp) )
   ##   > pca2.imp
   ##   Call:
-  ##   stats::princomp(x = complete(imp))
+  ##   stats::princomp(x=complete(imp))
   ##
   ##   Standard deviations:
   ##      Comp.1    Comp.2    Comp.3    Comp.4    Comp.5    Comp.6    Comp.7

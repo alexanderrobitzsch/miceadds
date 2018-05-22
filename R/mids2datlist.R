@@ -1,8 +1,8 @@
 ## File Name: mids2datlist.R
-## File Version: 0.11
-mids2datlist <- function( midsobj , X = NULL){
+## File Version: 0.14
+mids2datlist <- function( midsobj, X=NULL){
     datlist <- midsobj   # init
-    if ( class(midsobj) == "mids.1chain" ){
+    if ( class(midsobj)=="mids.1chain" ){
         midsobj <- midsobj$midsobj
             }
     #*****************************
@@ -11,9 +11,9 @@ mids2datlist <- function( midsobj , X = NULL){
         m <- midsobj$m
         datlist <- as.list( 1:m )
         for (ii in 1:m){
-                h1 <- mice::complete( midsobj , ii )
+                h1 <- mice::complete( midsobj, ii )
                 if ( ! is.null(X) ){
-                    h1 <- data.frame(  X , h1    )
+                    h1 <- data.frame(  X, h1    )
                                    }
                 datlist[[ii]] <- h1
                         }
@@ -32,9 +32,9 @@ mids2datlist <- function( midsobj , X = NULL){
             datlist[[bb]] <- dat1
             for (ww in 1:Nimp["within"] ){
                 # ww <- 1
-                h1 <- complete.mids.nmi( midsobj , action= c(bb,ww) )
+                h1 <- complete.mids.nmi( midsobj, action=c(bb,ww) )
                 if ( ! is.null(X) ){
-                    h1 <- data.frame(  X , h1    )
+                    h1 <- data.frame(  X, h1    )
                                    }
                 datlist[[bb]][[ww]] <- h1
                                         }

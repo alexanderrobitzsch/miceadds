@@ -1,5 +1,5 @@
 %% File Name: mice.impute.plausible.values.Rd
-%% File Version: 0.38
+%% File Version: 0.42
 
 \name{mice.impute.plausible.values}
 \alias{mice.impute.plausible.values}
@@ -20,15 +20,15 @@ obtained by fitting an item response model.
 }
 
 \usage{
-mice.impute.plausible.values(y, ry, x, type, alpha = NULL,
-    alpha.se = 0, scale.values = NULL, sig.e.miss = 1e+06,
-    like=NULL , theta=NULL , normal.approx=NULL ,
-    pviter = 15, imputationWeights = rep(1, length(y)), plausible.value.print = TRUE,
-    pls.facs = NULL, interactions = NULL, quadratics = NULL, extract_data=TRUE,
-    control_latreg = list( progress=FALSE, ridge = 1e-5 ),  ...)
+mice.impute.plausible.values(y, ry, x, type, alpha=NULL,
+    alpha.se=0, scale.values=NULL, sig.e.miss=1e+06,
+    like=NULL, theta=NULL, normal.approx=NULL,
+    pviter=15, imputationWeights=rep(1, length(y)), plausible.value.print=TRUE,
+    pls.facs=NULL, interactions=NULL, quadratics=NULL, extract_data=TRUE,
+    control_latreg=list( progress=FALSE, ridge=1e-5 ),  ...)
 }
 
-%% like=NULL , theta=NULL , normal.approx=NULL ,
+%% like=NULL, theta=NULL, normal.approx=NULL,
 %- maybe also 'usage' for other objects documented here.
 \arguments{
 \item{y}{
@@ -99,11 +99,11 @@ Further objects to be passed
 
 \details{
 The linear model is assumed for drawing plausible values of a variable
-\eqn{Y} contaminated by measurement error. Assuming \eqn{Y= \theta + e}
+\eqn{Y} contaminated by measurement error. Assuming \eqn{Y=\theta + e}
 and a linear regression model for \eqn{\theta}
-\deqn{ \theta = \bold{X} \beta + \epsilon}
+\deqn{ \theta=\bold{X} \beta + \epsilon}
 (plausible value) imputations from the posterior distribution
-\eqn{P( \theta | Y , \bold{X} )} are drawn. See Mislevy (1991) for details.
+\eqn{P( \theta | Y, \bold{X} )} are drawn. See Mislevy (1991) for details.
 }
 
 
@@ -165,14 +165,14 @@ dat$scale1 <- NA
 dat$scale2 <- NA
 
 # empty imputation
-imp <- mice::mice( dat , m=0 , maxit=0 )
+imp <- mice::mice( dat, m=0, maxit=0 )
 summary(imp)
 
 # define predictors
 predM <- imp$pred
 # define imputation methods
 impMethod <- imp$method
-impMethod <- rep( "norm" , length(impMethod) )
+impMethod <- rep( "norm", length(impMethod) )
 names(impMethod) <- names( imp$method )
 
 # look at missing proportions
@@ -180,18 +180,18 @@ colSums( is.na(dat) )
 
 # redefine imputation methods for plausible value imputation
 impMethod[ "scale1" ] <- "plausible.values"
-predM[ "scale1" ,  ] <- 1
-predM[ "scale1" , c("A1" , "A2" ,  "A3" , "A4" ) ] <- 3
+predM[ "scale1",  ] <- 1
+predM[ "scale1", c("A1", "A2",  "A3", "A4" ) ] <- 3
     # items corresponding to a scale should be declared by a 3 in the predictor matrix
 impMethod[ "scale2" ] <- "plausible.values"
-predM[ ,"scale2"  ] <- 0
-predM[ "scale2" ,  c("A2","A3","A4","V6","V7") ] <- 1
+predM[,"scale2"  ] <- 0
+predM[ "scale2",  c("A2","A3","A4","V6","V7") ] <- 1
 diag(predM) <- 0
 
 # use imputed scale values as predictors for V5, V6 and V7
-predM[ c("V5","V6","V7") , c("scale1","scale2" ) ] <- 1
+predM[ c("V5","V6","V7"), c("scale1","scale2" ) ] <- 1
 # exclude for V5, V6 and V7 the items of scales A and B as predictors
-predM[ c("V5","V6","V7") , c( paste0("A",2:4) , paste0("B",1:5) ) ] <- 0
+predM[ c("V5","V6","V7"), c( paste0("A",2:4), paste0("B",1:5) ) ] <- 0
 # exclude 'group' as a predictor
 predM[,"group"] <- 0
 
@@ -205,55 +205,55 @@ predM
 # scale 1 (A1,...,A4)
 # known Cronbach's Alpha
 alpha <- NULL
-alpha <- list( "scale1" = .8 )
-alpha.se <- list( "scale1" = .05 )  # sample alpha with a standard deviation of .05
+alpha <- list( "scale1"=.8 )
+alpha.se <- list( "scale1"=.05 )  # sample alpha with a standard deviation of .05
 
 #***
 # scale 2 (B1,...,B5)
 # means and SE's of scale scores are assumed to be known
-M.scale2 <- rowMeans( dat[  , paste("B",1:5,sep="")  ] )
-# M.scale2[ is.na( m1) ] <- mean( M.scale2 , na.rm=TRUE )
-SE.scale2 <- rep( sqrt( stats::var(M.scale2,na.rm=T)*(1-.8) ) , nrow(dat) )
-# => heterogeneous measurement errors are allowed
-scale.values <- list( "scale2" = list( "M" = M.scale2 , "SE" = SE.scale2 ) )
+M.scale2 <- rowMeans( dat[, paste("B",1:5,sep="")  ] )
+# M.scale2[ is.na( m1) ] <- mean( M.scale2, na.rm=TRUE )
+SE.scale2 <- rep( sqrt( stats::var(M.scale2,na.rm=T)*(1-.8) ), nrow(dat) )
+#=> heterogeneous measurement errors are allowed
+scale.values <- list( "scale2"=list( "M"=M.scale2, "SE"=SE.scale2 ) )
 
 #*** Imputation Model 1: Imputation four using parallel chains
-imp1 <- mice::mice( dat , predictorMatrix = predM , m = 4, maxit = 5 ,
-          alpha.se = alpha.se ,  imputationMethod = impMethod ,  allow.na = TRUE  , alpha = alpha,
-          scale.values = scale.values  )
+imp1 <- mice::mice( dat, predictorMatrix=predM, m=4, maxit=5,
+          alpha.se=alpha.se,  imputationMethod=impMethod,  allow.na=TRUE, alpha=alpha,
+          scale.values=scale.values  )
 summary(imp1)
 
 # extract first imputed dataset
-dat11 <- mice::complete( imp , 1 )
+dat11 <- mice::complete( imp, 1 )
 
 #*** Imputation Model 2: Imputation using one long chain
-imp2 <- miceadds::mice.1chain( dat , predictorMatrix = predM , burnin=10 , iter=20 , Nimp=4 ,
-          alpha.se = alpha.se ,  imputationMethod = impMethod ,  allow.na = TRUE  , alpha = alpha,
-          scale.values = scale.values  )
+imp2 <- miceadds::mice.1chain( dat, predictorMatrix=predM, burnin=10, iter=20, Nimp=4,
+          alpha.se=alpha.se,  imputationMethod=impMethod,  allow.na=TRUE, alpha=alpha,
+          scale.values=scale.values  )
 summary(imp2)
 
 #-------------
 #*** Imputation Model 3: Imputation including  group level variables
 
 # use group indicator for plausible value estimation
-predM[ "scale1" , "group" ] <- -2
+predM[ "scale1", "group" ] <- -2
 # V7 and B1 should be aggregated at the group level
-predM[ "scale1" , c("V7","B1") ] <- 2
-predM[ "scale2" , "group" ] <- -2
-predM[ "scale2" , c("V7","A1") ] <- 2
+predM[ "scale1", c("V7","B1") ] <- 2
+predM[ "scale2", "group" ] <- -2
+predM[ "scale2", c("V7","A1") ] <- 2
 
 # perform single imputation (m=1)
-imp <- mice::mice( dat , predictorMatrix = predM , m = 1 , maxit=10 ,
-            imputationMethod = impMethod ,  allow.na = TRUE  , alpha = alpha,
-            scale.values = scale.values )
+imp <- mice::mice( dat, predictorMatrix=predM, m=1, maxit=10,
+            imputationMethod=impMethod,  allow.na=TRUE, alpha=alpha,
+            scale.values=scale.values )
 dat10 <- mice::complete(imp)
 
 # multilevel model
 library(lme4)
-mod <- lme4::lmer( scale1 ~ ( 1 | group) , data = dat11 )
+mod <- lme4::lmer( scale1 ~ ( 1 | group), data=dat11 )
 summary(mod)
 
-mod <- lme4::lmer( scale1 ~ ( 1 | group) , data = dat10)
+mod <- lme4::lmer( scale1 ~ ( 1 | group), data=dat10)
 summary(mod)
 
 #############################################################################
@@ -272,17 +272,17 @@ N <- 2000    # number of persons
 I <- 10     # number of items
 
 # simulate covariates
-X <- MASS::mvrnorm( N , mu=c(0,0) , Sigma = matrix( c(1,.5,.5,1) ,2 ,2 ) )
+X <- MASS::mvrnorm( N, mu=c(0,0), Sigma=matrix( c(1,.5,.5,1),2,2 ) )
 colnames(X) <- paste0("X",1:2)
 # second covariate with measurement error with variance var.err
 var.err <- .3
 X.err <- X
-X.err[,2] <- X[,2] + stats::rnorm(N, sd = sqrt(var.err) )
+X.err[,2] <- X[,2] + stats::rnorm(N, sd=sqrt(var.err) )
 # simulate theta
-theta <- .5*X[,1] + .4*X[,2] + stats::rnorm( N , sd = .5 )
+theta <- .5*X[,1] + .4*X[,2] + stats::rnorm( N, sd=.5 )
 # simulate item responses
-itemdiff <- seq( -2 , 2 , length=I)  # item difficulties
-dat <- sirt::sim.raschtype( theta , b = itemdiff )
+itemdiff <- seq( -2, 2, length=I)  # item difficulties
+dat <- sirt::sim.raschtype( theta, b=itemdiff )
 
 #***********************
 #*** Model 0: Regression model with true variables
@@ -299,42 +299,42 @@ likePV <- IRT.likelihood(mod11)
 # creating the likelihood for error-prone covariate X2
 # The known measurement error variance is 0.3.
 lavmodel <- "
-  X2true =~ 1*X2
+  X2true=~ 1*X2
   X2 ~~ 0.3*X2
     "
-mod12 <- lavaan::cfa( lavmodel , data = as.data.frame(X.err) )
+mod12 <- lavaan::cfa( lavmodel, data=as.data.frame(X.err) )
 summary(mod12)
-likeX2 <- IRTLikelihood.cfa( data= X.err , cfaobj=mod12)
+likeX2 <- IRTLikelihood.cfa( data=X.err, cfaobj=mod12)
 str(likeX2)
 
 #-- create data input for mice package
-data <- data.frame( "PVA" = NA , "X1" = X[,1] , "X2" = NA  )
+data <- data.frame( "PVA"=NA, "X1"=X[,1], "X2"=NA  )
 vars <- colnames(data)
 V <- length(vars)
 predictorMatrix <- 1 - diag(V)
 rownames(predictorMatrix) <- colnames(predictorMatrix) <- vars
-imputationMethod <- rep("norm" , V )
+imputationMethod <- rep("norm", V )
 names(imputationMethod) <- vars
 imputationMethod[c("PVA","X2")] <- "plausible.values"
 
 #-- create argument lists for plausible value imputation
 # likelihood and theta grid of plausible value derived from IRT model
-like <- list( "PVA" = likePV  , "X2" = likeX2 )
-theta <- list( "PVA" = attr(likePV,"theta") ,
-                "X2" = attr(likeX2 , "theta") )
+like <- list( "PVA"=likePV, "X2"=likeX2 )
+theta <- list( "PVA"=attr(likePV,"theta"),
+                "X2"=attr(likeX2, "theta") )
 #-- initial imputations
 data.init <- data
 data.init$PVA <- mod11$person$EAP
 data.init$X2 <- X.err[,"X2"]
 
 #-- imputation using the mice and miceadds package
-imp1 <- mice::mice( as.matrix(data) , predictorMatrix = predictorMatrix , m = 4,
-            maxit = 6 , imputationMethod = imputationMethod ,  allow.na = TRUE ,
-            theta=theta , like=like , data.init=data.init )
+imp1 <- mice::mice( as.matrix(data), predictorMatrix=predictorMatrix, m=4,
+            maxit=6, imputationMethod=imputationMethod,  allow.na=TRUE,
+            theta=theta, like=like, data.init=data.init )
 summary(imp1)
 
 # compute linear regression
-mod4a <- with( imp1 , stats::lm( PVA ~ X1 + X2 ) )
+mod4a <- with( imp1, stats::lm( PVA ~ X1 + X2 ) )
 summary( mice::pool(mod4a) )
 
 #############################################################################
@@ -345,22 +345,22 @@ summary( mice::pool(mod4a) )
 set.seed(987)
 N <- 1000         # number of persons
 var_err <- .4     # error variance
-dat <- data.frame( x1 = stats::rnorm(N), x2 = stats::rnorm(N) )
+dat <- data.frame( x1=stats::rnorm(N), x2=stats::rnorm(N) )
 dat$theta <- .3 * dat$x1 - .5*dat$x2 + stats::rnorm(N)
-dat$y <- dat$theta + stats::rnorm( N, sd = sqrt(var_err) )
+dat$y <- dat$theta + stats::rnorm( N, sd=sqrt(var_err) )
 
 #-- linear regression for measurement-error-free data
-mod0a <- stats::lm( theta ~ x1 + x2, data = dat )
+mod0a <- stats::lm( theta ~ x1 + x2, data=dat )
 summary(mod0a)
 #-- linear regression for data with measurement error
-mod0b <- stats::lm( y ~ x1 + x2, data = dat )
+mod0b <- stats::lm( y ~ x1 + x2, data=dat )
 summary(mod0b)
 
 #-- process data for imputation
 
 dat1 <- dat
 dat1$theta <- NA
-scale.values <- list( "theta" = list( "M" = dat$y , "SE" = rep(sqrt(var_err),N )))
+scale.values <- list( "theta"=list( "M"=dat$y, "SE"=rep(sqrt(var_err),N )))
 dat1$y <- NULL
 
 cn <- colnames(dat1)
@@ -370,7 +370,7 @@ names(imputationMethod) <- cn
 imputationMethod["theta"] <- "plausible.values"
 
 #-- imputation in mice
-imp <- mice::mice( dat1 , maxit=1 , m=5 , allow.na = TRUE, imputationMethod=imputationMethod,
+imp <- mice::mice( dat1, maxit=1, m=5, allow.na=TRUE, imputationMethod=imputationMethod,
             scale.values=scale.values )
 summary(imp)
 

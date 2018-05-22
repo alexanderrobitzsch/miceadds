@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.28
+%% File Version: 0.32
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -26,7 +26,7 @@ function in the \pkg{multiwayvcov} package.
 }
 
 % \code{\link[TAM:tam.fa]{tam.fa}} (\pkg{TAM})
-% multiwayvcov::cluster.vcov( model = mod , cluster = dfr)
+% multiwayvcov::cluster.vcov( model=mod, cluster=dfr)
 
 \usage{
 lm.cluster(data, formula, cluster, ...)
@@ -106,21 +106,21 @@ data(data.ma01)
 dat <- data.ma01
 
 #*** Model 1: Linear regression
-mod1 <- miceadds::lm.cluster( data = dat , formula = read ~ hisei + female ,
-               cluster = "idschool" )
+mod1 <- miceadds::lm.cluster( data=dat, formula=read ~ hisei + female,
+               cluster="idschool" )
 coef(mod1)
 vcov(mod1)
 summary(mod1)
 
 # estimate Model 1, but cluster is provided as a vector
-mod1b <- miceadds::lm.cluster( data = dat, formula = read ~ hisei + female,
-                 cluster = dat$idschool)
+mod1b <- miceadds::lm.cluster( data=dat, formula=read ~ hisei + female,
+                 cluster=dat$idschool)
 summary(mod1b)
 
 #*** Model 2: Logistic regression
 dat$highmath <- 1 * ( dat$math > 600 )   # create dummy variable
-mod2 <- miceadds::glm.cluster( data = dat , formula = highmath ~ hisei + female ,
-                cluster = "idschool" , family="binomial")
+mod2 <- miceadds::glm.cluster( data=dat, formula=highmath ~ hisei + female,
+                cluster="idschool", family="binomial")
 coef(mod2)
 vcov(mod2)
 summary(mod2)
@@ -135,18 +135,18 @@ data(data.ma05)
 dat <- data.ma05
 
 # imputation of the dataset: use six imputations
-resp <- dat[ , - c(1:2) ]
-imp <- mice::mice( resp , imputationMethod="norm" , maxit=3 , m=6 )
+resp <- dat[, - c(1:2) ]
+imp <- mice::mice( resp, imputationMethod="norm", maxit=3, m=6 )
 datlist <- miceadds::mids2datlist( imp )
 
 # linear regression with cluster robust standard errors
-mod <- lapply(  datlist, FUN = function(data){
-            miceadds::lm.cluster( data=data , formula=denote ~ migrant+ misei ,
-                    cluster = dat$idclass )
+mod <- lapply(  datlist, FUN=function(data){
+            miceadds::lm.cluster( data=data, formula=denote ~ migrant+ misei,
+                    cluster=dat$idclass )
             }  )
 # extract parameters and covariance matrix
-betas <- lapply( mod , FUN = function(rr){ coef(rr) } )
-vars <- lapply( mod , FUN = function(rr){ vcov(rr) } )
+betas <- lapply( mod, FUN=function(rr){ coef(rr) } )
+vars <- lapply( mod, FUN=function(rr){ vcov(rr) } )
 # conduct statistical inference
 summary( miceadds::pool_mi( qhat=betas, u=vars ) )
 
@@ -163,7 +163,7 @@ rownames(qhat) <- beta_names
 uhat <- array( unlist(vars), dim=c(np,np,Nimp))
 dimnames(uhat) <- list( beta_names, beta_names, NULL )
 # compute global F-test
-Ftest <- mitml::testConstraints( qhat=betas , uhat = vars, constraints= constraints )
+Ftest <- mitml::testConstraints( qhat=betas, uhat=vars, constraints=constraints )
 print(Ftest)
 }
 }

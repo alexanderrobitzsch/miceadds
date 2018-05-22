@@ -1,12 +1,12 @@
 ## File Name: with.NestedImputationList.R
-## File Version: 0.05
+## File Version: 0.07
 
 ##################################################################
 # with function for a nested imputation list
 with.NestedImputationList <- function(data, expr,fun,...){
   pf<-parent.frame()
   NB <- data$Nimp["Between"]
-  results0 <- as.list( seq( 1 , NB) )
+  results0 <- as.list( seq( 1, NB) )
   data0 <- data
   for (bb in 1:NB){
       data <- list()
@@ -20,7 +20,7 @@ with.NestedImputationList <- function(data, expr,fun,...){
                         eval(expr, dataset, enclos=pf)
                         } )
                 } else {
-        results <- lapply(data$imputations, FUN=fun ,...)
+        results <- lapply(data$imputations, FUN=fun,...)
       }
 
       if (all(sapply(results, inherits,  what="imputationResult"))){

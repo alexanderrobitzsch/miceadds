@@ -1,5 +1,5 @@
 %% File Name: stats0.Rd
-%% File Version: 0.07
+%% File Version: 0.11
 
 \name{stats0}
 \alias{stats0}
@@ -29,7 +29,7 @@ stats0(x, FUN, na.rm=TRUE,...)
 max0(x, na.rm=TRUE)
 mean0(x, na.rm=TRUE)
 min0(x, na.rm=TRUE)
-quantile0(x, probs = seq(0, 1, 0.25), na.rm=TRUE)
+quantile0(x, probs=seq(0, 1, 0.25), na.rm=TRUE)
 sd0(x, na.rm=TRUE)
 var0(x, na.rm=TRUE)
 
@@ -84,17 +84,17 @@ set.seed(765)
 N <- 25    # number of observations
 y <- stats::rnorm(N)
 V <- 4    # number of variables
-dat <- matrix( stats::rnorm( N*V ) , ncol=V )
+dat <- matrix( stats::rnorm( N*V ), ncol=V )
 colnames(dat) <- paste0("V",1:V)
 
 #-- standard deviation
-apply( dat , 2 , stats::sd )
+apply( dat, 2, stats::sd )
 sd0( dat )
 #-- mean
-apply( dat , 2 , base::mean )
+apply( dat, 2, base::mean )
 mean0( dat )
 #-- quantile
-apply( dat , 2 , stats::quantile )
+apply( dat, 2, stats::quantile )
 quantile0( dat )
 #-- minimum and maximum
 min0(dat)
@@ -102,12 +102,12 @@ max0(dat)
 
 #*** apply functions to missing data
 dat1 <- dat
-dat1[ cbind( c(2,5) ,2) ] <- NA
+dat1[ cbind( c(2,5),2) ] <- NA
 
 #-- proportion of missing data
 prop_miss( dat1 )
 #-- MAD statistic
-stats0( dat , FUN = stats::mad )
+stats0( dat, FUN=stats::mad )
 #-- SD
 sd0(y)
 }

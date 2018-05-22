@@ -1,5 +1,5 @@
 %% File Name: mice.1chain.Rd
-%% File Version: 0.29
+%% File Version: 0.33
 
 \name{mice.1chain}
 \alias{mice.1chain}
@@ -17,21 +17,21 @@ multiply impute a dataset using a long chain instead of multiple parallel chains
 which is the approach employed in \code{mice::mice}.
 }
 \usage{
-mice.1chain(data, burnin = 10, iter = 20, Nimp = 10,
-   method = vector("character", length = ncol(data)),
-   predictorMatrix = (1 - diag(1, ncol(data))),
-   visitSequence = (1:ncol(data))[apply(is.na(data), 2, any)],
-   form = vector("character", length = ncol(data)),
-   post = vector("character", length = ncol(data)),
-   defaultMethod = c("pmm", "logreg", "polyreg", "polr"),
-   diagnostics = TRUE, printFlag = TRUE, seed = NA, imputationMethod = NULL,
-   defaultImputationMethod = NULL, data.init = NULL, ...)
+mice.1chain(data, burnin=10, iter=20, Nimp=10,
+   method=vector("character", length=ncol(data)),
+   predictorMatrix=(1 - diag(1, ncol(data))),
+   visitSequence=(1:ncol(data))[apply(is.na(data), 2, any)],
+   form=vector("character", length=ncol(data)),
+   post=vector("character", length=ncol(data)),
+   defaultMethod=c("pmm", "logreg", "polyreg", "polr"),
+   diagnostics=TRUE, printFlag=TRUE, seed=NA, imputationMethod=NULL,
+   defaultImputationMethod=NULL, data.init=NULL, ...)
 
 \method{summary}{mids.1chain}(object,...)
 
 \method{print}{mids.1chain}(x, ...)
 
-\method{plot}{mids.1chain}(x,plot.burnin=FALSE , ask=TRUE , ...)
+\method{plot}{mids.1chain}(x,plot.burnin=FALSE, ask=TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -136,18 +136,18 @@ data(nhanes, package="mice")
 set.seed(9090)
 
 # nhanes data in one chain
-imp.mi1 <- miceadds::mice.1chain( nhanes , burnin=5 , iter=40 , Nimp=4 ,
-    imputationMethod=rep("norm" , 4 ) )
+imp.mi1 <- miceadds::mice.1chain( nhanes, burnin=5, iter=40, Nimp=4,
+    imputationMethod=rep("norm", 4 ) )
 summary(imp.mi1)       # summary of mids.1chain
 plot( imp.mi1 ) # trace plot excluding burnin iterations
-plot( imp.mi1 , plot.burnin=TRUE ) # trace plot including burnin iterations
+plot( imp.mi1, plot.burnin=TRUE ) # trace plot including burnin iterations
 
 # select mids object
 imp.mi2 <- imp.mi1$midsobj
 summary(imp.mi2)    # summary of mids
 
 # apply mice functionality lm.mids
-mod <- with( imp.mi2 , stats::lm( bmi ~ age ) )
+mod <- with( imp.mi2, stats::lm( bmi ~ age ) )
 summary( mice::pool( mod ) )
 
 \dontrun{
@@ -160,7 +160,7 @@ data(nhanes2, package="mice")
 set.seed(9090)
 
 # nhanes2 data in one chain
-imp.mi1 <- miceadds::mice.1chain( nhanes2 , burnin=5 , iter=25 , Nimp=5 )
+imp.mi1 <- miceadds::mice.1chain( nhanes2, burnin=5, iter=25, Nimp=5 )
 # summary
 summary( imp.mi1$midsobj )
 
@@ -173,26 +173,26 @@ summary( imp.mi1$midsobj )
 #############################################################################
 
 data(data.ma01)
-dat <- data.ma01[ , 4:11]
+dat <- data.ma01[, 4:11]
 
 # define counterfactuals for reading score for students with and
 # without migrational background
-dat$read.migrant1 <- ifelse( paste(dat$migrant) == 1 , dat$read , NA )
-dat$read.migrant0 <- ifelse( paste(dat$migrant) == 0 , dat$read , NA )
+dat$read.migrant1 <- ifelse( paste(dat$migrant)==1, dat$read, NA )
+dat$read.migrant0 <- ifelse( paste(dat$migrant)==0, dat$read, NA )
 
 # define imputation method
-impmethod <- rep("pls" , ncol(dat) )
+impmethod <- rep("pls", ncol(dat) )
 names(impmethod) <- colnames(dat)
 
 # define predictor matrix
 pm <- 4*(1 - diag( ncol(dat) ) )    # 4 - use all interactions
 rownames(pm) <- colnames(pm) <- colnames(dat)
-pm[ c( "read.migrant0" , "read.migrant1") , ] <- 0
+pm[ c( "read.migrant0", "read.migrant1"), ] <- 0
 # do not use counterfactuals for 'read' as a predictor
-pm[ , "read.migrant0"] <- 0
-pm[ , "read.migrant1"] <- 0
+pm[, "read.migrant0"] <- 0
+pm[, "read.migrant1"] <- 0
 # define control variables for creation of counterfactuals
-pm[ c( "read.migrant0" , "read.migrant1") , c("hisei","paredu","female","books") ] <- 4
+pm[ c( "read.migrant0", "read.migrant1"), c("hisei","paredu","female","books") ] <- 4
   ##   > pm
   ##                 math read migrant books hisei paredu female urban read.migrant1 read.migrant0
   ##   math             0    4       4     4     4      4      4     4             0             0
@@ -208,11 +208,11 @@ pm[ c( "read.migrant0" , "read.migrant1") , c("hisei","paredu","female","books")
 
 # imputation using mice function and PLS imputation with
 # predictive mean matching method 'pmm6'
-imp <- mice::mice( dat , imputationMethod=impmethod , predictorMatrix=pm ,
-            maxit=4 , m=5 , pls.impMethod="pmm5" )
+imp <- mice::mice( dat, imputationMethod=impmethod, predictorMatrix=pm,
+            maxit=4, m=5, pls.impMethod="pmm5" )
 
 #*** Model 1: Raw score difference
-mod1 <- with( imp , stats::lm( read ~ migrant ) )
+mod1 <- with( imp, stats::lm( read ~ migrant ) )
 smod1 <- summary( mice::pool(mod1) )
   ##   > smod1
   ##                  est    se      t     df Pr(>|t|)  lo 95  hi 95 nmis    fmi lambda
@@ -220,7 +220,7 @@ smod1 <- summary( mice::pool(mod1) )
   ##   migrant     -43.38 3.757 -11.55  62.78        0 -50.89 -35.87  404 0.2726 0.2498
 
 #*** Model 2: ANCOVA - regression adjustment
-mod2 <- with( imp , stats::lm( read ~ migrant + hisei + paredu + female + books) )
+mod2 <- with( imp, stats::lm( read ~ migrant + hisei + paredu + female + books) )
 smod2 <- summary( mice::pool(mod2) )
   ##   > smod2
   ##                    est      se      t      df  Pr(>|t|)    lo 95   hi 95 nmis      fmi   lambda
@@ -232,15 +232,15 @@ smod2 <- summary( mice::pool(mod2) )
   ##   books        14.0113 0.88953 15.751  154.71 0.000e+00  12.2541  15.768  423 0.167812 0.157123
 
 #*** Model 3a: Estimation using counterfactuals
-mod3a <- with( imp , stats::lm( I( read.migrant1 - read.migrant0) ~ 1 ) )
+mod3a <- with( imp, stats::lm( I( read.migrant1 - read.migrant0) ~ 1 ) )
 smod3a <- summary( mice::pool(mod3a) )
   ##   > smod3a
   ##                  est    se      t    df Pr(>|t|)  lo 95  hi 95 nmis    fmi lambda
   ##   (Intercept) -22.54 7.498 -3.007 4.315  0.03602 -42.77 -2.311   NA 0.9652 0.9521
 
 #*** Model 3b: Like Model 3a but using student weights
-mod3b <- with( imp , stats::lm( I( read.migrant1 - read.migrant0) ~ 1 ,
-                        weights= data.ma01$studwgt ) )
+mod3b <- with( imp, stats::lm( I( read.migrant1 - read.migrant0) ~ 1,
+                        weights=data.ma01$studwgt ) )
 smod3b <- summary( mice::pool(mod3b) )
   ##   > smod3b
   ##                  est    se      t  df Pr(>|t|)  lo 95  hi 95 nmis    fmi lambda
@@ -248,13 +248,13 @@ smod3b <- summary( mice::pool(mod3b) )
 
 #*** Model 4: Average treatment effect on the treated (ATT, migrants)
 #             and non-treated (ATN, non-migrants)
-mod4 <- with( imp , stats::lm( I( read.migrant1 - read.migrant0) ~ 0 + as.factor( migrant) )   )
+mod4 <- with( imp, stats::lm( I( read.migrant1 - read.migrant0) ~ 0 + as.factor( migrant) )   )
 smod4 <- summary( mice::pool(mod4) )
   ##   > smod4
   ##                          est    se      t    df Pr(>|t|)  lo 95   hi 95 nmis    fmi lambda
   ##   as.factor(migrant)0 -23.13 8.664 -2.669  4.27 0.052182 -46.59  0.3416   NA 0.9682 0.9562
   ##   as.factor(migrant)1 -19.95 5.198 -3.837 19.57 0.001063 -30.81 -9.0884   NA 0.4988 0.4501
-# ATN = -23.13 and ATT = -19.95
+# ATN=-23.13 and ATT=-19.95
 }
 }
 

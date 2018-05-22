@@ -1,12 +1,12 @@
 %% File Name: mids2mlwin.Rd
-%% File Version: 0.07
+%% File Version: 0.09
 
 \name{mids2mlwin}
 \alias{mids2mlwin}
 \title{Export \code{mids} object to MLwiN}
 \usage{
-mids2mlwin(imp, file.prefix, path = getwd(), sep = " ", dec = ".", silent = FALSE,
-   X = NULL)
+mids2mlwin(imp, file.prefix, path=getwd(), sep=" ", dec=".", silent=FALSE,
+   X=NULL)
 }
 \arguments{
   \item{imp}{The \code{imp} argument is an object of class

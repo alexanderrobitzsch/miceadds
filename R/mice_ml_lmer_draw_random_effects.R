@@ -1,8 +1,8 @@
 ## File Name: mice_ml_lmer_draw_random_effects.R
-## File Version: 0.03
+## File Version: 0.08
 
 
-mice_ml_lmer_draw_random_effects <- function( clus, clus_unique, y , ry , fl , fit_vc,
+mice_ml_lmer_draw_random_effects <- function( clus, clus_unique, y, ry, fl, fit_vc,
         re0, ngr, used_slopes, levels_id_ll, x, random.effects.shrinkage)
 {
 
@@ -25,13 +25,13 @@ mice_ml_lmer_draw_random_effects <- function( clus, clus_unique, y , ry , fl , f
     pv[,,-clus_obs] <- vu                # pv: random effects cov. if fully unobserved
 
     #--- draw random effects
-    u <- mice_multilevel_imputation_draw_random_effects( mu = re , Sigma = pv  ,
-                ridge = random.effects.shrinkage )
+    u <- mice_multilevel_imputation_draw_random_effects( mu=re, Sigma=pv,
+                ridge=random.effects.shrinkage )
     used_slopes_ll <- used_slopes[[ levels_id_ll ]]
-    z0 <- matrix(1 , nrow= length(y) , ncol=1 )
+    z0 <- matrix(1, nrow=length(y), ncol=1 )
     if ( length(used_slopes_ll) > 0 ){
-        z0 <- cbind( z0 , x[ , used_slopes_ll ] )
+        z0 <- cbind( z0, x[, used_slopes_ll ] )
     }
-    predicted_u <- rowSums( z0 * u[index_clus ,1:NR,drop=FALSE] )
+    predicted_u <- rowSums( z0 * u[index_clus,1:NR,drop=FALSE] )
     return(predicted_u)
 }

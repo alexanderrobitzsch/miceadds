@@ -1,5 +1,5 @@
 %% File Name: micombine.F.Rd
-%% File Version: 0.18
+%% File Version: 0.20
 
 \name{micombine.F}
 \alias{micombine.F}
@@ -16,7 +16,7 @@ an approximation based on \eqn{\chi^2} statistics
 }
 
 \usage{
-micombine.F(Fvalues, df1, display = TRUE, version=1)
+micombine.F(Fvalues, df1, display=TRUE, version=1)
 }
 
 %- maybe also 'usage' for other objects documented here.

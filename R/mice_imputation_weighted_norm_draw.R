@@ -1,9 +1,9 @@
 ## File Name: mice_imputation_weighted_norm_draw.R
-## File Version: 0.04
+## File Version: 0.08
 
 #***** .weighted.norm.draw *******************
-mice_imputation_weighted_norm_draw <- function( yobs , xobs , ry , y , x ,
-    weights.obs , ridge = .00001 , ... ){
+mice_imputation_weighted_norm_draw <- function( yobs, xobs, ry, y, x,
+    weights.obs, ridge=.00001, ... ){
     WW <- diag( weights.obs )
     # X'*W*X
     xtx <- t(xobs) %*% WW %*% xobs

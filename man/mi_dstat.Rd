@@ -1,5 +1,5 @@
 %% File Name: mi_dstat.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 \name{mi_dstat}
 \alias{mi_dstat}
@@ -50,7 +50,7 @@ dat <- data.ma01
 
 # compute d effect sizes
 md <- miceadds::mi_dstat(dat)
-round( md , 3 )
+round( md, 3 )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

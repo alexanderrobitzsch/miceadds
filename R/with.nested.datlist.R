@@ -1,12 +1,12 @@
 ## File Name: with.nested.datlist.R
-## File Version: 1.04
+## File Version: 1.06
 
 ##################################################################
 # with function for a nested imputation list
 with.nested.datlist <- function(data, expr,fun,...){
   pf<-parent.frame()
-  NB <- attr( data , "Nimp")[1]
-  results0 <- as.list( seq( 1 , NB) )
+  NB <- attr( data, "Nimp")[1]
+  results0 <- as.list( seq( 1, NB) )
   data0 <- data
   for (bb in 1:NB){
       data <- list()
@@ -21,7 +21,7 @@ with.nested.datlist <- function(data, expr,fun,...){
                         } )
                 } else {
 
-        results <- lapply(data, FUN=fun ,...)
+        results <- lapply(data, FUN=fun,...)
       }
 
       if (all(sapply(results, inherits,  what="imputationResult"))){

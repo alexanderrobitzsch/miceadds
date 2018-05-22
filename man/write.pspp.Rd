@@ -1,5 +1,5 @@
 %% File Name: write.pspp.Rd
-%% File Version: 0.29
+%% File Version: 0.33
 
 \name{write.pspp}
 \alias{write.pspp}
@@ -14,8 +14,8 @@ To use this function, download and install PSPP at first:
 }
 
 \usage{
-write.pspp(data, datafile, pspp.path, decmax = 6,
-   as.factors=TRUE , use.bat=FALSE)
+write.pspp(data, datafile, pspp.path, decmax=6,
+   as.factors=TRUE, use.bat=FALSE)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -81,14 +81,14 @@ program \emph{ViewSav}, see \url{http://www.asselberghs.dds.nl/stuff.htm}.
 
 #****
 # (1) define data frame
-data <- data.frame( "pid" = 1000+1:5 , "height" = round(rnorm( 5 ),4) ,
-                "y" = 10*c(1,1,1,2,2) , "r2" = round( rnorm(5),2) ,
-                "land" = as.factor( c( rep("A" ,1) , rep("B" , 4 ) ) ) )
+data <- data.frame( "pid"=1000+1:5, "height"=round(rnorm( 5 ),4),
+                "y"=10*c(1,1,1,2,2), "r2"=round( rnorm(5),2),
+                "land"=as.factor( c( rep("A",1), rep("B", 4 ) ) ) )
 #****
 # (2) define variable labels
-v1 <- rep( "" , ncol(data) )
+v1 <- rep( "", ncol(data) )
 names(v1) <-  colnames(data)
-attr( data , "variable.labels" ) <- v1
+attr( data, "variable.labels" ) <- v1
 attr(data,"variable.labels")["pid"] <- "Person ID"
 attr(data,"variable.labels")["height"] <- "Height of a person"
 attr(data,"variable.labels")["y"] <- "Gender"
@@ -96,29 +96,29 @@ attr(data,"variable.labels")["y"] <- "Gender"
 #****
 # (3) define some value labels
 v1 <- c(10,20)
-names(v1) <- c("male" , "female" )
-attr( data$y , "value.labels" ) <- v1
+names(v1) <- c("male", "female" )
+attr( data$y, "value.labels" ) <- v1
 
 #****
 # (4a) run PSPP to produce a sav file
-write.pspp( data , datafile = "example_data1" ,
-        pspp.path = "C:/Program Files (x86)/PSPP/bin/" )
+write.pspp( data, datafile="example_data1",
+        pspp.path="C:/Program Files (x86)/PSPP/bin/" )
 
 #****
 # (4b) produce strings instead of factors
-write.pspp( data , datafile = "example_data2" ,
-        pspp.path = "C:/Program Files (x86)/PSPP/bin/"  , as.factors=FALSE )
+write.pspp( data, datafile="example_data2",
+        pspp.path="C:/Program Files (x86)/PSPP/bin/", as.factors=FALSE )
 
 #****
 # write sav file using haven package
 library(haven)
-haven::write_sav( data , "example_data1a.sav" )
+haven::write_sav( data, "example_data1a.sav" )
 
 #****
 # write sav file using sjlabelled package
 library(sjlabelled)
 data <- sjlabelled::set_label( data, attr(data, "variable.labels") )
-sjlabelled::write_spss( data , "example_data1b.sav" )
+sjlabelled::write_spss( data, "example_data1b.sav" )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

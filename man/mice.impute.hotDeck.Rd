@@ -1,5 +1,5 @@
 %% File Name: mice.impute.hotDeck.Rd
-%% File Version: 0.13
+%% File Version: 0.16
 
 \name{mice.impute.hotDeck}
 \alias{mice.impute.hotDeck}
@@ -16,7 +16,7 @@ from observations with complete data (see Andridge & Little, 2010).
 }
 
 \usage{
-mice.impute.hotDeck(y, ry, x, donors=5, method = "Mahalanobis" , ...)
+mice.impute.hotDeck(y, ry, x, donors=5, method="Mahalanobis", ...)
 }
 
 
@@ -86,7 +86,7 @@ dat <- nhanes
 #*** prepare imputation method
 vars <- colnames(dat)
 V <- length(vars)
-impMethod <- rep("hotDeck" , V)
+impMethod <- rep("hotDeck", V)
 method <- "cor"
 
 #*** imputation in mice

@@ -1,5 +1,5 @@
 %% File Name: data.graham.Rd
-%% File Version: 0.18
+%% File Version: 0.21
 
 \name{data.graham}
 \alias{data.graham}
@@ -166,7 +166,7 @@ dat <- dat[,1:10]
 vars <- colnames(dat)
 V <- length(vars)
 # remove persons with completely missing data
-dat <- dat[ rowMeans( is.na(dat) ) < 1 , ]
+dat <- dat[ rowMeans( is.na(dat) ) < 1, ]
 summary(dat)
 
 # some descriptive statistics
@@ -178,27 +178,27 @@ M <- 7  # number of imputations
 
 #--------- mice package
 # define imputation method
-impM <- rep("norm" , V)
+impM <- rep("norm", V)
 names(impM) <- vars
 # mice imputation
-imp1a <- mice::mice( dat , imputationMethod=impM , m=M , maxit=4 )
+imp1a <- mice::mice( dat, imputationMethod=impM, m=M, maxit=4 )
 summary(imp1a)
 # convert into a list of datasets
 datlist1a <- miceadds::mids2datlist(imp1a)
 
 #--------- Amelia package
-imp1b <- Amelia::amelia( dat , m=M )
+imp1b <- Amelia::amelia( dat, m=M )
 summary(imp1b)
 datlist1b <- imp1b$imputations
 
 #--------- jomo package
-imp1c <- jomo::jomo1con(Y = dat , nburn=100, nbetween=10, nimp=M)
+imp1c <- jomo::jomo1con(Y=dat, nburn=100, nbetween=10, nimp=M)
 str(imp1c)
 # convert into a list of datasets
 datlist1c <- miceadds::jomo2datlist(imp1c)
 
 # alternatively one can use the jomo wrapper function
-imp1c1 <- jomo::jomo(Y = dat , nburn=100, nbetween=10, nimp=M)
+imp1c1 <- jomo::jomo(Y=dat, nburn=100, nbetween=10, nimp=M)
 
 #############################################################################
 # EXAMPLE 2: data.graham.8b | Imputation with categorical variables
@@ -214,7 +214,7 @@ psych::describe(dat)
 
 #*******************************
 # imputation in mice using predictive mean matching
-imp1a <- mice::mice( dat , m=5 , maxit=10)
+imp1a <- mice::mice( dat, m=5, maxit=10)
 datlist1a <- mitools::imputationList( miceadds::mids2datlist(imp1a) )
 print(datlist1a)
 
@@ -223,16 +223,16 @@ print(datlist1a)
 
 # Note that variables must have values from 1 to N
 # use categorize function from sirt package here
-dat.categ <- sirt::categorize( dat , categorical=colnames(dat) , lowest=1 )
+dat.categ <- sirt::categorize( dat, categorical=colnames(dat), lowest=1 )
 dat0 <- dat.categ$data
 
 # imputation in jomo treating all variables as categorical
-Y_numcat <- apply( dat0 , 2 , max , na.rm=TRUE )
-imp1b <- jomo::jomo1cat(Y.cat = dat0, Y.numcat = Y_numcat, nburn=100,
+Y_numcat <- apply( dat0, 2, max, na.rm=TRUE )
+imp1b <- jomo::jomo1cat(Y.cat=dat0, Y.numcat=Y_numcat, nburn=100,
                  nbetween=10, nimp=5)
 
 # recode original categories
-datlist1b <- sirt::decategorize( imp1b , categ_design = dat.categ$categ_design )
+datlist1b <- sirt::decategorize( imp1b, categ_design=dat.categ$categ_design )
 # convert into a list of datasets
 datlist1b <- miceadds::jomo2datlist(datlist1b)
 datlist1b <- mitools::imputationList( datlist1b )
@@ -246,7 +246,7 @@ for (vv in vars){
     dat[, vv] <- as.factor( dat[,vv] )
           }
 # use jomo
-imp1b1 <- jomo::jomo(Y = dat , nburn=30, nbetween=10, nimp=5)
+imp1b1 <- jomo::jomo(Y=dat, nburn=30, nbetween=10, nimp=5)
 
 #****************************
 # compare frequency tables for both imputation packages
@@ -256,16 +256,16 @@ fun_prop <- function( variable ){
                 }
 
 # variable rskreb71
-res1a <-  with( datlist1a , fun_prop(rskreb71) )
-res1b <-  with( datlist1b , fun_prop(rskreb71) )
-summary( miceadds::NMIcombine(qhat = res1a , NMI = FALSE ) )
-summary( miceadds::NMIcombine(qhat = res1b , NMI = FALSE ) )
+res1a <-  with( datlist1a, fun_prop(rskreb71) )
+res1b <-  with( datlist1b, fun_prop(rskreb71) )
+summary( miceadds::NMIcombine(qhat=res1a, NMI=FALSE ) )
+summary( miceadds::NMIcombine(qhat=res1b, NMI=FALSE ) )
 
 # variable posatt
-res2a <-  with( datlist1a , fun_prop(posatt) )
-res2b <-  with( datlist1b , fun_prop(posatt) )
-summary( miceadds::NMIcombine(qhat = res2a , NMI = FALSE ) )
-summary( miceadds::NMIcombine(qhat = res2b , NMI = FALSE ) )
+res2a <-  with( datlist1a, fun_prop(posatt) )
+res2b <-  with( datlist1b, fun_prop(posatt) )
+summary( miceadds::NMIcombine(qhat=res2a, NMI=FALSE ) )
+summary( miceadds::NMIcombine(qhat=res2b, NMI=FALSE ) )
 }
 }
 \keyword{datasets}

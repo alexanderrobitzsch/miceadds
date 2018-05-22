@@ -1,10 +1,10 @@
 ## File Name: List2nestedList.R
-## File Version: 0.04
+## File Version: 0.08
 
 ###########################################
 # convert a List into a nestedList
-List2nestedList <- function( List , N_between , N_within = NULL ,
-        loop_within = TRUE ){
+List2nestedList <- function( List, N_between, N_within=NULL,
+        loop_within=TRUE ){
 
     M <- length(List)
     if ( is.null(N_within) ){
