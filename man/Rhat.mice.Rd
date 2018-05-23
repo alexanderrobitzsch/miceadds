@@ -1,5 +1,5 @@
 %% File Name: Rhat.mice.Rd
-%% File Version: 0.07
+%% File Version: 0.10
 
 \name{Rhat.mice}
 \alias{Rhat.mice}
@@ -28,13 +28,11 @@ Data frame containing the Rhat statistic for mean and variances for all variable
 of the Markov chains used for imputation
 }
 \references{
-Gelman, A., & Hill, J. (2007). 
-\emph{Data analysis using regression and multilevel/hierarchical models}. 
+Gelman, A., & Hill, J. (2007).
+\emph{Data analysis using regression and multilevel/hierarchical models}.
 Cambridge University Press.
 }
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}
@@ -47,7 +45,7 @@ Alexander Robitzsch
 \examples{
 \dontrun{
 #############################################################################
-# EXAMPLE 1: Rhat statistic for nhanes data 
+# EXAMPLE 1: Rhat statistic for nhanes data
 #############################################################################
 
 library(mice)
@@ -55,8 +53,8 @@ data(nhanes, package="mice")
 set.seed(9090)
 
 # nhanes 3 parallel chains
-imp1 <- mice::mice( nhanes ,m=3 , maxit=10 , imputationMethod=rep("norm" , 4 ) )
-Rhat.mice( imp1 )
+imp1 <- mice::mice( nhanes, m=3, maxit=10, imputationMethod=rep("norm", 4 ))
+miceadds::Rhat.mice( imp1 )
   ##     variable MissProp Rhat.M.imp Rhat.Var.imp
   ##   1      bmi       36  1.0181998     1.155807
   ##   2      hyp       32  1.0717677     1.061174

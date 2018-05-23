@@ -1,5 +1,5 @@
 %% File Name: micombine.chisquare.Rd
-%% File Version: 0.16
+%% File Version: 0.20
 
 \name{micombine.chisquare}
 \alias{micombine.chisquare}
@@ -15,7 +15,7 @@ This function is also denoted as the \eqn{D_2} statistic.
 }
 
 \usage{
-micombine.chisquare(dk, df, display = TRUE, version=1)
+micombine.chisquare(dk, df, display=TRUE, version=1)
 }
 %- maybe also 'usage' for other objects documented here.
 
@@ -32,10 +32,10 @@ An optional logical indicating whether results should be printed at the
 \R console.
 }
 \item{version}{Integer indicating which calculation formula should be used.
-	The default \code{version=1} refers to the correct formula as in Enders (2010),
-	while \code{version=0} uses an incorrect formula as printed in Allison (2001).
-	The incorrect calculation \code{version=0} was included in \pkg{miceadds} versions
-smaller than version 2.0. 
+    The default \code{version=1} refers to the correct formula as in Enders (2010),
+    while \code{version=0} uses an incorrect formula as printed in Allison (2001).
+    The incorrect calculation \code{version=0} was included in \pkg{miceadds} versions
+smaller than version 2.0.
 See also \emph{http://statisticalhorizons.com/wp-content/uploads/2012/01/combchi.sas}.
 }
 }
@@ -61,10 +61,6 @@ Allison, P. D. (2002). \emph{Missing data}. Newbury Park, CA: Sage.
 Enders, C. K. (2010). \emph{Applied missing data analysis}. Guilford Press.
 }
 
-\author{
-Alexander Robitzsch
-}
-
 %\note{
 %%  ~~further notes~~
 %}
@@ -87,7 +83,7 @@ dk <- c(24.957, 18.051, 18.812, 17.362, 21.234, 18.615, 19.84)
 dk.comb <- miceadds::micombine.chisquare(dk=dk, df=4 )
   ##  Combination of Chi Square Statistics for Multiply Imputed Data
   ##  Using 7 Imputed Data Sets
-  ##  F(4, 482.06)=4.438     p=0.00157  
+  ##  F(4, 482.06)=4.438     p=0.00157
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

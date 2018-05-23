@@ -1,5 +1,5 @@
 %% File Name: data.allison.Rd
-%% File Version: 0.13
+%% File Version: 0.17
 
 \name{data.allison}
 \alias{data.allison}
@@ -26,9 +26,9 @@ data(data.allison.usnews)
 
 
 \format{
-	
+
 \itemize{
-\item Data \code{data.allison.gssexp}: 
+\item Data \code{data.allison.gssexp}:
 
 \code{'data.frame':   2991 obs. of  14 variables:} \cr
 \code{ $ AGE     : num  33 59 NA 59 21 22 40 25 41 45 ...} \cr
@@ -110,9 +110,9 @@ data(data.allison.hip)
   ##   6   2    2   1    1   1    0  2.222
 
 library(reshape)
-hip.wide <- reshape::reshape(data.allison.hip, idvar = "SID", timevar = "WAVE", 
-                direction = "wide")
-  ##   > head(hip.wide , 2)
+hip.wide <- reshape::reshape(data.allison.hip, idvar="SID", timevar="WAVE",
+                direction="wide")
+  ##   > head(hip.wide, 2)
   ##     SID ADL.1 PAIN.1 SRH.1 WALK.1 CESD.1 ADL.2 PAIN.2 SRH.2 WALK.2 CESD.2 ADL.3
   ##   1   1     3      0     2      1      9     2      5     4      0 28.000     3
   ##   5   2     3      0     4      0     NA     1      1     1      0  2.222     2
@@ -121,7 +121,7 @@ hip.wide <- reshape::reshape(data.allison.hip, idvar = "SID", timevar = "WAVE",
   ##   5      5     1      0     12     1     NA     2      0     NA
 
 # imputation of the hip wide dataset
-imp <- mice::mice( as.matrix( hip.wide[,-1] ) , m=5 , maxit=3 )
+imp <- mice::mice( as.matrix( hip.wide[,-1] ), m=5, maxit=3 )
 summary(imp)
 }
 }

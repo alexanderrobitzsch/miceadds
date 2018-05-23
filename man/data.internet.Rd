@@ -1,5 +1,5 @@
 %% File Name: data.internet.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{data.internet}
 \alias{data.internet}
@@ -8,17 +8,17 @@
 Dataset Internet
 }
 \description{
-Dataset with items corresponding to internet attitudes. 
+Dataset with items corresponding to internet attitudes.
 }
 \usage{
 data(data.internet)
 }
 
 \format{
-  A data frame with 281 observations on the following 22 variables. 
-  
+  A data frame with 281 observations on the following 22 variables.
+
   The format of the dataset is
-  
+
 \code{'data.frame':   281 obs. of  22 variables:} \cr
 \code{ $ IN1 : num  1 5 2 3 1 3 2 3 2 1 ...} \cr
 \code{ $ IN2 : num  4 3 2 7 7 4 4 7 4 3 ...} \cr
@@ -27,13 +27,13 @@ data(data.internet)
 \code{ $ IN20: num  3 2 2 3 3 4 2 7 2 2 ...} \cr
 \code{ $ IN21: num  3 3 6 5 4 4 5 5 6 5 ...} \cr
 \code{ $ IN22: num  3 4 2 5 3 5 3 7 3 5 ...} \cr
-  
+
 }
 
 \details{
-The following text is copied from 
-\url{http://people.few.eur.nl/groenen/Data/index.htm}	
-	
+The following text is copied from
+\url{http://people.few.eur.nl/groenen/Data/index.htm}
+
 The data set is based on a questionnaire on attitudes towards the Internet. It
 consists of evaluations of 22 statements about the Internet by 281 students at
 Erasmus University Rotterdam. These data were gathered around 2002
@@ -52,7 +52,7 @@ Each variable (statement) is coded as follows:
 5. Slightly agree \cr
 6. Agree \cr
 7. Completely agree \cr
-	
+
 Internet items:
 
  1. Paying using Internet is safe\cr

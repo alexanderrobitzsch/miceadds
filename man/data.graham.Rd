@@ -1,5 +1,5 @@
 %% File Name: data.graham.Rd
-%% File Version: 0.17
+%% File Version: 0.21
 
 \name{data.graham}
 \alias{data.graham}
@@ -34,7 +34,7 @@ data(data.graham.ex8c)
 
 
 \itemize{
-\item Dataset \code{data.graham.ex3}: 
+\item Dataset \code{data.graham.ex3}:
 
 \code{'data.frame':   2756 obs. of  20 variables:} \cr
 \code{ $ school  : int  1 1 1 1 1 1 1 1 1 1 ...} \cr
@@ -59,7 +59,7 @@ data(data.graham.ex8c)
 \code{ $ alc9    : int  3 NA 7 NA 5 7 NA 6 6 7 ...} \cr
 
 
-\item Dataset \code{data.graham.ex6}: 
+\item Dataset \code{data.graham.ex6}:
 
 \code{'data.frame':   2756 obs. of  9 variables:} \cr
 \code{ $ school  : int  1 1 1 1 1 1 1 1 1 1 ...} \cr
@@ -74,7 +74,7 @@ data(data.graham.ex8c)
 
 
 
-\item Dataset \code{data.graham.ex8a}: 
+\item Dataset \code{data.graham.ex8a}:
 
 \code{'data.frame':   1023 obs. of  20 variables:} \cr
 \code{ $ skill1 : int  28 29 27 29 29 NA NA NA 29 NA ...} \cr
@@ -111,7 +111,7 @@ data(data.graham.ex8c)
 
 
 
-\item Dataset \code{data.graham.ex8c}: 
+\item Dataset \code{data.graham.ex8c}:
 
 \code{'data.frame':   2756 obs. of  16 variables:} \cr
 \code{ $ s1      : int  1 1 1 1 1 1 1 1 1 1 ...} \cr
@@ -131,7 +131,7 @@ data(data.graham.ex8c)
 \code{ $ posatt71: int  1 1 1 1 1 2 1 NA NA NA ...} \cr
 \code{ $ alc8    : int  1 8 4 8 5 7 1 3 5 3 ...} \cr
 }
-	
+
 }
 
 %\details{
@@ -140,7 +140,7 @@ data(data.graham.ex8c)
 
 
 \source{
-The datasets were downloaded from 
+The datasets were downloaded from
 http://methodology.psu.edu/pubs/books/missing.
 }
 
@@ -150,7 +150,7 @@ Graham, J. W. (2012). \emph{Missing data}. New York: Springer.
 }
 
 \examples{
-\dontrun{	
+\dontrun{
 library(mitools)
 library(mice)
 library(Amelia)
@@ -166,7 +166,7 @@ dat <- dat[,1:10]
 vars <- colnames(dat)
 V <- length(vars)
 # remove persons with completely missing data
-dat <- dat[ rowMeans( is.na(dat) ) < 1 , ] 
+dat <- dat[ rowMeans( is.na(dat) ) < 1, ]
 summary(dat)
 
 # some descriptive statistics
@@ -178,27 +178,27 @@ M <- 7  # number of imputations
 
 #--------- mice package
 # define imputation method
-impM <- rep("norm" , V)
+impM <- rep("norm", V)
 names(impM) <- vars
 # mice imputation
-imp1a <- mice::mice( dat , imputationMethod=impM , m=M , maxit=4 )
+imp1a <- mice::mice( dat, imputationMethod=impM, m=M, maxit=4 )
 summary(imp1a)
 # convert into a list of datasets
 datlist1a <- miceadds::mids2datlist(imp1a)
 
 #--------- Amelia package
-imp1b <- Amelia::amelia( dat , m=M )
+imp1b <- Amelia::amelia( dat, m=M )
 summary(imp1b)
 datlist1b <- imp1b$imputations
 
 #--------- jomo package
-imp1c <- jomo::jomo1con(Y = dat , nburn=100, nbetween=10, nimp=M)
+imp1c <- jomo::jomo1con(Y=dat, nburn=100, nbetween=10, nimp=M)
 str(imp1c)
 # convert into a list of datasets
 datlist1c <- miceadds::jomo2datlist(imp1c)
 
 # alternatively one can use the jomo wrapper function
-imp1c1 <- jomo::jomo(Y = dat , nburn=100, nbetween=10, nimp=M)
+imp1c1 <- jomo::jomo(Y=dat, nburn=100, nbetween=10, nimp=M)
 
 #############################################################################
 # EXAMPLE 2: data.graham.8b | Imputation with categorical variables
@@ -214,7 +214,7 @@ psych::describe(dat)
 
 #*******************************
 # imputation in mice using predictive mean matching
-imp1a <- mice::mice( dat , m=5 , maxit=10)
+imp1a <- mice::mice( dat, m=5, maxit=10)
 datlist1a <- mitools::imputationList( miceadds::mids2datlist(imp1a) )
 print(datlist1a)
 
@@ -223,16 +223,16 @@ print(datlist1a)
 
 # Note that variables must have values from 1 to N
 # use categorize function from sirt package here
-dat.categ <- sirt::categorize( dat , categorical=colnames(dat) , lowest=1 ) 
+dat.categ <- sirt::categorize( dat, categorical=colnames(dat), lowest=1 )
 dat0 <- dat.categ$data
 
 # imputation in jomo treating all variables as categorical
-Y_numcat <- apply( dat0 , 2 , max , na.rm=TRUE )
-imp1b <- jomo::jomo1cat(Y.cat = dat0, Y.numcat = Y_numcat, nburn=100, 
+Y_numcat <- apply( dat0, 2, max, na.rm=TRUE )
+imp1b <- jomo::jomo1cat(Y.cat=dat0, Y.numcat=Y_numcat, nburn=100,
                  nbetween=10, nimp=5)
 
 # recode original categories
-datlist1b <- sirt::decategorize( imp1b , categ_design = dat.categ$categ_design )
+datlist1b <- sirt::decategorize( imp1b, categ_design=dat.categ$categ_design )
 # convert into a list of datasets
 datlist1b <- miceadds::jomo2datlist(datlist1b)
 datlist1b <- mitools::imputationList( datlist1b )
@@ -246,26 +246,26 @@ for (vv in vars){
     dat[, vv] <- as.factor( dat[,vv] )
           }
 # use jomo
-imp1b1 <- jomo::jomo(Y = dat , nburn=30, nbetween=10, nimp=5)
+imp1b1 <- jomo::jomo(Y=dat, nburn=30, nbetween=10, nimp=5)
 
 #****************************
 # compare frequency tables for both imputation packages
 fun_prop <- function( variable ){
-            t1 <- table(variable) 
-            t1 / sum(t1) 
+            t1 <- table(variable)
+            t1 / sum(t1)
                 }
-                
+
 # variable rskreb71
-res1a <-  with( datlist1a , fun_prop(rskreb71) )
-res1b <-  with( datlist1b , fun_prop(rskreb71) )
-summary( miceadds::NMIcombine(qhat = res1a , NMI = FALSE ) )
-summary( miceadds::NMIcombine(qhat = res1b , NMI = FALSE ) )
+res1a <-  with( datlist1a, fun_prop(rskreb71) )
+res1b <-  with( datlist1b, fun_prop(rskreb71) )
+summary( miceadds::NMIcombine(qhat=res1a, NMI=FALSE ) )
+summary( miceadds::NMIcombine(qhat=res1b, NMI=FALSE ) )
 
 # variable posatt
-res2a <-  with( datlist1a , fun_prop(posatt) )
-res2b <-  with( datlist1b , fun_prop(posatt) )
-summary( miceadds::NMIcombine(qhat = res2a , NMI = FALSE ) )
-summary( miceadds::NMIcombine(qhat = res2b , NMI = FALSE ) )
+res2a <-  with( datlist1a, fun_prop(posatt) )
+res2b <-  with( datlist1b, fun_prop(posatt) )
+summary( miceadds::NMIcombine(qhat=res2a, NMI=FALSE ) )
+summary( miceadds::NMIcombine(qhat=res2b, NMI=FALSE ) )
 }
 }
 \keyword{datasets}

@@ -1,15 +1,15 @@
 %% File Name: data.smallscale.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{data.smallscale}
 \alias{data.smallscale}
 \docType{data}
 \title{
-Small-Scale Dataset for Testing Purposes (Moderate Number of Cases, 
+Small-Scale Dataset for Testing Purposes (Moderate Number of Cases,
 Many Variables)
 }
 \description{
-Small-scale dataset for testing purposes (moderate number of cases, 
+Small-scale dataset for testing purposes (moderate number of cases,
 many variables)
 }
 
@@ -20,7 +20,7 @@ data(data.smallscale)
 \format{
   A data frame with 675 observations on the following 164 variables.
   The format is
-  
+
 \code{'data.frame':   675 obs. of  164 variables:} \cr
 \code{ $ v1  : num  3 3 2 3 3 0 1 0 3 NA ...} \cr
 \code{ $ v2  : num  3 0 1 3 0 0 0 3 2 NA ...} \cr

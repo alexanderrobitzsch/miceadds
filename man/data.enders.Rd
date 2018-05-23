@@ -1,5 +1,5 @@
 %% File Name: data.enders.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{data.enders}
 \alias{data.enders}
@@ -30,7 +30,7 @@ data(data.enders.employee)
 
 
 \itemize{
-\item Dataset \code{data.enders.depression}: 
+\item Dataset \code{data.enders.depression}:
 
 \code{'data.frame':   280 obs. of  8 variables:} \cr
 \code{ $ txgroup: int  0 0 0 0 0 0 0 0 0 0 ...} \cr
@@ -60,7 +60,7 @@ data(data.enders.employee)
 \code{ $ wsb  : num  9 13 6 5 10 7 11 8 10 12 ...} \cr
 \code{ $ anx  : num  11 19 8 14 7 11 12 12 14 12 ..} \cr
 
-\item Dataset \code{data.enders.employee}: 
+\item Dataset \code{data.enders.employee}:
 
 \code{'data.frame':   480 obs. of  9 variables:} \cr
 \code{ $ id      : num  1 2 3 4 5 6 7 8 9 10 ...} \cr
@@ -75,7 +75,7 @@ data(data.enders.employee)
 
 
 }
-	
+
 }
 
 %\details{
@@ -84,7 +84,7 @@ data(data.enders.employee)
 
 
 \source{
-The datasets were downloaded from 
+The datasets were downloaded from
 \url{http://www.appliedmissingdata.com/book-examples.html}.
 }
 

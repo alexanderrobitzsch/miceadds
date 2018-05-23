@@ -1,9 +1,9 @@
 ## File Name: load.Rdata.R
-## File Version: 1.02
+## File Version: 1.04
 
 #****************************************
 # load R data objects globally
-load.Rdata <- function( filename , objname ){ 
+load.Rdata <- function( filename, objname ){
     d1 <- load( filename )
-    eval( parse( text=paste( objname ,  "<<- " , d1  ) ) )
+    eval( parse( text=paste( objname,  "<<- ", d1  ) ) )
 }

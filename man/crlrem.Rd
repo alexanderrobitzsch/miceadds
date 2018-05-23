@@ -1,5 +1,5 @@
 %% File Name: crlrem.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 \name{crlrem}
 \alias{crlrem}
@@ -12,7 +12,7 @@ This function removes CF line endings from a text file
 and writes the processed file in the working directory.
 }
 \usage{
-crlrem( filename1 , filename2 )
+crlrem( filename1, filename2 )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -53,7 +53,7 @@ This is code by Dirk Eddelbuettel copied from
 \dontrun{
 filename1 <- "rm.arraymult__0.02.cpp"
 filename2 <- "rm.arraymult__0.03.cpp"
-crlrem( filename1 , filename2 )}
+crlrem( filename1, filename2 )}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,5 +1,5 @@
 %% File Name: pool_mi.Rd
-%% File Version: 0.16
+%% File Version: 0.21
 
 \name{pool_mi}
 \alias{pool_mi}
@@ -20,7 +20,7 @@ functions of the same functionality.
 }
 
 \usage{
-pool_mi(qhat, u = NULL, se = NULL, dfcom = 1e+07, method = "smallsample")
+pool_mi(qhat, u=NULL, se=NULL, dfcom=1e+07, method="smallsample")
 
 \method{summary}{pool_mi}(object, alpha=0.05, ...)
 
@@ -67,9 +67,6 @@ Object of with similar output as produced by the
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~
@@ -109,30 +106,30 @@ imp0 <- miceadds::datlist2mids( imp )
 imp1 <- miceadds::datlist_create(data.ma02)
 
 #--- apply linear model based on imputationList
-mod <- with( imp , stats::lm( read ~ hisei + female ) )
+mod <- with( imp, stats::lm( read ~ hisei + female ) )
 #--- apply linear model for mids object
-mod0 <- with( imp0 , stats::lm( read ~ hisei + female ) )
+mod0 <- with( imp0, stats::lm( read ~ hisei + female ) )
 # extract coefficients
-cmod <- mitools::MIextract( mod , fun = coef)
+cmod <- mitools::MIextract( mod, fun=coef)
 # extract standard errors
-semod <- lapply( mod , FUN = function(mm){
+semod <- lapply( mod, FUN=function(mm){
     smm <- summary(mm)
     smm$coef[,"Std. Error"]
 } )
 # extract covariance matrix
-vmod <- mitools::MIextract( mod , fun = vcov)
+vmod <- mitools::MIextract( mod, fun=vcov)
 
 #*** pooling based on covariance matrices
-res1 <- miceadds::pool_mi( qhat=cmod , u = vmod )
+res1 <- miceadds::pool_mi( qhat=cmod, u=vmod )
 summary(res1)
 coef(res1)
 vcov(res1)
 
 #*** pooling based on standard errors
-res2 <- miceadds::pool_mi( qhat=cmod , se = semod )
+res2 <- miceadds::pool_mi( qhat=cmod, se=semod )
 
 #*** pooling with MIcombine
-res3 <- mitools::MIcombine( results=cmod , variances=vmod )
+res3 <- mitools::MIcombine( results=cmod, variances=vmod )
 
 #*** pooling with pool function in mice
 res4 <- mice::pool( mod0 )
@@ -141,7 +138,7 @@ res4 <- mice::pool( mod0 )
 # convert datalist into object of class amelia
 mi02 <- list( "imputations"=data.ma02)
 class(mi02) <- "amelia"
-res5 <- Zelig::zelig( read ~ hisei + female , model="ls" , data= mi02 )
+res5 <- Zelig::zelig( read ~ hisei + female, model="ls", data=mi02 )
 
 #*** analysis in lavaan
 lavmodel <- "
@@ -149,54 +146,54 @@ lavmodel <- "
      read ~~ a*read
      read ~ 1
      # residual standard deviation
-     sde := sqrt(a)
+     sde :=sqrt(a)
        "
 # analysis for first imputed dataset
-mod6a <- lavaan::sem( lavmodel , data = imp1[[1]] )
+mod6a <- lavaan::sem( lavmodel, data=imp1[[1]] )
 summary(mod6a)
 # analysis based on all datasets using with
-mod6b <- lapply( imp1 , FUN = function(data){
-           res <- lavaan::sem( lavmodel , data = data ) 
+mod6b <- lapply( imp1, FUN=function(data){
+           res <- lavaan::sem( lavmodel, data=data )
            return(res)
                 } )
 # extract parameters and covariance matrices
-qhat0 <- lapply( mod6b , FUN = function(ll){  coef(ll) } )
-u0 <- lapply( mod6b , FUN = function(ll){  vcov(ll) } )
-res6b <- mitools::MIcombine( results = qhat0 , variances = u0 )
+qhat0 <- lapply( mod6b, FUN=function(ll){  coef(ll) } )
+u0 <- lapply( mod6b, FUN=function(ll){  vcov(ll) } )
+res6b <- mitools::MIcombine( results=qhat0, variances=u0 )
 
 # extract informations for all parameters
-qhat <- lapply( mod6b , FUN = function(ll){
+qhat <- lapply( mod6b, FUN=function(ll){
         h1 <- lavaan::parameterEstimates(ll)
-        parnames <- paste0( h1$lhs , h1$op , h1$rhs )
+        parnames <- paste0( h1$lhs, h1$op, h1$rhs )
         v1 <- h1$est
         names(v1) <- parnames
-        return(v1)    
+        return(v1)
      } )
-se <- lapply( mod6b , FUN = function(ll){
+se <- lapply( mod6b, FUN=function(ll){
         h1 <- lavaan::parameterEstimates(ll)
-        parnames <- paste0( h1$lhs , h1$op , h1$rhs )
+        parnames <- paste0( h1$lhs, h1$op, h1$rhs )
         v1 <- h1$se
         names(v1) <- parnames
-        return(v1)    
-     } ) 
-res6c <- miceadds::pool_mi( qhat = qhat , se = se )     
+        return(v1)
+     } )
+res6c <- miceadds::pool_mi( qhat=qhat, se=se )
 
 # function runMI in semTools package
-res6d <- semTools::runMI(model=lavmodel , data = imp1 , m = length(imp1) )
+res6d <- semTools::runMI(model=lavmodel, data=imp1, m=length(imp1) )
   # semTools version 0.4-9 provided an error message
 # perform inference with mitml package
-se2 <- lapply( se , FUN = function(ss){  ss^2  } )  # input variances
+se2 <- lapply( se, FUN=function(ss){  ss^2  } )  # input variances
 res6e <- mitml::testEstimates(qhat=qhat, uhat=se2)
-         
+
 #*** complete model estimation and inference in mitml
 
 # convert into object of class mitml.list
-ml02 <- mitml::as.mitml.list( data.ma02)    
+ml02 <- mitml::as.mitml.list( data.ma02)
 # estimate regression
-mod7 <- with( ml02 , stats::lm( read ~ hisei + female ) ) 
+mod7 <- with( ml02, stats::lm( read ~ hisei + female ) )
 # inference
 res7 <- mitml::testEstimates( mod7 )
-            
+
 #*** model comparison
 summary(res1)
 summary(res2)

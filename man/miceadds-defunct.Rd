@@ -1,5 +1,5 @@
 %% File Name: miceadds-defunct.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{miceadds-defunct}
 \alias{miceadds-defunct}
@@ -17,10 +17,10 @@
 
 \description{
 These functions have been removed or replaced in the \pkg{miceadds}
-package. 
+package.
 }
 
-\usage{	
+\usage{
 fast.groupmean(...)
 fast.groupsum(...)
 mice.impute.2l.eap(...)
@@ -31,12 +31,12 @@ mice.impute.2lonly.pmm2(...)
 }
 
 \arguments{
-	\item{\dots}{Arguments to be passed.}
+    \item{\dots}{Arguments to be passed.}
 }
 
 \details{
 The \code{fast.groupmean} function has been replaced by
-\code{\link{GroupMean}}.	
+\code{\link{GroupMean}}.
 
 The \code{fast.groupsum} function has been replaced by
 \code{\link{GroupSum}}.
@@ -51,7 +51,7 @@ The \code{mice.impute.2l.pls2} function has been replaced by
 \code{\link{mice.impute.pls}}.
 
 The \code{mice.impute.2lonly.norm2} and \code{mice.impute.2lonly.pmm2}
-functions can be safely replaced by the 
+functions can be safely replaced by the
 \code{\link[mice:mice.impute.2lonly.norm]{mice::mice.impute.2lonly.norm}} and
 \code{\link[mice:mice.impute.2lonly.pmm]{mice::mice.impute.2lonly.pmm}}
 functions in the \pkg{mice} package.

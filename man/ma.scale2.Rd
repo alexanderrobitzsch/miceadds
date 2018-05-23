@@ -1,5 +1,5 @@
 %% File Name: ma.scale2.Rd
-%% File Version: 0.18
+%% File Version: 0.21
 
 \name{ma.scale2}
 \alias{ma.scale2}
@@ -38,9 +38,6 @@ A matrix
 %% ~put references to the literature/web site here ~
 %}
 
-\author{
-Alexander Robitzsch
-}
 
 %\note{
 %%  ~~further notes~~
@@ -62,8 +59,8 @@ data(data.internet)
 dat <- data.internet
 
 # z-standardize all variables in this dataset
-zdat <- miceadds::ma.scale2( dat , missings=TRUE )
-	
+zdat <- miceadds::ma.scale2( dat, missings=TRUE )
+
 \dontrun{
 #############################################################################
 # SIMULATED EXAMPLE 2: Speed comparison for many cases and many variables
@@ -74,24 +71,24 @@ set.seed(9786)
 N <- 3000
 p <- 200
 # simulate some data
-x <- matrix( stats::rnorm( N*p ) , N , p )
-x <- round( x , 2 )
+x <- matrix( stats::rnorm( N*p ), N, p )
+x <- round( x, 2 )
 
 # compare computation times for 10 replications
 B <- 10
-    s1 <- Sys.time()		# scale in R
-for (bb in 1:B){    
+    s1 <- Sys.time()        # scale in R
+for (bb in 1:B){
     res <- scale(x)
 } ; s2 <- Sys.time() ; d1 <- s2-s1
 
-    s1 <- Sys.time()		# scale in miceadds
-for (bb in 1:B){    
+    s1 <- Sys.time()        # scale in miceadds
+for (bb in 1:B){
     res1 <- miceadds::ma.scale2(x)
 } ; s2 <- Sys.time() ; d2 <- s2-s1
 
 # scale in miceadds with missing handling
     s1 <- Sys.time()
-for (bb in 1:B){    
+for (bb in 1:B){
     res1 <- miceadds::ma.scale2(x,missings=TRUE)
 } ; s2 <- Sys.time() ; d3 <- s2-s1
 d1      # scale in R

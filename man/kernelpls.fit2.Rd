@@ -1,5 +1,5 @@
 %% File Name: kernelpls.fit2.Rd
-%% File Version: 0.18
+%% File Version: 0.25
 
 \name{kernelpls.fit2}
 \alias{kernelpls.fit2}
@@ -34,12 +34,12 @@ Number of components to be extracted
 }
 
 %\details{
-% 
+%
 %}
 
 \value{
-The same list as in 
-\code{\link[pls:kernelpls.fit]{pls::kernelpls.fit}} 
+The same list as in
+\code{{pls::kernelpls.fit}}
 is produced.
 
 In addition, \eqn{R^2} measures are contained in
@@ -47,20 +47,18 @@ In addition, \eqn{R^2} measures are contained in
 }
 
 \references{
-Dayal, B., & Macgregor, J. F. (1997). Improved PLS algorithms. 
+Dayal, B., & Macgregor, J. F. (1997). Improved PLS algorithms.
 \emph{Journal of Chemometrics}, \bold{11}, 73-85.
 
-Mevik, B. H., & Wehrens, R. (2007). The \pkg{pls} package: 
-Principal component and partial least squares regression in \R. 
+Mevik, B. H., & Wehrens, R. (2007). The \pkg{pls} package:
+Principal component and partial least squares regression in \R.
 \emph{Journal of Statistical Software}, \bold{18}, 1-24.
 }
 
 \author{
-Alexander Robitzsch
-
-This code is a \pkg{Rcpp} translation of the original 
+This code is a \pkg{Rcpp} translation of the original
 \code{pls::kernelpls.fit} function from the \pkg{pls} package
-(see Mevik & Wehrens, 2007). 
+(see Mevik & Wehrens, 2007).
 }
 
 %\note{
@@ -85,16 +83,16 @@ rho1 <- .6      # correlations between predictors
 
 # simulate data
 Sigma <- base::diag(1-rho1,p) + rho1
-X <- mvtnorm::rmvnorm( N , sigma=Sigma )
-beta <- base::seq( 0 , 1 , len=p )
-y <- ( X \%*\% beta )[,1] + stats::rnorm( N , sd = .6 )
-Y <- base::matrix(y,nrow=N , ncol=1 )
+X <- mvtnorm::rmvnorm( N, sigma=Sigma )
+beta <- base::seq( 0, 1, len=p )
+y <- ( X \%*\% beta )[,1] + stats::rnorm( N, sd=.6 )
+Y <- base::matrix(y,nrow=N, ncol=1 )
 
 # PLS regression
-res <- miceadds::kernelpls.fit2( X=X , Y = Y , ncomp=20 )
+res <- miceadds::kernelpls.fit2( X=X, Y=Y, ncomp=20 )
 
 # predict new scores
-Xpred <- predict( res , X = X[1:10,] )
+Xpred <- predict( res, X=X[1:10,] )
 
 \dontrun{
 #############################################################################
@@ -104,10 +102,10 @@ Xpred <- predict( res , X = X[1:10,] )
 # use kernelpls.fit from pls package
 library(pls)
 data(yarn,package="pls")
-mod1 <- pls::kernelpls.fit( X = yarn$NIR , Y = yarn$density , ncomp = 10 )
+mod1 <- pls::kernelpls.fit( X=yarn$NIR, Y=yarn$density, ncomp=10 )
 # use kernelpls.fit2 from miceadds package
 Y <- base::matrix( yarn$density, ncol=1 )
-mod2 <- miceadds::kernelpls.fit2( X = yarn$NIR , Y = Y , ncomp = 10 )
+mod2 <- miceadds::kernelpls.fit2( X=yarn$NIR, Y=Y, ncomp=10 )
 }
 }
 

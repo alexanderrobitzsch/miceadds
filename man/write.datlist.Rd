@@ -1,5 +1,5 @@
 %% File Name: write.datlist.Rd
-%% File Version: 0.07
+%% File Version: 0.12
 
 \name{write.datlist}
 \alias{write.datlist}
@@ -12,9 +12,9 @@ Writes a list of multiply imputed datasets.
 }
 
 \usage{
-write.datlist(datlist, name, include.varnames = TRUE, type = "csv2", 
-     separate = TRUE , Mplus = FALSE, round = NULL, Rdata = TRUE, 
-     subdir = TRUE , ...)
+write.datlist(datlist, name, include.varnames=TRUE, type="csv2",
+     separate=TRUE, Mplus=FALSE, round=NULL, Rdata=TRUE,
+     subdir=TRUE, ...)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -30,10 +30,10 @@ Name of files to be saved
 Logical indicating whether variables should be saved
 }
   \item{type}{
-File type of datasets to be saved, see \code{\link{save.data}}. 
+File type of datasets to be saved, see \code{\link{save.data}}.
 }
 \item{separate}{Logical indicating whether imputed datasets
-	should be written in separate files.
+    should be written in separate files.
 }
   \item{Mplus}{
 Logical indicating whether files should be written for usage
@@ -65,9 +65,7 @@ Further arguments to be passed to \code{\link{save.data}}.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}
@@ -75,7 +73,7 @@ Alexander Robitzsch
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also \code{\link[mice:mids2mplus]{mice::mids2mplus}},  
+See also \code{\link[mice:mids2mplus]{mice::mids2mplus}},
 \code{\link[mice:mids2spss]{mice::mids2spss}} and
 \code{\link{write.mice.imputation}} for writing objects of class
 \code{mids}.
@@ -88,32 +86,32 @@ writing imputed datasets in \pkg{Amelia}.
 \examples{
 \dontrun{
 #############################################################################
-# EXAMPLE 1: Write data list imputed in mice 
+# EXAMPLE 1: Write data list imputed in mice
 #############################################################################
 
 data(data.ma01)
 dat <- as.matrix(data.ma01)
 
 # start with empty imputation
-imp0 <- mice::mice( dat , maxit=0)
+imp0 <- mice::mice( dat, maxit=0)
 
 # modify predictor matrix
 predM <- imp0$predictorMatrix
-predM[ , c("idschool" , "idstud" ) ] <- 0
+predM[, c("idschool", "idstud" ) ] <- 0
 # modify imputation method
 impMeth <- imp0$method
-impMeth[ impMeth == "pmm" ] <- "norm"
+impMeth[ impMeth=="pmm" ] <- "norm"
 
 # do imputations in mice
-imp <- mice::mice( dat , predictorMatrix = predM , imputationMethod=impMeth, 
-            m=3 , maxit=4 )
+imp <- mice::mice( dat, predictorMatrix=predM, imputationMethod=impMeth,
+            m=3, maxit=4 )
 
 # write imputed data in format "csv2" and round after 4 digits
-write.datlist( datlist = imp , name = "mice_imp_csv2" , round = 4 )
+write.datlist( datlist=imp, name="mice_imp_csv2", round=4 )
 # write imputed data in R binary format
-write.datlist( datlist = imp , name = "mice_imp_Rdata" , type="Rdata")
-# write data for Mplus usage 
-write.datlist( datlist = imp , name = "mice_imp_Mplus" , Mplus = TRUE , round = 5)
+write.datlist( datlist=imp, name="mice_imp_Rdata", type="Rdata")
+# write data for Mplus usage
+write.datlist( datlist=imp, name="mice_imp_Mplus", Mplus=TRUE, round=5)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -1,5 +1,5 @@
 %% File Name: round2.Rd
-%% File Version: 0.14
+%% File Version: 0.19
 
 \name{round2}
 \alias{round2}
@@ -12,7 +12,7 @@ This is a rounding function which rounds up for all numbers
 according to the rule of 'kaufmaennisches Runden' (DIN 1333).
 }
 \usage{
-round2(vec, digits = 0)
+round2(vec, digits=0)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -32,9 +32,7 @@ Vector with rounded values
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}
@@ -46,10 +44,10 @@ Alexander Robitzsch
 %}
 \examples{
 #############################################################################
-# EXAMPLE 1: 
+# EXAMPLE 1:
 #############################################################################
 
-vec <- c( 1.5 , 2.5 , 3.5 , 1.51 ,  1.49)
+vec <- c( 1.5, 2.5, 3.5, 1.51,  1.49)
 vec
 round(vec)
 round2(vec)
@@ -61,10 +59,10 @@ round2(vec)
   ##   [1] 2 3 4 2 1
 
 #############################################################################
-# EXAMPLE 2: 
+# EXAMPLE 2:
 #############################################################################
 
-vec <- - c( 1.5 , 2.5 , 3.5 , 1.51 ,  1.49)
+vec <- - c( 1.5, 2.5, 3.5, 1.51,  1.49)
 vec
 round(vec)
 round2(vec)
@@ -76,19 +74,19 @@ round2(vec)
   ##   [1] -2 -3 -4 -2 -1
 
 #############################################################################
-# EXAMPLE 3: 
+# EXAMPLE 3:
 #############################################################################
 
-vec <- c(8.4999999 , 8.5 , 8.501 , 7.4999999 , 7.5 , 7.501 )
+vec <- c(8.4999999, 8.5, 8.501, 7.4999999, 7.5, 7.501 )
 round(vec)
 round2( vec )
-round2( vec , digits=1)
+round2( vec, digits=1)
 round2( -vec )
   ##   > round(vec)
   ##   [1] 8 8 9 7 8 8
   ##   > miceadds::round2( vec )
   ##   [1] 8 9 9 7 8 8
-  ##   > miceadds::round2( vec , digits=1)
+  ##   > miceadds::round2( vec, digits=1)
   ##   [1] 8.5 8.5 8.5 7.5 7.5 7.5
   ##   > miceadds::round2( -vec )
   ##   [1] -8 -9 -9 -7 -8 -8

@@ -1,11 +1,11 @@
 ## File Name: with.datlist.R
-## File Version: 0.03
+## File Version: 0.05
 
 ##########################################################
 # with function for datlist
-# This function is copied and modified from 
+# This function is copied and modified from
 # mitools::with.imputationList
-with.datlist <- function( data , expr , fun, ... ){	
+with.datlist <- function( data, expr, fun, ... ){
   pf<-parent.frame()
   if (!is.null(match.call()$expr)){
     expr<-substitute(expr)
@@ -19,7 +19,7 @@ with.datlist <- function( data , expr , fun, ... ){
     results$call<-sys.call(-1)
   } else {
     attr(results,"call")<-sys.call(-1)
-  } 
+  }
   return(results)
-		}
-##############################################################		
+        }
+##############################################################

@@ -1,5 +1,5 @@
 %% File Name: output.format1.Rd
-%% File Version: 0.10
+%% File Version: 0.15
 
 \name{output.format1}
 \alias{output.format1}
@@ -11,7 +11,7 @@
 This function does some formatting of output.
 }
 \usage{
-output.format1(stringtype , label , rep.N=1 ,stringlength = 70)
+output.format1(stringtype, label, rep.N=1,stringlength=70)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -37,15 +37,13 @@ Generates a string output at the \R console
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %TO DO: include example here
 %}
 
 \examples{
-output.format1(stringtype="*'" , label="HELLO WORLD" , stringlength = 20)
+output.format1(stringtype="*'", label="HELLO WORLD", stringlength=20)
 ##   *'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'*'
 ##   HELLO WORLD
 }

@@ -1,5 +1,5 @@
 %% File Name: micombine.F.Rd
-%% File Version: 0.15
+%% File Version: 0.20
 
 \name{micombine.F}
 \alias{micombine.F}
@@ -11,12 +11,12 @@ Chi Square Approximation
 
 \description{
 Several \eqn{F} statistics from multiply imputed datasets are combined using
-an approximation based on \eqn{\chi^2} statistics 
+an approximation based on \eqn{\chi^2} statistics
 (see \code{\link{micombine.chisquare}}).
 }
 
 \usage{
-micombine.F(Fvalues, df1, display = TRUE, version=1)
+micombine.F(Fvalues, df1, display=TRUE, version=1)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -30,13 +30,13 @@ numerator are approximated by \eqn{\infty} (large number of degrees
 of freedom).
 }
   \item{display}{
-A logical indicating whether results should be displayed at the console 
+A logical indicating whether results should be displayed at the console
 }
 \item{version}{Integer indicating which calculation formula should be used.
-	The default \code{version=1} refers to the correct formula as in Enders (2010),
-	while \code{version=0} uses an incorrect formula as printed in Allison (2001).
-	The incorrect calculation \code{version=0} was included in \pkg{miceadds} versions
-smaller than version 2.0. 
+    The default \code{version=1} refers to the correct formula as in Enders (2010),
+    while \code{version=0} uses an incorrect formula as printed in Allison (2001).
+    The incorrect calculation \code{version=0} was included in \pkg{miceadds} versions
+smaller than version 2.0.
 See also \emph{http://statisticalhorizons.com/wp-content/uploads/2012/01/combchi.sas}.
 }
 }
@@ -53,11 +53,13 @@ The same output as in \code{\link{micombine.chisquare}}
 Allison, P. D. (2002). \emph{Missing data}. Newbury Park, CA: Sage.
 
 Enders, C. K. (2010). \emph{Applied missing data analysis}. Guilford Press.
+
+Grund, S., Luedtke, O., & Robitzsch, A. (2016). Pooling ANOVA results from
+multiply imputed datasets: A simulation study.
+\emph{Methodology, 12}, 75-88.
 }
 
-\author{
-Alexander Robitzsch
-}
+
 
 %\note{
 %%  ~~further notes~~
@@ -78,7 +80,7 @@ Fvalues <- c( 6.76, 4.54, 4.23, 5.45, 4.78 )
 micombine.F(Fvalues, df1=4 )
   ##  Combination of Chi Square Statistics for Multiply Imputed Data
   ##  Using 5 Imputed Data Sets
-  ##  F(4, 52.94)=3.946     p=0.00709 
+  ##  F(4, 52.94)=3.946     p=0.00709
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

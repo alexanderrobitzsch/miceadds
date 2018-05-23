@@ -1,11 +1,13 @@
 %% File Name: Reval.Rd
-%% File Version: 0.12
+%% File Version: 0.22
 
 \name{Reval}
 \alias{Reval}
 
 \alias{Revalpr}
 \alias{Revalprstr}
+\alias{Revalpr_round}
+\alias{Revalpr_maxabs}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
@@ -15,11 +17,19 @@
 This function evaluates a string as an \R expression.
 }
 \usage{
-Reval(Rstring, print.string=TRUE)
+Reval(Rstring, print.string=TRUE, n.eval.parent=1)
 
-Revalpr(Rstring, print.string=TRUE)	# = Reval( print(Rstring) )
+# Reval( print(Rstring) )
+Revalpr(Rstring, print.string=TRUE)
 
-Revalprstr(Rstring, print.string=TRUE)   #  = Reval( print(str(Rstring)) )
+#  Reval( print(str(Rstring)) )
+Revalprstr(Rstring, print.string=TRUE)
+
+#  Reval( print(round(Rstring, digits)) )
+Revalpr_round( Rstring, digits=5, print.string=TRUE)
+
+#  Reval( print(max(abs(Rstring_x - Rstring_y)) ) )
+Revalpr_maxabs( Rstring_x, Rstring_y, print.string=TRUE, na.rm=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -29,9 +39,18 @@ String which shall be evaluated in \R
   \item{print.string}{
 Should the string printed on the console?
 }
+\item{n.eval.parent}{Index of parent environment in which the \R
+command should be evaluated.
 }
+\item{digits}{Number of digits after decimal.}
+\item{Rstring_x}{String corrsponding to an \R object}
+\item{Rstring_y}{String corrsponding to an \R object}
+\item{na.rm}{Logical indicating whether missing values should be removed
+from calculation}
+}
+
 \details{
-The string is evaluated in the parent environment. See 
+The string is evaluated in the parent environment. See
 \code{\link[base:eval]{base::eval}}  for the definition of environments in \R.
 }
 %\value{
@@ -44,9 +63,7 @@ The string is evaluated in the parent environment. See
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}
@@ -59,15 +76,15 @@ Alexander Robitzsch
 \examples{
 # This function is simply a shortage function
 # See the definition of this function:
-Reval <- function( Rstring , print.string=TRUE){ 
-    if (print.string){ cat( paste( Rstring ) , "\n"  ) }
-    	eval.parent( parse( text = paste( Rstring )) , n=1 )
+Reval <- function( Rstring, print.string=TRUE){
+    if (print.string){ cat( paste( Rstring ), "\n"  ) }
+        eval.parent( parse( text=paste( Rstring )), n=1 )
             }
-  
+
 Reval( "a <- 2^3" )
-  ## a <- 2^3 
+  ## a <- 2^3
 a
-  ## [1] 8  
+  ## [1] 8
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

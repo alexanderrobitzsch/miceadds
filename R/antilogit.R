@@ -2,5 +2,5 @@
 ## File Version: 0.02
 
 antilogit <- function(p){
-	return( 1 / ( 1 + exp(-p) ) )
+    return( 1 / ( 1 + exp(-p) ) )
 }

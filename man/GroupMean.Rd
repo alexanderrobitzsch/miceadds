@@ -1,5 +1,5 @@
 %% File Name: GroupMean.Rd
-%% File Version: 0.20
+%% File Version: 0.25
 
 \name{GroupMean}
 \alias{GroupMean}
@@ -16,9 +16,9 @@ Calculates some groupwise descriptive statistics
 \usage{
 GroupMean(data, group, weights=NULL, extend=FALSE)
 
-GroupSum(data, group, weights=NULL, extend=FALSE)	
+GroupSum(data, group, weights=NULL, extend=FALSE)
 
-GroupSD(data, group, weights=NULL, extend=FALSE)	
+GroupSD(data, group, weights=NULL, extend=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -41,9 +41,7 @@ A data frame with groupwise calculated statistics
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}
@@ -51,7 +49,7 @@ Alexander Robitzsch
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[mitml:clusterMeans]{mitml::clusterMeans}} 
+\code{\link[mitml:clusterMeans]{mitml::clusterMeans}}
 
 \code{\link[base:rowsum]{base::rowsum}},
 \code{\link[stats:aggregate]{stats::aggregate}},
@@ -67,25 +65,25 @@ data( data.ma02 )
 dat <- data.ma02[[1]] # select first dataset
 
 #--- group means for read and math
-GroupMean( dat[ , c("read","math") ] , group=dat$idschool )
+GroupMean( dat[, c("read","math") ], group=dat$idschool )
 # using rowsum
-a1 <- base::rowsum( dat[ , c("read","math") ] , dat$idschool )
-a2 <- base::rowsum( 1+0*dat[ , c("read","math") ] , dat$idschool )
+a1 <- base::rowsum( dat[, c("read","math") ], dat$idschool )
+a2 <- base::rowsum( 1+0*dat[, c("read","math") ], dat$idschool )
 (a1/a2)[1:10,]
 # using aggregate
-stats::aggregate(  dat[ , c("read","math") ] , list(dat$idschool) , mean )[1:10,]
+stats::aggregate(  dat[, c("read","math") ], list(dat$idschool), mean )[1:10,]
 
 #--- extend group means to original dataset
-GroupMean( dat[ , c("read","math") ] , group=dat$idschool , extend =TRUE )
+GroupMean( dat[, c("read","math") ], group=dat$idschool, extend=TRUE )
 # using ave
-stats::ave( dat[ , "read" ] , dat$idschool  )
-stats::ave( dat[ , "read" ] , dat$idschool , FUN = mean )
+stats::ave( dat[, "read" ], dat$idschool  )
+stats::ave( dat[, "read" ], dat$idschool, FUN=mean )
 
 \dontrun{
 #--- group standard deviations
-GroupSD( dat[ , c("read","math") ] , group=dat$idschool)[1:10,]
+GroupSD( dat[, c("read","math") ], group=dat$idschool)[1:10,]
 # using aggregate
-stats::aggregate(  dat[ , c("read","math") ] , list(dat$idschool) , sd )[1:10,]
+stats::aggregate(  dat[, c("read","math") ], list(dat$idschool), sd )[1:10,]
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

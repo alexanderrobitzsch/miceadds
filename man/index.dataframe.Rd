@@ -1,5 +1,5 @@
 %% File Name: index.dataframe.Rd
-%% File Version: 0.12
+%% File Version: 0.15
 
 \name{index.dataframe}
 \alias{index.dataframe}
@@ -35,9 +35,7 @@ of the data frame?}
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}
@@ -48,7 +46,7 @@ Alexander Robitzsch
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
 \examples{
-dfr <- matrix( 2*1:12-3 , 4 ,3 )
+dfr <- matrix( 2*1:12-3, 4,3 )
 colnames(dfr) <- paste0("X",1:ncol(dfr))
 index.dataframe( dfr)
   ##     index X1 X2 X3
@@ -56,7 +54,7 @@ index.dataframe( dfr)
   ##   2     2  1  9 17
   ##   3     3  3 11 19
   ##   4     4  5 13 21
-index.dataframe( dfr , systime=TRUE)
+index.dataframe( dfr, systime=TRUE)
   ##     index         file_created X1 X2 X3
   ##   1     1  2013-08-22 10:26:28 -1  7 15
   ##   2     2  2013-08-22 10:26:28  1  9 17

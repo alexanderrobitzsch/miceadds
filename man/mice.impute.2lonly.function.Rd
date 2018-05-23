@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2lonly.function.Rd
-%% File Version: 0.20
+%% File Version: 0.26
 
 \name{mice.impute.2lonly.function}
 \alias{mice.impute.2lonly.function}
@@ -18,7 +18,7 @@ defined imputation function at level 1 in \pkg{mice}.
 
 
 \usage{
-mice.impute.2lonly.function(y, ry, x, type, imputationFunction, ...)	
+mice.impute.2lonly.function(y, ry, x, type, imputationFunction, ...)
 }
 
 
@@ -36,10 +36,10 @@ mice.impute.2lonly.function(y, ry, x, type, imputationFunction, ...)
   Predictors must be specified by '1'.}
 
  \item{imputationFunction}{Imputation function for \pkg{mice}. Any
- 	 imputation method which is defined at level 1 can be used
- 	 for level 2 imputation.
- } 
-  
+      imputation method which is defined at level 1 can be used
+      for level 2 imputation.
+ }
+
   \item{...}{Other named arguments.}
 }
 
@@ -85,51 +85,48 @@ beta <- .3          # regression coefficient
 rho <- .30          # residual intraclass correlation
 rho.miss <- .10     # correlation with missing response
 missrate <- .50     # missing proportion
-y1 <- rep( rnorm( G , sd = sqrt( rho ) ) , each=n ) + rnorm(G*n , sd = sqrt( 1 - rho ))
-w <- rep( round( rnorm(G ) , 2 ) , each=n )
-v <- rep( round( runif( G , 0 , 3 ) ) , each=n )
+y1 <- rep( rnorm( G, sd=sqrt( rho ) ), each=n ) + rnorm(G*n, sd=sqrt( 1 - rho ))
+w <- rep( round( rnorm(G ), 2 ), each=n )
+v <- rep( round( runif( G, 0, 3 ) ), each=n )
 x <-  stats::rnorm( G*n )
 y <- y1 + beta  * x + .2 * w + .1 * v
-dfr0 <- dfr <- data.frame( "group" = rep(1:G , each=n ) , "x" = x , "y" = y , 
-		"w" = w , "v" = v )
-dfr[ rho.miss * x + rnorm( G*n , sd = sqrt( 1 - rho.miss ) ) < qnorm( missrate ) , 
-		"y" ] <- NA
-dfr[ rep( rnorm(G) , each=n ) < qnorm( missrate ) , "w" ] <- NA
-dfr[ rep( rnorm(G) , each=n ) < qnorm( missrate ) , "v" ] <- NA
+dfr0 <- dfr <- data.frame( "group"=rep(1:G, each=n ), "x"=x, "y"=y,
+        "w"=w, "v"=v )
+dfr[ rho.miss * x + rnorm( G*n, sd=sqrt( 1 - rho.miss ) ) < qnorm( missrate ),
+        "y" ] <- NA
+dfr[ rep( rnorm(G), each=n ) < qnorm( missrate ), "w" ] <- NA
+dfr[ rep( rnorm(G), each=n ) < qnorm( missrate ), "v" ] <- NA
 
 #....
 # empty mice imputation
-imp0 <- mice( as.matrix(dfr)  , maxit=0 )
+imp0 <- mice( as.matrix(dfr), maxit=0 )
 predM <- imp0$predictorMatrix
 impM <- imp0$method
 
 #...
-# multilevel imputation 
+# multilevel imputation
 predM1 <- predM
 predM1[c("w","y","v"),"group"] <- -2
 predM1["y","x"] <- 1        # fixed x effects imputation
 impM1 <- impM
-impM1[c("y","w","v")] <- c("2l.continuous" , "2lonly.function" , "2lonly.function" )
-# define imputation functions 
-imputationFunction <- list( "w" = "sample" , "v" = "pmm5" )
+impM1[c("y","w","v")] <- c("2l.continuous", "2lonly.function", "2lonly.function" )
+# define imputation functions
+imputationFunction <- list( "w"="sample", "v"="pmm5" )
 
 # do imputation
-imp1 <- mice::mice( as.matrix(dfr) , m = 1 , predictorMatrix = predM1 ,
-           imputationMethod = impM1 , maxit = 5, 
-           imputationFunction = imputationFunction )
+imp1 <- mice::mice( as.matrix(dfr), m=1, predictorMatrix=predM1,
+           imputationMethod=impM1, maxit=5,
+           imputationFunction=imputationFunction )
 }
 }
 
 
-\author{
-Alexander Robitzsch
-}
 
 
 
 
 % \seealso{
-% ccc	
+% ccc
 % }
 
 

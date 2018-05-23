@@ -1,5 +1,5 @@
 %% File Name: in_CI.Rd
-%% File Version: 0.04
+%% File Version: 0.08
 
 \name{in_CI}
 \alias{in_CI}
@@ -8,11 +8,11 @@
 Indicator Function for Analyzing Coverage
 }
 \description{
-Indicator function for analyzing coverage. The output indicates whether a 
-value lies within a computed confidence interval. 
+Indicator function for analyzing coverage. The output indicates whether a
+value lies within a computed confidence interval.
 }
 \usage{
-in_CI(est, se, true, level = 0.95, df = Inf)
+in_CI(est, se, true, level=0.95, df=Inf)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -66,15 +66,15 @@ Logical vector
 #-- simulate estimates and standard errors
 set.seed(987)
 n <- 10
-est <- stats::rnorm( n , sd = 1)
-se <- stats::runif( n , 0 , .7 )
+est <- stats::rnorm( n, sd=1)
+se <- stats::runif( n, 0, .7 )
 level <- .95
 true <- 0
 
 #-- apply coverage function
 in_ci <- miceadds::in_CI( est, se, true)
 #-- check correctness
-cbind( est, se , true , in_ci )
+cbind( est, se, true, in_ci )
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

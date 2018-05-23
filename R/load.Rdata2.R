@@ -1,11 +1,11 @@
 ## File Name: load.Rdata2.R
-## File Version: 1.02
+## File Version: 1.06
 
 #**********************************************
-# load Rdata objects			
-load.Rdata2 <- function( filename , path=getwd() ){
+# load Rdata objects
+load.Rdata2 <- function( filename, path=getwd() ){
     d1 <- load( file=file.path(path,filename) )
     objname <- "ma01"
-	eval(parse(text = paste(objname, "<- ", d1)))	
-    eval(parse(text= paste0( "return( " , objname , ")" ) ) )			
+    eval(parse(text=paste(objname, "<- ", d1)))
+    eval(parse(text=paste0( "return( ", objname, ")" ) ) )
 }

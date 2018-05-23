@@ -1,5 +1,5 @@
 %% File Name: library_install.Rd
-%% File Version: 0.06
+%% File Version: 0.12
 
 \name{library_install}
 \alias{library_install}
@@ -14,7 +14,7 @@ yet installed, they will be automatically installed by this function using
 \code{\link[utils:install.packages]{install.packages}}.
 }
 \usage{
-library_install( pkg , ... )
+library_install( pkg, ... )
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -23,13 +23,13 @@ library_install( pkg , ... )
 Vector with package names
 }
   \item{\dots}{
-Further arguments to be passed to 
+Further arguments to be passed to
 \code{\link[utils:install.packages]{install.packages}}
 }
 }
 
 %\details{
-%The string is evaluated in the parent environment. See 
+%The string is evaluated in the parent environment. See
 %}
 %\value{
 %%  ~Describe the value returned
@@ -41,9 +41,7 @@ Further arguments to be passed to
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}
@@ -56,8 +54,8 @@ Alexander Robitzsch
 \examples{
 \dontrun{
 # try to load packages PP and MCMCglmm
-library_install( pkg =  c("PP" , "MCMCglmm") )   
-}	
+library_install( pkg=c("PP", "MCMCglmm") )
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

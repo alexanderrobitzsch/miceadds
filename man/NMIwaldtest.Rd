@@ -1,5 +1,5 @@
 %% File Name: NMIwaldtest.Rd
-%% File Version: 0.13
+%% File Version: 0.19
 
 \name{NMIwaldtest}
 \alias{NMIwaldtest}
@@ -15,8 +15,8 @@ Wald Test for Nested Multiply Imputed Datasets
 
 \description{
 Performs a Wald test for nested multiply imputed datasets (\code{NMIwaldtest})
-and ordinary multiply imputed datasets (\code{MIwaldtest}), 
-see Reiter and Raghanuthan (2007). 
+and ordinary multiply imputed datasets (\code{MIwaldtest}),
+see Reiter and Raghanuthan (2007).
 The correspondent statistic is also called the \eqn{D_1} statistic.
 
 The function \code{create.designMatrices.waldtest} is a helper function
@@ -24,15 +24,15 @@ for the creation of design matrices.
 }
 
 \usage{
-NMIwaldtest(qhat, u, Cdes = NULL, rdes = NULL, testnull = NULL)
+NMIwaldtest(qhat, u, Cdes=NULL, rdes=NULL, testnull=NULL)
 
-MIwaldtest(qhat, u, Cdes = NULL, rdes = NULL, testnull = NULL)
+MIwaldtest(qhat, u, Cdes=NULL, rdes=NULL, testnull=NULL)
 
 \method{summary}{NMIwaldtest}(object,digits=4,...)
 
 \method{summary}{MIwaldtest}(object,digits=4,...)
 
-create.designMatrices.waldtest( pars , k )
+create.designMatrices.waldtest( pars, k )
 }
 
 
@@ -62,7 +62,7 @@ a parameter value of zero.
 }
 
 \details{
-The Wald test is performed for a linear hypothesis \eqn{C \bold{\theta} = r}
+The Wald test is performed for a linear hypothesis \eqn{C \bold{\theta}=r}
 for a parameter vector \eqn{\bold{\theta}}.
 }
 
@@ -77,14 +77,10 @@ List with following entries
 
 \references{
 Reiter, J. P. and Raghunathan, T. E. (2007). The multiple adaptations of multiple
-imputation. \emph{Journal of the American Statistical Association}, 
+imputation. \emph{Journal of the American Statistical Association},
 \bold{102}, 1462-1471.
 }
 
-
-\author{
-Alexander Robitzsch
-}
 
 \note{
 The function \code{create.designMatrices.waldtest} is a helper
@@ -105,41 +101,41 @@ function for the creation of design matrices.
 #############################################################################
 
 library(BIFIEsurvey)
-data(data.timss2 , package="BIFIEsurvey" )
-datlist <- data.timss2         
+data(data.timss2, package="BIFIEsurvey" )
+datlist <- data.timss2
 # remove first four variables
 M <- length(datlist)
 for (ll in 1:M){
-    datlist[[ll]] <- datlist[[ll]][ , -c(1:4) ]
+    datlist[[ll]] <- datlist[[ll]][, -c(1:4) ]
                }
-                
+
 #***************
 # (1) nested multiple imputation using mice
-imp1 <- miceadds::mice.nmi( datlist ,  m=3 , maxit=2 )
+imp1 <- miceadds::mice.nmi( datlist,  m=3, maxit=2 )
 summary(imp1)
 
 #**** Model 1: Linear regression with interaction effects
-res1 <- with( imp1 , stats::lm( likesc ~ female*migrant + female*books  ) )
+res1 <- with( imp1, stats::lm( likesc ~ female*migrant + female*books  ) )
 pres1 <- miceadds::pool.mids.nmi( res1 )
 summary(pres1)
 
 # test whether both interaction effects equals zero
 pars <- dimnames(pres1$qhat)[[3]]
-des <- miceadds::create.designMatrices.waldtest( pars = pars , k=2)
+des <- miceadds::create.designMatrices.waldtest( pars=pars, k=2)
 Cdes <- des$Cdes
 rdes <- des$rdes
 Cdes[1, "female:migrant"] <- 1
 Cdes[2, "female:books"] <- 1
-wres1 <- miceadds::NMIwaldtest( qhat=pres1$qhat , u=pres1$u , Cdes=Cdes , rdes=rdes )
+wres1 <- miceadds::NMIwaldtest( qhat=pres1$qhat, u=pres1$u, Cdes=Cdes, rdes=rdes )
 summary(wres1)
 
 # a simpler specification is the use of "testnull"
-testnull <- c("female:migrant" , "female:books")
-wres1b <- miceadds::NMIwaldtest( qhat=qhat , u=u , testnull=testnull )
+testnull <- c("female:migrant", "female:books")
+wres1b <- miceadds::NMIwaldtest( qhat=qhat, u=u, testnull=testnull )
 summary(wres1b)
 
 #**** Model 2: Multivariate linear regression
-res2 <- with( imp1 , stats::lm( cbind( ASMMAT , ASSSCI ) ~ 
+res2 <- with( imp1, stats::lm( cbind( ASMMAT, ASSSCI ) ~
                            0 + I(1*(female==1)) + I(1*(female==0))   ) )
 pres2 <- miceadds::pool.mids.nmi( res2 )
 summary(pres2)
@@ -147,22 +143,22 @@ summary(pres2)
 # test whether both gender differences equals -10 points
 pars <- dimnames(pres2$qhat)[[3]]
   ##  > pars
-  ##  [1] "ASMMAT:I(1 * (female == 1))" "ASMMAT:I(1 * (female == 0))"
-  ##  [3] "ASSSCI:I(1 * (female == 1))" "ASSSCI:I(1 * (female == 0))"
+  ##  [1] "ASMMAT:I(1 * (female==1))" "ASMMAT:I(1 * (female==0))"
+  ##  [3] "ASSSCI:I(1 * (female==1))" "ASSSCI:I(1 * (female==0))"
 
-des <- miceadds::create.designMatrices.waldtest( pars = pars , k=2)
+des <- miceadds::create.designMatrices.waldtest( pars=pars, k=2)
 Cdes <- des$Cdes
 rdes <- c(-10,-10)
-Cdes[1, "ASMMAT:I(1*(female == 1))"] <- 1
-Cdes[1, "ASMMAT:I(1*(female == 0))"] <- -1
-Cdes[2, "ASSSCI:I(1*(female == 1))"] <- 1
-Cdes[2, "ASSSCI:I(1*(female == 0))"] <- -1
+Cdes[1, "ASMMAT:I(1*(female==1))"] <- 1
+Cdes[1, "ASMMAT:I(1*(female==0))"] <- -1
+Cdes[2, "ASSSCI:I(1*(female==1))"] <- 1
+Cdes[2, "ASSSCI:I(1*(female==0))"] <- -1
 
-wres2 <- miceadds::NMIwaldtest( qhat=pres2$qhat , u=pres2$u , Cdes=Cdes , rdes=rdes )
+wres2 <- miceadds::NMIwaldtest( qhat=pres2$qhat, u=pres2$u, Cdes=Cdes, rdes=rdes )
 summary(wres2)
 
 # test only first hypothesis
-wres2b <- miceadds::NMIwaldtest( qhat=pres2$qhat , u=pres2$u , Cdes=Cdes[1,,drop=FALSE] ,
+wres2b <- miceadds::NMIwaldtest( qhat=pres2$qhat, u=pres2$u, Cdes=Cdes[1,,drop=FALSE],
                          rdes=rdes[1] )
 summary(wres2b)
 
@@ -171,15 +167,15 @@ summary(wres2b)
 #############################################################################
 
 library(BIFIEsurvey)
-data(data.timss2 , package="BIFIEsurvey" )
+data(data.timss2, package="BIFIEsurvey" )
 dat <- data.timss2[[1]]
-dat <- dat[ , - c(1:4) ]
+dat <- dat[, - c(1:4) ]
 
 # perform multiple imputation
-imp <- mice::mice( dat , m=6 , maxit=3 )
+imp <- mice::mice( dat, m=6, maxit=3 )
 
 # define analysis model
-res1 <- with( imp , lm( likesc ~ female*migrant + female*books  ) )
+res1 <- with( imp, lm( likesc ~ female*migrant + female*books  ) )
 pres1 <- mice::pool( res1 )
 summary(pres1)
 
@@ -187,19 +183,19 @@ summary(pres1)
 qhat <- pres1$qhat
 u <- pres1$u
 pars <- dimnames(pres1$qhat)[[2]]
-des <- miceadds::create.designMatrices.waldtest( pars = pars , k=2)
+des <- miceadds::create.designMatrices.waldtest( pars=pars, k=2)
 Cdes <- des$Cdes
 rdes <- des$rdes
 Cdes[1, "female:migrant"] <- 1
 Cdes[2, "female:books"] <- 1
 
 # apply MIwaldtest function
-wres1 <- miceadds::MIwaldtest( qhat , u , Cdes , rdes )
+wres1 <- miceadds::MIwaldtest( qhat, u, Cdes, rdes )
 summary(wres1)
 
 # use again "testnull"
-testnull <- c("female:migrant" , "female:books")
-wres1b <- miceadds::MIwaldtest( qhat=qhat , u=u , testnull=testnull )
+testnull <- c("female:migrant", "female:books")
+wres1b <- miceadds::MIwaldtest( qhat=qhat, u=u, testnull=testnull )
 summary(wres1b)
 
 #***** linear regression with cluster robust standard errors
@@ -207,16 +203,16 @@ summary(wres1b)
 # convert object of class mids into a list object
 datlist_imp <- miceadds::mids2datlist( imp )
 # define cluster
-idschool <- as.numeric( substring( data.timss2[[1]]$IDSTUD , 1 , 5 ) )
+idschool <- as.numeric( substring( data.timss2[[1]]$IDSTUD, 1, 5 ) )
 # linear regression
-res2 <- lapply( datlist_imp , FUN = function(data){
-           miceadds::lm.cluster( data=data , formula=likesc ~ female*migrant + female*books ,
-                            cluster= idschool ) } )
+res2 <- lapply( datlist_imp, FUN=function(data){
+           miceadds::lm.cluster( data=data, formula=likesc ~ female*migrant + female*books,
+                            cluster=idschool ) } )
 # extract parameters and covariance matrix
-qhat <- lapply( res2 , FUN = function(rr){ coef(rr) } )
-u <- lapply( res2 , FUN = function(rr){ vcov(rr) } )
+qhat <- lapply( res2, FUN=function(rr){ coef(rr) } )
+u <- lapply( res2, FUN=function(rr){ vcov(rr) } )
 # perform Wald test
-wres2 <- miceadds::MIwaldtest( qhat , u , Cdes , rdes )
+wres2 <- miceadds::MIwaldtest( qhat, u, Cdes, rdes )
 summary(wres2)
 }
 }

@@ -13,6 +13,6 @@ nesteddatlist2datlist <- function(datlist){
             vv <- vv + 1
                         }
                     }
-	class(datlist0) <- "datlist"
+    class(datlist0) <- "datlist"
     return(datlist0)
             }

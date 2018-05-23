@@ -1,18 +1,29 @@
 %% File Name: grep.vec.Rd
-%% File Version: 0.11
+%% File Version: 0.21
 
 \name{grep.vec}
 \alias{grep.vec}
+\alias{grep_leading}
+\alias{grepvec_leading}
+\alias{grepvec}
+
+
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-\R Utilities: Vector Based Version of \code{grep}
+\R Utilities: Vector Based Versions of \code{grep}
 }
 \description{
-This function imitates the usage of \code{grep} but it is
+These functions slightly extend the usage of \code{grep} but it is
 extended to a vector argument.
 }
 \usage{
 grep.vec(pattern.vec, x, operator="AND")
+
+grepvec( pattern.vec, x, operator="AND", value=FALSE)
+
+grep_leading( pattern, x, value=FALSE )
+
+grepvec_leading( patternvec, x, value=FALSE )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -29,6 +40,9 @@ If \code{operator} is different from the default, then the \code{"OR"}
 logic applies, i.e. the functions searches for vector entries which
 contain at least one of the strings in \code{pattern.vec}.
 }
+\item{pattern}{String}
+\item{patternvec}{Vector of strings}
+\item{value}{Logical indicating whether indices or values are requested}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -43,9 +57,7 @@ contain at least one of the strings in \code{pattern.vec}.
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}
@@ -56,19 +68,26 @@ Alexander Robitzsch
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
 \examples{
-vec <- c("abcd" , "bcde" , "aedf" , "cdf" )
+#############################################################################
+# EXAMPLE 1: Toy example
+#############################################################################
+
+vec <- c("abcd", "bcde", "aedf", "cdf" )
 # search for entries in vec with contain 'a' and 'f'
-#  -> operator = "AND"
-grep.vec( pattern.vec=c("a","f") , x=vec )
+#  -> operator="AND"
+grep.vec( pattern.vec=c("a","f"), x=vec )
   ##   $x
   ##   [1] "aedf"
   ##   $index.x
   ##   [1] 3
 
+grepvec( pattern.vec=c("a","f"), x=vec, value=TRUE)
+grepvec( pattern.vec=c("a","f"), x=vec, value=FALSE)
+
 # search for entries in vec which contain 'a' or 'f'
-grep.vec( pattern.vec=c("a","f") , x=vec , operator="OR")
+grep.vec( pattern.vec=c("a","f"), x=vec, operator="OR")
   ##   $x
-  ##   [1] "abcd" "aedf" "cdf" 
+  ##   [1] "abcd" "aedf" "cdf"
   ##   $index.x
   ##   [1] 1 3 4
 }

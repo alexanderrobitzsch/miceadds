@@ -1,5 +1,5 @@
 ## File Name: NMIextract.R
-## File Version: 0.02
+## File Version: 0.06
 
 
 NMIextract <- function(results, expr, fun){
@@ -7,13 +7,13 @@ NMIextract <- function(results, expr, fun){
   results0 <- results
   if (!is.null(match.call()$expr)){
     expr<-substitute(expr)
-	lapply( results0 , FUN = function(results){
+    lapply( results0, FUN=function(results){
         lapply(results, function(result) eval(expr, result,pf))
-							} )
+                            } )
   } else {
-    lapply( results0 , FUN = function( results){
-				lapply(results, fun)
-							} )
+    lapply( results0, FUN=function( results){
+                lapply(results, fun)
+                            } )
   }
-  
+
 }

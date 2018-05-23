@@ -1,5 +1,5 @@
 %% File Name: data.ma.Rd
-%% File Version: 0.28
+%% File Version: 0.29
 
 \name{data.ma}
 \alias{data.ma}
@@ -36,7 +36,7 @@ data(data.ma07)
 
 \format{
 \itemize{
-\item Dataset \code{data.ma01}: 
+\item Dataset \code{data.ma01}:
 
 Dataset with students nested within school and
 student weights (\code{studwgt}). The format is
@@ -54,7 +54,7 @@ student weights (\code{studwgt}). The format is
 \code{ $ female  : int  1 1 0 0 1 1 0 0 1 1 ...} \cr
 \code{ $ urban   : num  1 1 1 1 1 1 1 1 1 1 ...} \cr
 
-\item Dataset \code{data.ma02}: 
+\item Dataset \code{data.ma02}:
 
 10 multiply imputed datasets of incomplete data \code{data.ma01}.
 The format is
@@ -71,7 +71,7 @@ The format is
 \code{ $ :'data.frame':       4073 obs. of  11 variables:} \cr
 \code{ $ :'data.frame':       4073 obs. of  11 variables:} \cr
 
-\item Dataset \code{data.ma03}: 
+\item Dataset \code{data.ma03}:
 
 This dataset contains one variable
 \code{math_EAP} for which a conditional posterior distribution with EAP
@@ -88,7 +88,7 @@ and its associated standard deviation is available.
 \code{ $ math_SEEAP: num  28 29.5 28.6 28.5 27.5 ...} \cr
 
 
-\item Dataset \code{data.ma04}: 
+\item Dataset \code{data.ma04}:
 
 This dataset contains two hypothetical
 scales \code{A} and \code{B} and single variables \code{V5}, \code{V6} and

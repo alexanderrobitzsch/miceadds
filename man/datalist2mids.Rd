@@ -1,5 +1,5 @@
 %% File Name: datalist2mids.Rd
-%% File Version: 0.22
+%% File Version: 0.29
 
 \name{datlist2mids}
 \alias{datalist2mids}
@@ -15,8 +15,8 @@ to a \code{\link[mice:mids]{mice::mids}} object.
 %% mids-class {mice}
 
 \usage{
-datlist2mids(dat.list, progress = FALSE)
-datalist2mids(dat.list, progress = FALSE)
+datlist2mids(dat.list, progress=FALSE)
+datalist2mids(dat.list, progress=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -45,11 +45,6 @@ An object of class \code{mids}
 %}
 
 
-\author{
-Alexander Robitzsch
-}
-
-
 %\note{
 %%  ~~further notes~~
 %}
@@ -73,7 +68,7 @@ data(nhanes,package="mice")
 set.seed(566)  # fix random seed
 
 # impute 10 datasets using Amelia
-a.out <- Amelia::amelia(x =  nhanes , m=10)
+a.out <- Amelia::amelia(x=nhanes, m=10)
 # plot of observed and imputed data
 plot(a.out)
 
@@ -81,7 +76,7 @@ plot(a.out)
 a.mids <- miceadds::datlist2mids( a.out$imputations )
 
 # linear regression: apply mice functionality lm.mids
-mod <- with( a.mids , stats::lm( bmi ~ age ) )
+mod <- with( a.mids, stats::lm( bmi ~ age ) )
 summary( mice::pool( mod ) )
   ##                    est       se         t       df     Pr(>|t|)     lo 95
   ##  (Intercept) 30.624652 2.626886 11.658158 8.406608 1.767631e-06 24.617664
@@ -93,12 +88,12 @@ summary( mice::pool( mod ) )
 \dontrun{
 # fit linear regression model in Zelig
 library(Zelig)
-mod2 <- Zelig::zelig( bmi ~ age , model="ls" , data=a.out , cite=FALSE)
+mod2 <- Zelig::zelig( bmi ~ age, model="ls", data=a.out, cite=FALSE)
 summary(mod2)
-  ##  Model: Combined Imputations 
-  ##              Estimate Std.Error z value Pr(>|z|)    
+  ##  Model: Combined Imputations
+  ##              Estimate Std.Error z value Pr(>|z|)
   ##  (Intercept)   30.625     2.627  11.658  0.00000 ***
-  ##  age           -2.281     1.323  -1.723  0.08482    
+  ##  age           -2.281     1.323  -1.723  0.08482
   ##  ---
   ##  Signif. codes:  '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -112,7 +107,7 @@ summary( mitools::MIcombine( mod3 ) )
   ##        MIcombine.default(mod3)
   ##                results       se    (lower     upper) missInfo
   ##  (Intercept) 30.624652 2.626886 25.304594 35.9447092     51 %
-  ##  age         -2.280607 1.323355 -4.952051  0.3908368     49 % 
+  ##  age         -2.280607 1.323355 -4.952051  0.3908368     49 %
 }
 }
 

@@ -1,15 +1,15 @@
 ## File Name: create.designMatrices.waldtest.R
-## File Version: 0.03
+## File Version: 0.06
 
 
 #################################################
 # create design matrices for waldtest
-create.designMatrices.waldtest <- function( pars , k ){
+create.designMatrices.waldtest <- function( pars, k ){
         NP <- length(pars)
-        Cdes <- matrix( 0 , nrow=k , ncol=NP)
+        Cdes <- matrix( 0, nrow=k, ncol=NP)
         colnames(Cdes) <- pars
         rdes <- rep(0,k)
-        res <- list( Cdes = Cdes , rdes=rdes )
+        res <- list( Cdes=Cdes, rdes=rdes )
         return(res)
 }
 ######################################################

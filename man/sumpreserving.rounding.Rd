@@ -1,5 +1,5 @@
 %% File Name: sumpreserving.rounding.Rd
-%% File Version: 0.08
+%% File Version: 0.11
 
 \name{sumpreserving.rounding}
 \alias{sumpreserving.rounding}
@@ -39,9 +39,7 @@ Should the sum be preserved?
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-\author{
-Alexander Robitzsch
-}
+
 %\note{
 %%  ~~further notes~~
 %}
@@ -53,12 +51,12 @@ Alexander Robitzsch
 %}
 \examples{
 #############################################################################
-# EXAMPLE 1: 
+# EXAMPLE 1:
 #############################################################################
 
 # define example data
-data <- c( 1455 , 1261 , 1067 , 970 , 582 , 97 )
-data <- 100 * data / sum(data) 
+data <- c( 1455, 1261, 1067, 970, 582, 97 )
+data <- 100 * data / sum(data)
 
 ( x1 <- round( data ) )
 sum(x1)
@@ -75,21 +73,21 @@ sum(x2)
   ##   [1] 100
 
 #############################################################################
-# EXAMPLE 2: 
+# EXAMPLE 2:
 #############################################################################
 
 # matrix input
-data <- rbind( data , data )
+data <- rbind( data, data )
 ( x1 <- round( data ) )
 rowSums(x1)
 (x2 <- miceadds::sumpreserving.rounding( data ) )
 rowSums(x2)
 
 #############################################################################
-# EXAMPLE 3: 
+# EXAMPLE 3:
 #############################################################################
 
-x2 <- c( 1.4 , 1.4 , 1.2 )
+x2 <- c( 1.4, 1.4, 1.2 )
 round(x2)
 sumpreserving.rounding(x2)
   ##   > round(x2)

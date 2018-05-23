@@ -1,5 +1,5 @@
 %% File Name: ma_rmvnorm.Rd
-%% File Version: 0.09
+%% File Version: 0.13
 
 \name{ma_rmvnorm}
 \alias{ma_rmvnorm}
@@ -15,7 +15,7 @@ for a covariance matrix \code{sigma} which can have zero variances.
 }
 
 \usage{
-ma_rmvnorm(n, mu = NULL, sigma, eps = 1e-10)
+ma_rmvnorm(n, mu=NULL, sigma, eps=1e-10)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -40,7 +40,7 @@ Trimming constant for zero variances
 
 \value{
 Matrix of simulated values
-}                        
+}
 
 %\references{
 %% ~put references to the literature/web site here ~
@@ -68,7 +68,7 @@ Matrix of simulated values
 # EXAMPLE 1: Two-dimensional simulation with zero variance at dimension 1
 #############################################################################
 
-sigma <- matrix( c(0,0,0,1) , nrow=2, ncol=2)
+sigma <- matrix( c(0,0,0,1), nrow=2, ncol=2)
 miceadds::ma_rmvnorm( n=10, sigma=sigma )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

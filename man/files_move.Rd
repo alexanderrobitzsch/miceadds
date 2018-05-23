@@ -1,5 +1,5 @@
 %% File Name: files_move.Rd
-%% File Version: 0.11
+%% File Version: 0.15
 
 \name{files_move}
 \alias{files_move}
@@ -8,12 +8,12 @@
 Moves Files from One Directory to Another Directory
 }
 \description{
-Moves older (defined in alphanumeric order) files from one 
+Moves older (defined in alphanumeric order) files from one
 directory to another directory.
 }
 
 \usage{
-files_move(path1, path2, file_sep = "__", pattern = NULL)
+files_move(path1, path2, file_sep="__", pattern=NULL)
 }
 
 
@@ -63,14 +63,14 @@ Pattern in file names to be searched for
 \dontrun{
 #############################################################################
 # EXAMPLE 1: Move older files in '__ARCHIVE' directory
-#############################################################################	
+#############################################################################
 
 # specify path
 path1 <- "p:/IPN/Projects/PISA/Trend_2015/2__Data/All_Waves/"
 # specify target directory which is an archive
-path2 <- file.path( path1 , "__ARCHIVE" )
+path2 <- file.path( path1, "__ARCHIVE" )
 # move files
-files_move( path1 , path2 )
+files_move( path1, path2 )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
