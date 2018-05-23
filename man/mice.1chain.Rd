@@ -139,8 +139,8 @@ set.seed(9090)
 imp.mi1 <- miceadds::mice.1chain( nhanes, burnin=5, iter=40, Nimp=4,
     imputationMethod=rep("norm", 4 ) )
 summary(imp.mi1)       # summary of mids.1chain
-plot( imp.mi1 ) # trace plot excluding burnin iterations
-plot( imp.mi1, plot.burnin=TRUE ) # trace plot including burnin iterations
+# plot( imp.mi1 ) # trace plot excluding burnin iterations
+# plot( imp.mi1, plot.burnin=TRUE ) # trace plot including burnin iterations
 
 # select mids object
 imp.mi2 <- imp.mi1$midsobj
