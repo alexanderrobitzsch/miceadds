@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.pls2.R
-## File Version: 3.14
+## File Version: 3.15
 mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
                                 pls.impMethod="pmm",
                                 pls.print.progress=TRUE,
@@ -14,9 +14,9 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
         # INPUT                                                                     #
         # pls.facs          ... number of factors for PLS regression                #
         # pls.interactions  ... include.interactions                                #
-        #                 => type==4                                        #
+        #                 -> type==4                                        #
         # pls.quadratics    ... include quadratic terms?                            #
-        #                 => type==5                                        #
+        #                 -> type==5                                        #
         # type                 ...=6 : for these variables no interactions will be created    #
         # pls.impMethod     ... method "norm" or "pmm" or "tricube.pmm"             #
         #                           "xplsfacs" -> return predicted X PLS factors    #

@@ -1,5 +1,5 @@
 %% File Name: mice_impute_2l_lmer.Rd
-%% File Version: 0.37
+%% File Version: 0.44
 
 \name{mice_impute_2l_lmer}
 \alias{mice.impute.2l.binary}
@@ -139,15 +139,13 @@ homogeneous residual variances.
 
 The \pkg{micemd} package provides further imputation methods for the \pkg{mice}
 package for imputing multilevel data with fully conditional specification. The
-function \code{{micemd::mice.impute.2l.jomo}}
-has similar functionality like \code{[mice:mice.impute.2l.pan]{mice::mice.impute.2l.pan}}
+function \code{micemd::mice.impute.2l.jomo}
+has similar functionality like \code{\link[mice:mice.impute.2l.pan]{mice::mice.impute.2l.pan}}
 and imputes normally distributed two-level data with a Bayesian MCMC approach,
 but relies on the \pkg{jomo} package instead of the \pkg{pan} package.
-The functions
-\code{\link[mice:mice.impute.2l.lmer]{mice::mice.impute.2l.lmer}} and
-\code{{micemd::mice.impute.2l.glm.norm}}
-have similar functionality like
-\code{\link{mice.impute.2l.continuous}}
+The functions \code{\link[mice:mice.impute.2l.lmer]{mice::mice.impute.2l.lmer}} and
+\code{micemd::mice.impute.2l.glm.norm}
+have similar functionality like \code{\link{mice.impute.2l.continuous}}
 and imputes normally distributed two-level data. The function
 \code{{micemd::mice.impute.2l.glm.bin}}
 has similar functionality like \code{\link{mice.impute.2l.binary}}
@@ -165,6 +163,17 @@ package for joint multilevel imputation. See
 \code{\link[mitml:jomoImpute]{mitml::jomoImpute}} for
 wrapper functions to these packages in the \pkg{mitml}
 package.
+
+Imputation by chained equations can also be conducted in blocks of multivariate
+conditional distributions since \pkg{mice} 3.0.0 (see the \code{blocks}
+argument in \code{\link[mice:mice]{mice::mice}}). The 
+\code{\link[mitml:panImpute]{mitml::panImpute}} and 
+\code{\link[mitml:jomoImpute]{mitml::jomoImpute}} functions can be used
+with \code{\link[mice:mice]{mice::mice}} by specifying imputation
+methods \code{"panImpute"} 
+(see \code{\link[mice:mice.impute.panImpute]{mice::mice.impute.panImpute}})) and 
+\code{"jomoImpute"} 
+(see \code{\link[mice:mice.impute.jomoImpute]{mice::mice.impute.jomoImpute}})).
 }
 
 \examples{
@@ -206,16 +215,17 @@ names(impmeth) <- vars
 impmeth["y"] <- "2l.binary"
 
 #** imputation with logistic regression ('2l.binary')
-imp1 <- mice::mice( data=as.matrix(dat1), imputationMethod=impmeth,
+imp1 <- mice::mice( data=as.matrix(dat1), method=impmeth,
                 predictorMatrix=predmat, maxit=1, m=5 )
+
 #** imputation with predictive mean matching ('2l.pmm')
 impmeth["y"] <- "2l.pmm"
-imp2 <- mice::mice( data=as.matrix(dat1), imputationMethod=impmeth,
+imp2 <- mice::mice( data=as.matrix(dat1), method=impmeth,
                 predictorMatrix=predmat, maxit=1, m=5 )
 
 #** imputation with logistic regression using blme package
 blme_args <- list( "cov.prior"="invwishart")
-imp3 <- mice::mice( data=as.matrix(dat1), imputationMethod=impmeth,
+imp3 <- mice::mice( data=as.matrix(dat1), method=impmeth,
                 predictorMatrix=predmat, maxit=1, m=5,
                 blme_use=TRUE, blme_args=blme_args )
 }

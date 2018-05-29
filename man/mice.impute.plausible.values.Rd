@@ -1,5 +1,5 @@
 %% File Name: mice.impute.plausible.values.Rd
-%% File Version: 0.42
+%% File Version: 0.45
 
 \name{mice.impute.plausible.values}
 \alias{mice.impute.plausible.values}
@@ -156,7 +156,7 @@ models.
 # EXAMPLE 1: Plausible value imputation for data.ma04 | 2 scales
 #############################################################################
 
-data(data.ma04)
+data(data.ma04, package="miceadds")
 dat <- data.ma04
 
 # Scale 1 consists of items A1,...,A4
@@ -164,16 +164,11 @@ dat <- data.ma04
 dat$scale1 <- NA
 dat$scale2 <- NA
 
-# empty imputation
-imp <- mice::mice( dat, m=0, maxit=0 )
-summary(imp)
-
-# define predictors
-predM <- imp$pred
-# define imputation methods
-impMethod <- imp$method
-impMethod <- rep( "norm", length(impMethod) )
-names(impMethod) <- names( imp$method )
+#** inits imputation method and predictor matrix
+res <- miceadds::mice_inits(dat, ignore=c("group") )
+predM <- res$predictorMatrix
+impMethod <- res$method
+impMethod <- gsub("pmm", "norm", impMethod )
 
 # look at missing proportions
 colSums( is.na(dat) )
@@ -219,7 +214,7 @@ scale.values <- list( "scale2"=list( "M"=M.scale2, "SE"=SE.scale2 ) )
 
 #*** Imputation Model 1: Imputation four using parallel chains
 imp1 <- mice::mice( dat, predictorMatrix=predM, m=4, maxit=5,
-          alpha.se=alpha.se,  imputationMethod=impMethod,  allow.na=TRUE, alpha=alpha,
+          alpha.se=alpha.se, method=impMethod,  allow.na=TRUE, alpha=alpha,
           scale.values=scale.values  )
 summary(imp1)
 
@@ -228,8 +223,8 @@ dat11 <- mice::complete( imp, 1 )
 
 #*** Imputation Model 2: Imputation using one long chain
 imp2 <- miceadds::mice.1chain( dat, predictorMatrix=predM, burnin=10, iter=20, Nimp=4,
-          alpha.se=alpha.se,  imputationMethod=impMethod,  allow.na=TRUE, alpha=alpha,
-          scale.values=scale.values  )
+          alpha.se=alpha.se, method=impMethod,  allow.na=TRUE, alpha=alpha,
+          scale.values=scale.values )
 summary(imp2)
 
 #-------------
@@ -244,7 +239,7 @@ predM[ "scale2", c("V7","A1") ] <- 2
 
 # perform single imputation (m=1)
 imp <- mice::mice( dat, predictorMatrix=predM, m=1, maxit=10,
-            imputationMethod=impMethod,  allow.na=TRUE, alpha=alpha,
+            method=impMethod,  allow.na=TRUE, alpha=alpha,
             scale.values=scale.values )
 dat10 <- mice::complete(imp)
 
@@ -329,7 +324,7 @@ data.init$X2 <- X.err[,"X2"]
 
 #-- imputation using the mice and miceadds package
 imp1 <- mice::mice( as.matrix(data), predictorMatrix=predictorMatrix, m=4,
-            maxit=6, imputationMethod=imputationMethod,  allow.na=TRUE,
+            maxit=6, method=imputationMethod,  allow.na=TRUE,
             theta=theta, like=like, data.init=data.init )
 summary(imp1)
 
@@ -370,7 +365,7 @@ names(imputationMethod) <- cn
 imputationMethod["theta"] <- "plausible.values"
 
 #-- imputation in mice
-imp <- mice::mice( dat1, maxit=1, m=5, allow.na=TRUE, imputationMethod=imputationMethod,
+imp <- mice::mice( dat1, maxit=1, m=5, allow.na=TRUE, method=imputationMethod,
             scale.values=scale.values )
 summary(imp)
 

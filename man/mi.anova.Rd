@@ -1,5 +1,5 @@
 %% File Name: mi.anova.Rd
-%% File Version: 0.20
+%% File Version: 0.23
 
 \name{mi.anova}
 \alias{mi.anova}
@@ -65,6 +65,10 @@ See \code{\link[mice:pool.compare]{mice::pool.compare}} and
 \code{\link[mitml:testModels]{mitml::testModels}} for model
 comparisons based on the \eqn{D_1} statistic. The \eqn{D_2} statistic
 is also included in \code{\link[mitml:testConstraints]{mitml::testConstraints}}.
+
+The \eqn{D_1}, \eqn{D_2} and \eqn{D_3} statistics are also included in the
+\pkg{mice} package in functions \code{\link[mice:D1]{mice::D1}},
+\code{\link[mice:D2]{mice::D2}} and \code{\link[mice:D3]{mice::D3}}.
 }
 
 \examples{

@@ -1,5 +1,5 @@
 %% File Name: mice.1chain.Rd
-%% File Version: 0.33
+%% File Version: 0.37
 
 \name{mice.1chain}
 \alias{mice.1chain}
@@ -17,21 +17,16 @@ multiply impute a dataset using a long chain instead of multiple parallel chains
 which is the approach employed in \code{mice::mice}.
 }
 \usage{
-mice.1chain(data, burnin=10, iter=20, Nimp=10,
-   method=vector("character", length=ncol(data)),
-   predictorMatrix=(1 - diag(1, ncol(data))),
-   visitSequence=(1:ncol(data))[apply(is.na(data), 2, any)],
-   form=vector("character", length=ncol(data)),
-   post=vector("character", length=ncol(data)),
-   defaultMethod=c("pmm", "logreg", "polyreg", "polr"),
-   diagnostics=TRUE, printFlag=TRUE, seed=NA, imputationMethod=NULL,
-   defaultImputationMethod=NULL, data.init=NULL, ...)
+mice.1chain(data, burnin=10, iter=20, Nimp=10, method = NULL, 
+     where = NULL, visitSequence = NULL, blots = NULL, post = NULL,        
+     defaultMethod=c("pmm", "logreg", "polyreg", "polr"),
+     printFlag = TRUE, seed = NA, data.init=NULL, ...)
 
 \method{summary}{mids.1chain}(object,...)
 
 \method{print}{mids.1chain}(x, ...)
 
-\method{plot}{mids.1chain}(x,plot.burnin=FALSE, ask=TRUE, ...)
+\method{plot}{mids.1chain}(x, plot.burnin=FALSE, ask=TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -50,13 +45,13 @@ Number of imputations
   \item{method}{
 See \code{\link[mice:mice]{mice::mice}}
 }
-  \item{predictorMatrix}{
+  \item{where}{
 See \code{\link[mice:mice]{mice::mice}}
 }
   \item{visitSequence}{
 See \code{\link[mice:mice]{mice::mice}}
 }
-  \item{form}{
+  \item{blots}{
 See \code{\link[mice:mice]{mice::mice}}
 }
   \item{post}{
@@ -65,19 +60,10 @@ See \code{\link[mice:mice]{mice::mice}}
   \item{defaultMethod}{
 See \code{\link[mice:mice]{mice::mice}}
 }
-  \item{diagnostics}{
-See \code{\link[mice:mice]{mice::mice}}
-}
   \item{printFlag}{
 See \code{\link[mice:mice]{mice::mice}}
 }
   \item{seed}{
-See \code{\link[mice:mice]{mice::mice}}
-}
-  \item{imputationMethod}{
-See \code{\link[mice:mice]{mice::mice}}
-}
-  \item{defaultImputationMethod}{
 See \code{\link[mice:mice]{mice::mice}}
 }
   \item{data.init}{
@@ -137,8 +123,9 @@ set.seed(9090)
 
 # nhanes data in one chain
 imp.mi1 <- miceadds::mice.1chain( nhanes, burnin=5, iter=40, Nimp=4,
-    imputationMethod=rep("norm", 4 ) )
+                 method=rep("norm", 4 ) )
 summary(imp.mi1)       # summary of mids.1chain
+\dontrun{
 plot( imp.mi1 ) # trace plot excluding burnin iterations
 plot( imp.mi1, plot.burnin=TRUE ) # trace plot including burnin iterations
 
@@ -150,7 +137,6 @@ summary(imp.mi2)    # summary of mids
 mod <- with( imp.mi2, stats::lm( bmi ~ age ) )
 summary( mice::pool( mod ) )
 
-\dontrun{
 #############################################################################
 # EXAMPLE 2: One chain (mixed data: numeric and factor)
 #############################################################################
@@ -208,7 +194,7 @@ pm[ c( "read.migrant0", "read.migrant1"), c("hisei","paredu","female","books") ]
 
 # imputation using mice function and PLS imputation with
 # predictive mean matching method 'pmm6'
-imp <- mice::mice( dat, imputationMethod=impmethod, predictorMatrix=pm,
+imp <- mice::mice( dat, method=impmethod, predictorMatrix=pm,
             maxit=4, m=5, pls.impMethod="pmm5" )
 
 #*** Model 1: Raw score difference

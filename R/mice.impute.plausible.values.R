@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.649
+## File Version: 2.658
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0,scale.values=NULL, sig.e.miss=1000000,
@@ -10,31 +10,32 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
 {
     #*******
     # old arguments which are now excluded from the function
-    itemdiff=NULL ; item.resp=NULL ;
-    pvirt.iter=30 ; pvirt.burnin=10 ;
-    pvirt.printprogress <- TRUE
+    itemdiff <- NULL
+    item.resp <- NULL
+    pvirt.iter <- 30
+    pvirt.burnin <- 10
     pvirt.printprogress <- FALSE
 
-    #********
     #--- extract arguments
-    pos <- parent.frame(n=1)
-
+    # pos <- parent.frame(n=1)
+    pos <- parent.frame(n=2)
     res <- mice_imputation_get_states( pos=pos )
     vname <- res$vname
-    newstate <- get( "newstate", pos=pos )
-
+    newstate <- res$newstate
     if (extract_data){
         res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos )
         y <- res$y
         x <- res$x
         ry <- res$ry
         type <- res$type
-    }
+    }    
+    
+    #--- define PV methods
     pvmethod <- 0
     if ( ! is.null( scale.values[[ vname ]] )){
         pvmethod <- 3
     }
-    if ( ! is.null( like[[vname ]] )){
+    if ( ! is.null( like[[ vname ]] )){
         pvmethod <- 4
     }
     if (pvmethod==0){
@@ -66,7 +67,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                         x=X[,-1], y=y, ry=rep(TRUE,length(y)),
                         imputationWeights=imputationWeights,
                         interactions=interactions, quadratics=quadratics,
-                        pls.facs=pls.facs,  envir_pos=pos,   ... )$yimp
+                        pls.facs=pls.facs, envir_pos=pos, ... )$yimp
             X <- plsout[,-1]
         }
         #*+*+*
@@ -74,9 +75,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         # item response data matrix
         like <- as.matrix( like[[ vname ]] )
         theta <- as.matrix( theta[[ vname ]] )
-        if ( ! is.null( normal.approx[[ vname ]] ) ){
-            normal.approx <- normal.approx
-        } else {
+        if ( is.null( normal.approx[[ vname ]] ) ){
             normal.approx <- TRUE
         }
         X <- X[,-1,drop=FALSE]    # exclude intercept

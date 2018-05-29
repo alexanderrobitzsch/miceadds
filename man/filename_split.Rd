@@ -1,5 +1,5 @@
 %% File Name: filename_split.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{filename_split}
 \alias{filename_split}
@@ -16,7 +16,7 @@ The function \code{string_extract_part} extracts a part of a string.
 \usage{
 filename_split(file_name, file_sep="__", file_ext=".")
 
-string_extract_part( vec, part=1, sep="__" )
+string_extract_part( vec, part=1, sep="__", remove_empty=TRUE )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -32,6 +32,8 @@ Separator for file extension
 \item{vec}{Vector with strings}
 \item{part}{Integer indicating the part of the string to be selected}
 \item{sep}{String separator}
+\item{remove_empty}{Logical indicating whether empty entries (\code{" "}")
+should be removed.}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~

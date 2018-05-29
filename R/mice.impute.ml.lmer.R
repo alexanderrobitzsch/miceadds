@@ -1,5 +1,5 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.47
+## File Version: 0.48
 
 #########################################################################
 # main function for multilevel imputation with lme4 with several levels
@@ -8,7 +8,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
                 glmer.warnings=TRUE, model="continuous", donors=3, match_sampled_pars=FALSE,
                 blme_use=FALSE, blme_args=NULL, pls.facs=0, interactions=NULL,
-                quadratics=NULL,    min.int.cor=0, min.all.cor=0,
+                quadratics=NULL, min.int.cor=0, min.all.cor=0,
                 pls.print.progress=FALSE,  ... )
 {
 

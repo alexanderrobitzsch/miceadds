@@ -1,5 +1,5 @@
 %% File Name: mice.nmi.Rd
-%% File Version: 0.19
+%% File Version: 0.21
 
 \name{mice.nmi}
 \alias{mice.nmi}
@@ -105,13 +105,13 @@ predM[, vars_unused ] <- 0
 
 #***************
 # (1) nested multiple imputation using mice
-imp1 <- miceadds::mice.nmi( datlist, imputationMethod=impMethod, predictorMatrix=predM,
+imp1 <- miceadds::mice.nmi( datlist, method=impMethod, predictorMatrix=predM,
                 m=4, maxit=3 )
 summary(imp1)
 
 #***************
 # (2) nested multiple imputation using mice.1chain
-imp2 <- miceadds::mice.nmi( datlist, imputationMethod=impMethod, predictorMatrix=predM,
+imp2 <- miceadds::mice.nmi( datlist, method=impMethod, predictorMatrix=predM,
             Nimp=4, burnin=10,iter=22, type="mice.1chain")
 summary(imp2)
 }

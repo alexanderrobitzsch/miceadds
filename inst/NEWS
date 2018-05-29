@@ -43,14 +43,23 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.12  |  2018-05-22  |  Last: miceadds 2.12-3
+VERSIONS miceadds 2.12  |  2018-05-29  |  Last: miceadds 2.12-15
 ---------------------------------------------------------------------
 
-NOTE  * internal restructure functions NMIwaldtest(), MIwaldtest()
+NOTE  * internal restructure of functions NMIwaldtest(), MIwaldtest()
+FIXED * fixed broken functions due to changes in recent CRAN
+        version mice 3.0.0 (communicated by Stef van Buuren):
+        mice.impute.plausible.values(), mice.1chain(), 
+ADDED * added utility function mice_inits(), ma_exists_get(),
+        ma_exists()
+NOTE  * included argument 'remove_empty' in string_extract_part()
+NOTE  * included argument 'cluster_var' for specifying clusteer-level
+        variable in mice.impute.2lonly.function()
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: mice.impute.plausible.values (1),
+        mice_inits (1), 
 
 
 
@@ -75,7 +84,7 @@ FIXED * fixed a bug in mice.impute.pmm6() which caused installation
         problems (thanks to Stef van Buuren)
 NOTE  * changed output in datalist2mids() due to changes of data type
         of 'visitSequence' in mice (>= 3.0) (requested by Stef 
-        van Buuren; Github miceadds 6#issuecomment-390218252)
+        van Buuren; Github miceadds ...\6#issuecomment-390218252)
 NOTE  * handle also character input of visit sequence in 
         visitSequence.determine() for coming changes in mice (>= 3.0)
 

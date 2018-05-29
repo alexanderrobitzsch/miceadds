@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.25
+%% File Version: 0.26
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -170,7 +170,7 @@ for several links to other packages which enable multilevel imputation.
 # EXAMPLE 1: Imputation of three-level data with normally distributed residuals
 #############################################################################
 
-data(data.ma07)
+data(data.ma07, package="miceadds")
 dat <- data.ma07
 
 # variables at level 1 (identifier id1): x1 (some missings), x2 (complete)
@@ -219,7 +219,7 @@ random_slopes[["y1"]] <- list( "id3"=c("z1") )
 # and only a random intercept is used in the imputation model
 
 #----- imputation in mice
-imp1 <- mice::mice( dat, maxit=10, m=5, imputationMethod=imputationMethod,
+imp1 <- mice::mice( dat, maxit=10, m=5, method=imputationMethod,
             predictorMatrix=predmat, levels_id=levels_id,  random_slopes=random_slopes,
             variables_levels=variables_levels )
 summary(imp1)
@@ -237,7 +237,7 @@ random_slopes <- NULL
 interactions <- list( "x1"=z2, "y1"=z2)
 
 #----- imputation in mice
-imp2 <- mice::mice( dat, imputationMethod=imputationMethod, predictorMatrix=predmat,
+imp2 <- mice::mice( dat, method=imputationMethod, predictorMatrix=predmat,
                 levels_id=levels_id, random_slopes=random_slopes,
                 variables_levels=variables_levels, model=model, interactions=interactions)
 summary(imp2)
