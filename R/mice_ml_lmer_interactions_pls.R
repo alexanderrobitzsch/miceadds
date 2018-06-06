@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_interactions_pls.R
-## File Version: 0.05
+## File Version: 0.07
 
 mice_ml_lmer_interactions_pls <- function(type, interactions, quadratics,
         y,ry, x, pls.facs,     pls.print.progress, min.int.cor, pos,

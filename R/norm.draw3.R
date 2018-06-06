@@ -1,5 +1,5 @@
 ## File Name: norm.draw3.R
-## File Version: 0.12
+## File Version: 0.16
 
 
 
@@ -11,8 +11,10 @@
     xobs <- x[ry, ]
     yobs <- y[ry]
     xtx <- crossprod( xobs )
-    pen <- ridge * xtx
+    # pen <- ridge * xtx
+    pen <- rep( ridge, ncol(xtx) )
     v <- solve(xtx + diag(pen) )
+    # v <- MASS::ginv( xtx + diag(pen) )
     coef <- v %*%  crossprod(xobs,yobs)
     residuals <- yobs - xobs %*% coef
     df_r <- sum(ry) - ncol(x)

@@ -1,5 +1,5 @@
 %% File Name: datlist_create.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{datlist_create}
 \alias{datlist_create}
@@ -149,7 +149,7 @@ diag(predM) <- 0
 predM[, vars_unused ] <- 0
 
 # object of class nmi
-imp1 <- miceadds::mice.nmi( datlist, imputationMethod=impMethod, predictorMatrix=predM,
+imp1 <- miceadds::mice.nmi( datlist, method=impMethod, predictorMatrix=predM,
                 m=4, maxit=3 )
 # object of class nested.datlist
 imp2 <- miceadds::mids2datlist(imp1)

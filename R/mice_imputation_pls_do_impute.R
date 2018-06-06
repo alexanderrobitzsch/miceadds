@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.07
+## File Version: 0.09
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
@@ -41,7 +41,6 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     if( pls.print.progress  ){
         cat( "\n", paste( "Imputation Method ", pls.impMethod, sep=""), "\n" )
     }
-
     #-- apply imputation routine
     if ( do_imputation){
         args <- pls.impMethodArgs
@@ -50,9 +49,9 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
         args$ry <- ry
         args$type <- type
         impMethod <- paste0("mice.impute.", pls.impMethod)
+        state <- ma_exists_get(x='state', pos=parent.frame(n=2) )
         x1 <- do.call( impMethod, args )
     }
-
     #-- no imputation
     if ( pls.impMethod=="xplsfacs" ){
         x1 <- x

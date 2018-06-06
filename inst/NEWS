@@ -43,25 +43,35 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.12  |  2018-05-29  |  Last: miceadds 2.12-15
+VERSIONS miceadds 2.13  |  2018-06-06  |  Last: miceadds 2.13-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 2.12  |  2018-06-06  |  Last: miceadds 2.12-24
 ---------------------------------------------------------------------
 
 NOTE  * internal restructure of functions NMIwaldtest(), MIwaldtest()
 FIXED * fixed broken functions due to changes in recent CRAN
         version mice 3.0.0 (communicated by Stef van Buuren):
         mice.impute.plausible.values(), mice.1chain(), 
+        mice.impute.ml.lmer(), mice.impute.2l.pls2()
 ADDED * added utility function mice_inits(), ma_exists_get(),
         ma_exists()
 NOTE  * included argument 'remove_empty' in string_extract_part()
-NOTE  * included argument 'cluster_var' for specifying clusteer-level
+NOTE  * included argument 'cluster_var' for specifying cluster-level
         variable in mice.impute.2lonly.function()
-
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: mice.impute.plausible.values (1),
-        mice_inits (1), 
-
-
+        mice_inits (1)
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.11  |  2018-05-21  |  Last: miceadds 2.11-87

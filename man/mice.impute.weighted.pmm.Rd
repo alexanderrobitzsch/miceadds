@@ -1,5 +1,5 @@
 %% File Name: mice.impute.weighted.pmm.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{mice.impute.weighted.pmm}
 \alias{mice.impute.weighted.pmm}
@@ -90,7 +90,7 @@ dat <- as.matrix(data.ma01)
 dat <- dat[ 1:1000, ]
 
 # empty imputation
-imp0 <- mice::mice( dat, m=0, maxit=0)
+imp0 <- mice::mice( dat, maxit=0)
 
 # redefine imputation methods
 meth <- imp0$method
@@ -100,7 +100,7 @@ meth[ c("paredu", "books", "migrant" ) ] <- "weighted.norm"
 pm <- imp0$predictorMatrix
 pm[, 1:3 ] <- 0
 # do imputation
-imp <- mice::mice( dat, predictorMatrix=pm, imputationMethod=meth,
+imp <- mice::mice( dat, predictorMatrix=pm, method=meth,
            imputationWeights=dat[,"studwgt"], m=3, maxit=5)
 }
 }

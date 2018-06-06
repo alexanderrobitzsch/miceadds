@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.pls2.R
-## File Version: 3.15
+## File Version: 3.16
 mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
                                 pls.impMethod="pmm",
                                 pls.print.progress=TRUE,
@@ -34,12 +34,12 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
         time1 <- Sys.time()
         n <- NULL
         imputationWeights  <- nrow(x) * imputationWeights / sum(imputationWeights)
-        vname <- get("vname", pos=envir_pos ) # get variable name
+        # vname <- get("vname", pos=envir_pos ) # get variable name
+        vname <- ma_exists_get(x='vyame', pos=envir_pos)
+        
+        # imp.temp <- get( "newstate", pos=envir_pos )
+        imp.temp <- ma_exists_get(x='newstate', pos=envir_pos)
 
-        imp.temp <- get( "newstate", pos=envir_pos )
-
-#          newstate <- list(it=k,  im=i,  co=j, dep=vname,  meth=theMethod,
-#                     log=oldstate$log)
         # extract PLS factors
         pls.facs <- mice_imputation_extract_list_arguments( micearg=pls.facs,
                            vname=vname, miceargdefault=20 )

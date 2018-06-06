@@ -1,5 +1,5 @@
 %% File Name: complete.miceadds.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{complete.miceadds}
 \alias{complete.mids.nmi}
@@ -77,7 +77,7 @@ datlist <- data.timss2
 M <- length(datlist)
 for (ll in 1:M){
     datlist[[ll]] <- datlist[[ll]][, -c(1:4) ]
-                }
+}
 
 #***************
 # (1) nested multiple imputation using mice
@@ -103,7 +103,7 @@ data(nhanes, package="mice")
 
 # nhanes data in one chain
 imp1 <- miceadds::mice.1chain( nhanes, burnin=5, iter=40, Nimp=4,
-          imputationMethod=rep("norm", 4 ) )
+            method=rep("norm", 4 ) )
 
 # extract first imputed dataset
 dati1 <- miceadds::complete.mids.1chain( imp1, action=1 )

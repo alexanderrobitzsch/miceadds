@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.26
+%% File Version: 0.28
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -198,9 +198,9 @@ predmat[, c("id2", "id3") ] <- 0
 predmat[ "z1", "id3" ] <- -2
 
 #----- specify imputation methods
-imputationMethod <- imp0$method
-imputationMethod[c("x1","y1")] <- "ml.lmer"
-imputationMethod[c("z1")] <- "2lonly.norm"
+method <- imp0$method
+method[c("x1","y1")] <- "ml.lmer"
+method[c("z1")] <- "2lonly.norm"
 
 #----- specify hierarchical structure of imputation models
 levels_id <- list()
@@ -212,14 +212,12 @@ levels_id[["y1"]] <- c("id3")
 #----- specify random slopes
 random_slopes <- list()
 #** random slopes for variable x1
-random_slopes[["x1"]] <- list( "id2"=c("x2","y1"), "id3"=c("y1") )
-#** random slopes for variable y1
-random_slopes[["y1"]] <- list( "id3"=c("z1") )
+random_slopes[["x1"]] <- list( "id2"=c("x2"), "id3"=c("y1") )
 # if no random slopes should be specified, the corresponding entry can be left empty
 # and only a random intercept is used in the imputation model
 
 #----- imputation in mice
-imp1 <- mice::mice( dat, maxit=10, m=5, method=imputationMethod,
+imp1 <- mice::mice( dat, maxit=10, m=5, method=method,
             predictorMatrix=predmat, levels_id=levels_id,  random_slopes=random_slopes,
             variables_levels=variables_levels )
 summary(imp1)
@@ -237,7 +235,7 @@ random_slopes <- NULL
 interactions <- list( "x1"=z2, "y1"=z2)
 
 #----- imputation in mice
-imp2 <- mice::mice( dat, method=imputationMethod, predictorMatrix=predmat,
+imp2 <- mice::mice( dat, method=method, predictorMatrix=predmat,
                 levels_id=levels_id, random_slopes=random_slopes,
                 variables_levels=variables_levels, model=model, interactions=interactions)
 summary(imp2)

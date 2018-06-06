@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.contextual.pmm.Rd
-%% File Version: 0.26
+%% File Version: 0.27
 
 \name{mice.impute.2l.contextual.pmm}
 \alias{mice.impute.2l.contextual.pmm}
@@ -96,7 +96,7 @@ data(data.ma05)
 dat <- data.ma05
 
 # empty imputation
-imp0 <- mice::mice( dat, m=0, maxit=0 )
+imp0 <- mice::mice( dat, maxit=0 )
 summary(imp0)
 
 # define predictor matrix

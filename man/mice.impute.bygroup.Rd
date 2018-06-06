@@ -1,5 +1,5 @@
 %% File Name: mice.impute.bygroup.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{mice.impute.bygroup}
 \alias{mice.impute.bygroup}
@@ -73,17 +73,17 @@ predictorMatrix <- matrix( 1, nrow=V, ncol=V)
 diag(predictorMatrix) <- 0
 rownames(predictorMatrix) <- colnames(predictorMatrix) <- colnames(dat)
 predictorMatrix[, c("idstud", "studwgt","urban" ) ] <- 0
-imputationMethod <- rep("norm", V)
-names(imputationMethod) <- colnames(dat)
+method <- rep("norm", V)
+names(method) <- colnames(dat)
 
 #** groupwise imputation of variable books
-imputationMethod["books"] <- "bygroup"
+method["books"] <- "bygroup"
 # specify name of the grouping variable ('idschool') and imputation method ('norm')
 group <- list( "books"="idschool" )
 imputationFunction <- list("books"="norm" )
 
 #** conduct multiple imputation in mice
-imp <- mice::mice( dat, imputationMethod=imputationMethod, predictorMatrix=predictorMatrix,
+imp <- mice::mice( dat, method=method, predictorMatrix=predictorMatrix,
             m=1, maxit=1, group=group, imputationFunction=imputationFunction )
 }
 }

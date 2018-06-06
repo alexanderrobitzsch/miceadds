@@ -1,5 +1,5 @@
 %% File Name: visitSequence.determine.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{visitSequence.determine}
 \alias{visitSequence.determine}
@@ -79,17 +79,17 @@ VV <- nrow(dfr.impMeth)
 for (vv in 1:VV){
     impMethod[ dfr.impMeth[vv,1] ] <- dfr.impMeth[vv,2]
     dat[, dfr.impMeth[vv,1] ] <- NA
-                }
+}
 
 # run empty imputation model to obtain initial vector of visit sequence
-imp0 <- mice::mice( dat, m=1, imputationMethod=impMethod, maxit=0 )
+imp0 <- mice::mice( dat, m=1, method=impMethod, maxit=0 )
 imp0$vis
 
 # update visit sequence
 vis1 <- miceadds::visitSequence.determine( impMethod=impMethod, vis=imp0$vis, data=dat)
 
 # imputation with updated visit sequence
-imp <- mice::mice( dat, m=1, imputationMethod=impMethod, visitSequence=vis1, maxit=2)
+imp <- mice::mice( dat, m=1, method=impMethod, visitSequence=vis1, maxit=2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

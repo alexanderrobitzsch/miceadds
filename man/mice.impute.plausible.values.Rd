@@ -1,5 +1,5 @@
 %% File Name: mice.impute.plausible.values.Rd
-%% File Version: 0.45
+%% File Version: 0.47
 
 \name{mice.impute.plausible.values}
 \alias{mice.impute.plausible.values}
@@ -308,9 +308,9 @@ vars <- colnames(data)
 V <- length(vars)
 predictorMatrix <- 1 - diag(V)
 rownames(predictorMatrix) <- colnames(predictorMatrix) <- vars
-imputationMethod <- rep("norm", V )
-names(imputationMethod) <- vars
-imputationMethod[c("PVA","X2")] <- "plausible.values"
+method <- rep("norm", V )
+names(method) <- vars
+method[c("PVA","X2")] <- "plausible.values"
 
 #-- create argument lists for plausible value imputation
 # likelihood and theta grid of plausible value derived from IRT model
@@ -324,7 +324,7 @@ data.init$X2 <- X.err[,"X2"]
 
 #-- imputation using the mice and miceadds package
 imp1 <- mice::mice( as.matrix(data), predictorMatrix=predictorMatrix, m=4,
-            maxit=6, method=imputationMethod,  allow.na=TRUE,
+            maxit=6, method=method,  allow.na=TRUE,
             theta=theta, like=like, data.init=data.init )
 summary(imp1)
 
@@ -360,12 +360,12 @@ dat1$y <- NULL
 
 cn <- colnames(dat1)
 V <- length(cn)
-imputationMethod <- rep("", length(cn) )
-names(imputationMethod) <- cn
-imputationMethod["theta"] <- "plausible.values"
+method <- rep("", length(cn) )
+names(method) <- cn
+method["theta"] <- "plausible.values"
 
 #-- imputation in mice
-imp <- mice::mice( dat1, maxit=1, m=5, allow.na=TRUE, method=imputationMethod,
+imp <- mice::mice( dat1, maxit=1, m=5, allow.na=TRUE, method=method,
             scale.values=scale.values )
 summary(imp)
 

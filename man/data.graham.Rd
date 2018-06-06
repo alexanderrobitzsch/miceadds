@@ -1,5 +1,5 @@
 %% File Name: data.graham.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{data.graham}
 \alias{data.graham}
@@ -181,7 +181,7 @@ M <- 7  # number of imputations
 impM <- rep("norm", V)
 names(impM) <- vars
 # mice imputation
-imp1a <- mice::mice( dat, imputationMethod=impM, m=M, maxit=4 )
+imp1a <- mice::mice( dat, method=impM, m=M, maxit=4 )
 summary(imp1a)
 # convert into a list of datasets
 datlist1a <- miceadds::mids2datlist(imp1a)

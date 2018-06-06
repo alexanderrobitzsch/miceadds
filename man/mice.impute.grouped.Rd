@@ -1,5 +1,5 @@
 %% File Name: mice.impute.grouped.Rd
-%% File Version: 0.14
+%% File Version: 0.16
 
 \name{mice.impute.grouped}
 \alias{mice.impute.grouped}
@@ -92,7 +92,7 @@ low <- list("FC_imp"=data$FC_low )
 upp <- list("FC_imp"=data$FC_upp )
 
 # perform imputation
-imp <- mice::mice( data, imputationMethod=impM, predictorMatrix=predM,
+imp <- mice::mice( data, method=impM, predictorMatrix=predM,
         m=1, maxit=3, allow.na=TRUE,  low=low, upp=upp)
 head( mice::complete(imp))
 }

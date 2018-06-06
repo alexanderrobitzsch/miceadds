@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.32
+%% File Version: 0.33
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -136,7 +136,7 @@ dat <- data.ma05
 
 # imputation of the dataset: use six imputations
 resp <- dat[, - c(1:2) ]
-imp <- mice::mice( resp, imputationMethod="norm", maxit=3, m=6 )
+imp <- mice::mice( resp, method="norm", maxit=3, m=6 )
 datlist <- miceadds::mids2datlist( imp )
 
 # linear regression with cluster robust standard errors

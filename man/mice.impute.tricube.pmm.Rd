@@ -1,5 +1,5 @@
 %% File Name: mice.impute.tricube.pmm.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{mice.impute.tricube.pmm}
 \alias{mice.impute.tricube.pmm}
@@ -83,19 +83,19 @@ set.seed(9090)
 #*** Model 1: Use default of tricube predictive mean matching
 varnames <- colnames(nhanes)
 VV <- length(varnames)
-imputationMethod <- rep("tricube.pmm2", VV )
-names(imputationMethod) <- varnames
+method <- rep("tricube.pmm2", VV )
+names(method) <- varnames
 # imputation with mice
-imp.mi1 <- mice::mice( nhanes, m=5, maxit=4, imputationMethod=imputationMethod )
+imp.mi1 <- mice::mice( nhanes, m=5, maxit=4, method=method )
 
 #*** Model 2: use item-specific imputation methods
-iM2 <- imputationMethod
+iM2 <- method
 iM2["bmi"] <- "pmm6"
 # use tricube.pmm2 for hyp and chl
 # select different scale parameters for these variables
 tricube.pmm.scale1 <- list( "hyp"=.15, "chl"=.30 )
 imp.mi2 <- miceadds::mice.1chain( nhanes, burnin=5, iter=20, Nimp=4,
-    imputationMethod=iM2, tricube.pmm.scale=tricube.pmm.scale1  )
+    method=iM2, tricube.pmm.scale=tricube.pmm.scale1  )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

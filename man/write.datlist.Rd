@@ -1,5 +1,5 @@
 %% File Name: write.datlist.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{write.datlist}
 \alias{write.datlist}
@@ -103,8 +103,7 @@ impMeth <- imp0$method
 impMeth[ impMeth=="pmm" ] <- "norm"
 
 # do imputations in mice
-imp <- mice::mice( dat, predictorMatrix=predM, imputationMethod=impMeth,
-            m=3, maxit=4 )
+imp <- mice::mice( dat, predictorMatrix=predM, method=impMeth, m=3, maxit=4 )
 
 # write imputed data in format "csv2" and round after 4 digits
 write.datlist( datlist=imp, name="mice_imp_csv2", round=4 )

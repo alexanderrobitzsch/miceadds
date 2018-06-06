@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.latentgroupmean.ml.Rd
-%% File Version: 1.27
+%% File Version: 1.29
 
 \name{mice.impute.2l.latentgroupmean.ml}
 \alias{mice.impute.2l.latentgroupmean.ml}
@@ -147,7 +147,7 @@ dat$M.Mscore <- NA
 dat$LM.Mscore <- NA    #=> LM: latent group mean
 
 # empty imputation
-imp <- mice( dat, m=0, maxit=0 )
+imp <- mice( dat, maxit=0 )
 summary(imp)
 
 # define predictor matrix
@@ -207,7 +207,7 @@ predM[ "LM.Mscore", c( "Dscore", "sprengel" ) ] <- 1
 
 # do imputations
 imp <- mice::mice( dat, predictorMatrix=predM, m=3,  maxit=4,
-         imputationMethod=impMethod, allow.na=TRUE, pan.iter=100)
+         method=impMethod, allow.na=TRUE, pan.iter=100)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

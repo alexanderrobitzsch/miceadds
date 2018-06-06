@@ -1,12 +1,12 @@
 ## File Name: mice.impute.2lonly.function.R
-## File Version: 0.18
+## File Version: 0.21
 
 #******************************************
 # general imputation function at level 2
 mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction, 
         cluster_var, ... )
 {
-    pos <- parent.frame(n=1)
+    pos <- parent.frame(n=2)
     #--- extract arguments
     res <- mice_imputation_get_states(pos=pos)
     vname <- res$vname    
@@ -24,7 +24,7 @@ mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction,
             stop( "No cluster variable!\n")
         }
         warning( paste0( "Cluster variables for '2lonly.function' should be\n",
-                        "  specified with 'cluster_var' argument.\n",
+                        "  specified with the 'cluster_var' argument.\n",
                         "  'type=-2' is deprecated for this function.") )
         clusterx <- x[,type==-2 ]
     }    

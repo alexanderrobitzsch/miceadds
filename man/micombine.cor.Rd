@@ -1,5 +1,5 @@
 %% File Name: micombine.cor.Rd
-%% File Version: 0.36
+%% File Version: 0.37
 
 \name{micombine.cor}
 \alias{micombine.cor}
@@ -79,7 +79,7 @@ set.seed(9090)
 
 # nhanes data in one chain
 imp.mi <- miceadds::mice.1chain( nhanes, burnin=5, iter=20, Nimp=4,
-                  imputationMethod=rep("norm", 4 ) )
+                  method=rep("norm", 4 ) )
 # correlation coefficients of variables 4, 2 and 3 (indexed in nhanes data)
 res <- miceadds::micombine.cor(mi.res=imp.mi, variables=c(4,2,3) )
   ##     variable1 variable2       r    rse fisher_r fisher_rse    fmi       t      p
@@ -109,7 +109,7 @@ library(psych)
 library(mitools)
 
 # imputing data
-imp1 <- mice::mice( nhanes,  imputationMethod=rep("norm", 4 ) )
+imp1 <- mice::mice( nhanes,  method=rep("norm", 4 ) )
 summary(imp1)
 
 #*** Pearson correlation

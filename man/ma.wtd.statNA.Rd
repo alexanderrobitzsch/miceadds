@@ -1,5 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
-%% File Version: 1.48
+%% File Version: 1.51
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}
@@ -148,7 +148,7 @@ dat <- data.ma05
 # do imputations
 resp <- dat[, - c(1:2) ]
 # object of class mids
-imp <- mice::mice( resp, imputationMethod="norm", maxit=3, m=5 )
+imp <- mice::mice( resp, method="norm", maxit=3, m=5 )
 # object of class datlist
 datlist <- miceadds::mids2datlist( imp )
 # object of class imputationList
@@ -188,7 +188,7 @@ diag(predM) <- 0
 predM[, vars_unused ] <- 0
 
 # object of class mids.nmi
-imp1 <- miceadds::mice.nmi( datlist, imputationMethod=impMethod, predictorMatrix=predM,
+imp1 <- miceadds::mice.nmi( datlist, method=impMethod, predictorMatrix=predM,
                 m=4, maxit=3 )
 # object of class nested.datlist
 datlist <- miceadds::mids2datlist(imp1)

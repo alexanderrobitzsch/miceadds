@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.30
+%% File Version: 2.32
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -178,19 +178,19 @@ pls.impMethodArgs <- list( "IN1"=list( "donors"=10 ),
                            "IN2"=list( "ridge2"=1E-4 ) )
 
 # Model 1: Three parallel chains
-imp1 <- mice::mice(data=dat, imputationMethod=impMethod,
+imp1 <- mice::mice(data=dat, method=impMethod,
      m=3, maxit=5, predictorMatrix=predictorMatrix,
      pls.facs=pls.facs, # number of PLS factors
      pls.impMethod=pls.impMethod,  # Imputation Method in PLS imputation
      pls.impMethodArgs=pls.impMethodArgs, # arguments for imputation method
-     pls.print.progress=TRUE )
+     pls.print.progress=TRUE, ls.meth="ridge" )
 summary(imp1)
 
 # Model 2: One long chain
-imp2 <- miceadds::mice.1chain(data=dat, imputationMethod=impMethod,
+imp2 <- miceadds::mice.1chain(data=dat, method=impMethod,
      burnin=10, iter=21, Nimp=3, predictorMatrix=predictorMatrix,
      pls.facs=pls.facs, pls.impMethod=pls.impMethod,
-     pls.impMethodArgs=pls.impMethodArgs )
+     pls.impMethodArgs=pls.impMethodArgs, ls.meth="ridge" )
 summary(imp2)
 }
 }
