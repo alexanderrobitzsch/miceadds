@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_multilevel_mcmc.cpp
-//// File Version: 0.732
+//// File Version: 0.734
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -19,7 +19,7 @@ using namespace arma;
 
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_compute_xtx
-// [[RcppNOexport]]
+// [[Rcpp::export]]
 arma::mat miceadds_rcpp_ml_mcmc_compute_xtx( arma::mat X)
 {
     int n=X.n_rows;

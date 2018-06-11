@@ -24,6 +24,25 @@ namespace miceadds {
         }
     }
 
+    inline arma::mat miceadds_rcpp_ml_mcmc_compute_xtx(arma::mat X) {
+        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_compute_xtx)(SEXP);
+        static Ptr_miceadds_rcpp_ml_mcmc_compute_xtx p_miceadds_rcpp_ml_mcmc_compute_xtx = NULL;
+        if (p_miceadds_rcpp_ml_mcmc_compute_xtx == NULL) {
+            validateSignature("arma::mat(*miceadds_rcpp_ml_mcmc_compute_xtx)(arma::mat)");
+            p_miceadds_rcpp_ml_mcmc_compute_xtx = (Ptr_miceadds_rcpp_ml_mcmc_compute_xtx)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_ml_mcmc_compute_xtx");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_compute_xtx(Shield<SEXP>(Rcpp::wrap(X)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<arma::mat >(rcpp_result_gen);
+    }
+
     inline arma::mat miceadds_rcpp_ml_mcmc_compute_ztz(arma::mat Z, Rcpp::IntegerVector idcluster, int ncluster) {
         typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_compute_ztz)(SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_ml_mcmc_compute_ztz p_miceadds_rcpp_ml_mcmc_compute_ztz = NULL;

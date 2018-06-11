@@ -1,17 +1,19 @@
 %% File Name: GroupMean.Rd
-%% File Version: 0.25
+%% File Version: 0.31
 
 \name{GroupMean}
 \alias{GroupMean}
 \alias{GroupSum}
 \alias{GroupSD}
+\alias{gm}
+\alias{cwc}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Calculation of Groupwise Descriptive Statistics for Matrices
 }
 \description{
-Calculates some groupwise descriptive statistics
+Calculates some groupwise descriptive statistics.
 }
 \usage{
 GroupMean(data, group, weights=NULL, extend=FALSE)
@@ -19,6 +21,12 @@ GroupMean(data, group, weights=NULL, extend=FALSE)
 GroupSum(data, group, weights=NULL, extend=FALSE)
 
 GroupSD(data, group, weights=NULL, extend=FALSE)
+
+# group mean of a variable
+gm(y, cluster)
+
+# centering within clusters
+cwc(y, cluster)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -36,7 +44,7 @@ should be extended to the original dimensions of the dataset.}
 %%  ~~ If necessary, more details than the description above ~~
 %}
 \value{
-A data frame with groupwise calculated statistics
+A data frame or a vector with groupwise calculated statistics
 }
 %\references{
 %% ~put references to the literature/web site here ~
@@ -61,7 +69,7 @@ A data frame with groupwise calculated statistics
 # EXAMPLE 1: Group means and SDs data.ma02
 #############################################################################
 
-data( data.ma02 )
+data(data.ma02, package="miceadds" )
 dat <- data.ma02[[1]] # select first dataset
 
 #--- group means for read and math
@@ -84,6 +92,22 @@ stats::ave( dat[, "read" ], dat$idschool, FUN=mean )
 GroupSD( dat[, c("read","math") ], group=dat$idschool)[1:10,]
 # using aggregate
 stats::aggregate(  dat[, c("read","math") ], list(dat$idschool), sd )[1:10,]
+
+#############################################################################
+# EXAMPLE 2: Calculating group means and group mean centering
+#############################################################################
+
+data(data.ma07, package="miceadds")
+dat <- data.ma07
+
+# compute group means
+miceadds::gm( dat$x1 , dat$id2 )
+# centering within clusters
+miceadds::cwc( dat$x1 , dat$id2 )
+
+# evaluate formula with model.matrix
+X <- model.matrix( ~ I( miceadds::cwc(x1, id2) ) + I( miceadds::gm(x1,id2) ), data = dat )
+head(X)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

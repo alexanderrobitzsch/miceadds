@@ -1,9 +1,10 @@
 %% File Name: Rfunction_include_argument_values.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 \name{Rfunction_include_argument_values}
 \alias{Rfunction_include_argument_values}
 \alias{Rfunction_output_list_result_function}
+\alias{Rfunction}
 
 
 

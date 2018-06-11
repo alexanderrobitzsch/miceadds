@@ -43,13 +43,21 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.13  |  2018-06-06  |  Last: miceadds 2.13-1
+VERSIONS miceadds 2.13  |  2018-06-11  |  Last: miceadds 2.13-8
 ---------------------------------------------------------------------
 
-xxxx  *
+ADDED * included group mean function gm() and centering around
+        group mean function cwc()
+NOTE  * included utility functions ma_lme4_formula_terms() and 
+        ma_lme4_formula_design_matrices() for handling lme4 formulas 
+        and generating design matrices for mixed effects models
+FIXED * fixed bug in mice.impute.weighted.norm() and ...pmm()
+        due recent changes in mice 3.0
+
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: GroupMean (2),
+        ma_lme4_formula_terms (1,2)
 
 
 
