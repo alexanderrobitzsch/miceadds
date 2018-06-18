@@ -1,11 +1,11 @@
 ## File Name: mice_imputation_get_states.R
-## File Version: 0.23
+## File Version: 0.24
 
 mice_imputation_get_states <- function( pos=parent.frame(n=1), n_index=1:8 )
 {
     if ( is.null(pos) ){
         pos <- parent.frame(n=1)
-    }    
+    }
     #-- newstate
     newstate <- ma_exists_get(x='newstate', pos=pos, n_index=n_index )
     #-- vname

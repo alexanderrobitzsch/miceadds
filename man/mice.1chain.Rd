@@ -1,5 +1,5 @@
 %% File Name: mice.1chain.Rd
-%% File Version: 0.37
+%% File Version: 0.40
 
 \name{mice.1chain}
 \alias{mice.1chain}
@@ -17,10 +17,10 @@ multiply impute a dataset using a long chain instead of multiple parallel chains
 which is the approach employed in \code{mice::mice}.
 }
 \usage{
-mice.1chain(data, burnin=10, iter=20, Nimp=10, method = NULL, 
-     where = NULL, visitSequence = NULL, blots = NULL, post = NULL,        
+mice.1chain(data, burnin=10, iter=20, Nimp=10, method=NULL,
+     where=NULL, visitSequence=NULL, blots=NULL, post=NULL,
      defaultMethod=c("pmm", "logreg", "polyreg", "polr"),
-     printFlag = TRUE, seed = NA, data.init=NULL, ...)
+     printFlag=TRUE, seed=NA, data.init=NULL, ...)
 
 \method{summary}{mids.1chain}(object,...)
 

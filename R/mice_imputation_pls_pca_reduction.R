@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_pca_reduction.R
-## File Version: 0.05
+## File Version: 0.06
 
 
 mice_imputation_pls_pca_reduction <- function(x, pcamaxcols,

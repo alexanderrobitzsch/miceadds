@@ -1,17 +1,19 @@
 %% File Name: ma_lme4_formula_terms.Rd
-%% File Version: 0.05
+%% File Version: 0.08
 
 \name{ma_lme4_formula}
 \alias{ma_lme4_formula}
 \alias{ma_lme4_formula_terms}
+\alias{ma_lme4_formula_design_matrices}
+
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Utility Functions for Working with \pkg{lme4} Formula Objects
 }
 \description{
 Utility functions for working with \pkg{lme4} formula objects. The function
-\code{ma_lme4_formula_terms} decomposes an \pkg{lme4} formula into several 
-parts for further processing. 
+\code{ma_lme4_formula_terms} decomposes an \pkg{lme4} formula into several
+parts for further processing.
 }
 \usage{
 ma_lme4_formula_terms(formula)
@@ -53,13 +55,13 @@ List with several entries
 #############################################################################
 
 #*** formula for a multilevel model
-formula <- y ~ I( cwc(x, idcluster)) + z + I(z^2) + I( gm(x, idcluster) ) + w +
+formula <- y ~ I( miceadds::cwc(x, idcluster)) + z + I(z^2) + I( miceadds::gm(x, idcluster) ) + w +
                         ( x + I(x^2) | idcluster)  + (0 +  w | idcluster ) +
                         ( 0 + I(as.factor(f)) | idcluster)
 miceadds::ma_lme4_formula_terms(formula)
 
 #*** formula for a single level model
-formula2 <- y ~ I( cwc(x, idcluster)) + z + I(z^2) + I( gm(x, idcluster) ) + w 
+formula2 <- y ~ I( miceadds::cwc(x, idcluster)) + z + I(z^2) + I( miceadds::gm(x, idcluster) ) + w
 miceadds::ma_lme4_formula_terms(formula2)
 
 #############################################################################

@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.658
+## File Version: 2.659
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0,scale.values=NULL, sig.e.miss=1000000,
@@ -28,8 +28,8 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         x <- res$x
         ry <- res$ry
         type <- res$type
-    }    
-    
+    }
+
     #--- define PV methods
     pvmethod <- 0
     if ( ! is.null( scale.values[[ vname ]] )){

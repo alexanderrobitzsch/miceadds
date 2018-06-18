@@ -1,5 +1,5 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.53
+## File Version: 0.54
 
 #########################################################################
 # main function for multilevel imputation with lme4 with several levels
@@ -40,7 +40,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     model <- res$model
     y0 <- y
     ry0 <- ry
-    
+
     #--- aggregate data to a higher level if requested
     res <- mice_ml_lmer_aggregate_data_higher_level( vname_level=vname_level, y=y, ry=ry,
                     x=x, data=data, levels_id=levels_id )
@@ -48,26 +48,26 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     y <- res$y
     ry <- res$ry
     x <- res$x
-    
+
     #--- define lmer functions
     res <- mice_ml_lmer_define_lmer_function( model=model, blme_use=blme_use )
     lmer_family <- res$lmer_family
     lmer_function <- res$lmer_function
-    
+
     #--- arrange cluster identifiers
     res <- mice_ml_lmer_arrange_cluster_identifiers( levels_id=levels_id, data=data )
     NL <- res$NL
     ngr <- res$ngr
     clus <- res$clus
     clus_unique <- res$clus_unique
-    
+
     #--- aggregate group effects for mixed effects model
     res <- mice_ml_lmer_include_cluster_means( y=y, ry=ry, type=type, x=x, levels_id=levels_id,
                 aggregate_automatically=aggregate_automatically, clus=clus,
                 groupcenter.slope=groupcenter.slope, variables_levels=variables_levels )
     x <- res$x
     type <- res$type
-    
+
     #--- pls regression if required
     res <- mice_ml_lmer_interactions_pls( type=type, interactions=interactions,
                 quadratics=quadratics, y=y, ry=ry, x=x, pls.facs=pls.facs,
@@ -75,7 +75,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 pos=pos, min.all.cor=min.all.cor )
     x <- res$x
     type <- res$type
-    
+
     #--- create formulas for lme4
     res <- mice_ml_lmer_construct_lme4_formula( x=x, intercept=intercept, levels_id=levels_id,
                 fixed_effects=colnames(x), NL=NL, random_slopes=random_slopes )
@@ -84,16 +84,16 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     used_slopes <- res$used_slopes
 
 
-    
+
     #--- prepare arguments for lmer estimation
     lmer_args <- mice_ml_lmer_collect_lme4_input( y=y, x=x, ry=ry, data=data,
                         levels_id=levels_id, NL=NL, fml=fml, lmer_family=lmer_family,
                         model=model, lmer_args=lmer_args, blme_args=blme_args )
-                        
+
     #--- fit lme4 or blme model based on observed y
     fit <- mice_multilevel_doCall_suppressWarnings( what=lmer_function, args=lmer_args,
                 warnings=glmer.warnings )
-                
+
     #--- draw fixed effects
     b.est <- b.star <- lme4::fixef(fit)
     if( draw.fixed ){     # posterior draw for fixed effects

@@ -1,5 +1,5 @@
 %% File Name: data.ma.Rd
-%% File Version: 0.29
+%% File Version: 0.36
 
 \name{data.ma}
 \alias{data.ma}
@@ -11,6 +11,7 @@
 \alias{data.ma05}
 \alias{data.ma06}
 \alias{data.ma07}
+\alias{data.ma08}
 
 \docType{data}
 
@@ -31,6 +32,7 @@ data(data.ma04)
 data(data.ma05)
 data(data.ma06)
 data(data.ma07)
+data(data.ma08)
 }
 
 
@@ -160,7 +162,17 @@ with grouped values (coarse data or interval data).
 \code{ $ z1 : num  -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 -0.53 ...} \cr
 \code{ $ z2 : num  0.42 0.42 0.42 0.42 0.42 0.42 0.42 0.42 0.42 0.42 ...} \cr
 
+\item Dataset \code{data.ma08}:
 
+List with several vector of strings containing descriptive data from
+published articles. See \code{\link{string_to_matrix}} for converting
+these strings into matrices.
+
+\code{List of 4} \cr
+\code{ $ mat1: chr [1:6] "1. T1_mental_health" ...} \cr
+\code{ $ mat2: chr [1:16] "1. Exp voc-T1 -" ...} \cr
+\code{ $ mat3: chr [1:12] "1. TOWRE age 7\t-\t\t\t\t\t\t" ...} \cr
+\code{ $ mat4: chr [1:18] "1. Vocab. age 7\t-\t\t\t\t\t" ...} \cr
 
 }
 }

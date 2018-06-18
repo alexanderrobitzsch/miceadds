@@ -1,11 +1,10 @@
 ## File Name: mice_multilevel_impute_groupmean.R
-## File Version: 0.08
+## File Version: 0.09
 
 
 
-mice_multilevel_impute_groupmean <- function (y, ry, x, type, grmeanwarning=TRUE,
-            ...){
-  # Written by Alexander Robitzsch, July 2012
+mice_multilevel_impute_groupmean <- function (y, ry, x, type, grmeanwarning=TRUE, ...)
+{
     if ( ( ncol(x) > 2 ) & grmeanwarning ){
         warning("\nMore than one variable is requested to be aggregated.\n")
     }

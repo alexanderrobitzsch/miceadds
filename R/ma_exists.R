@@ -1,5 +1,5 @@
 ## File Name: ma_exists.R
-## File Version: 0.01
+## File Version: 0.02
 
 ma_exists <- function( x, pos, n_index=1:8)
 {
@@ -16,7 +16,7 @@ ma_exists <- function( x, pos, n_index=1:8)
             if (is_there){
                 obj <- get(x, pos)
                 break
-            }        
+            }
         }
     }
     #--- output

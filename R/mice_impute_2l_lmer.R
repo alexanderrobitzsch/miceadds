@@ -1,5 +1,5 @@
 ## File Name: mice_impute_2l_lmer.R
-## File Version: 0.39
+## File Version: 0.41
 
 #########################################################################
 # main function for multilevel imputation with lme4 which

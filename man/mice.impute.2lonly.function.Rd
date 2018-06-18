@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2lonly.function.Rd
-%% File Version: 0.33
+%% File Version: 0.36
 
 \name{mice.impute.2lonly.function}
 \alias{mice.impute.2lonly.function}
@@ -18,7 +18,7 @@ defined imputation function at level 1 in \pkg{mice}.
 
 
 \usage{
-mice.impute.2lonly.function(y, ry, x, type, imputationFunction, 
+mice.impute.2lonly.function(y, ry, x, type, imputationFunction,
      cluster_var, ...)
 }
 
@@ -94,7 +94,7 @@ x <-  stats::rnorm( G*n )
 y <- y1 + beta  * x + .2 * w + .1 * v
 dfr0 <- dfr <- data.frame( "group"=rep(1:G, each=n ), "x"=x, "y"=y,
         "w"=w, "v"=v )
-dfr[ rho.miss * x + stats::rnorm( G*n, sd=sqrt( 1 - rho.miss ) ) < 
+dfr[ rho.miss * x + stats::rnorm( G*n, sd=sqrt( 1 - rho.miss ) ) <
           stats::qnorm(missrate), y" ] <- NA
 dfr[ rep( stats::rnorm(G), each=n ) < stats::qnorm(missrate), "w" ] <- NA
 dfr[ rep( stats::rnorm(G), each=n ) < stats::qnorm(missrate), "v" ] <- NA
@@ -115,10 +115,10 @@ impM1[c("y","w","v")] <- c("2l.continuous", "2lonly.function", "2lonly.function"
 # define imputation functions
 imputationFunction <- list( "w"="sample", "v"="pmm5" )
 # define cluster variable
-cluster_var <- list( "w" = "group", "v"="group" )
+cluster_var <- list( "w"="group", "v"="group" )
 
 # impute
-imp1 <- mice::mice( as.matrix(dfr), m=1, predictorMatrix=predM1, method=impM1, maxit=5, 
+imp1 <- mice::mice( as.matrix(dfr), m=1, predictorMatrix=predM1, method=impM1, maxit=5,
             imputationFunction=imputationFunction, cluster_var=cluster_var )
 }
 }

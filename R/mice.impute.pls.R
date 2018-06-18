@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.39
+## File Version: 3.40
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                                 pls.impMethod="pmm",
                                 pls.impMethodArgs=NULL,
@@ -44,7 +44,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     imp.temp <- res$newstate
         #...  newstate <- list(it=k,  im=i,  co=j, dep=vname,  meth=theMethod,
         #...                   log=oldstate$log)
-        
+
     if (extract_data){
         res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos )
         y <- res$y
@@ -55,7 +55,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     n <- NULL
     # normalize imputation weights
     imputationWeights <- normalize_vector( x=imputationWeights)
-    
+
     # extract PLS factors
     pls.facs <- mice_imputation_extract_list_arguments( pls.facs, vname,  20 )
     # extract PLS imputation method
@@ -87,11 +87,11 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     type <- res$type
     x0 <- x10 <- x <- res$x
     N <- ncol(x)
-    
+
     #*** print progress | print section 2
     res <- mice_imputation_pls_print_progress2(pls.print.progress, imp.temp,
                 pls.title, y, x)
-                
+
     # extract interactions and quadratic terms
     pls.interactions <- names(type)[ type==4 ]
     pls.quadratics <- names(type)[ type==5 ]
@@ -121,14 +121,14 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                 use.ymat, imputationWeights, use_weights, pls.print.progress )
     x <- res$x
     x11a <- res$x11a
-    
+
     #--- apply imputation method
     x1 <- mice_imputation_pls_do_impute( x, y, ry, imputationWeights,
                 use_weights, pls.impMethod,
                 pls.print.progress, pls.impMethodArgs, type, ... )
     #--- finished all steps!
     time2 <- Sys.time()
-    
+
     res <- mice_imputation_pls_print_progress3(pls.print.progress, time1, time2 )
     return(x1)
 }

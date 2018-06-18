@@ -1,5 +1,5 @@
 ## File Name: datalist2mids.R
-## File Version: 0.39
+## File Version: 0.40
 
 datalist2mids <- function( dat.list, progress=FALSE )
 {
@@ -82,9 +82,9 @@ datalist2mids <- function( dat.list, progress=FALSE )
                 IMP[[vv]][ii] <- l1
             }
         }
-        if (progress){ 
+        if (progress){
             cat(".")
-            utils::flush.console() 
+            utils::flush.console()
         }
     }
     if (progress){

@@ -1,5 +1,5 @@
 %% File Name: GroupMean.Rd
-%% File Version: 0.31
+%% File Version: 0.35
 
 \name{GroupMean}
 \alias{GroupMean}
@@ -39,6 +39,8 @@ A vector of group identifiers
 \item{weights}{An optional vector of sample weights}
 \item{extend}{Optional logical indicating whether the group means (or sums)
 should be extended to the original dimensions of the dataset.}
+\item{y}{Variable}
+\item{cluster}{Cluster identifier}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -101,12 +103,12 @@ data(data.ma07, package="miceadds")
 dat <- data.ma07
 
 # compute group means
-miceadds::gm( dat$x1 , dat$id2 )
+miceadds::gm( dat$x1, dat$id2 )
 # centering within clusters
-miceadds::cwc( dat$x1 , dat$id2 )
+miceadds::cwc( dat$x1, dat$id2 )
 
 # evaluate formula with model.matrix
-X <- model.matrix( ~ I( miceadds::cwc(x1, id2) ) + I( miceadds::gm(x1,id2) ), data = dat )
+X <- model.matrix( ~ I( miceadds::cwc(x1, id2) ) + I( miceadds::gm(x1,id2) ), data=dat )
 head(X)
 }
 }

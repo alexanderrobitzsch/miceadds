@@ -1,5 +1,5 @@
 %% File Name: mice_impute_2l_lmer.Rd
-%% File Version: 0.44
+%% File Version: 0.45
 
 \name{mice_impute_2l_lmer}
 \alias{mice.impute.2l.binary}
@@ -166,13 +166,13 @@ package.
 
 Imputation by chained equations can also be conducted in blocks of multivariate
 conditional distributions since \pkg{mice} 3.0.0 (see the \code{blocks}
-argument in \code{\link[mice:mice]{mice::mice}}). The 
-\code{\link[mitml:panImpute]{mitml::panImpute}} and 
+argument in \code{\link[mice:mice]{mice::mice}}). The
+\code{\link[mitml:panImpute]{mitml::panImpute}} and
 \code{\link[mitml:jomoImpute]{mitml::jomoImpute}} functions can be used
 with \code{\link[mice:mice]{mice::mice}} by specifying imputation
-methods \code{"panImpute"} 
-(see \code{\link[mice:mice.impute.panImpute]{mice::mice.impute.panImpute}})) and 
-\code{"jomoImpute"} 
+methods \code{"panImpute"}
+(see \code{\link[mice:mice.impute.panImpute]{mice::mice.impute.panImpute}})) and
+\code{"jomoImpute"}
 (see \code{\link[mice:mice.impute.jomoImpute]{mice::mice.impute.jomoImpute}})).
 }
 

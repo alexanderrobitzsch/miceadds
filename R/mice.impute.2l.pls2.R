@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.pls2.R
-## File Version: 3.16
+## File Version: 3.17
 mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
                                 pls.impMethod="pmm",
                                 pls.print.progress=TRUE,
@@ -36,7 +36,7 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
         imputationWeights  <- nrow(x) * imputationWeights / sum(imputationWeights)
         # vname <- get("vname", pos=envir_pos ) # get variable name
         vname <- ma_exists_get(x='vyame', pos=envir_pos)
-        
+
         # imp.temp <- get( "newstate", pos=envir_pos )
         imp.temp <- ma_exists_get(x='newstate', pos=envir_pos)
 

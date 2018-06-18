@@ -1,17 +1,17 @@
 ## File Name: mice.impute.2lonly.function.R
-## File Version: 0.21
+## File Version: 0.22
 
 #******************************************
 # general imputation function at level 2
-mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction, 
+mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction,
         cluster_var, ... )
 {
     pos <- parent.frame(n=2)
     #--- extract arguments
     res <- mice_imputation_get_states(pos=pos)
-    vname <- res$vname    
+    vname <- res$vname
     imputationFunction_vname <- mice_imputation_extract_list_arguments(
-                micearg=imputationFunction, vname=vname, miceargdefault="norm" )    
+                micearg=imputationFunction, vname=vname, miceargdefault="norm" )
     #-- extract cluster index
     cluster_var <- mice_imputation_extract_list_arguments(
                         micearg=cluster_var, vname=vname, miceargdefault=NULL )
@@ -19,7 +19,7 @@ mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction,
         data <- ma_exists_get(x='data', pos=pos)
         clusterx <- data[, cluster_var]
     }
-    if (is.null(cluster_var)){    
+    if (is.null(cluster_var)){
         if ( sum(type==-2) !=1 ){
             stop( "No cluster variable!\n")
         }
@@ -27,7 +27,7 @@ mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction,
                         "  specified with the 'cluster_var' argument.\n",
                         "  'type=-2' is deprecated for this function.") )
         clusterx <- x[,type==-2 ]
-    }    
+    }
     # calculate aggregated values
     x <- cbind(1, as.matrix(x[,type %in% c(1,2)]))
     a2 <- rowsum( cbind(x,y), clusterx, na.rm=FALSE)

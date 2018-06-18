@@ -1,5 +1,5 @@
 ## File Name: mice.impute.weighted.pmm.R
-## File Version: 0.14
+## File Version: 0.15
 mice.impute.weighted.pmm <- function (y, ry, x,  imputationWeights=NULL,
                                     pls.facs=NULL,  interactions=NULL, quadratics=NULL,  ...){
     x <- cbind(1, as.matrix(x))
@@ -14,7 +14,7 @@ mice.impute.weighted.pmm <- function (y, ry, x,  imputationWeights=NULL,
     # PLS interactions and quadratics
     res <- mice_imputation_get_states(pos=parent.frame(n=2) )
     newstate <- res$newstate
-    vname <- res$vname    
+    vname <- res$vname
     plsout <- mice_imputation_pls_helper( newstate=newstate, vname=vname, pls.impMethod="pmm",
                     x=x[,-1], y=y, ry=ry, imputationWeights=imputationWeights,
                     interactions=interactions, quadratics=quadratics,  pls.facs=pls.facs,  ... )

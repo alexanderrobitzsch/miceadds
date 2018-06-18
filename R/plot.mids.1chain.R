@@ -1,5 +1,5 @@
 ## File Name: plot.mids.1chain.R
-## File Version: 1.05
+## File Version: 1.08
 
 
 # S3 plot method
@@ -11,11 +11,11 @@ plot.mids.1chain <- function( x, plot.burnin=FALSE, ask=TRUE, ... )
     graphics::par(mfrow=c(2,2))
     if (!plot.burnin){
         iter_vec <- seq( x$burnin + 1, x$iter )
-    } else { 
-        iter_vec <- 1:x$iter 
-    }    
+    } else {
+        iter_vec <- 1:x$iter
+    }
     for (vv in 1:VV){
-        if ( sum( is.na( chain_mean[ iter_vec, vv ] ) ) == 0 ){
+        if ( sum( is.na( chain_mean[ iter_vec, vv ] ) )==0 ){
             plot( iter_vec, chain_mean[ iter_vec, vv ], type="l",
                         xlab="Iterations", ylab="M",
                         main=paste0("Mean ", colnames(chain_mean)[vv] ) )

@@ -1,5 +1,5 @@
 %% File Name: mice_inits.Rd
-%% File Version: 0.02
+%% File Version: 0.04
 
 \name{mice_inits}
 \alias{mice_inits}
@@ -12,7 +12,7 @@ Defines initial arguments of imputation method and
 predictor matrix for \code{mice::mice} function.
 }
 \usage{
-mice_inits(dat, ignore = NULL)
+mice_inits(dat, ignore=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

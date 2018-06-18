@@ -1,0 +1,61 @@
+## File Name: ml_mcmc_fit.R
+## File Version: 0.37
+
+ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2, 
+    alpha, u_list, idcluster_list, onlyintercept_list, ncluster_list,
+    sigma2_nu0, sigma2_sigma2_0, psi_nu0_list, psi_S0_list, est_sigma2,
+    est_probit, parameter_index, est_parameter, npar, iter, save_iter,
+    verbose=TRUE, print_iter=500, parnames0=NULL )
+{
+    #** preliminaries
+    xtx_inv <- solve( miceadds_rcpp_ml_mcmc_compute_xtx(X) )
+    NR <- length(Z_list)
+    ztz_list <- list()
+    for (rr in seq_len(NR)){
+        ztz_list[[rr]] <- miceadds_rcpp_ml_mcmc_compute_ztz( Z=Z_list[[rr]],
+                        idcluster=idcluster_list[[rr]], ncluster=ncluster_list[[rr]] )
+    }
+    
+    #** call Rcpp function
+    res <- miceadds_rcpp_ml_mcmc_sampler( y_obs=y, X=X, xtx_inv=xtx_inv,
+                ztz_list=ztz_list, Z_list=Z_list, beta_init=beta, Psi_list_init=Psi_list,
+                sigma2_init=sigma2, alpha_init=alpha, u_list_init=u_list, idcluster_list=idcluster_list,
+                onlyintercept_list=onlyintercept_list, ncluster_list=ncluster_list,
+                sigma2_nu0=sigma2_nu0, sigma2_sigma2_0=sigma2_sigma2_0, psi_nu0_list=psi_nu0_list,
+                psi_S0_list=psi_S0_list, NR=NR, est_sigma2=est_sigma2, 
+                est_probit=est_probit, parameter_index=parameter_index,
+                est_parameter=est_parameter, npar=npar, iter=iter, save_iter=save_iter,
+                verbose=verbose, print_iter=print_iter)
+                
+    #** output processing
+    if ( is.null(parnames0) ){
+        NS <- ncol(res$sampled_values)
+        parnames0 <- paste0("par",1:NS)
+    }
+    colnames(res$sampled_values) <- parnames0
+    sampled_values <- res$sampled_values
+
+    #-- parameter summary
+    dfr <- data.frame("par"=parnames0)
+    dfr$mean <- ma_colMeans(x=sampled_values)
+    dfr$mode <- ma_colMode(x=sampled_values)
+    dfr$se <- ma_colSD(x=sampled_values)
+    dfr$lower95 <- ma_colQuantile(x=sampled_values, prob=.025)
+    dfr$upper95 <- ma_colQuantile(x=sampled_values, prob=.975)
+    dfr$Rhat <- ma_rhat(x=sampled_values, n_chains=3)
+    dfr$Neff <- round( coda::effectiveSize(x=sampled_values), 1 )
+    rownames(dfr) <- NULL
+    res$par_summary <- dfr
+    res$iter <- iter
+    res$est_probit <- est_probit
+    res$est_sigma2 <- est_sigma2
+    
+    #--- coef and vcov
+    coef <- dfr$mode
+    names(coef) <- parnames0
+    res$coef <- coef
+    res$vcov <- stats::cov(sampled_values)
+
+    #--- output
+    return(res)
+}
