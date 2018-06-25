@@ -1,11 +1,12 @@
 %% File Name: Rfunction_include_argument_values.Rd
-%% File Version: 0.08
+%% File Version: 0.11
 
 \name{Rfunction_include_argument_values}
 \alias{Rfunction_include_argument_values}
 \alias{Rfunction_output_list_result_function}
 \alias{Rfunction}
-
+\alias{Rcppfunction_remove_classes}
+\alias{Rcppfunction}
 
 
 %- Also NEED an '\alias' for EACH other topic documented here.
@@ -22,6 +23,9 @@ Rfunction_include_argument_values(string, maxlen=70)
 
 ## assign objects to entries in a list
 Rfunction_output_list_result_function(string, mid=" <- res$")
+
+## delete declaration of Rcpp and RcppArmadillo object classes
+Rcppfunction_remove_classes(string, maxlen=70, remove=TRUE)
 }
 
 
@@ -37,6 +41,7 @@ Maximal string length for output
 \item{mid}{
 Middle term in the output
 }
+\item{remove}{Logical indicating whether object classes should be removed}
 }
 
 %\details{
@@ -88,6 +93,16 @@ cat( miceadds::Rfunction_output_list_result_function( string ) )
   ##  type <- res$type
   ##  data <- res$data
   ##  levels_id <- res$levels_id
+  
+
+string <- "
+arma::colvec miceadds_rcpp_rtnorm2( arma::colvec mu,
+            double sigma0, arma::colvec lower, arma::colvec upper,
+            double minval, double maxval)
+    "
+
+cat( miceadds::Rcppfunction_remove_classes(string, maxlen = 70) )
+cat( miceadds::Rcppfunction_remove_classes(string, maxlen = 70, remove=FALSE) )  
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

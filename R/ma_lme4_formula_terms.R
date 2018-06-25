@@ -1,5 +1,5 @@
 ## File Name: ma_lme4_formula_terms.R
-## File Version: 0.07
+## File Version: 0.08
 
 ma_lme4_formula_terms <- function(formula)
 {
@@ -7,7 +7,7 @@ ma_lme4_formula_terms <- function(formula)
     all_vars <- all.vars(formula)
     t1 <- stats::terms(formula)
     term_labels <- attr( t1, "term.labels" )
-
+    
     #** left side of formula
     formula_lhs <- all.vars( stats::update(formula, .~0))
 

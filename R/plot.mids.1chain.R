@@ -1,5 +1,5 @@
 ## File Name: plot.mids.1chain.R
-## File Version: 1.08
+## File Version: 1.09
 
 
 # S3 plot method

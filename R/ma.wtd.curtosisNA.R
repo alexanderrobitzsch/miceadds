@@ -1,11 +1,12 @@
 ## File Name: ma.wtd.curtosisNA.R
-## File Version: 0.07
+## File Version: 0.08
 
 
 ###############################################################################
 # weighted skewness
 ma.wtd.curtosisNA <- function( data, weights=NULL, vars=NULL,
-      method="unbiased" ){
+        method="unbiased" )
+{
     #*** pre-processing
     res <- ma.wtd.aux.data(data=data, weights=weights, vars=vars )
     data <- res$data
@@ -29,17 +30,15 @@ ma.wtd.curtosisNA <- function( data, weights=NULL, vars=NULL,
         if (method=="unbiased" ){
             wgtadj <- w1 - colSums( dataResp * weights^2 ) / w1
             wgtadj <- w1 / wgtadj
-            # wtd.var ...
-            #     sum(weights * ((x - xbar)^2))/(sw - sum(weights^2)/sw)
             sdx <- sqrt(wgtadj) * sdx
-                                }
+        }
         sdxM <- matrix( sdx, nrow=nrow(data1), ncol=length(sdx), byrow=TRUE)
         data1adj <- ( ( data1 - M_varsM ) / sdxM )^4 * dataResp
         M1 <- colSums( data1adj *  weights ) / sumweight
         res[ii,] <- M1 - 3
-                    }
+    }
     res <- colMeans(res)
     names(res) <- colnames(data[[1]])
     return( res )
-        }
+}
 ###############################################################################

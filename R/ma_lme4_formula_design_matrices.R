@@ -1,5 +1,5 @@
 ## File Name: ma_lme4_formula_design_matrices.R
-## File Version: 0.18
+## File Version: 0.23
 
 
 ma_lme4_formula_design_matrices <- function(formula, data, start_index=0)
@@ -14,7 +14,7 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0)
     parnames <- list()
     parnames$beta <- paste0("beta_",colnames(X) )
     y <- data[, formula_terms$formula_lhs ]
-
+    
     #*** design matrices random effects
     NR <- formula_terms$NR
     random_effects_id <- formula_terms$random_effects_id

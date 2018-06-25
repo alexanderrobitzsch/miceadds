@@ -1,11 +1,10 @@
 ## File Name: ma.wtd.aux.data.R
-## File Version: 2.15
+## File Version: 2.16
 
 ########################################################
 # auxiliary function
-ma.wtd.aux.data <- function(data, weights, vars=NULL ){
-    #*****
-
+ma.wtd.aux.data <- function(data, weights, vars=NULL )
+{
     is_dfr <- TRUE        # default is class data frame
     if ( is.vector(data) ){
         data <- data.frame( "Var"=data)

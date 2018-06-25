@@ -1,9 +1,9 @@
 ## File Name: crlrem.R
-## File Version: 1.05
+## File Version: 1.06
 
-######################################################
 # remove line endings
-crlrem <- function( filename1, filename2 ){
+crlrem <- function( filename1, filename2 )
+{
     filename <- filename1
     con <- file(filename, "rb")
     bin <- readBin(con, raw(), 100000)

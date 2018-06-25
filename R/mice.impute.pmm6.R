@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pmm6.R
-## File Version: 0.20
+## File Version: 0.21
 
 
 mice.impute.pmm6 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...)
@@ -14,9 +14,6 @@ mice.impute.pmm6 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...
     donorsample <- ifelse( donorsample <=0, donorsample - 1, donorsample )
     #----- Rcpp code
     ##*** change due to bug report SvB 2018-05-18
-    # imp <- .Call("ma_pmm6_C",
-    #            y_=y,  ry01_=ry01,  x_=x,  ridge_=ridge,  coefu_=coefu,  donorsample_=donorsample    ,
-    #            PACKAGE="miceadds")
     imp <- miceadds_rcpp_impute_pmm6( y=y, ry01=ry01, x=x, ridge=ridge,
             coefu1=coefu, donorsample=donorsample )
     return(imp)

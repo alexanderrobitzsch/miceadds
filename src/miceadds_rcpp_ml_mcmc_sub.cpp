@@ -1,5 +1,5 @@
-//// File Name: miceadds_rcpp_multilevel_mcmc.cpp
-//// File Version: 0.8444
+//// File Name: miceadds_rcpp_ml_mcmc_sub.cpp
+//// File Version: 0.873
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -7,13 +7,190 @@
 #include <RcppArmadillo.h>
 // #include <Rcpp.h>
 
-// [include_header_file]
-#include "miceadds_rcpp_sampling_functions.h"
 
 using namespace Rcpp;
 using namespace arma;
 
 // [[Rcpp::interfaces(r, cpp)]]
+
+
+
+///********************************************************************
+///** miceadds_rcpp_arma_chol_ridge
+// [[Rcpp::export]]
+arma::mat miceadds_rcpp_arma_chol_ridge(arma::mat sigma0, double ridge)
+{
+    arma::mat sigma=sigma0;
+    int np = sigma.n_rows;
+    for (int pp=0; pp<np; pp++){
+        sigma(pp,pp) = sigma0(pp,pp) * ( 1 + ridge );
+        if (sigma(pp,pp)<ridge){
+            sigma(pp,pp) = ridge;
+        }
+    }
+    arma::mat sigma_chol = arma::chol(sigma);
+    return sigma_chol;
+}
+///********************************************************************
+
+///********************************************************************
+///** miceadds_rcpp_mvrnorm
+// [[Rcpp::export]]
+arma::colvec miceadds_rcpp_mvrnorm(arma::colvec mu, arma::mat sigma)
+{
+    int ncols = sigma.n_cols;
+    double ridge = 1e-6;
+    arma::vec Y = arma::randn(ncols);
+    arma::mat sigma_chol = miceadds_rcpp_arma_chol_ridge(sigma, ridge);
+    arma::colvec samp = mu + sigma_chol * Y;
+    return samp;
+}
+///********************************************************************
+
+///********************************************************************
+//*** copied from https://github.com/coatless/r-to-armadillo/blob/master/src/distributions.cpp
+///** miceadds_rcpp_rwishart
+// [[Rcpp::export]]
+arma::mat miceadds_rcpp_rwishart(int df, arma::mat S)
+{
+    double ridge = 1e-6;
+    // Dimension of returned wishart
+    int m = S.n_rows;
+    // Z composition:
+    // sqrt chisqs on diagonal
+    // random normals below diagonal
+    // misc above diagonal
+    arma::mat Z(m,m);
+    // Fill the diagonal
+    for(int i = 0; i < m; i++){
+        Z(i,i) = sqrt( ::Rf_rchisq(df-i) );
+    }
+    // Fill the lower matrix with random guesses
+    for(int j = 0; j < m; j++){
+        for(int i = j+1; i < m; i++){
+            Z(i,j) = ::Rf_rnorm(0, 1);
+        }
+    }
+    // Lower triangle * chol decomp
+    arma::mat S_chol = miceadds_rcpp_arma_chol_ridge(S, ridge);
+    arma::mat C = arma::trans( arma::trimatl(Z) ) * S_chol;
+    // Return random wishart
+    arma::mat samp = arma::trans(C)*C;
+    return samp;
+}
+///********************************************************************
+
+///********************************************************************
+//*** copied from https://github.com/coatless/r-to-armadillo/blob/master/src/distributions.cpp
+///** miceadds_rcpp_riwishart
+// [[Rcpp::export]]
+arma::mat miceadds_rcpp_riwishart(int df, arma::mat S)
+{
+    arma::mat S_inv = arma::inv(S);
+    arma::mat samp = miceadds_rcpp_rwishart(df, S_inv);
+    samp = arma::inv(samp);
+    return samp;
+}
+///********************************************************************
+
+///********************************************************************
+///** miceadds_rcpp_rtnorm_double
+// [[Rcpp::export]]
+double miceadds_rcpp_rtnorm_double( double mu, double sigma, double lower,
+        double upper )
+{
+    double y1=0;
+    double y2=0;
+    double temp=0;
+    Rcpp::NumericVector val = Rcpp::runif(1);
+    y1 = ::Rf_pnorm5(lower, mu, sigma, 1, 0);
+    y2 = ::Rf_pnorm5(upper, mu, sigma, 1, 0);
+    temp = y1 + val[0] * ( y2 - y1 );
+    double z = ::Rf_qnorm5(temp, mu, sigma, 1, 0);
+    //--- output
+    return z;
+}
+///********************************************************************
+
+///********************************************************************
+///** miceadds_rcpp_rtnorm
+// [[Rcpp::export]]
+arma::colvec miceadds_rcpp_rtnorm( arma::colvec mu,
+            arma::colvec sigma, arma::colvec lower, arma::colvec upper )
+{
+    int N = mu.size();
+    arma::colvec z(N);
+    for (int nn=0; nn<N; nn++){
+        z(nn,0) = miceadds_rcpp_rtnorm_double(mu(nn,0), sigma(nn,0),
+                        lower(nn,0), upper(nn,0) );
+    }
+    //--- output
+    return z;
+}
+///********************************************************************
+
+///********************************************************************
+///** miceadds_rcpp_arma2vec
+// [[Rcpp::export]]
+Rcpp::NumericVector miceadds_rcpp_arma2vec(arma::colvec x)
+{
+    Rcpp::NumericVector y = Rcpp::NumericVector(x.begin(), x.end());
+    return y;
+}
+///********************************************************************
+
+///********************************************************************
+///** miceadds_rcpp_pnorm
+// [[Rcpp::export]]
+Rcpp::NumericVector miceadds_rcpp_pnorm( Rcpp::NumericVector x,
+    Rcpp::NumericVector mu, double sigma)
+{
+    Rcpp::NumericVector x1 = x - mu;
+    Rcpp::NumericVector y = Rcpp::pnorm( x1, 0.0, sigma);
+    //--- output
+    return y;
+}
+///********************************************************************
+
+///********************************************************************
+///** miceadds_rcpp_qnorm
+// [[Rcpp::export]]
+Rcpp::NumericVector miceadds_rcpp_qnorm( Rcpp::NumericVector x,
+    Rcpp::NumericVector mu, double sigma)
+{
+    Rcpp::NumericVector y = Rcpp::qnorm( x, 0.0, sigma);
+    y = y + mu;
+    //--- output
+    return y;
+}
+///********************************************************************
+
+
+///********************************************************************
+///** miceadds_rcpp_rtnorm2
+// [[Rcpp::export]]
+arma::colvec miceadds_rcpp_rtnorm2( arma::colvec mu, double sigma0, 
+    arma::colvec lower, arma::colvec upper, double minval, double maxval ) 
+{
+    int N = mu.size();
+    Rcpp::NumericVector val = Rcpp::runif(N);
+    Rcpp::NumericVector lower1 = miceadds_rcpp_arma2vec(lower);
+    Rcpp::NumericVector upper1 = miceadds_rcpp_arma2vec(upper);
+    Rcpp::NumericVector mu1 = miceadds_rcpp_arma2vec(mu);
+    Rcpp::NumericVector y1 = miceadds_rcpp_pnorm( lower1, mu1, sigma0);
+    Rcpp::NumericVector y2 = miceadds_rcpp_pnorm( upper1, mu1, sigma0);
+    Rcpp::NumericVector temp(N);
+    for (int nn=0; nn<N; nn++){
+        if (y1[nn] < minval){ y1[nn] = minval; }
+        if (y2[nn] > maxval){ y2[nn] = maxval; }
+        temp[nn] = y1[nn] + val[nn] * ( y2[nn] - y1[nn] );
+    }
+    Rcpp::NumericVector z0 = miceadds_rcpp_qnorm( temp, mu1, sigma0);
+    arma::colvec z = Rcpp::as< arma::colvec >(z0);
+    //--- output
+    return z;
+}
+///********************************************************************
 
 
 
@@ -136,7 +313,7 @@ arma::colvec miceadds_rcpp_ml_mcmc_predict_random( arma::mat Z, arma::mat u,
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_predict_random_list
 // [[Rcpp::export]]
-arma::colvec miceadds_rcpp_ml_mcmc_predict_random_list( Rcpp::List Z_list, 
+arma::colvec miceadds_rcpp_ml_mcmc_predict_random_list( Rcpp::List Z_list,
     Rcpp::List u_list, Rcpp::List idcluster_list, int NR, int N )
 {
     arma::colvec pred(N);
@@ -146,9 +323,9 @@ arma::colvec miceadds_rcpp_ml_mcmc_predict_random_list( Rcpp::List Z_list,
         arma::mat Z = Rcpp::as< arma::mat >(Z_list[rr]);
         arma::mat u = Rcpp::as< arma::mat >(u_list[rr]);
         Rcpp::IntegerVector idcluster = Rcpp::as< Rcpp::IntegerVector >(idcluster_list[rr]);
-        pred1 = miceadds_rcpp_ml_mcmc_predict_random( Z, u, idcluster);    
+        pred1 = miceadds_rcpp_ml_mcmc_predict_random( Z, u, idcluster);
         pred = pred + pred1;
-    }    
+    }
     //--- output
     return pred;
 }
@@ -163,7 +340,7 @@ arma::colvec miceadds_rcpp_ml_mcmc_predict_fixed_random( arma::mat X,
 {
     arma::colvec pred1 = miceadds_rcpp_ml_mcmc_predict_fixed( X, beta);
     int N = X.n_rows;
-    arma::colvec pred = miceadds_rcpp_ml_mcmc_predict_random_list( Z_list, 
+    arma::colvec pred = miceadds_rcpp_ml_mcmc_predict_random_list( Z_list,
                 u_list, idcluster_list, NR, N );
     pred = pred + pred1;
     //--- output
@@ -198,10 +375,9 @@ arma::colvec miceadds_rcpp_ml_mcmc_subtract_random( arma::colvec y,
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_sample_beta
 // [[Rcpp::export]]
-arma::colvec miceadds_rcpp_ml_mcmc_sample_beta( arma::mat xtx_inv,
-    arma::mat X, Rcpp::List Z_list, arma::colvec y, Rcpp::List u_list,
-    Rcpp::List idcluster_list, double sigma2,
-    Rcpp::List onlyintercept_list, int NR)
+arma::colvec miceadds_rcpp_ml_mcmc_sample_beta( arma::mat xtx_inv, arma::mat X, 
+    Rcpp::List Z_list, arma::colvec y, Rcpp::List u_list, Rcpp::List idcluster_list, 
+    double sigma2, Rcpp::List onlyintercept_list, int NR )
 {
     //** compute ytilde
     arma::colvec ytilde = y;
@@ -230,17 +406,16 @@ arma::colvec miceadds_rcpp_ml_mcmc_sample_beta( arma::mat xtx_inv,
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_sample_u
 // [[Rcpp::export]]
-Rcpp::List miceadds_rcpp_ml_mcmc_sample_u( arma::mat X, arma::colvec beta,
-    Rcpp::List Z_list, arma::colvec y, Rcpp::List ztz_list,
-    Rcpp::List idcluster_list, Rcpp::List ncluster_list,
-    double sigma2, Rcpp::List Psi_list, Rcpp::List onlyintercept_list, int NR,
-    Rcpp::List u0_list)
+Rcpp::List miceadds_rcpp_ml_mcmc_sample_u( arma::mat X, arma::colvec beta, 
+    Rcpp::List Z_list, arma::colvec y, Rcpp::List ztz_list, Rcpp::List idcluster_list, 
+    Rcpp::List ncluster_list, double sigma2, Rcpp::List Psi_list, 
+    Rcpp::List onlyintercept_list, int NR, Rcpp::List u0_list )
 {
     //** subtract fixed effects
     arma::colvec ytilde0 = miceadds_rcpp_ml_mcmc_subtract_fixed( y, X, beta);
     Rcpp::List u_list(NR);
     arma::colvec ytilde=ytilde0;
-    
+
     //** fill u with u0 elements
     for (int rr=0; rr<NR; rr++){
         u_list[rr] = Rcpp::as< arma::mat >(u0_list[rr]);
@@ -294,7 +469,7 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sample_u( arma::mat X, arma::colvec beta,
         arma::colvec mu(NC_Z);
         arma::mat Sigma(NC_Z, NC_Z);
         arma::colvec u_samp(NC_Z);
-        for (int cc=0; cc<ncluster; cc++){            
+        for (int cc=0; cc<ncluster; cc++){
             for (int hh=0; hh<NC_Z; hh++){
                 for (int uu=0; uu<NC_Z; uu++){
                     if (hh>=uu){
@@ -311,7 +486,7 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sample_u( arma::mat X, arma::colvec beta,
                 }
             }
             Sigma = sigma2*invmat;
-            u_samp = miceadds_rcpp_mvrnorm(mu, Sigma);            
+            u_samp = miceadds_rcpp_mvrnorm(mu, Sigma);
             for (int hh=0; hh<NC_Z; hh++){
                 u(cc,hh) = u_samp(hh,0);
             }
@@ -367,7 +542,7 @@ arma::mat miceadds_rcpp_ml_mcmc_sample_covariance_matrix( arma::mat u,
 // [[Rcpp::export]]
 void miceadds_rcpp_print_arma_mat( arma::mat x, int row1, int row2,
         int col1, int col2, int digits)
-{    
+{
     arma::mat y(row2-row1+1, col2-col1+1);
     int hh=0;
     int zz=0;
@@ -378,7 +553,7 @@ void miceadds_rcpp_print_arma_mat( arma::mat x, int row1, int row2,
             zz++;
         }
         hh++;
-    }    
+    }
     y.print("");
 }
 ///********************************************************************
@@ -394,7 +569,7 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sample_psi( Rcpp::List u_list,
     for (int rr=0; rr<NR; rr++){
         arma::mat u = Rcpp::as< arma::mat >(u_list[rr]);
         int nu0 = Rcpp::as< int >(nu0_list[rr]);
-        arma::mat S0 = Rcpp::as< arma::mat >(S0_list[rr]);        
+        arma::mat S0 = Rcpp::as< arma::mat >(S0_list[rr]);
         arma::mat Psi = miceadds_rcpp_ml_mcmc_sample_covariance_matrix( u, nu0, S0 );
         Psi_list[rr] = Psi;
     }
@@ -425,10 +600,9 @@ double miceadds_rcpp_ml_mcmc_sample_variance( arma::colvec e,
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_sample_sigma2
 // [[Rcpp::export]]
-double miceadds_rcpp_ml_mcmc_sample_sigma2( arma::colvec y, arma::mat X,
-        arma::colvec beta, Rcpp::List Z_list, Rcpp::List u_list,
-        Rcpp::List idcluster_list, Rcpp::List onlyintercept_list,
-        int nu0, double sigma2_0, int NR )
+double miceadds_rcpp_ml_mcmc_sample_sigma2( arma::colvec y, arma::mat X, 
+    arma::colvec beta, Rcpp::List Z_list, Rcpp::List u_list, Rcpp::List idcluster_list, 
+    Rcpp::List onlyintercept_list, int nu0, double sigma2_0, int NR )
 {
     arma::colvec e = miceadds_rcpp_ml_mcmc_subtract_fixed( y, X, beta);
     for (int hh=0; hh<NR; hh++){
@@ -449,10 +623,10 @@ double miceadds_rcpp_ml_mcmc_sample_sigma2( arma::colvec y, arma::mat X,
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_save_sampled_values
 // [[RcppNOexport]]
-Rcpp::NumericMatrix miceadds_rcpp_ml_mcmc_save_sampled_values(
-        int NR,    Rcpp::List parameter_index, Rcpp::List est_parameter, int npar,
-        arma::colvec beta, Rcpp::List Psi_list, double sigma2,
-        Rcpp::NumericMatrix sampled_values, bool est_sigma2, int ss)
+Rcpp::NumericMatrix miceadds_rcpp_ml_mcmc_save_sampled_values( int NR, 
+    Rcpp::List parameter_index, Rcpp::List est_parameter, int npar, arma::colvec beta, 
+    Rcpp::List Psi_list, double sigma2, Rcpp::NumericMatrix sampled_values, 
+    bool est_sigma2, int ss, bool est_thresh, int K, arma::colvec alpha )
 {
     if ( ss>=0 ){
 
@@ -476,9 +650,17 @@ Rcpp::NumericMatrix miceadds_rcpp_ml_mcmc_save_sampled_values(
             }
         }
         if (est_sigma2){
-            arma::colvec index1 = parameter_index["sigma2"];
-            sampled_values(ss, index1(0,0) ) = sigma2;
+            arma::colvec index3 = parameter_index["sigma2"];
+            sampled_values(ss, index3(0,0) ) = sigma2;
         }
+        if (est_thresh){
+            arma::colvec index4 = parameter_index["thresh"];
+            NI=index4.n_rows;
+            for (int hh=0; hh<NI; hh++){
+                sampled_values(ss, index4(hh,0) ) = alpha(hh+2,0);
+            }
+        }        
+        
     }
 
     //--- output
@@ -507,129 +689,166 @@ int miceadds_rcpp_ml_mcmc_print_progress( int print_iter, int ii,
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_sample_latent_probit
 // [[Rcpp::export]]
-arma::colvec miceadds_rcpp_ml_mcmc_sample_latent_probit( arma::mat X, arma::colvec beta,
-        Rcpp::List Z_list, Rcpp::List u_list, Rcpp::List idcluster_list, int NR,
-        Rcpp::IntegerVector y_int, arma::colvec alpha, double minval,
-        double maxval )
+arma::colvec miceadds_rcpp_ml_mcmc_sample_latent_probit( arma::mat X, 
+    arma::colvec beta, Rcpp::List Z_list, Rcpp::List u_list, Rcpp::List idcluster_list, 
+    int NR, Rcpp::IntegerVector y_int, arma::colvec alpha, double minval, double maxval )
 {
-    arma::colvec mu = miceadds_rcpp_ml_mcmc_predict_fixed_random( X, beta, Z_list, u_list, 
+    arma::colvec mu = miceadds_rcpp_ml_mcmc_predict_fixed_random( X, beta, Z_list, u_list,
                     idcluster_list, NR );
     int N = y_int.size();
-    arma::colvec sigma_probit(N);
-    sigma_probit.fill(1);
     arma::colvec lower(N);
-    arma::colvec upper(N);    
+    arma::colvec upper(N);
     for (int nn=0; nn<N; nn++){
         lower[nn] = alpha[ y_int[nn] ];
         upper[nn] = alpha[ y_int[nn]+1 ];
-    }            
+    }
     // sample latent y
-    arma::colvec y = miceadds_rcpp_rtnorm2( mu, 1.0, lower, upper, minval, maxval );                            
+    arma::colvec y = miceadds_rcpp_rtnorm2( mu, 1.0, lower, upper, minval, maxval );
     //--- output
     return y;
 }
 ///********************************************************************
 
 ///********************************************************************
-///** miceadds_rcpp_ml_mcmc_sampler
+///** miceadds_rcpp_ml_mcmc_probit_fill_index_lower
 // [[Rcpp::export]]
-Rcpp::List miceadds_rcpp_ml_mcmc_sampler(arma::colvec y_obs, arma::mat X,
-        arma::mat xtx_inv, Rcpp::List ztz_list, Rcpp::List Z_list,
-        arma::colvec beta_init, Rcpp::List Psi_list_init, double sigma2_init,
-        arma::colvec alpha_init, Rcpp::List u_list_init, Rcpp::List idcluster_list, 
-        Rcpp::List onlyintercept_list,
-        Rcpp::List ncluster_list, int sigma2_nu0, double sigma2_sigma2_0,
-        Rcpp::List psi_nu0_list, Rcpp::List psi_S0_list, int NR,
-        bool est_sigma2, bool est_probit, Rcpp::List parameter_index, 
-        Rcpp::List est_parameter,
-        int npar, int iter, Rcpp::IntegerVector save_iter, bool verbose,
-        int print_iter)
+Rcpp::NumericVector miceadds_rcpp_ml_mcmc_probit_fill_index_lower( Rcpp::IntegerVector y_int,
+        arma::colvec alpha )
 {
-    //--- handle inits
-    arma::colvec y = y_obs;
-    arma::colvec beta = beta_init;
-    arma::colvec alpha = alpha_init;
-    Rcpp::List Psi_list = Psi_list_init;
-    double sigma2 = sigma2_init;
-    Rcpp::List u_list = u_list_init;
-    int N = y.n_rows;
-    Rcpp::IntegerVector y_int(N);
-    y_int.fill(999);
-    //--- integer vector for ordinal data    
-    if (est_probit){
-        for (int nn=0;nn<N; nn++){
-            y_int[nn] = y(nn,0);
-        }
-    }    
-    //--- matrix with saved parameter values
-    int NSV = Rcpp::max(save_iter) + 1;
-    Rcpp::NumericMatrix sampled_values(NSV, npar);
-    int print_iter_temp=0;
-
-    //************
-    //**** MCMC sampling algorithm
-    for (int ii=0; ii<iter; ii++){
-
-        //-- sampling y in case of probit model
-        if (est_probit){
-            y = miceadds_rcpp_ml_mcmc_sample_latent_probit( X, beta,
-                    Z_list, u_list, idcluster_list, NR, y_int, alpha, .001, .999);                            
-        }
-
-        //-- sampling beta
-        beta = miceadds_rcpp_ml_mcmc_sample_beta( xtx_inv, X, Z_list, y, u_list,
-                    idcluster_list, sigma2, onlyintercept_list, NR);
-                                    
-        //-- sampling Psi matrix
-        Psi_list = miceadds_rcpp_ml_mcmc_sample_psi( u_list, psi_nu0_list, psi_S0_list, NR );
-        
-        //-- sample random effects u
-        u_list = miceadds_rcpp_ml_mcmc_sample_u( X, beta, Z_list, y, ztz_list, idcluster_list,
-                        ncluster_list, sigma2, Psi_list, onlyintercept_list, NR, u_list );
-        //-- sample sigma2
-        if (est_sigma2){
-            sigma2 = miceadds_rcpp_ml_mcmc_sample_sigma2( y, X,  beta, Z_list, u_list,
-                    idcluster_list, onlyintercept_list, sigma2_nu0, sigma2_sigma2_0, NR );
-        }
-
-        //-- sample thresholds in case of ordinal data
-        // ....
-        
-        //-- save parameters
-        sampled_values = miceadds_rcpp_ml_mcmc_save_sampled_values(
-                NR,    parameter_index, est_parameter, npar, beta, Psi_list, sigma2,
-                sampled_values, est_sigma2, save_iter[ii] );
-                
-        //-- print progress (verbose = TRUE)
-        if (verbose){
-            print_iter_temp = miceadds_rcpp_ml_mcmc_print_progress( print_iter, ii,
-                        print_iter_temp);
-        }
-
+    int N = y_int.size();
+    Rcpp::NumericVector lower(N);
+    for (int nn=0; nn<N; nn++){
+        lower[nn] = alpha( y_int[nn], 0);
     }
-
     //--- output
-    return Rcpp::List::create(
-                Rcpp::Named("beta") = beta,
-                Rcpp::Named("Psi_list") = Psi_list,
-                Rcpp::Named("sigma2") = sigma2,
-                Rcpp::Named("alpha") = alpha,
-                Rcpp::Named("y") = y,
-                Rcpp::Named("y_int") = y_int,
-                Rcpp::Named("NR") = NR,
-                Rcpp::Named("u_list") = u_list,
-                Rcpp::Named("sampled_values") = sampled_values
-            );
+    return lower;
 }
 ///********************************************************************
 
+///********************************************************************
+///** miceadds_rcpp_ml_mcmc_probit_fill_index_upper
+// [[Rcpp::export]]
+Rcpp::NumericVector miceadds_rcpp_ml_mcmc_probit_fill_index_upper( Rcpp::IntegerVector y_int,
+        arma::colvec alpha )
+{
+    int N = y_int.size();
+    Rcpp::NumericVector upper(N);
+    for (int nn=0; nn<N; nn++){
+        upper[nn] = alpha( y_int[nn]+1, 0);
+    }
+    //--- output
+    return upper;
+}
+///********************************************************************
+
+///********************************************************************
+///** miceadds_rcpp_ml_mcmc_probit_category_prob
+// [[Rcpp::export]]
+Rcpp::NumericVector miceadds_rcpp_ml_mcmc_probit_category_prob( Rcpp::IntegerVector y_int,
+        arma::colvec alpha, Rcpp::NumericVector mu1, bool use_log )
+{
+    double sigma0 = 1;
+    int N = y_int.size();
+    Rcpp::NumericVector lower = miceadds_rcpp_ml_mcmc_probit_fill_index_lower( y_int, alpha );
+    Rcpp::NumericVector upper = miceadds_rcpp_ml_mcmc_probit_fill_index_upper( y_int, alpha );    
+    Rcpp::NumericVector y1 = miceadds_rcpp_pnorm( lower, mu1, sigma0);
+    Rcpp::NumericVector y2 = miceadds_rcpp_pnorm( upper, mu1, sigma0);    
+    Rcpp::NumericVector diff = y2 - y1;
+    if (use_log){
+        double eps = 1e-60;
+        for (int nn=0; nn<N; nn++){
+            diff[nn] = std::log( diff[nn] + eps );
+        }
+    }
+    //--- output
+    return diff;
+}
+///********************************************************************
+
+///********************************************************************
+///** miceadds_rcpp_ml_mcmc_probit_loglike
+// [[Rcpp::export]]
+double miceadds_rcpp_ml_mcmc_probit_loglike( Rcpp::IntegerVector y_int,
+        arma::colvec alpha, Rcpp::NumericVector mu1, bool use_log )
+{
+    double sigma0 = 1;
+    int N = y_int.size();
+    Rcpp::NumericVector lower = miceadds_rcpp_ml_mcmc_probit_fill_index_lower( y_int, alpha );
+    Rcpp::NumericVector upper = miceadds_rcpp_ml_mcmc_probit_fill_index_upper( y_int, alpha );    
+    Rcpp::NumericVector y1 = miceadds_rcpp_pnorm( lower, mu1, sigma0);
+    Rcpp::NumericVector y2 = miceadds_rcpp_pnorm( upper, mu1, sigma0);    
+    Rcpp::NumericVector diff = y2 - y1;
+    double eps = 1e-60;
+    double val=0;
+    for (int nn=0; nn<N; nn++){
+        val += std::log( diff[nn] + eps );
+    }    
+    //--- output
+    return val;
+}
+///********************************************************************
+
+
+///********************************************************************
+///** miceadds_rcpp_rnorm_double
+// [[Rcpp::export]]
+double miceadds_rcpp_rnorm_double( double mu, double sigma )
+{
+    double samp = mu + ::Rf_rnorm(0,1) * sigma;
+    //--- output
+    return samp;
+}
+///********************************************************************
+
+
+///********************************************************************
+///** miceadds_rcpp_ml_mcmc_sample_thresholds
+// [[Rcpp::export]]
+arma::colvec miceadds_rcpp_ml_mcmc_sample_thresholds( arma::mat X, 
+    arma::colvec beta, Rcpp::List Z_list, Rcpp::List u_list, Rcpp::List idcluster_list, 
+    int NR, int K, arma::colvec alpha, Rcpp::NumericVector sd_proposal, 
+    Rcpp::IntegerVector y_int )
+{
+    arma::colvec mu = miceadds_rcpp_ml_mcmc_predict_fixed_random( X, beta, Z_list, u_list,
+                    idcluster_list, NR );        
+    Rcpp::NumericVector mu1 = miceadds_rcpp_arma2vec(mu);    
+    arma::colvec alpha1(K+2);
+    for (int hh=0; hh<K+2; hh++){
+        alpha1(hh,0) = alpha(hh,0);        
+    }
+    
+    bool accept=FALSE;
+    double prob0=0;
+    double prob1=0;
+    double mh_logratio=0;     
+    prob0 = miceadds_rcpp_ml_mcmc_probit_loglike( y_int, alpha, mu1, TRUE );        
+    
+    for (int kk=2; kk<K+1; kk++){            
+        alpha1(kk,0) = miceadds_rcpp_rnorm_double( alpha(kk,0), sd_proposal[kk] );        
+        accept = FALSE;
+        if ( ( alpha1(kk,0) > alpha1(kk-1,0) ) & ( alpha1(kk,0) < alpha1(kk+1,0) ) ){    
+            prob1 = miceadds_rcpp_ml_mcmc_probit_loglike( y_int, alpha1, mu1, TRUE );
+            mh_logratio = prob1 - prob0;
+            if ( mh_logratio > 0 ){    accept = TRUE; }
+            if ( ! accept ){ accept = ( ::Rf_runif(0, 1) < std::exp( mh_logratio ) ); }
+            if ( accept ){ 
+                alpha(kk,0) = alpha1(kk,0); 
+                prob0 = prob1;
+            }
+        }
+    }
+    
+    //--- output
+    return alpha;
+}
+///********************************************************************
 
 
 //    return Rcpp::List::create(
 //                Rcpp::Named("beta_hat") = beta_hat
 //            );
 
-// print armadillo objects 
+// print armadillo objects
 // mu.print("mu:");
 
 // Rcpp::Rcout << "verbose" << ii << std::endl;

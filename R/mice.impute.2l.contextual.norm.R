@@ -1,7 +1,10 @@
 ## File Name: mice.impute.2l.contextual.norm.R
-## File Version: 0.13
+## File Version: 0.15
+
+
 mice.impute.2l.contextual.norm <- function (y, ry, x, type, ridge=10^(-5),
-            imputationWeights=NULL, interactions=NULL, quadratics=NULL,  ...){
+            imputationWeights=NULL, interactions=NULL, quadratics=NULL,  ...)
+{
     res <- mice_imputation_get_states( pos=parent.frame(n=1) )
     vname <- res$vname
     newstate <- res$newstate
@@ -17,9 +20,9 @@ mice.impute.2l.contextual.norm <- function (y, ry, x, type, ridge=10^(-5),
 
 
 
-
 #......................................
-.a2l.contextual.auxiliary <- function( y, ry, x, type, ...){
+.a2l.contextual.auxiliary <- function( y, ry, x, type, ...)
+{
     # extract cluster index
     clusterx <- x[,type==-2 ]
     x1 <-  as.matrix(x[,type %in% c(1,2) ])

@@ -1,7 +1,7 @@
 ## File Name: ml_mcmc_create_parameter_index.R
-## File Version: 0.05
+## File Version: 0.07
 
-ml_mcmc_create_parameter_index <- function(beta, Psi_list, est_sigma2)
+ml_mcmc_create_parameter_index <- function(beta, Psi_list, est_sigma2, est_thresh, K)
 {
     parameter_index <- list()
     est_parameter <- list()
@@ -32,6 +32,13 @@ ml_mcmc_create_parameter_index <- function(beta, Psi_list, est_sigma2)
     }
     est_parameter$sigma2 <- est_sigma2
 
+    #--- thresh
+    if ( est_thresh ){
+        parameter_index$thresh <- npar - 1 + seq_len( K - 1 )
+        npar <- npar + K - 1
+    }
+    est_parameter$thresh <- est_thresh
+    
     #*** output
     res <- list( npar=npar, parameter_index=parameter_index,
                     est_parameter=est_parameter)

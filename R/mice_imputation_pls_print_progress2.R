@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_print_progress2.R
-## File Version: 0.05
+## File Version: 0.06
 
 mice_imputation_pls_print_progress2 <- function(pls.print.progress, imp.temp,
     pls.title, y, x)

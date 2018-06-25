@@ -1,11 +1,12 @@
 ## File Name: subset_nested.datlist.R
-## File Version: 1.12
+## File Version: 1.13
 
 #######################################################
 subset_nested.datlist <- function( datlist, subset=TRUE,
                 select=NULL, expr_subset=NULL,
                 index_between=NULL, index_within=NULL,
-                toclass="nested.datlist", simplify=FALSE ){
+                toclass="nested.datlist", simplify=FALSE )
+{
         CALL <- match.call()
 
 
@@ -35,7 +36,7 @@ subset_nested.datlist <- function( datlist, subset=TRUE,
             expr1 <- substitute(expr)
             is_expr <- TRUE
             apply_select0 <- TRUE
-                    }
+        }
 
         #-----------------------------
         #*** start routine
@@ -43,30 +44,30 @@ subset_nested.datlist <- function( datlist, subset=TRUE,
         NW <- length(datlist[[1]])
         if ( is.null(index_between) ){
             index_between <- 1:NB
-                        }
+        }
         if ( is.null(index_within) ){
             index_within <- 1:NW
-                        }
+        }
 
         IMB <- length(index_between)
         IMW <- length(index_within)
 
         if( is.null(select) & ( mean( subset )==1 ) ){
             apply_select <- FALSE
-                        } else {
+        } else {
             apply_select <- TRUE
-                        }
+        }
         if (apply_select0){ apply_select <- TRUE }
         if ( is.null(select) ){
-                select <- colnames(datlist[[1]][[1]])
-                        }
+            select <- colnames(datlist[[1]][[1]])
+        }
 
 
         # initialize object structure
         datlist2 <- as.list(1:IMB)
             for (ii in 1:IMB){
                 datlist2[[ii]] <- as.list( 1:IMW)
-                    }
+            }
 
         for (ii in 1:IMB){
         for (jj in 1:IMW){
@@ -134,11 +135,9 @@ subset_nested.datlist <- function( datlist, subset=TRUE,
                     datlist2 <- mitools::imputationList( datlist2$imputations[[1]] )
                             }
                         }
-                                   }
-
-
-        return(datlist2)
-        }
+            }
+    return(datlist2)
+}
 
 
 

@@ -1,11 +1,11 @@
 ## File Name: ml_mcmc_fit.R
-## File Version: 0.37
+## File Version: 0.47
 
-ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2, 
+ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     alpha, u_list, idcluster_list, onlyintercept_list, ncluster_list,
     sigma2_nu0, sigma2_sigma2_0, psi_nu0_list, psi_S0_list, est_sigma2,
     est_probit, parameter_index, est_parameter, npar, iter, save_iter,
-    verbose=TRUE, print_iter=500, parnames0=NULL )
+    verbose=TRUE, print_iter=500, parnames0=NULL, K=9999, est_thresh=FALSE )
 {
     #** preliminaries
     xtx_inv <- solve( miceadds_rcpp_ml_mcmc_compute_xtx(X) )
@@ -15,6 +15,9 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
         ztz_list[[rr]] <- miceadds_rcpp_ml_mcmc_compute_ztz( Z=Z_list[[rr]],
                         idcluster=idcluster_list[[rr]], ncluster=ncluster_list[[rr]] )
     }
+    N <- length(y)
+    sd_proposal <- sqrt( 5.8/N + 0*alpha )
+    sd_proposal[ c(1,2,length(alpha))] <- 0
     
     #** call Rcpp function
     res <- miceadds_rcpp_ml_mcmc_sampler( y_obs=y, X=X, xtx_inv=xtx_inv,
@@ -22,11 +25,12 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
                 sigma2_init=sigma2, alpha_init=alpha, u_list_init=u_list, idcluster_list=idcluster_list,
                 onlyintercept_list=onlyintercept_list, ncluster_list=ncluster_list,
                 sigma2_nu0=sigma2_nu0, sigma2_sigma2_0=sigma2_sigma2_0, psi_nu0_list=psi_nu0_list,
-                psi_S0_list=psi_S0_list, NR=NR, est_sigma2=est_sigma2, 
+                psi_S0_list=psi_S0_list, NR=NR, est_sigma2=est_sigma2,
                 est_probit=est_probit, parameter_index=parameter_index,
                 est_parameter=est_parameter, npar=npar, iter=iter, save_iter=save_iter,
-                verbose=verbose, print_iter=print_iter)
-                
+                verbose=verbose, print_iter=print_iter, est_thresh=est_thresh, K=K,
+                sd_proposal=sd_proposal)
+
     #** output processing
     if ( is.null(parnames0) ){
         NS <- ncol(res$sampled_values)
@@ -49,7 +53,7 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     res$iter <- iter
     res$est_probit <- est_probit
     res$est_sigma2 <- est_sigma2
-    
+
     #--- coef and vcov
     coef <- dfr$mode
     names(coef) <- parnames0

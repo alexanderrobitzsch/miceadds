@@ -1,16 +1,16 @@
 ## File Name: string_to_matrix.R
-## File Version: 0.07
+## File Version: 0.12
 
-string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE, 
-        diag_val = NULL, extend = FALSE)
+string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
+        diag_val=NULL, extend=FALSE, split=" ")
 {
-    x <- gsub("\t", " ", x , fixed= TRUE )
+    x <- gsub("\t", " ", x, fixed=TRUE )
     #-- split vectors
-    v1 <- sapply( x, FUN = function(vv){ 
-                g1 <- strsplit( vv, split= " " )[[1]]
-                g1 <- g1[ g1 != "" ]
+    v1 <- sapply( x, FUN=function(vv){
+                g1 <- strsplit( vv, split=split )[[1]]
+                g1 <- g1[ g1 !="" ]
                 return(g1)
-                } , simplify=FALSE)
+                }, simplify=FALSE)
     NV <- length(v1)
 
     #-- dimensions
@@ -23,13 +23,13 @@ string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
     mat <- matrix("", nrow=NR, ncol=NC)
     for (vv in 1:NV){
         mat[ vv, seq(1,sizes[vv]) ] <- v1[[vv]]
-    }    
-    
+    }
+
     if ( ! is.null(rownames) ){
         rownames(mat) <- mat[,rownames]
     }
     if ( ! is.null(col_elim) ){
-        mat <- mat[ , - col_elim ] 
+        mat <- mat[, - col_elim ]
     }
     if ( as_numeric){
         NC <- ncol(mat)
@@ -47,7 +47,7 @@ string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
         mat0 <- mat
         mat0[ is.na(mat0) ] <- 0
         mat <- ( mat0 + t(mat0) )
-        diag(mat) <- diag(mat0)        
+        diag(mat) <- diag(mat0)
         colnames(mat) <- rownames(mat)
     }
     #--- output

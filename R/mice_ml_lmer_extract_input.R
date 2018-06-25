@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_extract_input.R
-## File Version: 0.17
+## File Version: 0.18
 
 mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_levels,
         pls.facs, min.int.cor, min.all.cor, interactions, quadratics, model )
@@ -35,9 +35,9 @@ mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_
                         miceargdefault=20 )
     # correlations interactions
     min.int.cor <- mice_imputation_extract_list_arguments( micearg=min.int.cor, vname=vname,
-                                miceargdefault=0 )
+                        miceargdefault=0 )
     min.all.cor <- mice_imputation_extract_list_arguments( micearg=min.all.cor, vname=vname,
-                                miceargdefault=0 )
+                        miceargdefault=0 )
 
     #--- interactions
     interactions <- mice_imputation_extract_arguments_list(v1=interactions, vname=vname)
@@ -47,7 +47,7 @@ mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_
 
     #--- model
     model <- mice_imputation_extract_list_arguments( micearg=model, vname=vname,
-                                miceargdefault="continuous" )
+                        miceargdefault="continuous" )
 
     #--- output
     res <- list( vname=vname, type=type, data=data, levels_id=levels_id,

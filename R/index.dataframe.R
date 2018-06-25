@@ -1,10 +1,11 @@
 ## File Name: index.dataframe.R
-## File Version: 1.06
+## File Version: 1.07
 
 
 ####################################################
 # adds an index to a data frame
-index.dataframe <- function (data, systime=FALSE) {
+index.dataframe <- function (data, systime=FALSE)
+{
     data <- as.data.frame(data)
     data$index <- NULL
     data$file_created <- NULL
@@ -14,5 +15,5 @@ index.dataframe <- function (data, systime=FALSE) {
         }
     data1 <- cbind( data1, data )
     return(data1)
-    }
+}
 ########################################################

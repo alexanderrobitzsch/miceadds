@@ -1,13 +1,14 @@
 ## File Name: mice.impute.grouped.R
-## File Version: 0.15
+## File Version: 0.17
 
 ##################################################
 # imputation for grouped data
-mice.impute.grouped <- function (y, ry, x, low=NULL, upp=NULL,  ...){
+mice.impute.grouped <- function (y, ry, x, low=NULL, upp=NULL,  ...)
+{
     TAM::require_namespace_msg("grouped")
     x <- cbind(1, as.matrix(x) )
-    newstate <- get( "newstate", pos=parent.frame() )
-    vname <- get("vname", pos=parent.frame())
+    newstate <- ma_exists_get('newstate', pos=parent.frame(n=1))
+    vname <- ma_exists_get('yname', pos=parent.frame(n=1))
     Y <- cbind( low[[vname]], upp[[vname]] )
     # draw bootstrap sample
     N <- nrow(Y)

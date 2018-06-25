@@ -1,11 +1,12 @@
 ## File Name: jomo2datlist.R
-## File Version: 0.07
+## File Version: 0.08
 
-##################################################
-# converts a dataframe in longformat (produced
-# in jomo) into a list of datasets
 
-jomo2datlist <- function( jomo.dataframe, variable="Imputation" ){
+# converts a dataframe in longformat (produced in jomo) 
+# into a list of datasets
+
+jomo2datlist <- function( jomo.dataframe, variable="Imputation" )
+{
     dat <- jomo.dataframe
     M1 <- max( unique( dat$Imputation ) )
     datlist <- as.list( 1:M1 )

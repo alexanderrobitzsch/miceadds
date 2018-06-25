@@ -1,9 +1,10 @@
 ## File Name: systime.R
-## File Version: 0.08
+## File Version: 0.09
 
 ########################################################################
 # several variants for getting system time
-systime <- function(){
+systime <- function()
+{
     s1 <- paste(Sys.time())
     res <- c( s1, substring( s1, 1,10) )
     res <- c(res, gsub("-","",res[2] ) )
@@ -16,15 +17,16 @@ systime <- function(){
     t1 <- gsub( "_", "", res[ length(res) ] )
     res <- c( res, t1 )
     res <- c( res, paste0( Sys.info()["nodename"], "_", res[ length(res) ] ) )
-
+    #--- output
     return(res)
-        }
+}
 ########################################################################
 
 
-.attach.environment <- function( res, envir ){
+.attach.environment <- function( res, envir )
+{
     CC <- length(res)
     for (cc in 1:CC){
         assign( names(res)[cc], res[[cc]], envir=envir )
-                    }
-                    }
+    }
+}

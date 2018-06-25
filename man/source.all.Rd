@@ -1,5 +1,5 @@
 %% File Name: source.all.Rd
-%% File Version: 0.24
+%% File Version: 0.25
 
 \name{source.all}
 \alias{source.all}
@@ -22,7 +22,7 @@ file.
 }
 
 \usage{
-source.all( path, grepstring="\\\\.R",  print.source=TRUE )
+source.all( path, grepstring="\\\\.R",  print.source=TRUE, file_sep="__"  )
 
 source.Rcpp.all( path, file_names=NULL, ext="\\\\.cpp", excl="RcppExports",
    remove_temp_file=FALSE )
@@ -41,6 +41,8 @@ Which strings should be looked for?
 \item{print.source}{
 An optional logical whether the source process printed on the console?
 }
+\item{file_sep}{String at which file name should be splt for looking
+for most recent files}
 \item{file_names}{Optional vector of (parts of) file names}
 \item{ext}{File extension for \pkg{Rcpp} files}
 \item{excl}{String indicating which files should be omitted from sourcing}

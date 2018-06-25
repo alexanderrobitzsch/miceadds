@@ -1,6 +1,8 @@
 ## File Name: mice.impute.2l.groupmean.elim.R
-## File Version: 0.11
-mice.impute.2l.groupmean.elim <- function (y, ry, x, type,  ...){
+## File Version: 0.12
+
+mice.impute.2l.groupmean.elim <- function (y, ry, x, type,  ...)
+{
     if ( ncol(x) > 2){
         warning("\nOnly one variable is allowed to be aggregated.\n")
         }

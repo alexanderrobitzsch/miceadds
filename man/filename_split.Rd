@@ -1,10 +1,11 @@
 %% File Name: filename_split.Rd
-%% File Version: 0.23
+%% File Version: 0.31
 
 \name{filename_split}
 \alias{filename_split}
 \alias{string_extract_part}
 \alias{string_to_matrix}
+\alias{filename_split_vec}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
@@ -14,20 +15,24 @@ Some Functionality for Strings and File Names
 The function \code{filename_split} splits a file name into parts.
 
 The function \code{string_extract_part} extracts a part of a string.
+
+The function \code{string_to_matrix} converts a string into a matrix.
 }
 \usage{
 filename_split(file_name, file_sep="__", file_ext=".")
+filename_split_vec( file_names, file_sep="__", file_ext=".")
 
 string_extract_part( vec, part=1, sep="__", remove_empty=TRUE )
 
-string_to_matrix(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE, 
-               diag_val = NULL, extend = FALSE)
+string_to_matrix(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
+               diag_val=NULL, extend=FALSE, split=" ")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{file_name}{
 File name
 }
+\item{file_names}{File names}
   \item{file_sep}{
 Separator within file name
 }
@@ -43,9 +48,10 @@ should be removed.}
 \item{rownames}{Column index for row names}
 \item{col_elim}{Indices for elimination of columns}
 \item{as_numeric}{Logical indicating whether numeric conversion is requested}
-\item{diag_val}{Optional values for inclusion in diagonal of matrix}  
+\item{diag_val}{Optional values for inclusion in diagonal of matrix}
 \item{extend}{Optional indicating whether numeric matrix should be
-extended to become a symmetric matrix} 
+extended to become a symmetric matrix}
+\item{split}{String used for splitting}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -105,10 +111,10 @@ miceadds::string_extract_part( vec=vec, part=2, sep="__" )
   ##  [4] "zzu78347834_ghghwuz"
   ##  > miceadds::string_extract_part( vec=vec, part=2, sep="__" )
   ##  [1] "DES"  "DATA" "INFO" NA
-  
+
 #############################################################################
 # EXAMPLE 3: Reading descriptive information from published articles
-#############################################################################  
+#############################################################################
 
 \dontrun{
 data(data.ma08)
@@ -125,19 +131,19 @@ dat <- dat0[1:14]
 # substitute "*"
 dat <- gsub("*", "", dat, fixed=TRUE )
 
-# replace blanks in variable names 
+# replace blanks in variable names
 s1 <- stringr::str_locate(dat, "[A-z] [A-z]")
 start <- s1[,"start"] + 1
 for (ss in 1:length(start) ){
     if ( ! is.na( start[ss] ) ){
-        substring( dat[ss], start[ss], start[ss] ) <- "_" 
+        substring( dat[ss], start[ss], start[ss] ) <- "_"
     }
 }
 
 # character matrix
 miceadds::string_to_matrix(dat)
 # numeric matrix containing correlations
-miceadds::string_to_matrix(dat, rownames=2, col_elim=c(1,2), as_numeric=TRUE, diag_val=1, 
+miceadds::string_to_matrix(dat, rownames=2, col_elim=c(1,2), as_numeric=TRUE, diag_val=1,
            extend=TRUE )
 #** reading means and SDs
 miceadds::string_to_matrix(dat0[ c(15,16)], rownames=1, col_elim=c(1), as_numeric=TRUE )
@@ -145,7 +151,7 @@ miceadds::string_to_matrix(dat0[ c(15,16)], rownames=1, col_elim=c(1), as_numeri
 #**** reading correlations (III)
 dat <- data.ma08$mat3
 dat <- gsub(" age ", "_age_", dat, fixed=TRUE )
-miceadds::string_to_matrix(dat, rownames=2, col_elim=c(1,2), as_numeric=TRUE, diag_val=1, 
+miceadds::string_to_matrix(dat, rownames=2, col_elim=c(1,2), as_numeric=TRUE, diag_val=1,
        extend=TRUE )
 
 #**** reading correlations (IV)
@@ -160,12 +166,12 @@ for (ss in 1:NL ){
     if (NR>1){
         start <- s1[[ss]][2,1]+1
         if ( ! is.na( start ) ){
-            substring( dat[ss], start, start ) <- "_" 
+            substring( dat[ss], start, start ) <- "_"
         }
     }
 }
 
-miceadds::string_to_matrix(dat, rownames=2, col_elim=c(1,2), as_numeric=TRUE, diag_val=1, 
+miceadds::string_to_matrix(dat, rownames=2, col_elim=c(1,2), as_numeric=TRUE, diag_val=1,
      extend=TRUE )
 }
 }

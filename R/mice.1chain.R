@@ -1,5 +1,5 @@
 ## File Name: mice.1chain.R
-## File Version: 0.64
+## File Version: 0.65
 
 #*** apply mice algorithm in a single chain
 mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
@@ -118,13 +118,13 @@ mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
 # S3 method summary
 summary.mids.1chain <- function( object, ... )
 {
-   cat("Multiply imputed dataset using one chain\n\n")
-   cat( paste0( "Number of iterations=", object$iter), "\n")
-   cat( paste0( "Number of burnin-iterations=", object$burnin), "\n")
-   cat( paste0( "Number of imputations=", object$Nimp), "\n")
-   cat( paste0( object$nobs, " cases and ", object$nvars, " variables \n\n" ) )
-   cat("---------\n")
-   print( summary( object$midsobj ) )
+    cat("Multiply imputed dataset using one chain\n\n")
+    cat( paste0( "Number of iterations=", object$iter), "\n")
+    cat( paste0( "Number of burnin-iterations=", object$burnin), "\n")
+    cat( paste0( "Number of imputations=", object$Nimp), "\n")
+    cat( paste0( object$nobs, " cases and ", object$nvars, " variables \n\n" ) )
+    cat("---------\n")
+    print( summary( object$midsobj ) )
 }
 
 #--- print method

@@ -1,8 +1,7 @@
 ## File Name: filename_split.R
-## File Version: 0.09
+## File Version: 0.11
 
-filename_split <- function( file_name, file_sep="__",
-        file_ext=".")
+filename_split <- function( file_name, file_sep="__", file_ext=".")
 {
     file <- file_name
     v1 <- strsplit( file, split=file_ext, fixed=TRUE )[[1]]

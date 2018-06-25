@@ -1,5 +1,5 @@
 ## File Name: summary.ml_mcmc.R
-## File Version: 0.05
+## File Version: 0.11
 
 
 summary.ml_mcmc <- function( object, digits=4, file=NULL, ...)
@@ -21,7 +21,9 @@ summary.ml_mcmc <- function( object, digits=4, file=NULL, ...)
     cat( "Number of iterations", "=", object$iter, "\n" )
     cat( "Number of burnin iterations", "=", object$burnin, "\n\n" )
 
-
+    #-- some descriptive informations
+    ml_mcmc_summary_print_descriptives(object=object)
+    
     cat("-----------------------------------------------------------------\n")
     cat("Model Parameters\n")
     obji <- object$par_summary

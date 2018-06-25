@@ -1,11 +1,11 @@
 ## File Name: ma.wtd.covNA.R
-## File Version: 0.06
+## File Version: 0.07
 
 
 
-###############################################################################
 # weighted covariance
-ma.wtd.covNA <- function( data, weights=NULL, vars=NULL,  method="unbiased" ){
+ma.wtd.covNA <- function( data, weights=NULL, vars=NULL,  method="unbiased" )
+{
     #*** pre-processing
     res <- ma.wtd.aux.data(data=data, weights=weights, vars=vars )
     data <- res$data
@@ -20,7 +20,7 @@ ma.wtd.covNA <- function( data, weights=NULL, vars=NULL,  method="unbiased" ){
         data1 <- data[[ii]]
         if ( ! is.null(vars) ){
             data1 <- data1[, vars, drop=FALSE ]
-                                }
+        }
         dataResp <- 1 - is.na( data1 )
         data1[ is.na(data1) ] <- 0
         data1 <- as.matrix( data1 )
@@ -37,15 +37,13 @@ ma.wtd.covNA <- function( data, weights=NULL, vars=NULL,  method="unbiased" ){
         covXY <- covXY / covWXY
         # adjustment of covariance
         if (method=="unbiased" ){
-            # wgtadj <- w1 - colSums( dataResp * weights^2 ) / w1
-            # wgtadj <- w1 / wgtadj
             wgtadj <- crossprod( dataResp * weights^2 )
             wgtadj <- ( covWXY^2 - crossprod( dataResp * weights^2 ) ) / covWXY^2
             wgtadj <- 1 / wgtadj
             covXY <- wgtadj * covXY
-                                }
-        res[ii,,] <- covXY
-                    }
-        res <- colMeans(res)
-        return( res )
         }
+        res[ii,,] <- covXY
+    }
+    res <- colMeans(res)
+    return( res )
+}

@@ -1,10 +1,11 @@
 ## File Name: ma.wtd.sdNA.R
-## File Version: 0.06
+## File Version: 0.07
 
 
 ###############################################################################
 # weighted SD
-ma.wtd.sdNA <- function( data, weights=NULL, vars=NULL, method="unbiased" ){
+ma.wtd.sdNA <- function( data, weights=NULL, vars=NULL, method="unbiased" )
+{
     #*** pre-processing
     res <- ma.wtd.aux.data(data=data, weights=weights, vars=vars )
     data <- res$data
@@ -31,13 +32,13 @@ ma.wtd.sdNA <- function( data, weights=NULL, vars=NULL, method="unbiased" ){
             # wtd.var ...
             #     sum(weights * ((x - xbar)^2))/(sw - sum(weights^2)/sw)
             sdx <- sqrt(wgtadj) * sdx
-                                }
+        }
         res[ii,] <- sdx
-                    }
+    }
     res <- colMeans(res)
     names(res) <- colnames(data[[1]])
     return( res )
-        }
+}
 ###############################################################################
 
 

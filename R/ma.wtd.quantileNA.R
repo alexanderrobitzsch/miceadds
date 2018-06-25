@@ -1,11 +1,12 @@
 ## File Name: ma.wtd.quantileNA.R
-## File Version: 0.08
+## File Version: 0.09
 
 
 ###############################################################################
 # weighted quantile
 ma.wtd.quantileNA <- function( data, weights=NULL, vars=NULL,
-      type=7, probs=seq(0,1,.25) ){
+            type=7, probs=seq(0,1,.25) )
+{
     #*** pre-processing
     res <- ma.wtd.aux.data(data=data, weights=weights, vars=vars )
     data <- res$data
@@ -21,12 +22,12 @@ ma.wtd.quantileNA <- function( data, weights=NULL, vars=NULL,
             M1 <- weighted_quantile(x=data1[,vv],
                     w=weights, type=type, probs=probs )
             res[ii, 1:PP + (vv-1)*PP ]    <- M1
-                }
-                    }
+        }
+    }
     res <- colMeans(res)
     res <- matrix( res, nrow=PP, ncol=V, byrow=FALSE)
     colnames(res) <- colnames(data[[1]])
     rownames(res) <- paste0(100*probs,"%")
     return( res )
-        }
+}
 ###############################################################################
