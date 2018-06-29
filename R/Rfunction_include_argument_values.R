@@ -1,5 +1,5 @@
 ## File Name: Rfunction_include_argument_values.R
-## File Version: 0.24
+## File Version: 0.25
 
 Rfunction_include_argument_values <- function(string, maxlen=70)
 {
@@ -31,7 +31,7 @@ Rfunction_include_argument_values <- function(string, maxlen=70)
     #--- handle dots
     s2 <- gsub("...=...", "...", s2, fixed=TRUE)
     #--- delete blanks at begin of lines
-    s2 <- gsub("\n ", "\n", s2, fixed=TRUE)    
+    s2 <- gsub("\n ", "\n", s2, fixed=TRUE)
     #--- output
     return(s2)
 }

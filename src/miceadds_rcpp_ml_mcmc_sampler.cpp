@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_ml_mcmc_sampler.cpp
-//// File Version: 0.893
+//// File Version: 0.894
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -20,14 +20,14 @@ using namespace arma;
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_sampler
 // [[Rcpp::export]]
-Rcpp::List miceadds_rcpp_ml_mcmc_sampler( arma::colvec y_obs, arma::mat X, 
-    arma::mat xtx_inv, Rcpp::List ztz_list, Rcpp::List Z_list, arma::colvec beta_init, 
-    Rcpp::List Psi_list_init, double sigma2_init, arma::colvec alpha_init, 
-    Rcpp::List u_list_init, Rcpp::List idcluster_list, Rcpp::List onlyintercept_list, 
-    Rcpp::List ncluster_list, int sigma2_nu0, double sigma2_sigma2_0, 
-    Rcpp::List psi_nu0_list, Rcpp::List psi_S0_list, int NR, bool est_sigma2, 
-    bool est_probit, Rcpp::List parameter_index, Rcpp::List est_parameter, int npar, 
-    int iter, Rcpp::IntegerVector save_iter, bool verbose, int print_iter, 
+Rcpp::List miceadds_rcpp_ml_mcmc_sampler( arma::colvec y_obs, arma::mat X,
+    arma::mat xtx_inv, Rcpp::List ztz_list, Rcpp::List Z_list, arma::colvec beta_init,
+    Rcpp::List Psi_list_init, double sigma2_init, arma::colvec alpha_init,
+    Rcpp::List u_list_init, Rcpp::List idcluster_list, Rcpp::List onlyintercept_list,
+    Rcpp::List ncluster_list, int sigma2_nu0, double sigma2_sigma2_0,
+    Rcpp::List psi_nu0_list, Rcpp::List psi_S0_list, int NR, bool est_sigma2,
+    bool est_probit, Rcpp::List parameter_index, Rcpp::List est_parameter, int npar,
+    int iter, Rcpp::IntegerVector save_iter, bool verbose, int print_iter,
     bool est_thresh, int K, Rcpp::NumericVector sd_proposal )
 {
     //--- handle inits
@@ -71,7 +71,7 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sampler( arma::colvec y_obs, arma::mat X,
         //-- sample random effects u
         u_list = miceadds_rcpp_ml_mcmc_sample_u( X, beta, Z_list, y, ztz_list, idcluster_list,
                         ncluster_list, sigma2, Psi_list, onlyintercept_list, NR, u_list );
-        
+
         //-- sample sigma2
         if (est_sigma2){
             sigma2 = miceadds_rcpp_ml_mcmc_sample_sigma2( y, X,  beta, Z_list, u_list,
@@ -81,7 +81,7 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sampler( arma::colvec y_obs, arma::mat X,
         //-- sample thresholds in case of ordinal data
         if (est_thresh){
             alpha = miceadds_rcpp_ml_mcmc_sample_thresholds( X, beta, Z_list, u_list,
-                idcluster_list, NR, K, alpha, sd_proposal, y_int );        
+                idcluster_list, NR, K, alpha, sd_proposal, y_int );
         }
 
         //-- save parameters
@@ -96,7 +96,7 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sampler( arma::colvec y_obs, arma::mat X,
         }
 
     }
-    
+
     //--- output
     return Rcpp::List::create(
                 Rcpp::Named("beta") = beta,

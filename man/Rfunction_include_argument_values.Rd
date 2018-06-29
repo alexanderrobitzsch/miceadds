@@ -1,5 +1,5 @@
 %% File Name: Rfunction_include_argument_values.Rd
-%% File Version: 0.11
+%% File Version: 0.14
 
 \name{Rfunction_include_argument_values}
 \alias{Rfunction_include_argument_values}
@@ -93,7 +93,7 @@ cat( miceadds::Rfunction_output_list_result_function( string ) )
   ##  type <- res$type
   ##  data <- res$data
   ##  levels_id <- res$levels_id
-  
+
 
 string <- "
 arma::colvec miceadds_rcpp_rtnorm2( arma::colvec mu,
@@ -101,8 +101,8 @@ arma::colvec miceadds_rcpp_rtnorm2( arma::colvec mu,
             double minval, double maxval)
     "
 
-cat( miceadds::Rcppfunction_remove_classes(string, maxlen = 70) )
-cat( miceadds::Rcppfunction_remove_classes(string, maxlen = 70, remove=FALSE) )  
+cat( miceadds::Rcppfunction_remove_classes(string, maxlen=70) )
+cat( miceadds::Rcppfunction_remove_classes(string, maxlen=70, remove=FALSE) )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

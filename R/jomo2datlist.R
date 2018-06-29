@@ -1,8 +1,8 @@
 ## File Name: jomo2datlist.R
-## File Version: 0.08
+## File Version: 0.09
 
 
-# converts a dataframe in longformat (produced in jomo) 
+# converts a dataframe in longformat (produced in jomo)
 # into a list of datasets
 
 jomo2datlist <- function( jomo.dataframe, variable="Imputation" )

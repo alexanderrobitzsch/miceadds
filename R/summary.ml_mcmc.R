@@ -1,5 +1,5 @@
 ## File Name: summary.ml_mcmc.R
-## File Version: 0.11
+## File Version: 0.12
 
 
 summary.ml_mcmc <- function( object, digits=4, file=NULL, ...)
@@ -23,7 +23,7 @@ summary.ml_mcmc <- function( object, digits=4, file=NULL, ...)
 
     #-- some descriptive informations
     ml_mcmc_summary_print_descriptives(object=object)
-    
+
     cat("-----------------------------------------------------------------\n")
     cat("Model Parameters\n")
     obji <- object$par_summary

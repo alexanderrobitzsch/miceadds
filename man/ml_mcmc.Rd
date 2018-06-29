@@ -1,5 +1,5 @@
 %% File Name: ml_mcmc.Rd
-%% File Version: 0.35
+%% File Version: 0.429
 
 \name{ml_mcmc}
 \alias{ml_mcmc}
@@ -8,6 +8,25 @@
 \alias{summary.ml_mcmc}
 \alias{coef.ml_mcmc}
 \alias{vcov.ml_mcmc}
+\alias{miceadds_rcpp_ml_mcmc_sample_beta}
+\alias{miceadds_rcpp_ml_mcmc_sample_u}
+\alias{miceadds_rcpp_ml_mcmc_sample_psi}
+\alias{miceadds_rcpp_ml_mcmc_sample_sigma2}
+\alias{miceadds_rcpp_ml_mcmc_sample_latent_probit} 
+\alias{miceadds_rcpp_ml_mcmc_sample_thresholds}
+\alias{miceadds_rcpp_ml_mcmc_predict_fixed_random} 
+\alias{miceadds_rcpp_ml_mcmc_predict_random_list}
+\alias{miceadds_rcpp_ml_mcmc_predict_random}
+\alias{miceadds_rcpp_ml_mcmc_predict_fixed}
+\alias{miceadds_rcpp_ml_mcmc_subtract_fixed}
+\alias{miceadds_rcpp_ml_mcmc_subtract_random}
+\alias{miceadds_rcpp_ml_mcmc_compute_ztz}    
+\alias{miceadds_rcpp_ml_mcmc_compute_xtx}     
+\alias{miceadds_rcpp_ml_mcmc_probit_category_prob}
+\alias{miceadds_rcpp_pnorm}     
+\alias{miceadds_rcpp_qnorm}
+\alias{miceadds_rcpp_rtnorm} 
+
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
@@ -21,7 +40,7 @@ or ordinal (Goldstein, 2011; Goldstein, Carpenter, Kenward & Levin, 2009).
 
 \usage{
 ml_mcmc( formula, data, iter=3000, burnin=500, print_iter=100, outcome="normal",
-     nu0=NULL, s0=1, inits_lme4=TRUE)
+     nu0=NULL, s0=1, inits_lme4=TRUE, thresh_fac=5.8)
 
 \method{summary}{ml_mcmc}(object, digits=4, file=NULL, ...)
 
@@ -34,7 +53,32 @@ ml_mcmc( formula, data, iter=3000, burnin=500, print_iter=100, outcome="normal",
 ml_mcmc_fit(y, X, Z_list, beta, Psi_list, sigma2, alpha, u_list, idcluster_list, onlyintercept_list,
     ncluster_list, sigma2_nu0, sigma2_sigma2_0, psi_nu0_list, psi_S0_list, est_sigma2, est_probit,
     parameter_index, est_parameter, npar, iter, save_iter, verbose=TRUE, print_iter=500,
-    parnames0=NULL, K=9999, est_thresh=FALSE )
+    parnames0=NULL, K=9999, est_thresh=FALSE, thresh_fac=5.8, parm_summary=TRUE )
+    
+## exported Rcpp functions
+miceadds_rcpp_ml_mcmc_sample_beta(xtx_inv, X, Z_list, y, u_list, idcluster_list, sigma2, 
+     onlyintercept_list, NR)
+miceadds_rcpp_ml_mcmc_sample_u(X, beta, Z_list, y, ztz_list, idcluster_list, ncluster_list, 
+     sigma2, Psi_list, onlyintercept_list, NR, u0_list)
+miceadds_rcpp_ml_mcmc_sample_psi(u_list, nu0_list, S0_list, NR)
+miceadds_rcpp_ml_mcmc_sample_sigma2(y, X, beta, Z_list, u_list, idcluster_list, 
+     onlyintercept_list, nu0, sigma2_0, NR)
+miceadds_rcpp_ml_mcmc_sample_latent_probit(X, beta, Z_list, u_list, idcluster_list, NR, 
+     y_int, alpha, minval, maxval)
+miceadds_rcpp_ml_mcmc_sample_thresholds(X, beta, Z_list, u_list, idcluster_list, NR, K, 
+     alpha, sd_proposal, y_int)     
+miceadds_rcpp_ml_mcmc_predict_fixed_random(X, beta, Z_list, u_list, idcluster_list, NR) 
+miceadds_rcpp_ml_mcmc_predict_random_list(Z_list, u_list, idcluster_list, NR, N)
+miceadds_rcpp_ml_mcmc_predict_random(Z, u, idcluster)
+miceadds_rcpp_ml_mcmc_predict_fixed(X, beta)
+miceadds_rcpp_ml_mcmc_subtract_fixed(y, X, beta)
+miceadds_rcpp_ml_mcmc_subtract_random(y, Z, u, idcluster, onlyintercept)
+miceadds_rcpp_ml_mcmc_compute_ztz(Z, idcluster, ncluster)    
+miceadds_rcpp_ml_mcmc_compute_xtx(X)     
+miceadds_rcpp_ml_mcmc_probit_category_prob(y_int, alpha, mu1, use_log)
+miceadds_rcpp_pnorm(x, mu, sigma)     
+miceadds_rcpp_qnorm(x, mu, sigma)
+miceadds_rcpp_rtnorm(mu, sigma, lower, upper)    
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -52,6 +96,9 @@ should be displayed}
 \item{s0}{Prior guess for variance}
 \item{inits_lme4}{Logical indicating whether initial values should
 be obtained from fitting the model in the \pkg{lme4} package}
+\item{thresh_fac}{Factor for proposal variance for estimating thresholds
+which is determined as \code{thresh_fac}\eqn{/N} (\eqn{5.8/N} as default). 
+}
 \item{object}{Object of class \code{ml_mcmc}}
 \item{digits}{Number of digits after decimal used for printing}
 \item{file}{Optional file name}
@@ -129,11 +176,36 @@ Optional vector of parameter names
 }
 \item{K}{Number of categories}
 \item{est_thresh}{Logical indicating whether thresholds should be estimated}
+\item{parm_summary}{Logical indicating whether a parameter summary table
+should be computed}
+\item{xtx_inv}{Matrix}
+\item{NR}{Integer}
+\item{ztz_list}{List containing design matrices for random effects}
+\item{u0_list}{List containing random effects}
+\item{nu0_list}{List with prior sample sizes}
+\item{S0_list}{List with prior guesses}
+\item{sigma2_0}{Numeric}
+\item{y_int}{Integer vector}
+\item{minval}{Numeric}
+\item{maxval}{Numeric}
+\item{sd_proposal}{Numeric vector}
+\item{N}{Integer}
+\item{Z}{Matrix}  
+\item{u}{Matrix containing random effects}
+\item{idcluster}{Integer vector}
+\item{onlyintercept}{Logical}  
+\item{ncluster}{Integer}
+\item{mu1}{Vector}
+\item{use_log}{Logical}
+\item{mu}{Vector}
+\item{sigma}{Numeric}
+\item{lower}{Vector}
+\item{upper}{Vector}
 }
 
 \details{
 Fits a linear mixed effects model \eqn{y=\boldmath{X}\boldmath{beta}+
-\boldmath{Z}\boldmath{u}+e} with MCMC sampling. In case of ordinal data, 
+\boldmath{Z}\boldmath{u}+e} with MCMC sampling. In case of ordinal data,
 the ordinal variable \eqn{y} is replaced by an underlying latent normally
 distributed variable \eqn{y^\ast} and the residual variance is fixed to 1.
 }
@@ -147,8 +219,8 @@ List with following entries (selection)
 \references{
 Goldstein, H. (2011). \emph{Multilevel statistical models}. New York: Wiley.
 
-Goldstein, H., Carpenter, J., Kenward, M., & Levin, K. (2009). Multilevel models with multivariate
-mixed response types. \emph{Statistical Modelling, 9}(3), 173-197.
+Goldstein, H., Carpenter, J., Kenward, M., & Levin, K. (2009). Multilevel models with 
+multivariate mixed response types. \emph{Statistical Modelling, 9}(3), 173-197.
 }
 
 %\author{
@@ -162,7 +234,7 @@ mixed response types. \emph{Statistical Modelling, 9}(3), 173-197.
 
 \seealso{
 See also the \pkg{MCMCglmm} package for MCMC estimation and
-the \pkg{lme4} for maximum likelihood estimation.
+the \pkg{lme4} package for maximum likelihood estimation.
 }
 
 \examples{
@@ -217,26 +289,26 @@ set.seed(456)
 K <- 500
 n <- 10
 iccx <- .2
-idcluster <- rep( 1:K , each=n )
+idcluster <- rep( 1:K, each=n )
 w <- rnorm( K )
-x <- rep( stats::rnorm( K, sd = sqrt(iccx)), each=n) + 
-                 stats::rnorm( n*K, sd = sqrt( 1 - iccx ))
-X <- data.frame("int" = 1, "x" = x , "xaggr" = miceadds::gm(x, idcluster),
-        w = rep( w, each=n ) )
+x <- rep( stats::rnorm( K, sd=sqrt(iccx)), each=n) +
+                 stats::rnorm( n*K, sd=sqrt( 1 - iccx ))
+X <- data.frame("int"=1, "x"=x, "xaggr"=miceadds::gm(x, idcluster),
+        w=rep( w, each=n ) )
 X <- as.matrix(X)
-u <- matrix( stats::rnorm(K, sd = sqrt(.5) ), ncol=1)
-beta <- c( 0 , .3, .7 , 1 )
+u <- matrix( stats::rnorm(K, sd=sqrt(.5) ), ncol=1)
+beta <- c( 0, .3, .7, 1 )
 Z <- X[, c("int") ]
-ypred <- as.matrix(X) \%*\% beta + Z * u[ idcluster , ]
-y <- ypred[,1] + stats::rnorm( n*K , sd = 1 )
+ypred <- as.matrix(X) \%*\% beta + Z * u[ idcluster, ]
+y <- ypred[,1] + stats::rnorm( n*K, sd=1 )
 data <- as.data.frame(X)
 data$idcluster <- idcluster
 alpha <- c(-Inf, -.4, 0, 1.7,  Inf)
-data$y <- cut( y , breaks=alpha, labels=FALSE ) - 1
+data$y <- cut( y, breaks=alpha, labels=FALSE ) - 1
 
 #*** estimate model
-formula <- y ~ cwc(x, idcluster) + gm(x,idcluster) + w + ( 1 | idcluster)
-mod <- miceadds::ml_mcmc( formula, data, iter=2000, burnin=500, outcome="probit", 
+formula <- y ~ miceadds::cwc(x, idcluster) + miceadds::gm(x,idcluster) + w + ( 1 | idcluster)
+mod <- miceadds::ml_mcmc( formula, data, iter=2000, burnin=500, outcome="probit",
                 inits_lme4=FALSE)
 summary(mod)
 plot(mod)

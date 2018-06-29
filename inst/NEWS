@@ -43,7 +43,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.13  |  2018-06-25  |  Last: miceadds 2.13-38
+VERSIONS miceadds 2.13  |  2018-06-29  |  Last: miceadds 2.13-45
 ---------------------------------------------------------------------
 
 ADDED * included group mean function gm() and centering around
@@ -51,13 +51,14 @@ ADDED * included group mean function gm() and centering around
 NOTE  * included utility functions ma_lme4_formula_terms() and 
         ma_lme4_formula_design_matrices() for handling lme4 formulas 
         and generating design matrices for mixed effects models
-FIXED * fixed bug in mice.impute.weighted.norm() and ...pmm()
+FIXED * fixed a bug in mice.impute.weighted.norm() and ...pmm()
         due to recent changes in mice 3.0
-ADDED * added MCMC routine ml_mcmc() and ml_mcmc_fit() for 
-        estimating mixed effects models
-ADDED * included convenience function string_to_matrix() for
+ADDED * added MCMC function ml_mcmc() and ml_mcmc_fit() for 
+        estimating mixed effects models. Exported several subfunctions
+        of ml_mcmc().
+NOTE  * included utility function string_to_matrix() for
         converting string vectors into matrices
-NOTE  * added utility function filename_split_vec() and
+NOTE  * added utility functions filename_split_vec() and
         Rcppfunction_remove_classes()
 
 DATA  * included/modified datasets: data.ma08

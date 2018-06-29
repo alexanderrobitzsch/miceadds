@@ -1,11 +1,12 @@
 ## File Name: ml_mcmc_initial_values.R
-## File Version: 0.08
+## File Version: 0.12
 
 ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thresh, K, NR,
-    inits_lme4, X, Z_list, ncluster_list )
+    inits_lme4, X, Z_list, ncluster_list, formula )
 {
     Psi_list <- list()
     u_list <- list()
+    mod <- NULL
 
     #--- inits lme4
     if (inits_lme4){
@@ -35,15 +36,15 @@ ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thre
             drr[1] <- 2
             Psi_rr <- matrix(0, nrow=nrr, ncol=nrr)
             diag(Psi_rr) <- vary*.1*drr
-            Psi_list[[rr]] <- Psi_rr            
+            Psi_list[[rr]] <- Psi_rr
             ncluster_rr <- ncluster_list[[rr]]
             umat <- matrix( stats::rnorm(nrr*ncluster_rr), nrow=ncluster_rr, ncol=nrr)
-            umat <- umat * matrix( sqrt(diag(Psi_rr) ), nrow=ncluster_rr, ncol=nrr, byrow=TRUE)    
+            umat <- umat * matrix( sqrt(diag(Psi_rr) ), nrow=ncluster_rr, ncol=nrr, byrow=TRUE)
             u_list[[rr]] <- umat
-        }        
-    
+        }
+
     }
-    
+
     alpha <- c(-9.99, 0, 9.99)
     if (est_thresh){
         t1 <- table(y)
@@ -55,8 +56,8 @@ ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thre
         sigma2 <- 1
     }
     #--- output
-    res <- list( beta=beta, sigma2=sigma2, Psi_list=Psi_list, u_list=u_list, alpha=alpha, 
-                sigma2=sigma2 )
+    res <- list( beta=beta, sigma2=sigma2, Psi_list=Psi_list, u_list=u_list, alpha=alpha,
+                sigma2=sigma2, mod_lme4=mod )
     return(res)
 }
-    
+

@@ -1,12 +1,12 @@
 ## File Name: Rcppfunction_remove_classes.R
-## File Version: 0.04
+## File Version: 0.05
 
 Rcppfunction_remove_classes <- function(string, maxlen=70, remove=TRUE)
 {
     string <- gsub("\n", "", string )
     string <- gsub("\t", "", string )
     string <- gsub("  ", "", string )
-    
+
     ind1 <- string_find_first(string=string, symbol="(" )
     a1 <- c( substring(string,1, ind1-1), substring(string, ind1+1, nchar(string) ) )
     s1 <- a1[2]
@@ -18,10 +18,10 @@ Rcppfunction_remove_classes <- function(string, maxlen=70, remove=TRUE)
     #*** Rcpp classes
     rcpp_classes <- c("double", "bool", "int", "arma::mat", "arma::colvec", "arma::umat",
                 "Rcpp::NumericVector", "Rcpp::IntegerVector", "Rcpp::LogicalVector",
-                "Rcpp::CharacterVector", "Rcpp::CharacterMatrix", "Rcpp::List", 
+                "Rcpp::CharacterVector", "Rcpp::CharacterMatrix", "Rcpp::List",
                 "Rcpp::NumericMatrix", "Rcpp::IntegerMatrix", "Rcpp::LogicalMatrix", "char"
                     )
-    rcpp_classes1 <- paste0( rcpp_classes, " " )    
+    rcpp_classes1 <- paste0( rcpp_classes, " " )
     if (remove){
         for (rr in rcpp_classes1 ){
             s1 <- gsub( rr, "", s1, fixed=TRUE )
@@ -37,7 +37,7 @@ Rcppfunction_remove_classes <- function(string, maxlen=70, remove=TRUE)
     M0 <- nchar(a1[1])
     for (ss in 1:NS){
         if (remove){
-            s2[ss] <- gsub( " ", "", s2[ss] )        
+            s2[ss] <- gsub( " ", "", s2[ss] )
         }
         nss <- nchar(s2[ss])
         M0 <- M0 + nss
@@ -46,14 +46,14 @@ Rcppfunction_remove_classes <- function(string, maxlen=70, remove=TRUE)
             M0 <- nss
         }
     }
-    
-    s2 <- paste0( a1[1], "( ", paste0( s2, collapse=", " ), " )\n" )    
+
+    s2 <- paste0( a1[1], "( ", paste0( s2, collapse=", " ), " )\n" )
     s2 <- gsub( ",  ", ", ", s2, fixed=TRUE)
     s2 <- gsub( "(  ", "( ", s2, fixed=TRUE)
     s2 <- gsub( "  )", " )", s2, fixed=TRUE)
     #--- delete blanks at begin of lines
     for (uu in 1:2){
-        s2 <- gsub("\n ", "\n", s2, fixed=TRUE)    
+        s2 <- gsub("\n ", "\n", s2, fixed=TRUE)
     }
     #--- output
     return(s2)

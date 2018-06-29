@@ -1,5 +1,5 @@
 %% File Name: ma_lme4_formula_terms.Rd
-%% File Version: 0.08
+%% File Version: 0.09
 
 \name{ma_lme4_formula}
 \alias{ma_lme4_formula}
@@ -18,7 +18,8 @@ parts for further processing.
 \usage{
 ma_lme4_formula_terms(formula)
 
-ma_lme4_formula_design_matrices(formula, data, start_index=0)
+ma_lme4_formula_design_matrices(formula, data, start_index=0, formula_terms=NULL, 
+        only_design_matrices=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -27,6 +28,10 @@ An \R formula object
 }
 \item{data}{Data frame}
 \item{start_index}{Starting index for cluster identifiers}
+\item{formula_terms}{Optional argument with processed formula terms using the
+function \code{ma_lme4_formula_terms}}
+\item{only_design_matrices}{Logical indicating whether only design matrices should
+be created}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -71,7 +76,7 @@ miceadds::ma_lme4_formula_terms(formula2)
 data(data.ma07, package="miceadds")
 dat <- data.ma07
 
-formula <- x1 ~ x2 + I(gm( x2, id2)) + I(gm( x2, id3)) + y1 + z1 +
+formula <- x1 ~ x2 + I( miceadds::gm( x2, id2)) + I( miceadds::gm( x2, id3)) + y1 + z1 +
                     ( x2 | id2:id3 ) + ( 1 | id3 ) + ( 0 + x2 | id3 )
 res <- miceadds::ma_lme4_formula_design_matrices(formula, data=dat)
 str(res)
