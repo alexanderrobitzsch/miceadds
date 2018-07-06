@@ -1,5 +1,5 @@
 %% File Name: tw.imputation.Rd
-%% File Version: 0.19
+%% File Version: 0.23
 
 \name{tw.imputation}
 \alias{tw.imputation}
@@ -11,7 +11,7 @@ Two-Way Imputation
 }
 \description{
 Two-way imputation using the simple method of Sijtsma and van der Ark (2003)
-and the MCMC based imputation of van Ginkel et al. (2007).
+and the MCMC based imputation of van Ginkel, van der Ark, Sijtsma and Vermunt (2007).
 }
 \usage{
 tw.imputation(data, integer=FALSE)
@@ -51,12 +51,12 @@ A matrix with original and imputed values
 \references{
 Sijtsma, K., & Van der Ark, L. A. (2003).
 Investigation and treatment of missing item scores in test and questionnaire
-data. \emph{Multivariate Behavioral Research}, \bold{38}, 505-528.
+data. \emph{Multivariate Behavioral Research, 38}, 505-528.
 
 Van Ginkel, J. R., Van der Ark, A., Sijtsma, K., & Vermunt, J. K. (2007).
 Two-way imputation: A Bayesian method for estimating missing scores in tests
 and questionnaires, and an accurate approximation.
-\emph{Computational Statistics & Data Analysis}, \bold{51}, 4013-4027.
+\emph{Computational Statistics & Data Analysis, 51}, 4013-4027.
 }
 
 

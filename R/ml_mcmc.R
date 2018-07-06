@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc.R
-## File Version: 0.476
+## File Version: 0.477
 
 ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     outcome="normal", nu0=NULL, s0=1, inits_lme4=TRUE, thresh_fac=5.8)
@@ -29,7 +29,7 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     est_normal <- res$est_normal
     est_thresh <- res$est_thresh
     verbose <- res$verbose
-    
+
     #*** generate starting values
     res <- ml_mcmc_initial_values( data=data, y=y, formula_terms=formula_terms,
                 est_probit=est_probit, est_thresh=est_thresh, K=K, NR=NR,
@@ -42,10 +42,10 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     alpha <- res$alpha
     sigma2 <- res$sigma2
     mod_lme4 <- res$mod_lme4
-    
+
     #*** MCMC preliminaries
     res <- ml_mcmc_create_parameter_index(beta=beta, Psi_list=Psi_list, est_sigma2=est_sigma2,
-                est_thresh=est_thresh, K=K)                            
+                est_thresh=est_thresh, K=K)
     parameter_index <- res$parameter_index
     est_parameter <- res$est_parameter
     npar <- res$npar
@@ -73,7 +73,7 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     save_iter <- rep(-9, iter)
     save_iter[ seq(burnin+1, iter)] <- seq(1, iter-burnin ) - 1
     parnames0 <- unlist(parnames)
-    
+
     ml_mcmc_fit_args <- list( y=y, X=X, Z_list=Z_list, beta=beta, Psi_list=Psi_list,
             sigma2=sigma2, alpha=alpha, u_list=u_list, idcluster_list=idcluster_list,
             onlyintercept_list=onlyintercept_list, ncluster_list=ncluster_list,
@@ -81,22 +81,22 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
             psi_S0_list=psi_S0_list, est_sigma2=est_sigma2, est_probit=est_probit,
             parameter_index=parameter_index, est_parameter=est_parameter, npar=npar,
             iter=iter, save_iter=save_iter, verbose=verbose, print_iter=print_iter,
-            parnames0=parnames0, K=K, est_thresh=est_thresh, thresh_fac=thresh_fac )    
-            
+            parnames0=parnames0, K=K, est_thresh=est_thresh, thresh_fac=thresh_fac )
+
     #*** MCMC estimation
     res <- do.call( ml_mcmc_fit, args=ml_mcmc_fit_args)
-    
+
     #*** post processing
     res$parnames <- parnames
     res$burnin <- burnin
-    res$formula_terms <- formula_terms    
+    res$formula_terms <- formula_terms
     res$outcome <- outcome
     res$mod_lme4 <- mod_lme4
-    
+
     #--- sampled values as coda object
     sampled_values <- res$sampled_values
     thin <- round( (iter - burnin )/nrow(sampled_values) )
-    res$sampled_values <- coda::mcmc(data=sampled_values, start=burnin+1, end=iter, thin=thin )     
+    res$sampled_values <- coda::mcmc(data=sampled_values, start=burnin+1, end=iter, thin=thin )
 
     res$outcome <- outcome
     s2 <- Sys.time()

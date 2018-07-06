@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.28
+%% File Version: 0.31
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -27,8 +27,8 @@ to be imputed.
 Several strategies for the specification of the design
 matrix \eqn{\bold{X}} are accommodated. By default, predictors at a lower level
 are automatically aggregated to the higher level and included as further
-predictors to maintain the multilevel structure in the data (Grund et al., xxxx;
-Enders et al., 2016; argument \code{aggregate_automatically=TRUE}). Further,
+predictors to maintain the multilevel structure in the data (Grund, Luedtke & Robitzsch, 
+2018; Enders, Mistler & Keller, 2016; argument \code{aggregate_automatically=TRUE}). Further,
 interactions and quadratic effects can be defined by respective arguments
 \code{interactions} and \code{quadratics}. The dimension
 of the matrix of predictors can be reduced by applying partial least squares regression,
@@ -146,8 +146,8 @@ Enders, C. K., Mistler, S. A., & Keller, B. T. (2016). Multilevel multiple imput
 A review and evaluation of joint modeling and chained equations imputation.
 \emph{Psychological Methods, 21}(2), 222-240.
 
-Grund, S., Luedtke, O., & Robitzsch, A. (xxxx). Multiple imputation of multilevel
-data in organizational research. \emph{Organizational Research Methods, xx}, xxx-xxx.
+Grund, S., Luedtke, O., & Robitzsch, A. (2018). Multiple imputation of multilevel
+data in organizational research. \emph{Organizational Research Methods, 21}(1), 111-149.
 }
 
 

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.32
+%% File Version: 2.33
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -125,7 +125,7 @@ is computed.
 \references{
 Mevik, B. H., & Wehrens, R. (2007). The \pkg{pls} package:
 Principal component and partial least squares regression in \R.
-\emph{Journal of Statistical Software}, \bold{18}, 1-24.
+\emph{Journal of Statistical Software, 18}, 1-24.
 }
 
 

@@ -1,5 +1,5 @@
 %% File Name: lmer_vcov.Rd
-%% File Version: 0.14
+%% File Version: 0.18
 
 
 \name{lmer_vcov}
@@ -20,7 +20,7 @@ in \pkg{lme4}
 }
 
 \description{
-The function \code{lmer_vcov} conducts statistical inference for 
+The function \code{lmer_vcov} conducts statistical inference for
 fixed coefficients and standard deviations
 and correlations of random effects structure of models fitted in the
 \pkg{lme4} package.
@@ -87,7 +87,8 @@ Function originally from Ben Bolker, http://rpubs.com/bbolker/varwald
 
 
 \seealso{
-\code{\link[lme4:lmer]{lme4::lmer}}
+\code{\link[lme4:lmer]{lme4::lmer}},
+\code{\link[mitml:testEstimates]{mitml::testEstimates}} 
 }
 
 
@@ -104,7 +105,7 @@ dat <- na.omit(data.ma01)
 
 #* fit multilevel model
 formula <- math ~ hisei + miceadds::gm( books, idschool ) + ( 1 + books | idschool )
-mod1 <- lme4::lmer( formula, data = dat, REML=FALSE)
+mod1 <- lme4::lmer( formula, data=dat, REML=FALSE)
 summary(mod1)
 
 #* statistical inference
@@ -126,7 +127,7 @@ formula <- math ~ hisei + miceadds::gm( books, idschool ) + ( 1 | idschool )
 models <- list()
 M <- length(datlist)
 for (mm in 1:M){
-    models[[mm]] <- lme4::lmer( formula, data=datlist[[mm]], REML=FALSE) 
+    models[[mm]] <- lme4::lmer( formula, data=datlist[[mm]], REML=FALSE)
 }
 
 #** statistical inference

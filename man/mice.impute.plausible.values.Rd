@@ -1,5 +1,5 @@
 %% File Name: mice.impute.plausible.values.Rd
-%% File Version: 0.47
+%% File Version: 0.48
 
 \name{mice.impute.plausible.values}
 \alias{mice.impute.plausible.values}
@@ -123,14 +123,14 @@ missing data}. Technical Report.
 
 Blackwell, M., Honaker, J., & King, G. (2017a).
 A unified approach to measurement error and missing data: Overview and
-applications. \emph{Sociological Methods & Research}, \bold{46}(3), 303-341.
+applications. \emph{Sociological Methods & Research, 46}(3), 303-341.
 
 Blackwell, M., Honaker, J., & King, G. (2017b).
 A unified approach to measurement error and missing data: Details and
-extensions. \emph{Sociological Methods & Research}, \bold{46}(3), 342-369.
+extensions. \emph{Sociological Methods & Research, 46}(3), 342-369.
 
 Mislevy, R. J. (1991). Randomization-based inference about latent variables
-from complex samples. \emph{Psychometrika}, \bold{56}, 177-196.
+from complex samples. \emph{Psychometrika, 56}, 177-196.
 }
 
 

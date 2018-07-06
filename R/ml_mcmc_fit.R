@@ -1,12 +1,12 @@
 ## File Name: ml_mcmc_fit.R
-## File Version: 0.499
+## File Version: 0.502
 
 ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     alpha, u_list, idcluster_list, onlyintercept_list, ncluster_list,
     sigma2_nu0, sigma2_sigma2_0, psi_nu0_list, psi_S0_list, est_sigma2,
     est_probit, parameter_index, est_parameter, npar, iter, save_iter,
     verbose=TRUE, print_iter=500, parnames0=NULL, K=9999, est_thresh=FALSE,
-    thresh_fac = 5.8, parm_summary=TRUE )
+    thresh_fac=5.8, parm_summary=TRUE )
 {
     #** preliminaries
     xtx_inv <- MASS::ginv( miceadds_rcpp_ml_mcmc_compute_xtx(X) )
@@ -19,7 +19,7 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     N <- length(y)
     sd_proposal <- sqrt( thresh_fac / N + 0*alpha )
     sd_proposal[ c(1,2, length(alpha))] <- 0
-    
+
     #** call Rcpp function
     res <- miceadds_rcpp_ml_mcmc_sampler( y_obs=y, X=X, xtx_inv=xtx_inv,
                 ztz_list=ztz_list, Z_list=Z_list, beta_init=beta, Psi_list_init=Psi_list,
@@ -30,7 +30,7 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
                 est_probit=est_probit, parameter_index=parameter_index,
                 est_parameter=est_parameter, npar=npar, iter=iter, save_iter=save_iter,
                 verbose=verbose, print_iter=print_iter, est_thresh=est_thresh, K=K,
-                sd_proposal=sd_proposal)        
+                sd_proposal=sd_proposal)
     #** output processing
     if ( is.null(parnames0) ){
         NS <- ncol(res$sampled_values)
@@ -49,13 +49,13 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
         dfr$upper95 <- ma_colQuantile(x=sampled_values, prob=.975)
         dfr$Rhat <- ma_rhat(x=sampled_values, n_chains=3)
         dfr$Neff <- round( coda::effectiveSize(x=sampled_values), 1 )
-        rownames(dfr) <- NULL    
+        rownames(dfr) <- NULL
         res$par_summary <- dfr
     }
-    res$iter <- iter    
+    res$iter <- iter
     res$est_probit <- est_probit
     res$est_sigma2 <- est_sigma2
-    res$est_thresh <- est_thresh    
+    res$est_thresh <- est_thresh
     res$X <- X
     res$Z_list <- Z_list
     res$idcluster_list <- idcluster_list
@@ -71,7 +71,7 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     res$K <- K
     res$save_iter <- save_iter
     res$parnames0 <- parnames0
-    
+
     #--- coef and vcov
     if (parm_summary){
         coef <- dfr$mode
@@ -79,7 +79,7 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
         res$coef <- coef
         res$vcov <- stats::cov(sampled_values)
     }
-    
+
     #--- output
     return(res)
 }

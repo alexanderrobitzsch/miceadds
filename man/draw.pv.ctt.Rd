@@ -1,5 +1,5 @@
 %% File Name: draw.pv.ctt.Rd
-%% File Version: 1.22
+%% File Version: 1.23
 
 \name{draw.pv.ctt}
 \alias{draw.pv.ctt}
@@ -77,7 +77,7 @@ Blackwell, M., Honaker, J., & King, G. (2011).
 missing data}. Technical Report.
 
 Mislevy, R. J. (1991). Randomization-based inference about latent variables
-from complex samples. \emph{Psychometrika}, \bold{56}, 177-196.
+from complex samples. \emph{Psychometrika, 56}, 177-196.
 }
 
 

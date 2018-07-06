@@ -1,5 +1,5 @@
 %% File Name: ma_lme4_formula_terms.Rd
-%% File Version: 0.09
+%% File Version: 0.10
 
 \name{ma_lme4_formula}
 \alias{ma_lme4_formula}
@@ -18,7 +18,7 @@ parts for further processing.
 \usage{
 ma_lme4_formula_terms(formula)
 
-ma_lme4_formula_design_matrices(formula, data, start_index=0, formula_terms=NULL, 
+ma_lme4_formula_design_matrices(formula, data, start_index=0, formula_terms=NULL,
         only_design_matrices=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.

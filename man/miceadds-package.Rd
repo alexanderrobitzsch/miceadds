@@ -1,5 +1,5 @@
 %% File Name: miceadds-package.Rd
-%% File Version: 1.58
+%% File Version: 1.65
 
 \name{miceadds-package}
 \alias{miceadds-package}
@@ -27,12 +27,28 @@ Some Additional Multiple Imputation Functions, Especially for \pkg{mice}
 
 \itemize{
 
+\item The \pkg{miceadds} package contains some functionality for imputation of multilevel
+data. The function \code{\link{mice.impute.ml.lmer}} is a general function for 
+imputing multilevel data with hierarchical or cross-classified structures for
+variables at an arbitrary level. This imputation method uses the \code{lme4::lmer} function
+in the \pkg{lme4} package. The imputation method \code{\link{mice.impute.2lonly.function}}
+conducts an imputation for a variable at a higher level for already defined imputation
+methods in the \pkg{mice} package. Two-level imputation is available in several functions
+in the \pkg{mice} package (\code{\link[mice:mice.impute.2l.pan]{mice::mice.impute.2l.pan}},
+\code{\link[mice:mice.impute.2l.norm]{mice::mice.impute.2l.norm}}) 
+as well in \pkg{micemd} and \pkg{hmi} packages. The \pkg{miceadds} package contains
+additional imputation methods for two-level datasets: 
+\code{\link{mice.impute.2l.continuous}} for normally distributed data,
+\code{\link{mice.impute.2l.pmm}} for predictive mean matching in multilevel models
+and \code{\link{mice.impute.2l.binary}} for binary data.   
+
 \item In addition to the usual \code{mice} imputation function which employs
 parallel chains, the function \code{\link{mice.1chain}} does multiple
 imputation from a single chain.
 
 \item Nested multiple imputation can be conducted with
-\code{\link{mice.nmi}}.
+\code{\link{mice.nmi}}. The function \code{\link{NMIcombine}} conducts 
+statistical inference for nested multiply imputed datasets.
 
 \item Imputation based on partial least squares regression is implemented
 in \code{\link{mice.impute.pls}}.
@@ -42,11 +58,11 @@ variables with measurement error) in the \pkg{mice} sequential imputation
 framework can be applied by using the method
 \code{\link{mice.impute.plausible.values}}.
 
-\item Imputations for questionnaire items can be
-accomplished by two-way imputation (\code{\link{tw.imputation}}).
-
 \item The \pkg{miceadds} package also includes some functions \R utility functions
 (e.g. \code{\link{write.pspp}}, \code{\link{ma.scale2}}).
+
+\item Imputations for questionnaire items can be
+accomplished by two-way imputation (\code{\link{tw.imputation}}).
 }
 
 

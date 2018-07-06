@@ -43,7 +43,20 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.13  |  2018-07-03  |  Last: miceadds 2.13-57
+VERSIONS miceadds 2.14  |  2018-07-06  |  Last: miceadds 2.14-2
+---------------------------------------------------------------------
+
+xxxx  *
+
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 2.13  |  2018-07-05  |  Last: miceadds 2.13-63
 ---------------------------------------------------------------------
 
 ADDED * included group mean function gm() and centering around

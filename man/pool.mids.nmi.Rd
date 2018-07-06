@@ -1,5 +1,5 @@
 %% File Name: pool.mids.nmi.Rd
-%% File Version: 0.48
+%% File Version: 0.49
 
 \name{pool.mids.nmi}
 \alias{pool.mids.nmi}
@@ -115,15 +115,15 @@ Harel, O., & Schafer, J. (2003). \emph{Multiple imputation in two stages}.
 In Proceedings of Federal Committee on Statistical Methodology 2003 Conference.
 
 Harel, O. (2007). Inferences on missing information under multiple imputation
-and two-stage multiple imputation. \emph{Statistical Methodology},
-\bold{4(1)}, 75-89.
+and two-stage multiple imputation. \emph{Statistical Methodology,
+4}(1), 75-89.
 
 Reiter, J. P., & Raghunathan, T. E. (2007). The multiple adaptations of
-multiple imputation. \emph{Journal of the American Statistical Association},
-\bold{102(480)}, 1462-1471.
+multiple imputation. \emph{Journal of the American Statistical Association,
+102}(480), 1462-1471.
 
 Rubin, D. B. (2003). Nested multiple imputation of NMES via partially
-incompatible MCMC. \emph{Statistica Neerlandica}, \bold{57(1)}, 3-18.
+incompatible MCMC. \emph{Statistica Neerlandica, 57}(1), 3-18.
 }
 
 

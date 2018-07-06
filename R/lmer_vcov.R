@@ -1,5 +1,5 @@
 ## File Name: lmer_vcov.R
-## File Version: 0.17
+## File Version: 0.22
 
 ## covariance matrix for fitted models with lmer including
 ## variance components
@@ -8,7 +8,7 @@
 lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
 {
     TAM::require_namespace_msg(pkg="numDeriv")
-    TAM::require_namespace_msg(pkg="lme4")    
+    TAM::require_namespace_msg(pkg="lme4")
     fit0 <- fit <- object
     dd <- NULL
     is_reml <- lme4::isREML(fit)
@@ -18,11 +18,11 @@ lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
     }
     object <- lme4::VarCorr(fit)
     useSc <- attr(object,"useSc")
-    args_devfun2 <- list(fit, useSc=useSc, signames=FALSE)    
+    args_devfun2 <- list(fit, useSc=useSc, signames=FALSE)
     pkg <- "lme4"
-    subfun <- "devfun2"    
+    subfun <- "devfun2"
     call_dot <- paste0( rep(":",3), collapse="")
-    eval( parse( text = paste0("dd <- do.call( " , pkg, call_dot, subfun, 
+    eval( parse( text=paste0("dd <- do.call( ", pkg, call_dot, subfun,
                             ", args=args_devfun2)" ) )  )
     vdd <- as.data.frame(object, order="lower.tri")
     pars <- vdd[,"sdcor"]
@@ -32,7 +32,7 @@ lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
     npar0 <- length(pars)
     if (lme4::isGLMM(fit)) {
         pars <- c(pars, lme4::fixef(fit))
-    }        
+    }
     hh1 <- numDeriv::hessian(dd,pars)
     vv2 <- 2*MASS::ginv(hh1)
     if (lme4::isGLMM(fit)) {
@@ -40,15 +40,15 @@ lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
     }
     nms <- apply(vdd[,1:3],1, function(x) paste(na.omit(x),collapse="."))
     dimnames(vv2) <- list(nms,nms)
-    names(pars) <- colnames(vv2)    
+    names(pars) <- colnames(vv2)
     #--- include fixed effects
-    Vcov <- as.matrix( vcov(fit0, useScale = FALSE) )
+    Vcov <- as.matrix( vcov(fit0, useScale=FALSE) )
     betas <- fixef(fit0)
     np_fixed <- length(betas)
     np_random <- length(pars)
-    np <- np_fixed + np_random            
+    np <- np_fixed + np_random
     random <- list( coef=pars, vcov=vv2)
-    fixed <- list( coef=betas, vcov=Vcov )       
+    fixed <- list( coef=betas, vcov=Vcov )
     #--- concatenated version including fixed and random effects
     coef1 <- c(fixed$coef, random$coef)
     vcov1 <- matrix(0, nrow=np, ncol=np)
@@ -58,13 +58,13 @@ lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
     ind_fixed <- ind <- 1:np_fixed
     vcov1[ ind, ind ] <- fixed$vcov
     se <- sqrt( diag( vcov1 ))
-    
-    #* parameter summary    
-    dfr <- data.frame( index = 1:np,
-            type = c( rep("fixed",np_fixed), rep("random",np_random) ) )
+
+    #* parameter summary
+    dfr <- data.frame( index=1:np,
+            type=c( rep("fixed",np_fixed), rep("random",np_random) ) )
     s1 <- strsplit( names(random$coef), split=".", fixed=TRUE )
-    s1 <- unlist( lapply(s1 , FUN = function(ll){ 
-                    hh <- length(ll) 
+    s1 <- unlist( lapply(s1, FUN=function(ll){
+                    hh <- length(ll)
                     label <- "SD"
                     if (hh==3){ label <- "Cor"}
                     return(label)
@@ -75,8 +75,8 @@ lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
     dfr$se <- se
     dfr <- sirt::parmsummary_extend(dfr=dfr, level=level, est_label="est", se_label="se")
     #-- output
-    res <- list( par_summary=dfr, coef=coef1, vcov=vcov1, se=se, fixed=fixed, random=random, 
-                np=np, np_random=np_random, np_fixed=np_fixed, 
+    res <- list( par_summary=dfr, coef=coef1, vcov=vcov1, se=se, fixed=fixed, random=random,
+                np=np, np_random=np_random, np_fixed=np_fixed,
                 ind_fixed=ind_fixed, ind_random=ind_random )
     class(res) <- "lmer_vcov"
     return(res)

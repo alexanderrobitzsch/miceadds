@@ -1,5 +1,5 @@
 %% File Name: mi.anova.Rd
-%% File Version: 0.23
+%% File Version: 0.24
 
 \name{mi.anova}
 \alias{mi.anova}
@@ -10,7 +10,7 @@ Analysis of Variance for Multiply Imputed Data Sets (Using the \eqn{D_2} Statist
 \description{
 This function combines \eqn{F} values from analysis of variance using
 the \eqn{D_2} statistic which is based on combining \eqn{\chi^2} statistics
-(see Allison, 2001, Grund et al., 2016;
+(see Allison, 2001, Grund, Luedtke & Robitzsch, 2016;
 \code{\link{micombine.F}}, \code{\link{micombine.chisquare}}).
 }
 \usage{

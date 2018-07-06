@@ -1,5 +1,5 @@
 ## File Name: ma_lme4_formula_design_matrices.R
-## File Version: 0.28
+## File Version: 0.29
 
 
 ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
@@ -32,11 +32,11 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
     parnames_Psi <- list()
     for (rr in seq_len(NR)){
         #-- design matrix random effect rr
-        Z_rr <- stats::model.matrix( object=formula_random[[rr]], data=data)        
+        Z_rr <- stats::model.matrix( object=formula_random[[rr]], data=data)
         Z[[rr]] <- as.matrix(Z_rr)
         if ( ! only_design_matrices ){
             #-- idcluster random effect rr
-            onlyintercept_list[[rr]] <- mean( attr(Z_rr, "assign")==0 )==1        
+            onlyintercept_list[[rr]] <- mean( attr(Z_rr, "assign")==0 )==1
             re_id <- random_effects_id[[rr]]
             cl1 <- stats::model.matrix( stats::as.formula( paste0(" ~ 0 +", re_id)), data )
             cl1 <- cl1[,1]
@@ -51,7 +51,7 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
             parnames_Psi[[re_id]] <- paste0("vcov_", re_id, "_", Z_names[eg1[,2]], "-", Z_names[eg1[,1]] )#
         }
     }
-    
+
     if ( ! only_design_matrices ){
         parnames$Psi <- parnames_Psi
         parnames$sigma2 <- "sigma2"

@@ -1,5 +1,5 @@
 ## File Name: summary.mipo.nmi.R
-## File Version: 0.14
+## File Version: 0.15
 
 #################################################################
 summary.mipo.nmi <- function(object, digits=4, ...)
@@ -13,7 +13,7 @@ summary.mipo.nmi <- function(object, digits=4, ...)
     table[, 2] <- sqrt( diag(x$Tm) )
     table[, 3] <- table[, 1]/table[, 2]
     df_x <- x$df
-    table[, 4] <- df_x    
+    table[, 4] <- df_x
     table[, 5] <- if (all(x$df > 0))
         2 * (1 - stats::pt(abs(table[, 3]), x$df)) else NA
     table[, 6] <- table[, 1] - stats::qt(0.975, x$df) * table[, 2]

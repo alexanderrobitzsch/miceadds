@@ -1,5 +1,5 @@
 %% File Name: ml_mcmc.Rd
-%% File Version: 0.429
+%% File Version: 0.431
 
 \name{ml_mcmc}
 \alias{ml_mcmc}
@@ -12,20 +12,20 @@
 \alias{miceadds_rcpp_ml_mcmc_sample_u}
 \alias{miceadds_rcpp_ml_mcmc_sample_psi}
 \alias{miceadds_rcpp_ml_mcmc_sample_sigma2}
-\alias{miceadds_rcpp_ml_mcmc_sample_latent_probit} 
+\alias{miceadds_rcpp_ml_mcmc_sample_latent_probit}
 \alias{miceadds_rcpp_ml_mcmc_sample_thresholds}
-\alias{miceadds_rcpp_ml_mcmc_predict_fixed_random} 
+\alias{miceadds_rcpp_ml_mcmc_predict_fixed_random}
 \alias{miceadds_rcpp_ml_mcmc_predict_random_list}
 \alias{miceadds_rcpp_ml_mcmc_predict_random}
 \alias{miceadds_rcpp_ml_mcmc_predict_fixed}
 \alias{miceadds_rcpp_ml_mcmc_subtract_fixed}
 \alias{miceadds_rcpp_ml_mcmc_subtract_random}
-\alias{miceadds_rcpp_ml_mcmc_compute_ztz}    
-\alias{miceadds_rcpp_ml_mcmc_compute_xtx}     
+\alias{miceadds_rcpp_ml_mcmc_compute_ztz}
+\alias{miceadds_rcpp_ml_mcmc_compute_xtx}
 \alias{miceadds_rcpp_ml_mcmc_probit_category_prob}
-\alias{miceadds_rcpp_pnorm}     
+\alias{miceadds_rcpp_pnorm}
 \alias{miceadds_rcpp_qnorm}
-\alias{miceadds_rcpp_rtnorm} 
+\alias{miceadds_rcpp_rtnorm}
 
 
 %- Also NEED an '\alias' for EACH other topic documented here.
@@ -50,35 +50,36 @@ ml_mcmc( formula, data, iter=3000, burnin=500, print_iter=100, outcome="normal",
 
 \method{vcov}{ml_mcmc}(object, ...)
 
-ml_mcmc_fit(y, X, Z_list, beta, Psi_list, sigma2, alpha, u_list, idcluster_list, onlyintercept_list,
-    ncluster_list, sigma2_nu0, sigma2_sigma2_0, psi_nu0_list, psi_S0_list, est_sigma2, est_probit,
-    parameter_index, est_parameter, npar, iter, save_iter, verbose=TRUE, print_iter=500,
-    parnames0=NULL, K=9999, est_thresh=FALSE, thresh_fac=5.8, parm_summary=TRUE )
-    
+ml_mcmc_fit(y, X, Z_list, beta, Psi_list, sigma2, alpha, u_list, idcluster_list, 
+    onlyintercept_list, ncluster_list, sigma2_nu0, sigma2_sigma2_0, psi_nu0_list, 
+    psi_S0_list, est_sigma2, est_probit, parameter_index, est_parameter, npar, iter, 
+    save_iter, verbose=TRUE, print_iter=500, parnames0=NULL, K=9999, est_thresh=FALSE, 
+    thresh_fac=5.8, parm_summary=TRUE )
+
 ## exported Rcpp functions
-miceadds_rcpp_ml_mcmc_sample_beta(xtx_inv, X, Z_list, y, u_list, idcluster_list, sigma2, 
+miceadds_rcpp_ml_mcmc_sample_beta(xtx_inv, X, Z_list, y, u_list, idcluster_list, sigma2,
      onlyintercept_list, NR)
-miceadds_rcpp_ml_mcmc_sample_u(X, beta, Z_list, y, ztz_list, idcluster_list, ncluster_list, 
-     sigma2, Psi_list, onlyintercept_list, NR, u0_list)
+miceadds_rcpp_ml_mcmc_sample_u(X, beta, Z_list, y, ztz_list, idcluster_list, 
+    ncluster_list, sigma2, Psi_list, onlyintercept_list, NR, u0_list)
 miceadds_rcpp_ml_mcmc_sample_psi(u_list, nu0_list, S0_list, NR)
-miceadds_rcpp_ml_mcmc_sample_sigma2(y, X, beta, Z_list, u_list, idcluster_list, 
+miceadds_rcpp_ml_mcmc_sample_sigma2(y, X, beta, Z_list, u_list, idcluster_list,
      onlyintercept_list, nu0, sigma2_0, NR)
-miceadds_rcpp_ml_mcmc_sample_latent_probit(X, beta, Z_list, u_list, idcluster_list, NR, 
+miceadds_rcpp_ml_mcmc_sample_latent_probit(X, beta, Z_list, u_list, idcluster_list, NR,
      y_int, alpha, minval, maxval)
-miceadds_rcpp_ml_mcmc_sample_thresholds(X, beta, Z_list, u_list, idcluster_list, NR, K, 
-     alpha, sd_proposal, y_int)     
-miceadds_rcpp_ml_mcmc_predict_fixed_random(X, beta, Z_list, u_list, idcluster_list, NR) 
+miceadds_rcpp_ml_mcmc_sample_thresholds(X, beta, Z_list, u_list, idcluster_list, NR, K,
+     alpha, sd_proposal, y_int)
+miceadds_rcpp_ml_mcmc_predict_fixed_random(X, beta, Z_list, u_list, idcluster_list, NR)
 miceadds_rcpp_ml_mcmc_predict_random_list(Z_list, u_list, idcluster_list, NR, N)
 miceadds_rcpp_ml_mcmc_predict_random(Z, u, idcluster)
 miceadds_rcpp_ml_mcmc_predict_fixed(X, beta)
 miceadds_rcpp_ml_mcmc_subtract_fixed(y, X, beta)
 miceadds_rcpp_ml_mcmc_subtract_random(y, Z, u, idcluster, onlyintercept)
-miceadds_rcpp_ml_mcmc_compute_ztz(Z, idcluster, ncluster)    
-miceadds_rcpp_ml_mcmc_compute_xtx(X)     
+miceadds_rcpp_ml_mcmc_compute_ztz(Z, idcluster, ncluster)
+miceadds_rcpp_ml_mcmc_compute_xtx(X)
 miceadds_rcpp_ml_mcmc_probit_category_prob(y_int, alpha, mu1, use_log)
-miceadds_rcpp_pnorm(x, mu, sigma)     
+miceadds_rcpp_pnorm(x, mu, sigma)
 miceadds_rcpp_qnorm(x, mu, sigma)
-miceadds_rcpp_rtnorm(mu, sigma, lower, upper)    
+miceadds_rcpp_rtnorm(mu, sigma, lower, upper)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -97,7 +98,7 @@ should be displayed}
 \item{inits_lme4}{Logical indicating whether initial values should
 be obtained from fitting the model in the \pkg{lme4} package}
 \item{thresh_fac}{Factor for proposal variance for estimating thresholds
-which is determined as \code{thresh_fac}\eqn{/N} (\eqn{5.8/N} as default). 
+which is determined as \code{thresh_fac}\eqn{/N} (\eqn{5.8/N} as default).
 }
 \item{object}{Object of class \code{ml_mcmc}}
 \item{digits}{Number of digits after decimal used for printing}
@@ -190,10 +191,10 @@ should be computed}
 \item{maxval}{Numeric}
 \item{sd_proposal}{Numeric vector}
 \item{N}{Integer}
-\item{Z}{Matrix}  
+\item{Z}{Matrix}
 \item{u}{Matrix containing random effects}
 \item{idcluster}{Integer vector}
-\item{onlyintercept}{Logical}  
+\item{onlyintercept}{Logical}
 \item{ncluster}{Integer}
 \item{mu1}{Vector}
 \item{use_log}{Logical}
@@ -219,7 +220,7 @@ List with following entries (selection)
 \references{
 Goldstein, H. (2011). \emph{Multilevel statistical models}. New York: Wiley.
 
-Goldstein, H., Carpenter, J., Kenward, M., & Levin, K. (2009). Multilevel models with 
+Goldstein, H., Carpenter, J., Kenward, M., & Levin, K. (2009). Multilevel models with
 multivariate mixed response types. \emph{Statistical Modelling, 9}(3), 173-197.
 }
 
