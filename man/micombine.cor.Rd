@@ -1,5 +1,5 @@
 %% File Name: micombine.cor.Rd
-%% File Version: 0.37
+%% File Version: 0.39
 
 \name{micombine.cor}
 \alias{micombine.cor}
@@ -131,9 +131,9 @@ res3 <- with( data=imp1,
 # extract estimates
 betas <- lapply( res3$analyses, FUN=function(ll){ ll$r[1,2] } )
 # extract variances
-vars <- lapply( res3$analyses, FUN=function(ll){ ll$se^2 } )
+vars <- lapply( res3$analyses, FUN=function(ll){ (ll$se[1,2])^2 } )
 # Rubin inference
-tau_comb <- mitools::MIcombine( betas, vars )
+tau_comb <- mitools::MIcombine( results=betas, variances=vars )
 summary(tau_comb)
 
 #############################################################################

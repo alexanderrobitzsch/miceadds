@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc.R
-## File Version: 0.477
+## File Version: 0.482
 
 ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     outcome="normal", nu0=NULL, s0=1, inits_lme4=TRUE, thresh_fac=5.8)
@@ -29,7 +29,7 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     est_normal <- res$est_normal
     est_thresh <- res$est_thresh
     verbose <- res$verbose
-
+    
     #*** generate starting values
     res <- ml_mcmc_initial_values( data=data, y=y, formula_terms=formula_terms,
                 est_probit=est_probit, est_thresh=est_thresh, K=K, NR=NR,
@@ -42,7 +42,7 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     alpha <- res$alpha
     sigma2 <- res$sigma2
     mod_lme4 <- res$mod_lme4
-
+    
     #*** MCMC preliminaries
     res <- ml_mcmc_create_parameter_index(beta=beta, Psi_list=Psi_list, est_sigma2=est_sigma2,
                 est_thresh=est_thresh, K=K)
@@ -85,7 +85,7 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
 
     #*** MCMC estimation
     res <- do.call( ml_mcmc_fit, args=ml_mcmc_fit_args)
-
+    
     #*** post processing
     res$parnames <- parnames
     res$burnin <- burnin

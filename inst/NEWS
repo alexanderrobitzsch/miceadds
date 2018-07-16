@@ -43,14 +43,15 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.14  |  2018-07-06  |  Last: miceadds 2.14-2
+VERSIONS miceadds 2.14  |  2018-07-16  |  Last: miceadds 2.14-4
 ---------------------------------------------------------------------
 
-xxxx  *
+NOTE  * corrected Example 2 in ?micombine.cor (thanks to jamesrrae;
+        https://github.com/alexanderrobitzsch/miceadds/issues/9)
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: micombine.cor (2)
 
 
 

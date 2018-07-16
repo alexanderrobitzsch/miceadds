@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc_proc_data.R
-## File Version: 0.08
+## File Version: 0.12
 
 ml_mcmc_proc_data <- function( formula, data, outcome, verbose=TRUE)
 {
@@ -37,6 +37,7 @@ ml_mcmc_proc_data <- function( formula, data, outcome, verbose=TRUE)
     if (! est_sigma2){
         res$parnames$sigma2 <- NULL
     }
+
     #--- output
     return(res)
 }
