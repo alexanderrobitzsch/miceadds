@@ -1,5 +1,5 @@
 ## File Name: mice.impute.bygroup.R
-## File Version: 0.45
+## File Version: 0.46
 
 mice.impute.bygroup <- function( y, ry, x, group,
         imputationFunction, ... )
@@ -26,7 +26,8 @@ mice.impute.bygroup <- function( y, ry, x, group,
     # remove grouping variable from set of predictors
     vars1 <- setdiff( colnames(x), group_vname )
     if (l2_imp_fct){
-        res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos )
+        res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos,
+                    frame=frame+1)
         y <- res$y
         x <- res$x
         ry <- res$ry

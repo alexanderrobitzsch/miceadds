@@ -1,10 +1,11 @@
 ## File Name: mice_imputation_prepare_2l_functions.R
-## File Version: 0.48
+## File Version: 0.54
 
 #############################################
 # This preparation function is partly copied
 # from the mice:::sampler function
-mice_imputation_prepare_2l_functions <- function( vname, envir, use_formula=FALSE, ... )
+mice_imputation_prepare_2l_functions <- function( vname, envir, 
+    use_formula=FALSE, frame=5, ... )
 {
     # p <- get("p", envir=envir )
     x <- NULL
@@ -40,15 +41,17 @@ mice_imputation_prepare_2l_functions <- function( vname, envir, use_formula=FALS
             # nam <- vname
             # ry <- r[, j]
             #***
-            # copied from mice package
+            # copied and adapted from mice package
             # https://github.com/stefvanbuuren/mice/blob/master/R/sampler.R
             # function sampler.univ()
             data <- p_data
             vars <- colnames(data)[type !=0]
             formula <- stats::reformulate(setdiff(vars, j), response=j)
-            formula <- stats::update(formula, ". ~ . ")
-            res0 <- miceadds_call_internal(pkg="mice", fct="obtain.design",
-                            args="(data=data, formula=formula)", value="x")
+            formula <- stats::update(formula, ". ~ . ")            
+            fcall <- paste0("x <- mice", paste0(rep(":",3), collapse="") , 
+                             "obtain.design(data=data, formula=formula)")
+            eval(parse( text=fcall ))
+                            
             type <- type[labels(terms(formula))][attr(x, "assign")]
             x <- x[, -1L, drop=FALSE]
             names(type) <- colnames(x)
@@ -61,9 +64,12 @@ mice_imputation_prepare_2l_functions <- function( vname, envir, use_formula=FALS
             if (all(!wy)) return(numeric(0))
                 # cc <- wy[where[, j]]
                 # if (k==1L) check.df(x, y, ry)
-            # remove linear dependencies
-            res0 <- miceadds_call_internal(pkg="mice", fct="remove.lindep",
-                            args="(x=x, y=y, ry=ry, ...)", value="keep")
+
+            # remove linear dependencies            
+            fcall <- paste0("keep <- mice", paste0(rep(":",3), collapse="") , 
+                             "remove.lindep(x=x, y=y, ry=ry, frame=4, ...)")
+            eval(parse( text=fcall ))
+                    
             x <- x[, keep, drop=FALSE]
             type <- type[keep]
         }
