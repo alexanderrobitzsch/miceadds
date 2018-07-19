@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.31
+%% File Version: 0.32
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -27,7 +27,7 @@ to be imputed.
 Several strategies for the specification of the design
 matrix \eqn{\bold{X}} are accommodated. By default, predictors at a lower level
 are automatically aggregated to the higher level and included as further
-predictors to maintain the multilevel structure in the data (Grund, Luedtke & Robitzsch, 
+predictors to maintain the multilevel structure in the data (Grund, Luedtke & Robitzsch,
 2018; Enders, Mistler & Keller, 2016; argument \code{aggregate_automatically=TRUE}). Further,
 interactions and quadratic effects can be defined by respective arguments
 \code{interactions} and \code{quadratics}. The dimension

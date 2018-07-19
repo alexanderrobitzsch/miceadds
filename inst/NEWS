@@ -43,15 +43,18 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.14  |  2018-07-16  |  Last: miceadds 2.14-4
+VERSIONS miceadds 2.14  |  2018-07-19  |  Last: miceadds 2.14-7
 ---------------------------------------------------------------------
 
 NOTE  * corrected Example 2 in ?micombine.cor (thanks to jamesrrae;
         https://github.com/alexanderrobitzsch/miceadds/issues/9)
-
+FIXED * fixed a bug in mice.impute.bygroup() with two-level imputation
+        models if factor variables are used (see Example 2 in
+        ?mice.impute.bygroup)
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: micombine.cor (2)
+EXAMP * included/modified examples: micombine.cor (2),
+        mice.impute.bygroup (2)
 
 
 

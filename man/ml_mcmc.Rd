@@ -1,5 +1,5 @@
 %% File Name: ml_mcmc.Rd
-%% File Version: 0.431
+%% File Version: 0.432
 
 \name{ml_mcmc}
 \alias{ml_mcmc}
@@ -50,16 +50,16 @@ ml_mcmc( formula, data, iter=3000, burnin=500, print_iter=100, outcome="normal",
 
 \method{vcov}{ml_mcmc}(object, ...)
 
-ml_mcmc_fit(y, X, Z_list, beta, Psi_list, sigma2, alpha, u_list, idcluster_list, 
-    onlyintercept_list, ncluster_list, sigma2_nu0, sigma2_sigma2_0, psi_nu0_list, 
-    psi_S0_list, est_sigma2, est_probit, parameter_index, est_parameter, npar, iter, 
-    save_iter, verbose=TRUE, print_iter=500, parnames0=NULL, K=9999, est_thresh=FALSE, 
+ml_mcmc_fit(y, X, Z_list, beta, Psi_list, sigma2, alpha, u_list, idcluster_list,
+    onlyintercept_list, ncluster_list, sigma2_nu0, sigma2_sigma2_0, psi_nu0_list,
+    psi_S0_list, est_sigma2, est_probit, parameter_index, est_parameter, npar, iter,
+    save_iter, verbose=TRUE, print_iter=500, parnames0=NULL, K=9999, est_thresh=FALSE,
     thresh_fac=5.8, parm_summary=TRUE )
 
 ## exported Rcpp functions
 miceadds_rcpp_ml_mcmc_sample_beta(xtx_inv, X, Z_list, y, u_list, idcluster_list, sigma2,
      onlyintercept_list, NR)
-miceadds_rcpp_ml_mcmc_sample_u(X, beta, Z_list, y, ztz_list, idcluster_list, 
+miceadds_rcpp_ml_mcmc_sample_u(X, beta, Z_list, y, ztz_list, idcluster_list,
     ncluster_list, sigma2, Psi_list, onlyintercept_list, NR, u0_list)
 miceadds_rcpp_ml_mcmc_sample_psi(u_list, nu0_list, S0_list, NR)
 miceadds_rcpp_ml_mcmc_sample_sigma2(y, X, beta, Z_list, u_list, idcluster_list,

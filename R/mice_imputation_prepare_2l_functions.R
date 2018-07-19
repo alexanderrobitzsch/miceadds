@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_prepare_2l_functions.R
-## File Version: 0.27
+## File Version: 0.48
 
 #############################################
 # This preparation function is partly copied
@@ -7,6 +7,8 @@
 mice_imputation_prepare_2l_functions <- function( vname, envir, use_formula=FALSE, ... )
 {
     # p <- get("p", envir=envir )
+    x <- NULL
+    keep <- NULL
     p_data <- ma_exists_get(x='data', pos=envir)
     p_predictorMatrix <- ma_exists_get(x='predictorMatrix', pos=envir)
     # newstate <- get("newstate", envir=envir )
@@ -32,12 +34,36 @@ mice_imputation_prepare_2l_functions <- function( vname, envir, use_formula=FALS
             type <- 0
         }
         if (calltype=="type" ){
-            x <- p_data[, predictors, drop=FALSE]
+            # x <- p_data[, predictors, drop=FALSE]
             y <- p_data[, j]
             type <- p_predictorMatrix[j, predictors]
-            nam <- vname
-            ry <- r[, j]
-            keep <- remove.lindep_miceadds(x, y, ry, ...)
+            # nam <- vname
+            # ry <- r[, j]
+            #***
+            # copied from mice package
+            # https://github.com/stefvanbuuren/mice/blob/master/R/sampler.R
+            # function sampler.univ()
+            data <- p_data
+            vars <- colnames(data)[type !=0]
+            formula <- stats::reformulate(setdiff(vars, j), response=j)
+            formula <- stats::update(formula, ". ~ . ")
+            res0 <- miceadds_call_internal(pkg="mice", fct="obtain.design",
+                            args="(data=data, formula=formula)", value="x")
+            type <- type[labels(terms(formula))][attr(x, "assign")]
+            x <- x[, -1L, drop=FALSE]
+            names(type) <- colnames(x)
+            # define y, ry and wy
+            y <- data[, j]
+            ry <- stats::complete.cases(x, y) & r[, j]
+            wy <- NULL
+            if (is.null(wy)) wy <- !ry
+            # nothing to impute
+            if (all(!wy)) return(numeric(0))
+                # cc <- wy[where[, j]]
+                # if (k==1L) check.df(x, y, ry)
+            # remove linear dependencies
+            res0 <- miceadds_call_internal(pkg="mice", fct="remove.lindep",
+                            args="(x=x, y=y, ry=ry, ...)", value="keep")
             x <- x[, keep, drop=FALSE]
             type <- type[keep]
         }

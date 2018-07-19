@@ -1,5 +1,5 @@
 %% File Name: mice.impute.bygroup.Rd
-%% File Version: 0.17
+%% File Version: 0.24
 
 \name{mice.impute.bygroup}
 \alias{mice.impute.bygroup}
@@ -63,8 +63,10 @@ Vector of imputed values
 # EXAMPLE 1: Cluster-specific imputation for some variables
 #############################################################################
 
-data( data.ma01 )
+library(mice)
+data( data.ma01, package="miceadds")
 dat <- data.ma01
+
 # use sub-dataset
 dat <- dat[ dat$idschool <=1006, ]
 V <- ncol(dat)
@@ -85,6 +87,38 @@ imputationFunction <- list("books"="norm" )
 #** conduct multiple imputation in mice
 imp <- mice::mice( dat, method=method, predictorMatrix=predictorMatrix,
             m=1, maxit=1, group=group, imputationFunction=imputationFunction )
+
+#############################################################################
+# EXAMPLE 2: Group-wise multilevel imputation '2l.pan'
+#############################################################################
+
+library(mice)
+data( data.ma01, package="miceadds" )
+dat <- data.ma01
+
+# select data
+dat <- dat[, c("idschool","hisei","books","female") ]
+V <- ncol(dat)
+dat <- dat[ ! is.na( dat$books), ]
+# define factor variable
+
+dat$books <- as.factor(dat$books)
+# create initial predictor matrix and imputation methods
+predictorMatrix <- matrix( 0, nrow=V, ncol=V)
+rownames(predictorMatrix) <- colnames(predictorMatrix) <- colnames(dat)
+predictorMatrix["idschool", ] <- 0
+predictorMatrix[ "hisei", "idschool" ] <- -2
+predictorMatrix[ "hisei", c("books","female") ] <- 1
+method <- rep("", V)
+names(method) <- colnames(dat)
+method["hisei"] <- "bygroup"
+group <- list( "hisei"="female" )
+imputationFunction <- list("hisei"="2l.pan" )
+
+#** conduct multiple imputation in mice
+imp <- mice::mice( dat, method=method, predictorMatrix=predictorMatrix,
+            m=1, maxit=1, group=group, imputationFunction=imputationFunction )
+str(imp)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

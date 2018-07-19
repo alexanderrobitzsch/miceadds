@@ -1,5 +1,5 @@
 %% File Name: lmer_vcov.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 
 \name{lmer_vcov}
@@ -88,7 +88,7 @@ Function originally from Ben Bolker, http://rpubs.com/bbolker/varwald
 
 \seealso{
 \code{\link[lme4:lmer]{lme4::lmer}},
-\code{\link[mitml:testEstimates]{mitml::testEstimates}} 
+\code{\link[mitml:testEstimates]{mitml::testEstimates}}
 }
 
 
