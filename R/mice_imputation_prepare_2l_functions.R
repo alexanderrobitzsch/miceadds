@@ -1,11 +1,11 @@
 ## File Name: mice_imputation_prepare_2l_functions.R
-## File Version: 0.54
+## File Version: 0.60
 
 #############################################
 # This preparation function is partly copied
 # from the mice:::sampler function
-mice_imputation_prepare_2l_functions <- function( vname, envir, 
-    use_formula=FALSE, frame=5, ... )
+mice_imputation_prepare_2l_functions <- function( vname, envir,
+    use_formula=FALSE, frame=4, ... )
 {
     # p <- get("p", envir=envir )
     x <- NULL
@@ -25,54 +25,53 @@ mice_imputation_prepare_2l_functions <- function( vname, envir,
 
     #*****************************************
     #****** start copy from mice
-        # for a multilevel imputation method
-        predictors <- p_predictorMatrix[j, ] !=0
-        # RB: formula-based specification
-        if ( calltype=="formula" ) {
-            myform <- paste(p_form[j], "0", sep="+")
-            x <- stats::model.matrix( stats::formula(myform), p_data)
-            ry <- r[, j]
-            type <- 0
-        }
-        if (calltype=="type" ){
-            # x <- p_data[, predictors, drop=FALSE]
-            y <- p_data[, j]
-            type <- p_predictorMatrix[j, predictors]
-            # nam <- vname
-            # ry <- r[, j]
-            #***
-            # copied and adapted from mice package
-            # https://github.com/stefvanbuuren/mice/blob/master/R/sampler.R
-            # function sampler.univ()
-            data <- p_data
-            vars <- colnames(data)[type !=0]
-            formula <- stats::reformulate(setdiff(vars, j), response=j)
-            formula <- stats::update(formula, ". ~ . ")            
-            fcall <- paste0("x <- mice", paste0(rep(":",3), collapse="") , 
-                             "obtain.design(data=data, formula=formula)")
-            eval(parse( text=fcall ))
-                            
-            type <- type[labels(terms(formula))][attr(x, "assign")]
-            x <- x[, -1L, drop=FALSE]
-            names(type) <- colnames(x)
-            # define y, ry and wy
-            y <- data[, j]
-            ry <- stats::complete.cases(x, y) & r[, j]
-            wy <- NULL
-            if (is.null(wy)) wy <- !ry
-            # nothing to impute
-            if (all(!wy)) return(numeric(0))
-                # cc <- wy[where[, j]]
-                # if (k==1L) check.df(x, y, ry)
+    # for a multilevel imputation method
+    predictors <- p_predictorMatrix[j, ] !=0
+    # RB: formula-based specification
+    if ( calltype=="formula" ) {
+        myform <- paste(p_form[j], "0", sep="+")
+        x <- stats::model.matrix( stats::formula(myform), p_data)
+        ry <- r[, j]
+        type <- 0
+    }
+    if (calltype=="type" ){
+        # x <- p_data[, predictors, drop=FALSE]
+        y <- p_data[, j]
+        type <- p_predictorMatrix[j, predictors]
+        # nam <- vname
+        # ry <- r[, j]
+        #***
+        # copied and adapted from mice package
+        # https://github.com/stefvanbuuren/mice/blob/master/R/sampler.R
+        # function sampler.univ()
+        data <- p_data
+        vars <- colnames(data)[type !=0]
+        formula <- stats::reformulate(setdiff(vars, j), response=j)
+        formula <- stats::update(formula, ". ~ . ")
+        fcall <- paste0("x <- mice", paste0(rep(":",3), collapse=""),
+                    "obtain.design(data=data, formula=formula)")
+        eval(parse( text=fcall ))
 
-            # remove linear dependencies            
-            fcall <- paste0("keep <- mice", paste0(rep(":",3), collapse="") , 
-                             "remove.lindep(x=x, y=y, ry=ry, frame=4, ...)")
-            eval(parse( text=fcall ))
-                    
-            x <- x[, keep, drop=FALSE]
-            type <- type[keep]
-        }
+        type <- type[labels(terms(formula))][attr(x, "assign")]
+        x <- x[, -1L, drop=FALSE]
+        names(type) <- colnames(x)
+        # define y, ry and wy
+        y <- data[, j]
+        ry <- stats::complete.cases(x, y) & r[, j]
+        wy <- NULL
+        if (is.null(wy)) wy <- !ry
+        # nothing to impute
+        if (all(!wy)) return(numeric(0))
+            # cc <- wy[where[, j]]
+            # if (k==1L) check.df(x, y, ry)
+        # remove linear dependencies
+        fcall <- miceadds_call_internal(pkg="mice", fct="remove.lindep",
+                    args="(x=x, y=y, ry=ry, frame=frame, ...)", value="keep")
+        eval(parse( text=fcall ))
+
+        x <- x[, keep, drop=FALSE]
+        type <- type[keep]
+    }
     #****** END: copy from mice
     #*****************************************
     res <- list( y=y, x=x, ry=ry, type=type)
