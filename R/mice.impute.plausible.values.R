@@ -1,8 +1,8 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.659
+## File Version: 2.665
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
-            alpha.se=0,scale.values=NULL, sig.e.miss=1000000,
+            alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
             like=NULL, theta=NULL, normal.approx=NULL,
             pviter=15, imputationWeights=rep(1, length(y)), plausible.value.print=TRUE,
             pls.facs=NULL, interactions=NULL, quadratics=NULL, extract_data=TRUE,
@@ -29,7 +29,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         ry <- res$ry
         type <- res$type
     }
-
+    
     #--- define PV methods
     pvmethod <- 0
     if ( ! is.null( scale.values[[ vname ]] )){
@@ -51,7 +51,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                         vname=vname, miceargdefault=NULL )
     quadratics <- mice_imputation_extract_list_arguments( micearg=quadratics,
                         vname=vname, miceargdefault=NULL )
-
+                        
     ##############################################################
     # Plausible value imputation according to the Rasch model
     # adapt this to include only the likelihood
@@ -70,6 +70,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                         pls.facs=pls.facs, envir_pos=pos, ... )$yimp
             X <- plsout[,-1]
         }
+
         #*+*+*
         cluster <- res$cluster
         # item response data matrix
@@ -155,8 +156,6 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             sigma2 <- mean( ( y.pv - yfitted )^2 )
             v <- sigma2 * xtx1
             beta.star <- as.vector(cmod) + ma_rmvnorm( n=1, mu=rep(0,nrow(v)), sigma=v)
-            # calculate residual variance in regression
-#            sigma2 <- mean( stats::residuals(mod)^2 )
             # fitted regression coefficients
 
             # update posterior distribution

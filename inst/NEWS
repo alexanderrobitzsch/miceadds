@@ -43,20 +43,20 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.14  |  2018-07-20  |  Last: miceadds 2.14-14
+VERSIONS miceadds 2.14  |  2018-08-15  |  Last: miceadds 2.14-16
 ---------------------------------------------------------------------
 
-NOTE  * corrected Example 2 in ?micombine.cor (thanks to jamesrrae;
-        https://github.com/alexanderrobitzsch/miceadds/issues/9)
+NOTE  * corrected Example 2 in ?micombine.cor (thanks to jamesrrae; #9)
 FIXED * fixed a bug in mice.impute.bygroup() with two-level imputation
         models if factor variables are used (see Example 2 in
         ?mice.impute.bygroup)
+FIXED * fixed numerical problems when principal component analysis
+        is used for dimension reduction. 
+
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: micombine.cor (2),
         mice.impute.bygroup (2)
-
-
 
 
 ---------------------------------------------------------------------
@@ -84,8 +84,6 @@ DATA  * included/modified datasets: data.ma08
 EXAMP * included/modified examples: GroupMean (2),
         ma_lme4_formula_terms (1,2), ml_mcmc (1), filename_split(3), 
         Rfunction_include_argument_values (1), lmer_vcov (1,2)
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.12  |  2018-06-06  |  Last: miceadds 2.12-24

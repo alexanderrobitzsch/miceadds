@@ -1,12 +1,14 @@
 ## File Name: mice_imputation_pls_estimate_pls_regression.R
-## File Version: 0.10
+## File Version: 0.15
 
 mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
     use.ymat, imputationWeights, use_weights, pls.print.progress )
 {
-
+    x00 <- x
+    x11a <- NULL
     # calculate partial least squares regression
     nfac <- min( pls.facs, ncol(x) )
+    do_pls <- ( pls.facs > 0 ) & ( pls.facs < 1000)
     yobs <- y[ ry ]
     if (use.ymat){
         yobs <- y[ry,]
@@ -34,7 +36,8 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         }
         cat("\n\n" )
     }
-    if (pls.facs > 0){
+    
+    if ( do_pls ){
         VV <- ncol(xobs)
         mod <- kernelpls.fit2( X=as.matrix(xobs),
                         Y=matrix(yobs,ncol=1),ncomp=nfac)
@@ -49,11 +52,23 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
             cat( "\nPLS estimation finished ", substring(Sys.time(),1),"\n" )
             utils::flush.console()
         }
+        
+        # remove columns with small standard deviations
+        sd_cols <- apply(x, 2 , stats::sd)
+        eps <- 1E-10
+        ind <- which( sd_cols < eps*sd_cols[2] )[-1]
+        if ( length(ind) > 0 ){
+            x <- x[, -ind ]
+        }
     }
+            
     if ( pls.facs==0){
         x <- cbind( 1, x )
     }
-
+    if (pls.facs > 1000){
+        x <- x00
+    }
+        
     #--- output
     res <- list( x=x, x11a=x11a )
     return(res)

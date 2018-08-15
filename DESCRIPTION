@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 2.14-14
-Date: 2018-07-20 14:35:09
+Version: 2.14-16
+Date: 2018-08-15 14:09:49
 Author: 
     Alexander Robitzsch [aut, cre], Simon Grund [aut],
     Thorsten Henke [aut]
@@ -36,3 +36,5 @@ URL:
     https://sites.google.com/site/alexanderrobitzsch2/software
 License: 
     GPL (>= 2)
+BugReports: 
+    https://github.com/alexanderrobitzsch/miceadds/issues?state=open

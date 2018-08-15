@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.33
+%% File Version: 2.34
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -75,7 +75,8 @@ Print progress during PLS regression.
 Vector of sample weights to be used in imputation models.
 }
   \item{pcamaxcols}{
-Maximum number of principal components.
+Amount of variance explained by principal components (must be a number between
+0 and 1)
 }
   \item{min.int.cor}{
 Minimum absolute correlation for an interaction of two predictors

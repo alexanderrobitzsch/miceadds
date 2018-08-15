@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.40
+## File Version: 3.53
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                                 pls.impMethod="pmm",
                                 pls.impMethodArgs=NULL,
@@ -30,7 +30,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     # N.largest            ... select N.largest correlations                        #
     # pls.title         ... title which is displayed                             #
     #...........................................................................#
-
+    
     time1 <- Sys.time()
 
     #--- extract arguments
@@ -67,8 +67,8 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     min.int.cor <- mice_imputation_extract_list_arguments( min.int.cor, vname, 0 )
 
     #*** print progress | print section 1
-    res <- mice_imputation_pls_print_progress1( pls.print.progress, vname,
-                    print.dims, y, ry, x, type )
+    res <- mice_imputation_pls_print_progress1( pls.print.progress=pls.print.progress, 
+                    vname=vname, print.dims=print.dims, y=y, ry=ry, x=x, type=type ) 
 
     # include predictor variables with type !=0
     nt <- names(type)[ type !=0 ]
@@ -89,52 +89,54 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     N <- ncol(x)
 
     #*** print progress | print section 2
-    res <- mice_imputation_pls_print_progress2(pls.print.progress, imp.temp,
-                pls.title, y, x)
+    res <- mice_imputation_pls_print_progress2( 
+                pls.print.progress=pls.print.progress, imp.temp=imp.temp, 
+                pls.title=pls.title, y=y, x=x ) 
 
     # extract interactions and quadratic terms
     pls.interactions <- names(type)[ type==4 ]
     pls.quadratics <- names(type)[ type==5 ]
 
     #-- include interactions
-    res <- mice_imputation_pls_include_interactions(pls.interactions,
-                pls.print.progress, x, y, ry, type, min.int.cor, pls.maxcols )
+    res <- mice_imputation_pls_include_interactions( pls.interactions=pls.interactions, 
+                pls.print.progress=pls.print.progress, x=x, y=y, 
+                ry=ry, type=type, min.int.cor=min.int.cor, pls.maxcols=pls.maxcols ) 
     x <- res$x
     xs <- res$xs
 
     #-- include quadratic terms
-    res <- mice_imputation_pls_include_quadratics( pls.quadratics,
-                pls.interactions, x0, x, pls.print.progress, xs )
+    res <- mice_imputation_pls_include_quadratics( pls.quadratics=pls.quadratics, 
+                pls.interactions=pls.interactions, x0=x0, x=x, pls.print.progress=pls.print.progress, 
+                xs=xs )
     x <- res$x
 
     #-- include only terms with largest correlations
-    res <- mice_imputation_pls_largest_correlations( y, x, ry, type,
-                use.ymat, pls.print.progress, x10, N.largest, min.all.cor )
+    res <- mice_imputation_pls_largest_correlations( y=y, x=x, ry=ry, type=type, 
+                use.ymat=use.ymat, pls.print.progress=pls.print.progress, x10=x10, N.largest=N.largest, 
+                min.all.cor=min.all.cor ) 
     x <- res$x
 
     #-- perform PCA if requested
-    x <- mice_imputation_pls_pca_reduction(x, pcamaxcols,    pls.print.progress)
-    x10 <- x    # copy dataset of predictors
-
+    x <- mice_imputation_pls_pca_reduction( x=x, pcamaxcols=pcamaxcols, 
+                pls.print.progress=pls.print.progress ) 
+    x10 <- x# copy dataset of predictors
+    
     #--- perform PLS regression
-    res <- mice_imputation_pls_estimate_pls_regression( pls.facs, x, y, ry,
-                use.ymat, imputationWeights, use_weights, pls.print.progress )
+    res <- mice_imputation_pls_estimate_pls_regression( pls.facs=pls.facs, x=x, y=y, ry=ry, 
+                use.ymat=use.ymat, imputationWeights=imputationWeights, use_weights=use_weights, 
+                pls.print.progress=pls.print.progress )
     x <- res$x
     x11a <- res$x11a
 
     #--- apply imputation method
-    x1 <- mice_imputation_pls_do_impute( x, y, ry, imputationWeights,
-                use_weights, pls.impMethod,
-                pls.print.progress, pls.impMethodArgs, type, ... )
+    x1 <- mice_imputation_pls_do_impute( x=x, y=y, ry=ry, 
+                imputationWeights=imputationWeights, use_weights=use_weights, 
+                pls.impMethod=pls.impMethod, pls.print.progress=pls.print.progress, 
+                pls.impMethodArgs=pls.impMethodArgs, type=type, ... ) 
     #--- finished all steps!
     time2 <- Sys.time()
 
-    res <- mice_imputation_pls_print_progress3(pls.print.progress, time1, time2 )
+    res <- mice_imputation_pls_print_progress3( pls.print.progress=pls.print.progress, 
+                    time1=time1, time2=time2 )
     return(x1)
 }
-
-
-
-
-
-
