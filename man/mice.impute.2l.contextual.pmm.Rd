@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.contextual.pmm.Rd
-%% File Version: 0.27
+%% File Version: 0.35
 
 \name{mice.impute.2l.contextual.pmm}
 \alias{mice.impute.2l.contextual.pmm}
@@ -18,10 +18,10 @@ level is included as a further covariate.
 
 \usage{
 mice.impute.2l.contextual.pmm(y, ry, x, type, imputationWeights=NULL,
-     interactions=NULL, quadratics=NULL, ...)
+     interactions=NULL, quadratics=NULL, pls.facs=NULL, ...)
 
 mice.impute.2l.contextual.norm(y, ry, x, type, ridge=10^(-5),
-   imputationWeights=NULL, interactions=NULL, quadratics=NULL, ...)
+   imputationWeights=NULL, interactions=NULL, quadratics=NULL, pls.facs=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 
@@ -51,6 +51,8 @@ Vector of variable names used for creating interactions
   \item{quadratics}{
 Vector of variable names used for creating quadratic terms
 }
+\item{pls.facs}{Number of factors used in partial least dimension reduction
+(if requested)}
   \item{\dots}{
 Further arguments to be passed
 }
@@ -95,19 +97,15 @@ and \code{\link[mice:mice.impute.2lonly.pmm]{mice::mice.impute.2lonly.pmm}}.
 data(data.ma05)
 dat <- data.ma05
 
-# empty imputation
-imp0 <- mice::mice( dat, maxit=0 )
-summary(imp0)
-
 # define predictor matrix
-predM <- imp0$pred
+predM <- mice::make.predictorMatrix(data=dat)
 # exclude student IDs
 predM[, "idstud"] <- 0
 # define idclass as the cluster variable (type=-2)
 predM[, "idclass" ] <- -2
 
 # initialize with norm method
-impMethod <- rep( "norm", length(imp0$method) )
+impMethod <- mice::make.method(data=dat)
 names(impMethod) <- names( imp0$method )
 impMethod[ c("idstud","idclass")] <- ""
 
@@ -146,6 +144,18 @@ predM[ c("sprengel","groesse"), "idclass" ] <- -2
 imp <- mice::mice( dat, predictorMatrix=predM, m=3,  maxit=4,
            imputationMethod=impMethod, paniter=100)
 summary(imp)
+
+#**** imputation model 2 with PLS dimension reduction
+
+# define some interaction effects
+interactions <- list( manote=c("migrant", "misei") )
+# number of PLS factors (5 factors)
+pls.facs <- list( manote=5 )
+
+# do imputation
+imp2 <- mice::mice( dat, predictorMatrix=predM, interactions=interactions,
+            pls.facs=pls.facs, method=impMethod, paniter=100)
+summary(imp2)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

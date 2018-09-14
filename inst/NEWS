@@ -43,7 +43,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.14  |  2018-08-15  |  Last: miceadds 2.14-16
+VERSIONS miceadds 2.14  |  2018-09-14  |  Last: miceadds 2.14-23
 ---------------------------------------------------------------------
 
 NOTE  * corrected Example 2 in ?micombine.cor (thanks to jamesrrae; #9)
@@ -52,11 +52,16 @@ FIXED * fixed a bug in mice.impute.bygroup() with two-level imputation
         ?mice.impute.bygroup)
 FIXED * fixed numerical problems when principal component analysis
         is used for dimension reduction. 
+NOTE  * included some examples of using mice::make.predictorMatrix()
+        and mice::make.method() functions in the miceadds manual
+NOTE  * included argument 'pls.facs' for PLS dimension reduction in
+        mice.impute.2l.contextual.pmm() and mice.impute.2l.contextual.norm()
+        (communicated by Laura Helbling)
 
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: micombine.cor (2),
-        mice.impute.bygroup (2)
+        mice.impute.bygroup (2), mice.impute.2l.contextual.pmm (1)
 
 
 ---------------------------------------------------------------------

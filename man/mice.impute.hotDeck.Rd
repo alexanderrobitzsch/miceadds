@@ -1,5 +1,5 @@
 %% File Name: mice.impute.hotDeck.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{mice.impute.hotDeck}
 \alias{mice.impute.hotDeck}
@@ -90,8 +90,7 @@ impMethod <- rep("hotDeck", V)
 method <- "cor"
 
 #*** imputation in mice
-imp <- mice::mice( data=as.matrix(dat), m=1, method=impMethod,
-               method=method )
+imp <- mice::mice( data=as.matrix(dat), m=1, method=impMethod, method=method )
 summary(imp)
 }
 }

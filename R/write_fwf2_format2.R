@@ -1,5 +1,5 @@
 ## File Name: write_fwf2_format2.R
-## File Version: 0.07
+## File Version: 0.08
 
 #----------------------------------------------------------------
 # utility function for formatting output in write.fwf2
@@ -24,7 +24,6 @@ write_fwf2_format2 <- function( vec1, ff, fr )
         g.vv <- grep("NA",d.vv)
         d.vv[ g.vv  ] <- ifelse( ff > 1,  gsub( "NA", " .", d.vv[g.vv] ), gsub( "NA", ".", d.vv[g.vv] ) )
         vec2 <- substring( d.vv, 1, ff )
-        vec2
     }
     return(vec2)
 }

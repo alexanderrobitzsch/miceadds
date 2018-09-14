@@ -1,5 +1,5 @@
 %% File Name: mice_inits.Rd
-%% File Version: 0.04
+%% File Version: 0.07
 
 \name{mice_inits}
 \alias{mice_inits}
@@ -45,9 +45,11 @@ List with entries
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%}
+\seealso{
+See \code{\link[mice:make.predictorMatrix]{mice::make.predictorMatrix}} and
+\code{\link[mice:make.method]{mice::make.method}} for generating an initial predictor matrix
+and a vector of imputation methods.
+}
 
 \examples{
 #############################################################################

@@ -1,7 +1,9 @@
 ## File Name: mice.impute.pmm5.R
-## File Version: 1.10
+## File Version: 1.12
+
 mice.impute.pmm5 <- function (y, ry, x, donors=3, noise=10^5,
-        ridge=10^(-5), ...){
+        ridge=10^(-5), ...)
+{
     x <- cbind(1, as.matrix(x))
     parm <- .norm.draw3(y, ry, x, ridge=ridge )
     yhatobs <- x[ry, ] %*% parm$coef
@@ -38,10 +40,9 @@ mice.impute.pmm5 <- function (y, ry, x, donors=3, noise=10^5,
     for ( dd in 1:donors){
         ydonors[,dd] <- dfr1[ mice::squeeze( dfr0$obsindex_low - dd + 1,c(1,Ny) ), "y"]
         ydonors[,dd+donors] <- dfr1[ mice::squeeze( dfr0$obsindex_upp + dd - 1,c(1,Ny) ), "y"]
-                        }
+    }
     ind.sample <- sample( 1:(2*donors), N0, replace=TRUE )
     imp <- ydonors[ cbind( 1:N0, ind.sample) ]
-    # Correction ARb 2013-11-13
-#    imp <- imp[ dfr0$index_obs_miss ]
+    #-- output
     return(imp)
-    }
+}

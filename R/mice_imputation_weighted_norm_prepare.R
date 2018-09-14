@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_weighted_norm_prepare.R
-## File Version: 0.06
+## File Version: 0.10
 
 mice_imputation_weighted_norm_prepare <- function(x, ry, y, imputationWeights,
     interactions, quadratics, pls.facs, pls.impMethod, ... )
@@ -18,11 +18,13 @@ mice_imputation_weighted_norm_prepare <- function(x, ry, y, imputationWeights,
     res <- mice_imputation_get_states(pos=parent.frame(n=2) )
     newstate <- res$newstate
     vname <- res$vname
+
     plsout <- mice_imputation_pls_helper( newstate=newstate, vname=vname, pls.impMethod=pls.impMethod,
                 x=x[,-1], y=y, ry=ry, imputationWeights=imputationWeights,
                 interactions=interactions, quadratics=quadratics, pls.facs=pls.facs,  ... )
     pls.facs <- plsout$pls.facs
     yimp <- plsout$yimp
+
     #---- output
     res <- list( yimp=yimp, pls.facs=pls.facs, yobs=yobs, xobs=xobs,
                 weights.obs=weights.obs, x=x)

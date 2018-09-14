@@ -1,5 +1,6 @@
 ## File Name: mice.impute.2l.pls2.R
-## File Version: 3.17
+## File Version: 3.21
+
 mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
                                 pls.impMethod="pmm",
                                 pls.print.progress=TRUE,
@@ -461,14 +462,14 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
         if (pls.impMethod=="pmm" ){
             yhatobs <- x[ry, ] %*% parm$coef
             yhatmis <- x[!ry, ] %*% parm$beta
-            x1 <- apply(as.array(yhatmis), 1, .pmm.match, yhat=yhatobs, y=y[ry], ... )
-                                }
+            x1 <- apply(as.array(yhatmis), 1, mice::.pmm.match, yhat=yhatobs, y=y[ry], ... )
+        }
         #*****
         # imputation method 'pmm5' (miceadds package)
         if (pls.impMethod=="pmm5" ){
 #            x1 <- mice.impute.pmm6( y=y, ry=ry, x=x, ridge=1e-04, ...)
             x1 <- mice.impute.pmm5( y=y, ry=ry, x=x,  ...)
-                                }
+        }
         # imputation method 'pmm5' (miceadds package)
 #        if (pls.impMethod=="pmm6" ){
 #            x1 <- mice.impute.pmm6( y=y, ry=ry, x=x, ridge=10^(-4) ...)

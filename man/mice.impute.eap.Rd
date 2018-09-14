@@ -1,5 +1,5 @@
 %% File Name: mice.impute.eap.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{mice.impute.eap}
 \alias{mice.impute.eap}
@@ -80,7 +80,7 @@ vars <- colnames(dat)
 dat1 <- as.matrix( dat[,vars] )
 
 # define imputation methods
-impmethod <- rep( "pmm", length(vars ))
+impmethod <- rep( "pmm", length(vars) )
 names(impmethod) <- vars
 # define plausible value imputation based on EAP and SEEAP for 'math_PV'
 impmethod[ "math_PV" ] <- "eap"

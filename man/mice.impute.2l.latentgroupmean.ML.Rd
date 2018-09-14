@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.latentgroupmean.ml.Rd
-%% File Version: 1.35
+%% File Version: 1.36
 
 \name{mice.impute.2l.latentgroupmean.ml}
 \alias{mice.impute.2l.latentgroupmean.ml}
@@ -154,19 +154,15 @@ dat$M.Mscore <- NA
 # include latent group group for 'Mscore'
 dat$LM.Mscore <- NA    #=> LM: latent group mean
 
-# empty imputation
-imp <- mice( dat, maxit=0 )
-summary(imp)
-
 # define predictor matrix
-predM <- imp$pred
+predM <- mice::make.predictorMatrix(data=dat)
 # exclude student ISs
 predM[, "idstud"] <- 0
 # idclass is the cluster identifier
 predM[, "idclass" ] <- -2
 
 # define imputation methods
-impMethod <- imp$method
+impMethod <- mice::make.method(data=dat)
 # initialize with norm
 impMethod <- rep( "norm", length(impMethod) )
 names(impMethod) <- names( imp$method )

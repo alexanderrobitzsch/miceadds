@@ -1,14 +1,13 @@
 ## File Name: mice_imputation_pls_helper.R
-## File Version: 0.22
+## File Version: 0.27
 
 
-#------------------------------------------------------------------------
 # auxiliary function for PLS imputation
 mice_imputation_pls_helper <- function( newstate, vname, pls.impMethod, x, y, ry,
                 imputationWeights=rep( 1, length(y)),
                 interactions, quadratics, pls.facs,
-                envir_pos=NULL,
-                ... ){
+                envir_pos=NULL, ... )
+{
 
     # interactions and quadratic terms
     interactions <- mice_imputation_extract_list_arguments( micearg=interactions,
@@ -44,11 +43,8 @@ mice_imputation_pls_helper <- function( newstate, vname, pls.impMethod, x, y, ry
     if ( is.null(envir_pos) ){
         envir_pos <- parent.frame(n=1)
     }
-
-
     yimp <- NULL
     if ( ! is.null(pls.facs) ){
-            #@@@ included 2016-12-14
         yimp <- mice.impute.pls(y=y, ry=ry, x=x, type=type, pls.facs=pls.facs,
                         pls.impMethod=pls.impMethod,
                         imputationWeights=imputationWeights,

@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_kernelpls_1dim.cpp
-//// File Version: 3.15
+//// File Version: 3.16
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -25,10 +25,10 @@ Rcpp::List kernelplsaux(Rcpp::NumericMatrix Yr, Rcpp::NumericMatrix Xr,
     arma::mat X(Xr.begin(), nobj, npred, false);       // reuses memory and avoids extra copy
     arma::mat Y(Yr.begin(), nobj, nresp, false);
     // define matrices
-    arma::mat R = arma::zeros( npred, ncomp  );
-    arma::mat P = arma::zeros( npred, ncomp  );
-    arma::mat tQ = arma::zeros( ncomp, nresp  );
-    arma::mat B = arma::zeros( npred, ncomp  );
+    arma::mat R = arma::zeros( npred, ncomp );
+    arma::mat P = arma::zeros( npred, ncomp );
+    arma::mat tQ = arma::zeros( ncomp, nresp );
+    arma::mat B = arma::zeros( npred, ncomp );
     // auxiliary matrices;
     arma::mat wa;
     arma::mat ra;

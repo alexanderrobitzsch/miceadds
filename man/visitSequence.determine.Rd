@@ -1,5 +1,5 @@
 %% File Name: visitSequence.determine.Rd
-%% File Version: 0.12
+%% File Version: 0.14
 
 \name{visitSequence.determine}
 \alias{visitSequence.determine}
@@ -50,7 +50,9 @@ Updated vector of the visit sequence
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link[mice:mice]{mice::mice}}
+Used in  the \code{\link[mice:mice]{mice::mice}} function as an argument.
+The function \code{\link[mice:make.visitSequence]{mice::make.visitSequence}}
+creates a visit sequence.
 }
 
 

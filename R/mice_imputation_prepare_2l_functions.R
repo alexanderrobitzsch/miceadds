@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_prepare_2l_functions.R
-## File Version: 0.66
+## File Version: 0.67
 
 #############################################
 # This preparation function is partly copied
@@ -27,7 +27,7 @@ mice_imputation_prepare_2l_functions <- function( vname, envir,
     #****** start copy from mice
     # for a multilevel imputation method
     # predictors <- p_predictorMatrix[j, ] !=0
-    
+
     # RB: formula-based specification
     if ( calltype=="formula" ) {
         myform <- paste(p_form[j], "0", sep="+")
@@ -50,7 +50,7 @@ mice_imputation_prepare_2l_functions <- function( vname, envir,
         vars <- colnames(data)[type !=0]
         formula <- stats::reformulate(setdiff(vars, j), response=j)
         formula <- stats::update(formula, ". ~ . ")
-        
+
         fcall <- paste0("x <- mice", paste0(rep(":",3), collapse=""),
                     "obtain.design(data=data, formula=formula)")
         eval(parse( text=fcall ))

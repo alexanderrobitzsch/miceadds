@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2lonly.function.Rd
-%% File Version: 0.36
+%% File Version: 0.37
 
 \name{mice.impute.2lonly.function}
 \alias{mice.impute.2lonly.function}
@@ -99,11 +99,9 @@ dfr[ rho.miss * x + stats::rnorm( G*n, sd=sqrt( 1 - rho.miss ) ) <
 dfr[ rep( stats::rnorm(G), each=n ) < stats::qnorm(missrate), "w" ] <- NA
 dfr[ rep( stats::rnorm(G), each=n ) < stats::qnorm(missrate), "v" ] <- NA
 
-#....
-# empty mice imputation
-imp0 <- mice( as.matrix(dfr), maxit=0 )
-predM <- imp0$predictorMatrix
-impM <- imp0$method
+#* initial predictor matrix and imputation methods
+predM <- mice::make.predictorMatrix(data=dat)
+impM <- mice::make.method(data=dat)
 
 #...
 # multilevel imputation

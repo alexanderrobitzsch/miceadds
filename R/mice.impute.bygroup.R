@@ -1,5 +1,5 @@
 ## File Name: mice.impute.bygroup.R
-## File Version: 0.49
+## File Version: 0.50
 
 mice.impute.bygroup <- function( y, ry, x, group,
         imputationFunction, ... )
@@ -18,7 +18,7 @@ mice.impute.bygroup <- function( y, ry, x, group,
     group_vname <- mice_imputation_extract_list_arguments(
                 micearg=group, vname=vname, miceargdefault="" )
     l2_imp_fct <- substring(imputationFunction_vname,1,2)=="2l"
-    
+
     #*** full data frame with indices and all groups
     dfr_index <- data.frame( "y"=y, "ry"=ry, "group_"=x[, group_vname] )
     groups <- unique( dfr_index$group_ )

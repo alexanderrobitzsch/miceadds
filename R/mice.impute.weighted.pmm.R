@@ -1,8 +1,8 @@
 ## File Name: mice.impute.weighted.pmm.R
-## File Version: 0.22
+## File Version: 0.28
 
 mice.impute.weighted.pmm <- function (y, ry, x,  imputationWeights=NULL,
-        pls.facs=NULL,  interactions=NULL, quadratics=NULL,  ...)
+        pls.facs=NULL, interactions=NULL, quadratics=NULL, ...)
 {
     # processing
     res <- mice_imputation_weighted_norm_prepare( x=x, ry=ry, y=y,
@@ -21,7 +21,7 @@ mice.impute.weighted.pmm <- function (y, ry, x,  imputationWeights=NULL,
                         ry=ry, y=y, x=x, weights.obs=weights.obs, ... )
         yhatobs <- x[ry,] %*% parm$coef
         yhatmis <- x[!ry,] %*% parm$beta
-        yimp <- apply(as.array(yhatmis), 1, .pmm.match, yhat=yhatobs, y=y[ry], ... )
+        yimp <- apply(as.array(yhatmis), 1, mice::.pmm.match, yhat=yhatobs, y=y[ry], ... )
     }
     return(yimp)
 }

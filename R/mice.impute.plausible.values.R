@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.665
+## File Version: 2.666
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
@@ -29,7 +29,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         ry <- res$ry
         type <- res$type
     }
-    
+
     #--- define PV methods
     pvmethod <- 0
     if ( ! is.null( scale.values[[ vname ]] )){
@@ -51,7 +51,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                         vname=vname, miceargdefault=NULL )
     quadratics <- mice_imputation_extract_list_arguments( micearg=quadratics,
                         vname=vname, miceargdefault=NULL )
-                        
+
     ##############################################################
     # Plausible value imputation according to the Rasch model
     # adapt this to include only the likelihood
