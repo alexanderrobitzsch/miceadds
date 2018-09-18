@@ -1,145 +1,105 @@
 ## File Name: mice.impute.2l.pls2.R
-## File Version: 3.21
+## File Version: 3.26
 
 mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
-                                pls.impMethod="pmm",
-                                pls.print.progress=TRUE,
-                                imputationWeights=rep( 1,length(y) ),
-                                pcamaxcols=1E9,
-                                tricube.pmm.scale=NULL, min.int.cor=0,
-                                min.all.cor=0, N.largest=0,
-                                pls.title=NULL, print.dims=TRUE,
-                                pls.maxcols=5000,    envir_pos=parent.frame(), ... )
-       {
-        #...........................................................................#
-        # INPUT                                                                     #
-        # pls.facs          ... number of factors for PLS regression                #
-        # pls.interactions  ... include.interactions                                #
-        #                 -> type==4                                        #
-        # pls.quadratics    ... include quadratic terms?                            #
-        #                 -> type==5                                        #
-        # type                 ...=6 : for these variables no interactions will be created    #
-        # pls.impMethod     ... method "norm" or "pmm" or "tricube.pmm"             #
-        #                           "xplsfacs" -> return predicted X PLS factors    #
-        # pls.print.progress    ... print progress of PLS regression estimation     #
-        # imputationWeight  ... vector of weights for imputation                    #
-        # min.int.cor       ... minimal correlation for inclusion of interaction    #
-        #                           effects                                         #
-        # min.all.cor             ... minimal correlation for main effects            #
-        # N.largest            ... select N.largest correlations                        #
-        # pls.title         ... title which is displayed                             #
-        #...........................................................................#
-        # library(pls)
-# a0 <- Sys.time()
-#cat("\n---------------- start variable------\n")
-        time1 <- Sys.time()
-        n <- NULL
-        imputationWeights  <- nrow(x) * imputationWeights / sum(imputationWeights)
-        # vname <- get("vname", pos=envir_pos ) # get variable name
-        vname <- ma_exists_get(x='vyame', pos=envir_pos)
+            pls.impMethod="pmm", pls.print.progress=TRUE,
+            imputationWeights=rep( 1,length(y) ), pcamaxcols=1E9,
+            tricube.pmm.scale=NULL, min.int.cor=0, min.all.cor=0, N.largest=0,
+            pls.title=NULL, print.dims=TRUE, pls.maxcols=5000,    envir_pos=parent.frame(), ... )
+{
+    #...........................................................................#
+    # INPUT                                                                     #
+    # pls.facs          ... number of factors for PLS regression                #
+    # pls.interactions  ... include.interactions                                #
+    #                 -> type==4                                        #
+    # pls.quadratics    ... include quadratic terms?                            #
+    #                 -> type==5                                        #
+    # type                 ...=6 : for these variables no interactions will be created    #
+    # pls.impMethod     ... method "norm" or "pmm" or "tricube.pmm"             #
+    #                           "xplsfacs" -> return predicted X PLS factors    #
+    # pls.print.progress    ... print progress of PLS regression estimation     #
+    # imputationWeight  ... vector of weights for imputation                    #
+    # min.int.cor       ... minimal correlation for inclusion of interaction    #
+    #                           effects                                         #
+    # min.all.cor             ... minimal correlation for main effects            #
+    # N.largest            ... select N.largest correlations                        #
+    # pls.title         ... title which is displayed                             #
+    #...........................................................................#
 
-        # imp.temp <- get( "newstate", pos=envir_pos )
-        imp.temp <- ma_exists_get(x='newstate', pos=envir_pos)
+    time1 <- Sys.time()
+    n <- NULL
+    imputationWeights  <- nrow(x) * imputationWeights / sum(imputationWeights)
+    vname <- ma_exists_get(x='vyame', pos=envir_pos)
+    imp.temp <- ma_exists_get(x='newstate', pos=envir_pos)
+    # extract PLS factors
+    pls.facs <- mice_imputation_extract_list_arguments( micearg=pls.facs,
+                    vname=vname, miceargdefault=20 )
+    # extract PLS imputation method
+    pls.impMethod <- mice_imputation_extract_list_arguments( micearg=pls.impMethod,
+                    vname=vname, miceargdefault="pmm" )
+    # extract scaling factor for scaling factor in tricube weighted estimation
+    tricube.pmm.scale <- mice_imputation_extract_list_arguments( micearg=tricube.pmm.scale,
+                    vname=vname, miceargdefault=.2 )
+    # define minimal correlation for interactions
+    min.int.cor <- mice_imputation_extract_list_arguments( micearg=min.int.cor,
+                        vname=vname, miceargdefault=0 )
 
-        # extract PLS factors
-        pls.facs <- mice_imputation_extract_list_arguments( micearg=pls.facs,
-                           vname=vname, miceargdefault=20 )
-        # extract PLS imputation method
-        pls.impMethod <- mice_imputation_extract_list_arguments( micearg=pls.impMethod,
-                            vname=vname, miceargdefault="pmm" )
-        # extract scaling factor for scaling factor in tricube weighted estimation
-        tricube.pmm.scale <- mice_imputation_extract_list_arguments( micearg=tricube.pmm.scale, vname,
-                                miceargdefault=.2 )
-        # define minimal correlation for interactions
-        min.int.cor <- mice_imputation_extract_list_arguments( micearg=min.int.cor, vname,
-                                miceargdefault=0 )
+    if( pls.print.progress  ){
+        cat("\n-------------------PLS----------------------\n",vname )
+        cat(" 'mice.impute.2l.pls2'")
+        if (print.dims){
+            cat("\n.......... Dimensions .............")
+            cat("\n dim y   ", length(y) )
+            cat("\n dim ry  ", length(ry), " | sum(!ry)",  sum(!ry) )
+            cat("\n dim x   ", dim(x) )
+            cat("\n dim type", length(type) )
+            t1 <- table(type)
+            cat("\n table(type)\n"  )
+            print(t1)
+            cat("\n\n")
+        }
+    }
 
-# cat("get all arguments") ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
+    # include predictor variables with type !=0
+    nt <- names(type)[ type !=0 ]
+    nt <- intersect( nt, colnames(x) )
+    x10 <- x <- x[, nt]
+    use.ymat <- ( ! is.null( dim(y) ) )
+    x <- as.matrix(x)
 
-        if( pls.print.progress  ){
-                cat("\n-------------------PLS----------------------\n",vname )
-                cat(" 'mice.impute.2l.pls2'")
-            if (print.dims){
-                cat("\n.......... Dimensions .............")
-                cat("\n dim y   ", length(y) )
-                cat("\n dim ry  ", length(ry), " | sum(!ry)",  sum(!ry) )
-                cat("\n dim x   ", dim(x) )
-                cat("\n dim type", length(type) )
-                t1 <- table(type)
-                cat("\n table(type)\n"  )
-                print(t1)
-                cat("\n\n")
-                            }
-                        }
-        # include predictor variables with type !=0
-        nt <- names(type)[ type !=0 ]
-        nt <- intersect( nt, colnames(x) )
-        x10 <- x <- x[, nt]
-        use.ymat <- ( ! is.null( dim(y) ) )
+    # standardize x
+    if ( stats::sd(imputationWeights) > 0){ # with weights
+        iW <- outer( imputationWeights, rep(1,ncol(x) ) )
+        Mx <- colSums( iW * x )  / colSums( iW )
+        SDx <- sqrt( colSums( iW * x^2 ) / colSums(iW) - Mx^2  )
+        x0 <- x <- ( x - outer( rep(1,n), t(Mx) ) ) / outer( rep(1,n), t(SDx) )
+    } else {  # without weights
+        x0 <- x <- ma.scale2( x=x )
+    }
 
-        # eliminate too small correlations
-#            y1 <- matrix( y, nrow=nrow(x) )
-#            c1 <- cor( y1[ry,1], x[ry,] )
-#            vars.elim <- which( abs(c1) < min.cor )
-#            if ( length(vars.elim) > 0 ){ x <- x[, - vars.elim ] }
-        x <- as.matrix(x)
+    #***** include cluster effect: group mean (eliminating the subject under study)
+    if ( sum(type==-2) ){
+        x1 <- cbind( y, x[, which( type==-2) ] )
+        type1 <- c( 1,-2)
+        ximp <- mice.impute.2l.groupmean.elim( y=y, ry=ry, x=x1, type=type1 )
+        x <- as.matrix( cbind( x, ximp ) )
+        colnames(x)[ ncol(x) ] <- "y_aggr"
+        x10 <- x0 <- x
+    }
+    type <- c( type, 1 )
+    N <- ncol(x)
 
-        # standardize x
-        if (sd(imputationWeights) > 0){ # with weights
-                iW <- outer( imputationWeights, rep(1,ncol(x) ) )
-                Mx <- colSums( iW * x )  / colSums( iW )
-                SDx <- sqrt( colSums( iW * x^2 ) / colSums(iW) - Mx^2  )
-                x0 <- x <- ( x - outer( rep(1,n), t(Mx) ) ) / outer( rep(1,n), t(SDx) )
-                        } else {  # without weights
-#                xx <- x
-#                x0 <- x <- scale( x  )
-                x0 <- x <- ma.scale2( x  )
-                    # standatdization using ma.scale2 which prevents from
-                    # producing NaN for variables with a SD of zero
-#                x <- as.matrix(x)
-#                Mx <- colMeans(xx)
-#                Nx <- nrow(x)
-#                SDx <- sqrt( ( ( colSums( xx^2 ) - Nx * Mx^2 ) / ( Nx-1) ) + 10^(-10) )
-#                lenx <- ncol(x)
-#                ind <- which( SDx < 10^(-9) )
-#                if ( length(ind)>0){
-#                    lenx <- length(ind)
-#                    x[,ind] <- x0[,ind] <- ( xx[,ind,drop=FALSE] -
-#                                matrix( Mx, nrow=Nx, ncol=lenx, byrow=TRUE ) ) /
-#                                        matrix( SDx, nrow=Nx, ncol=lenx, byrow=TRUE )
-#                                        }
-                            }
-        #***********************
-        # include cluster effect: group mean (eliminating the subject under study)
-        if ( sum(type==-2) ){
-            x1 <- cbind( y, x[, which( type==-2) ] )
-            type1 <- c( 1,-2)
-            ximp <- mice.impute.2l.groupmean.elim( y=y, ry=ry, x=x1, type=type1 )
-            x <- as.matrix( cbind( x, ximp ) )
-            colnames(x)[ ncol(x) ] <- "y_aggr"
-            x10 <- x0 <- x
-            }
-        type <- c( type, 1 )
-        #***************
-
-        N <- ncol(x)
-        if( pls.print.progress  ){
-#                cat("\n-------------------PLS----------------------\n",vname )
-                cat(" Imputation: ", imp.temp$im, ", Iteration:", imp.temp$it   )
-                if ( ! is.null(pls.title)){ cat("\n ",pls.title) }
-                cat( "\n\nImputation using Partial Least Squares Regression\n")
-                cat( substring(Sys.time(),1),"\n" ) ; flush.console()
-                cat( "\n", paste( ncol(x10), "Predictor Variables", names(y) ), "\n")
-                cat("Used Variables ", paste(colnames(x10),collapse=" "), "\n", sep="" )
-#                cat("\n", "Minimal Absolute Correlation of min.cor=", min.cor, "\n")
-#                cat( "  Kept", paste( ncol(x), "Predictor Variables", names(y) ), "\n")
- #               cat("Used Variables ", paste(colnames(x),collapse=" "), "\n", sep="")
-                                   }
-        # extract interactions and quadratic terms
-        pls.interactions <- names(type)[ type==4 ]
-        pls.quadratics <- names(type)[ type==5 ]
-
-# cat("end quadratics") ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
+    if( pls.print.progress  ){
+        cat(" Imputation: ", imp.temp$im, ", Iteration:", imp.temp$it   )
+        if ( ! is.null(pls.title)){ cat("\n ",pls.title) }
+        cat( "\n\nImputation using Partial Least Squares Regression\n")
+        cat( substring(Sys.time(),1),"\n" ) ; flush.console()
+        cat( "\n", paste( ncol(x10), "Predictor Variables", names(y) ), "\n")
+        cat("Used Variables ", paste(colnames(x10),collapse=" "), "\n", sep="" )
+    }
+    # extract interactions and quadratic terms
+    pls.interactions <- names(type)[ type==4 ]
+    pls.quadratics <- names(type)[ type==5 ]
 
         ##############################################
         # create no interactions
@@ -433,11 +393,10 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
                         yobs <- y[ry]
                         weights.obs <- imputationWeights[ ry   ]
                         weights.obs <- length(weights.obs) * weights.obs / sum( weights.obs )
-                        parm <- .weighted.norm.draw( yobs=yobs, xobs=xobs, ry=ry, y=y, x=x,
+                        parm <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs, ry=ry, y=y, x=x,
                                             weights.obs=weights.obs, ... )
                                          }  else {
-#                               parm <- .norm.draw( y, ry,x )
-                                parm <- .norm.draw3( y, ry,x )
+                                parm <- miceadds_norm_draw( y=y, ry=ry, x=x )
                                             }
                                     }
 # cat("norm draw") ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1

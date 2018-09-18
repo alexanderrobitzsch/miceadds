@@ -1,12 +1,13 @@
 ## File Name: mice.impute.pmm4.R
-## File Version: 2.12
+## File Version: 2.15
 
 mice.impute.pmm4 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...)
 {
     x <- cbind(1, as.matrix(x))
-    parm <- .norm.draw3(y, ry, x, ridge=ridge,  ...)
-    yhatobs <- x[ry, ] %*% parm$coef
-    yhatmis <- x[!ry, ] %*% parm$beta
+    res <- miceadds_norm_draw(y=y, ry=ry, x=x, ridge=ridge, ...)
+    yhatobs <- res$yhatobs
+    yhatmis <- res$yhatmis
+    yobs <- res$yobs
     GG <- 1000* max( abs( yhatobs[,1] ), abs( yhatmis[,1] ))
     dfr <- cbind( 1, 1:nrow(yhatobs), yhatobs[,1], y[ry] )
     dfr0 <- cbind( 0, 1:nrow(yhatmis), yhatmis[,1], NA)

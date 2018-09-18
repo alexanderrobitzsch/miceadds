@@ -1,11 +1,11 @@
 ## File Name: mice.impute.norm3.R
-## File Version: 0.13
+## File Version: 0.15
 
 mice.impute.norm3 <- function (y, ry, x, ridge=10^(-5), ...)
 {
     x <- cbind(1, as.matrix(x))
     wy <- ! ry
-    parm <- .norm.draw3(y, ry, x, ridge=ridge,  ...)
+    parm <- miceadds_norm_draw(y=y, ry=ry, x=x, ridge=ridge,  ...)
     n <- sum(wy)
     imp <- x[wy, ] %*% parm$beta + stats::rnorm(n) * parm$sigma
     return(imp)

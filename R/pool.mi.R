@@ -1,11 +1,12 @@
 ## File Name: pool.mi.R
-## File Version: 0.31
+## File Version: 0.32
+
 ##############################################################
 # Inference for multiply imputed datasets
 # The following code is copied from the mice package
 # and slightly modified.
-pool_mi <- function( qhat, u=NULL, se=NULL,
-                dfcom=1E7, method="smallsample" ){
+pool_mi <- function( qhat, u=NULL, se=NULL, dfcom=1E7, method="smallsample" )
+{
     #****
     # qhat    ... List of parameter vectors
     # u        ... List of covariance matrices
@@ -68,7 +69,8 @@ pool_mi <- function( qhat, u=NULL, se=NULL,
 }
 ###########################################################
 # Calculation of degrees of freedom
-mice_df <- function (m, lambda, dfcom, method){
+mice_df <- function (m, lambda, dfcom, method)
+{
     eps <- 1E-4
     lambda[lambda < eps ] <- eps
     dfold <- (m - 1 + eps )/lambda^2
@@ -81,9 +83,9 @@ mice_df <- function (m, lambda, dfcom, method){
 }
 ###########################################################
 # This function is a modification of mitools::summary.MIresult
-summary.pool_mi <-function(object,alpha=0.05, ...){
+summary.pool_mi <-function(object, alpha=0.05, ...)
+{
   cat("Multiple imputation results:\nCall: ")
-#   lapply(object$call, function(a) {cat("      ");print(a)})
   print(object$call)
   out <- data.frame( results=object$qbar,
                    se=sqrt(diag( object$t))
@@ -97,9 +99,11 @@ summary.pool_mi <-function(object,alpha=0.05, ...){
   print(out,...)
 }
 ############################################################
-coef.pool_mi <- function(object, ...){
+coef.pool_mi <- function(object, ...)
+{
     return(object$qbar)
 }
-vcov.pool_mi <- function(object, ...){
+vcov.pool_mi <- function(object, ...)
+{
     return(object$t)
 }

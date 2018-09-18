@@ -1,7 +1,6 @@
 ## File Name: mice_imputation_weighted_norm_draw.R
-## File Version: 0.11
+## File Version: 0.12
 
-#***** .weighted.norm.draw *******************
 mice_imputation_weighted_norm_draw <- function( yobs, xobs, ry, y, x,
     weights.obs, ridge=.00001, ... )
 {
