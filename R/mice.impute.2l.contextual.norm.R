@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.contextual.norm.R
-## File Version: 0.22
+## File Version: 0.23
 
 
 mice.impute.2l.contextual.norm <- function (y, ry, x, type, ridge=10^(-5),
@@ -10,7 +10,7 @@ mice.impute.2l.contextual.norm <- function (y, ry, x, type, ridge=10^(-5),
     vname <- res$vname
     newstate <- res$newstate
     # data preparation
-    xcov <- miceadds_create_contextual_variables( y=y, ry=ry, x=x, type=type, ...)
+    xcov <- mice_imputation_create_contextual_variables( y=y, ry=ry, x=x, type=type, ...)
     #------
     # norm imputation at level 2
     ximp <- mice.impute.weighted.norm( y=y, ry=ry, x=xcov, ridge=ridge,

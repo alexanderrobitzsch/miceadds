@@ -1,8 +1,8 @@
-## File Name: miceadds_norm_draw.R
-## File Version: 0.23
+## File Name: mice_imputation_norm_draw.R
+## File Version: 0.24
 
 
-miceadds_norm_draw <- function (y, ry, x, ridge=1e-05, ...)
+mice_imputation_norm_draw <- function (y, ry, x, ridge=1e-05, ...)
 {
     xobs <- x[ry, ]
     yobs <- y[ry]
@@ -24,8 +24,7 @@ miceadds_norm_draw <- function (y, ry, x, ridge=1e-05, ...)
                     yhatmis=yhatmis, yobs=yobs)
     return(parm)
 }
-#************************************************************
 
-
-.norm.draw2 <- miceadds_norm_draw
-.norm.draw3 <- miceadds_norm_draw
+miceadds_norm_draw <- mice_imputation_norm_draw
+.norm.draw2 <- mice_imputation_norm_draw
+.norm.draw3 <- mice_imputation_norm_draw

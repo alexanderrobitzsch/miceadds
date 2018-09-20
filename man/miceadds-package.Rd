@@ -1,5 +1,5 @@
 %% File Name: miceadds-package.Rd
-%% File Version: 1.65
+%% File Version: 1.66
 
 \name{miceadds-package}
 \alias{miceadds-package}
@@ -86,9 +86,9 @@ See other \R packages for conducting multiple imputation:
 
 Some links to internet sites related to missing data:
 
-\url{http://missingdata.lshtm.ac.uk/} \cr
-\url{http://www.stefvanbuuren.nl/mi/} \cr
-\url{http://www.bristol.ac.uk/cmm/software/realcom/} \cr
+\emph{http://missingdata.lshtm.ac.uk/} \cr
+\emph{http://www.stefvanbuuren.nl/mi/} \cr
+\emph{http://www.bristol.ac.uk/cmm/software/realcom/} \cr
 }
 
 \examples{

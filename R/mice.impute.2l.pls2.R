@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.pls2.R
-## File Version: 3.26
+## File Version: 3.27
 
 mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
             pls.impMethod="pmm", pls.print.progress=TRUE,
@@ -396,7 +396,7 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
                         parm <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs, ry=ry, y=y, x=x,
                                             weights.obs=weights.obs, ... )
                                          }  else {
-                                parm <- miceadds_norm_draw( y=y, ry=ry, x=x )
+                                parm <- mice_imputation_norm_draw( y=y, ry=ry, x=x )
                                             }
                                     }
 # cat("norm draw") ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1

@@ -1,5 +1,5 @@
 ## File Name: mice.impute.tricube.pmm2.R
-## File Version: 0.23
+## File Version: 0.24
 
 mice.impute.tricube.pmm2 <- function (y, ry, x, tricube.pmm.scale=.2, tricube.boot=FALSE, ...)
 {
@@ -25,7 +25,7 @@ mice.impute.tricube.pmm2 <- function (y, ry, x, tricube.pmm.scale=.2, tricube.bo
         y1 <- y[ry] ; x1 <- x[ry,]
         B <- length(y1)
         ind <- sample( 1:B, replace=TRUE )
-        parm2 <- miceadds_norm_draw(y=y1[ind], ry=rep(TRUE,B), x=x1[ind,], ...)
+        parm2 <- mice_imputation_norm_draw(y=y1[ind], ry=rep(TRUE,B), x=x1[ind,], ...)
         yhatmis <- x[!ry, ] %*% parm2$beta
     }
 

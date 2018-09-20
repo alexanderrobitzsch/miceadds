@@ -1,10 +1,10 @@
 ## File Name: mice.impute.pmm4.R
-## File Version: 2.15
+## File Version: 2.16
 
 mice.impute.pmm4 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...)
 {
     x <- cbind(1, as.matrix(x))
-    res <- miceadds_norm_draw(y=y, ry=ry, x=x, ridge=ridge, ...)
+    res <- mice_imputation_norm_draw(y=y, ry=ry, x=x, ridge=ridge, ...)
     yhatobs <- res$yhatobs
     yhatmis <- res$yhatmis
     yobs <- res$yobs

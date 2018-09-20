@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.contextual.pmm.R
-## File Version: 0.19
+## File Version: 0.21
 
 mice.impute.2l.contextual.pmm <- function (y, ry, x, type,
             imputationWeights=NULL, interactions=NULL,
@@ -10,7 +10,7 @@ mice.impute.2l.contextual.pmm <- function (y, ry, x, type,
     newstate <- res$newstate
 
     # data preparation
-    xcov <- miceadds_create_contextual_variables( y=y, ry=ry, x=x, type=type, ...)
+    xcov <- mice_imputation_create_contextual_variables( y=y, ry=ry, x=x, type=type, ...)
     #------
     # pmm imputation at level 2
     ximp <- mice.impute.weighted.pmm( y=y, ry=ry, x=xcov,
