@@ -1,5 +1,5 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.54
+## File Version: 0.568
 
 #########################################################################
 # main function for multilevel imputation with lme4 with several levels
@@ -9,7 +9,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 glmer.warnings=TRUE, model="continuous", donors=3, match_sampled_pars=FALSE,
                 blme_use=FALSE, blme_args=NULL, pls.facs=0, interactions=NULL,
                 quadratics=NULL, min.int.cor=0, min.all.cor=0,
-                pls.print.progress=FALSE,  ... )
+                pls.print.progress=FALSE, group_index=NULL, ... )
 {
 
     if (blme_use){
@@ -23,7 +23,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     res <- mice_ml_lmer_extract_input( pos=pos, levels_id=levels_id, random_slopes=random_slopes,
                 variables_levels=variables_levels, pls.facs=pls.facs, min.int.cor=min.int.cor,
                 min.all.cor=min.all.cor, interactions=interactions, quadratics=quadratics,
-                model=model)
+                model=model, group_index=group_index)
     vname <- res$vname
     p <- res$p
     type <- res$type
@@ -83,8 +83,6 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     fixed_effects <- res$fixed_effects
     used_slopes <- res$used_slopes
 
-
-
     #--- prepare arguments for lmer estimation
     lmer_args <- mice_ml_lmer_collect_lme4_input( y=y, x=x, ry=ry, data=data,
                         levels_id=levels_id, NL=NL, fml=fml, lmer_family=lmer_family,
@@ -106,6 +104,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     fit_vc <- lme4::VarCorr(fit)
     # extract random effects
     re0 <- lme4::ranef(fit, condVar=TRUE)
+
     predicted <- 0
     for (ll in 1:NL){
         predicted_u <- mice_ml_lmer_draw_random_effects( clus=clus[[ll]], clus_unique=clus_unique[[ll]], y=y,

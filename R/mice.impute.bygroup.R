@@ -1,5 +1,5 @@
 ## File Name: mice.impute.bygroup.R
-## File Version: 0.50
+## File Version: 0.559
 
 mice.impute.bygroup <- function( y, ry, x, group,
         imputationFunction, ... )
@@ -18,6 +18,7 @@ mice.impute.bygroup <- function( y, ry, x, group,
     group_vname <- mice_imputation_extract_list_arguments(
                 micearg=group, vname=vname, miceargdefault="" )
     l2_imp_fct <- substring(imputationFunction_vname,1,2)=="2l"
+    ml_lmer_imp_fct <- imputationFunction_vname=="ml.lmer"
 
     #*** full data frame with indices and all groups
     dfr_index <- data.frame( "y"=y, "ry"=ry, "group_"=x[, group_vname] )
@@ -48,7 +49,7 @@ mice.impute.bygroup <- function( y, ry, x, group,
                     imputationFunction_vname=imputationFunction_vname)
         args <- res$args
         Nmis <- res$Nmis
-
+        args$group_index <- ind_gg
         imp_function <- paste0("mice.impute.", imputationFunction_vname )
         if (Nmis > 0){
             ximp <- do.call( what=imp_function, args=args )
@@ -57,6 +58,7 @@ mice.impute.bygroup <- function( y, ry, x, group,
             dfr_index[ ind0_gg, "y"] <- as.vector(ximp)
         }
     }
+
     return( dfr_index[ ! ry, "y"] )
 }
 

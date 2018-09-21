@@ -43,10 +43,13 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.15  |  2018-09-20  |  Last: miceadds 2.15-3
+VERSIONS miceadds 2.15  |  2018-09-21  |  Last: miceadds 2.15-6
 ---------------------------------------------------------------------
 
-xxxx  *
+NOTE  * internal changes in mice.imputation.ml.lmer() caused
+        by application within mice.impute.bygroup() imputation method
+        (thanks to Sophie Stallasch)
+
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---

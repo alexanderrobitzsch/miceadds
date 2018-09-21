@@ -1,8 +1,9 @@
 ## File Name: mice_ml_lmer_extract_input.R
-## File Version: 0.18
+## File Version: 0.25
 
 mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_levels,
-        pls.facs, min.int.cor, min.all.cor, interactions, quadratics, model )
+        pls.facs, min.int.cor, min.all.cor, interactions, quadratics, model,
+        group_index=NULL)
 {
     res <- mice_imputation_get_states( pos=pos )
     vname <- res$vname
@@ -10,6 +11,9 @@ mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_
     predictorMatrix <- ma_exists_get(x='predictorMatrix', pos=pos)
     type <- predictorMatrix[ vname, ]
     data <- ma_exists_get(x='data', pos=pos)
+    if ( ! is.null(group_index) ){
+        data <- data[ group_index,, drop=FALSE ]
+    }
     #--- level identifiers
     if ( is.list( levels_id ) ){
         levels_id <- levels_id[[ vname ]]

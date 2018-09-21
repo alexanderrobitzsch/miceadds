@@ -1,12 +1,13 @@
 ## File Name: mice_ml_lmer_include_cluster_means.R
-## File Version: 0.16
+## File Version: 0.174
 
 
 mice_ml_lmer_include_cluster_means <- function(y, ry, type, x, levels_id, aggregate_automatically,
         clus, groupcenter.slope, variables_levels )
 {
     types_sel <- names(type)[ type==1 ]
-    x_sel <- x[, types_sel ]
+    types_sel <- intersect(types_sel, colnames(x))
+    x_sel <- x[, types_sel, drop=FALSE ]
     NL <- length(levels_id)
     if (aggregate_automatically){
         for (ll in 1:NL){

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.34
+%% File Version: 0.37
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -47,7 +47,8 @@ mice.impute.ml.lmer(y, ry, x, type, levels_id, variables_levels=NULL,
     groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1e-06,
     glmer.warnings=TRUE, model="continuous", donors=3, match_sampled_pars=FALSE,
     blme_use=FALSE, blme_args=NULL, pls.facs=0, interactions=NULL,
-    quadratics=NULL, min.int.cor=0, min.all.cor=0, pls.print.progress=FALSE, ...)
+    quadratics=NULL, min.int.cor=0, min.all.cor=0, pls.print.progress=FALSE,
+    group_index=NULL, ...)
 }
 
 
@@ -123,6 +124,8 @@ Minimum absolute value of correlation with outcome for predictors to be retained
   \item{pls.print.progress}{
 Logical indicating whether progress of algorithm should be displayed
 }
+\item{group_index}{Optional vector for group identifiers (internally used
+in \code{mice.impute.bygroup}}
   \item{\dots}{
 Further arguments to be passed
 }
