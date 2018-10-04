@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 2.15-6
-Date: 2018-09-21 17:29:39
+Version: 2.15-9
+Date: 2018-10-04 10:32:22
 Author: 
     Alexander Robitzsch [aut, cre], Simon Grund [aut],
     Thorsten Henke [aut]
@@ -23,7 +23,7 @@ Depends:
     R (>= 3.0), mice (>= 3.0.0)
 Imports: 
     CDM (>= 5.8-5), coda, graphics, lme4, MASS, methods, 
-    mitools, mvtnorm, Rcpp, sirt, stats, TAM (>= 2.9-13), 
+    mitools, mvtnorm, Rcpp, sirt, stats, TAM (>= 3.0-6), 
     utils     
 LinkingTo: 
     Rcpp, RcppArmadillo

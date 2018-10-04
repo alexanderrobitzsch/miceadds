@@ -43,16 +43,17 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.15  |  2018-09-21  |  Last: miceadds 2.15-6
+VERSIONS miceadds 2.15  |  2018-10-04  |  Last: miceadds 2.15-9
 ---------------------------------------------------------------------
 
 NOTE  * internal changes in mice.imputation.ml.lmer() caused
         by application within mice.impute.bygroup() imputation method
-        (thanks to Sophie Stallasch)
+        (thanks to Sophie Stallasch; issue #12)
+NOTE  * renamed ma.wtd.curtosisNA() into ma.wtd.kurtosisNA()
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: ma.wtd.statNA (1)
 
 
 

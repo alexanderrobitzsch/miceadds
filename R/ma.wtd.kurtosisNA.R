@@ -1,10 +1,10 @@
-## File Name: ma.wtd.curtosisNA.R
-## File Version: 0.08
+## File Name: ma.wtd.kurtosisNA.R
+## File Version: 0.13
 
 
 ###############################################################################
-# weighted skewness
-ma.wtd.curtosisNA <- function( data, weights=NULL, vars=NULL,
+# weighted kurtosis
+ma.wtd.kurtosisNA <- function( data, weights=NULL, vars=NULL,
         method="unbiased" )
 {
     #*** pre-processing
@@ -12,7 +12,7 @@ ma.wtd.curtosisNA <- function( data, weights=NULL, vars=NULL,
     data <- res$data
     weights <- res$weights
     M <- length(data)
-    #*** weighted curtosis
+    #*** weighted kurtosis
     res <- matrix( NA, nrow=M, ncol=ncol(data[[1]]) )
     for (ii in 1:M){
         data1 <- data[[ii]]
@@ -22,12 +22,12 @@ ma.wtd.curtosisNA <- function( data, weights=NULL, vars=NULL,
         # calculate means
         sumweight <- colSums( dataResp * weights )
         M_vars <- colSums( data1 *  weights ) / sumweight
-        M_varsM <- matrix( M_vars, nrow=nrow(data1), ncol=length(M_vars ), byrow=TRUE )
+        M_varsM <- matrix( M_vars, nrow=nrow(data1), ncol=length(M_vars), byrow=TRUE )
         data1adj <- ( data1 - M_varsM ) * dataResp # take care of missings
         w1 <- colSums( dataResp * weights )
         sdx <- sqrt( colSums( data1adj^2 * weights ) /  w1 )
         # adjustment of covariance
-        if (method=="unbiased" ){
+        if (method=="unbiased"){
             wgtadj <- w1 - colSums( dataResp * weights^2 ) / w1
             wgtadj <- w1 / wgtadj
             sdx <- sqrt(wgtadj) * sdx

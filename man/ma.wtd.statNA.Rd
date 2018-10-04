@@ -1,5 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
-%% File Version: 1.51
+%% File Version: 1.54
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}
@@ -9,7 +9,7 @@
 \alias{ma.wtd.meanNA}
 \alias{ma.wtd.sdNA}
 \alias{ma.wtd.skewnessNA}
-\alias{ma.wtd.curtosisNA}
+\alias{ma.wtd.kurtosisNA}
 \alias{ma.wtd.quantileNA}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
@@ -34,7 +34,7 @@ ma.wtd.corNA(data, weights=NULL, vars=NULL, method="unbiased" )
 
 ma.wtd.skewnessNA(data, weights=NULL, vars=NULL, method="unbiased" )
 
-ma.wtd.curtosisNA(data, weights=NULL, vars=NULL, method="unbiased" )
+ma.wtd.kurtosisNA(data, weights=NULL, vars=NULL, method="unbiased" )
 
 ma.wtd.quantileNA( data, weights=NULL, vars=NULL, type=7,
           probs=seq(0,1,.25) )
@@ -73,7 +73,7 @@ calculation of descriptive statistics.
 \code{ma.wtd.covNA} \tab weighted covariance matrix \cr
 \code{ma.wtd.corNA} \tab weighted correlation matrix \cr
 \code{ma.wtd.skewnessNA} \tab weighted skewness \cr
-\code{ma.wtd.curtosisNA} \tab weighted (excess) curtosis \cr
+\code{ma.wtd.kurtosisNA} \tab weighted (excess) kurtosis \cr
 }
 
 }
@@ -125,16 +125,16 @@ ma.wtd.covNA( dat, weights=data.ma01$studwgt, vars=c("books","hisei") )
 # weighted correlation
 ma.wtd.corNA( dat, weights=data.ma01$studwgt )
 
-# weighted curtosis
+# weighted skewness
 ma.wtd.skewnessNA( dat[,"books"], weights=data.ma01$studwgt )
 # compare with result in TAM
 TAM::weighted_skewness( x=dat[,"books"], w=data.ma01$studwgt )
 
-# weighted curtosis
-ma.wtd.curtosisNA( dat, weights=data.ma01$studwgt, vars=c("books","hisei") )
-# result in TAM
-TAM::weighted_curtosis( dat[,"books"], w=data.ma01$studwgt )
-TAM::weighted_curtosis( dat[,"hisei"], w=data.ma01$studwgt )
+# weighted kurtosis
+ma.wtd.kurtosisNA( dat, weights=data.ma01$studwgt, vars=c("books","hisei") )
+# compare with TAM
+TAM::weighted_kurtosis( dat[,"books"], w=data.ma01$studwgt )
+TAM::weighted_kurtosis( dat[,"hisei"], w=data.ma01$studwgt )
 
 \dontrun{
 #############################################################################
@@ -235,7 +235,6 @@ bdat <- BIFIE.data( data.list=data.timss4, wgt=data.timss4[[1]][[1]]$TOTWGT,
 summary(bdat)
 # skewness
 ma.wtd.skewnessNA( bdat, vars=c("ASMMAT", "books" ) )
-
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
