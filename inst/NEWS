@@ -43,17 +43,23 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.15  |  2018-10-04  |  Last: miceadds 2.15-9
+VERSIONS miceadds 2.15  |  2018-10-16  |  Last: miceadds 2.15-13
 ---------------------------------------------------------------------
 
 NOTE  * internal changes in mice.imputation.ml.lmer() caused
         by application within mice.impute.bygroup() imputation method
         (thanks to Sophie Stallasch; issue #12)
 NOTE  * renamed ma.wtd.curtosisNA() into ma.wtd.kurtosisNA()
+ADDED * included simulation function fleishman_sim() for generating
+        non-normal data based on Fleishman polynomial
+ADDED * included simulation functions  nnig_sim() and nnig_coef()
+        for simulating multivariate linearly related non-normally
+        distributed variables (Foldnes & Olsson, 2016)
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ma.wtd.statNA (1)
+EXAMP * included/modified examples: ma.wtd.statNA (1), fleishman_sim (1),
+        nnig_sim (1)
 
 
 

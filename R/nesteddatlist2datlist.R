@@ -1,8 +1,9 @@
 ## File Name: nesteddatlist2datlist.R
-## File Version: 0.02
+## File Version: 0.03
 
 
-nesteddatlist2datlist <- function(datlist){
+nesteddatlist2datlist <- function(datlist)
+{
     M <- length(datlist)
     B <- length(datlist[[1]])
     datlist0 <- as.list(1:(B*M))
@@ -11,8 +12,8 @@ nesteddatlist2datlist <- function(datlist){
         for (bb in 1:B){
             datlist0[[vv]] <- datlist[[mm]][[bb]]
             vv <- vv + 1
-                        }
-                    }
+        }
+    }
     class(datlist0) <- "datlist"
     return(datlist0)
-            }
+}

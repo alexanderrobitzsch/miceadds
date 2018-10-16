@@ -1,5 +1,5 @@
 ## File Name: summary.mipo.nmi.R
-## File Version: 0.15
+## File Version: 0.17
 
 #################################################################
 summary.mipo.nmi <- function(object, digits=4, ...)
@@ -15,11 +15,9 @@ summary.mipo.nmi <- function(object, digits=4, ...)
     df_x <- x$df
     table[, 4] <- df_x
     table[, 5] <- if (all(x$df > 0))
-        2 * (1 - stats::pt(abs(table[, 3]), x$df)) else NA
+            2 * (1 - stats::pt(abs(table[, 3]), x$df)) else NA
     table[, 6] <- table[, 1] - stats::qt(0.975, x$df) * table[, 2]
     table[, 7] <- table[, 1] + stats::qt(0.975, x$df) * table[, 2]
-#    if (is.null(x$nmis) | is.null(names(x$qbar)))
-#        table[, 8] <- NA else table[, 8] <- x$nmis[names(x$qbar)]
     table[, "fmi"] <- x$lambda
     table[, "fmi_Betw"] <- x$lambda_Between
     table[, "fmi_Within"] <- x$lambda_Within

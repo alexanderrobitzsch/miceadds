@@ -1,5 +1,5 @@
 %% File Name: Reval.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{Reval}
 \alias{Reval}
@@ -43,8 +43,8 @@ Should the string printed on the console?
 command should be evaluated.
 }
 \item{digits}{Number of digits after decimal.}
-\item{Rstring_x}{String corrsponding to an \R object}
-\item{Rstring_y}{String corrsponding to an \R object}
+\item{Rstring_x}{String corresponding to an \R object}
+\item{Rstring_y}{String corresponding to an \R object}
 \item{na.rm}{Logical indicating whether missing values should be removed
 from calculation}
 }

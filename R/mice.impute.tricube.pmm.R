@@ -1,5 +1,5 @@
 ## File Name: mice.impute.tricube.pmm.R
-## File Version: 0.16
+## File Version: 0.18
 
 mice.impute.tricube.pmm <- function (y, ry, x, tricube.pmm.scale=.2,
             tricube.boot=FALSE, ...)
@@ -32,15 +32,15 @@ mice.impute.tricube.pmm <- function (y, ry, x, tricube.pmm.scale=.2,
         R2.boot <- 1 - sum( ( x[ry, ] %*% parm2$beta - y[ry] )^2 ) / sum( ( y[ry] - ymean)^2 )
         cat( paste( "  R2 (Bootstrap): ", round(R2.boot,4), "\n"))
     }
-    #***
-    # extract scale parameter for tricube pmm
+
+    #*** extract scale parameter for tricube pmm
     vname <- get("vname", pos=parent.frame())
     tricube.pmm.scale <- mice_imputation_extract_list_arguments( micearg=tricube.pmm.scale,
-                           vname=vname, miceargdefault=.2 )
-    flush.console()
+                        vname=vname, miceargdefault=.2 )
+    utils::flush.console()
     # doing tricube pmm
     x1 <- apply(as.array(yhatmis), 1, .tricube.pmm.match, yhat=yhatobs, y=y[ry],
-                            tricube.pmm.scale=tricube.pmm.scale, ... )
+                tricube.pmm.scale=tricube.pmm.scale, ... )
     return(x1)
 }
 
@@ -57,7 +57,7 @@ mice.impute.tricube.pmm <- function (y, ry, x, tricube.pmm.scale=.2,
     # prevent the case that all weights are equal to zero
     prob.x[ donorset ] <- prob.x[donorset] + .0001
     # standardize weights to probabilities
-    prob.x <- prob.x / sum(prob.x )
+    prob.x <- prob.x / sum(prob.x)
     m <- sample( y, size=1, prob=prob.x )
     return(m)
 }

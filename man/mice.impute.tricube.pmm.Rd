@@ -1,5 +1,5 @@
 %% File Name: mice.impute.tricube.pmm.Rd
-%% File Version: 0.23
+%% File Version: 0.24
 
 \name{mice.impute.tricube.pmm}
 \alias{mice.impute.tricube.pmm}
@@ -31,7 +31,7 @@ Vector of missing data pattern (\code{FALSE} -- missing,
 Matrix (\code{n} x \code{p}) of complete covariates.
 }
   \item{tricube.pmm.scale}{
-A scaling factor for traicube matching. The default is 0.2.
+A scaling factor for tricube matching. The default is 0.2.
 }
   \item{tricube.boot}{
 A logical indicating whether tricube matching should be performed

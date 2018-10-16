@@ -1,5 +1,5 @@
 ## File Name: pool.mi.R
-## File Version: 0.32
+## File Version: 0.34
 
 ##############################################################
 # Inference for multiply imputed datasets
@@ -58,15 +58,14 @@ pool_mi <- function( qhat, u=NULL, se=NULL, dfcom=1E7, method="smallsample" )
 
     #********************************
     # class mipo
-    res <- list(
-        nmis=NA,
-        m=m, qhat=qhat, u=u, qbar=qbar,
+    res <- list( nmis=NA, m=m, qhat=qhat, u=u, qbar=qbar,
         ubar=ubar, b=b, t=t, r=r, dfcom=dfcom, df=df,
         fmi=fmi, lambda=lambda, tval=tval, pval=pval,
         qhat_names=names1, call=CALL)
     class(res) <- "pool_mi"
     return(res)
 }
+
 ###########################################################
 # Calculation of degrees of freedom
 mice_df <- function (m, lambda, dfcom, method)
@@ -81,28 +80,29 @@ mice_df <- function (m, lambda, dfcom, method)
     }
     return(df)
 }
+
 ###########################################################
 # This function is a modification of mitools::summary.MIresult
 summary.pool_mi <-function(object, alpha=0.05, ...)
 {
-  cat("Multiple imputation results:\nCall: ")
-  print(object$call)
-  out <- data.frame( results=object$qbar,
-                   se=sqrt(diag( object$t))
-                         )
-  crit <- stats::qt(alpha/2,object$df, lower.tail=FALSE)
-  out$t <- object$tval
-  out$p <- object$pval
-  out$"(lower"<- out$results-crit*out$se
-  out$"upper)"<- out$results+crit*out$se
-  out$"missInfo" <- paste0(round(100*object$fmi,1), " %")
-  print(out,...)
+    cat("Multiple imputation results:\nCall: ")
+    print(object$call)
+    out <- data.frame( results=object$qbar, se=sqrt(diag( object$t)) )
+    crit <- stats::qt(alpha/2,object$df, lower.tail=FALSE)
+    out$t <- object$tval
+    out$p <- object$pval
+    out$"(lower"<- out$results-crit*out$se
+    out$"upper)"<- out$results+crit*out$se
+    out$"missInfo" <- paste0(round(100*object$fmi,1), " %")
+    print(out, ...)
 }
+
 ############################################################
 coef.pool_mi <- function(object, ...)
 {
     return(object$qbar)
 }
+
 vcov.pool_mi <- function(object, ...)
 {
     return(object$t)

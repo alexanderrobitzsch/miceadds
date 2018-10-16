@@ -1,8 +1,10 @@
 ## File Name: kernelpls.fit2.R
-## File Version: 0.17
+## File Version: 0.19
+
 #############################################
 # Rcpp version of kernel PLS regression
-kernelpls.fit2 <- function(X, Y, ncomp ){
+kernelpls.fit2 <- function(X, Y, ncomp )
+{
     e1 <- environment()
     tsqs <- NULL
     ## Save dimnames:
@@ -58,8 +60,8 @@ kernelpls.fit2 <- function(X, Y, ncomp ){
     # R^2 measures
     R2 <- cumsum(res$Xvar) / res$Xtotvar
     R21 <- sapply( 1:ncomp, FUN=function(cc){
-             1 - stats::var( Y[,1] -  res$fitted.values[,cc] ) / stats::var( Y[,1] )
-          } )
+                1 - stats::var( Y[,1] -  res$fitted.values[,cc] ) / stats::var( Y[,1] )
+            } )
     R2 <- rbind( R2, R21)
     rownames(R2) <- c("R2(X)", "R2(Y)")
     colnames(R2) <- compnames
@@ -69,7 +71,8 @@ kernelpls.fit2 <- function(X, Y, ncomp ){
 }
 #######################################################
 # attach all elements in a list in a local environment
-.attach.environment <- function( res, envir ){
+.attach.environment <- function( res, envir )
+{
     CC <- length(res)
     for (cc in 1:CC){
         assign( names(res)[cc], res[[cc]], envir=envir )

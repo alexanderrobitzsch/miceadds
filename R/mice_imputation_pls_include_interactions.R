@@ -1,17 +1,15 @@
 ## File Name: mice_imputation_pls_include_interactions.R
-## File Version: 0.13
+## File Version: 0.15
 
 mice_imputation_pls_include_interactions <- function(pls.interactions,
     pls.print.progress, x, y, ry, type, min.int.cor, pls.maxcols)
 {
-    ##############################################
-
     use_interactions <- ! ( is.null(pls.interactions) )
     #------------ no interactions
     if ( ! use_interactions ){
         if( pls.print.progress ){
             cat("\n", paste("Created no Interactions",
-                         substring( Sys.time(),1) ), "\n")
+                    substring( Sys.time(),1) ), "\n")
             utils::flush.console()
         }
     }
@@ -23,7 +21,6 @@ mice_imputation_pls_include_interactions <- function(pls.interactions,
         # standardize x
         cx <- colMeans( x )
         xs <- x - outer( rep(1, nrow(x)), cx )
-
         if (N1 > 0){
             # search for interaction variables in predictorMatrix x?
             ind.int <- sort( which(  colnames(x) %in% use.int ) )
@@ -49,12 +46,9 @@ mice_imputation_pls_include_interactions <- function(pls.interactions,
             dfr <- dfr[ order( dfr[,1] ), ]
             # create interactions
             res <- mice_imputation_create_interactions(
-                        y_=y[ry],
-                        xobs_=as.matrix(x[ry,]),
-                        xall_=as.matrix(x),
-                        index_int_=as.matrix(dfr),
-                        min_int_cor_=min.int.cor,
-                        maxcols_=min( nrow(dfr),pls.maxcols) )
+                        y_=y[ry], xobs_=as.matrix(x[ry,]),
+                        xall_=as.matrix(x), index_int_=as.matrix(dfr),
+                        min_int_cor_=min.int.cor, maxcols_=min( nrow(dfr),pls.maxcols) )
 
             # total number of interactions
             N1t <- nrow(res$index_int)
