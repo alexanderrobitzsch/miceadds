@@ -1,30 +1,35 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 2.15-13
-Date: 2018-10-16 14:02:27
+Version: 3.0-1
+Date: 2018-10-19 14:00:07
 Author: 
     Alexander Robitzsch [aut, cre], Simon Grund [aut],
     Thorsten Henke [aut]
 Maintainer: 
     Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>
 Description: 
-    Contains some auxiliary functions for multiple 
-    imputation which complements existing functionality 
-    in R.
-    In addition to some utility functions, main features
-    include plausible value imputation, multilevel 
-    imputation functions (arbitrary number of levels, 
-    hierarchical and non-hierarchical datasets), 
-    imputation using partial least squares (PLS) for 
-    high dimensional predictors, and nested multiple 
-    imputation.
+    Contains functions for multiple imputation which
+    complements existing functionality in R.
+    In particular, several imputation methods for the
+    mice package (van Buuren & Groothuis-Oudshoorn, 2011,
+    <doi:10.18637/jss.v045.i03>) are included.
+    Main features of the miceadds package include
+    plausible value imputation (Mislevy, 1991,
+    <doi:10.1007/BF02294457>), multilevel imputation for
+    variables at any level or with any number of hierarchical
+    and non-hierarchical levels (Grund, Luedtke & Robitzsch,
+    2018, <doi:10.1177/1094428117703686>; van Buuren, 2018, 
+    Ch.7, <doi:10.1201/9780429492259>), imputation using 
+    partial least squares (PLS) for high dimensional 
+    predictors (Robitzsch, Pham & Yanagida, 2016), 
+    and nested multiple imputation (Rubin, 2003, 
+    <doi:10.1111/1467-9574.00217>).
 Depends:
     R (>= 3.0), mice (>= 3.0.0)
 Imports: 
     CDM (>= 5.8-5), coda, graphics, lme4, MASS, methods, 
-    mitools, mvtnorm, Rcpp, sirt, stats, TAM (>= 3.0-6), 
-    utils     
+    mitools, mvtnorm, Rcpp, sirt, stats, TAM, utils     
 LinkingTo: 
     Rcpp, RcppArmadillo
 Suggests: 

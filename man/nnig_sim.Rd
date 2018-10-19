@@ -1,5 +1,5 @@
 %% File Name: nnig_sim.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{nnig_sim}
 \alias{nnig_coef}
@@ -115,9 +115,11 @@ print(coeff)
 set.seed(2018)
 Y <- miceadds::nnig_sim( N=2000, coef=coeff)
 
+\dontrun{
 #* check descriptive statistics
 apply(Y, 2, TAM::weighted_skewness )
 apply(Y, 2, TAM::weighted_kurtosis )
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

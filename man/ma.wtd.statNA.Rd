@@ -1,5 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
-%% File Version: 1.54
+%% File Version: 1.55
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}
@@ -132,11 +132,11 @@ TAM::weighted_skewness( x=dat[,"books"], w=data.ma01$studwgt )
 
 # weighted kurtosis
 ma.wtd.kurtosisNA( dat, weights=data.ma01$studwgt, vars=c("books","hisei") )
+\dontrun{
 # compare with TAM
 TAM::weighted_kurtosis( dat[,"books"], w=data.ma01$studwgt )
 TAM::weighted_kurtosis( dat[,"hisei"], w=data.ma01$studwgt )
 
-\dontrun{
 #############################################################################
 # EXAMPLE 2: Weighted statistics multiply imputed dataset
 #############################################################################

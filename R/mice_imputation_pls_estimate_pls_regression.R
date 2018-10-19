@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_estimate_pls_regression.R
-## File Version: 0.17
+## File Version: 0.19
 
 mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
     use.ymat, imputationWeights, use_weights, pls.print.progress )
@@ -25,8 +25,7 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         xobs <- outer( weight.obs, rep(1, ncol(xobs) ) ) * xobs
     }
 
-
-    if( pls.print.progress  ){
+    if( pls.print.progress ){
         cat( "\n", paste( ncol(xobs), " Dimensions", sep="")  )
         cat( "\n", paste( nfac, " PLS factors are used", sep="") )
         utils::flush.console()
@@ -39,8 +38,7 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
 
     if ( do_pls ){
         VV <- ncol(xobs)
-        mod <- kernelpls.fit2( X=as.matrix(xobs),
-                        Y=matrix(yobs,ncol=1),ncomp=nfac)
+        mod <- kernelpls.fit2( X=as.matrix(xobs), Y=matrix(yobs,ncol=1),ncomp=nfac)
         if( pls.print.progress ){
             print( round( 100*mod$R2, 2 ))
         }

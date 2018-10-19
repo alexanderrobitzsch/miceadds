@@ -41,9 +41,20 @@ CHANGELOG miceadds
 
 
 
+---------------------------------------------------------------------
+VERSIONS miceadds 3.0  |  2018-10-19  |  Last: miceadds 3.0-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 2.15  |  2018-10-16  |  Last: miceadds 2.15-13
+VERSIONS miceadds 2.15  |  2018-10-19  |  Last: miceadds 2.15-22
 ---------------------------------------------------------------------
 
 NOTE  * internal changes in mice.imputation.ml.lmer() caused
@@ -56,13 +67,9 @@ ADDED * included simulation functions  nnig_sim() and nnig_coef()
         for simulating multivariate linearly related non-normally
         distributed variables (Foldnes & Olsson, 2016)
 
-
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ma.wtd.statNA (1), fleishman_sim (1),
         nnig_sim (1)
-
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.14  |  2018-09-18  |  Last: miceadds 2.14-26

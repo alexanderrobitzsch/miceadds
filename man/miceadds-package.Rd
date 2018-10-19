@@ -1,5 +1,5 @@
 %% File Name: miceadds-package.Rd
-%% File Version: 1.66
+%% File Version: 1.714
 
 \name{miceadds-package}
 \alias{miceadds-package}
@@ -9,16 +9,22 @@
 Some Additional Multiple Imputation Functions, Especially for \pkg{mice}
 }
 \description{
-    Contains some auxiliary functions for multiple
-    imputation which complements existing functionality
-    in \R.
-    In addition to some utility functions, main features
-    include plausible value imputation, multilevel
-    imputation functions (arbitrary number of levels,
-    hierarchical and non-hierarchical datasets),
-    imputation using partial least squares (PLS) for
-    high dimensional predictors, and nested multiple
-    imputation.
+    Contains functions for multiple imputation which
+    complements existing functionality in \R. 
+    In particular, several imputation methods for the 
+    \pkg{mice} package (van Buuren & Groothuis-Oudshoorn, 2011,
+    <doi:10.18637/jss.v045.i03>) are included.
+    Main features of the \pkg{miceadds} package include    
+    plausible value imputation (Mislevy, 1991, 
+    <doi:10.1007/BF02294457>), multilevel imputation for
+    variables at any level or with any number of hierarchical
+    and non-hierarchical levels (Grund, Luedtke & Robitzsch,
+    2018, <doi:10.1177/1094428117703686>; van Buuren, 2018, 
+    Ch.7, <doi:10.1201/9780429492259>), imputation using 
+    partial least squares (PLS) for high dimensional 
+    predictors (Robitzsch, Pham & Yanagida, 2016), 
+    and nested multiple imputation (Rubin, 2003, 
+    <doi:10.1111/1467-9574.00217>).
 }
 
 \details{
@@ -74,8 +80,27 @@ Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de> \cr \cr
 }
 
 
-%\references{
-%}
+\references{
+Grund, S., Luedtke, O., & Robitzsch, A. (2018). Multiple imputation of multilevel
+data in organizational research. \emph{Organizational Research Methods, 21}(1), 111-149.
+
+Mislevy, R. J. (1991). Randomization-based inference about latent variables
+from complex samples. \emph{Psychometrika, 56}, 177-196.
+
+Robitzsch, A., Pham, G., & Yanagida, T. (2016). Fehlende Daten und Plausible Values. 
+In S. Breit & C. Schreiner (Hrsg.). \emph{Large-Scale Assessment mit R: Methodische 
+Grundlagen der oesterreichischen Bildungsstandardueberpruefung} (S. 259-293). Wien: facultas.
+
+Rubin, D. B. (2003). Nested multiple imputation of NMES via partially
+incompatible MCMC. \emph{Statistica Neerlandica, 57}(1), 3-18.
+
+van Buuren, S. (2018). \emph{Flexible imputation of missing data}.
+Boca Raton: CRC Press.
+
+van Buuren, S., & Groothuis-Oudshoorn, K. (2011). \pkg{mice}: 
+Multivariate imputation by chained equations in \R. 
+\emph{Journal of Statistical Software, 45}(3), 1-67.
+}
 
 
 
