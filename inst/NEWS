@@ -42,13 +42,16 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.0  |  2018-10-19  |  Last: miceadds 3.0-1
+VERSIONS miceadds 3.0  |  2018-10-24  |  Last: miceadds 3.0-3
 ---------------------------------------------------------------------
 
-xxxx  *
+NOTE  * included separator "\t" in scan.vec() (thanks Thomas Kiefer)
+FIXED * fixed bug in 'summary' method of glm.cluster() caused by 
+        output changes in summary.glm() (thanks to tra6sdc; issue #14)
+
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: scan.vec (1)
 
 
 

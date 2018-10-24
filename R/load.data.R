@@ -1,5 +1,5 @@
 ## File Name: load.data.R
-## File Version: 0.37
+## File Version: 0.39
 
 
 #########################################################################
@@ -12,8 +12,7 @@ load.data <- function( filename, type="Rdata", path=getwd(), spss.default=TRUE, 
     #*** the resulting object is dat4!
     dir <- path
     file <- filename
-    i1 <- grep.vec( c("Rdata", "RData", "csv", "csv2", "table", "sav" ),
-                    file,  "OR" )$x
+    i1 <- grep.vec( c("Rdata", "RData", "csv", "csv2", "table", "sav" ), file, "OR" )$x
     if ( length(i1)==0 ){
         files <- list.files( dir, filename )
         files <- grep.vec( filename, files, "AND")$x
@@ -49,8 +48,7 @@ load.data <- function( filename, type="Rdata", path=getwd(), spss.default=TRUE, 
     if (type=="sav" ){
         if ( ! spss.default){
             dat4 <- foreign::read.spss( file=file_path(dir,file), ... )
-        }
-        if ( spss.default ){
+        } else {
             dat4 <- foreign::read.spss( file=file_path(dir,file), to.data.frame=TRUE,
                         use.value.labels=FALSE, ... )
         }

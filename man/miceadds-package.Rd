@@ -1,5 +1,5 @@
 %% File Name: miceadds-package.Rd
-%% File Version: 1.714
+%% File Version: 1.715
 
 \name{miceadds-package}
 \alias{miceadds-package}
@@ -105,6 +105,9 @@ Multivariate imputation by chained equations in \R.
 
 
 \seealso{
+See also the CRAN task view \emph{Missing Data}:\cr
+\url{https://cran.r-project.org/web/views/MissingData.html} \cr
+
 See other \R packages for conducting multiple imputation:
 \pkg{mice}, \pkg{Amelia}, \pkg{pan}, \pkg{mi}, \pkg{norm},
 \pkg{norm2}, \pkg{BaBooN}, \pkg{VIM}, ... \cr

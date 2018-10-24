@@ -1,5 +1,5 @@
 ## File Name: lm.cluster.R
-## File Version: 0.30
+## File Version: 0.31
 
 
 ##################################################
@@ -35,15 +35,18 @@ lm.cluster <- function( data, formula, cluster, ... )
     return(res)
 }
 ###################################################
-coef.lm.cluster <- function( object, ... ){
-    coef( object$lm_res)
+coef.lm.cluster <- function( object, ... )
+{
+    return( coef(object$lm_res) )
 }
 ####################################################
-vcov.lm.cluster <- function( object, ... ){
-    object$vcov
+vcov.lm.cluster <- function( object, ... )
+{
+    return(object$vcov)
 }
 ####################################################
-summary.lm.cluster <- function( object, ... ){
+summary.lm.cluster <- function( object, ... )
+{
     smod <- summary( object$lm_res )
     csmod <- smod$coefficients
     csmod[,"Std. Error"] <- sqrt( diag( vcov(object) ))
