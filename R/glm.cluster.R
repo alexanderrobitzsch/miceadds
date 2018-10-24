@@ -1,5 +1,5 @@
 ## File Name: glm.cluster.R
-## File Version: 0.23
+## File Version: 0.24
 
 
 ##################################################
@@ -34,9 +34,9 @@ summary.glm.cluster <- function( object, ... )
 {
     smod <- summary(object$glm_res )        
     csmod <- smod$coefficients
-    csmod[,"Std. Error"] <- sqrt( diag(object$vcov) )
-    csmod[,"t value"] <-  csmod[,"Estimate"] / csmod[,"Std. Error"]
-    csmod[,"Pr(>|t|)"] <- stats::pnorm( - abs( csmod[,"t value"] ) )*2
+    csmod[,2] <- sqrt( diag(object$vcov) )
+    csmod[,3] <- csmod[,1] / csmod[,2]
+    csmod[,4] <- stats::pnorm( - abs( csmod[,3] ) )*2
     # R2 <- smod$r.squared
     # cat("R^2=", round(R2, 5),"\n\n" )
     print(csmod)
