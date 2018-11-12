@@ -1,9 +1,10 @@
 ## File Name: mice.impute.2l.latentgroupmean.ml.R
-## File Version: 2.11
+## File Version: 2.14
+
 mice.impute.2l.latentgroupmean.ml <- function (y, ry, x, type,
-                    pls.facs=NULL, imputationWeights=NULL,
-                    interactions=NULL, quadratics=NULL,
-                    EAP=FALSE, ...){
+            pls.facs=NULL, imputationWeights=NULL, interactions=NULL, quadratics=NULL,
+            EAP=FALSE, ...)
+{
     # latent group mean
     cluster <- as.numeric( x[, type==- 2] )
     covariates <- as.matrix( x[, type==1 ] )
@@ -28,17 +29,16 @@ mice.impute.2l.latentgroupmean.ml <- function (y, ry, x, type,
         vname <- res$vname
         newstate <- res$newstate
         plsout <- mice_imputation_pls_helper( newstate=newstate, vname=vname,
-                        pls.impMethod="xplsfacs",
-                        x=h1, y=y.l2[,2], ry=( ! is.na(y.l2[,2] )),
+                        pls.impMethod="xplsfacs", x=h1, y=y.l2[,2], ry=( ! is.na(y.l2[,2] )),
                         imputationWeights=rep( 1, nrow(covaggr.l2)),
                         interactions=interactions, quadratics=quadratics,
-                        pls.facs=pls.facs,  ... )
+                        pls.facs=pls.facs, ... )
         # imputation PLS
         if( ! is.null( plsout$yimp  ) ){
             covaggr.l2r <- as.matrix(plsout$yimp[,-1])
             covaggr <- as.matrix( covaggr.l2r[ match(cluster,covaggr.l2[,1]),])
         }
-        mod <- lme4::lmer( y ~ as.matrix( covaggr  ) + ( 1 | cluster ) )
+        mod <- lme4::lmer( y ~ as.matrix(covaggr) + ( 1 | cluster ) )
     } else {
         mod <- lme4::lmer( y ~ ( 1 | cluster ) )
     }

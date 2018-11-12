@@ -1,8 +1,7 @@
 ## File Name: write.fwf2.R
-## File Version: 2.06
+## File Version: 2.07
 
 
-##############################################################################
 write.fwf2 <- function( dat, format.full, format.round, file )
 {
     savename <- file
@@ -38,5 +37,4 @@ write.fwf2 <- function( dat, format.full, format.round, file )
                 quote=FALSE, row.names=FALSE, col.names=TRUE)
     return(dfr)
 }
-##############################################################################
 

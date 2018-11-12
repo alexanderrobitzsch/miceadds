@@ -1,5 +1,5 @@
 ## File Name: glm.cluster.R
-## File Version: 0.24
+## File Version: 0.25
 
 
 ##################################################
@@ -13,7 +13,7 @@ glm.cluster <- function( data, formula, cluster, ... )
     } else {
         v1 <- data[,cluster]
     }
-    dfr <- data.frame( cluster=v1 )    
+    dfr <- data.frame( cluster=v1 )
     vcov2 <- multiwayvcov::cluster.vcov( model=mod, cluster=dfr)
     res <- list( "glm_res"=mod, "vcov"=vcov2 )
     class(res) <- "glm.cluster"
@@ -32,7 +32,7 @@ vcov.glm.cluster <- function( object, ... )
 ####################################################
 summary.glm.cluster <- function( object, ... )
 {
-    smod <- summary(object$glm_res )        
+    smod <- summary(object$glm_res )
     csmod <- smod$coefficients
     csmod[,2] <- sqrt( diag(object$vcov) )
     csmod[,3] <- csmod[,1] / csmod[,2]

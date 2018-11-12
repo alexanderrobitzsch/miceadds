@@ -1,8 +1,9 @@
 %% File Name: load.data.Rd
-%% File Version: 0.25
+%% File Version: 0.28
 
 \name{load.data}
 \alias{load.data}
+\alias{load.files}
 
 
 %- Also NEED an '\alias' for EACH other topic documented here.
@@ -11,12 +12,16 @@
 }
 
 \description{
-This function is a wrapper function for loading or reading data frames
+The function \code{load.data} is a wrapper function for loading or reading data frames
 or matrices.
+
+The function \code{load.files} loads multiple files in a data frame.
 }
 
 \usage{
 load.data( filename, type="Rdata", path=getwd(), spss.default=TRUE, ...)
+
+load.files( files, type="Rdata", path=getwd(), ...)
 }
 
 
@@ -46,8 +51,9 @@ included in \code{filename}.}
     are used.}
 \item{\dots}{Further arguments to be passed to \code{load.Rdata2},
     \code{read.csv2}, \code{read.csv}, \code{read.table}
-    or \code{foreign::read.spss}.
+    or \code{foreign::read.spss}.    
 }
+\item{files}{Vector of file names}
 }
 
 %\details{
@@ -83,6 +89,7 @@ for saving/writing \R data frames.
 # load a data frame in the file "data_s3.Rdata" and save this
 # as the object "dat.s3"
 dat.s3 <- miceadds::load.data( filename="data_s3.Rdata", type="Rdata" )
+print(str(dat.s3))
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
