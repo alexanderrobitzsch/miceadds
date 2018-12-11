@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.666
+## File Version: 2.668
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,

@@ -41,8 +41,21 @@ CHANGELOG miceadds
 
 
 
+
+
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.0  |  2018-11-12  |  Last: miceadds 3.0-8
+VERSIONS miceadds 3.1  |  2018-12-11  |  Last: miceadds 3.1-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 3.0  |  2018-12-11  |  Last: miceadds 3.1-16
 ---------------------------------------------------------------------
 
 NOTE  * included separator "\t" in scan.vec() (thanks Thomas Kiefer)
@@ -50,12 +63,11 @@ FIXED * fixed bug in 'summary' method of glm.cluster()
         (thanks to tra6sdc; issue #14)
 NOTE  * included utility function load.files() for reading multiple
         files in a data frame
+NOTE  * corrected a bug in mice.impute.2l.pls2() and in Example 1 of
+        ?mice.impute.pls (thanks to a discussion with Peter Lenz)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: scan.vec (1)
-
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 2.15  |  2018-10-19  |  Last: miceadds 2.15-22

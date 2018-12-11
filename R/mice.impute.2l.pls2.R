@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.pls2.R
-## File Version: 3.27
+## File Version: 3.294
 
 mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
             pls.impMethod="pmm", pls.print.progress=TRUE,
@@ -29,8 +29,9 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
     time1 <- Sys.time()
     n <- NULL
     imputationWeights  <- nrow(x) * imputationWeights / sum(imputationWeights)
-    vname <- ma_exists_get(x='vyame', pos=envir_pos)
     imp.temp <- ma_exists_get(x='newstate', pos=envir_pos)
+    vname <- imp.temp$dep
+
     # extract PLS factors
     pls.facs <- mice_imputation_extract_list_arguments( micearg=pls.facs,
                     vname=vname, miceargdefault=20 )
@@ -93,7 +94,8 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
         cat(" Imputation: ", imp.temp$im, ", Iteration:", imp.temp$it   )
         if ( ! is.null(pls.title)){ cat("\n ",pls.title) }
         cat( "\n\nImputation using Partial Least Squares Regression\n")
-        cat( substring(Sys.time(),1),"\n" ) ; flush.console()
+        cat( substring(Sys.time(),1),"\n" )
+        utils::flush.console()
         cat( "\n", paste( ncol(x10), "Predictor Variables", names(y) ), "\n")
         cat("Used Variables ", paste(colnames(x10),collapse=" "), "\n", sep="" )
     }
@@ -108,7 +110,7 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
                         cat("\n", paste("Created no Interactions", substring( Sys.time(),1) ), "\n") ; flush.console()
                                     }
                         }  else
-        # create some interactions
+                    # create some interactions
                         {
                 use.int <- intersect( colnames(x), pls.interactions  )
                 N1 <- length(use.int)

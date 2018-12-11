@@ -1,5 +1,5 @@
 %% File Name: load.data.Rd
-%% File Version: 0.28
+%% File Version: 0.33
 
 \name{load.data}
 \alias{load.data}
@@ -51,7 +51,7 @@ included in \code{filename}.}
     are used.}
 \item{\dots}{Further arguments to be passed to \code{load.Rdata2},
     \code{read.csv2}, \code{read.csv}, \code{read.table}
-    or \code{foreign::read.spss}.    
+    or \code{foreign::read.spss}.
 }
 \item{files}{Vector of file names}
 }

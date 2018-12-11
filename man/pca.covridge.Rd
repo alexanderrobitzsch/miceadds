@@ -1,5 +1,5 @@
 %% File Name: pca.covridge.Rd
-%% File Version: 0.20
+%% File Version: 0.22
 
 \name{pca.covridge}
 \alias{pca.covridge}
@@ -64,8 +64,7 @@ Principal component analysis in \pkg{stats}:
 \code{\link[stats:princomp]{stats::princomp}}
 
 For calculating first eigenvalues of a symmetric matrix see also
-\code{\link[sirt:eigenvalues.sirt]{sirt::eigenvalues.sirt}} in the
-\pkg{sirt} package.
+\code{sirt::sirt_eigenvalues} in the \pkg{sirt} package.
 }
 
 

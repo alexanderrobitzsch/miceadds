@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_create_interactions.cpp
-//// File Version: 2.12
+//// File Version: 2.13
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -11,9 +11,9 @@ using namespace Rcpp;
 
 
 ///********************************************************************
-///** create_interactions_cpp
+///** miceadds_rcpp_create_interactions
 // [[Rcpp::export]]
-Rcpp::List create_interactions_cpp( Rcpp::NumericVector Yr,
+Rcpp::List miceadds_rcpp_create_interactions( Rcpp::NumericVector Yr,
     Rcpp::NumericMatrix Xr, Rcpp::NumericMatrix Xallr,
     Rcpp::NumericMatrix index_int, Rcpp::NumericVector MI, Rcpp::NumericVector maxcols )
 {

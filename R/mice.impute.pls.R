@@ -1,37 +1,13 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.57
+## File Version: 3.604
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
-                                pls.impMethod="pmm",
-                                pls.impMethodArgs=NULL,
-                                pls.print.progress=TRUE,
-                                imputationWeights=rep( 1,length(y) ),
-                                pcamaxcols=1E9,
-                                min.int.cor=0,
-                                min.all.cor=0, N.largest=0,
-                                pls.title=NULL, print.dims=TRUE,
-                                pls.maxcols=5000, envir_pos=NULL,
-                                extract_data=TRUE, ... )
+            pls.impMethod="pmm", pls.impMethodArgs=NULL, pls.print.progress=TRUE,
+            imputationWeights=rep(1, length(y)), pcamaxcols=1E9,
+            min.int.cor=0, min.all.cor=0, N.largest=0, pls.title=NULL, print.dims=TRUE,
+            pls.maxcols=5000, envir_pos=NULL, extract_data=TRUE, ... )
 {
-    #...........................................................................#
-    # INPUT                                                                     #
-    # pls.facs          ... number of factors for PLS regression                #
-    # pls.interactions  ... include.interactions                                #
-    #                 -> type==4                                        #
-    # pls.quadratics    ... include quadratic terms?                            #
-    #                 -> type==5                                        #
-    # type                 ...=6 : for these variables no interactions will be created    #
-    # pls.impMethod     ... method "norm" or "pmm" or "tricube.pmm"             #
-    #                           "xplsfacs" -> return predicted X PLS factors    #
-    # pls.print.progress    ... print progress of PLS regression estimation     #
-    # imputationWeight  ... vector of weights for imputation                    #
-    # min.int.cor       ... minimal correlation for inclusion of interaction    #
-    #                           effects                                         #
-    # min.all.cor             ... minimal correlation for main effects            #
-    # N.largest            ... select N.largest correlations                        #
-    # pls.title         ... title which is displayed                             #
-    #...........................................................................#
 
     time1 <- Sys.time()
 
@@ -44,8 +20,6 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     res <- mice_imputation_get_states( pos=pos )
     vname <- res$vname
     imp.temp <- res$newstate
-        #...  newstate <- list(it=k,  im=i,  co=j, dep=vname,  meth=theMethod,
-        #...                   log=oldstate$log)
 
     if (extract_data){
         res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos )

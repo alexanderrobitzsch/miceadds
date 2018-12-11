@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.152
+## File Version: 0.156
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
@@ -7,6 +7,9 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
 {
     #*** logical whether an imputation should be conducted
     do_imputation <- ( pls.impMethod !="xplsfacs" )
+
+    #-- admissible pmm methods
+    pls_avai <- paste0("pmm",3:6)
 
     if ( do_imputation ){
         if (! use_weights){
@@ -18,9 +21,9 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
             xobs <- x[ry,]
             yobs <- y[ry]
             weights.obs <- imputationWeights[ ry ]
-            weights.obs <- normalize_vector( weights.obs )
+            weights.obs <- normalize_vector( x=weights.obs )
             # check appropriate imputation method
-            if ( ! pls.impMethod %in% c( "norm", "pmm" ) ){
+            if ( ! pls.impMethod %in% c( "norm", "pmm", pls_avai) ){
                 stop( paste0( "Only imputation methods 'norm' and 'pmm' can be ",
                         "applied when weights are provided.\n") )
             }
@@ -35,6 +38,11 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
                 yhatmis <- x[!ry, ] %*% parm$beta
                 x1 <- apply(as.array(yhatmis), 1, mice::.pmm.match,
                             yhat=yhatobs, y=y[ry], ... )
+            }
+            if (pls.impMethod %in% pls_avai){
+                args <- list(y=y, ry=ry, x=x, ...)
+                fct <- paste0("mice.impute.", pls.impMethod )
+                x1 <- do.call(what=fct, args=args)
             }
             do_imputation <- FALSE
         }

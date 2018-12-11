@@ -1,35 +1,29 @@
 %% File Name: miceadds-package.Rd
-%% File Version: 1.715
+%% File Version: 1.719
 
 \name{miceadds-package}
 \alias{miceadds-package}
 \alias{miceadds}
 \docType{package}
+
+
 \title{
-Some Additional Multiple Imputation Functions, Especially for \pkg{mice}
+\packageTitle{miceadds}
 }
+
 \description{
-    Contains functions for multiple imputation which
-    complements existing functionality in \R. 
-    In particular, several imputation methods for the 
-    \pkg{mice} package (van Buuren & Groothuis-Oudshoorn, 2011,
-    <doi:10.18637/jss.v045.i03>) are included.
-    Main features of the \pkg{miceadds} package include    
-    plausible value imputation (Mislevy, 1991, 
-    <doi:10.1007/BF02294457>), multilevel imputation for
-    variables at any level or with any number of hierarchical
-    and non-hierarchical levels (Grund, Luedtke & Robitzsch,
-    2018, <doi:10.1177/1094428117703686>; van Buuren, 2018, 
-    Ch.7, <doi:10.1201/9780429492259>), imputation using 
-    partial least squares (PLS) for high dimensional 
-    predictors (Robitzsch, Pham & Yanagida, 2016), 
-    and nested multiple imputation (Rubin, 2003, 
-    <doi:10.1111/1467-9574.00217>).
+\packageDescription{miceadds}
 }
+
+\author{
+\packageAuthor{miceadds}
+
+Maintainer: \packageMaintainer{miceadds}
+}
+
+
 
 \details{
-
-
 
 \itemize{
 
@@ -74,10 +68,7 @@ accomplished by two-way imputation (\code{\link{tw.imputation}}).
 
 
 }
-\author{
-Alexander Robitzsch, Simon Grund, Thorsten Henke \cr \cr
-Maintainer: Alexander Robitzsch <robitzsch@ipn.uni-kiel.de> \cr \cr
-}
+
 
 
 \references{
@@ -106,7 +97,7 @@ Multivariate imputation by chained equations in \R.
 
 \seealso{
 See also the CRAN task view \emph{Missing Data}:\cr
-\url{https://cran.r-project.org/web/views/MissingData.html} \cr
+\url{https://CRAN.R-project.org/view=MissingData} \cr
 
 See other \R packages for conducting multiple imputation:
 \pkg{mice}, \pkg{Amelia}, \pkg{pan}, \pkg{mi}, \pkg{norm},
@@ -117,6 +108,7 @@ Some links to internet sites related to missing data:
 \emph{http://missingdata.lshtm.ac.uk/} \cr
 \emph{http://www.stefvanbuuren.nl/mi/} \cr
 \emph{http://www.bristol.ac.uk/cmm/software/realcom/} \cr
+\emph{https://rmisstastic.netlify.com/} \cr
 }
 
 \examples{
