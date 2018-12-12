@@ -44,10 +44,12 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.1  |  2018-12-11  |  Last: miceadds 3.1-1
+VERSIONS miceadds 3.1  |  2018-12-12  |  Last: miceadds 3.1-3
 ---------------------------------------------------------------------
 
-xxxx  *
+NOTE  * included argument '...' in grep.vec() for passing arguments to
+        base::grep() (thanks to Boris Girnat)
+
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
@@ -55,7 +57,7 @@ EXAMP * included/modified examples: ---
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.0  |  2018-12-11  |  Last: miceadds 3.1-16
+VERSIONS miceadds 3.0  |  2018-12-11  |  Last: miceadds 3.0-16
 ---------------------------------------------------------------------
 
 NOTE  * included separator "\t" in scan.vec() (thanks Thomas Kiefer)

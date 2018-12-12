@@ -1,9 +1,9 @@
 ## File Name: grepvec.R
-## File Version: 0.01
+## File Version: 0.02
 
-grepvec <- function( pattern.vec, x, operator="AND", value=FALSE)
+grepvec <- function( pattern.vec, x, operator="AND", value=FALSE, ...)
 {
-    z <- grep.vec( pattern.vec=pattern.vec, x=x, operator=operator)
+    z <- grep.vec( pattern.vec=pattern.vec, x=x, operator=operator, ...)
     if (value){
         z <- z$x
     } else {

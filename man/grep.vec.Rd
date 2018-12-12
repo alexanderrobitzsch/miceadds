@@ -1,5 +1,5 @@
 %% File Name: grep.vec.Rd
-%% File Version: 0.21
+%% File Version: 0.23
 
 \name{grep.vec}
 \alias{grep.vec}
@@ -17,9 +17,9 @@ These functions slightly extend the usage of \code{grep} but it is
 extended to a vector argument.
 }
 \usage{
-grep.vec(pattern.vec, x, operator="AND")
+grep.vec(pattern.vec, x, operator="AND", ...)
 
-grepvec( pattern.vec, x, operator="AND", value=FALSE)
+grepvec( pattern.vec, x, operator="AND", value=FALSE, ...)
 
 grep_leading( pattern, x, value=FALSE )
 
@@ -43,6 +43,8 @@ contain at least one of the strings in \code{pattern.vec}.
 \item{pattern}{String}
 \item{patternvec}{Vector of strings}
 \item{value}{Logical indicating whether indices or values are requested}
+\item{\dots}{Arguments to be passed to \code{\link[base:grep]{base::grep}} 
+(e.g., \code{fixed=TRUE})}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
