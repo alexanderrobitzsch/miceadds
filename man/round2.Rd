@@ -1,5 +1,5 @@
 %% File Name: round2.Rd
-%% File Version: 0.19
+%% File Version: 0.20
 
 \name{round2}
 \alias{round2}
@@ -93,6 +93,6 @@ round2( -vec )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Rounding}
-\keyword{R utilities}
+%% \keyword{Rounding}
+%% \keyword{R utilities}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

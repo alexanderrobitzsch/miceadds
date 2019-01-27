@@ -1,5 +1,5 @@
 %% File Name: pool.mids.nmi.Rd
-%% File Version: 0.49
+%% File Version: 0.50
 
 \name{pool.mids.nmi}
 \alias{pool.mids.nmi}
@@ -290,8 +290,8 @@ summary(pmod3b)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Nested multiple imputation}
-\keyword{summary}
-\keyword{coef}
-\keyword{vcov}
+%% \keyword{Nested multiple imputation}
+%% \keyword{summary}
+%% \keyword{coef}
+%% \keyword{vcov}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

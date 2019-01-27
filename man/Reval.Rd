@@ -1,5 +1,5 @@
 %% File Name: Reval.Rd
-%% File Version: 0.23
+%% File Version: 0.24
 
 \name{Reval}
 \alias{Reval}
@@ -88,5 +88,5 @@ a
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

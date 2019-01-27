@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.contextual.pmm.Rd
-%% File Version: 0.35
+%% File Version: 0.36
 
 \name{mice.impute.2l.contextual.pmm}
 \alias{mice.impute.2l.contextual.pmm}
@@ -160,5 +160,5 @@ summary(imp2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{mice imputation method}
+%% \keyword{mice imputation method}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,5 +1,5 @@
 %% File Name: mice.nmi.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{mice.nmi}
 \alias{mice.nmi}
@@ -118,5 +118,5 @@ summary(imp2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Nested multiple imputation}
+%% \keyword{Nested multiple imputation}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

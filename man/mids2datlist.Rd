@@ -1,5 +1,5 @@
 %% File Name: mids2datlist.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{mids2datlist}
 \alias{mids2datlist}
@@ -115,5 +115,5 @@ datlist1 <- miceadds::mids2datlist( imp, X=dat[,c(1,2) ] )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{mids}
+%% \keyword{mids}
 

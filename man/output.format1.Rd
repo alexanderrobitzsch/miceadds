@@ -1,5 +1,5 @@
 %% File Name: output.format1.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{output.format1}
 \alias{output.format1}
@@ -56,5 +56,5 @@ output.format1(stringtype="*'", label="HELLO WORLD", stringlength=20)
 %}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

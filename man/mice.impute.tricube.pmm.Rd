@@ -1,5 +1,5 @@
 %% File Name: mice.impute.tricube.pmm.Rd
-%% File Version: 0.24
+%% File Version: 0.25
 
 \name{mice.impute.tricube.pmm}
 \alias{mice.impute.tricube.pmm}
@@ -100,5 +100,5 @@ imp.mi2 <- miceadds::mice.1chain( nhanes, burnin=5, iter=20, Nimp=4,
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{mice imputation method}
+%% \keyword{mice imputation method}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

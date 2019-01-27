@@ -1,5 +1,5 @@
 %% File Name: write.pspp.Rd
-%% File Version: 0.33
+%% File Version: 0.34
 
 \name{write.pspp}
 \alias{write.pspp}
@@ -123,6 +123,6 @@ sjlabelled::write_spss( data, "example_data1b.sav" )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Utility function}
+%% \keyword{Utility function}
 %% \keyword{SPSS}
-\keyword{PSPP (SPSS)}
+%% \keyword{PSPP (SPSS)}

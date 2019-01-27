@@ -1,5 +1,5 @@
 %% File Name: draw.pv.ctt.Rd
-%% File Version: 1.23
+%% File Version: 1.24
 
 \name{draw.pv.ctt}
 \alias{draw.pv.ctt}
@@ -158,7 +158,7 @@ mitools::MIcombine(mod)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Plausible value imputation}
-\keyword{Latent variables}
+%% \keyword{Plausible value imputation}
+%% \keyword{Latent variables}
 
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

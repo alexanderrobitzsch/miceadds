@@ -1,5 +1,5 @@
 %% File Name: mice.impute.grouped.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{mice.impute.grouped}
 \alias{mice.impute.grouped}
@@ -99,5 +99,5 @@ head( mice::complete(imp))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{mice imputation method}
+%% \keyword{mice imputation method}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

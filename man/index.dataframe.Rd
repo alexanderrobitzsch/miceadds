@@ -1,5 +1,5 @@
 %% File Name: index.dataframe.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{index.dataframe}
 \alias{index.dataframe}
@@ -63,5 +63,5 @@ index.dataframe( dfr, systime=TRUE)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

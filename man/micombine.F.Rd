@@ -1,5 +1,5 @@
 %% File Name: micombine.F.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{micombine.F}
 \alias{micombine.F}
@@ -84,5 +84,5 @@ micombine.F(Fvalues, df1=4 )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{F statistic}
+%% \keyword{F statistic}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

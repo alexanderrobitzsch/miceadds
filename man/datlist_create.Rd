@@ -1,5 +1,5 @@
 %% File Name: datlist_create.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{datlist_create}
 \alias{datlist_create}
@@ -182,5 +182,5 @@ datlist3b <- miceadds::datlist2nested.datlist(datlist2b, Nimp=c(4,5) )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{print}
+%% \keyword{print}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,5 +1,5 @@
 %% File Name: pca.covridge.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{pca.covridge}
 \alias{pca.covridge}
@@ -102,5 +102,5 @@ pca2.imp <- stats::princomp( complete(imp) )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Dimension reduction}
-\keyword{Principal component analysis}% __ONLY ONE__ keyword per line
+%% \keyword{Dimension reduction}
+%% \keyword{Principal component analysis}% __ONLY ONE__ keyword per line

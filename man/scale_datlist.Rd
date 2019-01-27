@@ -1,5 +1,5 @@
 %% File Name: scale_datlist.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{scale_datlist}
 \alias{scale_datlist}
@@ -175,5 +175,5 @@ round( miceadds::mean0( mice::complete(imp2, action=1) ), 2 )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{z-Standardization}
+%% \keyword{z-Standardization}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

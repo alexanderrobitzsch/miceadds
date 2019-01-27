@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.34
+%% File Version: 2.35
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -197,6 +197,6 @@ summary(imp2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Partial least squares regression (PLS)}
-\keyword{Dimension reduction}
-\keyword{mice imputation method}
+%% \keyword{Partial least squares regression (PLS)}
+%% \keyword{Dimension reduction}
+%% \keyword{mice imputation method}

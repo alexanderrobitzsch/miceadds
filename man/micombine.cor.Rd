@@ -1,5 +1,5 @@
 %% File Name: micombine.cor.Rd
-%% File Version: 0.39
+%% File Version: 0.40
 
 \name{micombine.cor}
 \alias{micombine.cor}
@@ -152,6 +152,6 @@ res2 <- miceadds::micombine.cor(mi.res=datlist, variables=c("lang", "migrant", "
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Decriptives}
-\keyword{mids}
+%% \keyword{Decriptives}
+%% \keyword{mids}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

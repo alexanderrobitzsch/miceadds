@@ -1,5 +1,5 @@
 %% File Name: cxxfunction.copy.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{cxxfunction.copy}
 \alias{cxxfunction.copy}
@@ -91,5 +91,5 @@ calclogis(m1)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

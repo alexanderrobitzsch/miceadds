@@ -1,5 +1,5 @@
 %% File Name: mice.impute.plausible.values.Rd
-%% File Version: 0.48
+%% File Version: 0.49
 
 \name{mice.impute.plausible.values}
 \alias{mice.impute.plausible.values}
@@ -379,5 +379,5 @@ summary( mice::pool(mod1) )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{mice imputation method}
+%% \keyword{mice imputation method}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

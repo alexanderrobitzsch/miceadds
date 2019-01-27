@@ -1,5 +1,5 @@
 %% File Name: datalist2mids.Rd
-%% File Version: 0.29
+%% File Version: 0.30
 
 \name{datlist2mids}
 \alias{datalist2mids}
@@ -112,6 +112,6 @@ summary( mitools::MIcombine( mod3 ) )
 }
 
 
-\keyword{mids}
-\keyword{mice utility function}
+%% \keyword{mids}
+%% \keyword{mice utility function}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

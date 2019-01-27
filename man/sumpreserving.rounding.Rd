@@ -1,5 +1,5 @@
 %% File Name: sumpreserving.rounding.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{sumpreserving.rounding}
 \alias{sumpreserving.rounding}
@@ -97,5 +97,5 @@ sumpreserving.rounding(x2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Rounding}
+%% \keyword{Rounding}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

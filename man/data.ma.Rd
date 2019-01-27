@@ -1,5 +1,5 @@
 %% File Name: data.ma.Rd
-%% File Version: 0.36
+%% File Version: 0.37
 
 \name{data.ma}
 \alias{data.ma}
@@ -191,4 +191,4 @@ these strings into matrices.
 %data(data.ma01)
 %## maybe str(data.ma01) ; plot(data.ma01) ...
 %}
-\keyword{datasets}
+%% \keyword{datasets}

@@ -1,5 +1,5 @@
 %% File Name: mice_impute_2l_lmer.Rd
-%% File Version: 0.45
+%% File Version: 0.46
 
 \name{mice_impute_2l_lmer}
 \alias{mice.impute.2l.binary}
@@ -232,5 +232,5 @@ imp3 <- mice::mice( data=as.matrix(dat1), method=impmeth,
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{mice imputation method}
+%% \keyword{mice imputation method}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

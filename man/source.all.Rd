@@ -1,5 +1,5 @@
 %% File Name: source.all.Rd
-%% File Version: 0.25
+%% File Version: 0.26
 
 \name{source.all}
 \alias{source.all}
@@ -85,5 +85,5 @@ source.all( path, "Rex" )}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

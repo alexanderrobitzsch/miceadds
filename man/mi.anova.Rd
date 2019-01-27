@@ -1,5 +1,5 @@
 %% File Name: mi.anova.Rd
-%% File Version: 0.24
+%% File Version: 0.25
 
 \name{mi.anova}
 \alias{mi.anova}
@@ -102,5 +102,5 @@ car::Anova( lm2, type=3)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ANOVA}
-\keyword{mids}
+%% \keyword{ANOVA}
+%% \keyword{mids}

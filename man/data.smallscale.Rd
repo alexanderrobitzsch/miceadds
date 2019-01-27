@@ -1,5 +1,5 @@
 %% File Name: data.smallscale.Rd
-%% File Version: 0.19
+%% File Version: 0.20
 
 \name{data.smallscale}
 \alias{data.smallscale}
@@ -45,4 +45,4 @@ data(data.smallscale)
 %\examples{
 %
 %}
-\keyword{datasets}
+%% \keyword{datasets}

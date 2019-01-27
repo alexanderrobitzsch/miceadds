@@ -1,5 +1,5 @@
 %% File Name: crlrem.Rd
-%% File Version: 0.08
+%% File Version: 0.09
 
 \name{crlrem}
 \alias{crlrem}
@@ -57,5 +57,5 @@ crlrem( filename1, filename2 )}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

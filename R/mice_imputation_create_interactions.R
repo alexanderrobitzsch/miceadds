@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_create_interactions.R
-## File Version: 1.12
+## File Version: 1.13
 
 
 #** create interactions
@@ -7,7 +7,7 @@ mice_imputation_create_interactions <- function (y_, xobs_, xall_,
     index_int_, min_int_cor_, maxcols_ )
 {
     res <- miceadds_rcpp_create_interactions(
-                Yr=y_, Xr=xobs_, Xallr=xall_, index_int=index_int_, 
+                Yr=y_, Xr=xobs_, Xallr=xall_, index_int=index_int_,
                 MI=min_int_cor_, maxcols=maxcols_ )
         # List of 5
         # $ index_int

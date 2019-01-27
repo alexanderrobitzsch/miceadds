@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pmm3.Rd
-%% File Version: 1.22
+%% File Version: 1.23
 
 \name{mice.impute.pmm3}
 \alias{mice.impute.pmm3}
@@ -167,6 +167,6 @@ colnames(dfr) <- c("compl", "ld", "pmm", "pmm3", "pmm4", "pmm5","pmm6")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Predictive mean matching}
-\keyword{mice imputation method}
+%% \keyword{Predictive mean matching}
+%% \keyword{mice imputation method}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,5 +1,5 @@
 %% File Name: subset_datlist.Rd
-%% File Version: 0.34
+%% File Version: 0.35
 
 \name{subset_datlist}
 \alias{subset_datlist}
@@ -229,5 +229,5 @@ datlist5b
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{subset}
+%% \keyword{subset}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,5 +1,5 @@
 %% File Name: save.Rdata.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{save.Rdata}
 \alias{save.Rdata}
@@ -60,5 +60,5 @@ save.Rdata( dfr, "dataframe_test" )}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

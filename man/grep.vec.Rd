@@ -1,5 +1,5 @@
 %% File Name: grep.vec.Rd
-%% File Version: 0.23
+%% File Version: 0.24
 
 \name{grep.vec}
 \alias{grep.vec}
@@ -43,7 +43,7 @@ contain at least one of the strings in \code{pattern.vec}.
 \item{pattern}{String}
 \item{patternvec}{Vector of strings}
 \item{value}{Logical indicating whether indices or values are requested}
-\item{\dots}{Arguments to be passed to \code{\link[base:grep]{base::grep}} 
+\item{\dots}{Arguments to be passed to \code{\link[base:grep]{base::grep}}
 (e.g., \code{fixed=TRUE})}
 }
 %\details{
@@ -95,5 +95,5 @@ grep.vec( pattern.vec=c("a","f"), x=vec, operator="OR")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

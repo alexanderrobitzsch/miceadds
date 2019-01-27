@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.33
+%% File Version: 0.34
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -170,6 +170,6 @@ print(Ftest)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Cluster robust standard errors}
-\keyword{coef}
-\keyword{vcov}
+%% \keyword{Cluster robust standard errors}
+%% \keyword{coef}
+%% \keyword{vcov}

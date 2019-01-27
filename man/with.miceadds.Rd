@@ -1,5 +1,5 @@
 %% File Name: with.miceadds.Rd
-%% File Version: 0.40
+%% File Version: 0.41
 
 \name{with.miceadds}
 \alias{with.mids.1chain}
@@ -259,6 +259,6 @@ withPool_NMI(res3b)
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 
-\keyword{with}
-\keyword{summary}
-\keyword{within}
+%% \keyword{with}
+%% \keyword{summary}
+%% \keyword{within}

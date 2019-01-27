@@ -1,5 +1,5 @@
 %% File Name: data.allison.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{data.allison}
 \alias{data.allison}
@@ -128,4 +128,4 @@ summary(imp)
 
 
 
-\keyword{datasets}
+%% \keyword{datasets}

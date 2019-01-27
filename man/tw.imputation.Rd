@@ -1,5 +1,5 @@
 %% File Name: tw.imputation.Rd
-%% File Version: 0.23
+%% File Version: 0.24
 
 \name{tw.imputation}
 \alias{tw.imputation}
@@ -106,5 +106,5 @@ dat.imp[ 278:281,]
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Two-way imputation}
+%% \keyword{Two-way imputation}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

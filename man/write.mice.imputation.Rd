@@ -1,5 +1,5 @@
 %% File Name: write.mice.imputation.Rd
-%% File Version: 0.19
+%% File Version: 0.20
 
 \name{write.mice.imputation}
 \alias{write.mice.imputation}
@@ -114,6 +114,6 @@ write.mice.imputation(mi.res=imp2, name="mice_imp2" )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{mice utility function}
-\keyword{mids}
+%% \keyword{mice utility function}
+%% \keyword{mids}
 % \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

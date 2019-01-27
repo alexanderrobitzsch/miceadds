@@ -1,5 +1,5 @@
 %% File Name: mice.1chain.Rd
-%% File Version: 0.40
+%% File Version: 0.41
 
 \name{mice.1chain}
 \alias{mice.1chain}
@@ -246,9 +246,9 @@ smod4 <- summary( mice::pool(mod4) )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Imputation}
-\keyword{mids}
-\keyword{summary}
-\keyword{plot}
-\keyword{mids.1chain}
+%% \keyword{Imputation}
+%% \keyword{mids}
+%% \keyword{summary}
+%% \keyword{plot}
+%% \keyword{mids.1chain}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

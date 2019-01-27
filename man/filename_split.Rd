@@ -1,5 +1,5 @@
 %% File Name: filename_split.Rd
-%% File Version: 0.31
+%% File Version: 0.35
 
 \name{filename_split}
 \alias{filename_split}
@@ -112,11 +112,10 @@ miceadds::string_extract_part( vec=vec, part=2, sep="__" )
   ##  > miceadds::string_extract_part( vec=vec, part=2, sep="__" )
   ##  [1] "DES"  "DATA" "INFO" NA
 
+\dontrun{
 #############################################################################
 # EXAMPLE 3: Reading descriptive information from published articles
 #############################################################################
-
-\dontrun{
 data(data.ma08)
 library(stringr)
 
@@ -173,6 +172,20 @@ for (ss in 1:NL ){
 
 miceadds::string_to_matrix(dat, rownames=2, col_elim=c(1,2), as_numeric=TRUE, diag_val=1,
      extend=TRUE )
+
+#############################################################################
+# EXAMPLE 4: Input string of length one
+#############################################################################
+
+
+pm0 <- "
+0.828
+0.567 0.658
+0.664 0.560 0.772
+0.532 0.428 0.501 0.606
+0.718 0.567 0.672 0.526 0.843"
+
+miceadds::string_to_matrix(x=pm0, as_numeric=TRUE, extend=TRUE)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.weighted.pmm.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{mice.impute.weighted.pmm}
 \alias{mice.impute.weighted.pmm}
@@ -106,6 +106,6 @@ imp <- mice::mice( dat, predictorMatrix=pm, method=meth,
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Predictive mean matching}
-\keyword{Sampling weights}
-\keyword{mice imputation method}
+%% \keyword{Predictive mean matching}
+%% \keyword{Sampling weights}
+%% \keyword{mice imputation method}

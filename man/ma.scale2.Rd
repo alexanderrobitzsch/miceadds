@@ -1,5 +1,5 @@
 %% File Name: ma.scale2.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{ma.scale2}
 \alias{ma.scale2}
@@ -104,6 +104,6 @@ d3      # scale in miceadds (with missing handling)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{z-Standardization}
-\keyword{Utility function}
+%% \keyword{z-Standardization}
+%% \keyword{Utility function}
 % __ONLY ONE__ keyword per line

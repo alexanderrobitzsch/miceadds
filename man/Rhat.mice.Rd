@@ -1,5 +1,5 @@
 %% File Name: Rhat.mice.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{Rhat.mice}
 \alias{Rhat.mice}
@@ -63,5 +63,5 @@ miceadds::Rhat.mice( imp1 )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Rhat statistic}
-\keyword{Convergence}% __ONLY ONE__ keyword per line
+%% \keyword{Rhat statistic}
+%% \keyword{Convergence}% __ONLY ONE__ keyword per line

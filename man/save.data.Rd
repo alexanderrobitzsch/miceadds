@@ -1,5 +1,5 @@
 %% File Name: save.data.Rd
-%% File Version: 0.31
+%% File Version: 0.32
 
 \name{save.data}
 \alias{save.data}
@@ -129,5 +129,5 @@ miceadds::save.data( dat, filename="ma03data", type=c("sav","table","csv2"),  pa
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

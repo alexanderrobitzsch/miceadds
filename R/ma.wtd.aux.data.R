@@ -1,5 +1,5 @@
 ## File Name: ma.wtd.aux.data.R
-## File Version: 2.16
+## File Version: 2.22
 
 ########################################################
 # auxiliary function
@@ -69,6 +69,8 @@ ma.wtd.aux.data <- function(data, weights, vars=NULL )
         M <- length(data)
         for (ii in 1:M){
             data[[ii]][, "one"] <- NULL
+            data_ii <- data[[ii]]
+            data[[ii]] <- data_ii[,vars]
         }
         attr(data,"nvars") <- ncol(data[[ii]])
         is_dfr <- FALSE
@@ -88,7 +90,7 @@ ma.wtd.aux.data <- function(data, weights, vars=NULL )
     #-------------------
     # creation of weights (if needed)
     if ( is.null(weights) ){
-        weights <- rep(1, nrow(data[[1]] ) )
+        weights <- rep(1, nrow(data[[1]]) )
     }
     res <- list( data=data, weights=weights )
     return(res)

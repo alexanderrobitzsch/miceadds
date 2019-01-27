@@ -1,5 +1,5 @@
 %% File Name: data.enders.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{data.enders}
 \alias{data.enders}
@@ -100,4 +100,4 @@ Enders, C. K. (2010). \emph{Applied missing data analysis}. Guilford Press.
 %data(data.enders.depression)
 %## maybe str(data.enders.depression) ; plot(data.enders.depression) ...
 %}
-\keyword{datasets}
+%% \keyword{datasets}

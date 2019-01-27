@@ -1,5 +1,5 @@
 %% File Name: complete.miceadds.Rd
-%% File Version: 0.19
+%% File Version: 0.20
 
 \name{complete.miceadds}
 \alias{complete.mids.nmi}
@@ -111,5 +111,5 @@ dati1 <- miceadds::complete.mids.1chain( imp1, action=1 )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

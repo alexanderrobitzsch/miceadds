@@ -1,5 +1,5 @@
 %% File Name: load.data.Rd
-%% File Version: 0.33
+%% File Version: 0.34
 
 \name{load.data}
 \alias{load.data}
@@ -94,5 +94,5 @@ print(str(dat.s3))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

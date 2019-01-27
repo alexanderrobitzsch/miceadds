@@ -1,5 +1,5 @@
 %% File Name: NMIwaldtest.Rd
-%% File Version: 0.21
+%% File Version: 0.22
 
 \name{NMIwaldtest}
 \alias{NMIwaldtest}
@@ -219,5 +219,5 @@ summary(wres2)
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Nested multiple imputation}
-\keyword{summary}% __ONLY ONE__ keyword per line
+%% \keyword{Nested multiple imputation}
+%% \keyword{summary}% __ONLY ONE__ keyword per line

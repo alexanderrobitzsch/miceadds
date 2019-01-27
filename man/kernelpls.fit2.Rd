@@ -1,5 +1,5 @@
 %% File Name: kernelpls.fit2.Rd
-%% File Version: 0.26
+%% File Version: 0.27
 
 \name{kernelpls.fit2}
 \alias{kernelpls.fit2}
@@ -111,7 +111,7 @@ mod2 <- miceadds::kernelpls.fit2( X=yarn$NIR, Y=Y, ncomp=10 )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Partial least squares regression (PLS)}
-\keyword{Dimension reduction}
-\keyword{predict}
+%% \keyword{Partial least squares regression (PLS)}
+%% \keyword{Dimension reduction}
+%% \keyword{predict}
 % __ONLY ONE__ keyword per line

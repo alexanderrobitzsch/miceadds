@@ -1,5 +1,5 @@
 %% File Name: load.Rdata.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{load.Rdata}
 \alias{load.Rdata}
@@ -76,5 +76,5 @@ dat.s3 <- miceadds::load.Rdata2( filename="data_s3.Rdata")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

@@ -1,5 +1,5 @@
 %% File Name: micombine.chisquare.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{micombine.chisquare}
 \alias{micombine.chisquare}
@@ -88,5 +88,5 @@ dk.comb <- miceadds::micombine.chisquare(dk=dk, df=4 )
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Chi square statistic}
-\keyword{D2 statistic}
+%% \keyword{Chi square statistic}
+%% \keyword{D2 statistic}

@@ -1,5 +1,5 @@
 %% File Name: data.internet.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{data.internet}
 \alias{data.internet}
@@ -99,4 +99,4 @@ colMeans( is.na(data.internet) )
 }
 
 
-\keyword{datasets}
+%% \keyword{datasets}

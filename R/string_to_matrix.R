@@ -1,10 +1,13 @@
 ## File Name: string_to_matrix.R
-## File Version: 0.12
+## File Version: 0.17
 
 string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
         diag_val=NULL, extend=FALSE, split=" ")
 {
+    x <- unlist(strsplit(x, split="\n", fixed=TRUE ))
     x <- gsub("\t", " ", x, fixed=TRUE )
+    x <- x[ x!=""]
+
     #-- split vectors
     v1 <- sapply( x, FUN=function(vv){
                 g1 <- strsplit( vv, split=split )[[1]]

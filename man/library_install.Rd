@@ -1,5 +1,5 @@
 %% File Name: library_install.Rd
-%% File Version: 0.12
+%% File Version: 0.13
 
 \name{library_install}
 \alias{library_install}
@@ -59,5 +59,5 @@ library_install( pkg=c("PP", "MCMCglmm") )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

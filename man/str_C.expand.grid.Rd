@@ -1,5 +1,5 @@
 %% File Name: str_C.expand.grid.Rd
-%% File Version: 0.16
+%% File Version: 0.17
 
 \name{str_C.expand.grid}
 \alias{str_C.expand.grid}
@@ -69,5 +69,5 @@ function( xlist, indices=NULL )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Utility function}
+%% \keyword{Utility function}
 %% \keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

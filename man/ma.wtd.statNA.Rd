@@ -1,5 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
-%% File Version: 1.55
+%% File Version: 1.56
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}
@@ -240,5 +240,5 @@ ma.wtd.skewnessNA( bdat, vars=c("ASMMAT", "books" ) )
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 % \keyword{Utility function}
-\keyword{Descriptives}
+%% \keyword{Descriptives}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

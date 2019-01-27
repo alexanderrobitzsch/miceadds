@@ -1,5 +1,5 @@
 %% File Name: stats0.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{stats0}
 \alias{stats0}
@@ -113,5 +113,5 @@ sd0(y)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{R utilities}
+%% \keyword{R utilities}
 %%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
