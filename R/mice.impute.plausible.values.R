@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.668
+## File Version: 2.669
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
@@ -220,7 +220,6 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         if (pvmethod  %in% c(1,2) ){
             if (pvmethod==2){
                 TAM::require_namespace_msg("MBESS")
-                alpha.est <- .cronbach.alpha( dat.scale )
                 cirel.type <- "Normal Theory"
                 cir <- MBESS::ci.reliability( data=dat.scale, type=cirel.type, interval.type=TRUE )
                 alpha.est <- cir$Estimated.reliability

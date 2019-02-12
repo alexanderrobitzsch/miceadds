@@ -1,5 +1,5 @@
 %% File Name: NMIwaldtest.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{NMIwaldtest}
 \alias{NMIwaldtest}
@@ -179,9 +179,9 @@ pres1 <- mice::pool( res1 )
 summary(pres1)
 
 # Wald test for zero interaction effects
-qhat <- pres1$qhat
-u <- pres1$u
-pars <- dimnames(pres1$qhat)[[2]]
+qhat <- mitools::MIextract(res1$analyses, fun=coef)
+u <- mitools::MIextract(res1$analyses, fun=vcov)
+pars <- names(qhat[[1]])
 des <- miceadds::create.designMatrices.waldtest( pars=pars, k=2)
 Cdes <- des$Cdes
 rdes <- des$rdes

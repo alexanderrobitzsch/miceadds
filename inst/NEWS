@@ -44,7 +44,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.1  |  2019-01-27  |  Last: miceadds 3.1-7
+VERSIONS miceadds 3.1  |  2019-02-12  |  Last: miceadds 3.1-9
 ---------------------------------------------------------------------
 
 NOTE  * included argument '...' in grep.vec() for passing arguments to
@@ -52,10 +52,13 @@ NOTE  * included argument '...' in grep.vec() for passing arguments to
 NOTE  * handle now strings of length one in string_to_matrix()
 FIXED * fixed labeling issue in ma.wtd.corNA() functions when applied
         to BIFIEdata objects (thanks to Peter Lenz)
+NOTE  * fixed a bug in Example 2 of ?NNIWaldtest caused by changes in
+        mice::pool() output (thanks to Joost van Ginkel)
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: filename_split (4)
+EXAMP * included/modified examples: filename_split (4),
+        NMIWaldtest (2)
 
 
 
