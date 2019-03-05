@@ -1,8 +1,14 @@
 ## File Name: files_move.R
-## File Version: 0.19
+## File Version: 0.24
 
-files_move <- function( path1, path2, file_sep="__", pattern=NULL)
+files_move <- function( path1, path2, file_sep="__", pattern=NULL,
+    path2_name="__ARCH")
 {
+    #*** include missing path2 argument
+    if ( missing(path2) ){
+        f1 <- list.files(path1, path2_name)
+        path2 <- file.path(path1, f1)
+    }
 
     #*** search for all relevant files
     files <- list.files( path1, "\\."  )
@@ -32,7 +38,7 @@ files_move <- function( path1, path2, file_sep="__", pattern=NULL)
                 file.rename( from=file.path( path1, matr[ff-1,"file_name"] ),
                         to=file.path( path2, matr[ff-1,"file_name"] ) )
                 cat("*** Move ", paste0(matr[ff-1,"file_name"]), "\n" )
-                utils::flush.console();
+                utils::flush.console()
             }
 
         }

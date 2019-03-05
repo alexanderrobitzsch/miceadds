@@ -1,8 +1,9 @@
 ## File Name: ml_mcmc.R
-## File Version: 0.483
+## File Version: 0.491
 
 ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
-    outcome="normal", nu0=NULL, s0=1, inits_lme4=TRUE, thresh_fac=5.8)
+    outcome="normal", nu0=NULL, s0=1, psi_nu0_list=NULL, psi_S0_list=NULL,
+    inits_lme4=TRUE, thresh_fac=5.8)
 {
     CALL <- match.call()
     s1 <- Sys.time()
@@ -49,8 +50,6 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     parameter_index <- res$parameter_index
     est_parameter <- res$est_parameter
     npar <- res$npar
-    psi_nu0_list <- list()
-    psi_S0_list <- list()
     s0e <- s00 <- s0
     nu0e <- nu00 <- nu0
     if (is.null(s00)){
@@ -60,20 +59,23 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     if (is.null(nu0e) ){
         nu0e <- -3
     }
-    for (rr in seq_len(NR) ){
-        nu00 <- nu0
-        nr <- ncol(Psi_list[[rr]])
-        if (is.null(nu00) ){
-            nu00 <- nr + 1
+    if (is.null(psi_nu0_list)){
+        psi_nu0_list <- list()
+        psi_S0_list <- list()    
+        for (rr in seq_len(NR) ){
+            nu00 <- nu0
+            nr <- ncol(Psi_list[[rr]])
+            if (is.null(nu00) ){
+                nu00 <- nr + 1
+            }
+            S0 <- diag(s0,nr)
+            psi_nu0_list[[rr]] <- nu00
+            psi_S0_list[[rr]] <- as.matrix(S0)
         }
-        S0 <- diag(s0,nr)
-        psi_nu0_list[[rr]] <- nu00
-        psi_S0_list[[rr]] <- as.matrix(S0)
     }
     save_iter <- rep(-9, iter)
     save_iter[ seq(burnin+1, iter)] <- seq(1, iter-burnin ) - 1
     parnames0 <- unlist(parnames)
-
     ml_mcmc_fit_args <- list( y=y, X=X, Z_list=Z_list, beta=beta, Psi_list=Psi_list,
             sigma2=sigma2, alpha=alpha, u_list=u_list, idcluster_list=idcluster_list,
             onlyintercept_list=onlyintercept_list, ncluster_list=ncluster_list,

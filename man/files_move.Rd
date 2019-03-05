@@ -1,5 +1,5 @@
 %% File Name: files_move.Rd
-%% File Version: 0.15
+%% File Version: 0.17
 
 \name{files_move}
 \alias{files_move}
@@ -13,7 +13,7 @@ directory to another directory.
 }
 
 \usage{
-files_move(path1, path2, file_sep="__", pattern=NULL)
+files_move(path1, path2, file_sep="__", pattern=NULL, path2_name="__ARCH")
 }
 
 
@@ -31,6 +31,9 @@ Separator for files
   \item{pattern}{
 Pattern in file names to be searched for
 }
+\item{path2_name}{Part of the name of \code{path2} if argument
+\code{path2} is missing. If \code{path2} is not provided, it has to be
+a subdirectory of \code{path1}.}
 }
 
 %\details{

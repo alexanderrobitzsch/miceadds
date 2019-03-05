@@ -1,5 +1,5 @@
 %% File Name: ml_mcmc.Rd
-%% File Version: 0.432
+%% File Version: 0.433
 
 \name{ml_mcmc}
 \alias{ml_mcmc}
@@ -40,7 +40,7 @@ or ordinal (Goldstein, 2011; Goldstein, Carpenter, Kenward & Levin, 2009).
 
 \usage{
 ml_mcmc( formula, data, iter=3000, burnin=500, print_iter=100, outcome="normal",
-     nu0=NULL, s0=1, inits_lme4=TRUE, thresh_fac=5.8)
+     nu0=NULL, s0=1, psi_nu0_list=NULL, psi_S0_list=NULL, inits_lme4=TRUE, thresh_fac=5.8)
 
 \method{summary}{ml_mcmc}(object, digits=4, file=NULL, ...)
 
