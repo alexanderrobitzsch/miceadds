@@ -1,5 +1,5 @@
 %% File Name: load.data.Rd
-%% File Version: 0.34
+%% File Version: 0.36
 
 \name{load.data}
 \alias{load.data}
@@ -19,9 +19,9 @@ The function \code{load.files} loads multiple files in a data frame.
 }
 
 \usage{
-load.data( filename, type="Rdata", path=getwd(), spss.default=TRUE, ...)
+load.data( filename, type=NULL, path=getwd(), spss.default=TRUE, ...)
 
-load.files( files, type="Rdata", path=getwd(), ...)
+load.files( files, type=NULL, path=getwd(), ...)
 }
 
 

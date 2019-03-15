@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pmm3.Rd
-%% File Version: 1.23
+%% File Version: 1.24
 
 \name{mice.impute.pmm3}
 \alias{mice.impute.pmm3}
@@ -122,19 +122,19 @@ impmethod <- rep("pmm", 2 )
 names(impmethod) <- colnames(dat)
 
 # pmm (in mice)
-imp1 <- mice::mice( as.matrix(dat), m=1, maxit=1, imputationMethod=impmethod)
+imp1 <- mice::mice( as.matrix(dat), m=1, maxit=1, method=impmethod)
 # pmm3 (in miceadds)
 imp3 <- mice::mice( as.matrix(dat), m=1, maxit=1,
-           imputationMethod=gsub("pmm","pmm3",impmethod)  )
+           method=gsub("pmm","pmm3",impmethod)  )
 # pmm4 (in miceadds)
 imp4 <- mice::mice( as.matrix(dat), m=1, maxit=1,
-           imputationMethod=gsub("pmm","pmm4",impmethod)  )
+           method=gsub("pmm","pmm4",impmethod)  )
 # pmm5 (in miceadds)
 imp5 <- mice::mice( as.matrix(dat), m=1, maxit=1,
-           imputationMethod=gsub("pmm","pmm5",impmethod)  )
+           method=gsub("pmm","pmm5",impmethod)  )
 # pmm6 (in miceadds)
 imp6 <- mice::mice( as.matrix(dat), m=1, maxit=1,
-           imputationMethod=gsub("pmm","pmm6",impmethod)  )
+           method=gsub("pmm","pmm6",impmethod)  )
 
 dat.imp1 <- mice::complete( imp1, 1 )
 dat.imp3 <- mice::complete( imp3, 1 )

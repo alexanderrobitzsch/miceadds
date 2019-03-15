@@ -1,5 +1,5 @@
 ## File Name: write.pspp.R
-## File Version: 1.282
+## File Version: 1.283
 
 
 write.pspp <- function (data, datafile, pspp.path, decmax=6,
@@ -13,10 +13,10 @@ write.pspp <- function (data, datafile, pspp.path, decmax=6,
     if ( as.factors ){
         dfn <- lapply(df, function(x) if (is.factor(x))
              as.numeric(x)
-             else x) 
+             else x)
     } else {
         dfn <- lapply(df, function(x)
-            if (is.factor(x)) paste(x)  else x ) 
+            if (is.factor(x)) paste(x)  else x )
 }
     if(is.null(attributes(df)$variable.labels)) varlabels <- names(df) else varlabels <- attributes(df)$variable.labels
     if (is.null(varnames)) {
@@ -91,7 +91,7 @@ write.pspp <- function (data, datafile, pspp.path, decmax=6,
     }
     cat("\n",file=codefile,append=TRUE)
 
-    
+
     # write value labels
     varnames <- colnames(df)
     for (vv in varnames){

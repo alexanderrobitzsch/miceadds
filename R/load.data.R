@@ -1,14 +1,11 @@
 ## File Name: load.data.R
-## File Version: 0.39
+## File Version: 0.453
 
 
-#########################################################################
-# miceadds::load.data: load conveniently R objects of different data formats
-load.data <- function( filename, type="Rdata", path=getwd(), spss.default=TRUE, ...)
+
+#--- miceadds::load.data: load conveniently R objects of different data formats
+load.data <- function( filename, type=NULL, path=getwd(), spss.default=TRUE, ...)
 {
-    if (type=="sav"){
-        TAM::require_namespace_msg("foreign")
-    }
     #*** the resulting object is dat4!
     dir <- path
     file <- filename
@@ -18,6 +15,13 @@ load.data <- function( filename, type="Rdata", path=getwd(), spss.default=TRUE, 
         files <- grep.vec( filename, files, "AND")$x
     } else {
         files <- file
+    }
+    if (is.null(type)){
+        s1 <- strsplit(files, split=".", fixed=TRUE)[[1]]
+        type <- s1[ length(s1) ]
+    }
+    if (type=="sav"){
+        TAM::require_namespace_msg("foreign")
     }
     type1 <- type
     if ( type=="table" ){
@@ -33,11 +37,11 @@ load.data <- function( filename, type="Rdata", path=getwd(), spss.default=TRUE, 
         dat4 <- load.Rdata2( filename=file, path=dir )
     }
     #*** csv2 objects
-    if (type=="csv2"){
+    if (type %in% c("csv2","CSV2")){
         dat4 <- utils::read.csv2( file=file_path(dir,file), ... )
     }
     #*** csv objects
-    if (type=="csv"){
+    if (type %in% c("csv","CSV")){
         dat4 <- utils::read.csv( file=file_path(dir,file), ... )
     }
     #*** table objects
@@ -45,7 +49,7 @@ load.data <- function( filename, type="Rdata", path=getwd(), spss.default=TRUE, 
         dat4 <- utils::read.table( file=file_path(dir,file), header=TRUE, ... )
     }
     #*** sav objects (SPSS objects)
-    if (type=="sav" ){
+    if (type %in% c("sav","SAV") ){
         if ( ! spss.default){
             dat4 <- foreign::read.spss( file=file_path(dir,file), ... )
         } else {
@@ -55,4 +59,3 @@ load.data <- function( filename, type="Rdata", path=getwd(), spss.default=TRUE, 
     }
     return(dat4)
 }
-#########################################################################

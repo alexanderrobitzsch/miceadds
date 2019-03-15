@@ -1,5 +1,5 @@
 ## File Name: files_move.R
-## File Version: 0.24
+## File Version: 0.27
 
 files_move <- function( path1, path2, file_sep="__", pattern=NULL,
     path2_name="__ARCH")
@@ -17,7 +17,7 @@ files_move <- function( path1, path2, file_sep="__", pattern=NULL,
     }
     #*** create file overview
     NF <- length(files)
-    if (NF > 0 ){
+    if (NF > 1){
         matr <- matrix( NA, nrow=NF, ncol=5)
         for (ff in 1:NF){
             file_ff <- files[ff]
@@ -27,7 +27,6 @@ files_move <- function( path1, path2, file_sep="__", pattern=NULL,
         matr <- as.data.frame(matr)
         colnames(matr) <- names(res_ff)
         matr$main_id <- match( matr$main, unique( matr$main) )
-
         matr <- matr[ order( matr$main ), ]
         matr$eq <- c(0,matr$main[ - NF ] !=matr$main[-1])
         t1 <- table( matr$main_id )
@@ -40,7 +39,6 @@ files_move <- function( path1, path2, file_sep="__", pattern=NULL,
                 cat("*** Move ", paste0(matr[ff-1,"file_name"]), "\n" )
                 utils::flush.console()
             }
-
         }
     }
 }

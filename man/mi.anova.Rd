@@ -1,5 +1,5 @@
 %% File Name: mi.anova.Rd
-%% File Version: 0.25
+%% File Version: 0.261
 
 \name{mi.anova}
 \alias{mi.anova}
@@ -85,6 +85,13 @@ set.seed(9090)
 mi.res <- miceadds::mice.1chain( nhanes2, burnin=4, iter=20, Nimp=8 )
 # 2-way analysis of variance (type 2)
 an2a <- miceadds::mi.anova(mi.res=mi.res, formula="bmi ~ age * chl" )
+
+# test of interaction effects using mitml::testModels()
+mod1 <- with( mi.res, stats::lm( bmi ~ age*chl ) )
+mod0 <- with( mi.res, stats::lm( bmi ~ age+chl ) )
+mitml::testModels(model=mod1$analyses, null.model=mod0$analyses, method="D1")
+mitml::testModels(model=mod1$analyses, null.model=mod0$analyses, method="D2")
+
 # 2-way analysis of variance (type 3)
 an2b <- miceadds::mi.anova(mi.res=mi.res, formula="bmi ~ age * chl", type=3)
 

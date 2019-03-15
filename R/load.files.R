@@ -1,8 +1,8 @@
 ## File Name: load.files.R
-## File Version: 0.11
+## File Version: 0.13
 
 
-load.files <- function(files, type="Rdata", path=getwd(), ...)
+load.files <- function(files, type=NULL, path=getwd(), ...)
 {
     NF <- length(files)
     dat <- load.data( filename=files[1], type=type, path=path)

@@ -1,5 +1,5 @@
 ## File Name: ma_lme4_formula_terms.R
-## File Version: 0.09
+## File Version: 0.13
 
 ma_lme4_formula_terms <- function(formula)
 {
@@ -29,10 +29,11 @@ ma_lme4_formula_terms <- function(formula)
     t1f <- term_labels[ ! ind_re ]
     # formula fixed effects
     formula_fixed <- stats::as.formula( paste0( formula_lhs, " ~ ", paste0( t1f, collapse=" + " ) ) )
+    formula_fixed1 <- stats::as.formula( paste0( " ~ ", paste0( t1f, collapse=" + " ) ) )
 
     #--- output
     res <- list( all_vars=all_vars, formula_fixed=formula_fixed, formula_random=formula_random,
                 random_effects_id=random_effects_id, formula_lhs=formula_lhs,
-                terms_fe=t1f, terms_re=t1r, NR=NR)
+                terms_fe=t1f, terms_re=t1r, NR=NR, formula_fixed1=formula_fixed1)
     return(res)
 }

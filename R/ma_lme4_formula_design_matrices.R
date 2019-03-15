@@ -1,5 +1,5 @@
 ## File Name: ma_lme4_formula_design_matrices.R
-## File Version: 0.29
+## File Version: 0.314
 
 
 ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
@@ -9,11 +9,13 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
     if ( is.null(formula_terms) ){
         formula_terms <- ma_lme4_formula_terms(formula=formula)
     }
+
     #*** omit missing values
     observed_cases <- which( rowSums( is.na( data[, formula_terms$all_vars ] ) )==0 )
     data <- data[ observed_cases, ]
+
     #*** design matrix fixed effects
-    X <- as.matrix( stats::model.matrix( object=formula_terms$formula_fixed, data=data) )
+    X <- as.matrix( stats::model.matrix( formula_terms$formula_fixed, data=data) )
     parnames <- list()
     if ( ! only_design_matrices ){
         parnames$beta <- paste0("beta_", colnames(X) )
@@ -32,7 +34,7 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
     parnames_Psi <- list()
     for (rr in seq_len(NR)){
         #-- design matrix random effect rr
-        Z_rr <- stats::model.matrix( object=formula_random[[rr]], data=data)
+        Z_rr <- stats::model.matrix( formula_random[[rr]], data=data)
         Z[[rr]] <- as.matrix(Z_rr)
         if ( ! only_design_matrices ){
             #-- idcluster random effect rr

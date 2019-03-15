@@ -1,5 +1,5 @@
 %% File Name: mice.impute.eap.Rd
-%% File Version: 0.24
+%% File Version: 0.25
 
 \name{mice.impute.eap}
 \alias{mice.impute.eap}
@@ -92,13 +92,13 @@ pM[,c("idstud","math_EAP", "math_SEEAP") ] <- 0
     # remove some variables from imputation model
 
 # imputation using three parallel chains
-imp1 <- mice::mice( dat1, m=3, maxit=5, imputationMethod=impmethod,
+imp1 <- mice::mice( dat1, m=3, maxit=5, method=impmethod,
                predictorMatrix=pM, allow.na=TRUE, eap=eap )
 summary(imp1)   # summary
 
 # imputation using one long chain
 imp2 <- miceadds::mice.1chain( dat1, burnin=10, iter=20, Nimp=3,
-            imputationMethod=impmethod, predictorMatrix=pM,  allow.na=TRUE, eap=eap)
+            method=impmethod, predictorMatrix=pM,  allow.na=TRUE, eap=eap)
 summary(imp2)    # summary
 }
 }

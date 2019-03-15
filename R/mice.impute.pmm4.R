@@ -1,8 +1,13 @@
 ## File Name: mice.impute.pmm4.R
-## File Version: 2.16
+## File Version: 2.20
 
 mice.impute.pmm4 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...)
 {
+    res <- mice_imputation_factor_pmm_prepare(y=y)
+    y <- res$y
+    y_aggr <- res$y_aggr
+    is_factor <- res$is_factor
+
     x <- cbind(1, as.matrix(x))
     res <- mice_imputation_norm_draw(y=y, ry=ry, x=x, ridge=ridge, ...)
     yhatobs <- res$yhatobs
@@ -65,5 +70,7 @@ mice.impute.pmm4 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...
     # create imputations
     imp <- (y[ry])[ ind ]
     imp <- imp[ order(dfr2$index) ]
+    imp <- mice_imputation_factor_pmm_convert_factor(imp=imp,
+                    is_factor=is_factor, y_aggr=y_aggr)
     return(imp)
 }

@@ -44,7 +44,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.1  |  2019-03-05  |  Last: miceadds 3.1-12
+VERSIONS miceadds 3.1  |  2019-03-15  |  Last: miceadds 3.1-21
 ---------------------------------------------------------------------
 
 NOTE  * included argument '...' in grep.vec() for passing arguments to
@@ -58,11 +58,25 @@ NOTE  * included argument 'path2_name' in files_move()
 ADDED * included arguments 'psi_nu0_list' and 'psi_S0_list' in ml_mcmc()
         for specification of inverse Wishart prior distribution for
         covariance matrix of random effects
+FIXED * fixed a bug in ml_mcmc() when formula arguments was used
+NOTE  * changed default to noninformative prior distributions in
+        ml_mcmc(), i.e. nu0=-3 scale degrees of freedom and zero
+        diagonal scale matrix
+NOTE  * changed default argument values of 'type' in load.data() and
+        load.files() to 'NULL'
+NOTE  * fixed warning message of incorrect argument use of 
+        'imputationMethod' in datalist2mids()
+        (thanks to Valentin Fuchs). 
+NOTE  *  Replaced all remaining 'imputationMethod' arguments in 
+         mice::mice() by 'method' in the manual
+NOTE  * allowed factor variables for PMM imputation methods 'pmm3',
+        'pmm4', 'pmm5', 'pmm6', '2l.contextual.pmm', '2l.pmm'
+
 
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: filename_split (4),
-        NMIWaldtest (2)
+        NMIWaldtest (2), mi.anova (1)
 
 
 

@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc.R
-## File Version: 0.491
+## File Version: 0.497
 
 ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     outcome="normal", nu0=NULL, s0=1, psi_nu0_list=NULL, psi_S0_list=NULL,
@@ -61,14 +61,14 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     }
     if (is.null(psi_nu0_list)){
         psi_nu0_list <- list()
-        psi_S0_list <- list()    
+        psi_S0_list <- list()
         for (rr in seq_len(NR) ){
             nu00 <- nu0
             nr <- ncol(Psi_list[[rr]])
             if (is.null(nu00) ){
-                nu00 <- nr + 1
+                nu00 <- -3
             }
-            S0 <- diag(s0,nr)
+            S0 <- diag(0,nr)
             psi_nu0_list[[rr]] <- nu00
             psi_S0_list[[rr]] <- as.matrix(S0)
         }
@@ -86,7 +86,7 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
             parnames0=parnames0, K=K, est_thresh=est_thresh, thresh_fac=thresh_fac )
 
     #*** MCMC estimation
-    res <- do.call( ml_mcmc_fit, args=ml_mcmc_fit_args)
+    res <- do.call( what=ml_mcmc_fit, args=ml_mcmc_fit_args)
 
     #*** post processing
     res$parnames <- parnames

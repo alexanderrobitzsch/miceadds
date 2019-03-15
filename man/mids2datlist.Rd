@@ -1,5 +1,5 @@
 %% File Name: mids2datlist.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{mids2datlist}
 \alias{mids2datlist}
@@ -105,7 +105,7 @@ dat <- data.ma05
 
 # imputation
 resp <- dat[, - c(1:2) ]
-imp <- mice::mice( resp, imputationMethod="norm", maxit=2, m=3 )
+imp <- mice::mice( resp, method="norm", maxit=2, m=3 )
 
 # convert mids object into datalist
 datlist0 <- miceadds::mids2datlist( imp )

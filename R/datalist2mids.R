@@ -1,5 +1,5 @@
 ## File Name: datalist2mids.R
-## File Version: 0.40
+## File Version: 0.41
 
 datalist2mids <- function( dat.list, progress=FALSE )
 {
@@ -65,7 +65,7 @@ datalist2mids <- function( dat.list, progress=FALSE )
         pM[, elimvars ] <- 0
     }
     #- init mice output object
-    imp1 <- mice::mice( dat0, maxit=0, imputationMethod=iM, predictorMatrix=pM,
+    imp1 <- mice::mice( dat0, maxit=0, method=iM, predictorMatrix=pM,
                     m=M, allow.na=TRUE)
     # fill in missing in mids object
     IMP <- imp1$imp
