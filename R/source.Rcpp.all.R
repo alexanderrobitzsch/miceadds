@@ -1,10 +1,12 @@
 ## File Name: source.Rcpp.all.R
-## File Version: 0.36
+## File Version: 0.37
 
 # function for sourcing Rcpp files
 source.Rcpp.all <- function( path, file_names=NULL, ext="\\.cpp", excl="RcppExports",
     remove_temp_file=FALSE)
 {
+    path00 <- getwd()
+    setwd(path)
     files0 <- files <- list.files( path, ext )
     ind <- grep( excl, files )
     if (length(ind)>0){
@@ -69,4 +71,5 @@ source.Rcpp.all <- function( path, file_names=NULL, ext="\\.cpp", excl="RcppExpo
         }
         utils::flush.console()
     }
+    setwd(path00)
 }

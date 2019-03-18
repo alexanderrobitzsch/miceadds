@@ -1,15 +1,12 @@
 ## File Name: mi.anova.R
-## File Version: 0.34
-mi.anova <- function( mi.res, formula, type=2 ){
-    # INPUT:
-    # mi.res  ... mids object (from mice imputation function)
-    # formula ... formula for ANOVA model (variable names must be in colnames(mi.list[[1]]), ...
-    # converting MICE object to mi.list
+## File Version: 0.363
 
+
+mi.anova <- function( mi.res, formula, type=2 )
+{
     if (type==3){
         TAM::require_namespace_msg("car")
     }
-
     mi.list <- mi.res
     if( class(mi.list)=="mids.1chain" ){
         mi.list <- mi.list$midsobj
@@ -83,11 +80,9 @@ mi.anova <- function( mi.res, formula, type=2 ){
                         return(r1)
                                     } ),
                             df1=ifelse (type==2, anova.imp[[1]][[1]]$Df[ff],
-                                         anova.imp[[1]]["Df"][ff+1,1]     ),
+                                         anova.imp[[1]]["Df"][ff+1,1] ),
                             display=FALSE )
-#Revalpr("anova.imp[[1]][[1]]$Df[ff]")
                 } ) )
-
 
     # ANOVA results
     res <- anova.imp.inf[, c(3,4,1,2) ]
@@ -115,7 +110,7 @@ mi.anova <- function( mi.res, formula, type=2 ){
     r.squared <-  sum(SS[ - (FF+1) ]) / sum(SS)
     res$eta2 <- round( SS[ - ( FF + 1 ) ] / sum( SS ), 6 )
     res$partial.eta2 <- round( SS[ - (FF+1) ] / ( SS[ - (FF+1) ] + SS[ FF + 1 ] ), 6 )
-    g1     <- c("F value", "Pr(>F)" )
+    g1 <- c("F value", "Pr(>F)" )
     colnames(res)[3:4] <- g1
     colnames(res)[1:2] <- c("df1", "df2")
     c1 <- colnames(res)
@@ -125,11 +120,12 @@ mi.anova <- function( mi.res, formula, type=2 ){
     res <- data.frame( "SSQ"=SS, res )
     colnames(res)[-1] <- c1
     cat("Univariate ANOVA for Multiply Imputed Data",
-                  paste0("(Type ", type, ")" ), " \n\n")
+                paste0("(Type ", type, ")" ), " \n\n")
     cat("lm Formula: ", formula  )
     cat( paste( "\nR^2=", round(r.squared, 4 ), sep=""), "\n" )
     cat("..........................................................................\n")
     cat("ANOVA Table \n" )
     print( round( res,5) )
-    invisible( list( "r.squared"=r.squared, "anova.table"=res, type=type ) )
+    res1 <- list( "r.squared"=r.squared, "anova.table"=res, type=type )
+    invisible(res1)
 }

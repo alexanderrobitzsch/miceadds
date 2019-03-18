@@ -1,5 +1,5 @@
 ## File Name: mice_impute_2l_lmer.R
-## File Version: 0.41
+## File Version: 0.42
 
 #########################################################################
 # main function for multilevel imputation with lme4 which
@@ -133,7 +133,7 @@ mice_impute_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
 
     #---- draw imputations
     if ( model=="binary"){
-        imp <- mice_multilevel_draw_binomial( probs=antilogit(predicted0) )
+        imp <- mice_multilevel_draw_binomial( probs=inverse_logit(predicted0) )
     }
     if ( model=="continuous"){
         sigma <- attr( fit_VarCorr,"sc")

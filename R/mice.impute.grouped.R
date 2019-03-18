@@ -1,8 +1,8 @@
 ## File Name: mice.impute.grouped.R
-## File Version: 0.17
+## File Version: 0.18
 
-##################################################
-# imputation for grouped data
+
+#**** imputation for grouped data
 mice.impute.grouped <- function (y, ry, x, low=NULL, upp=NULL,  ...)
 {
     TAM::require_namespace_msg("grouped")
@@ -30,4 +30,3 @@ mice.impute.grouped <- function (y, ry, x, low=NULL, upp=NULL,  ...)
     yimp <- stats::qnorm( samp_quant, mean=ypred, sd=sigma )
     return(yimp)
 }
-##################################################

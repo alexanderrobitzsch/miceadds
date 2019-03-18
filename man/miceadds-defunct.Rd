@@ -1,5 +1,5 @@
 %% File Name: miceadds-defunct.Rd
-%% File Version: 0.13
+%% File Version: 0.151
 
 \name{miceadds-defunct}
 \alias{miceadds-defunct}
@@ -10,6 +10,7 @@
 \alias{mice.impute.2l.eap}
 \alias{mice.impute.2lonly.pmm2}
 \alias{mice.impute.2lonly.norm2}
+\alias{mice.impute.tricube.pmm2}
 
 
 
@@ -28,6 +29,7 @@ mice.impute.2l.plausible.values(...)
 mice.impute.2l.pls(...)
 mice.impute.2lonly.norm2(...)
 mice.impute.2lonly.pmm2(...)
+mice.impute.tricube.pmm2(...)
 }
 
 \arguments{
@@ -55,6 +57,9 @@ functions can be safely replaced by the
 \code{\link[mice:mice.impute.2lonly.norm]{mice::mice.impute.2lonly.norm}} and
 \code{\link[mice:mice.impute.2lonly.pmm]{mice::mice.impute.2lonly.pmm}}
 functions in the \pkg{mice} package.
+
+The \code{mice.impute.tricube.pmm2} function has been replaced by
+\code{\link{mice.impute.tricube.pmm}}.
 }
 
 % \examples{

@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.669
+## File Version: 2.674
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
@@ -52,10 +52,8 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
     quadratics <- mice_imputation_extract_list_arguments( micearg=quadratics,
                         vname=vname, miceargdefault=NULL )
 
-    ##############################################################
-    # Plausible value imputation according to the Rasch model
-    # adapt this to include only the likelihood
-    ##############################################################
+    #--- Plausible value imputation using tam.latreg
+    #---- adapt this to include only the likelihood
     if (pvmethod==4){
         res <- include.2l.predictors_v1( y=y, x=x, ry=ry, type=type, vname=vname,
                     newstate=newstate, ... )
@@ -79,7 +77,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         if ( is.null( normal.approx[[ vname ]] ) ){
             normal.approx <- TRUE
         }
-        X <- X[,-1,drop=FALSE]    # exclude intercept
+        X <- X[,-1,drop=FALSE]  # exclude intercept
         #-- perform latent regression
         mod0 <- TAM::tam.latreg(like=like, theta=theta, Y=X, control=control_latreg )
         #-- draw plausible values
@@ -89,8 +87,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         ximp <- mod1$pv[,2]
     }
 
-    #############################################
-    # Plausible value imputation with known scale scores and standard errors
+    #******* Plausible value imputation with known scale scores and standard errors
     if (pvmethod==3){
         M.scale <- scale.values[[ vname ]][[ "M" ]]
         SE.scale <- scale.values[[ vname ]][[ "SE" ]]
@@ -146,17 +143,13 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             # draw plausible value for individuals
             y.pv <- stats::rnorm( length(EAP), mean=EAP, sd=sqrt(Var.EAP) )
             xty <- crossprod(xcov1a, as.matrix(y.pv) )
-
             # calculate linear regression
-            # mod <- stats::lm( y.pv ~ xcov1 )
-            # v <- stats::vcov(mod)
-            # cmod <- stats::coef(mod)
             cmod <- xtx1 %*% xty
             yfitted <- xcov1a %*% cmod
             sigma2 <- mean( ( y.pv - yfitted )^2 )
             v <- sigma2 * xtx1
             beta.star <- as.vector(cmod) + ma_rmvnorm( n=1, mu=rep(0,nrow(v)), sigma=v)
-            # fitted regression coefficients
+            #-> fitted regression coefficients
 
             # update posterior distribution
             EAP <- ( SE_scale_2*M.scale + sigma2^(-1)*yfitted )/( SE_scale_2 + sigma2^(-1) )
@@ -176,15 +169,14 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         }
         ximp <- as.vector( y.pv )
     }
-    #############################################
-    # PV imputation scale score according to CTT (parallel measurements)
-    #    alpha is known or unknown
-    if ( pvmethod %in% c(1,2) ){
 
+    #--- PV imputation scale score according to CTT (parallel measurements)
+    #---    alpha is known or unknown
+    if ( pvmethod %in% c(1,2) ){
         # extract scale values
         if ( sum(type==3)==0){
-                cat( "\n",paste( "Items corresponding to scale", vname,
-                        "must be declared by entries of 3 in the predictor matrix"),"\n")
+            cat( "\n",paste( "Items corresponding to scale", vname,
+                    "must be declared by entries of 3 in the predictor matrix"),"\n")
         }
         dat.scale <- x[, type==3, drop=FALSE ]
         x1 <- x[, type %in% c(1,2) ]
@@ -193,8 +185,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                             type=type, ... )
         x1 <- x1[,-1]
 
-        #*+*+*+*
-        # PLS
+        #*** PLS
         if ( is.null(pls.facs) + is.null(interactions) + is.null(quadratics) < 3 ){
             ry_true <- rep(TRUE, length(y))
             plsout <- mice_imputation_pls_helper( newstate=newstate, vname=vname,
@@ -204,19 +195,18 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                         pls.facs=pls.facs, envir_pos=pos,  ... )$yimp
             x1 <- plsout[,-1]
         }
-        #*+*+*
+
         cluster <- res$cluster
         # group mean where the actual observation is eliminated
         if ( sum( type==-2 ) > 0 ){
             x1b <- cbind( x[, type==-2 ], y )
             gm <- mice.impute.2l.groupmean.elim(y=y, ry=FALSE * ry, x=x1b, type=c(-2,1) )
             x1 <- cbind( x1, gm )
-                    }
+        }
         # compute scale score
         y1 <- rowMeans( dat.scale )
 
-        #*******
-        # plausible value imputation if alpha is estimated or known
+        #*** plausible value imputation if alpha is estimated or known
         if (pvmethod  %in% c(1,2) ){
             if (pvmethod==2){
                 TAM::require_namespace_msg("MBESS")
@@ -226,41 +216,46 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                 alpha.se <- cir$SE.reliability
             }
             if (pvmethod==1){
-                     alpha.known <- alpha[[vname]]
-                     if ( is.list(  alpha.se  ) ){
-                            alpha.se <- alpha.se[[ vname ]]
-                                    }
-                    if ( is.null( alpha.se ) ){ alpha.se <- 0 }
-                    alpha.est <- alpha.known
-                            }
+                alpha.known <- alpha[[vname]]
+                if ( is.list(alpha.se) ){
+                    alpha.se <- alpha.se[[ vname ]]
+                }
+                if ( is.null(alpha.se) ){
+                    alpha.se <- 0
+                }
+                alpha.est <- alpha.known
+            }
             # sampling of Cronbach's Alpha
             alpha.samp <- stats::rnorm( 1, mean=alpha.est, sd=alpha.se )
             alpha.samp <- min( .99, max( .01, alpha.samp ) )      # restriction of range
             ximp <- draw.pv.ctt( y=y1, dat.scale=dat.scale, x=x1, alpha=alpha.samp )
-                        }
-            }
-
+        }
+    }
 
     # print progress
-  if ( plausible.value.print){
-    cat("\n",vname, " Plausible value imputation ")
-    if (pvmethod==1){
+    if ( plausible.value.print){
+        cat("\n",vname, " Plausible value imputation ")
+        if (pvmethod==1){
             cat(paste("with known Cronbach's Alpha of",alpha.known,
-                 "and known standard error of", alpha.se, "\n")  )
-                    }
-    if (pvmethod==2){
-        cat( paste( "with estimated measurement error variance for", scale.type, "items\n      "))
-        cat( paste("estimated Cronbach's alpha of", round( alpha.est, 3 ) ),
-                 "(SE=", round( alpha.se,3),") \n")
-                        }
-    if (pvmethod %in% c(1,2) ){
-        cat( paste("        sampled Cronbach's alpha of", round( alpha.samp, 3 ) ), "\n")
-            }
-    if (pvmethod==3){ cat("with known scale scores and known measurement",
-           "error standard deviations") }
-    if (pvmethod==4){ cat("using a provided likelihood") }
-    cat("\n") ; utils::flush.console()
-                                }
+                "and known standard error of", alpha.se, "\n")  )
+        }
+        if (pvmethod==2){
+            cat( paste( "with estimated measurement error variance for", scale.type, "items\n      "))
+            cat( paste("estimated Cronbach's alpha of", round( alpha.est, 3 ) ),
+                    "(SE=", round( alpha.se,3),") \n")
+        }
+        if (pvmethod %in% c(1,2) ){
+            cat( paste("        sampled Cronbach's alpha of", round( alpha.samp, 3 ) ), "\n")
+        }
+        if (pvmethod==3){
+            cat("with known scale scores and known measurement",
+                        "error standard deviations") }
+        if (pvmethod==4){
+            cat("using a provided likelihood")
+        }
+        cat("\n")
+        utils::flush.console()
+    }
 
     # return imputed values
     return(ximp)

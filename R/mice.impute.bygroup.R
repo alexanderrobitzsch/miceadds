@@ -1,9 +1,13 @@
 ## File Name: mice.impute.bygroup.R
-## File Version: 0.559
+## File Version: 0.564
 
 mice.impute.bygroup <- function( y, ry, x, group,
         imputationFunction, ... )
 {
+    res <- mice_imputation_factor_pmm_prepare(y=y)
+    y <- res$y
+    y_aggr <- res$y_aggr
+    is_factor <- res$is_factor
 
     #--- extract arguments
     pos <- parent.frame()
@@ -58,8 +62,10 @@ mice.impute.bygroup <- function( y, ry, x, group,
             dfr_index[ ind0_gg, "y"] <- as.vector(ximp)
         }
     }
-
-    return( dfr_index[ ! ry, "y"] )
+    imp <- dfr_index[ ! ry, "y"]
+    imp <- mice_imputation_factor_pmm_convert_factor(imp=imp,
+                    is_factor=is_factor, y_aggr=y_aggr)
+    return(imp)
 }
 
 #    res <- mice_imputation_prepare_2l_functions( vname=vname,

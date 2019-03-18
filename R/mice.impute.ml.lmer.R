@@ -1,8 +1,8 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.568
+## File Version: 0.573
 
-#########################################################################
-# main function for multilevel imputation with lme4 with several levels
+
+#*** main function for multilevel imputation with lme4 with several levels
 mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL,
                 random_slopes=NULL, aggregate_automatically=TRUE, intercept=TRUE,
                 groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
@@ -11,6 +11,10 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 quadratics=NULL, min.int.cor=0, min.all.cor=0,
                 pls.print.progress=FALSE, group_index=NULL, ... )
 {
+    res <- mice_imputation_factor_pmm_prepare(y=y)
+    y <- res$y
+    y_aggr <- res$y_aggr
+    is_factor <- res$is_factor
 
     if (blme_use){
         TAM::require_namespace_msg("blme")
@@ -133,7 +137,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
 
     #---- draw imputations
     if ( model=="binary"){
-        imp <- mice_multilevel_draw_binomial( probs=antilogit(predicted0) )
+        imp <- mice_multilevel_draw_binomial( probs=inverse_logit(predicted0) )
     }
     if ( model=="continuous"){
         sigma <- attr( fit_vc,"sc")
@@ -151,7 +155,8 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     imp <- mice_ml_lmer_extend_imputed_values_lower_level( imp_upper=imp, ry_lower=ry0,
                 ry_upper=ry, level_ids_lower=data0[, vname_level ],
                 level_ids_upper=data[, vname_level ], extend=vname_level !="" )
-
+    imp <- mice_imputation_factor_pmm_convert_factor(imp=imp,
+                    is_factor=is_factor, y_aggr=y_aggr)
     #--- output imputed values
     return(imp)
 }

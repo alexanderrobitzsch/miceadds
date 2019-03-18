@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.pls2.R
-## File Version: 3.294
+## File Version: 3.299
 
 mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
             pls.impMethod="pmm", pls.print.progress=TRUE,
@@ -7,24 +7,6 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
             tricube.pmm.scale=NULL, min.int.cor=0, min.all.cor=0, N.largest=0,
             pls.title=NULL, print.dims=TRUE, pls.maxcols=5000,    envir_pos=parent.frame(), ... )
 {
-    #...........................................................................#
-    # INPUT                                                                     #
-    # pls.facs          ... number of factors for PLS regression                #
-    # pls.interactions  ... include.interactions                                #
-    #                 -> type==4                                        #
-    # pls.quadratics    ... include quadratic terms?                            #
-    #                 -> type==5                                        #
-    # type                 ...=6 : for these variables no interactions will be created    #
-    # pls.impMethod     ... method "norm" or "pmm" or "tricube.pmm"             #
-    #                           "xplsfacs" -> return predicted X PLS factors    #
-    # pls.print.progress    ... print progress of PLS regression estimation     #
-    # imputationWeight  ... vector of weights for imputation                    #
-    # min.int.cor       ... minimal correlation for inclusion of interaction    #
-    #                           effects                                         #
-    # min.all.cor             ... minimal correlation for main effects            #
-    # N.largest            ... select N.largest correlations                        #
-    # pls.title         ... title which is displayed                             #
-    #...........................................................................#
 
     time1 <- Sys.time()
     n <- NULL
@@ -428,29 +410,15 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
         #*****
         # imputation method 'pmm5' (miceadds package)
         if (pls.impMethod=="pmm5" ){
-#            x1 <- mice.impute.pmm6( y=y, ry=ry, x=x, ridge=1e-04, ...)
             x1 <- mice.impute.pmm5( y=y, ry=ry, x=x,  ...)
         }
-        # imputation method 'pmm5' (miceadds package)
-#        if (pls.impMethod=="pmm6" ){
-#            x1 <- mice.impute.pmm6( y=y, ry=ry, x=x, ridge=10^(-4) ...)
-#                                }
 
         #*****
         # imputation method 'tricube.pmm'
         if (pls.impMethod=="tricube.pmm" ){
-            yhatobs <- x[ry, ] %*% parm$coef
-            yhatmis <- x[!ry, ] %*% parm$beta
-            x1 <- apply(as.array(yhatmis), 1, .tricube.pmm.match, yhat=yhatobs, y=y[ry],
-                            tricube.pmm.scale=tricube.pmm.scale, ... )
-                                }
-        #*****
-        # imputation method 'tricube.pmm2'
-        if (pls.impMethod=="tricube.pmm2" ){
-            x1 <- mice.impute.tricube.pmm2(y=y, ry=ry, x=x, tricube.pmm.scale=tricube.pmm.scale )
+            x1 <- mice.impute.tricube.pmm(y=y, ry=ry, x=x, tricube.pmm.scale=tricube.pmm.scale )
                                 }
         if (pls.impMethod=="xplsfacs" ){        x1 <- x   }
-# cat("end imputation") ; a1 <- Sys.time() ; print(a1-a0) ; a0 <- a1
         time2 <- Sys.time()
         if( pls.print.progress ){
                     cat( "\nMissing Data Draws finished ", substring(Sys.time(),1),"\n" ) ; flush.console()

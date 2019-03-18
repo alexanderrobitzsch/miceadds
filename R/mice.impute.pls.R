@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.604
+## File Version: 3.607
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
@@ -8,8 +8,11 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
             min.int.cor=0, min.all.cor=0, N.largest=0, pls.title=NULL, print.dims=TRUE,
             pls.maxcols=5000, envir_pos=NULL, extract_data=TRUE, ... )
 {
-
     time1 <- Sys.time()
+    res <- mice_imputation_factor_pmm_prepare(y=y)
+    y <- res$y
+    y_aggr <- res$y_aggr
+    is_factor <- res$is_factor
 
     #--- extract arguments
     if ( is.null(envir_pos) ){
@@ -114,5 +117,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
 
     res <- mice_imputation_pls_print_progress3( pls.print.progress=pls.print.progress,
                     time1=time1, time2=time2 )
+    x1 <- mice_imputation_factor_pmm_convert_factor(imp=x1,
+                    is_factor=is_factor, y_aggr=y_aggr)
     return(x1)
 }

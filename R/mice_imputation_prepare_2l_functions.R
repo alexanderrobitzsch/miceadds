@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_prepare_2l_functions.R
-## File Version: 0.67
+## File Version: 0.681
 
 #############################################
 # This preparation function is partly copied
@@ -7,12 +7,10 @@
 mice_imputation_prepare_2l_functions <- function( vname, envir,
     use_formula=FALSE, frame=4, ... )
 {
-    # p <- get("p", envir=envir )
     x <- NULL
     keep <- NULL
     p_data <- ma_exists_get(x='data', pos=envir)
     p_predictorMatrix <- ma_exists_get(x='predictorMatrix', pos=envir)
-    # newstate <- get("newstate", envir=envir )
     # newstate <- ma_exists_get('newstate', pos=envir)
     j <- ma_exists_get('j', pos=envir)
     # r <- get("r", envir=envir )

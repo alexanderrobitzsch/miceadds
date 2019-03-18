@@ -1,5 +1,5 @@
 ## File Name: mice.1chain.R
-## File Version: 0.65
+## File Version: 0.662
 
 #*** apply mice algorithm in a single chain
 mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
@@ -101,21 +101,18 @@ mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
     midsobj$method <- imm$method
     midsobj$call <- CALL
 
-    res <- list( "midsobj"=midsobj, "datlist"=datlist, "datalong"=datalong,
-                    "implist"=implist, "chainMPar"=chainMPar,
-                    "chainVarPar"=chainVarPar, "chainMean"=chainMean, "chainVar"=chainVar,
-                    "burnin"=burnin, "iter"=iter, "Nimp"=Nimp,
-                    "time"=Sys.time()
-                    )
+    res <- list( midsobj=midsobj, datlist=datlist, datalong=datalong,
+                    implist=implist, chainMPar=chainMPar,
+                    chainVarPar=chainVarPar, chainMean=chainMean, chainVar=chainVar,
+                    burnin=burnin, iter=iter, Nimp=Nimp,
+                    time=Sys.time() )
     res$nobs <- nrow(data)
     res$nvars <- ncol(data)
     class(res) <- "mids.1chain"
     return(res)
 }
-###############################################################################
-###############################################################################
-###############################################################################
-# S3 method summary
+
+#**** S3 method summary
 summary.mids.1chain <- function( object, ... )
 {
     cat("Multiply imputed dataset using one chain\n\n")

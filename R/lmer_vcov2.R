@@ -1,5 +1,5 @@
 ## File Name: lmer_vcov2.R
-## File Version: 0.07
+## File Version: 0.08
 
 ## covariance matrix for fitted models with lmer including
 ## variance components
@@ -28,7 +28,6 @@ lmer_vcov2 <- function(object, level=.95,  ...)
     ind_random <- ind <- np_fixed + 1:np_random
     se <- c( sqrt( diag( fixed$vcov )), rep(NA, np_random) )
     np <- np_fixed + np_random
-
 
     #* parameter summary
     dfr <- data.frame( index=1:np,

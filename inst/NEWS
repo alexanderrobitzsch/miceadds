@@ -42,9 +42,22 @@ CHANGELOG miceadds
 
 
 
+---------------------------------------------------------------------
+VERSIONS miceadds 3.2  |  2019-03-18  |  Last: miceadds 3.2-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.1  |  2019-03-15  |  Last: miceadds 3.1-21
+VERSIONS miceadds 3.1  |  2019-03-18  |  Last: miceadds 3.1-37
 ---------------------------------------------------------------------
 
 NOTE  * included argument '...' in grep.vec() for passing arguments to
@@ -52,7 +65,7 @@ NOTE  * included argument '...' in grep.vec() for passing arguments to
 NOTE  * handle now strings of length one in string_to_matrix()
 FIXED * fixed labeling issue in ma.wtd.corNA() functions when applied
         to BIFIEdata objects (thanks to Peter Lenz)
-NOTE  * fixed a bug in Example 2 of ?NNIWaldtest caused by changes in
+NOTE  * fixed a bug in Example 2 of ?NMIWaldtest caused by changes in
         mice::pool() output (thanks to Joost van Ginkel)
 NOTE  * included argument 'path2_name' in files_move()
 ADDED * included arguments 'psi_nu0_list' and 'psi_S0_list' in ml_mcmc()
@@ -65,20 +78,24 @@ NOTE  * changed default to noninformative prior distributions in
 NOTE  * changed default argument values of 'type' in load.data() and
         load.files() to 'NULL'
 NOTE  * fixed warning message of incorrect argument use of 
-        'imputationMethod' in datalist2mids()
-        (thanks to Valentin Fuchs). 
-NOTE  *  Replaced all remaining 'imputationMethod' arguments in 
-         mice::mice() by 'method' in the manual
+        'imputationMethod' in datalist2mids() (thanks to Valentin Fuchs) 
+NOTE  * Replaced all remaining 'imputationMethod' arguments in 
+        mice::mice() by 'method' in the manual
 NOTE  * allowed factor variables for PMM imputation methods 'pmm3',
-        'pmm4', 'pmm5', 'pmm6', '2l.contextual.pmm', '2l.pmm'
-
-
+        'pmm4', 'pmm5', 'pmm6', '2l.contextual.pmm', '2l.pmm',
+        'bygroup', '2lonly.function', 'ml.lmer', 'pls',
+        'tricube.pmm', 'tricube.pmm2'
+NOTE  * imputation method 'tricube.pmm2' is renamed as 'tricube.pmm'.
+        The imputation method 'tricube.pmm2' is now defunct.
+ADDED * added import format 'xlsx' (or 'xls') in load.data() function
+        using the readxl::read_excel function (package readxl is now 
+        included in list of 'Suggests' packages)
+ADDED * added user-defined data input function in load.data() by
+        including the argument 'load_fun'
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: filename_split (4),
-        NMIWaldtest (2), mi.anova (1)
-
-
+        NMIWaldtest (2), mi.anova (1), load.data (1)
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.0  |  2018-12-11  |  Last: miceadds 3.0-16

@@ -1,11 +1,16 @@
 ## File Name: mice.impute.2lonly.function.R
-## File Version: 0.22
+## File Version: 0.25
 
 #******************************************
 # general imputation function at level 2
 mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction,
         cluster_var, ... )
 {
+    res <- mice_imputation_factor_pmm_prepare(y=y)
+    y <- res$y
+    y_aggr <- res$y_aggr
+    is_factor <- res$is_factor
+
     pos <- parent.frame(n=2)
     #--- extract arguments
     res <- mice_imputation_get_states(pos=pos)
@@ -47,6 +52,8 @@ mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction,
     #*** data postprocessing
     cly2 <- a1[ ! ry2, 1]
     i1 <- match( clusterx, cly2 )
-    ximp <- ( ximp2[i1] )[ ! ry ]
-    return(ximp)
+    imp <- ( ximp2[i1] )[ ! ry ]
+    imp <- mice_imputation_factor_pmm_convert_factor(imp=imp,
+                    is_factor=is_factor, y_aggr=y_aggr)
+    return(imp)
 }

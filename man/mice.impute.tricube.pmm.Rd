@@ -1,9 +1,8 @@
 %% File Name: mice.impute.tricube.pmm.Rd
-%% File Version: 0.25
+%% File Version: 0.31
 
 \name{mice.impute.tricube.pmm}
 \alias{mice.impute.tricube.pmm}
-\alias{mice.impute.tricube.pmm2}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Imputation by Tricube Predictive Mean Matching
@@ -12,11 +11,10 @@ Imputation by Tricube Predictive Mean Matching
 This function performs tricube predictive mean matching (see
 \code{{Hmisc::aregImpute}})
 in which donors are weighted according to distances of predicted values.
+Three donors are chosen.
 }
 \usage{
 mice.impute.tricube.pmm(y, ry, x, tricube.pmm.scale=0.2, tricube.boot=FALSE, ...)
-
-mice.impute.tricube.pmm2(y, ry, x, tricube.pmm.scale=0.2, tricube.boot=FALSE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -58,15 +56,14 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 
 
 
-\note{
-The imputation method \code{tricube.pmm2} is usually somewhat faster
-than \code{tricube.pmm}.
-}
+%\note{
+%XXX
+%}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{{Hmisc::aregImpute}}
+\code{Hmisc::aregImpute}
 }
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 
@@ -83,7 +80,7 @@ set.seed(9090)
 #*** Model 1: Use default of tricube predictive mean matching
 varnames <- colnames(nhanes)
 VV <- length(varnames)
-method <- rep("tricube.pmm2", VV )
+method <- rep("tricube.pmm", VV )
 names(method) <- varnames
 # imputation with mice
 imp.mi1 <- mice::mice( nhanes, m=5, maxit=4, method=method )
@@ -91,11 +88,11 @@ imp.mi1 <- mice::mice( nhanes, m=5, maxit=4, method=method )
 #*** Model 2: use item-specific imputation methods
 iM2 <- method
 iM2["bmi"] <- "pmm6"
-# use tricube.pmm2 for hyp and chl
+# use imputation method 'tricube.pmm' for hyp and chl
 # select different scale parameters for these variables
 tricube.pmm.scale1 <- list( "hyp"=.15, "chl"=.30 )
 imp.mi2 <- miceadds::mice.1chain( nhanes, burnin=5, iter=20, Nimp=4,
-    method=iM2, tricube.pmm.scale=tricube.pmm.scale1  )
+               method=iM2, tricube.pmm.scale=tricube.pmm.scale1  )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

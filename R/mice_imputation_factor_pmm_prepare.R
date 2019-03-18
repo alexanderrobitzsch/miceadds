@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_factor_pmm_prepare.R
-## File Version: 0.06
+## File Version: 0.07
 
 mice_imputation_factor_pmm_prepare <- function(y)
 {
@@ -8,7 +8,7 @@ mice_imputation_factor_pmm_prepare <- function(y)
     y0 <- y
     if (is.factor(y)){
         y <- as.integer(y)
-        y_aggr <- aggregate(y, list(y0), mean)
+        y_aggr <- stats::aggregate(y, list(y0), mean)
         is_factor <- TRUE
     }
     #--- output

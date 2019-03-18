@@ -1,8 +1,8 @@
 ## File Name: mice.nmi.R
-## File Version: 0.18
+## File Version: 0.19
 
-###############################################
-# nested multiple imputation
+
+#--- nested multiple imputation
 mice.nmi <- function( datlist, type="mice", ... )
 {
     CALL <- match.call()
@@ -34,9 +34,10 @@ mice.nmi <- function( datlist, type="mice", ... )
     class(res) <- "mids.nmi"
     return(res)
 }
-##################################################
-# summary method
-summary.mids.nmi <- function( object, ... ){
+
+#--- summary method
+summary.mids.nmi <- function( object, ... )
+{
     cat("Nested Multiple Imputation\n\n")
     Nimp <- object$Nimp
     cat( paste0("Number of between imputed datasets=", Nimp["between"], "\n") )
@@ -46,9 +47,9 @@ summary.mids.nmi <- function( object, ... ){
     imp0 <- object$imp[[1]]
     summary(imp0)
 }
-####################################################
-# print method
-print.mids.nmi <- function( x, ...){
-    summary.mids.nmi( object=x, ...)
+
+#--- print method
+print.mids.nmi <- function( x, ...)
+{
+    summary.mids.nmi(object=x, ...)
 }
-#####################################################
