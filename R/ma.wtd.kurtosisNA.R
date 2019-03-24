@@ -1,14 +1,14 @@
 ## File Name: ma.wtd.kurtosisNA.R
-## File Version: 0.13
+## File Version: 0.14
 
 
-###############################################################################
-# weighted kurtosis
+
+#--- weighted kurtosis
 ma.wtd.kurtosisNA <- function( data, weights=NULL, vars=NULL,
         method="unbiased" )
 {
     #*** pre-processing
-    res <- ma.wtd.aux.data(data=data, weights=weights, vars=vars )
+    res <- ma_wtd_stat_prepare_data(data=data, weights=weights, vars=vars )
     data <- res$data
     weights <- res$weights
     M <- length(data)
@@ -41,4 +41,3 @@ ma.wtd.kurtosisNA <- function( data, weights=NULL, vars=NULL,
     names(res) <- colnames(data[[1]])
     return( res )
 }
-###############################################################################

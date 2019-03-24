@@ -1,5 +1,5 @@
 ## File Name: ma.wtd.corNA.R
-## File Version: 0.07
+## File Version: 0.08
 
 
 ###############################################################################
@@ -7,7 +7,7 @@
 ma.wtd.corNA <- function( data, weights=NULL, vars=NULL, method="unbiased" )
 {
     #*** pre-processing
-    res <- ma.wtd.aux.data(data=data, weights=weights, vars=vars )
+    res <- ma_wtd_stat_prepare_data(data=data, weights=weights, vars=vars )
     data <- res$data
     weights <- res$weights
     M <- length(data)

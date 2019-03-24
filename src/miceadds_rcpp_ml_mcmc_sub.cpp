@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_ml_mcmc_sub.cpp
-//// File Version: 0.875
+//// File Version: 0.876
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -86,9 +86,9 @@ arma::mat miceadds_rcpp_rwishart(int df, arma::mat S)
 // [[Rcpp::export]]
 arma::mat miceadds_rcpp_riwishart(int df, arma::mat S)
 {
-    arma::mat S_inv = arma::inv(S);
+    arma::mat S_inv = arma::pinv(S);
     arma::mat samp = miceadds_rcpp_rwishart(df, S_inv);
-    samp = arma::inv(samp);
+    samp = arma::pinv(samp);
     return samp;
 }
 ///********************************************************************

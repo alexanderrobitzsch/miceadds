@@ -1,19 +1,19 @@
-## File Name: ma.wtd.aux.data.R
-## File Version: 2.22
+## File Name: ma_wtd_stat_prepare_data.R
+## File Version: 2.303
 
-########################################################
-# auxiliary function
-ma.wtd.aux.data <- function(data, weights, vars=NULL )
+
+#--- auxiliary function for weighted statistics
+ma_wtd_stat_prepare_data <- function(data, weights, vars=NULL )
 {
     is_dfr <- TRUE        # default is class data frame
     if ( is.vector(data) ){
-        data <- data.frame( "Var"=data)
+        data <- data.frame("Var"=data)
         is_dfr <- TRUE
     }
 
     #---- mids or mids.1chain
     if ( class(data) %in% c("mids","mids.1chain","mids.nmi") ){
-        data <- mids2datlist( data )
+        data <- mids2datlist(midsobj=data)
     }
 
     #----- NestedImputationList
@@ -27,7 +27,7 @@ ma.wtd.aux.data <- function(data, weights, vars=NULL )
     # conversion in case of a nested datalist
     if ( class(data)=="nested.datlist" ){
         is_dfr <- FALSE
-        data <- nesteddatlist2datlist(data)
+        data <- nesteddatlist2datlist(datlist=data)
     }
 
     #---- imputationList
@@ -65,12 +65,12 @@ ma.wtd.aux.data <- function(data, weights, vars=NULL )
                             varnames=vars )
         }
         data <- BIFIEsurvey::BIFIE.BIFIEdata2datalist(bifieobj=data, varnames=vars)
-        data <- datlist_create( data )
+        data <- datlist_create(datasets=data)
         M <- length(data)
         for (ii in 1:M){
             data[[ii]][, "one"] <- NULL
             data_ii <- data[[ii]]
-            data[[ii]] <- data_ii[,vars]
+            data[[ii]] <- data_ii[, vars, drop=FALSE]
         }
         attr(data,"nvars") <- ncol(data[[ii]])
         is_dfr <- FALSE
@@ -78,7 +78,7 @@ ma.wtd.aux.data <- function(data, weights, vars=NULL )
 
     #-------------------
     # conversion in case of a data frame
-    if ( is_dfr ){
+    if (is_dfr){
         data0 <- data
         data0 <- as.matrix(data0)
         if ( ! is.null(vars) ){
@@ -95,7 +95,6 @@ ma.wtd.aux.data <- function(data, weights, vars=NULL )
     res <- list( data=data, weights=weights )
     return(res)
 }
-#########################################################
 
 
-
+ma.wtd.aux.data <- ma_wtd_stat_prepare_data

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.37
+%% File Version: 0.381
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -226,13 +226,13 @@ summary(imp1)
 # Imputation model 2
 
 #----- impute x1 with predictive mean matching and y1 with normally distributed residuals
-model <- list( x1="pmm", y1="continuous" )
+model <- list(x1="pmm", y1="continuous")
 
 #----- assume only random intercepts
 random_slopes <- NULL
 
 #---- create interactions with z2 for all predictors in imputation models for x1 and y1
-interactions <- list( "x1"=z2, "y1"=z2)
+interactions <- list("x1"="z2", "y1"="z2")
 
 #----- imputation in mice
 imp2 <- mice::mice( dat, method=method, predictorMatrix=predmat,

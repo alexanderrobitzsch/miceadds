@@ -1,5 +1,5 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.573
+## File Version: 0.583
 
 
 #*** main function for multilevel imputation with lme4 with several levels
@@ -22,7 +22,6 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
 
     # *** ...............................
     # extraction of arguments
-
     pos <- parent.frame(n=2)
     res <- mice_ml_lmer_extract_input( pos=pos, levels_id=levels_id, random_slopes=random_slopes,
                 variables_levels=variables_levels, pls.facs=pls.facs, min.int.cor=min.int.cor,
@@ -91,6 +90,13 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     lmer_args <- mice_ml_lmer_collect_lme4_input( y=y, x=x, ry=ry, data=data,
                         levels_id=levels_id, NL=NL, fml=fml, lmer_family=lmer_family,
                         model=model, lmer_args=lmer_args, blme_args=blme_args )
+    control_input <- FALSE
+    control_input <- TRUE
+    if (control_input){
+        control <- mice_imputation_multilevel_lmerControl_define_optimizer(model=model, ...)
+        lmer_args$control <- control
+    }
+
 
     #--- fit lme4 or blme model based on observed y
     fit <- mice_multilevel_doCall_suppressWarnings( what=lmer_function, args=lmer_args,

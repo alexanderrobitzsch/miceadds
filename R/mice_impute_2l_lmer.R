@@ -1,8 +1,8 @@
 ## File Name: mice_impute_2l_lmer.R
-## File Version: 0.42
+## File Version: 0.568
 
-#########################################################################
-# main function for multilevel imputation with lme4 which
+
+#**** main function for multilevel imputation with lme4 which
 # is just wrapper by methods "2l.continuous", "2l.binary" and "2l.pmm"
 mice_impute_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                     groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
@@ -20,19 +20,24 @@ mice_impute_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     ngr <- length(clus_unique)
     clus_name <- colnames(x)[type==-2]  # name of cluster identifier
 
-#zz0 <- Sys.time()
+    #* select previous lme4 optimizer "bobyqa"
+    # control_input <- FALSE
+    control_input <- TRUE
+    if (control_input){
+        control <- mice_imputation_multilevel_lmerControl_define_optimizer(model=model, ...)
+    }
 
     # arguments for lmer model
     if ( model=="binary"){
         lmer_family <- stats::binomial(link="logit")
-        if ( blme_use){
+        if (blme_use){
             lmer_function <- blme::bglmer
         } else {
             lmer_function <- lme4::glmer
         }
     }
     if ( model %in% c("continuous","pmm") ){
-        if ( blme_use){
+        if (blme_use){
             lmer_function <- blme::blmer
         } else {
             lmer_function <- lme4::lmer
@@ -58,8 +63,10 @@ mice_impute_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     y1 <- y
     y1[!ry] <- NA
     dat_lme4 <- data.frame(dv._lmer=y1, x)
-    lmer_args <- list( formula=fml, data=dat_lme4,
-                        na.action="na.omit"  )
+    lmer_args <- list( formula=fml, data=dat_lme4, na.action="na.omit")
+    if (control_input){
+        lmer_args$control <- control
+    }
     if ( model=="binary"){
         lmer_args$family <- lmer_family
     }
@@ -69,9 +76,8 @@ mice_impute_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                         lmer_args=lmer_args, blme_args=blme_args )
 
     # fit based on observed y
-    fit <- mice_multilevel_doCall_suppressWarnings(
-                what=lmer_function, args=lmer_args,
-                warnings=glmer.warnings )
+    fit <- mice_multilevel_doCall_suppressWarnings(    what=lmer_function,
+                    args=lmer_args,    warnings=glmer.warnings )
 
     # clusters without missing values
     clus0 <- clus[!ry]
@@ -149,7 +155,6 @@ mice_impute_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     return(imp)
 }
 
-mice.impute.2l.lmer <- mice_impute_2l_lmer
 
 #----------------------------------
 # mice: predictive mean matching

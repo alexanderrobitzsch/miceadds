@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_extract_input.R
-## File Version: 0.25
+## File Version: 0.28
 
 mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_levels,
         pls.facs, min.int.cor, min.all.cor, interactions, quadratics, model,

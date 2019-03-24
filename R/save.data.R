@@ -1,9 +1,8 @@
 ## File Name: save.data.R
-## File Version: 0.33
+## File Version: 0.34
 
 
-#########################################################################
-# miceadds: saving data
+#--- miceadds: saving data
 save.data <- function( data, filename, type="Rdata", path=getwd(),
                 row.names=FALSE, na=NULL, suffix=NULL, suffix_space="__",
                 index=FALSE, systime=FALSE,  ...)
@@ -54,5 +53,3 @@ save.data <- function( data, filename, type="Rdata", path=getwd(),
         sjlabelled::write_spss( x=data, path=file.path( dir, file ) )
     }
 }
-#########################################################################
-

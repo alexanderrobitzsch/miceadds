@@ -1,9 +1,9 @@
 ## File Name: ml_mcmc.R
-## File Version: 0.497
+## File Version: 0.498
 
 ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     outcome="normal", nu0=NULL, s0=1, psi_nu0_list=NULL, psi_S0_list=NULL,
-    inits_lme4=TRUE, thresh_fac=5.8)
+    inits_lme4=FALSE, thresh_fac=5.8)
 {
     CALL <- match.call()
     s1 <- Sys.time()

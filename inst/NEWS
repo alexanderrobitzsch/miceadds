@@ -43,13 +43,23 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.2  |  2019-03-18  |  Last: miceadds 3.2-1
+VERSIONS miceadds 3.2  |  2019-03-24  |  Last: miceadds 3.2-7
 ---------------------------------------------------------------------
 
-xxxx  *
+NOTE  * changed default 'inits_lme4=TRUE' to 'inits_lme4=FALSE' (do not
+        use use lme4::lmer() for starting values) in ml_mcmc()
+NOTE  * use optimizer 'bobyqa' by default in multilevel imputations which 
+        rely on lme4 package (mice.impute.2l.foo() for foo="pmm","binary"
+        and "continuous" and mice.impute.ml.lmer()) if a 'control' argument 
+        is not provided to lme4::lmer() or lme4::glmer()
+FIXED * fixed a bug in handling arguments in mice.impute.ml.lmer()
+FIXED * fixed a bug in ma.wtd.statsNA() functions for objects of class
+        BIFIEdata if a statistic for a single variable is requested
+        (thanks to Peter Lenz)
+
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: mice.impute.ml.lmer (1.2)
 
 
 
