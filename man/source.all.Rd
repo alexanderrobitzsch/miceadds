@@ -1,5 +1,5 @@
 %% File Name: source.all.Rd
-%% File Version: 0.26
+%% File Version: 0.27
 
 \name{source.all}
 \alias{source.all}
@@ -41,7 +41,7 @@ Which strings should be looked for?
 \item{print.source}{
 An optional logical whether the source process printed on the console?
 }
-\item{file_sep}{String at which file name should be splt for looking
+\item{file_sep}{String at which file name should be split for looking
 for most recent files}
 \item{file_names}{Optional vector of (parts of) file names}
 \item{ext}{File extension for \pkg{Rcpp} files}

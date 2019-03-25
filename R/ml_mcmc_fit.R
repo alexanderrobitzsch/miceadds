@@ -1,12 +1,12 @@
 ## File Name: ml_mcmc_fit.R
-## File Version: 0.502
+## File Version: 0.505
 
 ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     alpha, u_list, idcluster_list, onlyintercept_list, ncluster_list,
     sigma2_nu0, sigma2_sigma2_0, psi_nu0_list, psi_S0_list, est_sigma2,
     est_probit, parameter_index, est_parameter, npar, iter, save_iter,
     verbose=TRUE, print_iter=500, parnames0=NULL, K=9999, est_thresh=FALSE,
-    thresh_fac=5.8, parm_summary=TRUE )
+    thresh_fac=5.8, ridge=1e-5, parm_summary=TRUE )
 {
     #** preliminaries
     xtx_inv <- MASS::ginv( miceadds_rcpp_ml_mcmc_compute_xtx(X) )
@@ -30,7 +30,7 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
                 est_probit=est_probit, parameter_index=parameter_index,
                 est_parameter=est_parameter, npar=npar, iter=iter, save_iter=save_iter,
                 verbose=verbose, print_iter=print_iter, est_thresh=est_thresh, K=K,
-                sd_proposal=sd_proposal)
+                sd_proposal=sd_proposal, ridge=ridge)
     #** output processing
     if ( is.null(parnames0) ){
         NS <- ncol(res$sampled_values)
@@ -71,6 +71,7 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     res$K <- K
     res$save_iter <- save_iter
     res$parnames0 <- parnames0
+    res$ridge <- ridge
 
     #--- coef and vcov
     if (parm_summary){

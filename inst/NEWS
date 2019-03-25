@@ -43,7 +43,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.2  |  2019-03-24  |  Last: miceadds 3.2-7
+VERSIONS miceadds 3.2  |  2019-03-25  |  Last: miceadds 3.2-10
 ---------------------------------------------------------------------
 
 NOTE  * changed default 'inits_lme4=TRUE' to 'inits_lme4=FALSE' (do not
@@ -56,6 +56,8 @@ FIXED * fixed a bug in handling arguments in mice.impute.ml.lmer()
 FIXED * fixed a bug in ma.wtd.statsNA() functions for objects of class
         BIFIEdata if a statistic for a single variable is requested
         (thanks to Peter Lenz)
+NOTE  * included argument 'ridge' in ml_mcmc() and ml_mcmc_fit() for
+        stabilizing MCMC sampling in case of convergence issues
 
 
 DATA  * included/modified datasets: ---

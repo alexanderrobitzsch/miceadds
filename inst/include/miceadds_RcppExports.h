@@ -24,17 +24,17 @@ namespace miceadds {
         }
     }
 
-    inline Rcpp::List miceadds_rcpp_ml_mcmc_sampler(arma::colvec y_obs, arma::mat X, arma::mat xtx_inv, Rcpp::List ztz_list, Rcpp::List Z_list, arma::colvec beta_init, Rcpp::List Psi_list_init, double sigma2_init, arma::colvec alpha_init, Rcpp::List u_list_init, Rcpp::List idcluster_list, Rcpp::List onlyintercept_list, Rcpp::List ncluster_list, int sigma2_nu0, double sigma2_sigma2_0, Rcpp::List psi_nu0_list, Rcpp::List psi_S0_list, int NR, bool est_sigma2, bool est_probit, Rcpp::List parameter_index, Rcpp::List est_parameter, int npar, int iter, Rcpp::IntegerVector save_iter, bool verbose, int print_iter, bool est_thresh, int K, Rcpp::NumericVector sd_proposal) {
-        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sampler)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
+    inline Rcpp::List miceadds_rcpp_ml_mcmc_sampler(arma::colvec y_obs, arma::mat X, arma::mat xtx_inv, Rcpp::List ztz_list, Rcpp::List Z_list, arma::colvec beta_init, Rcpp::List Psi_list_init, double sigma2_init, arma::colvec alpha_init, Rcpp::List u_list_init, Rcpp::List idcluster_list, Rcpp::List onlyintercept_list, Rcpp::List ncluster_list, int sigma2_nu0, double sigma2_sigma2_0, Rcpp::List psi_nu0_list, Rcpp::List psi_S0_list, int NR, bool est_sigma2, bool est_probit, Rcpp::List parameter_index, Rcpp::List est_parameter, int npar, int iter, Rcpp::IntegerVector save_iter, bool verbose, int print_iter, bool est_thresh, int K, Rcpp::NumericVector sd_proposal, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sampler)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_ml_mcmc_sampler p_miceadds_rcpp_ml_mcmc_sampler = NULL;
         if (p_miceadds_rcpp_ml_mcmc_sampler == NULL) {
-            validateSignature("Rcpp::List(*miceadds_rcpp_ml_mcmc_sampler)(arma::colvec,arma::mat,arma::mat,Rcpp::List,Rcpp::List,arma::colvec,Rcpp::List,double,arma::colvec,Rcpp::List,Rcpp::List,Rcpp::List,Rcpp::List,int,double,Rcpp::List,Rcpp::List,int,bool,bool,Rcpp::List,Rcpp::List,int,int,Rcpp::IntegerVector,bool,int,bool,int,Rcpp::NumericVector)");
+            validateSignature("Rcpp::List(*miceadds_rcpp_ml_mcmc_sampler)(arma::colvec,arma::mat,arma::mat,Rcpp::List,Rcpp::List,arma::colvec,Rcpp::List,double,arma::colvec,Rcpp::List,Rcpp::List,Rcpp::List,Rcpp::List,int,double,Rcpp::List,Rcpp::List,int,bool,bool,Rcpp::List,Rcpp::List,int,int,Rcpp::IntegerVector,bool,int,bool,int,Rcpp::NumericVector,double)");
             p_miceadds_rcpp_ml_mcmc_sampler = (Ptr_miceadds_rcpp_ml_mcmc_sampler)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_ml_mcmc_sampler");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sampler(Shield<SEXP>(Rcpp::wrap(y_obs)), Shield<SEXP>(Rcpp::wrap(X)), Shield<SEXP>(Rcpp::wrap(xtx_inv)), Shield<SEXP>(Rcpp::wrap(ztz_list)), Shield<SEXP>(Rcpp::wrap(Z_list)), Shield<SEXP>(Rcpp::wrap(beta_init)), Shield<SEXP>(Rcpp::wrap(Psi_list_init)), Shield<SEXP>(Rcpp::wrap(sigma2_init)), Shield<SEXP>(Rcpp::wrap(alpha_init)), Shield<SEXP>(Rcpp::wrap(u_list_init)), Shield<SEXP>(Rcpp::wrap(idcluster_list)), Shield<SEXP>(Rcpp::wrap(onlyintercept_list)), Shield<SEXP>(Rcpp::wrap(ncluster_list)), Shield<SEXP>(Rcpp::wrap(sigma2_nu0)), Shield<SEXP>(Rcpp::wrap(sigma2_sigma2_0)), Shield<SEXP>(Rcpp::wrap(psi_nu0_list)), Shield<SEXP>(Rcpp::wrap(psi_S0_list)), Shield<SEXP>(Rcpp::wrap(NR)), Shield<SEXP>(Rcpp::wrap(est_sigma2)), Shield<SEXP>(Rcpp::wrap(est_probit)), Shield<SEXP>(Rcpp::wrap(parameter_index)), Shield<SEXP>(Rcpp::wrap(est_parameter)), Shield<SEXP>(Rcpp::wrap(npar)), Shield<SEXP>(Rcpp::wrap(iter)), Shield<SEXP>(Rcpp::wrap(save_iter)), Shield<SEXP>(Rcpp::wrap(verbose)), Shield<SEXP>(Rcpp::wrap(print_iter)), Shield<SEXP>(Rcpp::wrap(est_thresh)), Shield<SEXP>(Rcpp::wrap(K)), Shield<SEXP>(Rcpp::wrap(sd_proposal)));
+            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sampler(Shield<SEXP>(Rcpp::wrap(y_obs)), Shield<SEXP>(Rcpp::wrap(X)), Shield<SEXP>(Rcpp::wrap(xtx_inv)), Shield<SEXP>(Rcpp::wrap(ztz_list)), Shield<SEXP>(Rcpp::wrap(Z_list)), Shield<SEXP>(Rcpp::wrap(beta_init)), Shield<SEXP>(Rcpp::wrap(Psi_list_init)), Shield<SEXP>(Rcpp::wrap(sigma2_init)), Shield<SEXP>(Rcpp::wrap(alpha_init)), Shield<SEXP>(Rcpp::wrap(u_list_init)), Shield<SEXP>(Rcpp::wrap(idcluster_list)), Shield<SEXP>(Rcpp::wrap(onlyintercept_list)), Shield<SEXP>(Rcpp::wrap(ncluster_list)), Shield<SEXP>(Rcpp::wrap(sigma2_nu0)), Shield<SEXP>(Rcpp::wrap(sigma2_sigma2_0)), Shield<SEXP>(Rcpp::wrap(psi_nu0_list)), Shield<SEXP>(Rcpp::wrap(psi_S0_list)), Shield<SEXP>(Rcpp::wrap(NR)), Shield<SEXP>(Rcpp::wrap(est_sigma2)), Shield<SEXP>(Rcpp::wrap(est_probit)), Shield<SEXP>(Rcpp::wrap(parameter_index)), Shield<SEXP>(Rcpp::wrap(est_parameter)), Shield<SEXP>(Rcpp::wrap(npar)), Shield<SEXP>(Rcpp::wrap(iter)), Shield<SEXP>(Rcpp::wrap(save_iter)), Shield<SEXP>(Rcpp::wrap(verbose)), Shield<SEXP>(Rcpp::wrap(print_iter)), Shield<SEXP>(Rcpp::wrap(est_thresh)), Shield<SEXP>(Rcpp::wrap(K)), Shield<SEXP>(Rcpp::wrap(sd_proposal)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -66,17 +66,17 @@ namespace miceadds {
         return Rcpp::as<arma::mat >(rcpp_result_gen);
     }
 
-    inline arma::colvec miceadds_rcpp_mvrnorm(arma::colvec mu, arma::mat sigma) {
-        typedef SEXP(*Ptr_miceadds_rcpp_mvrnorm)(SEXP,SEXP);
+    inline arma::colvec miceadds_rcpp_mvrnorm(arma::colvec mu, arma::mat sigma, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_mvrnorm)(SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_mvrnorm p_miceadds_rcpp_mvrnorm = NULL;
         if (p_miceadds_rcpp_mvrnorm == NULL) {
-            validateSignature("arma::colvec(*miceadds_rcpp_mvrnorm)(arma::colvec,arma::mat)");
+            validateSignature("arma::colvec(*miceadds_rcpp_mvrnorm)(arma::colvec,arma::mat,double)");
             p_miceadds_rcpp_mvrnorm = (Ptr_miceadds_rcpp_mvrnorm)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_mvrnorm");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_mvrnorm(Shield<SEXP>(Rcpp::wrap(mu)), Shield<SEXP>(Rcpp::wrap(sigma)));
+            rcpp_result_gen = p_miceadds_rcpp_mvrnorm(Shield<SEXP>(Rcpp::wrap(mu)), Shield<SEXP>(Rcpp::wrap(sigma)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -87,17 +87,17 @@ namespace miceadds {
         return Rcpp::as<arma::colvec >(rcpp_result_gen);
     }
 
-    inline arma::mat miceadds_rcpp_rwishart(int df, arma::mat S) {
-        typedef SEXP(*Ptr_miceadds_rcpp_rwishart)(SEXP,SEXP);
+    inline arma::mat miceadds_rcpp_rwishart(int df, arma::mat S, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_rwishart)(SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_rwishart p_miceadds_rcpp_rwishart = NULL;
         if (p_miceadds_rcpp_rwishart == NULL) {
-            validateSignature("arma::mat(*miceadds_rcpp_rwishart)(int,arma::mat)");
+            validateSignature("arma::mat(*miceadds_rcpp_rwishart)(int,arma::mat,double)");
             p_miceadds_rcpp_rwishart = (Ptr_miceadds_rcpp_rwishart)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_rwishart");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_rwishart(Shield<SEXP>(Rcpp::wrap(df)), Shield<SEXP>(Rcpp::wrap(S)));
+            rcpp_result_gen = p_miceadds_rcpp_rwishart(Shield<SEXP>(Rcpp::wrap(df)), Shield<SEXP>(Rcpp::wrap(S)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -108,17 +108,17 @@ namespace miceadds {
         return Rcpp::as<arma::mat >(rcpp_result_gen);
     }
 
-    inline arma::mat miceadds_rcpp_riwishart(int df, arma::mat S) {
-        typedef SEXP(*Ptr_miceadds_rcpp_riwishart)(SEXP,SEXP);
+    inline arma::mat miceadds_rcpp_riwishart(int df, arma::mat S, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_riwishart)(SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_riwishart p_miceadds_rcpp_riwishart = NULL;
         if (p_miceadds_rcpp_riwishart == NULL) {
-            validateSignature("arma::mat(*miceadds_rcpp_riwishart)(int,arma::mat)");
+            validateSignature("arma::mat(*miceadds_rcpp_riwishart)(int,arma::mat,double)");
             p_miceadds_rcpp_riwishart = (Ptr_miceadds_rcpp_riwishart)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_riwishart");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_riwishart(Shield<SEXP>(Rcpp::wrap(df)), Shield<SEXP>(Rcpp::wrap(S)));
+            rcpp_result_gen = p_miceadds_rcpp_riwishart(Shield<SEXP>(Rcpp::wrap(df)), Shield<SEXP>(Rcpp::wrap(S)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -423,17 +423,17 @@ namespace miceadds {
         return Rcpp::as<arma::colvec >(rcpp_result_gen);
     }
 
-    inline arma::colvec miceadds_rcpp_ml_mcmc_sample_beta(arma::mat xtx_inv, arma::mat X, Rcpp::List Z_list, arma::colvec y, Rcpp::List u_list, Rcpp::List idcluster_list, double sigma2, Rcpp::List onlyintercept_list, int NR) {
-        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_beta)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
+    inline arma::colvec miceadds_rcpp_ml_mcmc_sample_beta(arma::mat xtx_inv, arma::mat X, Rcpp::List Z_list, arma::colvec y, Rcpp::List u_list, Rcpp::List idcluster_list, double sigma2, Rcpp::List onlyintercept_list, int NR, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_beta)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_ml_mcmc_sample_beta p_miceadds_rcpp_ml_mcmc_sample_beta = NULL;
         if (p_miceadds_rcpp_ml_mcmc_sample_beta == NULL) {
-            validateSignature("arma::colvec(*miceadds_rcpp_ml_mcmc_sample_beta)(arma::mat,arma::mat,Rcpp::List,arma::colvec,Rcpp::List,Rcpp::List,double,Rcpp::List,int)");
+            validateSignature("arma::colvec(*miceadds_rcpp_ml_mcmc_sample_beta)(arma::mat,arma::mat,Rcpp::List,arma::colvec,Rcpp::List,Rcpp::List,double,Rcpp::List,int,double)");
             p_miceadds_rcpp_ml_mcmc_sample_beta = (Ptr_miceadds_rcpp_ml_mcmc_sample_beta)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_ml_mcmc_sample_beta");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_beta(Shield<SEXP>(Rcpp::wrap(xtx_inv)), Shield<SEXP>(Rcpp::wrap(X)), Shield<SEXP>(Rcpp::wrap(Z_list)), Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(u_list)), Shield<SEXP>(Rcpp::wrap(idcluster_list)), Shield<SEXP>(Rcpp::wrap(sigma2)), Shield<SEXP>(Rcpp::wrap(onlyintercept_list)), Shield<SEXP>(Rcpp::wrap(NR)));
+            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_beta(Shield<SEXP>(Rcpp::wrap(xtx_inv)), Shield<SEXP>(Rcpp::wrap(X)), Shield<SEXP>(Rcpp::wrap(Z_list)), Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(u_list)), Shield<SEXP>(Rcpp::wrap(idcluster_list)), Shield<SEXP>(Rcpp::wrap(sigma2)), Shield<SEXP>(Rcpp::wrap(onlyintercept_list)), Shield<SEXP>(Rcpp::wrap(NR)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -444,17 +444,17 @@ namespace miceadds {
         return Rcpp::as<arma::colvec >(rcpp_result_gen);
     }
 
-    inline Rcpp::List miceadds_rcpp_ml_mcmc_sample_u(arma::mat X, arma::colvec beta, Rcpp::List Z_list, arma::colvec y, Rcpp::List ztz_list, Rcpp::List idcluster_list, Rcpp::List ncluster_list, double sigma2, Rcpp::List Psi_list, Rcpp::List onlyintercept_list, int NR, Rcpp::List u0_list) {
-        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_u)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
+    inline Rcpp::List miceadds_rcpp_ml_mcmc_sample_u(arma::mat X, arma::colvec beta, Rcpp::List Z_list, arma::colvec y, Rcpp::List ztz_list, Rcpp::List idcluster_list, Rcpp::List ncluster_list, double sigma2, Rcpp::List Psi_list, Rcpp::List onlyintercept_list, int NR, Rcpp::List u0_list, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_u)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_ml_mcmc_sample_u p_miceadds_rcpp_ml_mcmc_sample_u = NULL;
         if (p_miceadds_rcpp_ml_mcmc_sample_u == NULL) {
-            validateSignature("Rcpp::List(*miceadds_rcpp_ml_mcmc_sample_u)(arma::mat,arma::colvec,Rcpp::List,arma::colvec,Rcpp::List,Rcpp::List,Rcpp::List,double,Rcpp::List,Rcpp::List,int,Rcpp::List)");
+            validateSignature("Rcpp::List(*miceadds_rcpp_ml_mcmc_sample_u)(arma::mat,arma::colvec,Rcpp::List,arma::colvec,Rcpp::List,Rcpp::List,Rcpp::List,double,Rcpp::List,Rcpp::List,int,Rcpp::List,double)");
             p_miceadds_rcpp_ml_mcmc_sample_u = (Ptr_miceadds_rcpp_ml_mcmc_sample_u)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_ml_mcmc_sample_u");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_u(Shield<SEXP>(Rcpp::wrap(X)), Shield<SEXP>(Rcpp::wrap(beta)), Shield<SEXP>(Rcpp::wrap(Z_list)), Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(ztz_list)), Shield<SEXP>(Rcpp::wrap(idcluster_list)), Shield<SEXP>(Rcpp::wrap(ncluster_list)), Shield<SEXP>(Rcpp::wrap(sigma2)), Shield<SEXP>(Rcpp::wrap(Psi_list)), Shield<SEXP>(Rcpp::wrap(onlyintercept_list)), Shield<SEXP>(Rcpp::wrap(NR)), Shield<SEXP>(Rcpp::wrap(u0_list)));
+            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_u(Shield<SEXP>(Rcpp::wrap(X)), Shield<SEXP>(Rcpp::wrap(beta)), Shield<SEXP>(Rcpp::wrap(Z_list)), Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(ztz_list)), Shield<SEXP>(Rcpp::wrap(idcluster_list)), Shield<SEXP>(Rcpp::wrap(ncluster_list)), Shield<SEXP>(Rcpp::wrap(sigma2)), Shield<SEXP>(Rcpp::wrap(Psi_list)), Shield<SEXP>(Rcpp::wrap(onlyintercept_list)), Shield<SEXP>(Rcpp::wrap(NR)), Shield<SEXP>(Rcpp::wrap(u0_list)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -486,17 +486,17 @@ namespace miceadds {
         return Rcpp::as<arma::mat >(rcpp_result_gen);
     }
 
-    inline arma::mat miceadds_rcpp_ml_mcmc_sample_covariance_matrix(arma::mat u, int nu0, arma::mat S0) {
-        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_covariance_matrix)(SEXP,SEXP,SEXP);
+    inline arma::mat miceadds_rcpp_ml_mcmc_sample_covariance_matrix(arma::mat u, int nu0, arma::mat S0, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_covariance_matrix)(SEXP,SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_ml_mcmc_sample_covariance_matrix p_miceadds_rcpp_ml_mcmc_sample_covariance_matrix = NULL;
         if (p_miceadds_rcpp_ml_mcmc_sample_covariance_matrix == NULL) {
-            validateSignature("arma::mat(*miceadds_rcpp_ml_mcmc_sample_covariance_matrix)(arma::mat,int,arma::mat)");
+            validateSignature("arma::mat(*miceadds_rcpp_ml_mcmc_sample_covariance_matrix)(arma::mat,int,arma::mat,double)");
             p_miceadds_rcpp_ml_mcmc_sample_covariance_matrix = (Ptr_miceadds_rcpp_ml_mcmc_sample_covariance_matrix)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_ml_mcmc_sample_covariance_matrix");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_covariance_matrix(Shield<SEXP>(Rcpp::wrap(u)), Shield<SEXP>(Rcpp::wrap(nu0)), Shield<SEXP>(Rcpp::wrap(S0)));
+            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_covariance_matrix(Shield<SEXP>(Rcpp::wrap(u)), Shield<SEXP>(Rcpp::wrap(nu0)), Shield<SEXP>(Rcpp::wrap(S0)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -527,17 +527,17 @@ namespace miceadds {
             throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
     }
 
-    inline Rcpp::List miceadds_rcpp_ml_mcmc_sample_psi(Rcpp::List u_list, Rcpp::List nu0_list, Rcpp::List S0_list, int NR) {
-        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_psi)(SEXP,SEXP,SEXP,SEXP);
+    inline Rcpp::List miceadds_rcpp_ml_mcmc_sample_psi(Rcpp::List u_list, Rcpp::List nu0_list, Rcpp::List S0_list, int NR, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_psi)(SEXP,SEXP,SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_ml_mcmc_sample_psi p_miceadds_rcpp_ml_mcmc_sample_psi = NULL;
         if (p_miceadds_rcpp_ml_mcmc_sample_psi == NULL) {
-            validateSignature("Rcpp::List(*miceadds_rcpp_ml_mcmc_sample_psi)(Rcpp::List,Rcpp::List,Rcpp::List,int)");
+            validateSignature("Rcpp::List(*miceadds_rcpp_ml_mcmc_sample_psi)(Rcpp::List,Rcpp::List,Rcpp::List,int,double)");
             p_miceadds_rcpp_ml_mcmc_sample_psi = (Ptr_miceadds_rcpp_ml_mcmc_sample_psi)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_ml_mcmc_sample_psi");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_psi(Shield<SEXP>(Rcpp::wrap(u_list)), Shield<SEXP>(Rcpp::wrap(nu0_list)), Shield<SEXP>(Rcpp::wrap(S0_list)), Shield<SEXP>(Rcpp::wrap(NR)));
+            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_psi(Shield<SEXP>(Rcpp::wrap(u_list)), Shield<SEXP>(Rcpp::wrap(nu0_list)), Shield<SEXP>(Rcpp::wrap(S0_list)), Shield<SEXP>(Rcpp::wrap(NR)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -548,17 +548,17 @@ namespace miceadds {
         return Rcpp::as<Rcpp::List >(rcpp_result_gen);
     }
 
-    inline double miceadds_rcpp_ml_mcmc_sample_variance(arma::colvec e, int nu0, double sigma2_0) {
-        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_variance)(SEXP,SEXP,SEXP);
+    inline double miceadds_rcpp_ml_mcmc_sample_variance(arma::colvec e, int nu0, double sigma2_0, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_variance)(SEXP,SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_ml_mcmc_sample_variance p_miceadds_rcpp_ml_mcmc_sample_variance = NULL;
         if (p_miceadds_rcpp_ml_mcmc_sample_variance == NULL) {
-            validateSignature("double(*miceadds_rcpp_ml_mcmc_sample_variance)(arma::colvec,int,double)");
+            validateSignature("double(*miceadds_rcpp_ml_mcmc_sample_variance)(arma::colvec,int,double,double)");
             p_miceadds_rcpp_ml_mcmc_sample_variance = (Ptr_miceadds_rcpp_ml_mcmc_sample_variance)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_ml_mcmc_sample_variance");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_variance(Shield<SEXP>(Rcpp::wrap(e)), Shield<SEXP>(Rcpp::wrap(nu0)), Shield<SEXP>(Rcpp::wrap(sigma2_0)));
+            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_variance(Shield<SEXP>(Rcpp::wrap(e)), Shield<SEXP>(Rcpp::wrap(nu0)), Shield<SEXP>(Rcpp::wrap(sigma2_0)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();
@@ -569,17 +569,17 @@ namespace miceadds {
         return Rcpp::as<double >(rcpp_result_gen);
     }
 
-    inline double miceadds_rcpp_ml_mcmc_sample_sigma2(arma::colvec y, arma::mat X, arma::colvec beta, Rcpp::List Z_list, Rcpp::List u_list, Rcpp::List idcluster_list, Rcpp::List onlyintercept_list, int nu0, double sigma2_0, int NR) {
-        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_sigma2)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
+    inline double miceadds_rcpp_ml_mcmc_sample_sigma2(arma::colvec y, arma::mat X, arma::colvec beta, Rcpp::List Z_list, Rcpp::List u_list, Rcpp::List idcluster_list, Rcpp::List onlyintercept_list, int nu0, double sigma2_0, int NR, double ridge) {
+        typedef SEXP(*Ptr_miceadds_rcpp_ml_mcmc_sample_sigma2)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
         static Ptr_miceadds_rcpp_ml_mcmc_sample_sigma2 p_miceadds_rcpp_ml_mcmc_sample_sigma2 = NULL;
         if (p_miceadds_rcpp_ml_mcmc_sample_sigma2 == NULL) {
-            validateSignature("double(*miceadds_rcpp_ml_mcmc_sample_sigma2)(arma::colvec,arma::mat,arma::colvec,Rcpp::List,Rcpp::List,Rcpp::List,Rcpp::List,int,double,int)");
+            validateSignature("double(*miceadds_rcpp_ml_mcmc_sample_sigma2)(arma::colvec,arma::mat,arma::colvec,Rcpp::List,Rcpp::List,Rcpp::List,Rcpp::List,int,double,int,double)");
             p_miceadds_rcpp_ml_mcmc_sample_sigma2 = (Ptr_miceadds_rcpp_ml_mcmc_sample_sigma2)R_GetCCallable("miceadds", "_miceadds_miceadds_rcpp_ml_mcmc_sample_sigma2");
         }
         RObject rcpp_result_gen;
         {
             RNGScope RCPP_rngScope_gen;
-            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_sigma2(Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(X)), Shield<SEXP>(Rcpp::wrap(beta)), Shield<SEXP>(Rcpp::wrap(Z_list)), Shield<SEXP>(Rcpp::wrap(u_list)), Shield<SEXP>(Rcpp::wrap(idcluster_list)), Shield<SEXP>(Rcpp::wrap(onlyintercept_list)), Shield<SEXP>(Rcpp::wrap(nu0)), Shield<SEXP>(Rcpp::wrap(sigma2_0)), Shield<SEXP>(Rcpp::wrap(NR)));
+            rcpp_result_gen = p_miceadds_rcpp_ml_mcmc_sample_sigma2(Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(X)), Shield<SEXP>(Rcpp::wrap(beta)), Shield<SEXP>(Rcpp::wrap(Z_list)), Shield<SEXP>(Rcpp::wrap(u_list)), Shield<SEXP>(Rcpp::wrap(idcluster_list)), Shield<SEXP>(Rcpp::wrap(onlyintercept_list)), Shield<SEXP>(Rcpp::wrap(nu0)), Shield<SEXP>(Rcpp::wrap(sigma2_0)), Shield<SEXP>(Rcpp::wrap(NR)), Shield<SEXP>(Rcpp::wrap(ridge)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();

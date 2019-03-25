@@ -1,9 +1,9 @@
 ## File Name: ml_mcmc.R
-## File Version: 0.498
+## File Version: 0.501
 
 ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
     outcome="normal", nu0=NULL, s0=1, psi_nu0_list=NULL, psi_S0_list=NULL,
-    inits_lme4=FALSE, thresh_fac=5.8)
+    inits_lme4=FALSE, thresh_fac=5.8, ridge=1e-5)
 {
     CALL <- match.call()
     s1 <- Sys.time()
@@ -83,7 +83,8 @@ ml_mcmc <- function( formula, data, iter=3000, burnin=500, print_iter=100,
             psi_S0_list=psi_S0_list, est_sigma2=est_sigma2, est_probit=est_probit,
             parameter_index=parameter_index, est_parameter=est_parameter, npar=npar,
             iter=iter, save_iter=save_iter, verbose=verbose, print_iter=print_iter,
-            parnames0=parnames0, K=K, est_thresh=est_thresh, thresh_fac=thresh_fac )
+            parnames0=parnames0, K=K, est_thresh=est_thresh, thresh_fac=thresh_fac,
+            ridge=ridge)
 
     #*** MCMC estimation
     res <- do.call( what=ml_mcmc_fit, args=ml_mcmc_fit_args)

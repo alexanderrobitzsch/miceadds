@@ -1,5 +1,5 @@
 %% File Name: ml_mcmc.Rd
-%% File Version: 0.434
+%% File Version: 0.442
 
 \name{ml_mcmc}
 \alias{ml_mcmc}
@@ -40,7 +40,8 @@ or ordinal (Goldstein, 2011; Goldstein, Carpenter, Kenward & Levin, 2009).
 
 \usage{
 ml_mcmc( formula, data, iter=3000, burnin=500, print_iter=100, outcome="normal",
-     nu0=NULL, s0=1, psi_nu0_list=NULL, psi_S0_list=NULL, inits_lme4=FALSE, thresh_fac=5.8)
+     nu0=NULL, s0=1, psi_nu0_list=NULL, psi_S0_list=NULL, inits_lme4=FALSE, 
+     thresh_fac=5.8, ridge=1e-5)
 
 \method{summary}{ml_mcmc}(object, digits=4, file=NULL, ...)
 
@@ -54,16 +55,16 @@ ml_mcmc_fit(y, X, Z_list, beta, Psi_list, sigma2, alpha, u_list, idcluster_list,
     onlyintercept_list, ncluster_list, sigma2_nu0, sigma2_sigma2_0, psi_nu0_list,
     psi_S0_list, est_sigma2, est_probit, parameter_index, est_parameter, npar, iter,
     save_iter, verbose=TRUE, print_iter=500, parnames0=NULL, K=9999, est_thresh=FALSE,
-    thresh_fac=5.8, parm_summary=TRUE )
+    thresh_fac=5.8, ridge=1e-5, parm_summary=TRUE )
 
 ## exported Rcpp functions
 miceadds_rcpp_ml_mcmc_sample_beta(xtx_inv, X, Z_list, y, u_list, idcluster_list, sigma2,
-     onlyintercept_list, NR)
+     onlyintercept_list, NR, ridge)
 miceadds_rcpp_ml_mcmc_sample_u(X, beta, Z_list, y, ztz_list, idcluster_list,
-    ncluster_list, sigma2, Psi_list, onlyintercept_list, NR, u0_list)
-miceadds_rcpp_ml_mcmc_sample_psi(u_list, nu0_list, S0_list, NR)
+    ncluster_list, sigma2, Psi_list, onlyintercept_list, NR, u0_list, ridge)
+miceadds_rcpp_ml_mcmc_sample_psi(u_list, nu0_list, S0_list, NR, ridge)
 miceadds_rcpp_ml_mcmc_sample_sigma2(y, X, beta, Z_list, u_list, idcluster_list,
-     onlyintercept_list, nu0, sigma2_0, NR)
+     onlyintercept_list, nu0, sigma2_0, NR, ridge)
 miceadds_rcpp_ml_mcmc_sample_latent_probit(X, beta, Z_list, u_list, idcluster_list, NR,
      y_int, alpha, minval, maxval)
 miceadds_rcpp_ml_mcmc_sample_thresholds(X, beta, Z_list, u_list, idcluster_list, NR, K,
@@ -100,6 +101,7 @@ be obtained from fitting the model in the \pkg{lme4} package}
 \item{thresh_fac}{Factor for proposal variance for estimating thresholds
 which is determined as \code{thresh_fac}\eqn{/N} (\eqn{5.8/N} as default).
 }
+\item{ridge}{Ridge parameter for covariance matrices in sampling}
 \item{object}{Object of class \code{ml_mcmc}}
 \item{digits}{Number of digits after decimal used for printing}
 \item{file}{Optional file name}
