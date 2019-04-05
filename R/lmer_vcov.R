@@ -1,5 +1,5 @@
 ## File Name: lmer_vcov.R
-## File Version: 0.22
+## File Version: 0.23
 
 ## covariance matrix for fitted models with lmer including
 ## variance components
@@ -34,7 +34,7 @@ lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
         pars <- c(pars, lme4::fixef(fit))
     }
     hh1 <- numDeriv::hessian(dd,pars)
-    vv2 <- 2*MASS::ginv(hh1)
+    vv2 <- 2*miceadds_ginv(x=hh1)
     if (lme4::isGLMM(fit)) {
         vv2 <- vv2[1:npar0, 1:npar0, drop=FALSE]
     }

@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc_proc_data.R
-## File Version: 0.14
+## File Version: 0.17
 
 ml_mcmc_proc_data <- function( formula, data, outcome, verbose=TRUE)
 {

@@ -43,7 +43,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.2  |  2019-03-25  |  Last: miceadds 3.2-10
+VERSIONS miceadds 3.2  |  2019-04-05  |  Last: miceadds 3.2-23
 ---------------------------------------------------------------------
 
 NOTE  * changed default 'inits_lme4=TRUE' to 'inits_lme4=FALSE' (do not
@@ -58,10 +58,17 @@ FIXED * fixed a bug in ma.wtd.statsNA() functions for objects of class
         (thanks to Peter Lenz)
 NOTE  * included argument 'ridge' in ml_mcmc() and ml_mcmc_fit() for
         stabilizing MCMC sampling in case of convergence issues
+NOTE  * change in computing matches for weighted predictive mean matching
+        (function mice.impute.weighted.pmm())
+FIXED * fixed a bug in NMIcombine() with inference of a single parameter
+NOTE  * included example of using mice.impute.pls() at the level of
+        a variable
+FIXED * fixed a bug in formula handling of ml_mcmc()
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: mice.impute.ml.lmer (1.2)
+EXAMP * included/modified examples: mice.impute.ml.lmer (1.2),
+        mice.impute.pls (1)
 
 
 

@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_include_cluster_means.R
-## File Version: 0.174
+## File Version: 0.175
 
 
 mice_ml_lmer_include_cluster_means <- function(y, ry, type, x, levels_id, aggregate_automatically,
@@ -40,7 +40,7 @@ mice_ml_lmer_include_cluster_means <- function(y, ry, type, x, levels_id, aggreg
         }
     }
     #--- type
-    type_sel <- mice_impute_create_type_vector( variables=colnames(x_sel), value=1)
+    type_sel <- mice_imputation_create_type_vector( variables=colnames(x_sel), value=1)
 
     #--- output
     res <- list( x=x_sel, type=type_sel)

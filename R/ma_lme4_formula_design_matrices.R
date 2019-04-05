@@ -1,5 +1,5 @@
 ## File Name: ma_lme4_formula_design_matrices.R
-## File Version: 0.314
+## File Version: 0.318
 
 
 ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
@@ -32,6 +32,7 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
     idcluster_list <- list()
     ncluster_list <- list()
     parnames_Psi <- list()
+
     for (rr in seq_len(NR)){
         #-- design matrix random effect rr
         Z_rr <- stats::model.matrix( formula_random[[rr]], data=data)
@@ -66,5 +67,4 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
                     idcluster_list=idcluster_list, cluster_list=cluster_list,
                     ncluster_list=ncluster_list, parnames=parnames)
     return(res)
-
 }

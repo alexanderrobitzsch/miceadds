@@ -1,7 +1,7 @@
-%% File Name: mice_impute_2l_lmer.Rd
-%% File Version: 0.46
+%% File Name: mice_imputation_2l_lmer.Rd
+%% File Version: 0.47
 
-\name{mice_impute_2l_lmer}
+\name{mice_imputation_2l_lmer}
 \alias{mice.impute.2l.binary}
 \alias{mice.impute.2l.continuous}
 \alias{mice.impute.2l.pmm}

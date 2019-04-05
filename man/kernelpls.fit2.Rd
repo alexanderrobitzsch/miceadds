@@ -1,5 +1,5 @@
 %% File Name: kernelpls.fit2.Rd
-%% File Version: 0.27
+%% File Version: 0.28
 
 \name{kernelpls.fit2}
 \alias{kernelpls.fit2}
@@ -72,10 +72,12 @@ See the \pkg{pls} package for further estimation algorithms.
 }
 
 \examples{
+\dontrun{
 #############################################################################
 # SIMULATED EXAMPLE 1: 300 cases on 100 variables
 #############################################################################
 set.seed(789)
+library(mvtnorm)
 
 N <- 300        # number of cases
 p <- 100        # number of predictors
@@ -94,7 +96,6 @@ res <- miceadds::kernelpls.fit2( X=X, Y=Y, ncomp=20 )
 # predict new scores
 Xpred <- predict( res, X=X[1:10,] )
 
-\dontrun{
 #############################################################################
 # EXAMPLE 2: Dataset yarn from pls package
 #############################################################################

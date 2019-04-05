@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.607
+## File Version: 3.636
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
@@ -23,7 +23,6 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     res <- mice_imputation_get_states( pos=pos )
     vname <- res$vname
     imp.temp <- res$newstate
-
     if (extract_data){
         res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos )
         y <- res$y
@@ -49,13 +48,18 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     res <- mice_imputation_pls_print_progress1( pls.print.progress=pls.print.progress,
                     vname=vname, print.dims=print.dims, y=y, ry=ry, x=x, type=type )
 
+
+# imputationWeights <- round(runif(imputationWeights, .5,1.5),2)
+# Revalpr("imputationWeights")
+## bootstrap at cluster level if type==-2
+
     # include predictor variables with type !=0
     nt <- names(type)[ type !=0 ]
     nt <- intersect( nt, colnames(x) )
     x10 <- x <- x[, nt]
     use.ymat <- ( ! is.null( dim(y) ) )
     x <- as.matrix(x)
-    use_weights <- stats::sd( imputationWeights ) > 1E-30
+    use_weights <- stats::sd(imputationWeights) > 1E-30
 
     # standardize matrix of covariates
     x <- mice_imputation_pls_scale_x( x=x, imputationWeights=imputationWeights,
@@ -78,8 +82,9 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
 
     #-- include interactions
     res <- mice_imputation_pls_include_interactions( pls.interactions=pls.interactions,
-                pls.print.progress=pls.print.progress, x=x, y=y,
-                ry=ry, type=type, min.int.cor=min.int.cor, pls.maxcols=pls.maxcols )
+                pls.print.progress=pls.print.progress, x=x, y=y, ry=ry, type=type,
+                min.int.cor=min.int.cor, pls.maxcols=pls.maxcols,
+                imputationWeights=imputationWeights, use_weights=use_weights)
     x <- res$x
     xs <- res$xs
 
@@ -89,6 +94,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                 xs=xs )
     x <- res$x
 
+##-- continue with inclusion of weights
     #-- include only terms with largest correlations
     res <- mice_imputation_pls_largest_correlations( y=y, x=x, ry=ry, type=type,
                 use.ymat=use.ymat, pls.print.progress=pls.print.progress, x10=x10, N.largest=N.largest,
@@ -97,7 +103,8 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
 
     #-- perform PCA if requested
     x <- mice_imputation_pls_pca_reduction( x=x, pcamaxcols=pcamaxcols,
-                pls.print.progress=pls.print.progress )
+                imputationWeights=imputationWeights, pls.print.progress=pls.print.progress,
+                use_weights=use_weights)
     x10 <- x    # copy dataset of predictors
 
     #--- perform PLS regression

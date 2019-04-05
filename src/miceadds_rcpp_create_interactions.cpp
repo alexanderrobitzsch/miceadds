@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_create_interactions.cpp
-//// File Version: 2.13
+//// File Version: 2.237
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -15,7 +15,8 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 Rcpp::List miceadds_rcpp_create_interactions( Rcpp::NumericVector Yr,
     Rcpp::NumericMatrix Xr, Rcpp::NumericMatrix Xallr,
-    Rcpp::NumericMatrix index_int, Rcpp::NumericVector MI, Rcpp::NumericVector maxcols )
+    Rcpp::NumericMatrix index_int, Rcpp::NumericVector MI, Rcpp::NumericVector maxcols,
+    bool use_weights, Rcpp::NumericVector weights_obs)
 {
     int nobj = Xr.nrow();
     int nall = Xallr.nrow();
@@ -38,11 +39,30 @@ Rcpp::List miceadds_rcpp_create_interactions( Rcpp::NumericVector Yr,
     arma::mat xxi = arma::zeros( nobj, 1 );
     arma::mat xxi2 = arma::zeros( nall, 1 );
     arma::mat cii = arma::zeros( 1, 1 );
+    arma::mat cor_temp(1,1);
+    double cxy = 0;
+    double mx = 0;
+    double cxx = 0;
     int zz = 0; // init zz: the number of interactions
     for (int nn=0;nn<NI;nn++){
         // create vector with interactions
         xxi = arma::mat( xobs.col( index_int(nn,0)-1 ) % xobs.col( index_int(nn,1)-1 ) );
-        cii = arma::abs( arma::cor( Y, xxi )  );
+        if (! use_weights){
+            cor_temp = arma::cor( Y, xxi );
+        } else {
+            mx = 0;
+            for (int ii=0; ii<nobj; ii++){
+                mx += xxi(ii,0)*weights_obs[ii];
+            }
+            cxy = 0;
+            cxx = 0;
+            for (int ii=0; ii<nobj; ii++){
+                cxy += Y(ii,0)*xxi(ii,0)*weights_obs[ii];
+                cxx += std::pow( xxi(ii,0) - mx, 2.0)*weights_obs[ii];
+            }
+            cor_temp(0,0) = cxy / std::sqrt(cxx);
+        }
+        cii = arma::abs( cor_temp );
         allcorrs(nn,0) =  cii(0,0);
         if ( cii(0,0) > min_int_cor ){
             xxi2 = arma::mat( xall.col( index_int(nn,0)-1 ) % xall.col( index_int(nn,1)-1 ) );

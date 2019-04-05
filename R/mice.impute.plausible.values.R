@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.674
+## File Version: 2.676
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
@@ -135,8 +135,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         xcov1a <- cbind( 1, xcov1 )
         xtx <- crossprod(xcov1a)
         diag(xtx) <- diag(xtx) * (1 + ridge)
-        xtx1 <- MASS::ginv(xtx)
-        # xtx1 <- solve(xtx)
+        xtx1 <- miceadds_ginv(x=xtx)
 
         # begin iterations for drawing plausible values
         for (iter in 1:pviter){

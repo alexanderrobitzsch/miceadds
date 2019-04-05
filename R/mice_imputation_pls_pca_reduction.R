@@ -1,10 +1,11 @@
 ## File Name: mice_imputation_pls_pca_reduction.R
-## File Version: 0.06
+## File Version: 0.11
 
 
 mice_imputation_pls_pca_reduction <- function(x, pcamaxcols,
-    pls.print.progress)
+    pls.print.progress, imputationWeights=NULL, use_weights=FALSE)
 {
+    if (! use_weights ){ imputationWeights <- NULL }
     if ( ncol(x) > pcamaxcols ){
         a0 <- Sys.time()
         NX <- nrow(x)
@@ -21,7 +22,7 @@ mice_imputation_pls_pca_reduction <- function(x, pcamaxcols,
             }
         }
         x <- as.matrix(x)
-        xpca <- pca.covridge(x=x)
+        xpca <- pca.covridge(x=x, wt=imputationWeights)
         varexpl <- xpca$sdev^2
         varexpl <- cumsum( varexpl / sum( varexpl) * 100 )
         xdims <- which( varexpl > 100*pcamaxcols )[1]

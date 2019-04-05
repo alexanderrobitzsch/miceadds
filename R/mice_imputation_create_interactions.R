@@ -1,20 +1,23 @@
 ## File Name: mice_imputation_create_interactions.R
-## File Version: 1.13
+## File Version: 1.190
 
 
 #** create interactions
 mice_imputation_create_interactions <- function (y_, xobs_, xall_,
-    index_int_, min_int_cor_, maxcols_ )
+    index_int_, min_int_cor_, maxcols_, imputationWeights=NULL, ry=NULL,
+    use_weights=FALSE )
 {
-    res <- miceadds_rcpp_create_interactions(
-                Yr=y_, Xr=xobs_, Xallr=xall_, index_int=index_int_,
-                MI=min_int_cor_, maxcols=maxcols_ )
-        # List of 5
-        # $ index_int
-        # $ xint
-        # $ allcorrs
-        # $ min_int_cor
-        #  $ N_interactions
+    weights_obs <- 0
+    if (use_weights){
+        weights_obs <- normalize_vector(imputationWeights[ry])
+        y_ <- miceadds_weighted_scaling_y(y=y_, w=weights_obs)
+        xobs_ <- mice_imputation_pls_scale_x( x=xobs_, imputationWeights=weights_obs,
+                            use_weights=use_weights )
+        weights_obs <- weights_obs / length(weights_obs)
+    }
+    res <- miceadds_rcpp_create_interactions( Yr=y_, Xr=xobs_, Xallr=xall_,
+                index_int=index_int_, MI=min_int_cor_, maxcols=maxcols_ ,
+                use_weights=use_weights, weights_obs=weights_obs)
     r1 <- res$allcorrs
     r1[ is.na( r1[,1] ), 1] <- 0
     #---- remove some interactions with SD=0

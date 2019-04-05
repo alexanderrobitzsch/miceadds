@@ -1,9 +1,9 @@
 ## File Name: NMIcombine.R
-## File Version: 0.32
+## File Version: 0.356
 
-#################################################
-# extension of MIcombine function to nested
-# multiply imputed datasets
+
+#* extension of MIcombine function to nested
+#* multiply imputed datasets
 NMIcombine <- function( qhat, u=NULL, se=NULL,
         NMI=TRUE, comp_cov=TRUE, is_list=TRUE, method=1 )
 {
@@ -13,7 +13,6 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
     if ( ! NMI ){
             is_list <- TRUE
     }
-
 
     #*********************************************
     if ( is_list ){
@@ -49,6 +48,7 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
                 }
             }
         }
+
         #************************************
         NB <- length( qhat )
         NW <- length( qhat[[1]] )
@@ -58,9 +58,10 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
 
         # collect parameter estimates
         qhat <- array( NA, dim=c( NB, NW, NV ) )
-        dimnames(qhat)[[3]] <- names(qhat0[[1]][[1]])
-        dimnames(qhat)[[1]] <- paste0("Between_Imp", 1:NB )
-        dimnames(qhat)[[2]] <- paste0("Within_Imp", 1:NW )
+        names_vars <- names(qhat0[[1]][[1]])
+        dimnames_qhat <- NMIcombine_include_dimnames( names_vars=names_vars, NB=NB,
+                                NW=NW, dims=3)
+        dimnames(qhat) <- dimnames_qhat
 
         for (bb in 1:NB){
             for (ww in 1:NW){
@@ -70,9 +71,9 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
 
         # collect estimated variance matrices
         u <- array( 0, dim=c( NB, NW, NV, NV) )
-        dimnames(u)[[4]] <- dimnames(u)[[3]] <- dimnames(qhat)[[3]]
-        dimnames(u)[[1]] <- paste0("Between_Imp", 1:NB )
-        dimnames(u)[[2]] <- paste0("Within_Imp", 1:NW )
+        dimnames_u <- NMIcombine_include_dimnames( names_vars=names_vars, NB=NB,
+                                NW=NW, dims=4)
+        dimnames(u) <- dimnames_u
         if ( ! is.null(u0) ){
             for (bb in 1:NB){
                 for (ww in 1:NW){
@@ -89,10 +90,9 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
         NW <- dim_qhat[2]
         NV <- dim_qhat[3]
         u <- array( 0, dim=c( NB, NW, NV, NV) )
-        dimnames(u)[[4]] <- dimnames(u)[[3]] <- dimnames(qhat)[[3]]
-        dimnames(u)[[1]] <- paste0("Between_Imp", 1:NB )
-        dimnames(u)[[2]] <- paste0("Within_Imp", 1:NW )
-
+        dimnames_u <- NMIcombine_include_dimnames( names_vars=names_vars, NB=NB,
+                                NW=NW, dims=4)
+        dimnames(u) <- dimnames_u
         for (bb in 1:NB){
            for (ww in 1:NW){
                 h1 <- se[[bb]][[ww]]

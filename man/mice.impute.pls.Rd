@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.35
+%% File Version: 2.362
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -193,6 +193,26 @@ imp2 <- miceadds::mice.1chain(data=dat, method=impMethod,
      pls.facs=pls.facs, pls.impMethod=pls.impMethod,
      pls.impMethodArgs=pls.impMethodArgs, ls.meth="ridge" )
 summary(imp2)
+
+#*** example for using imputation function at the level of a variable
+
+# extract first imputed dataset
+imp1 <- mice::complete(imp1, action=1)
+data_imp1[ is.na(dat$IN1), "IN1" ] <- NA
+
+# define variables
+y <- data_imp1$IN1
+x <- data_imp1[, -1 ]
+ry <- ! is.na(y)
+cn <- colnames(dat)
+p <- ncol(dat)
+type <- rep(1,p)
+names(type) <- cn
+type["IN1"] <- 0
+
+# imputation of variable 'IN1'
+imp0 <- miceadds::mice.impute.pls(y=y, x=x, ry=ry, type=type, pls.facs=10, pls.impMethod="norm", 
+             ls.meth="ridge", extract_data=FALSE )
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

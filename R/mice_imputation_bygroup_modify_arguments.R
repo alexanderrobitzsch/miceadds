@@ -1,8 +1,8 @@
-## File Name: mice_impute_bygroup_modify_arguments.R
-## File Version: 0.02
+## File Name: mice_imputation_bygroup_modify_arguments.R
+## File Version: 0.03
 
 
-mice_impute_bygroup_modify_arguments <- function(args, ind_gg,
+mice_imputation_bygroup_modify_arguments <- function(args, ind_gg,
     imputationFunction_vname)
 {
     Nmis <- sum( ! args$ry )

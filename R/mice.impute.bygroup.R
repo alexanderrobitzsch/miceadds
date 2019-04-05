@@ -1,5 +1,5 @@
 ## File Name: mice.impute.bygroup.R
-## File Version: 0.564
+## File Version: 0.565
 
 mice.impute.bygroup <- function( y, ry, x, group,
         imputationFunction, ... )
@@ -49,7 +49,7 @@ mice.impute.bygroup <- function( y, ry, x, group,
         if (l2_imp_fct){
             args$type <- type
         }
-        res <- mice_impute_bygroup_modify_arguments(args=args, ind_gg=ind_gg,
+        res <- mice_imputation_bygroup_modify_arguments(args=args, ind_gg=ind_gg,
                     imputationFunction_vname=imputationFunction_vname)
         args <- res$args
         Nmis <- res$Nmis

@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc_fit.R
-## File Version: 0.505
+## File Version: 0.508
 
 ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     alpha, u_list, idcluster_list, onlyintercept_list, ncluster_list,
@@ -8,8 +8,10 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     verbose=TRUE, print_iter=500, parnames0=NULL, K=9999, est_thresh=FALSE,
     thresh_fac=5.8, ridge=1e-5, parm_summary=TRUE )
 {
+    requireNamespace("coda")
     #** preliminaries
-    xtx_inv <- MASS::ginv( miceadds_rcpp_ml_mcmc_compute_xtx(X) )
+    xtx <- miceadds_rcpp_ml_mcmc_compute_xtx(X)
+    xtx_inv <- miceadds_ginv( x=xtx )
     NR <- length(Z_list)
     ztz_list <- list()
     for (rr in seq_len(NR)){

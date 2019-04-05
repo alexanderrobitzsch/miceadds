@@ -1,5 +1,5 @@
 %% File Name: pca.covridge.Rd
-%% File Version: 0.23
+%% File Version: 0.25
 
 \name{pca.covridge}
 \alias{pca.covridge}
@@ -16,7 +16,7 @@ parameter is added on the diagonal of the covariance matrix.
 
 
 \usage{
-pca.covridge(x, ridge=1E-10 )
+pca.covridge(x, ridge=1E-10, wt=NULL )
 }
 
 
@@ -28,6 +28,7 @@ A numeric matrix
   \item{ridge}{
 Ridge regularization parameter for the covariance matrix
 }
+\item{wt}{Optional vector of weights}
 }
 
 

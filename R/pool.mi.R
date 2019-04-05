@@ -1,5 +1,5 @@
 ## File Name: pool.mi.R
-## File Version: 0.34
+## File Version: 0.35
 
 ##############################################################
 # Inference for multiply imputed datasets
@@ -82,7 +82,7 @@ mice_df <- function (m, lambda, dfcom, method)
 }
 
 ###########################################################
-# This function is a modification of mitools::summary.MIresult
+# This function is a modification of summary.MIresult (mitools package)
 summary.pool_mi <-function(object, alpha=0.05, ...)
 {
     cat("Multiple imputation results:\nCall: ")

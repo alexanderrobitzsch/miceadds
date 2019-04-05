@@ -1,10 +1,10 @@
-## File Name: mice_impute_2l_lmer.R
-## File Version: 0.573
+## File Name: mice_imputation_2l_lmer.R
+## File Version: 0.575
 
 
 #**** main function for multilevel imputation with lme4 which
 # is just wrapper by methods "2l.continuous", "2l.binary" and "2l.pmm"
-mice_impute_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
+mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                     groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
                     glmer.warnings=TRUE, model="continuous", donors=5, match_sampled_pars=FALSE,
                     blme_use=FALSE, blme_args=NULL,...)
@@ -142,7 +142,7 @@ mice_impute_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     if ( model=="continuous"){
         sigma <- attr( fit_VarCorr,"sc")
         imp <- mice_multilevel_imputation_draw_residuals( predicted=predicted0,
-                            sigma=sigma  )
+                            sigma=sigma )
     }
     if ( model=="pmm"){
         imp <- mice_multilevel_imputation_pmm5(y=y, ry=ry, x=x,

@@ -1,9 +1,14 @@
 ## File Name: pca.covridge.R
-## File Version: 0.11
+## File Version: 0.14
 
-pca.covridge <- function( x, ridge=1E-10 )
+pca.covridge <- function( x, ridge=1E-10, wt=NULL )
 {
-    cx <- stats::cov(x)
+    if (is.null(wt)){
+        cx <- stats::cov(x)
+    } else {
+        cx <- stats::cov.wt(x=x, wt=wt)
+        cx <- cx$cov
+    }
     diag(cx) <- diag(cx) + ridge
     pcax <- stats::princomp( covmat=cx )
     L <- pcax$loadings

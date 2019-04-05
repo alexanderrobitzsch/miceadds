@@ -1,5 +1,5 @@
 %% File Name: mice.impute.weighted.pmm.Rd
-%% File Version: 0.23
+%% File Version: 0.25
 
 \name{mice.impute.weighted.pmm}
 \alias{mice.impute.weighted.pmm}
@@ -15,7 +15,7 @@ using sampling weights.
 }
 \usage{
 mice.impute.weighted.pmm(y, ry, x, imputationWeights=NULL,
-      pls.facs=NULL, interactions=NULL, quadratics=NULL, ...)
+      pls.facs=NULL, interactions=NULL, quadratics=NULL, donors=5, ...)
 
 mice.impute.weighted.norm(y, ry, x, ridge=1e-05, pls.facs=NULL,
      imputationWeights=NULL, interactions=NULL, quadratics=NULL, ...)
@@ -42,6 +42,7 @@ Optional vector of variables for which interactions should be created
   \item{quadratics}{
 Optional vector of variables which should also be included as quadratic effects.
 }
+\item{donors}{Number of donors}
   \item{\dots}{
 Further arguments to be passed
 }
