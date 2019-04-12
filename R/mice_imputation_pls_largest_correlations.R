@@ -1,12 +1,15 @@
 ## File Name: mice_imputation_pls_largest_correlations.R
-## File Version: 0.13
+## File Version: 0.19
 
 mice_imputation_pls_largest_correlations <- function( y, x, ry, type,
-    use.ymat, pls.print.progress, x10, N.largest, min.all.cor )
+    use.ymat, pls.print.progress, x10, N.largest, min.all.cor,
+    imputationWeights=NULL, eps=1e-20)
 {
 
     # compute correlations
-    c1 <- mice_imputation_pls_correlation_criteria( y, x, ry, use.ymat)
+    c1 <- mice_imputation_pls_correlation_criteria( y=y, x=x, ry=ry,
+                    use.ymat=use.ymat, wt=imputationWeights)
+
     elim.ind <- which( abs(c1) < min.all.cor )
     N11 <- ncol(x)
 
@@ -26,7 +29,8 @@ mice_imputation_pls_largest_correlations <- function( y, x, ry, type,
     }
 
     # look for largest correlations
-    c1 <- mice_imputation_pls_correlation_criteria( y, x, ry, use.ymat)
+    c1 <- mice_imputation_pls_correlation_criteria( y=y, x=x, ry=ry,
+                use.ymat=use.ymat, wt=imputationWeights)
 
     #***---***---***---***---***---***---***---***---
     if (N.largest>0){  # begin N.largest
@@ -56,7 +60,6 @@ mice_imputation_pls_largest_correlations <- function( y, x, ry, type,
     if ( dim(x)[2]==0 ){
         x <-  x10[,1:2]
         n0 <- dim(x)[1]
-        eps <- 1E-20
         x[,1] <- x[,1] + stats::rnorm( n0, sd=eps )
         x[,2] <- x[,2] + stats::rnorm( n0, sd=eps )
     }

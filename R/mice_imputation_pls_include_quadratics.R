@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_include_quadratics.R
-## File Version: 0.08
+## File Version: 0.11
 
 
 mice_imputation_pls_include_quadratics <- function( pls.quadratics,
@@ -18,7 +18,8 @@ mice_imputation_pls_include_quadratics <- function( pls.quadratics,
         colnames(x) <- paste0("x", 1:(ncol(x)) )
         if( pls.print.progress ){
             cat("\n", paste("Created", length(use.quad),"Quadratic Terms",
-                    substring( Sys.time(),1) ), "\n") ; flush.console()
+                    substring( Sys.time(),1) ), "\n")
+            utils::flush.console()
             cat("Quadratic terms of ", paste(use.quad,collapse=" "), "\n", sep="")
             utils::flush.console()
         }

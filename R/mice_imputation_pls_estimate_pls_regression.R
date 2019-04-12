@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_estimate_pls_regression.R
-## File Version: 0.19
+## File Version: 0.301
 
 mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
     use.ymat, imputationWeights, use_weights, pls.print.progress )
@@ -14,15 +14,20 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         yobs <- y[ry,]
     }
     # center y obs
-    weight.obs <- imputationWeights[ ry ]
-    weight.obs <- normalize_vector( weight.obs )
-    yobs <- yobs - stats::weighted.mean( yobs, weight.obs )
-    xobs <- x[ ry, ]
+    weight.obs <- normalize_vector(x=imputationWeights[ry])
+    yobs <- yobs - stats::weighted.mean( x=yobs, w=weight.obs )
+    xobs <- x[ry, ]
+
     # include imputationWeights here and calculate weight.obs
     # in the regression model, only PLS factors of X are used
     if( use_weights ){
-        yobs <- weight.obs * yobs
-        xobs <- outer( weight.obs, rep(1, ncol(xobs) ) ) * xobs
+        weight_obs_sqrt <- sqrt(weight.obs)
+        nobs <- length(weight.obs)
+        cm1 <- miceadds_weighted_colMeans(x=xobs, imputationWeights=weight.obs)
+        xobs <- xobs - TAM::tam_matrix2(cm1, nrow=nobs)
+        x <- x - TAM::tam_matrix2(cm1, nrow=nrow(x))
+        yobs <- weight_obs_sqrt * yobs
+        xobs <- weight_obs_sqrt * xobs
     }
 
     if( pls.print.progress ){

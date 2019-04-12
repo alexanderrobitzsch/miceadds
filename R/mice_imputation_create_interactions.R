@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_create_interactions.R
-## File Version: 1.190
+## File Version: 1.191
 
 
 #** create interactions
@@ -16,7 +16,7 @@ mice_imputation_create_interactions <- function (y_, xobs_, xall_,
         weights_obs <- weights_obs / length(weights_obs)
     }
     res <- miceadds_rcpp_create_interactions( Yr=y_, Xr=xobs_, Xallr=xall_,
-                index_int=index_int_, MI=min_int_cor_, maxcols=maxcols_ ,
+                index_int=index_int_, MI=min_int_cor_, maxcols=maxcols_,
                 use_weights=use_weights, weights_obs=weights_obs)
     r1 <- res$allcorrs
     r1[ is.na( r1[,1] ), 1] <- 0

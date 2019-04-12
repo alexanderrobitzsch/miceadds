@@ -1,10 +1,11 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.156
+## File Version: 0.172
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
-    pls.impMethodArgs, type, ... )
+    pls.impMethodArgs, type, use_boot=FALSE, ... )
 {
+    x <- as.matrix(x)
     #*** logical whether an imputation should be conducted
     do_imputation <- ( pls.impMethod !="xplsfacs" )
 
@@ -17,7 +18,9 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
             imputationWeights <- rep(1,length(y) )
         }
         if ( use_weights ){   # if there exists a real sample weight vector
-            x <- cbind(1, as.matrix(x) )
+            if (sd0(x[,1] > 1e-10)){
+                x <- cbind(1, x)
+            }
             xobs <- x[ry,]
             yobs <- y[ry]
             weights.obs <- imputationWeights[ ry ]
@@ -28,8 +31,17 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
                         "applied when weights are provided.\n") )
             }
             # draw regression coefficients
+            sample_pars <- ! use_boot
             parm <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
-                        ry=ry, y=y, x=x, weights.obs=weights.obs, ... )
+                        ry=ry, y=y, x=x, weights.obs=weights.obs,
+                        sample_pars=sample_pars, ... )
+            if (use_boot){
+                weights.obs <- 1+0*weights.obs
+                parm1 <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
+                        ry=ry, y=y, x=x, weights.obs=weights.obs,
+                        sample_pars=sample_pars, ... )
+                parm$coef <- parm1$coef
+            }
             if (pls.impMethod=="norm"){
                 x1 <- x[  ! ry, ] %*% parm$beta + stats::rnorm(sum(!ry)) * parm$sigma
             }
