@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_get_states.R
-## File Version: 0.38
+## File Version: 0.393
 
 mice_imputation_get_states <- function( pos=parent.frame(n=1), n_index=1:8 )
 {
@@ -21,8 +21,12 @@ mice_imputation_get_states <- function( pos=parent.frame(n=1), n_index=1:8 )
     #-- blocks
     blocks <- ma_exists_get(x='blocks', pos=pos, n_index=n_index )
     block <- blocks[[ dep ]]
+    #-- data
+    data <- ma_exists_get(x='data', pos=pos, n_index=n_index )
+
     #*** output
-    res <- list(newstate=newstate, vname=vname, dep=dep, blocks=blocks, block=block)
+    res <- list(newstate=newstate, vname=vname, dep=dep, blocks=blocks, block=block,
+                data=data, pos=pos, n_index=n_index)
     return(res)
 }
 

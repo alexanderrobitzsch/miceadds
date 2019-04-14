@@ -1,5 +1,5 @@
 %% File Name: mice.impute.weighted.pmm.Rd
-%% File Version: 0.25
+%% File Version: 0.272
 
 \name{mice.impute.weighted.pmm}
 \alias{mice.impute.weighted.pmm}
@@ -14,10 +14,10 @@ Imputation by predictive mean matching or normal linear regression
 using sampling weights.
 }
 \usage{
-mice.impute.weighted.pmm(y, ry, x, imputationWeights=NULL,
+mice.impute.weighted.pmm(y, ry, x, wy=NULL, imputationWeights=NULL,
       pls.facs=NULL, interactions=NULL, quadratics=NULL, donors=5, ...)
 
-mice.impute.weighted.norm(y, ry, x, ridge=1e-05, pls.facs=NULL,
+mice.impute.weighted.norm(y, ry, x, wy=NULL, ridge=1e-05, pls.facs=NULL,
      imputationWeights=NULL, interactions=NULL, quadratics=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -29,6 +29,8 @@ mice.impute.weighted.norm(y, ry, x, ridge=1e-05, pls.facs=NULL,
   }
 \item{x}{Matrix (\code{n} x \code{p}) of complete covariates.
 }
+\item{wy}{Logical vector of length \code{length(y)}. A \code{TRUE} value indicates
+locations in \code{y} for which imputations are created.}
   \item{imputationWeights}{
 Optional vector of sampling weights
 }

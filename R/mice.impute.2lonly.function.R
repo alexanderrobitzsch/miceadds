@@ -1,15 +1,16 @@
 ## File Name: mice.impute.2lonly.function.R
-## File Version: 0.25
+## File Version: 0.289
 
-#******************************************
-# general imputation function at level 2
-mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction,
+
+#*** general imputation function at level 2
+mice.impute.2lonly.function <- function( y, ry, x, wy=NULL, type, imputationFunction,
         cluster_var, ... )
 {
     res <- mice_imputation_factor_pmm_prepare(y=y)
     y <- res$y
     y_aggr <- res$y_aggr
     is_factor <- res$is_factor
+    wy <- mice_imputation_define_wy(wy=wy, ry=ry)
 
     pos <- parent.frame(n=2)
     #--- extract arguments
@@ -33,6 +34,7 @@ mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction,
                         "  'type=-2' is deprecated for this function.") )
         clusterx <- x[,type==-2 ]
     }
+
     # calculate aggregated values
     x <- cbind(1, as.matrix(x[,type %in% c(1,2)]))
     a2 <- rowsum( cbind(x,y), clusterx, na.rm=FALSE)
@@ -44,15 +46,19 @@ mice.impute.2lonly.function <- function( y, ry, x, type, imputationFunction,
     N1 <- ncol(a1)
     cly2 <- unique( clusterx[ ry ] )  # clusters without missings on y
     ry2 <- a1[,1] %in% cly2
+    wy2 <- ! ( a1[,1] %in% unique( clusterx[ ! wy ] ) )
     x1 <- as.matrix(a1[, - c(1,N1)])
     #*** collect arguments and apply general imputation method
     args <- list( y=as.matrix(a1[,N1]), ry=ry2, x=x1[,-1], ... )
     imp_function <- paste0("mice.impute.", imputationFunction_vname )
-    ximp2 <- do.call( imp_function, args )
+    args <- mice_imputation_args_include_wy(imp_function=imp_function,
+                    args=args, wy=wy2)
+    ximp2 <- do.call( what=imp_function, args=args )
+
     #*** data postprocessing
-    cly2 <- a1[ ! ry2, 1]
+    cly2 <- a1[wy2, 1]
     i1 <- match( clusterx, cly2 )
-    imp <- ( ximp2[i1] )[ ! ry ]
+    imp <- ( ximp2[i1] )[wy]
     imp <- mice_imputation_factor_pmm_convert_factor(imp=imp,
                     is_factor=is_factor, y_aggr=y_aggr)
     return(imp)

@@ -43,7 +43,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.2  |  2019-04-12  |  Last: miceadds 3.2-31
+VERSIONS miceadds 3.2  |  2019-04-14  |  Last: miceadds 3.2-38
 ---------------------------------------------------------------------
 
 NOTE  * changed default 'inits_lme4=TRUE' to 'inits_lme4=FALSE' (do not
@@ -68,6 +68,11 @@ ADDED * included option for Bayesian bootstrap in mice.impute.pls()
         by requesting 'use_boot=TRUE'
 NOTE  * included argument 'wt' in pca.covridge()
 NOTE  * exported utility function mice_imputation_get_states()
+NOTE  * included argument 'wy' in mice.impute.weighted.norm(),
+        mice.impute.weighted.pmm(), mice.impute.bygroup() and
+        mice.impute.2lonly.function()
+NOTE  * changed internal handling of grouping variable in
+        mice.impute.bygroup() (due to an example provided by Sandro Tsang)
 
 
 DATA  * included/modified datasets: ---

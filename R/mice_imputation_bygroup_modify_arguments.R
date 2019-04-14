@@ -1,14 +1,15 @@
 ## File Name: mice_imputation_bygroup_modify_arguments.R
-## File Version: 0.03
+## File Version: 0.08
 
 
 mice_imputation_bygroup_modify_arguments <- function(args, ind_gg,
-    imputationFunction_vname)
+    imputation_function, wy)
 {
-    Nmis <- sum( ! args$ry )
-    if ( "wy" %in% names(args) ){
-        args$wy <- args$wy[ ind_gg ]
-        # Nmis <- sum( ! args$wy )
+    Nmis <- sum(!args$ry)
+    args_imputation_function <- methods::formalArgs(def=imputation_function)
+    if ( "wy" %in% args_imputation_function ){
+        args$wy <- wy[ind_gg]
+        Nmis <- sum(args$wy)
     }
     #--- output
     res <- list( args=args, Nmis=Nmis)

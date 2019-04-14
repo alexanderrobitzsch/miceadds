@@ -1,7 +1,7 @@
 ## File Name: mice.impute.bygroup.R
-## File Version: 0.565
+## File Version: 0.5902
 
-mice.impute.bygroup <- function( y, ry, x, group,
+mice.impute.bygroup <- function( y, ry, x, wy=NULL, group,
         imputationFunction, ... )
 {
     res <- mice_imputation_factor_pmm_prepare(y=y)
@@ -13,6 +13,11 @@ mice.impute.bygroup <- function( y, ry, x, group,
     pos <- parent.frame()
     res <- mice_imputation_get_states(pos=pos)
     vname <- res$vname
+    state_data <- res$data
+    pos <- res$pos
+
+    #- where argument
+    wy <- mice_imputation_define_wy(wy=wy, ry=ry)
 
     # imputation function
     imputationFunction_vname <- mice_imputation_extract_list_arguments(
@@ -25,7 +30,13 @@ mice.impute.bygroup <- function( y, ry, x, group,
     ml_lmer_imp_fct <- imputationFunction_vname=="ml.lmer"
 
     #*** full data frame with indices and all groups
-    dfr_index <- data.frame( "y"=y, "ry"=ry, "group_"=x[, group_vname] )
+    if (group_vname %in% colnames(x)){
+        group_values <- x[, group_vname]
+    } else {
+        group_values <- state_data[, group_vname]
+    }
+
+    dfr_index <- data.frame( y=y, ry=ry, wy=wy, group_=group_values )
     groups <- unique( dfr_index$group_ )
     G <- length(groups)
     # remove grouping variable from set of predictors
@@ -40,7 +51,7 @@ mice.impute.bygroup <- function( y, ry, x, group,
         type <- type[ vars1 ]
     }
     x <- x[, vars1, drop=FALSE ]
-
+    imp_function <- paste0("mice.impute.", imputationFunction_vname )
     for (gg in 1:G){
         group_gg <- groups[gg]
         ind_gg <- which( dfr_index$group_==group_gg )
@@ -50,19 +61,18 @@ mice.impute.bygroup <- function( y, ry, x, group,
             args$type <- type
         }
         res <- mice_imputation_bygroup_modify_arguments(args=args, ind_gg=ind_gg,
-                    imputationFunction_vname=imputationFunction_vname)
+                    imputation_function=imp_function, wy=wy)
         args <- res$args
         Nmis <- res$Nmis
         args$group_index <- ind_gg
-        imp_function <- paste0("mice.impute.", imputationFunction_vname )
         if (Nmis > 0){
             ximp <- do.call( what=imp_function, args=args )
-            ind0_gg <- which( ! dfr_index$ry )
+            ind0_gg <- which( dfr_index$wy )
             ind0_gg <- intersect( ind_gg, ind0_gg )
             dfr_index[ ind0_gg, "y"] <- as.vector(ximp)
         }
     }
-    imp <- dfr_index[ ! ry, "y"]
+    imp <- dfr_index[ wy, "y"]
     imp <- mice_imputation_factor_pmm_convert_factor(imp=imp,
                     is_factor=is_factor, y_aggr=y_aggr)
     return(imp)

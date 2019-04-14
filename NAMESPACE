@@ -14,6 +14,7 @@ useDynLib(miceadds)
 
 importFrom(graphics, par)
 importFrom(graphics, plot)
+importFrom(methods, formalArgs)
 importFrom(methods, is)
 importFrom(stats, aggregate)
 importFrom(stats, aov)

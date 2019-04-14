@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_largest_correlations.R
-## File Version: 0.19
+## File Version: 0.22
 
 mice_imputation_pls_largest_correlations <- function( y, x, ry, type,
     use.ymat, pls.print.progress, x10, N.largest, min.all.cor,
@@ -28,14 +28,14 @@ mice_imputation_pls_largest_correlations <- function( y, x, ry, type,
         utils::flush.console()
     }
 
-    # look for largest correlations
-    c1 <- mice_imputation_pls_correlation_criteria( y=y, x=x, ry=ry,
-                use.ymat=use.ymat, wt=imputationWeights)
-
     #***---***---***---***---***---***---***---***---
     if (N.largest>0){  # begin N.largest
-        dfr1 <- data.frame( "index"=seq( 1, ncol(x) ),
-                    "abs.cor"=abs(as.vector(c1)) )
+
+        # look for largest correlations
+        c1 <- mice_imputation_pls_correlation_criteria( y=y, x=x, ry=ry,
+                    use.ymat=use.ymat, wt=imputationWeights)
+
+        dfr1 <- data.frame( "index"=seq(1, ncol(x)), "abs.cor"=abs(as.vector(c1)) )
         dfr1 <- dfr1[ order( dfr1$abs.cor, decreasing=TRUE), ]
         x <- x[, dfr1[ 1:N.largest, "index" ] ]
         # look if some columns do have complete missing entries or SD of zero

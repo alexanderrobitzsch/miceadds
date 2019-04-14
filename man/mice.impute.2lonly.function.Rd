@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2lonly.function.Rd
-%% File Version: 0.37
+%% File Version: 0.402
 
 \name{mice.impute.2lonly.function}
 \alias{mice.impute.2lonly.function}
@@ -18,7 +18,7 @@ defined imputation function at level 1 in \pkg{mice}.
 
 
 \usage{
-mice.impute.2lonly.function(y, ry, x, type, imputationFunction,
+mice.impute.2lonly.function(y, ry, x, wy=NULL, type, imputationFunction,
      cluster_var, ...)
 }
 
@@ -32,7 +32,8 @@ mice.impute.2lonly.function(y, ry, x, type, imputationFunction,
   \item{x}{Matrix (\code{n} x \code{p}) of complete
   covariates. Only numeric variables are permitted for
   usage of this function.}
-
+\item{wy}{Logical vector of \code{length(y)} indicating at which positions
+imputations should be conducted.}
   \item{type}{Cluster identifier can be specified by \code{-2} for aggregation. However,
   we recommend to use the argument \code{cluster_var} for specifying the cluster variable
   at Level 2. Predictors must be specified by \code{1}.}
@@ -95,13 +96,13 @@ y <- y1 + beta  * x + .2 * w + .1 * v
 dfr0 <- dfr <- data.frame( "group"=rep(1:G, each=n ), "x"=x, "y"=y,
         "w"=w, "v"=v )
 dfr[ rho.miss * x + stats::rnorm( G*n, sd=sqrt( 1 - rho.miss ) ) <
-          stats::qnorm(missrate), y" ] <- NA
+                stats::qnorm(missrate), "y" ] <- NA
 dfr[ rep( stats::rnorm(G), each=n ) < stats::qnorm(missrate), "w" ] <- NA
 dfr[ rep( stats::rnorm(G), each=n ) < stats::qnorm(missrate), "v" ] <- NA
 
 #* initial predictor matrix and imputation methods
-predM <- mice::make.predictorMatrix(data=dat)
-impM <- mice::make.method(data=dat)
+predM <- mice::make.predictorMatrix(data=dfr)
+impM <- mice::make.method(data=dfr)
 
 #...
 # multilevel imputation

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.bygroup.Rd
-%% File Version: 0.24
+%% File Version: 0.25
 
 \name{mice.impute.bygroup}
 \alias{mice.impute.bygroup}
@@ -13,7 +13,7 @@ The function \code{mice.impute.bygroup} performs groupwise imputation for arbitr
 imputation methods defined in \pkg{mice}.
 }
 \usage{
-mice.impute.bygroup(y, ry, x, group, imputationFunction, ...)
+mice.impute.bygroup(y, ry, x, wy=NULL, group, imputationFunction, ...)
 
 }
 %- maybe also 'usage' for other objects documented here.
@@ -26,6 +26,7 @@ Vector of missing data pattern (\code{FALSE} -- missing,
 }
 \item{x}{Matrix (\code{n} x \code{p}) of complete
  covariates.}
+ \item{wy}{Vector of \code{length(y)} indicating which entries should be imputed.}
 \item{group}{
 Name of grouping variable
 }

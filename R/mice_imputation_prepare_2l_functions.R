@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_prepare_2l_functions.R
-## File Version: 0.681
+## File Version: 0.682
 
 #############################################
 # This preparation function is partly copied
@@ -68,8 +68,7 @@ mice_imputation_prepare_2l_functions <- function( vname, envir,
         # remove linear dependencies
         fcall <- miceadds_call_internal(pkg="mice", fct="remove.lindep",
                     args="(x=x, y=y, ry=ry, frame=frame, ...)", value="keep")
-        eval(parse( text=fcall ))
-
+        eval(parse(text=fcall))
         x <- x[, keep, drop=FALSE]
         type <- type[keep]
     }
