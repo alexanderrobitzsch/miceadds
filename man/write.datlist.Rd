@@ -1,5 +1,5 @@
 %% File Name: write.datlist.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{write.datlist}
 \alias{write.datlist}
@@ -78,7 +78,7 @@ See also \code{\link[mice:mids2mplus]{mice::mids2mplus}},
 \code{\link{write.mice.imputation}} for writing objects of class
 \code{mids}.
 
-See also \code{\link[Amelia:write.amelia]{Amelia::write.amelia}} for
+See also \code{Amelia::write.amelia} for
 writing imputed datasets in \pkg{Amelia}.
 }
 

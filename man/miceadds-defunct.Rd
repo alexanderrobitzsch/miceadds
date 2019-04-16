@@ -1,5 +1,5 @@
 %% File Name: miceadds-defunct.Rd
-%% File Version: 0.151
+%% File Version: 0.153
 
 \name{miceadds-defunct}
 \alias{miceadds-defunct}
@@ -7,7 +7,6 @@
 \alias{fast.groupmean}
 \alias{fast.groupsum}
 \alias{mice.impute.2l.plausible.values}
-\alias{mice.impute.2l.eap}
 \alias{mice.impute.2lonly.pmm2}
 \alias{mice.impute.2lonly.norm2}
 \alias{mice.impute.tricube.pmm2}
@@ -24,7 +23,6 @@ package.
 \usage{
 fast.groupmean(...)
 fast.groupsum(...)
-mice.impute.2l.eap(...)
 mice.impute.2l.plausible.values(...)
 mice.impute.2l.pls(...)
 mice.impute.2lonly.norm2(...)
@@ -42,9 +40,6 @@ The \code{fast.groupmean} function has been replaced by
 
 The \code{fast.groupsum} function has been replaced by
 \code{\link{GroupSum}}.
-
-The \code{mice.impute.2l.eap} function has been replaced by
-\code{\link{mice.impute.eap}}.
 
 The \code{mice.impute.2l.plausible.values} function has been replaced by
 \code{\link{mice.impute.plausible.values}}.

@@ -1,5 +1,5 @@
 %% File Name: datalist2mids.Rd
-%% File Version: 0.30
+%% File Version: 0.31
 
 \name{datlist2mids}
 \alias{datalist2mids}
@@ -57,6 +57,7 @@ a multiply imputed dataset in long format into a \code{mids} object.
 }
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Imputation of NHANES data using Amelia package
 #############################################################################
@@ -85,7 +86,6 @@ summary( mice::pool( mod ) )
   ##  (Intercept) 36.6316392   NA 0.5791956 0.4897257
   ##  age          0.7172368    0 0.5549945 0.4652567
 
-\dontrun{
 # fit linear regression model in Zelig
 library(Zelig)
 mod2 <- Zelig::zelig( bmi ~ age, model="ls", data=a.out, cite=FALSE)

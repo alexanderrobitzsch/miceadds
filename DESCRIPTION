@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 3.2-38
-Date: 2019-04-14 14:33:24
+Version: 3.3-2
+Date: 2019-04-16 13:01:30
 Author: 
     Alexander Robitzsch [aut, cre], Simon Grund [aut],
     Thorsten Henke [aut]
@@ -23,8 +23,10 @@ Description:
     Ch.7, <doi:10.1201/9780429492259>), imputation using 
     partial least squares (PLS) for high dimensional 
     predictors (Robitzsch, Pham & Yanagida, 2016), 
-    and nested multiple imputation (Rubin, 2003, 
-    <doi:10.1111/1467-9574.00217>).
+    nested multiple imputation (Rubin, 2003, 
+    <doi:10.1111/1467-9574.00217>) and substantive model
+    compatible imputation (Bartlett et al., 2015,
+    <doi:10.1177/0962280214521348>).
 Depends:
     R (>= 3.0), mice (>= 3.0.0)
 Imports: 
@@ -34,10 +36,10 @@ LinkingTo:
     Rcpp, RcppArmadillo
 Suggests: 
     BIFIEsurvey, blme, car, coda, foreign, grouped, inline, 
-    MASS, MBESS, MCMCglmm, multiwayvcov, numDeriv, readxl, 
-    sjlabelled
+    MASS, MBESS, MCMCglmm, mdmb, multiwayvcov, numDeriv, 
+    readxl, sjlabelled
 Enhances:
-    Amelia, jomo, mitml, pan
+    Amelia, jomo, micemd, mitml, pan
 URL: 
     https://github.com/alexanderrobitzsch/miceadds,
     https://sites.google.com/site/alexanderrobitzsch2/software

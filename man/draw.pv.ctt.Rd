@@ -1,5 +1,5 @@
 %% File Name: draw.pv.ctt.Rd
-%% File Version: 1.24
+%% File Version: 1.25
 
 \name{draw.pv.ctt}
 \alias{draw.pv.ctt}
@@ -97,8 +97,8 @@ Plausible value imputations can be conducted in \pkg{mice} using the
 imputation method \code{\link{mice.impute.plausible.values}}.
 
 Plausible values can be drawn in \pkg{Amelia} by specifying observation-level
-priors, see \code{\link[Amelia:moPrep]{Amelia::moPrep}} and
-\code{\link[Amelia:amelia]{Amelia::amelia}}.
+priors, see \code{Amelia::moPrep} and
+\code{Amelia::amelia}.
 }
 %% plausible.value.imputation.raschtype
 

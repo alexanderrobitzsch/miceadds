@@ -1,5 +1,5 @@
 %% File Name: mice.impute.plausible.values.Rd
-%% File Version: 0.53
+%% File Version: 0.54
 
 \name{mice.impute.plausible.values}
 \alias{mice.impute.plausible.values}
@@ -138,8 +138,8 @@ from complex samples. \emph{Psychometrika, 56}, 177-196.
 \note{
 Plausible value imputation is also known as multiple overimputation
 (Blackwell, Honaker & King, 2016a, 2016b) which is implemented
-in the \pkg{Amelia} package, see \code{\link[Amelia:moPrep]{Amelia::moPrep}}
-and \code{\link[Amelia:amelia]{Amelia::amelia}}.
+in the \pkg{Amelia} package, see \code{Amelia::moPrep}
+and \code{Amelia::amelia}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

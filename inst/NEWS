@@ -42,12 +42,25 @@ CHANGELOG miceadds
 
 
 
+
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.2  |  2019-04-14  |  Last: miceadds 3.2-38
+VERSIONS miceadds 3.3  |  2019-04-16  |  Last: miceadds 3.3-2
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 3.2  |  2019-04-15  |  Last: miceadds 3.2-48
 ---------------------------------------------------------------------
 
 NOTE  * changed default 'inits_lme4=TRUE' to 'inits_lme4=FALSE' (do not
-        use use lme4::lmer() for starting values) in ml_mcmc()
+        use lme4::lmer() for starting values) in ml_mcmc()
 NOTE  * use optimizer 'bobyqa' by default in multilevel imputations which 
         rely on lme4 package (mice.impute.2l.foo() for foo="pmm","binary"
         and "continuous" and mice.impute.ml.lmer()) if a 'control' argument 
@@ -72,17 +85,15 @@ NOTE  * included argument 'wy' in mice.impute.weighted.norm(),
         mice.impute.weighted.pmm(), mice.impute.bygroup() and
         mice.impute.2lonly.function()
 NOTE  * changed internal handling of grouping variable in
-        mice.impute.bygroup() (due to an example provided by Sandro Tsang)
-
+        mice.impute.bygroup() (due to an example provided by 
+        Sandro Tsang; issue #15)
+ADDED * included substantive model compatible imputation in
+        mice.impute.smcfcs() method
+NOTE  * removed mice.impute.2l.eap() function
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: mice.impute.ml.lmer (1.2),
-        mice.impute.pls (1)
-
-
-
-
-
+        mice.impute.pls (1), mice.impute.smcfcs (1)
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.1  |  2019-03-18  |  Last: miceadds 3.1-37
