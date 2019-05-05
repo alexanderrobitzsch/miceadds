@@ -1,5 +1,5 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.583
+## File Version: 0.585
 
 
 #*** main function for multilevel imputation with lme4 with several levels
@@ -11,13 +11,14 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 quadratics=NULL, min.int.cor=0, min.all.cor=0,
                 pls.print.progress=FALSE, group_index=NULL, ... )
 {
+    require_namespace("lme4")
     res <- mice_imputation_factor_pmm_prepare(y=y)
     y <- res$y
     y_aggr <- res$y_aggr
     is_factor <- res$is_factor
 
     if (blme_use){
-        TAM::require_namespace_msg("blme")
+        require_namespace("blme")
     }
 
     # *** ...............................

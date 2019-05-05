@@ -1,5 +1,5 @@
 ## File Name: mids2datlist.R
-## File Version: 0.16
+## File Version: 0.17
 
 mids2datlist <- function( midsobj, X=NULL)
 {
@@ -7,8 +7,8 @@ mids2datlist <- function( midsobj, X=NULL)
     if ( class(midsobj)=="mids.1chain" ){
         midsobj <- midsobj$midsobj
     }
-    #*****************************
-    # object of class mids
+
+    #--- object of class mids
     if ( class(midsobj) %in% c("mids" ) ){
         m <- midsobj$m
         datlist <- as.list( 1:m )
@@ -20,20 +20,16 @@ mids2datlist <- function( midsobj, X=NULL)
                 datlist[[ii]] <- h1
         }
         class(datlist) <- "datlist"
-        datlist <- datlist_create(datlist)
+        datlist <- datlist_create(datasets=datlist)
     }
-    #******************************
-    # object of class mids.nmi
+    #--- object of class mids.nmi
     if ( class(midsobj) %in% c("mids.nmi" ) ){
         Nimp <- midsobj$Nimp
         datlist <- as.list(1:Nimp["between"])
         dat1 <- as.list(1:Nimp["within"])
-        # imp <- midsobj$imp
         for (bb in 1:Nimp["between"]){
-            # bb <- 1
             datlist[[bb]] <- dat1
             for (ww in 1:Nimp["within"] ){
-                # ww <- 1
                 h1 <- complete.mids.nmi( midsobj, action=c(bb,ww) )
                 if ( ! is.null(X) ){
                     h1 <- data.frame( X, h1)

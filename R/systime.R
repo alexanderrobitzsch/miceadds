@@ -1,8 +1,8 @@
 ## File Name: systime.R
-## File Version: 0.09
+## File Version: 0.11
 
-########################################################################
-# several variants for getting system time
+
+#-- several variants for getting system time
 systime <- function()
 {
     s1 <- paste(Sys.time())
@@ -20,7 +20,6 @@ systime <- function()
     #--- output
     return(res)
 }
-########################################################################
 
 
 .attach.environment <- function( res, envir )

@@ -1,5 +1,5 @@
 ## File Name: ma.wtd.quantileNA.R
-## File Version: 0.13
+## File Version: 0.14
 
 
 
@@ -7,6 +7,7 @@
 ma.wtd.quantileNA <- function( data, weights=NULL, vars=NULL,
             type=7, probs=seq(0,1,.25) )
 {
+    require_namespace("TAM")
     #*** pre-processing
     res <- ma_wtd_stat_prepare_data(data=data, weights=weights, vars=vars )
     data <- res$data

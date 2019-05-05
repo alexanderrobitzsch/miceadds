@@ -1,5 +1,5 @@
 ## File Name: micombine.cov.R
-## File Version: 1.18
+## File Version: 1.19
 
 #################################################################################
 # inference for correlations | nested multiply and multiply imputed datasets
@@ -53,7 +53,7 @@ micombine.cov <- function( mi.res, variables=NULL,
                         covTest(dat[,ii], dat[,jj], conf.level=conf.level)
                         } ) } )
                 }
-                res.ii.jj <- .sub.micombine.cov( cor.list=cor.ii.jj, N=N,
+                res.ii.jj <- micombine_cov_compute( cor.list=cor.ii.jj, N=N,
                                 conf.level=conf.level, nested=nested,
                                 Nimp=Nimp )
                 dfr <- rbind( dfr, c( ii, jj, res.ii.jj ) )

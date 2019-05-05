@@ -1,8 +1,9 @@
 ## File Name: nnig_coef.R
-## File Version: 0.17
+## File Version: 0.18
 
 nnig_coef <- function( mean=NULL, Sigma, skew, kurt )
 {
+    require_namespace("TAM")
     p <- length(skew)
     sigma <- sd1 <- sqrt( diag(Sigma) )
     sd1M <- TAM::tam_outer( sd1, sd1)

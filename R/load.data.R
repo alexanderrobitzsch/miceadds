@@ -1,5 +1,5 @@
 ## File Name: load.data.R
-## File Version: 0.476
+## File Version: 0.477
 
 
 
@@ -28,10 +28,10 @@ load.data <- function( filename, type=NULL, path=getwd(), load_fun=NULL,
         type <- s1[ length(s1) ]
     }
     if (type=="sav"){
-        TAM::require_namespace_msg("foreign")
+        require_namespace("foreign")
     }
     if (type %in% c("xls", "xlsx")){
-        TAM::require_namespace_msg("readxl")
+        require_namespace("readxl")
     }
     type1 <- type
     if ( type=="table" ){

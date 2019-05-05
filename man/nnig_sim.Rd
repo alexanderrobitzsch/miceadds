@@ -1,5 +1,5 @@
 %% File Name: nnig_sim.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{nnig_sim}
 \alias{nnig_coef}
@@ -22,7 +22,7 @@ The function \code{nnig_sim} simulates data from a multivariate random variable
 (independent generators; Foldnes & Olsson, 2016)
 which are Fleishman power normally distributed. In detail, it holds that
 \eqn{\bold{Y}=\bold{\mu} + \bold{A} \bold{X}} where the covariance matrix
-\eqn{\bold{Sigma}} is decomposed according to a Cholesky decomposition
+\eqn{\bold{\Sigma}} is decomposed according to a Cholesky decomposition
 \eqn{\bold{\Sigma}=\bold{A} \bold{A}^T}.
 }
 

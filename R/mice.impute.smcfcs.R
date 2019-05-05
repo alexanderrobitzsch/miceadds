@@ -1,5 +1,5 @@
 ## File Name: mice.impute.smcfcs.R
-## File Version: 0.331
+## File Version: 0.339
 
 mice.impute.smcfcs <- function(y, ry, x, wy=NULL, sm, dep_type="norm",
     sm_type="norm", fac_sd_proposal=1, mh_iter=20, ...)
@@ -10,6 +10,12 @@ mice.impute.smcfcs <- function(y, ry, x, wy=NULL, sm, dep_type="norm",
     newstate <- res$newstate
     pos <- res$pos
     state_data <- res$data
+
+    #- collect arguments
+    dep_type <- mice_imputation_extract_list_arguments( dep_type, vname, "norm")
+    sm_type <- mice_imputation_extract_list_arguments( sm_type, vname, "norm")
+    mh_iter <- mice_imputation_extract_list_arguments( mh_iter, vname, 20)
+    sm <- mice_imputation_extract_list_arguments( sm, vname, NULL)
 
     if( ! exists(x="fac_sd_proposal_all", where=pos) ){
         assign(x="fac_sd_proposal_all", value=list(), pos=pos)
@@ -26,14 +32,10 @@ mice.impute.smcfcs <- function(y, ry, x, wy=NULL, sm, dep_type="norm",
     dat0 <- res$dat0
     formula_imp <- res$formula_imp
 
-    #- draw bootstrap sample
-    ind_boot <- which(ry)
-    ind_boot <- sort( sample(ind_boot, length(ind_boot), replace=TRUE) )
+    #- draw bootstrap sample of dataset
+    dat1 <- mice_imputation_smcfcs_draw_bootstrap_sample(data=dat0, ry=ry)
 
-    # estimate model parameters for imputed variable
-    dat1 <- dat0[ ind_boot, ]
-    rownames(dat1) <- NULL
-
+    #- estimate model for variable to be imputed
     model1 <- mice_imputation_smcfcs_estimate_model(data=dat1, formula=formula_imp,
                         model_type=dep_type, dep=vname)
     # estimate parameters of substantive model

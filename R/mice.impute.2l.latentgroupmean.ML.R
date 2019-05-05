@@ -1,10 +1,11 @@
 ## File Name: mice.impute.2l.latentgroupmean.ml.R
-## File Version: 2.14
+## File Version: 2.15
 
 mice.impute.2l.latentgroupmean.ml <- function (y, ry, x, type,
             pls.facs=NULL, imputationWeights=NULL, interactions=NULL, quadratics=NULL,
             EAP=FALSE, ...)
 {
+    require_namespace("lme4")
     # latent group mean
     cluster <- as.numeric( x[, type==- 2] )
     covariates <- as.matrix( x[, type==1 ] )

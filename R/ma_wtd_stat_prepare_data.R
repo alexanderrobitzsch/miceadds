@@ -1,5 +1,5 @@
 ## File Name: ma_wtd_stat_prepare_data.R
-## File Version: 2.303
+## File Version: 2.304
 
 
 #--- auxiliary function for weighted statistics
@@ -52,7 +52,7 @@ ma_wtd_stat_prepare_data <- function(data, weights, vars=NULL )
     #--------------------
     # conversion in case of class BIFIEdata
     if ( class(data)=="BIFIEdata" ){
-        TAM::require_namespace_msg("BIFIEsurvey")
+        require_namespace("BIFIEsurvey")
         if ( is.null(vars) ){
             vars <- data$variables
         }

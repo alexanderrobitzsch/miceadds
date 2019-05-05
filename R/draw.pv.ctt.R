@@ -1,5 +1,5 @@
 ## File Name: draw.pv.ctt.R
-## File Version: 3.233
+## File Version: 3.234
 
 draw.pv.ctt <- function( y, dat.scale=NULL, x=NULL, samp.pars=TRUE, alpha=NULL,
                     sig.e=NULL, var.e=NULL, true.var=NULL )
@@ -68,7 +68,7 @@ draw.pv.ctt <- function( y, dat.scale=NULL, x=NULL, samp.pars=TRUE, alpha=NULL,
     if ( samp.pars ){
         v <- stats::vcov(mod)
         m <- rep(0, nrow(v) )
-        rn <- CDM::CDM_rmvnorm( 1, mean=m, sigma=v )
+        rn <- miceadds_import_CDM_CDM_rmvnorm( 1, mean=m, sigma=v )
         beta.star <- stats::coef(mod) + rn
         # draw new fitted y
         if ( x0ind ){

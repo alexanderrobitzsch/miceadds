@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_2l_lmer.R
-## File Version: 0.575
+## File Version: 0.577
 
 
 #**** main function for multilevel imputation with lme4 which
@@ -9,8 +9,9 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                     glmer.warnings=TRUE, model="continuous", donors=5, match_sampled_pars=FALSE,
                     blme_use=FALSE, blme_args=NULL,...)
 {
+    require_namespace("lme4")
     if (blme_use){
-        TAM::require_namespace_msg("blme")
+        require_namespace("blme")
     }
 
     # *** ...............................

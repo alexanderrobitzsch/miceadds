@@ -1,5 +1,5 @@
 ## File Name: save.data.R
-## File Version: 0.34
+## File Version: 0.35
 
 
 #--- miceadds: saving data
@@ -8,7 +8,7 @@ save.data <- function( data, filename, type="Rdata", path=getwd(),
                 index=FALSE, systime=FALSE,  ...)
 {
     if (type=="sav"){
-        TAM::require_namespace_msg("sjlabelled")
+        require_namespace("sjlabelled")
     }
 
     #***

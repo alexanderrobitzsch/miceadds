@@ -1,9 +1,10 @@
 ## File Name: ml_mcmc_initial_values.R
-## File Version: 0.12
+## File Version: 0.13
 
 ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thresh, K, NR,
     inits_lme4, X, Z_list, ncluster_list, formula )
 {
+    require_namespace("lme4")
     Psi_list <- list()
     u_list <- list()
     mod <- NULL

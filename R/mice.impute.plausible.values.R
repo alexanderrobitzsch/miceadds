@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.676
+## File Version: 2.678
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
@@ -55,6 +55,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
     #--- Plausible value imputation using tam.latreg
     #---- adapt this to include only the likelihood
     if (pvmethod==4){
+        require_namespace("TAM")
         res <- include.2l.predictors_v1( y=y, x=x, ry=ry, type=type, vname=vname,
                     newstate=newstate, ... )
         X <- res$X
@@ -208,7 +209,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         #*** plausible value imputation if alpha is estimated or known
         if (pvmethod  %in% c(1,2) ){
             if (pvmethod==2){
-                TAM::require_namespace_msg("MBESS")
+                require_namespace("MBESS")
                 cirel.type <- "Normal Theory"
                 cir <- MBESS::ci.reliability( data=dat.scale, type=cirel.type, interval.type=TRUE )
                 alpha.est <- cir$Estimated.reliability

@@ -1,8 +1,8 @@
 ## File Name: micombine.cor.R
-## File Version: 0.55
+## File Version: 0.58
 
-#################################################################################
-# inference for correlations | nested multiply and multiply imputed datasets
+
+#-- inference for correlations | nested multiply and multiply imputed datasets
 micombine.cor <- function( mi.res, variables=NULL,
         conf.level=.95, method="pearson", nested=FALSE, partial=NULL )
 {
@@ -92,7 +92,7 @@ micombine.cor <- function( mi.res, variables=NULL,
                                         use="pairwise.complete.obs")
                                             } ) } )
                     }
-                    res.ii.jj <- .sub.micombine.cor( cor.list=cor.ii.jj, N=N,
+                    res.ii.jj <- micombine_cor_compute( cor.list=cor.ii.jj, N=N,
                                         conf.level=conf.level, nested=nested,
                                         Nimp=Nimp, N_partial=N_partial)
                     dfr <- rbind( dfr, c( ii, jj, res.ii.jj ) )
@@ -114,23 +114,3 @@ micombine.cor <- function( mi.res, variables=NULL,
     attr(dfr,"rse_matrix") <- m1
     return(dfr)
 }
-###################################################################
-
-
-
-
-
-#-------------------------------------------------------------------------
-# extract multiply imputed data sets from mice into a list of data frames
-.milist <- function( mi.res )
-{
-    mi.list <- NULL
-    M <- mi.res$m   # extrahiere Anzahl der Imputationen
-    for (ii in 1:M){
-        mi.list[[ii]] <- mice::complete( mi.res, action=ii )
-    }
-    return(mi.list)
-}
-#-------------------------------------------------------------------------
-
-

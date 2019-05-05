@@ -1,7 +1,7 @@
-## File Name: mice_imputation_draw_bootstrap_sample.R
-## File Version: 0.03
+## File Name: mice_imputation_pls_draw_bootstrap_sample.R
+## File Version: 0.04
 
-mice_imputation_draw_bootstrap_sample <- function(ry, imputationWeights, use_boot)
+mice_imputation_pls_draw_bootstrap_sample <- function(ry, imputationWeights, use_boot)
 {
     if (use_boot){
         ind <- which(ry)

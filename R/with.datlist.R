@@ -1,9 +1,8 @@
 ## File Name: with.datlist.R
-## File Version: 0.08
+## File Version: 0.09
 
-##########################################################
 # with function for datlist
-# This function is copied and modified from mitools::with.imputationList
+# This function is copied and modified from with.imputationList (mitools package)
 with.datlist <- function( data, expr, fun, ... )
 {
     pf<-parent.frame()
@@ -21,4 +20,3 @@ with.datlist <- function( data, expr, fun, ... )
     }
     return(results)
 }
-##############################################################

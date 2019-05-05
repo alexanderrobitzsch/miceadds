@@ -1,5 +1,5 @@
 %% File Name: fleishman_sim.Rd
-%% File Version: 0.17
+%% File Version: 0.18
 
 \name{fleishman_sim}
 \alias{fleishman_sim}
@@ -78,6 +78,9 @@ Fleishman, A. I. (1978). A method for simulating non-normal distributions.
 \seealso{
 See also the \code{BinOrdNonNor::Fleishman.coef.NN} function in the
 \pkg{BinOrdNonNor} package.
+
+See the \code{\link{nnig_sim}} function for simulating a non-normally distributed
+multivariate variables.
 }
 
 

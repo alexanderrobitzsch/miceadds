@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.661
+## File Version: 3.662
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
@@ -49,7 +49,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                     vname=vname, print.dims=print.dims, y=y, ry=ry, x=x, type=type )
 
     #*** bootstrap sample of weights if requested
-    imputationWeights <- mice_imputation_draw_bootstrap_sample(ry=ry,
+    imputationWeights <- mice_imputation_pls_draw_bootstrap_sample(ry=ry,
                             imputationWeights=imputationWeights, use_boot=use_boot)
 
     # include predictor variables with type !=0

@@ -1,12 +1,13 @@
 ## File Name: scale_datlist.R
-## File Version: 0.31
+## File Version: 0.32
 
-##################################################################
-# application of scale for a list of multiply imputed datasets,
-# single datasets or nested multiply imputed datasets
+
+#- application of scale for a list of multiply imputed datasets,
+#- single datasets or nested multiply imputed datasets
 scale_datlist <- function( datlist, orig_var, trafo_var, weights=NULL,
                         M=0, SD=1, digits=NULL)
 {
+    require_namespace("TAM")
     is_dfr <- FALSE
     is_iL <- FALSE
     is_NIL <- FALSE
@@ -100,4 +101,3 @@ scale_datlist <- function( datlist, orig_var, trafo_var, weights=NULL,
     }
     return(datlist)
 }
-######################################################################

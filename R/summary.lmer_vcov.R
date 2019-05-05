@@ -1,9 +1,10 @@
 ## File Name: summary.lmer_vcov.R
-## File Version: 0.05
+## File Version: 0.07
 
 
 summary.lmer_vcov <- function( object, digits=4, file=NULL, ...)
 {
+    require_namespace(pkg="CDM")
     # open sink
     CDM::osink( file=file, suffix=paste0( "__SUMMARY.Rout") )
 
@@ -14,4 +15,3 @@ summary.lmer_vcov <- function( object, digits=4, file=NULL, ...)
     # close sink
     CDM::csink( file=file )
 }
-#*******************************************************

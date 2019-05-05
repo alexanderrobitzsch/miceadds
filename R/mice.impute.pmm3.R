@@ -1,9 +1,10 @@
 ## File Name: mice.impute.pmm3.R
-## File Version: 4.63
+## File Version: 4.65
 
 
 mice.impute.pmm3 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...)
 {
+    require_namespace(pkg="sirt")
     res <- mice_imputation_factor_pmm_prepare(y=y)
     y <- res$y
     y_aggr <- res$y_aggr

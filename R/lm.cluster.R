@@ -1,12 +1,12 @@
 ## File Name: lm.cluster.R
-## File Version: 0.31
+## File Version: 0.32
 
 
-##################################################
-# linear model for clustered data
+
+#-- linear model for clustered data
 lm.cluster <- function( data, formula, cluster, ... )
 {
-    TAM::require_namespace_msg("multiwayvcov")
+    require_namespace("multiwayvcov")
     #*** to be included in future versions
     if (FALSE){
         X <- stats::model.matrix( object=formula, data=data )
@@ -34,17 +34,17 @@ lm.cluster <- function( data, formula, cluster, ... )
     class(res) <- "lm.cluster"
     return(res)
 }
-###################################################
+
 coef.lm.cluster <- function( object, ... )
 {
     return( coef(object$lm_res) )
 }
-####################################################
+
 vcov.lm.cluster <- function( object, ... )
 {
     return(object$vcov)
 }
-####################################################
+
 summary.lm.cluster <- function( object, ... )
 {
     smod <- summary( object$lm_res )
@@ -57,4 +57,3 @@ summary.lm.cluster <- function( object, ... )
     print(csmod)
     invisible(csmod)
 }
-#######################################################

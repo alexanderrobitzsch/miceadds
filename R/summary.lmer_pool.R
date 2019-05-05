@@ -1,13 +1,13 @@
 ## File Name: summary.lmer_pool.R
-## File Version: 0.07
+## File Version: 0.12
 
 
 summary.lmer_pool <- function( object, digits=4, file=NULL, ...)
 {
+    require_namespace(pkg="CDM")
+
     # open sink
     CDM::osink( file=file, suffix=paste0( "__SUMMARY.Rout") )
-
-
     x <- object
 
     table <- data.frame( est=x$qbar )

@@ -1,9 +1,8 @@
 ## File Name: vector2matrix.R
-## File Version: 0.09
+## File Version: 0.11
 
 
-##############################################
-# converts a vector into a matrix
+#-- converts a vector into a matrix
 vector2matrix <- function( index1, index2, val, empty_val=NA )
 {
     index1 <- paste(index1)
@@ -16,4 +15,3 @@ vector2matrix <- function( index1, index2, val, empty_val=NA )
     m1[ h1 ] <- val
     return(m1)
 }
-###############################################

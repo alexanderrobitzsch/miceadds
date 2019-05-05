@@ -1,5 +1,5 @@
 ## File Name: subset_datlist.R
-## File Version: 0.25
+## File Version: 0.28
 
 #######################################################
 subset_datlist <- function( datlist, subset=TRUE,
@@ -72,7 +72,7 @@ subset_datlist <- function( datlist, subset=TRUE,
     }
     #---- class imputationList
     if (toclass=="imputationList" ){
-        datlist2 <- mitools::imputationList(datlist2)
+        datlist2 <- miceadds_import_mitools_imputationList(datlist2)
         datlist2$call <- CALL
     }
     #---- class mids
@@ -118,10 +118,9 @@ subset.mids.1chain <- function( x, subset,
                     index=NULL, ... )
 {
     CALL <- match.call()
-    if (missing(subset)){  subset <- TRUE }
-    datlist2 <- subset_datlist( datlist=x, subset=subset,
-                    select=select,  expr_subset=expr_subset,
-                    index=index, toclass="mids")
+    if (missing(subset)){ subset <- TRUE }
+    datlist2 <- subset_datlist( datlist=x, subset=subset, select=select,
+                    expr_subset=expr_subset, index=index, toclass="mids")
     datlist2$call <- CALL
     return(datlist2)
 }
@@ -133,10 +132,9 @@ subset.imputationList <- function( x, subset,
                     index=NULL, ... )
 {
     CALL <- match.call()
-    if (missing(subset)){  subset <- TRUE    }
-    datlist2 <- subset_datlist( datlist=x, subset=subset,
-                    select=select, expr_subset=expr_subset,
-                    index=index, toclass="imputationList")
+    if (missing(subset)){ subset <- TRUE }
+    datlist2 <- subset_datlist( datlist=x, subset=subset, select=select,
+                    expr_subset=expr_subset, index=index, toclass="imputationList")
     datlist2$call <- CALL
     return(datlist2)
 }

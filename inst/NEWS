@@ -44,13 +44,16 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.3  |  2019-04-16  |  Last: miceadds 3.3-2
+VERSIONS miceadds 3.3  |  2019-05-05  |  Last: miceadds 3.3-20
 ---------------------------------------------------------------------
 
-xxxx  *
+ADDED * added imputation methods "rlm", "lqs", "lm" and "lm_fun"
+        based on robust and non-robust linear models and 
+        transformations of dependent variable
+
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: mice.impute.rlm (1)
 
 
 

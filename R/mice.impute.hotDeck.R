@@ -1,9 +1,9 @@
 ## File Name: mice.impute.hotDeck.R
-## File Version: 0.09
-mice.impute.hotDeck <- function (y, ry, x, donors=5,
-    method="Mahalanobis", ...)
-{
+## File Version: 0.13
 
+mice.impute.hotDeck <- function (y, ry, x, donors=5, method="Mahalanobis", ...)
+{
+    require_namespace(pkg="sirt")
     N1 <- sum(ry)
     N0 <- sum(!ry)
     #*** center x variables

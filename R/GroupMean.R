@@ -1,10 +1,11 @@
 ## File Name: GroupMean.R
-## File Version: 1.17
+## File Version: 1.21
 
 GroupMean  <- function( data, group, weights=NULL, extend=FALSE)
 {
-    groups <- sort( unique( group ) )
-    index.group <- match( group, groups )
+    res <- GroupMean_group_indices(group=group)
+    groups <- res$groups
+    index.group <- res$index.group
     if ( is.null(weights) ){
         Ngroup <- rowsum( 1 - is.na(data), index.group )
         data1 <- rowsum( data, index.group, na.rm=TRUE)
@@ -14,10 +15,7 @@ GroupMean  <- function( data, group, weights=NULL, extend=FALSE)
     }
     colnames(data1) <- colnames(data)
     data1 <- data1 / Ngroup
-    data1 <- data.frame( "group"=groups, data1 )
-    if (extend){
-        data1 <- data1[ index.group, ]
-        rownames(data1) <- NULL
-    }
+    data1 <- data.frame( group=groups, data1 )
+    data1 <- GroupMean_extend_data(data=data1, index.group=index.group, extend=extend)
     return(data1)
 }

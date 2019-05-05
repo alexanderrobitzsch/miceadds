@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_estimate_pls_regression.R
-## File Version: 0.301
+## File Version: 0.302
 
 mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
     use.ymat, imputationWeights, use_weights, pls.print.progress )
@@ -24,8 +24,8 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         weight_obs_sqrt <- sqrt(weight.obs)
         nobs <- length(weight.obs)
         cm1 <- miceadds_weighted_colMeans(x=xobs, imputationWeights=weight.obs)
-        xobs <- xobs - TAM::tam_matrix2(cm1, nrow=nobs)
-        x <- x - TAM::tam_matrix2(cm1, nrow=nrow(x))
+        xobs <- xobs - miceadds_matrix2(cm1, nrow=nobs)
+        x <- x - miceadds_matrix2(cm1, nrow=nrow(x))
         yobs <- weight_obs_sqrt * yobs
         xobs <- weight_obs_sqrt * xobs
     }

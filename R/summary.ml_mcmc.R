@@ -1,9 +1,12 @@
 ## File Name: summary.ml_mcmc.R
-## File Version: 0.12
+## File Version: 0.15
 
 
 summary.ml_mcmc <- function( object, digits=4, file=NULL, ...)
 {
+    require_namespace(pkg="sirt")
+    require_namespace(pkg="CDM")
+
     # open sink
     CDM::osink( file=file, suffix=paste0( "__SUMMARY.Rout") )
 

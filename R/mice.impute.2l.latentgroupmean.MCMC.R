@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.latentgroupmean.mcmc.R
-## File Version: 3.33
+## File Version: 3.34
 
 mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type,
                     pls.facs=NULL, imputationWeights=NULL,
@@ -7,7 +7,7 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type,
                     mcmc.burnin=100, mcmc.adapt=100, mcmc.iter=1000,
                     draw.fixed=TRUE, EAP=FALSE, ...)
 {
-    TAM::require_namespace_msg("MCMCglmm")
+    require_namespace("MCMCglmm")
     # retrieve mice objects
     k <- ma_exists_get("k", pos=parent.frame())           # iteration
     i <- ma_exists_get("i", pos=parent.frame())           # imputation

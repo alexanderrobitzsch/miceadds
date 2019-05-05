@@ -1,10 +1,11 @@
 ## File Name: summaryMIwaldtest_linear_hyp.R
-## File Version: 0.07
+## File Version: 0.09
 
 
-#################################################################
+
 summaryMIwaldtest_linear_hyp <- function(object, digits)
 {
+    require_namespace(pkg="CDM")
     x <- object
     table <- array( x$qbar, dim=c(length(x$qbar), 10) )
     dimnames(table) <- list(labels(x$qbar),
@@ -29,4 +30,3 @@ summaryMIwaldtest_linear_hyp <- function(object, digits)
     CDM::cdm_print_summary_data_frame(table, from=1, digits=digits)
     invisible(table)
 }
-#################################################################

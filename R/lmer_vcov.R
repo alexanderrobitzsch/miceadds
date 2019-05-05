@@ -1,5 +1,5 @@
 ## File Name: lmer_vcov.R
-## File Version: 0.23
+## File Version: 0.26
 
 ## covariance matrix for fitted models with lmer including
 ## variance components
@@ -7,8 +7,9 @@
 
 lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
 {
-    TAM::require_namespace_msg(pkg="numDeriv")
-    TAM::require_namespace_msg(pkg="lme4")
+    require_namespace(pkg="numDeriv")
+    require_namespace(pkg="lme4")
+    require_namespace(pkg="sirt")
     fit0 <- fit <- object
     dd <- NULL
     is_reml <- lme4::isREML(fit)
@@ -43,7 +44,7 @@ lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
     names(pars) <- colnames(vv2)
     #--- include fixed effects
     Vcov <- as.matrix( vcov(fit0, useScale=FALSE) )
-    betas <- fixef(fit0)
+    betas <- lme4::fixef(fit0)
     np_fixed <- length(betas)
     np_random <- length(pars)
     np <- np_fixed + np_random

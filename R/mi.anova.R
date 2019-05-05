@@ -1,11 +1,11 @@
 ## File Name: mi.anova.R
-## File Version: 0.363
+## File Version: 0.364
 
 
 mi.anova <- function( mi.res, formula, type=2 )
 {
     if (type==3){
-        TAM::require_namespace_msg("car")
+        require_namespace("car")
     }
     mi.list <- mi.res
     if( class(mi.list)=="mids.1chain" ){

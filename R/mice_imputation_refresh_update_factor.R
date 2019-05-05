@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_refresh_update_factor.R
-## File Version: 0.02
+## File Version: 0.03
 
 
 mice_imputation_refresh_update_factor <- function( acc, fac_old)

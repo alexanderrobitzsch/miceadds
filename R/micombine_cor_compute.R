@@ -1,9 +1,9 @@
-## File Name: sub.micombine.cor.R
-## File Version: 0.41
+## File Name: micombine_cor_compute.R
+## File Version: 0.51
 
 
 # subroutine for combining correlations for multiply imputed data
-.sub.micombine.cor <- function( cor.list, N, conf.level, nested=FALSE, Nimp=NULL,
+micombine_cor_compute <- function( cor.list, N, conf.level, nested=FALSE, Nimp=NULL,
         N_partial=0 )
 {
     # convert correlations to Fisher transformed values

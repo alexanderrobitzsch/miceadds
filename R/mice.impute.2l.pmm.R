@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.pmm.R
-## File Version: 0.25
+## File Version: 0.26
 
 mice.impute.2l.pmm <- function(y, ry, x, type, intercept=TRUE,
             groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
@@ -11,7 +11,7 @@ mice.impute.2l.pmm <- function(y, ry, x, type, intercept=TRUE,
     y_aggr <- res$y_aggr
     is_factor <- res$is_factor
 
-    #- do imputation with lme4::lmer()
+    #- do imputation with lmer() function from lme4 package
     imp <- mice_imputation_2l_lmer( y=y, ry=ry, x=x, type=type, intercept=intercept,
                 groupcenter.slope=groupcenter.slope, draw.fixed=draw.fixed,
                 random.effects.shrinkage=random.effects.shrinkage, glmer.warnings=glmer.warnings,
