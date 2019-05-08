@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.365
+%% File Version: 2.368
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -19,7 +19,8 @@ mice.impute.pls(y, ry, x, type, pls.facs=NULL,
    pls.impMethod="pmm", pls.impMethodArgs=NULL, pls.print.progress=TRUE,
    imputationWeights=rep(1, length(y)), pcamaxcols=1E+09,
    min.int.cor=0, min.all.cor=0, N.largest=0, pls.title=NULL, print.dims=TRUE,
-   pls.maxcols=5000, use_boot=FALSE, envir_pos=NULL, extract_data=TRUE, ...)
+   pls.maxcols=5000, use_boot=FALSE, envir_pos=NULL, extract_data=TRUE,
+   remove_lindep=TRUE, ...)
 
 mice.impute.2l.pls2(y, ry, x, type, pls.facs=NULL, pls.impMethod="pmm",
    pls.print.progress=TRUE, imputationWeights=rep(1, length(y)), pcamaxcols=1E+09,
@@ -106,6 +107,8 @@ drawing regression parameters}
 be extracted.}
 \item{extract_data}{Logical indicating whether input data should be extracted
 from parent environment within \code{\link[mice:mice]{mice::mice}}  routine}
+\item{remove_lindep}{Logical indicating whether linear dependencies should
+be automatically detected and some predictors are removed}
   \item{\dots}{
 Further arguments to be passed.
 }

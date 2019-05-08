@@ -65,7 +65,7 @@ reduction of the predictor space." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.3.22</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.3.23</span>
       </span>
     </div>
 
@@ -118,7 +118,8 @@ reduction of the predictor space.</p>
    <span class='kw'>pls.impMethod</span><span class='kw'>=</span><span class='st'>"pmm"</span>, <span class='kw'>pls.impMethodArgs</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>pls.print.progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
    <span class='kw'>imputationWeights</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>y</span>)), <span class='kw'>pcamaxcols</span><span class='kw'>=</span><span class='fl'>1E+09</span>,
    <span class='kw'>min.int.cor</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>min.all.cor</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>N.largest</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>pls.title</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>print.dims</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
-   <span class='kw'>pls.maxcols</span><span class='kw'>=</span><span class='fl'>5000</span>, <span class='kw'>use_boot</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>envir_pos</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>extract_data</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='no'>...</span>)
+   <span class='kw'>pls.maxcols</span><span class='kw'>=</span><span class='fl'>5000</span>, <span class='kw'>use_boot</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>envir_pos</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>extract_data</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
+   <span class='kw'>remove_lindep</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='fu'>mice.impute.2l.pls2</span>(<span class='no'>y</span>, <span class='no'>ry</span>, <span class='no'>x</span>, <span class='no'>type</span>, <span class='kw'>pls.facs</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>pls.impMethod</span><span class='kw'>=</span><span class='st'>"pmm"</span>,
    <span class='kw'>pls.print.progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>imputationWeights</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>y</span>)), <span class='kw'>pcamaxcols</span><span class='kw'>=</span><span class='fl'>1E+09</span>,
@@ -228,6 +229,11 @@ be extracted.</p></td>
       <th>extract_data</th>
       <td><p>Logical indicating whether input data should be extracted
 from parent environment within <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice::mice</a></code>  routine</p></td>
+    </tr>
+    <tr>
+      <th>remove_lindep</th>
+      <td><p>Logical indicating whether linear dependencies should
+be automatically detected and some predictors are removed</p></td>
     </tr>
     <tr>
       <th>&#8230;</th>

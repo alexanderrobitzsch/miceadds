@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_linear_model_main.R
-## File Version: 0.15
+## File Version: 0.19
 
 mice_imputation_linear_model_main <- function(x, y, ry, wy=NULL,
     lm_args=NULL, lm_fun="lm", trafo=NULL, antitrafo=NULL, ...)
@@ -7,6 +7,11 @@ mice_imputation_linear_model_main <- function(x, y, ry, wy=NULL,
     pos <- parent.frame(n=1)
     res <- mice_imputation_get_states(pos=pos)
     vname <- res$vname
+
+    #- wy
+    if ( is.null(wy) ){
+        wy <- ! ry
+    }
 
     #- transformations
     trafo <- mice_imputation_extract_list_arguments( trafo, vname, NULL)

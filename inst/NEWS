@@ -44,7 +44,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.3  |  2019-05-08  |  Last: miceadds 3.3-22
+VERSIONS miceadds 3.3  |  2019-05-08  |  Last: miceadds 3.3-23
 ---------------------------------------------------------------------
 
 ADDED * added imputation methods "rlm", "lqs", "lm" and "lm_fun"
@@ -53,6 +53,9 @@ ADDED * added imputation methods "rlm", "lqs", "lm" and "lm_fun"
 NOTE  * included argument 'col1_numeric' in split_to_matrix()
 NOTE  * corrected bug in ?mice.impute.ml.lmer
         (thanks to Rima Izem)
+ADDED * included argument 'remove_lindep' in mice.impute.pls()
+        which allows to enable the procedure for removing predictors
+
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: mice.impute.rlm (1),

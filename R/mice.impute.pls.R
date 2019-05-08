@@ -1,12 +1,13 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.662
+## File Version: 3.665
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
             pls.impMethod="pmm", pls.impMethodArgs=NULL, pls.print.progress=TRUE,
             imputationWeights=rep(1, length(y)), pcamaxcols=1E9,
             min.int.cor=0, min.all.cor=0, N.largest=0, pls.title=NULL, print.dims=TRUE,
-            pls.maxcols=5000, use_boot=FALSE, envir_pos=NULL, extract_data=TRUE, ... )
+            pls.maxcols=5000, use_boot=FALSE, envir_pos=NULL, extract_data=TRUE,
+            remove_lindep=TRUE, ... )
 {
     time1 <- Sys.time()
     res <- mice_imputation_factor_pmm_prepare(y=y)
@@ -24,7 +25,8 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     vname <- res$vname
     imp.temp <- res$newstate
     if (extract_data){
-        res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos )
+        res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos,
+                    remove_lindep=remove_lindep)
         y <- res$y
         x <- res$x
         ry <- res$ry
@@ -115,7 +117,8 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     x1 <- mice_imputation_pls_do_impute( x=x, y=y, ry=ry,
                 imputationWeights=imputationWeights, use_weights=use_weights,
                 pls.impMethod=pls.impMethod, pls.print.progress=pls.print.progress,
-                pls.impMethodArgs=pls.impMethodArgs, type=type, use_boot=use_boot, ... )
+                pls.impMethodArgs=pls.impMethodArgs, type=type, use_boot=use_boot,
+                vname=vname, ... )
     #--- finished all steps!
     time2 <- Sys.time()
 

@@ -1,11 +1,11 @@
 ## File Name: mice_imputation_prepare_2l_functions.R
-## File Version: 0.682
+## File Version: 0.683
 
 #############################################
 # This preparation function is partly copied
 # from the mice:::sampler function
 mice_imputation_prepare_2l_functions <- function( vname, envir,
-    use_formula=FALSE, frame=4, ... )
+    use_formula=FALSE, frame=4, remove_lindep=TRUE, ... )
 {
     x <- NULL
     keep <- NULL
@@ -66,11 +66,13 @@ mice_imputation_prepare_2l_functions <- function( vname, envir,
             # cc <- wy[where[, j]]
             # if (k==1L) check.df(x, y, ry)
         # remove linear dependencies
-        fcall <- miceadds_call_internal(pkg="mice", fct="remove.lindep",
-                    args="(x=x, y=y, ry=ry, frame=frame, ...)", value="keep")
-        eval(parse(text=fcall))
-        x <- x[, keep, drop=FALSE]
-        type <- type[keep]
+        if (remove_lindep){
+            fcall <- miceadds_call_internal(pkg="mice", fct="remove.lindep",
+                        args="(x=x, y=y, ry=ry, frame=frame, ...)", value="keep")
+            eval(parse(text=fcall))
+            x <- x[, keep, drop=FALSE]
+            type <- type[keep]
+        }
     }
     #****** END: copy from mice
     #*****************************************

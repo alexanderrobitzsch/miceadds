@@ -1,5 +1,5 @@
 ## File Name: string_to_matrix.R
-## File Version: 0.189
+## File Version: 0.190
 
 string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
         diag_val=NULL, extend=FALSE, col1_numeric=FALSE, split=" ")
@@ -18,7 +18,7 @@ string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
 
     #-- dimensions
     sizes <- rep(NA, NV)
-    sizes1 <- col1 <- sizes    
+    sizes1 <- col1 <- sizes
     for (vv in 1:NV){
         sizes1[vv] <- sizes[vv] <- length(v1[[vv]])
         if (col1_numeric){
@@ -26,7 +26,7 @@ string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
             sizes1[vv] <- sizes1[vv] - col1[vv] + 1
         }
     }
-    
+
     NR <- length(x)
     NC <- max(sizes)
     if (col1_numeric){
@@ -38,7 +38,7 @@ string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
         if (col1_numeric){
             mat[vv,1] <- paste0( v1_vv[ seq(1, col1[vv]-1) ], collapse=split)
             mat[vv,1+seq(1,sizes1[vv])] <- v1_vv[ seq(col1[vv], sizes[vv]) ]
-        } else {    
+        } else {
             mat[ vv, seq(1,sizes[vv]) ] <- v1_vv
         }
     }
@@ -58,7 +58,7 @@ string_to_matrix <- function(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
                 mat[,cc] <- mat_cc
             } else {
                 mat[,cc] <- mat0[,cc]
-            }            
+            }
         }
         rownames(mat) <- rownames(mat0)
     }
