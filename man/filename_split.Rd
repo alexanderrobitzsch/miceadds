@@ -1,5 +1,5 @@
 %% File Name: filename_split.Rd
-%% File Version: 0.35
+%% File Version: 0.362
 
 \name{filename_split}
 \alias{filename_split}
@@ -25,7 +25,7 @@ filename_split_vec( file_names, file_sep="__", file_ext=".")
 string_extract_part( vec, part=1, sep="__", remove_empty=TRUE )
 
 string_to_matrix(x, rownames=NULL, col_elim=NULL, as_numeric=FALSE,
-               diag_val=NULL, extend=FALSE, split=" ")
+               diag_val=NULL, extend=FALSE, col1_numeric=FALSE, split=" ")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -51,6 +51,8 @@ should be removed.}
 \item{diag_val}{Optional values for inclusion in diagonal of matrix}
 \item{extend}{Optional indicating whether numeric matrix should be
 extended to become a symmetric matrix}
+\item{col1_numeric}{Logical indicating whether second column is selected in such
+a way that it has to be always a numeric (see Example 5s)}
 \item{split}{String used for splitting}
 }
 %\details{
@@ -186,6 +188,20 @@ pm0 <- "
 0.718 0.567 0.672 0.526 0.843"
 
 miceadds::string_to_matrix(x=pm0, as_numeric=TRUE, extend=TRUE)
+
+#############################################################################
+# EXAMPLE 5: String with variable names and blanks
+#############################################################################
+
+tab1 <- "
+Geometric Shapes .629 .021 (.483) -.049 (.472)
+Plates .473 .017 (.370) .105 (.405)
+Two Characteristics .601 .013 (.452) -.033 (.444)
+Crossing Out Boxes .597 -.062 (.425) -.036 (.445)
+Numbers/Letters .731 .004 (.564) .003 (.513)
+Numbers/Letters mixed .682 .085 (.555) .082 (.514)"
+
+miceadds::string_to_matrix(x=tab1, col1_numeric=TRUE)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

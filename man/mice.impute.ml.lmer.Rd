@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.381
+%% File Version: 0.382
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -185,7 +185,7 @@ dat <- data.ma07
 
 #----- specify levels of variables (only relevent for variables
 #      with missing values)
-variables_levels <- miceadds:::mice_impute_create_type_vector( colnames(dat), value="")
+variables_levels <- miceadds:::mice_imputation_create_type_vector( colnames(dat), value="")
  # leave variables at lowest level blank (i.e., "")
 variables_levels[ c("y1","y2") ] <- "id2"
 variables_levels[ c("z1","z2") ] <- "id3"
