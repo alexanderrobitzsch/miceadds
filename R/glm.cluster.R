@@ -1,11 +1,11 @@
 ## File Name: glm.cluster.R
-## File Version: 0.295
+## File Version: 0.297
 
 
 
 #-- linear model for clustered data
 glm.cluster <- function( data, formula, cluster, weights=NULL, subset=NULL,
-        family=gaussian)
+        family="gaussian")
 {
 
     #- handle subset
@@ -17,7 +17,7 @@ glm.cluster <- function( data, formula, cluster, weights=NULL, subset=NULL,
     wgt__ <- res$wgt__
 
     #-- fit generalized linear model
-    mod <- stats::glm( data=data, formula=formula, weights=wgt__, family=familys)
+    mod <- stats::glm( data=data, formula=formula, weights=wgt__, family=family)
 
     #-- adjust standard errors
     vcov2 <- lm_cluster_compute_vcov(mod=mod, cluster=cluster, data=data)

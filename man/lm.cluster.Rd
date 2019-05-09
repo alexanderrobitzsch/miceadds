@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.365
+%% File Version: 0.367
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -31,7 +31,7 @@ function in the \pkg{sandwich} package.
 \usage{
 lm.cluster(data, formula, cluster, weights=NULL, subset=NULL )
 
-glm.cluster(data, formula, cluster, weights=NULL, subset=NULL, family=gaussian )
+glm.cluster(data, formula, cluster, weights=NULL, subset=NULL, family="gaussian" )
 
 \method{summary}{lm.cluster}(object,...)
 \method{summary}{glm.cluster}(object,...)
@@ -59,7 +59,7 @@ with cluster identifiers
 \item{subset}{Optional vector specifying a subset of observations to be used.}
 \item{weights}{Optional vector of weights to be used.}
 \item{family}{Description of the error distribution and link function to be used in 
-the model, see \code{\link[stats:glm]{stats::glm}.}
+the model, see \code{\link[stats:glm]{stats::glm}}.}
   \item{\dots}{
 Further arguments to be passed to \code{\link[stats:lm]{stats::lm}} and
 \code{\link[stats:glm]{stats::glm}}
