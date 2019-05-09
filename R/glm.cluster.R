@@ -1,21 +1,29 @@
 ## File Name: glm.cluster.R
-## File Version: 0.26
+## File Version: 0.295
 
 
 
 #-- linear model for clustered data
-glm.cluster <- function( data, formula, cluster, ... )
+glm.cluster <- function( data, formula, cluster, weights=NULL, subset=NULL,
+        family=gaussian)
 {
-    require_namespace("multiwayvcov")
-    mod <- stats::glm( data=data, formula=formula,  ... )
-    if ( length(cluster) > 1 ){
-        v1 <- cluster
-    } else {
-        v1 <- data[,cluster]
-    }
-    dfr <- data.frame( cluster=v1 )
-    vcov2 <- multiwayvcov::cluster.vcov( model=mod, cluster=dfr)
-    res <- list( "glm_res"=mod, "vcov"=vcov2 )
+
+    #- handle subset
+    pos <- parent.frame()
+    res <- lm_cluster_subset(data=data, cluster=cluster, weights=weights,
+                    subset=subset, pos=pos)
+    data <- res$data
+    cluster <- res$cluster
+    wgt__ <- res$wgt__
+
+    #-- fit generalized linear model
+    mod <- stats::glm( data=data, formula=formula, weights=wgt__, family=familys)
+
+    #-- adjust standard errors
+    vcov2 <- lm_cluster_compute_vcov(mod=mod, cluster=cluster, data=data)
+
+    #-- output
+    res <- list( glm_res=mod, vcov=vcov2 )
     class(res) <- "glm.cluster"
     return(res)
 }

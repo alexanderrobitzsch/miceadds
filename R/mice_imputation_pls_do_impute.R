@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.183
+## File Version: 0.184
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
@@ -43,7 +43,7 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
                     ry=ry, y=y, x=x, weights.obs=weights.obs,
                     sample_pars=sample_pars, ... )
         if (use_boot){
-            
+
             weights.obs <- 1+0*weights.obs
             parm1 <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
                     ry=ry, y=y, x=x, weights.obs=weights.obs,

@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.34
+%% File Version: 0.365
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -21,17 +21,17 @@ Cluster Robust Standard Errors for Linear Models and General Linear Models
 Computes cluster robust standard errors for linear models
 (\code{\link[stats:lm]{stats::lm}}) and general linear models
 (\code{\link[stats:glm]{stats::glm}}) using the
-\code{\link[multiwayvcov:cluster.vcov]{multiwayvcov::cluster.vcov}}
-function in the \pkg{multiwayvcov} package.
+\code{\link[sandwich:vcovCL]{multiwayvcov::vcovCL}}
+function in the \pkg{sandwich} package.
 }
 
 % \code{\link[TAM:tam.fa]{tam.fa}} (\pkg{TAM})
 % multiwayvcov::cluster.vcov( model=mod, cluster=dfr)
 
 \usage{
-lm.cluster(data, formula, cluster, ...)
+lm.cluster(data, formula, cluster, weights=NULL, subset=NULL )
 
-glm.cluster(data, formula, cluster, ...)
+glm.cluster(data, formula, cluster, weights=NULL, subset=NULL, family=gaussian )
 
 \method{summary}{lm.cluster}(object,...)
 \method{summary}{glm.cluster}(object,...)
@@ -56,6 +56,10 @@ An \R formula
 Variable name for cluster variable contained in \code{data} or a vector
 with cluster identifiers
 }
+\item{subset}{Optional vector specifying a subset of observations to be used.}
+\item{weights}{Optional vector of weights to be used.}
+\item{family}{Description of the error distribution and link function to be used in 
+the model, see \code{\link[stats:glm]{stats::glm}.}
   \item{\dots}{
 Further arguments to be passed to \code{\link[stats:lm]{stats::lm}} and
 \code{\link[stats:glm]{stats::glm}}
@@ -93,7 +97,7 @@ List with following entries
 
 \seealso{
 \code{\link[stats:lm]{stats::lm}}, \code{\link[stats:glm]{stats::glm}},
-\code{\link[multiwayvcov:cluster.vcov]{multiwayvcov::cluster.vcov}}
+\code{\link[sandwich:vcovCL]{sandwich::vcovCL}}
 }
 
 

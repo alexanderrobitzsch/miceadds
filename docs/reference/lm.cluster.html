@@ -35,8 +35,8 @@
 <meta property="og:description" content="Computes cluster robust standard errors for linear models
 (stats::lm) and general linear models
 (stats::glm) using the
-multiwayvcov::cluster.vcov
-function in the multiwayvcov package." />
+multiwayvcov::vcovCL
+function in the sandwich package." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -67,7 +67,7 @@ function in the multiwayvcov package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.3.26</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.3-vv</span>
       </span>
     </div>
 
@@ -113,14 +113,14 @@ function in the multiwayvcov package." />
     <p>Computes cluster robust standard errors for linear models
 (<code><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm</a></code>) and general linear models
 (<code><a href='https://www.rdocumentation.org/packages/stats/topics/glm'>stats::glm</a></code>) using the
-<code><a href='https://www.rdocumentation.org/packages/multiwayvcov/topics/cluster.vcov'>multiwayvcov::cluster.vcov</a></code>
-function in the <span class="pkg">multiwayvcov</span> package.</p>
+<code><a href='https://www.rdocumentation.org/packages/sandwich/topics/vcovCL'>multiwayvcov::vcovCL</a></code>
+function in the <span class="pkg">sandwich</span> package.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>lm.cluster</span>(<span class='no'>data</span>, <span class='no'>formula</span>, <span class='no'>cluster</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>lm.cluster</span>(<span class='no'>data</span>, <span class='no'>formula</span>, <span class='no'>cluster</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>subset</span><span class='kw'>=</span><span class='kw'>NULL</span> )
 
-<span class='fu'>glm.cluster</span>(<span class='no'>data</span>, <span class='no'>formula</span>, <span class='no'>cluster</span>, <span class='no'>...</span>)
+<span class='fu'>glm.cluster</span>(<span class='no'>data</span>, <span class='no'>formula</span>, <span class='no'>cluster</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>subset</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>family</span><span class='kw'>=</span><span class='no'>gaussian</span> )
 
 <span class='co'># S3 method for lm.cluster</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>object</span>,<span class='no'>...</span>)
@@ -154,112 +154,33 @@ function in the <span class="pkg">multiwayvcov</span> package.</p>
 with cluster identifiers</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
-      <td><p>Further arguments to be passed to <code><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm</a></code> and
-<code><a href='https://www.rdocumentation.org/packages/stats/topics/glm'>stats::glm</a></code></p></td>
+      <th>subset</th>
+      <td><p>Optional vector specifying a subset of observations to be used.</p></td>
     </tr>
     <tr>
-      <th>object</th>
-      <td><p>Object of class <code>lm.cluster</code> or <code>glm.cluster</code></p></td>
+      <th>weights</th>
+      <td><p>Optional vector of weights to be used.</p></td>
+    </tr>
+    <tr>
+      <th>family</th>
+      <td><p>Description of the error distribution and link function to be used in 
+the model, see <code><a href='https://www.rdocumentation.org/packages/stats/topics/glm'>stats::glm</a>.</code>
+  &#8230;
+Further arguments to be passed to <code><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm</a></code> and
+<code><a href='https://www.rdocumentation.org/packages/stats/topics/glm'>stats::glm</a></code>
+
+  object
+Object of class <code>lm.cluster</code> or <code>glm.cluster</code></p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List with following entries</p>
-<dt>lm_res</dt><dd><p>Value of <code><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm</a></code></p></dd>
-  <dt>glm_res</dt><dd><p>Value of <code><a href='https://www.rdocumentation.org/packages/stats/topics/glm'>stats::glm</a></code></p></dd>
-  <dt>vcov</dt><dd><p>Covariance matrix of parameter estimates</p></dd>
-
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>stats::lm</a></code>, <code><a href='https://www.rdocumentation.org/packages/stats/topics/glm'>stats::glm</a></code>,
-<code><a href='https://www.rdocumentation.org/packages/multiwayvcov/topics/cluster.vcov'>multiwayvcov::cluster.vcov</a></code></p></div>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'>#############################################################################</span>
-<span class='co'># EXAMPLE 1: Cluster robust standard errors data.ma01</span>
-<span class='co'>#############################################################################</span>
-
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.ma01</span>)
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.ma01</span>
-
-<span class='co'>#*** Model 1: Linear regression</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/lm.cluster'>lm.cluster</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>formula</span><span class='kw'>=</span><span class='no'>read</span> ~ <span class='no'>hisei</span> + <span class='no'>female</span>,
-               <span class='kw'>cluster</span><span class='kw'>=</span><span class='st'>"idschool"</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>mod1</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/vcov'>vcov</a></span>(<span class='no'>mod1</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod1</span>)
-
-<span class='co'># estimate Model 1, but cluster is provided as a vector</span>
-<span class='no'>mod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/lm.cluster'>lm.cluster</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>formula</span><span class='kw'>=</span><span class='no'>read</span> ~ <span class='no'>hisei</span> + <span class='no'>female</span>,
-                 <span class='kw'>cluster</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>idschool</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod1b</span>)
-
-<span class='co'>#*** Model 2: Logistic regression</span>
-<span class='no'>dat</span>$<span class='no'>highmath</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span> * ( <span class='no'>dat</span>$<span class='no'>math</span> <span class='kw'>&gt;</span> <span class='fl'>600</span> )   <span class='co'># create dummy variable</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/lm.cluster'>glm.cluster</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>formula</span><span class='kw'>=</span><span class='no'>highmath</span> ~ <span class='no'>hisei</span> + <span class='no'>female</span>,
-                <span class='kw'>cluster</span><span class='kw'>=</span><span class='st'>"idschool"</span>, <span class='kw'>family</span><span class='kw'>=</span><span class='st'>"binomial"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>mod2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/vcov'>vcov</a></span>(<span class='no'>mod2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mod2</span>)
-
-<span class='co'># }</span><span class='co'># NOT RUN {</span>
-<span class='co'>#############################################################################</span>
-<span class='co'># EXAMPLE 2: Cluster robust standard errors for multiply imputed datasets</span>
-<span class='co'>#############################################################################</span>
-
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>mitools</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.ma05</span>)
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.ma05</span>
-
-<span class='co'># imputation of the dataset: use six imputations</span>
-<span class='no'>resp</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[, - <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>) ]
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>resp</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"norm"</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>6</span> )
-<span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/mids2datlist'>mids2datlist</a></span>( <span class='no'>imp</span> )
-
-<span class='co'># linear regression with cluster robust standard errors</span>
-<span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(  <span class='no'>datlist</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>data</span>){
-            <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/lm.cluster'>lm.cluster</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span>, <span class='kw'>formula</span><span class='kw'>=</span><span class='no'>denote</span> ~ <span class='no'>migrant</span>+ <span class='no'>misei</span>,
-                    <span class='kw'>cluster</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>idclass</span> )
-            }  )
-<span class='co'># extract parameters and covariance matrix</span>
-<span class='no'>betas</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>mod</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>rr</span>){ <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>rr</span>) } )
-<span class='no'>vars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>mod</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>rr</span>){ <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/vcov'>vcov</a></span>(<span class='no'>rr</span>) } )
-<span class='co'># conduct statistical inference</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/pool_mi'>pool_mi</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>betas</span>, <span class='kw'>u</span><span class='kw'>=</span><span class='no'>vars</span> ) )
-
-<span class='co'>#------ compute global F-test for hypothesis that all predictors have zero coefficient values</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>mitml</span>)
-<span class='no'>Nimp</span> <span class='kw'>&lt;-</span> <span class='fl'>6</span> <span class='co'># number of imputations</span>
-<span class='no'>np</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>betas</span><span class='kw'>[[</span><span class='fl'>1</span>]])   <span class='co'># number of parameters</span>
-<span class='no'>beta_names</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>betas</span><span class='kw'>[[</span><span class='fl'>1</span>]])
-<span class='co'># define vector of parameters for which constraints should be tested</span>
-<span class='no'>constraints</span> <span class='kw'>&lt;-</span> <span class='no'>beta_names</span>[-<span class='fl'>1</span>]
-<span class='co'># create input for mitml::testConstraints function</span>
-<span class='no'>qhat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlist'>unlist</a></span>(<span class='no'>betas</span>), <span class='kw'>ncol</span><span class='kw'>=</span><span class='no'>Nimp</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>rownames</a></span>(<span class='no'>qhat</span>) <span class='kw'>&lt;-</span> <span class='no'>beta_names</span>
-<span class='no'>uhat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/array'>array</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlist'>unlist</a></span>(<span class='no'>vars</span>), <span class='kw'>dim</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>np</span>,<span class='no'>np</span>,<span class='no'>Nimp</span>))
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dimnames'>dimnames</a></span>(<span class='no'>uhat</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>( <span class='no'>beta_names</span>, <span class='no'>beta_names</span>, <span class='kw'>NULL</span> )
-<span class='co'># compute global F-test</span>
-<span class='no'>Ftest</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitml</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/mitml/topics/testConstraints'>testConstraints</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>betas</span>, <span class='kw'>uhat</span><span class='kw'>=</span><span class='no'>vars</span>, <span class='kw'>constraints</span><span class='kw'>=</span><span class='no'>constraints</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>Ftest</span>)
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

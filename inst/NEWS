@@ -44,7 +44,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.3  |  2019-05-09  |  Last: miceadds 3.3-26
+VERSIONS miceadds 3.3  |  2019-05-09  |  Last: miceadds 3.3-28
 ---------------------------------------------------------------------
 
 ADDED * added imputation methods "rlm", "lqs", "lm" and "lm_fun"
@@ -55,6 +55,9 @@ NOTE  * corrected bug in ?mice.impute.ml.lmer
         (thanks to Rima Izem)
 ADDED * included argument 'remove_lindep' in mice.impute.pls()
         which allows to enable the procedure for removing predictors
+NOTE  * replaced multiwaycov package by sandwich package in
+        lm.cluster() and glm.cluster (thanks to @jaySf, issue #16).
+        Included arguments 'weights' and 'subset' in these functions.
 
 
 DATA  * included/modified datasets: ---
