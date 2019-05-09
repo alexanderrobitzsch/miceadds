@@ -44,7 +44,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.3  |  2019-05-08  |  Last: miceadds 3.3-23
+VERSIONS miceadds 3.3  |  2019-05-09  |  Last: miceadds 3.3-26
 ---------------------------------------------------------------------
 
 ADDED * added imputation methods "rlm", "lqs", "lm" and "lm_fun"
