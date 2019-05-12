@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.368
+%% File Version: 2.372
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -16,7 +16,7 @@ reduction of the predictor space.
 }
 \usage{
 mice.impute.pls(y, ry, x, type, pls.facs=NULL,
-   pls.impMethod="pmm", pls.impMethodArgs=NULL, pls.print.progress=TRUE,
+   pls.impMethod="pmm", donors=5, pls.impMethodArgs=NULL, pls.print.progress=TRUE,
    imputationWeights=rep(1, length(y)), pcamaxcols=1E+09,
    min.int.cor=0, min.all.cor=0, N.largest=0, pls.title=NULL, print.dims=TRUE,
    pls.maxcols=5000, use_boot=FALSE, envir_pos=NULL, extract_data=TRUE,
@@ -66,7 +66,8 @@ for all variables to be imputed.
 The method \code{xplsfacs} creates only PLS factors of the regression
 model.
 }
-
+\item{donors}{Number of donors if predictive mean matching is used
+(\code{pls.impMethod="pmm"}).}
 \item{pls.impMethodArgs}{Arguments for imputation method
 \code{pls.impMethod}.}
   \item{pls.print.progress}{
@@ -177,7 +178,7 @@ pls.facs$IN1 <- 15   # use 15 PLS factors for variable IN1
 # choose norm or pmm imputation method
 pls.impMethod <- as.list( rep("norm", length(impMethod) ) )
 names(pls.impMethod) <- names(impMethod)
-pls.impMethod[ c("IN1","IN6")] <- "pmm5"
+pls.impMethod[ c("IN1","IN6")] <- "pmm"
 
 # some arguments for imputation method
 pls.impMethodArgs <- list( "IN1"=list( "donors"=10 ),

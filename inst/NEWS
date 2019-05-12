@@ -44,28 +44,36 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.3  |  2019-05-09  |  Last: miceadds 3.3-29
+VERSIONS miceadds 3.4  |  2019-05-12  |  Last: miceadds 3.4-2
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 3.3  |  2019-05-11  |  Last: miceadds 3.3-33
 ---------------------------------------------------------------------
 
 ADDED * added imputation methods "rlm", "lqs", "lm" and "lm_fun"
         based on robust and non-robust linear models and 
         transformations of dependent variable
 NOTE  * included argument 'col1_numeric' in split_to_matrix()
-NOTE  * corrected bug in ?mice.impute.ml.lmer
+NOTE  * corrected a mistake in ?mice.impute.ml.lmer manual
         (thanks to Rima Izem)
 ADDED * included argument 'remove_lindep' in mice.impute.pls()
         which allows to enable the procedure for removing predictors
 NOTE  * replaced multiwaycov package by sandwich package in
         lm.cluster() and glm.cluster (thanks to @jaySf, issue #16).
         Included arguments 'weights' and 'subset' in these functions.
-
+NOTE  * included argument 'donors' in mice.impute.pls()
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: mice.impute.rlm (1),
         filename_split (5), mice.impute.ml.lmer (1)
-
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.2  |  2019-04-15  |  Last: miceadds 3.2-48

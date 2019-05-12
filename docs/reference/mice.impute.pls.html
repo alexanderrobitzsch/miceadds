@@ -65,7 +65,7 @@ reduction of the predictor space." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.3-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.4-vv</span>
       </span>
     </div>
 
@@ -115,7 +115,7 @@ reduction of the predictor space.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mice.impute.pls</span>(<span class='no'>y</span>, <span class='no'>ry</span>, <span class='no'>x</span>, <span class='no'>type</span>, <span class='kw'>pls.facs</span><span class='kw'>=</span><span class='kw'>NULL</span>,
-   <span class='kw'>pls.impMethod</span><span class='kw'>=</span><span class='st'>"pmm"</span>, <span class='kw'>pls.impMethodArgs</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>pls.print.progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
+   <span class='kw'>pls.impMethod</span><span class='kw'>=</span><span class='st'>"pmm"</span>, <span class='kw'>donors</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>pls.impMethodArgs</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>pls.print.progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
    <span class='kw'>imputationWeights</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>y</span>)), <span class='kw'>pcamaxcols</span><span class='kw'>=</span><span class='fl'>1E+09</span>,
    <span class='kw'>min.int.cor</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>min.all.cor</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>N.largest</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>pls.title</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>print.dims</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
    <span class='kw'>pls.maxcols</span><span class='kw'>=</span><span class='fl'>5000</span>, <span class='kw'>use_boot</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>envir_pos</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>extract_data</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
@@ -168,6 +168,11 @@ for all variables to be imputed.</p></td>
   is provided. Then, only <code>norm</code> and <code>pmm</code> are available.
 The method <code>xplsfacs</code> creates only PLS factors of the regression
 model.</p></td>
+    </tr>
+    <tr>
+      <th>donors</th>
+      <td><p>Number of donors if predictive mean matching is used
+(<code>pls.impMethod="pmm"</code>).</p></td>
     </tr>
     <tr>
       <th>pls.impMethodArgs</th>
@@ -295,7 +300,7 @@ backward compatibility to former <span class="pkg">miceadds</span> versions.</p>
 <span class='co'># choose norm or pmm imputation method</span>
 <span class='no'>pls.impMethod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>as.list</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"norm"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>impMethod</span>) ) )
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>pls.impMethod</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>impMethod</span>)
-<span class='no'>pls.impMethod</span>[ <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"IN1"</span>,<span class='st'>"IN6"</span>)] <span class='kw'>&lt;-</span> <span class='st'>"pmm5"</span>
+<span class='no'>pls.impMethod</span>[ <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"IN1"</span>,<span class='st'>"IN6"</span>)] <span class='kw'>&lt;-</span> <span class='st'>"pmm"</span>
 
 <span class='co'># some arguments for imputation method</span>
 <span class='no'>pls.impMethodArgs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>( <span class='st'>"IN1"</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>( <span class='st'>"donors"</span><span class='kw'>=</span><span class='fl'>10</span> ),

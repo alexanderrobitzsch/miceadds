@@ -1,9 +1,9 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.665
+## File Version: 3.667
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
-            pls.impMethod="pmm", pls.impMethodArgs=NULL, pls.print.progress=TRUE,
+            pls.impMethod="pmm", donors=5, pls.impMethodArgs=NULL, pls.print.progress=TRUE,
             imputationWeights=rep(1, length(y)), pcamaxcols=1E9,
             min.int.cor=0, min.all.cor=0, N.largest=0, pls.title=NULL, print.dims=TRUE,
             pls.maxcols=5000, use_boot=FALSE, envir_pos=NULL, extract_data=TRUE,
@@ -118,7 +118,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                 imputationWeights=imputationWeights, use_weights=use_weights,
                 pls.impMethod=pls.impMethod, pls.print.progress=pls.print.progress,
                 pls.impMethodArgs=pls.impMethodArgs, type=type, use_boot=use_boot,
-                vname=vname, ... )
+                vname=vname, donors=donors, ... )
     #--- finished all steps!
     time2 <- Sys.time()
 

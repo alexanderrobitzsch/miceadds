@@ -1,9 +1,9 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.184
+## File Version: 0.191
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
-    pls.impMethodArgs, type, use_boot=FALSE, vname=NULL, ... )
+    pls.impMethodArgs, type, use_boot=FALSE, vname=NULL, donors=5, ... )
 {
     x <- as.matrix(x)
     colnames(x) <- gsub(" ", "", colnames(x) )
@@ -43,7 +43,6 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
                     ry=ry, y=y, x=x, weights.obs=weights.obs,
                     sample_pars=sample_pars, ... )
         if (use_boot){
-
             weights.obs <- 1+0*weights.obs
             parm1 <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
                     ry=ry, y=y, x=x, weights.obs=weights.obs,
@@ -56,8 +55,8 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
         if (pls.impMethod=="pmm"){
             yhatobs <- x[ry, ] %*% parm$coef
             yhatmis <- x[!ry, ] %*% parm$beta
-            x1 <- apply(as.array(yhatmis), 1, mice::.pmm.match,
-                        yhat=yhatobs, y=y[ry], ... )
+            x1 <- mice_imputation_pls_pmm_match(yhatobs=yhatobs, yhatmis=yhatmis, 
+                        y=y, ry=ry, donors=donors)
         }
         if ( ! ( pls.impMethod %in% imp_methods_special) ){
             if (use_boot){
