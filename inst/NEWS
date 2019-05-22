@@ -44,10 +44,11 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.4  |  2019-05-12  |  Last: miceadds 3.4-2
+VERSIONS miceadds 3.4  |  2019-05-22  |  Last: miceadds 3.4-4
 ---------------------------------------------------------------------
 
-xxxx  *
+FIXED * fixed a bug with missing parameter names in MIwaldtest()
+        (thanks to Joost van Ginkel)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---

@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.191
+## File Version: 0.192
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
@@ -55,7 +55,7 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
         if (pls.impMethod=="pmm"){
             yhatobs <- x[ry, ] %*% parm$coef
             yhatmis <- x[!ry, ] %*% parm$beta
-            x1 <- mice_imputation_pls_pmm_match(yhatobs=yhatobs, yhatmis=yhatmis, 
+            x1 <- mice_imputation_pls_pmm_match(yhatobs=yhatobs, yhatmis=yhatmis,
                         y=y, ry=ry, donors=donors)
         }
         if ( ! ( pls.impMethod %in% imp_methods_special) ){

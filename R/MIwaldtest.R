@@ -1,8 +1,8 @@
 ## File Name: MIwaldtest.R
-## File Version: 0.13
+## File Version: 0.18
 
-########################################
-# MI Wald test
+
+#--- MI Wald test
 MIwaldtest <- function( qhat, u, Cdes=NULL, rdes=NULL, testnull=NULL)
 {
     # conversion of inputs
@@ -24,7 +24,6 @@ MIwaldtest <- function( qhat, u, Cdes=NULL, rdes=NULL, testnull=NULL)
         }
     }
 
-
     #*** compute distribution of linear form
     NB <- length( qhat )
     NV <- length( qhat[[1]] )
@@ -39,7 +38,6 @@ MIwaldtest <- function( qhat, u, Cdes=NULL, rdes=NULL, testnull=NULL)
         qhat[[bb]] <- ( Cdes %*% q0 - rdes )[,1]
         u[[bb]] <- Cdes %*% u00 %*% t(Cdes)
     }
-
     #**** compute F test (D1 statistic)
     u1 <- qhat1 <- as.list( 1:NB )
     for (bb in 1:NB){

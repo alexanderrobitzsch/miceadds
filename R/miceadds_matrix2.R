@@ -1,5 +1,5 @@
 ## File Name: miceadds_matrix2.R
-## File Version: 0.04
+## File Version: 0.05
 
 
 miceadds_matrix2 <- function (x, nrow=NULL, ncol=NULL)

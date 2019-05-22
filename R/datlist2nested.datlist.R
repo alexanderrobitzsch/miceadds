@@ -1,5 +1,5 @@
 ## File Name: datlist2nested.datlist.R
-## File Version: 0.11
+## File Version: 0.12
 
 
 #** datlist -> nested.datlist

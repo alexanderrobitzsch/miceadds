@@ -1,5 +1,5 @@
 ## File Name: NMIcombine.R
-## File Version: 0.356
+## File Version: 0.362
 
 
 #* extension of MIcombine function to nested
@@ -14,9 +14,9 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
             is_list <- TRUE
     }
 
-    #*********************************************
+    #--- list elements
     if ( is_list ){
-        #************************************
+        #--- no NMI
         if ( ! NMI ){
             NB <- length(qhat)
             # restructure qhat
@@ -49,7 +49,7 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
             }
         }
 
-        #************************************
+        #--- parameter dimensions
         NB <- length( qhat )
         NW <- length( qhat[[1]] )
         NV <- length( qhat[[1]][[1]] )
@@ -58,7 +58,11 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
 
         # collect parameter estimates
         qhat <- array( NA, dim=c( NB, NW, NV ) )
-        names_vars <- names(qhat0[[1]][[1]])
+        v1 <- qhat0[[1]][[1]]
+        names_vars <- names(v1)
+        if (is.null(names_vars)){
+            names_vars <- paste0("par",1:length(v1))
+        }
         dimnames_qhat <- NMIcombine_include_dimnames( names_vars=names_vars, NB=NB,
                                 NW=NW, dims=3)
         dimnames(qhat) <- dimnames_qhat
@@ -82,7 +86,7 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
             }
         }
     }  ## end is_list==TRUE
-    #*********************************************
+    #---
 
     if ( ! is.null(se) ){
         dim_qhat <- dim(qhat)
@@ -111,8 +115,7 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
         NW <- dim(qhat)[[2]]
     }
 
-    #*****************************************
-    # NMI inference
+    #--- NMI inference
     res <- pool.nmi.scalar.helper( qhat=qhat, u=u, NV=NV, NB=NB, NW=NW,
                 comp_cov=comp_cov, method=method)
 

@@ -1,5 +1,5 @@
 ## File Name: NMIwaldtest_compute_statistic.R
-## File Version: 0.01
+## File Version: 0.03
 
 NMIwaldtest_compute_statistic <- function(qhat, u, Cdes, rdes, NB, NW, eps=1E-20)
 {
@@ -20,9 +20,8 @@ NMIwaldtest_compute_statistic <- function(qhat, u, Cdes, rdes, NB, NW, eps=1E-20
     df2 <- rmb^2 / ( NB - 1 + eps ) / ( 1 + rmw + rmb )^2 +
                     rmw^2 / ( NB*( NW - 1 + eps) ) / ( 1 + rmw + rmb )^2
     df2 <- k / df2
-    stat <- data.frame( "F"=stat, "df1"=df1, "df2"=df2,
-                            "pval"=1-stats::pf( q=stat, df1=df1, df2=df2 ) )
-    res <- list( stat=stat, linear_hyp=res0,
-                qhat=qhat, u=u, Cdes=Cdes, rdes=rdes )
+    stat <- data.frame( F=stat, df1=df1, df2=df2,
+                pval=1-stats::pf( q=stat, df1=df1, df2=df2 ) )
+    res <- list( stat=stat, linear_hyp=res0, qhat=qhat, u=u, Cdes=Cdes, rdes=rdes )
     return(res)
 }

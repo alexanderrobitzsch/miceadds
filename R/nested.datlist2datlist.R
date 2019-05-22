@@ -1,5 +1,5 @@
 ## File Name: nested.datlist2datlist.R
-## File Version: 0.10
+## File Version: 0.11
 
 
 #- converts a nested list of multiply imputed datasets into a list of

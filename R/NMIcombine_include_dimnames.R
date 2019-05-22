@@ -1,5 +1,5 @@
 ## File Name: NMIcombine_include_dimnames.R
-## File Version: 0.04
+## File Version: 0.05
 
 NMIcombine_include_dimnames <- function( names_vars, NB, NW, dims=3)
 {
