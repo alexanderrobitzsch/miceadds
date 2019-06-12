@@ -1,9 +1,12 @@
 ## File Name: mice_ml_lmer_aggregate_data_higher_level.R
-## File Version: 0.09
+## File Version: 0.14
 
 mice_ml_lmer_aggregate_data_higher_level <- function(vname_level, y, ry, x, data,
-        levels_id )
+        levels_id, vname=NULL )
 {
+    # if (ncol(x)==0){
+    #    stop( paste0("\nNo predictor variables are selected for variable ", vname, "\n"))
+    # }
     if (vname_level !=""){
         #--- cluster identifiers
         clus <- data[, vname_level]

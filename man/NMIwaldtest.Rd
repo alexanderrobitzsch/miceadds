@@ -1,5 +1,5 @@
 %% File Name: NMIwaldtest.Rd
-%% File Version: 0.23
+%% File Version: 0.26
 
 \name{NMIwaldtest}
 \alias{NMIwaldtest}
@@ -16,8 +16,8 @@ Wald Test for Nested Multiply Imputed Datasets
 \description{
 Performs a Wald test for nested multiply imputed datasets (\code{NMIwaldtest})
 and ordinary multiply imputed datasets (\code{MIwaldtest}),
-see Reiter and Raghanuthan (2007).
-The correspondent statistic is also called the \eqn{D_1} statistic.
+see Reiter and Raghunathan (2007).
+The corresponding statistic is also called the \eqn{D_1} statistic.
 
 The function \code{create.designMatrices.waldtest} is a helper function
 for the creation of design matrices.
@@ -28,11 +28,11 @@ NMIwaldtest(qhat, u, Cdes=NULL, rdes=NULL, testnull=NULL)
 
 MIwaldtest(qhat, u, Cdes=NULL, rdes=NULL, testnull=NULL)
 
-\method{summary}{NMIwaldtest}(object,digits=4,...)
+\method{summary}{NMIwaldtest}(object, digits=4,...)
 
-\method{summary}{MIwaldtest}(object,digits=4,...)
+\method{summary}{MIwaldtest}(object, digits=4,...)
 
-create.designMatrices.waldtest( pars, k )
+create.designMatrices.waldtest(pars, k)
 }
 
 
@@ -106,7 +106,7 @@ datlist <- data.timss2
 M <- length(datlist)
 for (ll in 1:M){
     datlist[[ll]] <- datlist[[ll]][, -c(1:4) ]
-               }
+}
 
 #***************
 # (1) nested multiple imputation using mice

@@ -1,5 +1,5 @@
 %% File Name: filename_split.Rd
-%% File Version: 0.362
+%% File Version: 0.363
 
 \name{filename_split}
 \alias{filename_split}
@@ -52,7 +52,7 @@ should be removed.}
 \item{extend}{Optional indicating whether numeric matrix should be
 extended to become a symmetric matrix}
 \item{col1_numeric}{Logical indicating whether second column is selected in such
-a way that it has to be always a numeric (see Example 5s)}
+a way that it has to be always a numeric (see Example 5)}
 \item{split}{String used for splitting}
 }
 %\details{
