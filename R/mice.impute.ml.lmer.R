@@ -1,5 +1,5 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.598
+## File Version: 0.627
 
 
 #*** main function for multilevel imputation with lme4 with several levels
@@ -109,6 +109,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
 
     #--- extract posterior distribution of random effects
     fl <- lme4::getME(fit, "flist")
+
     #--- variance matrix of random effects
     fit_vc <- lme4::VarCorr(fit)
     # extract random effects
@@ -116,15 +117,25 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
 
     predicted <- 0
     for (ll in 1:NL){
-        predicted_u <- mice_ml_lmer_draw_random_effects( clus=clus[[ll]], clus_unique=clus_unique[[ll]], y=y,
-                            ry=ry, fl=fl[[ll]], fit_vc=fit_vc[[ll]], re0=re0[[ll]], ngr=ngr[[ll]],
-                            used_slopes=used_slopes, levels_id_ll=levels_id[ll], x=x,
+        levels_id_ll <- levels_id[ll]
+        predicted_u <- mice_ml_lmer_draw_random_effects( clus=clus[[levels_id_ll]],
+                            clus_unique=clus_unique[[levels_id_ll]], y=y,
+                            ry=ry, fl=fl[[levels_id_ll]], fit_vc=fit_vc[[levels_id_ll]],
+                            re0=re0[[levels_id_ll]], ngr=ngr[[levels_id_ll]],
+                            used_slopes=used_slopes, levels_id_ll=levels_id_ll, x=x,
                             random.effects.shrinkage=random.effects.shrinkage)
         predicted <- predicted + predicted_u
     }
 
     #--- x and z for prediction
-    x0 <- as.matrix( x[,fixed_effects,drop=FALSE ] )
+    x0 <- as.matrix( x[,fixed_effects, drop=FALSE ] )
+    # handle cases of removed predictors due to singularity
+    if (length(b.star) > 1){
+        if ( length(b.star)-1 < ncol(x0) ){
+            vars1 <- intersect(colnames(x0), names(b.star))
+            x0 <- x0[, vars1, drop=FALSE]
+        }
+    }
     if (intercept){
         x0 <- cbind( 1, x0 )
     }
@@ -132,9 +143,10 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     #--- compute predicted values including fixed and random part
     predicted <- x0 %*% b.star + predicted
 
-    # predicted values for cases with missing data
+    #--- predicted values for cases with missing data
     predicted0 <- predicted[ !ry ]
-    # predicted values for cases with observed data
+
+    #--- predicted values for cases with observed data
     if ( model=="pmm"){
         pred <- predicted
         predicted1 <- pred[ ry ]

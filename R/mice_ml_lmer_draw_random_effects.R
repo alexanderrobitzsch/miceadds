@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_draw_random_effects.R
-## File Version: 0.08
+## File Version: 0.15
 
 
 mice_ml_lmer_draw_random_effects <- function( clus, clus_unique, y, ry, fl, fit_vc,
@@ -8,6 +8,7 @@ mice_ml_lmer_draw_random_effects <- function( clus, clus_unique, y, ry, fl, fit_
 
     # clusters without missing values
     clus0 <- clus[!ry]
+
     # ind <- match( clus0, clus_unique)
     index_clus <- match( clus, clus_unique)
     # clusters with at least one observation
