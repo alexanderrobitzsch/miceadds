@@ -41,10 +41,20 @@ CHANGELOG miceadds
 
 
 
+---------------------------------------------------------------------
+VERSIONS miceadds 3.5  |  2019-06-19  |  Last: miceadds 3.5-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.4  |  2019-06-18  |  Last: miceadds 3.4-16
+VERSIONS miceadds 3.4  |  2019-06-19  |  Last: miceadds 3.4-17
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug with missing parameter names in MIwaldtest()
@@ -57,11 +67,8 @@ FIXED * fixed bug in mice.impute.ml.lmer() with more than one random
 NOTE  * handle cases of removed predictors in mice.impute.ml.lmer()
         by lme4::lmer() function (thanks to Rushani Wijesuriya)
 
-
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.3  |  2019-05-11  |  Last: miceadds 3.3-33
