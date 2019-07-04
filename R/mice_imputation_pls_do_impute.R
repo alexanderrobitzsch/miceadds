@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.192
+## File Version: 0.197
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
@@ -7,7 +7,6 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
 {
     x <- as.matrix(x)
     colnames(x) <- gsub(" ", "", colnames(x) )
-
 
     #*** logical whether an imputation should be conducted
     do_imputation <- ( pls.impMethod !="xplsfacs" )
@@ -29,7 +28,7 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
         weights.obs <- normalize_vector( x=weights.obs )
 
         # special methods
-        imp_methods_special <- c("norm", "pmm","xplsfacs")
+        imp_methods_special <- c("norm","pmm","xplsfacs")
 
         # check appropriate imputation method
         # if ( ! pls.impMethod %in% c( "norm", "pmm", pls_avai) ){
@@ -50,7 +49,7 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
             parm$coef <- parm1$coef
         }
         if (pls.impMethod=="norm"){
-            x1 <- x[  ! ry, ] %*% parm$beta + stats::rnorm(sum(!ry)) * parm$sigma
+            x1 <- x[ !ry, ] %*% parm$beta + stats::rnorm(sum(!ry)) * parm$sigma
         }
         if (pls.impMethod=="pmm"){
             yhatobs <- x[ry, ] %*% parm$coef
@@ -64,9 +63,11 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
                             "methods other than 'norm' and 'pmm'!\n") )
             }
             args <- pls.impMethodArgs
+            x <- x[, apply(x, 2, stats::sd) > 1e-10, drop=FALSE ]
             args$x <- x
             args$y <- y
             args$ry <- ry
+            args$type <- type
             imp_fct <- paste0("mice.impute.", pls.impMethod )
             x1 <- do.call(what=imp_fct, args=args)
         }

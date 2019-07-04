@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_2l_lmer.R
-## File Version: 0.577
+## File Version: 0.581
 
 
 #**** main function for multilevel imputation with lme4 which
@@ -14,8 +14,7 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
         require_namespace("blme")
     }
 
-    # *** ...............................
-    # preliminary calculations
+    #--- preliminary calculations
     clus <- x[,type==-2]
     clus_unique <- unique(clus)
     ngr <- length(clus_unique)

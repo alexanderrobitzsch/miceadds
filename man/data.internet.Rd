@@ -1,5 +1,5 @@
 %% File Name: data.internet.Rd
-%% File Version: 0.17
+%% File Version: 0.19
 
 \name{data.internet}
 \alias{data.internet}
@@ -32,7 +32,7 @@ data(data.internet)
 
 \details{
 The following text is copied from
-\url{http://people.few.eur.nl/groenen/Data/index.htm}
+\emph{http://people.few.eur.nl/groenen/Data/index.htm}
 
 The data set is based on a questionnaire on attitudes towards the Internet. It
 consists of evaluations of 22 statements about the Internet by 281 students at
@@ -83,7 +83,7 @@ Internet items:
 \source{
 Peter Verhoef
 
-\url{http://people.few.eur.nl/groenen/Data/index.htm}
+\emph{http://people.few.eur.nl/groenen/Data/index.htm}
 }
 
 

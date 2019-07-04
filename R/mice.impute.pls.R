@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.667
+## File Version: 3.679
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
@@ -14,6 +14,8 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     y <- res$y
     y_aggr <- res$y_aggr
     is_factor <- res$is_factor
+    x_ <- x
+    type_ <- type
 
     #--- extract arguments
     if ( is.null(envir_pos) ){
@@ -113,6 +115,11 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     x <- res$x
     x11a <- res$x11a
 
+    #- handle type vector for multilevel models
+    res <- mice_imputation_pls_type_multilevel_models(x=x, x_=x_, type=type, type_=type_)
+    x <- res$x
+    type <- res$type
+
     #--- apply imputation method
     x1 <- mice_imputation_pls_do_impute( x=x, y=y, ry=ry,
                 imputationWeights=imputationWeights, use_weights=use_weights,
@@ -121,7 +128,6 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                 vname=vname, donors=donors, ... )
     #--- finished all steps!
     time2 <- Sys.time()
-
     res <- mice_imputation_pls_print_progress3( pls.print.progress=pls.print.progress,
                     time1=time1, time2=time2 )
     x1 <- mice_imputation_factor_pmm_convert_factor(imp=x1,

@@ -10,10 +10,9 @@ pkg_title <- "Some additional multiple imputation functions, especially for mice
 #*** list of authors
 person_list1 <- c(
                    person(given = "Alexander",  family = "Robitzsch"),
-                   person(given = "Simon", family = "Grund"),
-	      person(given = "Thorsten",   family = "Henke") 
+                   person(given = "Simon", family = "Grund")
                       )
-person_list2 <- "Robitzsch, A., Grund, S., & Henke, T."
+person_list2 <- "Robitzsch, A., & Grund, S."
 
 
 #*******************************************

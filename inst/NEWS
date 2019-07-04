@@ -42,10 +42,11 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.5  |  2019-06-19  |  Last: miceadds 3.5-1
+VERSIONS miceadds 3.5  |  2019-07-04  |  Last: miceadds 3.5-11
 ---------------------------------------------------------------------
 
-xxxx  *
+FIXED * fixed issue with missing type argument in user-defined
+        imputation models in mice.impute.pls() function
 
 
 DATA  * included/modified datasets: ---
