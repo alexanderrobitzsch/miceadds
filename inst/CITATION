@@ -1,11 +1,5 @@
 
 
-year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
-vers <- paste("R package version", meta$Version)
-pkg <- meta$Package
-
-#*** package and its name
-pkg_title <- "Some additional multiple imputation functions, especially for mice"
 
 #*** list of authors
 person_list1 <- c(
@@ -15,12 +9,20 @@ person_list1 <- c(
 person_list2 <- "Robitzsch, A., & Grund, S."
 
 
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
+vers <- paste("R package version", meta$Version)
+pkg <- meta$Package
+
+#*** package and its name
+pkg_title <- meta$Title
+
+
 #*******************************************
 # automatic generation of citation key
 
 citHeader( paste0( "To cite the '", pkg , "' package in publications use:") )
 
-citEntry(entry="Manual",
+citEntry(key = paste0(pkg, "_", meta$Version), entry = "Manual",
          title = paste0( pkg , ": " , pkg_title ) ,
          author = personList( person_list1 ),
          year = year,

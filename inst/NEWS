@@ -42,11 +42,14 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.5  |  2019-07-04  |  Last: miceadds 3.5-11
+VERSIONS miceadds 3.5  |  2019-07-21  |  Last: miceadds 3.5-12
 ---------------------------------------------------------------------
 
 FIXED * fixed issue with missing type argument in user-defined
         imputation models in mice.impute.pls() function
+FIXED * fixed a bug in pool.mids.nmi() due to changes in 
+        arguments in mice::pool() function
+        (thanks to Christian Schwahn)
 
 
 DATA  * included/modified datasets: ---
