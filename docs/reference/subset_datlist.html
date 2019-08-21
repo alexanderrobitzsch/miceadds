@@ -284,7 +284,7 @@ then informations about the imputation procedure are lost.</p>
 <span class='co'># expression for selecting rows specific in each data frame</span>
 <span class='co'># which can result in differently sized datasets (because the variable</span>
 <span class='co'># migrant is imputed)</span>
-<span class='no'>datlist5a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/subset_datlist'>subset_datlist</a></span>( <span class='no'>datlist1a</span>,  <span class='kw'>expr_subset</span><span class='kw'>=</span><span class='no'>migrant</span><span class='kw'>==</span><span class='fl'>1</span> )
+<span class='no'>datlist5a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/subset_datlist'>subset_datlist</a></span>( <span class='no'>datlist1a</span>,  <span class='kw'>expr_subset</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/expression'>expression</a></span>(<span class='no'>migrant</span><span class='kw'>==</span><span class='fl'>1</span>) )
 <span class='no'>datlist5a</span>
 
 <span class='co'># select the first 100 cases</span>

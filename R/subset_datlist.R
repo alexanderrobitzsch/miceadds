@@ -1,12 +1,10 @@
 ## File Name: subset_datlist.R
-## File Version: 0.28
+## File Version: 0.34
 
-#######################################################
 subset_datlist <- function( datlist, subset=TRUE,
-                    select=NULL, expr_subset=NULL, index=NULL, toclass="datlist")
+            select=NULL, expr_subset=NULL, index=NULL, toclass="datlist")
 {
     CALL <- match.call()
-    #-----------------------------
     #*** check here for classes
     if ( class(datlist) %in% "imputationList" ){
         datlist <- datlist$imputations
@@ -15,8 +13,7 @@ subset_datlist <- function( datlist, subset=TRUE,
         datlist <- mids2datlist( datlist )
     }
 
-    #*****************************
-    # check for subset if numeric
+    #--- check for subset if numeric
     if ( ! is.null(subset) ){
         if ( is.integer(subset) ){
             N <- nrow(datlist[[1]])
@@ -24,20 +21,18 @@ subset_datlist <- function( datlist, subset=TRUE,
         }
     }
 
-    #*****************************
-    # check for expr
+    #--- check for expr
     expr <- expr_subset
     is_expr <- FALSE
     pf <- parent.frame()
     apply_select0 <- FALSE
-    if (!is.null(match.call()$expr)){
+    if (!is.null(match.call()$expr_subset)){
         expr1 <- substitute(expr)
         is_expr <- TRUE
         apply_select0 <- TRUE
     }
 
-    #-----------------------------
-    #*** start routine
+    #--- start routine
     M <- length(datlist)
     if ( is.null(index) ){
         index <- 1:M
@@ -63,8 +58,8 @@ subset_datlist <- function( datlist, subset=TRUE,
          }
         datlist2[[ii]] <- d1
     }
-    #************
-    # create object classes
+
+    #**** create object classes
     #---- class datlist
     if (toclass=="datlist" ){
         datlist2 <- datlist_create(datlist2)

@@ -1,5 +1,5 @@
 %% File Name: subset_datlist.Rd
-%% File Version: 0.35
+%% File Version: 0.36
 
 \name{subset_datlist}
 \alias{subset_datlist}
@@ -175,7 +175,7 @@ datlist4c
 # expression for selecting rows specific in each data frame
 # which can result in differently sized datasets (because the variable
 # migrant is imputed)
-datlist5a <- miceadds::subset_datlist( datlist1a,  expr_subset=migrant==1 )
+datlist5a <- miceadds::subset_datlist( datlist1a,  expr_subset=expression(migrant==1) )
 datlist5a
 
 # select the first 100 cases
