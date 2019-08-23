@@ -41,8 +41,21 @@ CHANGELOG miceadds
 
 
 
+
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.5  |  2019-08-21  |  Last: miceadds 3.5-13
+VERSIONS miceadds 3.6  |  2019-08-23  |  Last: miceadds 3.6-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 3.5  |  2019-08-23  |  Last: miceadds 3.5-14
 ---------------------------------------------------------------------
 
 FIXED * fixed issue with missing type argument in user-defined
@@ -53,11 +66,8 @@ FIXED * fixed a bug in pool.mids.nmi() due to changes in
 NOTE  * corrected an error in manual for subset_datlist() for
         argument 'expr_subset' (thanks to Michael Grosche)
 
-
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: subset_datlist (1)
-
-
+EXAMP * included/modified examples: subset_datlist (1,2)
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.4  |  2019-06-19  |  Last: miceadds 3.4-17

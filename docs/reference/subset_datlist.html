@@ -68,7 +68,7 @@ cases and variables in datasets." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.5-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.6-vv</span>
       </span>
     </div>
 
@@ -277,8 +277,9 @@ then informations about the imputation procedure are lost.</p>
                   <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"idschool"</span>,<span class='st'>"hisei"</span>), <span class='kw'>toclass</span><span class='kw'>=</span><span class='st'>"mids"</span> )
 <span class='no'>datlist4b</span>
 <span class='co'># The same functionality, but now applying to object of class mids datlist1d</span>
-<span class='no'>datlist4c</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/subset'>subset</a></span>( <span class='no'>datlist1d</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>, <span class='kw'>subset</span><span class='kw'>=</span><span class='no'>datlist1a</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>idschool</span> <span class='kw'>&lt;</span> <span class='fl'>1067</span>,
-                     <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"idschool"</span>,<span class='st'>"hisei"</span>)  )
+<span class='no'>datlist4c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/subset_datlist'>subset_datlist</a></span>( <span class='no'>datlist1d</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>,
+               <span class='kw'>subset</span><span class='kw'>=</span><span class='no'>datlist1a</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>idschool</span> <span class='kw'>&lt;</span> <span class='fl'>1067</span>,
+               <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"idschool"</span>,<span class='st'>"hisei"</span>) )
 <span class='no'>datlist4c</span>
 
 <span class='co'># expression for selecting rows specific in each data frame</span>
@@ -304,8 +305,6 @@ then informations about the imputation procedure are lost.</p>
 <span class='no'>datlist1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/datlist_create'>nested.datlist_create</a></span>( <span class='no'>dat</span> )
 <span class='co'># create object of class 'NestedImputationList'</span>
 <span class='no'>datlist1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/NestedImputationList'>NestedImputationList</a></span>(<span class='no'>dat</span>)
-<span class='co'># create object of class 'mids.nmi'</span>
-<span class='no'>datlist1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/datalist2mids'>datlist2mids</a></span>(<span class='no'>dat</span>)
 
 <span class='co'># select some between datasets</span>
 <span class='no'>datlist2a</span> <span class='kw'>&lt;-</span> <span class='fu'>subset_nested.datlist</span>( <span class='no'>datlist1a</span>, <span class='kw'>index_between</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>4</span>) )
