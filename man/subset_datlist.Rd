@@ -1,5 +1,5 @@
 %% File Name: subset_datlist.Rd
-%% File Version: 0.38
+%% File Version: 0.39
 
 \name{subset_datlist}
 \alias{subset_datlist}
@@ -168,8 +168,8 @@ datlist4b <- miceadds::subset_datlist( datlist1a, index=1:5,
                   select=c("idstud", "idschool","hisei"), toclass="mids" )
 datlist4b
 # The same functionality, but now applying to object of class mids datlist1d
-datlist4c <- miceadds::subset_datlist( datlist1d, index=1:5, 
-               subset=datlist1a[[1]]$idschool < 1067, 
+datlist4c <- miceadds::subset_datlist( datlist1d, index=1:5,
+               subset=datlist1a[[1]]$idschool < 1067,
                select=c("idstud", "idschool","hisei") )
 datlist4c
 

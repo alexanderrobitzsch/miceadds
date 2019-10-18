@@ -43,10 +43,11 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.6  |  2019-08-23  |  Last: miceadds 3.6-1
+VERSIONS miceadds 3.6  |  2019-10-18  |  Last: miceadds 3.6-4
 ---------------------------------------------------------------------
 
-xxxx  *
+FIXED * fixed a bug in ma.wtd.covNA() and ma.wtd.corNA() functions
+        (thanks to Thomas Kiefer)
 
 
 DATA  * included/modified datasets: ---

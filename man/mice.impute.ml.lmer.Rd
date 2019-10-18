@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.382
+%% File Version: 0.384
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -148,9 +148,11 @@ Vector of imputed values
 Enders, C. K., Mistler, S. A., & Keller, B. T. (2016). Multilevel multiple imputation:
 A review and evaluation of joint modeling and chained equations imputation.
 \emph{Psychological Methods, 21}(2), 222-240.
+\doi{10.1037/met0000063}
 
 Grund, S., Luedtke, O., & Robitzsch, A. (2018). Multiple imputation of multilevel
 data in organizational research. \emph{Organizational Research Methods, 21}(1), 111-149.
+\doi{10.1177/1094428117703686}
 }
 
 
