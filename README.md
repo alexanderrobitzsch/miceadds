@@ -2,7 +2,7 @@
 #### Some Additional Multiple Imputation Functions, Especially for 'mice'
 
 
-If you use `miceadds` and have suggestions for improvement or have found bugs, please email me at robitzsch@ipn.uni-kiel.de.
+If you use `miceadds` and have suggestions for improvement or have found bugs, please email me at robitzsch@leibniz-ipn.de.
 
 #### Manual
 
@@ -22,9 +22,9 @@ The CRAN version can be installed from within R using:
 utils::install.packages("miceadds")
 ```
 
-#### GitHub version `miceadds` 3.6-4 (2019-10-18)
+#### GitHub version `miceadds` 3.6-7 (2019-10-25)
 
-[![](https://img.shields.io/badge/github%20version-3.6--4-orange.svg)](https://github.com/alexanderrobitzsch/miceadds)&#160;&#160;
+[![](https://img.shields.io/badge/github%20version-3.6--7-orange.svg)](https://github.com/alexanderrobitzsch/miceadds)&#160;&#160;
 
 The version hosted [here](https://github.com/alexanderrobitzsch/miceadds) is the development version of `miceadds`. 
 The GitHub version can be installed using `devtools` as:

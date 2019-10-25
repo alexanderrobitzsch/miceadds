@@ -1,5 +1,5 @@
 ## File Name: subset_datlist.R
-## File Version: 0.34
+## File Version: 0.368
 
 subset_datlist <- function( datlist, subset=TRUE,
             select=NULL, expr_subset=NULL, index=NULL, toclass="datlist")
@@ -12,12 +12,24 @@ subset_datlist <- function( datlist, subset=TRUE,
     if ( class(datlist) %in% c("mids","mids.1chain") ){
         datlist <- mids2datlist( datlist )
     }
+    M <- length(datlist)
+    N_datlist <- lapply(datlist, nrow)
+    unequal_cases <- diff( range(N_datlist) ) > 0
 
     #--- check for subset if numeric
     if ( ! is.null(subset) ){
         if ( is.integer(subset) ){
-            N <- nrow(datlist[[1]])
-            subset <- ( 1:N ) %in% subset
+            if (unequal_cases){
+                subset1 <- list()
+                for (ii in 1:M){
+                    N <- nrow(datlist[[ii]])
+                    subset1[[ii]] <- ( 1:N ) %in% subset
+                }
+                subset <- subset1
+            } else {
+                N <- nrow(datlist[[1]])
+                subset <- ( 1:N ) %in% subset
+            }
         }
     }
 
@@ -33,12 +45,11 @@ subset_datlist <- function( datlist, subset=TRUE,
     }
 
     #--- start routine
-    M <- length(datlist)
     if ( is.null(index) ){
         index <- 1:M
     }
     IM <- length(index)
-    if( is.null(select) & ( mean( subset )==1 ) ){
+    if( is.null(select) & ( mean(unlist(subset))==1 ) ){
         apply_select <- FALSE
     } else {
         apply_select <- TRUE
@@ -54,8 +65,12 @@ subset_datlist <- function( datlist, subset=TRUE,
             subset <- eval(expr1, d1, enclos=pf)
         }
         if (apply_select){
-            d1 <- subset( d1, subset=subset, select=select, drop=FALSE)
-         }
+            subset0 <- subset
+            if (unequal_cases){
+                subset0 <- subset[[ii]]
+            }
+            d1 <- subset( d1, subset=subset0, select=select, drop=FALSE)
+        }
         datlist2[[ii]] <- d1
     }
 
@@ -93,9 +108,7 @@ subset.datlist <- function( x, subset, select=NULL, expr_subset=NULL, index=NULL
 
 #---------------------------------------------------------------
 # object of class mids
-subset.mids <- function( x, subset,
-                    select=NULL,  expr_subset=NULL,
-                    index=NULL, ... )
+subset.mids <- function( x, subset, select=NULL, expr_subset=NULL, index=NULL, ... )
 {
     CALL <- match.call()
     if (missing(subset)){  subset <- TRUE }
@@ -108,9 +121,7 @@ subset.mids <- function( x, subset,
 
 #---------------------------------------------------------------
 # object of class mids.1chain
-subset.mids.1chain <- function( x, subset,
-                    select=NULL,  expr_subset=NULL,
-                    index=NULL, ... )
+subset.mids.1chain <- function( x, subset, select=NULL,  expr_subset=NULL, index=NULL, ... )
 {
     CALL <- match.call()
     if (missing(subset)){ subset <- TRUE }
@@ -122,9 +133,7 @@ subset.mids.1chain <- function( x, subset,
 
 #---------------------------------------------------------------
 # object of class imputationList
-subset.imputationList <- function( x, subset,
-                    select=NULL, expr_subset=NULL,
-                    index=NULL, ... )
+subset.imputationList <- function( x, subset, select=NULL, expr_subset=NULL, index=NULL, ... )
 {
     CALL <- match.call()
     if (missing(subset)){ subset <- TRUE }
