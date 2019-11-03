@@ -1,5 +1,5 @@
 ## File Name: micombine.cor.R
-## File Version: 0.58
+## File Version: 0.594
 
 
 #-- inference for correlations | nested multiply and multiply imputed datasets
@@ -28,13 +28,19 @@ micombine.cor <- function( mi.res, variables=NULL,
     VV <- length(variables)
     N_partial <- 0
 
+    if (!is.null(partial)){
+        if (! class(partial)=="formula"){
+            partial <- as.formula( paste0(" ~ ", paste0( partial, collapse="+")))
+        }
+    }
+
     # check if variables are given in character form
     if (is.character(variables)){
         if ( ! nested ){
-            variables <- which( vars %in%  variables )
+            variables <- which( vars %in% variables )
         }
         if ( nested ){
-            variables <- which( vars %in%  variables )
+            variables <- which( vars %in% variables )
         }
     }
     dfr <- NULL

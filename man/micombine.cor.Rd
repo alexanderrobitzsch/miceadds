@@ -1,5 +1,5 @@
 %% File Name: micombine.cor.Rd
-%% File Version: 0.40
+%% File Version: 0.416
 
 \name{micombine.cor}
 \alias{micombine.cor}
@@ -38,7 +38,7 @@ calculation of the Pearson correlation.
 a nested multiple imputation.}
 \item{partial}{Formula object for computing partial correlations. The
 terms which should be residualized are written in the formula
-object \code{partial}.}
+object \code{partial}. Alternatively, it can be a vector of variables.}
 }
 %\details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -79,7 +79,8 @@ set.seed(9090)
 
 # nhanes data in one chain
 imp.mi <- miceadds::mice.1chain( nhanes, burnin=5, iter=20, Nimp=4,
-                  method=rep("norm", 4 ) )
+                  method=rep("norm", 4) )
+
 # correlation coefficients of variables 4, 2 and 3 (indexed in nhanes data)
 res <- miceadds::micombine.cor(mi.res=imp.mi, variables=c(4,2,3) )
   ##     variable1 variable2       r    rse fisher_r fisher_rse    fmi       t      p
@@ -100,6 +101,12 @@ res2 <- miceadds::micombine.cov(mi.res=imp.mi, variables=c(4,2,3) )
 
 # inference can also be conducted for non-imputed data
 res3 <- miceadds::micombine.cov(mi.res=nhanes, variables=c(4,2,3) )
+
+# partial correlation residualizing bmi and chl
+res4 <- miceadds::micombine.cor(mi.res=imp.mi, variables=c("age","hyp" ),
+                  partial=~bmi+chl )
+res4
+# alternatively, 'partial' can also be defined as c('age','hyp')
 
 #############################################################################
 # EXAMPLE 2: nhanes data | comparing different correlation coefficients

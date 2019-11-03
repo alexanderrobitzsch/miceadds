@@ -148,7 +148,7 @@ a nested multiple imputation.</p></td>
       <th>partial</th>
       <td><p>Formula object for computing partial correlations. The
 terms which should be residualized are written in the formula
-object <code>partial</code>.</p></td>
+object <code>partial</code>. Alternatively, it can be a vector of variables.</p></td>
     </tr>
     </table>
     
@@ -179,7 +179,8 @@ correlation coefficients.</p></div>
 
 <span class='co'># nhanes data in one chain</span>
 <span class='no'>imp.mi</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/mice.1chain'>mice.1chain</a></span>( <span class='no'>nhanes</span>, <span class='kw'>burnin</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>iter</span><span class='kw'>=</span><span class='fl'>20</span>, <span class='kw'>Nimp</span><span class='kw'>=</span><span class='fl'>4</span>,
-                  <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"norm"</span>, <span class='fl'>4</span> ) )
+                  <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"norm"</span>, <span class='fl'>4</span>) )
+
 <span class='co'># correlation coefficients of variables 4, 2 and 3 (indexed in nhanes data)</span>
 <span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/micombine.cor'>micombine.cor</a></span>(<span class='kw'>mi.res</span><span class='kw'>=</span><span class='no'>imp.mi</span>, <span class='kw'>variables</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>2</span>,<span class='fl'>3</span>) )
   <span class='co'>##     variable1 variable2       r    rse fisher_r fisher_rse    fmi       t      p</span>
@@ -200,6 +201,12 @@ correlation coefficients.</p></div>
 
 <span class='co'># inference can also be conducted for non-imputed data</span>
 <span class='no'>res3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/micombine.cor'>micombine.cov</a></span>(<span class='kw'>mi.res</span><span class='kw'>=</span><span class='no'>nhanes</span>, <span class='kw'>variables</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>2</span>,<span class='fl'>3</span>) )
+
+<span class='co'># partial correlation residualizing bmi and chl</span>
+<span class='no'>res4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/micombine.cor'>micombine.cor</a></span>(<span class='kw'>mi.res</span><span class='kw'>=</span><span class='no'>imp.mi</span>, <span class='kw'>variables</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"age"</span>,<span class='st'>"hyp"</span> ),
+                  <span class='kw'>partial</span><span class='kw'>=</span>~<span class='no'>bmi</span>+<span class='no'>chl</span> )
+<span class='no'>res4</span>
+<span class='co'># alternatively, 'partial' can also be defined as c('age','hyp')</span>
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 2: nhanes data | comparing different correlation coefficients</span>

@@ -27,7 +27,7 @@ Alexander Robitzsch, Simon Grund & Thorsten Henke
 Questions or suggestions about miceadds should be sent to
 
 Alexander Robitzsch
-robitzsch@ipn.uni-kiel.de
+robitzsch@leibniz-ipn.de
 
 In case of reporting a bug, please always provide a
 reproducible script.
@@ -43,17 +43,21 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.6  |  2019-10-25  |  Last: miceadds 3.6-7
+VERSIONS miceadds 3.6  |  2019-10-30  |  Last: miceadds 3.6-9
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in ma.wtd.covNA() and ma.wtd.corNA() functions
         (thanks to Thomas Kiefer)
 NOTE  * subset_datlist() now also works for list of datasets with
         unequal number of cases (thanks to Michael Grosche)
+NOTE  * added an example involving partial correlations in
+        micombine.cor() (thanks to Carolin Just)
+NOTE  * now allow vector arguments of 'partial' in micombine.cor()
+
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: micombine.cor (1)
 
 
 
