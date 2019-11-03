@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2lonly.function.R
-## File Version: 0.289
+## File Version: 0.298
 
 
 #*** general imputation function at level 2
@@ -37,7 +37,8 @@ mice.impute.2lonly.function <- function( y, ry, x, wy=NULL, type, imputationFunc
 
     # calculate aggregated values
     x <- cbind(1, as.matrix(x[,type %in% c(1,2)]))
-    a2 <- rowsum( cbind(x,y), clusterx, na.rm=FALSE)
+    a21 <- data.frame(x,y_=y)
+    a2 <- rowsum( a21, clusterx, na.rm=FALSE)
     #~~~~~
     clusterx0 <- as.numeric( paste0( rownames(a2)))
     a2 <- a2 / rowsum( 1+0*y, clusterx, na.rm=FALSE )[,1]
@@ -48,8 +49,10 @@ mice.impute.2lonly.function <- function( y, ry, x, wy=NULL, type, imputationFunc
     ry2 <- a1[,1] %in% cly2
     wy2 <- ! ( a1[,1] %in% unique( clusterx[ ! wy ] ) )
     x1 <- as.matrix(a1[, - c(1,N1)])
+    y_a1 <- as.matrix(a1[,N1])
+    y_a1[!ry2,1] <- NA
     #*** collect arguments and apply general imputation method
-    args <- list( y=as.matrix(a1[,N1]), ry=ry2, x=x1[,-1], ... )
+    args <- list( y=y_a1, ry=ry2, x=x1[,-1], ... )
     imp_function <- paste0("mice.impute.", imputationFunction_vname )
     args <- mice_imputation_args_include_wy(imp_function=imp_function,
                     args=args, wy=wy2)

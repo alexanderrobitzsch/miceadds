@@ -8,21 +8,25 @@
 
 <title>Pooling for Nested Multiple Imputation — pool.mids.nmi • miceadds</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,8 +34,8 @@
 
 
 
-<meta property="og:title" content="Pooling for Nested Multiple Imputation — pool.mids.nmi" />
 
+<meta property="og:title" content="Pooling for Nested Multiple Imputation — pool.mids.nmi" />
 <meta property="og:description" content="Statistical inference for scalar parameters for nested multiply imputed
 datasets (Rubin, 2003; Harel &amp;amp; Schafer, 2002, 2003; Reiter &amp;amp; Raghanuthan, 2007;
 Harel, 2007).
@@ -43,6 +47,7 @@ mitools::MIextract." />
 
 
 
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -51,6 +56,7 @@ mitools::MIextract." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -77,7 +83,7 @@ mitools::MIextract." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -85,11 +91,10 @@ mitools::MIextract." />
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/alexanderrobitzsch/miceadds">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -100,6 +105,7 @@ mitools::MIextract." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -111,15 +117,13 @@ mitools::MIextract." />
     </div>
 
     <div class="ref-description">
-    
     <p>Statistical inference for scalar parameters for nested multiply imputed
 datasets (Rubin, 2003; Harel &amp; Schafer, 2002, 2003; Reiter &amp; Raghanuthan, 2007;
 Harel, 2007).</p>
 <p>The <code>NMIcombine</code> (<code>pool_nmi</code> as a synonym)
 and <code>NMIextract</code> functions are extensions of
-<code><a href='https://www.rdocumentation.org/packages/mitools/topics/MIcombine'>mitools::MIcombine</a></code> and
-<code><a href='https://www.rdocumentation.org/packages/mitools/topics/MIextract'>mitools::MIextract</a></code>.</p>
-    
+<code><a href='https://rdrr.io/pkg/mitools/man/MIcombine.html'>mitools::MIcombine</a></code> and
+<code><a href='https://rdrr.io/pkg/mitools/man/MIextract.html'>mitools::MIextract</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>pool.mids.nmi</span>(<span class='no'>object</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"largesample"</span>)
@@ -133,14 +137,14 @@ and <code>NMIextract</code> functions are extensions of
 <span class='fu'>NMIextract</span>(<span class='no'>results</span>, <span class='no'>expr</span>, <span class='no'>fun</span>)
 
 <span class='co'># S3 method for mipo.nmi</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>object</span>, <span class='kw'>digits</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>object</span>, <span class='kw'>digits</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for mipo.nmi</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for mipo.nmi</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/vcov'>vcov</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
-    
+<span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span>(<span class='no'>object</span>, <span class='no'>...</span>)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -209,11 +213,11 @@ appropriate arrays can be used as input.</p></td>
 <code>summary</code>.</p></td>
     </tr>
     <tr>
-      <th>&#8230;</th>
+      <th>...</th>
       <td><p>Further arguments to be passed.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Object of class <code>mipo.nmi</code> with following entries</p>
@@ -229,7 +233,6 @@ appropriate arrays can be used as input.</p></td>
 <dt>lambda_Within</dt><dd><p>Fraction of missing information of within imputed
  datasets (second stage imputation)</p></dd>
 
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Harel, O., &amp; Schafer, J. (2002). <em>Two stage multiple imputation</em>.
@@ -244,173 +247,168 @@ multiple imputation. <em>Journal of the American Statistical Association,
 102</em>(480), 1462-1471.</p>
 <p>Rubin, D. B. (2003). Nested multiple imputation of NMES via partially
 incompatible MCMC. <em>Statistica Neerlandica, 57</em>(1), 3-18.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='http://stefvanbuuren.github.io/mice/reference/pool.html'>mice::pool</a></code>,
-<code><a href='https://www.rdocumentation.org/packages/mitools/topics/MIcombine'>mitools::MIcombine</a></code>,
-<code><a href='https://www.rdocumentation.org/packages/mitools/topics/MIextract'>mitools::MIextract</a></code></p>
+<code><a href='https://rdrr.io/pkg/mitools/man/MIcombine.html'>mitools::MIcombine</a></code>,
+<code><a href='https://rdrr.io/pkg/mitools/man/MIextract.html'>mitools::MIextract</a></code></p>
 <p><code><a href='mice.nmi.html'>mice.nmi</a></code>,
 <code><a href='NestedImputationList.html'>MIcombine.NestedImputationResultList</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: Nested multiple imputation and statistical inference</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>BIFIEsurvey</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.timss2</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"BIFIEsurvey"</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>BIFIEsurvey</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.timss2</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"BIFIEsurvey"</span> )
 <span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='no'>data.timss2</span>
 <span class='co'># remove first four variables</span>
-<span class='no'>M</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/length'>length</a></span>(<span class='no'>datlist</span>)
+<span class='no'>M</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>datlist</span>)
 <span class='kw'>for</span> (<span class='no'>ll</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='no'>M</span>){
-    <span class='no'>datlist</span><span class='kw'>[[</span><span class='no'>ll</span>]] <span class='kw'>&lt;-</span> <span class='no'>datlist</span><span class='kw'>[[</span><span class='no'>ll</span>]][, -<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>4</span>) ]
+    <span class='no'>datlist</span><span class='kw'>[[</span><span class='no'>ll</span>]] <span class='kw'>&lt;-</span> <span class='no'>datlist</span><span class='kw'>[[</span><span class='no'>ll</span>]][, -<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>4</span>) ]
                }
 
 <span class='co'>#***************</span>
 <span class='co'># (1) nested multiple imputation using mice</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/mice.nmi'>mice.nmi</a></span>( <span class='no'>datlist</span>,  <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>2</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>imp1</span>)
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/mice.nmi.html'>mice.nmi</a></span>( <span class='no'>datlist</span>,  <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>2</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp1</span>)
 
 <span class='co'>#***************</span>
 <span class='co'># (2) first linear regression: ASMMAT ~ migrant + female</span>
-<span class='no'>res1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/with'>with</a></span>( <span class='no'>imp1</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>( <span class='no'>ASMMAT</span> ~ <span class='no'>migrant</span> + <span class='no'>female</span> ) ) <span class='co'># fit</span>
-<span class='no'>pres1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/pool.mids.nmi'>pool.mids.nmi</a></span>( <span class='no'>res1</span> )  <span class='co'># pooling</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pres1</span>)  <span class='co'># summary</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>pres1</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/vcov'>vcov</a></span>(<span class='no'>pres1</span>)
+<span class='no'>res1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp1</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>ASMMAT</span> ~ <span class='no'>migrant</span> + <span class='no'>female</span> ) ) <span class='co'># fit</span>
+<span class='no'>pres1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/pool.mids.nmi.html'>pool.mids.nmi</a></span>( <span class='no'>res1</span> )  <span class='co'># pooling</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pres1</span>)  <span class='co'># summary</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span>(<span class='no'>pres1</span>)
+<span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span>(<span class='no'>pres1</span>)
 
 <span class='co'>#***************</span>
 <span class='co'># (3) second linear regression: likesc ~ migrant + books</span>
-<span class='no'>res2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/with'>with</a></span>( <span class='no'>imp1</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>( <span class='no'>likesc</span> ~ <span class='no'>migrant</span> + <span class='no'>books</span>  ) )
-<span class='no'>pres2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/pool.mids.nmi'>pool.mids.nmi</a></span>( <span class='no'>res2</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pres2</span>)
+<span class='no'>res2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp1</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>likesc</span> ~ <span class='no'>migrant</span> + <span class='no'>books</span>  ) )
+<span class='no'>pres2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/pool.mids.nmi.html'>pool.mids.nmi</a></span>( <span class='no'>res2</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pres2</span>)
 
 <span class='co'>#***************</span>
 <span class='co'># (4) some descriptive statistics using the mids.nmi object</span>
-<span class='no'>res3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/with'>with</a></span>( <span class='no'>imp1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>( <span class='st'>"M_lsc"</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>likesc</span>), <span class='st'>"SD_lsc"</span><span class='kw'>=</span><span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/sd'>sd</a></span>(<span class='no'>likesc</span>) ) )
-<span class='no'>pres3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/pool.mids.nmi'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>res3</span>$<span class='no'>analyses</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pres3</span>)
+<span class='no'>res3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='st'>"M_lsc"</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>likesc</span>), <span class='st'>"SD_lsc"</span><span class='kw'>=</span><span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span>(<span class='no'>likesc</span>) ) )
+<span class='no'>pres3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/pool.mids.nmi.html'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>res3</span>$<span class='no'>analyses</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pres3</span>)
 
 <span class='co'>#*************</span>
 <span class='co'># (5) apply linear regression based on imputation list</span>
 
 <span class='co'># convert mids object to datlist</span>
-<span class='no'>datlist2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/mids2datlist'>mids2datlist</a></span>( <span class='no'>imp1</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>datlist2</span>, <span class='kw'>max.level</span><span class='kw'>=</span><span class='fl'>1</span>)
+<span class='no'>datlist2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/mids2datlist.html'>mids2datlist</a></span>( <span class='no'>imp1</span> )
+<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>datlist2</span>, <span class='kw'>max.level</span><span class='kw'>=</span><span class='fl'>1</span>)
 
 <span class='co'># double application of lapply to the list of list of nested imputed datasets</span>
-<span class='no'>res4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>datlist2</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>dl</span>){
-    <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>dl</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>data</span>){
-            <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>( <span class='no'>ASMMAT</span> ~ <span class='no'>migrant</span> + <span class='no'>books</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span> )
+<span class='no'>res4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>datlist2</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>dl</span>){
+    <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>dl</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>data</span>){
+            <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>ASMMAT</span> ~ <span class='no'>migrant</span> + <span class='no'>books</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span> )
                                 } )
                 }  )
 
 <span class='co'># extract coefficients</span>
-<span class='no'>qhat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>res4</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>bb</span>){
-            <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>bb</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>ww</span>){
-                    <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/coef'>coef</a></span>(<span class='no'>ww</span>)
+<span class='no'>qhat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>res4</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>bb</span>){
+            <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>bb</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>ww</span>){
+                    <span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span>(<span class='no'>ww</span>)
                         } )
                 } )
 <span class='co'># shorter function</span>
 <span class='fu'>NMIextract</span>( <span class='kw'>results</span><span class='kw'>=</span><span class='no'>res4</span>, <span class='kw'>fun</span><span class='kw'>=</span><span class='no'>coef</span> )
 
 <span class='co'># extract covariance matrices</span>
-<span class='no'>u</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>res4</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>bb</span>){
-            <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>bb</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>ww</span>){
-                    <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/vcov'>vcov</a></span>(<span class='no'>ww</span>)
+<span class='no'>u</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>res4</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>bb</span>){
+            <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>bb</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>ww</span>){
+                    <span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span>(<span class='no'>ww</span>)
                         } )
                 } )
 <span class='co'># shorter function</span>
 <span class='fu'>NMIextract</span>( <span class='kw'>results</span><span class='kw'>=</span><span class='no'>res4</span>, <span class='kw'>fun</span><span class='kw'>=</span><span class='no'>vcov</span> )
 
 <span class='co'># apply statistical inference using the NMIcombine function</span>
-<span class='no'>pres4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/pool.mids.nmi'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>qhat</span>, <span class='kw'>u</span><span class='kw'>=</span><span class='no'>u</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pres4</span>)
+<span class='no'>pres4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/pool.mids.nmi.html'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>qhat</span>, <span class='kw'>u</span><span class='kw'>=</span><span class='no'>u</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pres4</span>)
 
 <span class='co'>#--- statistical inference if only standard errors are available</span>
 <span class='co'># extract standard errors</span>
-<span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>res4</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>bb</span>){
-            <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>bb</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>ww</span>){
+<span class='no'>se</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>res4</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>bb</span>){
+            <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>bb</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>ww</span>){
                 <span class='co'># ww &lt;- res4[[1]][[1]]</span>
-                <span class='no'>sww</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>ww</span>)
+                <span class='no'>sww</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>ww</span>)
                 <span class='no'>sww</span>$<span class='no'>coef</span>[,<span class='st'>"Std. Error"</span>]
                         } )
                 } )
 <span class='no'>se</span>
 <span class='co'># apply NMIcombine function</span>
-<span class='no'>pres4b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/pool.mids.nmi'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>qhat</span>, <span class='kw'>se</span><span class='kw'>=</span><span class='no'>se</span> )
+<span class='no'>pres4b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/pool.mids.nmi.html'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>qhat</span>, <span class='kw'>se</span><span class='kw'>=</span><span class='no'>se</span> )
 <span class='co'># compare results</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pres4b</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pres4</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pres4b</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pres4</span>)
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 2: Some comparisons for a multiply imputed dataset</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>mitools</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.ma02</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mitools</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.ma02</span>)
 
 <span class='co'># save dataset as imputation list</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/mitools/topics/imputationList'>imputationList</a></span>( <span class='no'>data.ma02</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>imp</span>)
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/imputationList.html'>imputationList</a></span>( <span class='no'>data.ma02</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>imp</span>)
 <span class='co'># save dataset as an mids object</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/datalist2mids'>datlist2mids</a></span>( <span class='no'>imp</span> )
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/datalist2mids.html'>datlist2mids</a></span>( <span class='no'>imp</span> )
 
 <span class='co'># apply linear model based on imputationList</span>
-<span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/with'>with</a></span>( <span class='no'>imp</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>( <span class='no'>read</span> ~ <span class='no'>hisei</span> + <span class='no'>female</span> ) )
+<span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>read</span> ~ <span class='no'>hisei</span> + <span class='no'>female</span> ) )
 <span class='co'># same linear model based on mids object</span>
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/with'>with</a></span>( <span class='no'>imp1</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>( <span class='no'>read</span> ~ <span class='no'>hisei</span> + <span class='no'>female</span> ) )
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp1</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>read</span> ~ <span class='no'>hisei</span> + <span class='no'>female</span> ) )
 
 <span class='co'># extract coefficients</span>
-<span class='no'>cmod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/mitools/topics/MIextract'>MIextract</a></span>( <span class='no'>mod</span>, <span class='kw'>fun</span><span class='kw'>=</span><span class='no'>coef</span>)
+<span class='no'>cmod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/MIextract.html'>MIextract</a></span>( <span class='no'>mod</span>, <span class='kw'>fun</span><span class='kw'>=</span><span class='no'>coef</span>)
 <span class='co'># extract standard errors</span>
-<span class='no'>semod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>mod</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>mm</span>){
-                <span class='no'>smm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>mm</span>)
+<span class='no'>semod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>mod</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>mm</span>){
+                <span class='no'>smm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mm</span>)
                 <span class='no'>smm</span>$<span class='no'>coef</span>[,<span class='st'>"Std. Error"</span>]
                         } )
 <span class='co'># extract covariance matrix</span>
-<span class='no'>vmod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/mitools/topics/MIextract'>MIextract</a></span>( <span class='no'>mod</span>, <span class='kw'>fun</span><span class='kw'>=</span><span class='no'>vcov</span>)
+<span class='no'>vmod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/MIextract.html'>MIextract</a></span>( <span class='no'>mod</span>, <span class='kw'>fun</span><span class='kw'>=</span><span class='no'>vcov</span>)
 
 <span class='co'>#*** pooling with NMIcombine with se (1a) and vcov (1b) as input</span>
-<span class='no'>pmod1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/pool.mids.nmi'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>cmod</span>, <span class='kw'>se</span><span class='kw'>=</span><span class='no'>semod</span>, <span class='kw'>NMI</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
-<span class='no'>pmod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/pool.mids.nmi'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>cmod</span>, <span class='kw'>u</span><span class='kw'>=</span><span class='no'>vmod</span>, <span class='kw'>NMI</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
+<span class='no'>pmod1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/pool.mids.nmi.html'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>cmod</span>, <span class='kw'>se</span><span class='kw'>=</span><span class='no'>semod</span>, <span class='kw'>NMI</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
+<span class='no'>pmod1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/pool.mids.nmi.html'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>cmod</span>, <span class='kw'>u</span><span class='kw'>=</span><span class='no'>vmod</span>, <span class='kw'>NMI</span><span class='kw'>=</span><span class='fl'>FALSE</span> )
 <span class='co'># use method 2 which should conform to MI inference of mice::pool</span>
-<span class='no'>pmod1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/pool.mids.nmi'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>cmod</span>, <span class='kw'>u</span><span class='kw'>=</span><span class='no'>vmod</span>, <span class='kw'>NMI</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='fl'>2</span>)
+<span class='no'>pmod1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/pool.mids.nmi.html'>NMIcombine</a></span>( <span class='kw'>qhat</span><span class='kw'>=</span><span class='no'>cmod</span>, <span class='kw'>u</span><span class='kw'>=</span><span class='no'>vmod</span>, <span class='kw'>NMI</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='fl'>2</span>)
 
 <span class='co'>#*** pooling with mitools::MIcombine function</span>
-<span class='no'>pmod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/mitools/topics/MIcombine'>MIcombine</a></span>( <span class='kw'>results</span><span class='kw'>=</span><span class='no'>cmod</span>, <span class='kw'>variances</span><span class='kw'>=</span><span class='no'>vmod</span> )
+<span class='no'>pmod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/MIcombine.html'>MIcombine</a></span>( <span class='kw'>results</span><span class='kw'>=</span><span class='no'>cmod</span>, <span class='kw'>variances</span><span class='kw'>=</span><span class='no'>vmod</span> )
 <span class='co'>#*** pooling with mice::pool function</span>
 <span class='no'>pmod3a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/pool.html'>pool</a></span>( <span class='no'>mod1</span> )
 <span class='no'>pmod3b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/pool.html'>pool</a></span>( <span class='no'>mod1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"Rubin"</span>)
 
 <span class='co'>#--- compare results</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pmod1a</span>)   <span class='co'># method=1  (the default)</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pmod1b</span>)   <span class='co'># method=1  (the default)</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pmod1c</span>)   <span class='co'># method=2</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pmod2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pmod3a</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>pmod3b</span>)
-<span class='co'># }</span></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pmod1a</span>)   <span class='co'># method=1  (the default)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pmod1b</span>)   <span class='co'># method=1  (the default)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pmod1c</span>)   <span class='co'># method=2</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pmod2</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pmod3a</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pmod3b</span>)
+}</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#references">References</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -418,13 +416,16 @@ incompatible MCMC. <em>Statistica Neerlandica, 57</em>(1), 3-18.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

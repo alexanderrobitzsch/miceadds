@@ -1,5 +1,5 @@
 %% File Name: miceadds-package.Rd
-%% File Version: 1.719
+%% File Version: 1.721
 
 \name{miceadds-package}
 \alias{miceadds-package}
@@ -72,11 +72,19 @@ accomplished by two-way imputation (\code{\link{tw.imputation}}).
 
 
 \references{
+Bartlett, J. W., Seaman, S. R., White, I. R., Carpenter, J. R., & Alzheimer's Disease
+Neuroimaging Initiative (2015). Multiple imputation of covariates by fully
+conditional specification: Accommodating the substantive model.
+\emph{Statistical Methods in Medical Research, 24}(4), 462-487.
+\doi{10.1177/0962280214521348}
+
 Grund, S., Luedtke, O., & Robitzsch, A. (2018). Multiple imputation of multilevel
 data in organizational research. \emph{Organizational Research Methods, 21}(1), 111-149.
+\doi{10.1177/1094428117703686}
 
 Mislevy, R. J. (1991). Randomization-based inference about latent variables
-from complex samples. \emph{Psychometrika, 56}, 177-196.
+from complex samples. \emph{Psychometrika, 56}(2), 177-196.
+\doi{10.1007/BF02294457}
 
 Robitzsch, A., Pham, G., & Yanagida, T. (2016). Fehlende Daten und Plausible Values. 
 In S. Breit & C. Schreiner (Hrsg.). \emph{Large-Scale Assessment mit R: Methodische 
@@ -84,13 +92,15 @@ Grundlagen der oesterreichischen Bildungsstandardueberpruefung} (S. 259-293). Wi
 
 Rubin, D. B. (2003). Nested multiple imputation of NMES via partially
 incompatible MCMC. \emph{Statistica Neerlandica, 57}(1), 3-18.
+\doi{10.1111/1467-9574.00217}
 
 van Buuren, S. (2018). \emph{Flexible imputation of missing data}.
-Boca Raton: CRC Press.
+Boca Raton: CRC Press. \doi{10.1201/9780429492259}
 
 van Buuren, S., & Groothuis-Oudshoorn, K. (2011). \pkg{mice}: 
 Multivariate imputation by chained equations in \R. 
 \emph{Journal of Statistical Software, 45}(3), 1-67.
+\doi{10.18637/jss.v045.i03}
 }
 
 

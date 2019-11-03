@@ -9,21 +9,25 @@
 <title>Adding a Standardized Variable to a List of Multiply Imputed Datasets or a
 Single Datasets — scale_datlist • miceadds</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -31,13 +35,14 @@ Single Datasets — scale_datlist • miceadds</title>
 
 
 
+
 <meta property="og:title" content="Adding a Standardized Variable to a List of Multiply Imputed Datasets or a
 Single Datasets — scale_datlist" />
-
 <meta property="og:description" content="Adds a standardized variable to a list of multiply imputed datasets or
 a single dataset. This function extends base::scale
 for a data frame to a list of multiply imputed datasets." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -49,6 +54,7 @@ for a data frame to a list of multiply imputed datasets." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -75,7 +81,7 @@ for a data frame to a list of multiply imputed datasets." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -83,11 +89,10 @@ for a data frame to a list of multiply imputed datasets." />
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/alexanderrobitzsch/miceadds">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -98,6 +103,7 @@ for a data frame to a list of multiply imputed datasets." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -110,16 +116,14 @@ Single Datasets</h1>
     </div>
 
     <div class="ref-description">
-    
     <p>Adds a standardized variable to a list of multiply imputed datasets or
-a single dataset. This function extends <code><a href='https://www.rdocumentation.org/packages/base/topics/scale'>base::scale</a></code>
+a single dataset. This function extends <code><a href='https://rdrr.io/r/base/scale.html'>base::scale</a></code>
 for a data frame to a list of multiply imputed datasets.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>scale_datlist</span>(<span class='no'>datlist</span>, <span class='no'>orig_var</span>, <span class='no'>trafo_var</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>M</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>SD</span><span class='kw'>=</span><span class='fl'>1</span>,
     <span class='kw'>digits</span><span class='kw'>=</span><span class='kw'>NULL</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -157,71 +161,69 @@ can also be a string indicating the variable used from
       <td><p>Number of digits used for rounding the standardized variable</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A vector or a matrix</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/base/topics/scale'>base::scale</a></code>, <code><a href='ma.scale2.html'>ma.scale2</a></code></p></div>
-    
+    <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/scale.html'>base::scale</a></code>, <code><a href='ma.scale2.html'>ma.scale2</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: Standardized variables in list of multiply imputed datasets</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.ma02</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.ma02</span>)
 <span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='no'>data.ma02</span>
 
 <span class='co'>#--- object of class 'datlist'</span>
-<span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/datlist_create'>datlist_create</a></span>( <span class='no'>datlist</span> )
+<span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/datlist_create.html'>datlist_create</a></span>( <span class='no'>datlist</span> )
 
 <span class='co'># mean and SD of variable hisei</span>
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/ma.wtd.statNA'>ma.wtd.meanNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei"</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlist'>unlist</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>datlist</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>data</span>){
-        <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/weighted.mean'>weighted.mean</a></span>( <span class='no'>data</span>$<span class='no'>hisei</span>, <span class='no'>data</span>$<span class='no'>studwgt</span> )  } ) ) )
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/ma.wtd.statNA'>ma.wtd.sdNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei"</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unlist'>unlist</a></span>( <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>( <span class='no'>datlist</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>data</span>){
-        <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>( <span class='kw pkg'>Hmisc</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/Hmisc/topics/wtd.stats'>wtd.var</a></span>( <span class='no'>data</span>$<span class='no'>hisei</span>, <span class='no'>data</span>$<span class='no'>studwgt</span> ) ) } ) ) )
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/ma.wtd.statNA.html'>ma.wtd.meanNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei"</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>datlist</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>data</span>){
+        <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/weighted.mean.html'>weighted.mean</a></span>( <span class='no'>data</span>$<span class='no'>hisei</span>, <span class='no'>data</span>$<span class='no'>studwgt</span> )  } ) ) )
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/ma.wtd.statNA.html'>ma.wtd.sdNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei"</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>datlist</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>data</span>){
+        <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>( <span class='kw pkg'>Hmisc</span><span class='kw ns'>::</span><span class='fu'>wtd.var</span>( <span class='no'>data</span>$<span class='no'>hisei</span>, <span class='no'>data</span>$<span class='no'>studwgt</span> ) ) } ) ) )
 
 <span class='co'># standardize variable hisei to M=100 and SD=15</span>
-<span class='no'>datlist1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/scale_datlist'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>datlist</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"hisei"</span>,
+<span class='no'>datlist1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/scale_datlist.html'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>datlist</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"hisei"</span>,
                <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='st'>"hisei100"</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>M</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>SD</span><span class='kw'>=</span><span class='fl'>15</span> )
 
 <span class='co'># check mean and SD</span>
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/ma.wtd.statNA'>ma.wtd.meanNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei100"</span>)
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/ma.wtd.statNA'>ma.wtd.sdNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei100"</span>)
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/ma.wtd.statNA.html'>ma.wtd.meanNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei100"</span>)
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/ma.wtd.statNA.html'>ma.wtd.sdNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei100"</span>)
 
 <span class='co'>#--- do standardization for unweighted sample with books &lt;=3</span>
 <span class='co'># -&gt; define a weighting variable at first</span>
-<span class='no'>datlist0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/mitools/topics/imputationList'>imputationList</a></span>( <span class='no'>datlist</span> )
-<span class='no'>datlist2a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/with.miceadds'>within.imputationList</a></span>( <span class='no'>datlist0</span>, {
+<span class='no'>datlist0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/imputationList.html'>imputationList</a></span>( <span class='no'>datlist</span> )
+<span class='no'>datlist2a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/with.miceadds.html'>within.imputationList</a></span>( <span class='no'>datlist0</span>, {
              <span class='co'># define weighting variable</span>
                  <span class='no'>wgt_books</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span> * ( <span class='no'>books</span> <span class='kw'>&lt;=</span><span class='fl'>3</span> )
                     } )
 
 <span class='co'># standardize variable hisei to M=100 and SD=15 with respect to weighting variable</span>
-<span class='no'>datlist2b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/scale_datlist'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>datlist2a</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"hisei"</span>, <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='st'>"hisei100"</span>,
+<span class='no'>datlist2b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/scale_datlist.html'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>datlist2a</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"hisei"</span>, <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='st'>"hisei100"</span>,
          <span class='kw'>weights</span><span class='kw'>=</span><span class='st'>"wgt_books"</span>, <span class='kw'>M</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>SD</span><span class='kw'>=</span><span class='fl'>15</span> )
 
 <span class='co'># check mean and SD (groupwise)</span>
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/ma.wtd.statNA'>ma.wtd.meanNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei100"</span>)
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/ma.wtd.statNA'>ma.wtd.sdNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei100"</span>)
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/ma.wtd.statNA.html'>ma.wtd.meanNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei100"</span>)
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/ma.wtd.statNA.html'>ma.wtd.sdNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei100"</span>)
 
 <span class='co'>#--- transformation for a single dataset</span>
 <span class='no'>dat0</span> <span class='kw'>&lt;-</span> <span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]
-<span class='no'>dat0a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/scale_datlist'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>dat0</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"hisei"</span>, <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='st'>"hisei100"</span>,
+<span class='no'>dat0a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/scale_datlist.html'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>dat0</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"hisei"</span>, <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='st'>"hisei100"</span>,
                     <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>dat0</span>$<span class='no'>studwgt</span>, <span class='kw'>M</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>SD</span><span class='kw'>=</span><span class='fl'>15</span> )
-<span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/weighted.mean'>weighted.mean</a></span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei"</span>],  <span class='kw'>w</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> )
-<span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/weighted.mean'>weighted.mean</a></span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei100"</span>],  <span class='kw'>w</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/MathFun'>sqrt</a></span>( <span class='kw pkg'>Hmisc</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/Hmisc/topics/wtd.stats'>wtd.var</a></span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei100"</span>],  <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> ) )
+<span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/weighted.mean.html'>weighted.mean</a></span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei"</span>],  <span class='kw'>w</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> )
+<span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/weighted.mean.html'>weighted.mean</a></span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei100"</span>],  <span class='kw'>w</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>( <span class='kw pkg'>Hmisc</span><span class='kw ns'>::</span><span class='fu'>wtd.var</span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei100"</span>],  <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> ) )
 
 <span class='co'>#--- Standardizations for objects of class imputationList</span>
-<span class='no'>datlist2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/mitools/topics/imputationList'>imputationList</a></span>(<span class='no'>datlist</span>)   <span class='co'># object class conversion</span>
-<span class='no'>datlist2a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/scale_datlist'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>datlist2</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"hisei"</span>,
+<span class='no'>datlist2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/imputationList.html'>imputationList</a></span>(<span class='no'>datlist</span>)   <span class='co'># object class conversion</span>
+<span class='no'>datlist2a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/scale_datlist.html'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>datlist2</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"hisei"</span>,
                  <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='st'>"hisei100"</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>M</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>SD</span><span class='kw'>=</span><span class='fl'>15</span> )
 
 <span class='co'>#############################################################################</span>
@@ -229,56 +231,54 @@ can also be a string indicating the variable used from
 <span class='co'>#############################################################################</span>
 
 <span class='co'># nested multiply imputed dataset in BIFIEsurvey package</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>data.timss4</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"BIFIEsurvey"</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.timss4</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"BIFIEsurvey"</span>)
 <span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='no'>data.timss4</span>
 <span class='no'>wgt</span> <span class='kw'>&lt;-</span> <span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]<span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>TOTWGT</span>
 
 <span class='co'># class nested.datlist</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/datlist_create'>nested.datlist_create</a></span>( <span class='no'>datlist</span> )
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/datlist_create.html'>nested.datlist_create</a></span>( <span class='no'>datlist</span> )
 <span class='co'># class NestedImputationList</span>
-<span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/NestedImputationList'>NestedImputationList</a></span>( <span class='no'>datlist</span> )
+<span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/NestedImputationList.html'>NestedImputationList</a></span>( <span class='no'>datlist</span> )
 
 <span class='co'># standardize variable scsci</span>
-<span class='no'>imp1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/scale_datlist'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>imp1</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"scsci"</span>, <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='st'>"zscsci"</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>wgt</span>)
+<span class='no'>imp1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/scale_datlist.html'>scale_datlist</a></span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>imp1</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"scsci"</span>, <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='st'>"zscsci"</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>wgt</span>)
 <span class='co'># check descriptives</span>
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/ma.wtd.statNA'>ma.wtd.meanNA</a></span>( <span class='no'>imp1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>wgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"scsci"</span>, <span class='st'>"zscsci"</span> ) )
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/ma.wtd.statNA'>ma.wtd.sdNA</a></span>( <span class='no'>imp1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>wgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"scsci"</span>, <span class='st'>"zscsci"</span> ) )
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/ma.wtd.statNA.html'>ma.wtd.meanNA</a></span>( <span class='no'>imp1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>wgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"scsci"</span>, <span class='st'>"zscsci"</span> ) )
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/ma.wtd.statNA.html'>ma.wtd.sdNA</a></span>( <span class='no'>imp1a</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>wgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"scsci"</span>, <span class='st'>"zscsci"</span> ) )
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 3: Standardization of variables for imputed data in mice package</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>nhanes</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"mice"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Random'>set.seed</a></span>(<span class='fl'>76</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>nhanes</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"mice"</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>76</span>)
 
 <span class='co'>#--- impute nhanes data</span>
 <span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>(<span class='no'>nhanes</span>)
 <span class='co'>#--- convert into datlist</span>
-<span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/mids2datlist'>mids2datlist</a></span>(<span class='no'>imp</span>)
+<span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/mids2datlist.html'>mids2datlist</a></span>(<span class='no'>imp</span>)
 <span class='co'>#--- scale datlist (all variables)</span>
-<span class='no'>vars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/colnames'>colnames</a></span>(<span class='no'>nhanes</span>)
-<span class='no'>sdatlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/scale_datlist'>scale_datlist</a></span>(<span class='no'>datlist</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='no'>vars</span>, <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='st'>"z"</span>,<span class='no'>vars</span>) )
+<span class='no'>vars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>nhanes</span>)
+<span class='no'>sdatlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/scale_datlist.html'>scale_datlist</a></span>(<span class='no'>datlist</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='no'>vars</span>, <span class='kw'>trafo_var</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='st'>"z"</span>,<span class='no'>vars</span>) )
 <span class='co'>#--- reconvert to mids object</span>
-<span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/datalist2mids'>datlist2mids</a></span>(<span class='no'>sdatlist</span>)
+<span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/datalist2mids.html'>datlist2mids</a></span>(<span class='no'>sdatlist</span>)
 <span class='co'>#*** compare descriptive statistics of objects</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Round'>round</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/stats0'>mean0</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.html'>complete</a></span>(<span class='no'>imp</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) ), <span class='fl'>2</span> )
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Round'>round</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/miceadds/topics/stats0'>mean0</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.html'>complete</a></span>(<span class='no'>imp2</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) ), <span class='fl'>2</span> )
-<span class='co'># }</span></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/stats0.html'>mean0</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.html'>complete</a></span>(<span class='no'>imp</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) ), <span class='fl'>2</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/stats0.html'>mean0</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.html'>complete</a></span>(<span class='no'>imp2</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) ), <span class='fl'>2</span> )
+}</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -286,13 +286,16 @@ can also be a string indicating the variable used from
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.smcfcs.Rd
-%% File Version: 0.19
+%% File Version: 0.21
 
 \name{mice.impute.smcfcs}
 \alias{mice.impute.smcfcs}
@@ -70,7 +70,7 @@ Bartlett, J. W., Seaman, S. R., White, I. R., Carpenter, J. R., & Alzheimer's Di
 Neuroimaging Initiative (2015). Multiple imputation of covariates by fully
 conditional specification: Accommodating the substantive model.
 \emph{Statistical Methods in Medical Research, 24}(4), 462-487.
-http://dx.doi.org/10.1177/0962280214521348
+\doi{10.1177/0962280214521348}
 }
 
 
