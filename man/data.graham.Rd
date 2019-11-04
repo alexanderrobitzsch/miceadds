@@ -1,5 +1,5 @@
 %% File Name: data.graham.Rd
-%% File Version: 0.23
+%% File Version: 0.24
 
 \name{data.graham}
 \alias{data.graham}
@@ -147,6 +147,7 @@ http://methodology.psu.edu/pubs/books/missing.
 
 \references{
 Graham, J. W. (2012). \emph{Missing data}. New York: Springer.
+\doi{10.1007/978-1-4614-4018-5}
 }
 
 \examples{

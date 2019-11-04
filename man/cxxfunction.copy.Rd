@@ -1,5 +1,5 @@
 %% File Name: cxxfunction.copy.Rd
-%% File Version: 0.22
+%% File Version: 0.24
 
 \name{cxxfunction.copy}
 \alias{cxxfunction.copy}
@@ -33,8 +33,9 @@ Name of the output Rcpp function to be generated
 %% ...
 %}
 \references{
-Eddelbuettel, D. & Francois, R. (2011). Rcpp: Seamless R and C++ integration.
+Eddelbuettel, D. & Francois, R. (2011). \pkg{Rcpp}: Seamless \R and \pkg{C++} integration.
 \emph{Journal of Statistical Software, 40}(8), 1-18.
+\doi{10.18637/jss.v040.i08}
 }
 
 

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.6-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.7-vv</span>
       </span>
     </div>
 
@@ -131,8 +131,9 @@
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Eddelbuettel, D. &amp; Francois, R. (2011). Rcpp: Seamless R and C++ integration.
-<em>Journal of Statistical Software, 40</em>(8), 1-18.</p>
+    <p>Eddelbuettel, D. &amp; Francois, R. (2011). <span class="pkg">Rcpp</span>: Seamless <span style="R">R</span> and <span class="pkg">C++</span> integration.
+<em>Journal of Statistical Software, 40</em>(8), 1-18.
+doi: <a href='https://doi.org/10.18637/jss.v040.i08'>10.18637/jss.v040.i08</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/inline/man/cxxfunction.html'>inline::cxxfunction</a></code></p></div>
@@ -171,7 +172,7 @@
 <span class='no'>name</span> <span class='kw'>&lt;-</span> <span class='st'>"calclogis"</span>  <span class='co'># name of the function</span>
 <span class='fu'>cxxfunction.copy</span>( <span class='kw'>cppfct</span><span class='kw'>=</span><span class='no'>fct_rcpp</span>, <span class='kw'>name</span><span class='kw'>=</span><span class='no'>name</span> )
 <span class='co'># function is available as object named as name</span>
-<span class='fu'><a href='Reval.html'>Reval</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>( <span class='no'>name</span>, <span class='st'>" &lt;- fct_rcpp "</span> ) )
+<span class='fu'>Reval</span>( <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>( <span class='no'>name</span>, <span class='st'>" &lt;- fct_rcpp "</span> ) )
 <span class='co'># test function</span>
 <span class='no'>m1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/outer.html'>outer</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>( -<span class='fl'>2</span>, <span class='fl'>2</span>, <span class='kw'>len</span><span class='kw'>=</span><span class='fl'>10</span> ), <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(-<span class='fl'>1.5</span>,<span class='fl'>1.5</span>,<span class='kw'>len</span><span class='kw'>=</span><span class='fl'>4</span>) )
 <span class='fu'>calclogis</span>(<span class='no'>m1</span>)

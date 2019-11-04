@@ -41,9 +41,22 @@ CHANGELOG miceadds
 
 
 
+---------------------------------------------------------------------
+VERSIONS miceadds 3.7  |  2019-11-04  |  Last: miceadds 3.7-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.6  |  2019-11-03  |  Last: miceadds 3.6-18
+VERSIONS miceadds 3.6  |  2019-11-04  |  Last: miceadds 3.6-21
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in ma.wtd.covNA() and ma.wtd.corNA() functions
@@ -52,16 +65,14 @@ NOTE  * subset_datlist() now also works for list of datasets with
         unequal number of cases (thanks to Michael Grosche)
 NOTE  * added an example involving partial correlations in
         micombine.cor() (thanks to Carolin Just)
-NOTE  * now allow vector arguments of 'partial' in micombine.cor()
+NOTE  * allow vector argument of variables of 'partial' in 
+        micombine.cor()
 FIXED * fixed a bug with handling factor variables in 
         mice.impute.2lonly.function()
         (thanks to @markseeto, issue #19)
 
-
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: micombine.cor (1)
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.5  |  2019-08-23  |  Last: miceadds 3.5-14
