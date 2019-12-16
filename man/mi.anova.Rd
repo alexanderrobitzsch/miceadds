@@ -1,5 +1,5 @@
 %% File Name: mi.anova.Rd
-%% File Version: 0.261
+%% File Version: 0.263
 
 \name{mi.anova}
 \alias{mi.anova}
@@ -46,7 +46,8 @@ Allison, P. D. (2002). \emph{Missing data}. Newbury Park, CA: Sage.
 
 Grund, S., Luedtke, O., & Robitzsch, A. (2016). Pooling ANOVA results from
 multiply imputed datasets: A simulation study.
-\emph{Methodology, 12}, 75-88.
+\emph{Methodology, 12}(3), 75-88.
+\doi{10.1027/1614-2241/a000111}
 }
 
 

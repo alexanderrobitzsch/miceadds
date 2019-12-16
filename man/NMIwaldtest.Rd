@@ -1,5 +1,5 @@
 %% File Name: NMIwaldtest.Rd
-%% File Version: 0.26
+%% File Version: 0.271
 
 \name{NMIwaldtest}
 \alias{NMIwaldtest}
@@ -77,7 +77,8 @@ List with following entries
 
 \references{
 Reiter, J. P. and Raghunathan, T. E. (2007). The multiple adaptations of multiple
-imputation. \emph{Journal of the American Statistical Association, 102}, 1462-1471.
+imputation. \emph{Journal of the American Statistical Association, 102}(480), 1462-1471.
+\doi{10.1198/016214507000000932}
 }
 
 

@@ -1,5 +1,5 @@
 %% File Name: ml_mcmc.Rd
-%% File Version: 0.443
+%% File Version: 0.445
 
 \name{ml_mcmc}
 \alias{ml_mcmc}
@@ -221,9 +221,11 @@ List with following entries (selection)
 }
 \references{
 Goldstein, H. (2011). \emph{Multilevel statistical models}. New York: Wiley.
+\doi{10.1002/9780470973394}
 
 Goldstein, H., Carpenter, J., Kenward, M., & Levin, K. (2009). Multilevel models with
 multivariate mixed response types. \emph{Statistical Modelling, 9}(3), 173-197.
+\doi{10.1177/1471082X0800900301}
 }
 
 %\author{

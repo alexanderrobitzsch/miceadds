@@ -1,5 +1,5 @@
 %% File Name: mice.impute.hotDeck.Rd
-%% File Version: 0.20
+%% File Version: 0.21
 
 \name{mice.impute.hotDeck}
 \alias{mice.impute.hotDeck}
@@ -56,7 +56,8 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 \references{
 Andridge, R. R., &  and Little, R. J. A. (2010).
 A review of hot deck imputation for survey non-response.
-\emph{International Statistical Review, 78}, 40-64.
+\emph{International Statistical Review, 78}(1), 40-64.
+\doi{10.1111/j.1751-5823.2010.00103.x}
 }
 
 %\author{

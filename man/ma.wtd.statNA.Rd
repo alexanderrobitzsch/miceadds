@@ -1,5 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
-%% File Version: 1.56
+%% File Version: 1.571
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}
@@ -114,10 +114,10 @@ data(data.ma01)
 dat <- as.matrix(data.ma01[,-c(1:3)])
 
 # weighted mean
-ma.wtd.meanNA( dat, weights=data.ma01$studwgt  )
+ma.wtd.meanNA( dat, weights=data.ma01$studwgt )
 
 # weighted SD
-ma.wtd.sdNA( dat, weights=data.ma01$studwgt  )
+ma.wtd.sdNA( dat, weights=data.ma01$studwgt )
 
 # weighted covariance for selected variables
 ma.wtd.covNA( dat, weights=data.ma01$studwgt, vars=c("books","hisei") )

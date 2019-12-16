@@ -1,5 +1,5 @@
 ## File Name: ma_wtd_stat_prepare_data.R
-## File Version: 2.304
+## File Version: 2.312
 
 
 #--- auxiliary function for weighted statistics
@@ -12,12 +12,12 @@ ma_wtd_stat_prepare_data <- function(data, weights, vars=NULL )
     }
 
     #---- mids or mids.1chain
-    if ( class(data) %in% c("mids","mids.1chain","mids.nmi") ){
+    if ( ma_inherits_or(x=data, what=c("mids","mids.1chain","mids.nmi")) ){
         data <- mids2datlist(midsobj=data)
     }
 
     #----- NestedImputationList
-    if ( class(data)=="NestedImputationList" ){
+    if ( inherits(x=data, what="NestedImputationList") ){
         is_dfr <- FALSE
         data <- data$imputations
         class(data) <- "nested.datlist"
@@ -25,20 +25,19 @@ ma_wtd_stat_prepare_data <- function(data, weights, vars=NULL )
 
     #--------------------
     # conversion in case of a nested datalist
-    if ( class(data)=="nested.datlist" ){
+    if ( inherits(x=data, what="nested.datlist") ){
         is_dfr <- FALSE
         data <- nesteddatlist2datlist(datlist=data)
     }
 
     #---- imputationList
-    if ( class(data)=="imputationList" ){
+    if ( inherits(x=data, what="imputationList") ){
         data <- data$imputations
         class(data) <- "datlist"
     }
 
-    #--------------------
-    # conversion in case of a datlist
-    if ( class(data)=="datlist" ){
+    #---- conversion in case of a datlist
+    if ( inherits(x=data, what="datlist") ){
         is_dfr <- FALSE
         if ( ! is.null(vars) ){
             M <- length(data)
@@ -49,16 +48,11 @@ ma_wtd_stat_prepare_data <- function(data, weights, vars=NULL )
         }
     }
 
-    #--------------------
-    # conversion in case of class BIFIEdata
-    if ( class(data)=="BIFIEdata" ){
+    #---- conversion in case of class BIFIEdata
+    if ( inherits(x=data, what="BIFIEdata") ){
         require_namespace("BIFIEsurvey")
         if ( is.null(vars) ){
             vars <- data$variables
-        }
-        #*** use weights
-        if ( is.null(weights) ){
-            weights <- data$wgt
         }
         if ( data$cdata){
             data <- BIFIEsurvey::BIFIE.BIFIEcdata2BIFIEdata(bifieobj=data,

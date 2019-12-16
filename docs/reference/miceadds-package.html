@@ -86,7 +86,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.7-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.8-vv</span>
       </span>
     </div>
 
@@ -156,35 +156,35 @@
 
 <ul>
 <li><p>The <span class="pkg">miceadds</span> package contains some functionality for imputation of multilevel
-data. The function <code>mice.impute.ml.lmer</code> is a general function for 
+data. The function <code><a href='mice.impute.ml.lmer.html'>mice.impute.ml.lmer</a></code> is a general function for 
 imputing multilevel data with hierarchical or cross-classified structures for
 variables at an arbitrary level. This imputation method uses the <code><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lme4::lmer</a></code> function
-in the <span class="pkg">lme4</span> package. The imputation method <code>mice.impute.2lonly.function</code>
+in the <span class="pkg">lme4</span> package. The imputation method <code><a href='mice.impute.2lonly.function.html'>mice.impute.2lonly.function</a></code>
 conducts an imputation for a variable at a higher level for already defined imputation
 methods in the <span class="pkg">mice</span> package. Two-level imputation is available in several functions
 in the <span class="pkg">mice</span> package (<code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2l.pan.html'>mice::mice.impute.2l.pan</a></code>,
 <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2l.norm.html'>mice::mice.impute.2l.norm</a></code>) 
 as well in <span class="pkg">micemd</span> and <span class="pkg">hmi</span> packages. The <span class="pkg">miceadds</span> package contains
 additional imputation methods for two-level datasets: 
-<code>mice.impute.2l.continuous</code> for normally distributed data,
-<code>mice.impute.2l.pmm</code> for predictive mean matching in multilevel models
-and <code>mice.impute.2l.binary</code> for binary data.</p></li>
+<code><a href='mice_imputation_2l_lmer.html'>mice.impute.2l.continuous</a></code> for normally distributed data,
+<code><a href='mice_imputation_2l_lmer.html'>mice.impute.2l.pmm</a></code> for predictive mean matching in multilevel models
+and <code><a href='mice_imputation_2l_lmer.html'>mice.impute.2l.binary</a></code> for binary data.</p></li>
 <li><p>In addition to the usual <code>mice</code> imputation function which employs
-parallel chains, the function <code>mice.1chain</code> does multiple
+parallel chains, the function <code><a href='mice.1chain.html'>mice.1chain</a></code> does multiple
 imputation from a single chain.</p></li>
 <li><p>Nested multiple imputation can be conducted with
-<code>mice.nmi</code>. The function <code>NMIcombine</code> conducts 
+<code><a href='mice.nmi.html'>mice.nmi</a></code>. The function <code><a href='pool.mids.nmi.html'>NMIcombine</a></code> conducts 
 statistical inference for nested multiply imputed datasets.</p></li>
 <li><p>Imputation based on partial least squares regression is implemented
-in <code>mice.impute.pls</code>.</p></li>
+in <code><a href='mice.impute.pls.html'>mice.impute.pls</a></code>.</p></li>
 <li><p>Unidimensional plausible value imputation for latent variables (or
 variables with measurement error) in the <span class="pkg">mice</span> sequential imputation
 framework can be applied by using the method
-<code>mice.impute.plausible.values</code>.</p></li>
+<code><a href='mice.impute.plausible.values.html'>mice.impute.plausible.values</a></code>.</p></li>
 <li><p>The <span class="pkg">miceadds</span> package also includes some functions <span style="R">R</span> utility functions
-(e.g. <code>write.pspp</code>, <code>ma.scale2</code>).</p></li>
+(e.g. <code><a href='write.pspp.html'>write.pspp</a></code>, <code><a href='ma.scale2.html'>ma.scale2</a></code>).</p></li>
 <li><p>Imputations for questionnaire items can be
-accomplished by two-way imputation (<code>tw.imputation</code>).</p></li>
+accomplished by two-way imputation (<code><a href='tw.imputation.html'>tw.imputation</a></code>).</p></li>
 </ul>
 
 

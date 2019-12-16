@@ -1,5 +1,5 @@
 %% File Name: fleishman_sim.Rd
-%% File Version: 0.18
+%% File Version: 0.192
 
 \name{fleishman_sim}
 \alias{fleishman_sim}
@@ -60,9 +60,11 @@ Vector of simulated values (\code{fleishman_sim}) or list of coefficients
 \references{
 Demirtas, H., & Hedeker, D. (2008). Imputing continuous data under some
 non-Gaussian distributions. \emph{Statistica Neerlandica, 62}(2), 193-205.
+\doi{10.1111/j.1467-9574.2007.00377.x}
 
 Fleishman, A. I. (1978). A method for simulating non-normal distributions.
 \emph{Psychometrika, 43}(4), 521-532.
+\doi{10.1007/BF02293811}
 }
 
 

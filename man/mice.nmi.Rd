@@ -1,5 +1,5 @@
 %% File Name: mice.nmi.Rd
-%% File Version: 0.23
+%% File Version: 0.241
 
 \name{mice.nmi}
 \alias{mice.nmi}
@@ -53,6 +53,7 @@ Object of class \code{mids.nmi} with entries
 \references{
 Rubin, D. B. (2003). Nested multiple imputation of NMES via partially
 incompatible MCMC. \emph{Statistica Neerlandica, 57}(1), 3-18.
+\doi{10.1111/1467-9574.00217}
 }
 
 

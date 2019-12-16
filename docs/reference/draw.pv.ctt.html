@@ -74,7 +74,7 @@ provided by the user." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.7-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.8-vv</span>
       </span>
     </div>
 
@@ -196,7 +196,7 @@ doi: <a href='https://doi.org/10.1007/BF02294457'>10.1007/BF02294457</a></p>
 <code><a href='https://rdrr.io/pkg/sirt/man/plausible.value.imputation.raschtype.html'>sirt::plausible.value.imputation.raschtype</a></code>
 for plausible value imputation.</p>
 <p>Plausible value imputations can be conducted in <span class="pkg">mice</span> using the
-imputation method <code>mice.impute.plausible.values</code>.</p>
+imputation method <code><a href='mice.impute.plausible.values.html'>mice.impute.plausible.values</a></code>.</p>
 <p>Plausible values can be drawn in <span class="pkg">Amelia</span> by specifying observation-level
 priors, see <code><a href='https://rdrr.io/pkg/Amelia/man/moPrep.html'>Amelia::moPrep</a></code> and
 <code><a href='https://rdrr.io/pkg/Amelia/man/amelia.html'>Amelia::amelia</a></code>.</p></div>
@@ -248,7 +248,7 @@ priors, see <code><a href='https://rdrr.io/pkg/Amelia/man/moPrep.html'>Amelia::m
 <span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>Amelia</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Amelia/man/amelia.html'>amelia</a></span>( <span class='no'>dat</span>, <span class='kw'>priors</span><span class='kw'>=</span><span class='no'>priors</span>, <span class='kw'>overimp</span><span class='kw'>=</span><span class='no'>overimp</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>10</span>)
 <span class='co'># create object of class datlist and evaluate results</span>
 <span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/datlist_create.html'>datlist_create</a></span>( <span class='no'>imp</span>$<span class='no'>imputations</span> )
-<span class='fu'>withPool_MI</span>( <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>datlist</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span>(<span class='no'>theta</span>) ) )
+<span class='fu'><a href='with.miceadds.html'>withPool_MI</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>datlist</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span>(<span class='no'>theta</span>) ) )
 <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>var</a></span>(<span class='no'>theta</span>)       <span class='co'># compare with true variance</span>
 <span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>datlist</span>,  <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>theta</span> ~ <span class='no'>x</span> + <span class='no'>y</span> ) )
 <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/MIcombine.html'>MIcombine</a></span>(<span class='no'>mod</span>)

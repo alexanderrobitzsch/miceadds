@@ -1,5 +1,5 @@
 %% File Name: mice.impute.2l.latentgroupmean.ml.Rd
-%% File Version: 1.37
+%% File Version: 1.382
 
 \name{mice.impute.2l.latentgroupmean.ml}
 \alias{mice.impute.2l.latentgroupmean.ml}
@@ -110,19 +110,23 @@ A vector of length \code{y} containing imputed group means.
 \references{
 Croon, M. A., & van Veldhoven, M. J. (2007). Predicting group-level outcome
 variables from variables measured at the individual level: a latent variable
-multilevel model. \emph{Psychological Methods, 12}, 45-57.
+multilevel model. \emph{Psychological Methods, 12}(1), 45-57.
+\doi{10.1037/1082-989X.12.1.45}
 
 Grund, S., Luedtke, O., & Robitzsch, A. (2018). Multiple imputation of missing data at
 level 2: A comparison of fully conditional and joint modeling in multilevel designs.
 \emph{Journal of Educational and Behavioral Statistics, 43}(3), 316-353.
+\doi{10.3102/1076998617738087}
 
 Luedtke, O., Marsh, H. W., Robitzsch, A., Trautwein, U., Asparouhov, T., &
 Muthen, B. (2008). The multilevel latent covariate model: a new, more
 reliable approach to group-level effects in contextual studies.
-\emph{Psychological Methods, 13}, 203-229.
+\emph{Psychological Methods, 13}(3), 203-229.
+\doi{10.1037/a0012869}
 
 Mislevy, R. J. (1991). Randomization-based inference about latent variables
-from complex samples. \emph{Psychometrika, 56}, 177-196.
+from complex samples. \emph{Psychometrika, 56}(2), 177-196.
+\doi{10.1007/BF02294457}
 }
 
 %\author{

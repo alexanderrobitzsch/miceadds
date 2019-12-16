@@ -1,5 +1,5 @@
 %% File Name: kernelpls.fit2.Rd
-%% File Version: 0.28
+%% File Version: 0.294
 
 \name{kernelpls.fit2}
 \alias{kernelpls.fit2}
@@ -48,11 +48,12 @@ In addition, \eqn{R^2} measures are contained in
 
 \references{
 Dayal, B., & Macgregor, J. F. (1997). Improved PLS algorithms.
-\emph{Journal of Chemometrics, 11}, 73-85.
+\emph{Journal of Chemometrics, 11}(1), 73-85.
 
 Mevik, B. H., & Wehrens, R. (2007). The \pkg{pls} package:
 Principal component and partial least squares regression in \R.
 \emph{Journal of Statistical Software, 18}, 1-24.
+\doi{10.18637/jss.v018.i02}
 }
 
 \author{

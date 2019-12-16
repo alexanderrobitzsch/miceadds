@@ -1,5 +1,5 @@
 %% File Name: nnig_sim.Rd
-%% File Version: 0.23
+%% File Version: 0.242
 
 \name{nnig_sim}
 \alias{nnig_coef}
@@ -66,13 +66,16 @@ simulated values (\code{nnig_sim}).
 \references{
 Fleishman, A. I. (1978). A method for simulating non-normal distributions.
 \emph{Psychometrika, 43}(4), 521-532.
+\doi{10.1007/BF02293811}
 
 Foldnes, N., & Olsson, U. H. (2016). A simple simulation technique for nonnormal data
 with prespecified skewness, kurtosis, and covariance matrix.
 \emph{Multivariate Behavioral Research, 51}(2-3), 207-219.
+\doi{10.1080/00273171.2015.1133274}
 
 Vale, D. C., & Maurelli, V. A. (1983). Simulating multivariate nonnormal distributions.
-\emph{Psychometrika, 48}, 465-471.
+\emph{Psychometrika, 48}(3), 465-471.
+\doi{10.1007/BF02293687}
 }
 
 %\author{
