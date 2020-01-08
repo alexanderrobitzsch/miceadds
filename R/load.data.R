@@ -1,5 +1,5 @@
 ## File Name: load.data.R
-## File Version: 0.477
+## File Version: 0.487
 
 
 
@@ -16,7 +16,7 @@ load.data <- function( filename, type=NULL, path=getwd(), load_fun=NULL,
         file0 <- file
     }
     i1 <- grep.vec( c("Rdata", "RData", "csv", "csv2", "table", "sav", "xls",
-                    "xlsx", type0 ), file, "OR" )$x
+                    "xlsx", type0 ), x=file, operator="OR" )$x
     if ( length(i1)==0 ){
         files <- list.files( dir, filename )
         files <- grep.vec( filename, files, "AND")$x
@@ -40,8 +40,15 @@ load.data <- function( filename, type=NULL, path=getwd(), load_fun=NULL,
     }
     if (type %in% c("csv2","csv", "CSV", "CSV2")){
         files <- grep( gsub("csv2","csv", type1), files, value=TRUE)
+        type1 <- "csv"
     }
-    file <- max(files)
+    file1 <- max( grep( type1, files, value=TRUE) )
+    if ( is.na(file1) ){
+        file <- files
+    } else {
+        file <- file1
+    }
+    file <- max(file)
     cat( paste0( "*** Load ", file, "\n"))
 
     #*** Rdata objects
