@@ -43,10 +43,14 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.8  |  2020-01-08  |  Last: miceadds 3.8-5
+VERSIONS miceadds 3.8  |  2020-02-14  |  Last: miceadds 3.8-8
 ---------------------------------------------------------------------
 
-xxxx  *
+NOTE  * included '\dontrun{}' in ?jomo2datlist (due to changes in
+        mice package; requested by Stef van Buuren)
+FIXED * fixed handling of factor levels in subset_datlist()
+        (thanks to @jwilliman; Github issue #20)
+
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
@@ -79,7 +83,7 @@ NOTE  * allow vector argument of variables of 'partial' in
         micombine.cor()
 FIXED * fixed a bug with handling factor variables in 
         mice.impute.2lonly.function()
-        (thanks to @markseeto, issue #19)
+        (thanks to @markseeto, Github issue #19)
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: micombine.cor (1)
@@ -129,7 +133,7 @@ NOTE  * corrected a mistake in ?mice.impute.ml.lmer manual
 ADDED * included argument 'remove_lindep' in mice.impute.pls()
         which allows to enable the procedure for removing predictors
 NOTE  * replaced multiwaycov package by sandwich package in
-        lm.cluster() and glm.cluster (thanks to @jaySf, issue #16).
+        lm.cluster() and glm.cluster (thanks to @jaySf, Github issue #16).
         Included arguments 'weights' and 'subset' in these functions.
 NOTE  * included argument 'donors' in mice.impute.pls()
 
@@ -168,7 +172,7 @@ NOTE  * included argument 'wy' in mice.impute.weighted.norm(),
         mice.impute.2lonly.function()
 NOTE  * changed internal handling of grouping variable in
         mice.impute.bygroup() (due to an example provided by 
-        Sandro Tsang; issue #15)
+        Sandro Tsang; Github issue #15)
 ADDED * included substantive model compatible imputation in
         mice.impute.smcfcs() method
 NOTE  * removed mice.impute.2l.eap() function
@@ -224,7 +228,7 @@ VERSIONS miceadds 3.0  |  2018-12-11  |  Last: miceadds 3.0-16
 
 NOTE  * included separator "\t" in scan.vec() (thanks Thomas Kiefer)
 FIXED * fixed bug in 'summary' method of glm.cluster() 
-        (thanks to tra6sdc; issue #14)
+        (thanks to tra6sdc; Github issue #14)
 NOTE  * included utility function load.files() for reading multiple
         files in a data frame
 NOTE  * corrected a bug in mice.impute.2l.pls2() and in Example 1 of
@@ -239,7 +243,7 @@ VERSIONS miceadds 2.15  |  2018-10-19  |  Last: miceadds 2.15-22
 
 NOTE  * internal changes in mice.imputation.ml.lmer() caused
         by application within mice.impute.bygroup() imputation method
-        (thanks to Sophie Stallasch; issue #12)
+        (thanks to Sophie Stallasch; Github issue #12)
 NOTE  * renamed ma.wtd.curtosisNA() into ma.wtd.kurtosisNA()
 ADDED * included simulation function fleishman_sim() for generating
         non-normal data based on Fleishman polynomial

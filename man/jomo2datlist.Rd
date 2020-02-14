@@ -1,5 +1,5 @@
 %% File Name: jomo2datlist.Rd
-%% File Version: 0.15
+%% File Version: 0.16
 
 \name{jomo2datlist}
 \alias{jomo2datlist}
@@ -50,11 +50,12 @@ See the \pkg{jomo} package.
 }
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Dataset nhanes | jomo imputation and conversion into a data list
 #############################################################################
 
-data( nhanes, package="mice")
+data(nhanes, package="mice")
 dat <- nhanes
 
 # impute under multivariate normal model in jomo
@@ -63,6 +64,7 @@ imp1 <- jomo::jomo1con(Y=dat, nburn=100, nbetween=10, nimp=5)
 datlist1 <- miceadds::jomo2datlist(imp1)
 # convert into mids object
 datlist2 <- miceadds::jomo2datlist(imp1)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

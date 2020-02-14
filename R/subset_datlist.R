@@ -1,5 +1,5 @@
 ## File Name: subset_datlist.R
-## File Version: 0.368
+## File Version: 0.3693
 
 subset_datlist <- function( datlist, subset=TRUE,
             select=NULL, expr_subset=NULL, index=NULL, toclass="datlist")
@@ -71,6 +71,8 @@ subset_datlist <- function( datlist, subset=TRUE,
             }
             d1 <- subset( d1, subset=subset0, select=select, drop=FALSE)
         }
+        #- check for factor levels
+        d1 <- subset_datlist_modify_factor_levels(dat=d1)
         datlist2[[ii]] <- d1
     }
 
