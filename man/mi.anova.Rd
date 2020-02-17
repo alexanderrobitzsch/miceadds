@@ -1,5 +1,5 @@
 %% File Name: mi.anova.Rd
-%% File Version: 0.263
+%% File Version: 0.264
 
 \name{mi.anova}
 \alias{mi.anova}
@@ -90,6 +90,7 @@ an2a <- miceadds::mi.anova(mi.res=mi.res, formula="bmi ~ age * chl" )
 # test of interaction effects using mitml::testModels()
 mod1 <- with( mi.res, stats::lm( bmi ~ age*chl ) )
 mod0 <- with( mi.res, stats::lm( bmi ~ age+chl ) )
+\dontrun{
 mitml::testModels(model=mod1$analyses, null.model=mod0$analyses, method="D1")
 mitml::testModels(model=mod1$analyses, null.model=mod0$analyses, method="D2")
 
@@ -106,7 +107,8 @@ lm1 <- stats::lm( bmi ~ age * chl, data=dat1 )
 summary( stats::aov( lm1 ) )
 # type 3 ANOVA
 lm2 <- stats::lm( bmi ~ age * chl, data=dat1, contrasts=list(age=contr.sum))
-car::Anova( lm2, type=3)
+car::Anova(mod=lm2, type=3)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

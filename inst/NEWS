@@ -43,7 +43,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.8  |  2020-02-14  |  Last: miceadds 3.8-8
+VERSIONS miceadds 3.8  |  2020-02-17  |  Last: miceadds 3.8-9
 ---------------------------------------------------------------------
 
 NOTE  * included '\dontrun{}' in ?jomo2datlist (due to changes in
@@ -51,12 +51,8 @@ NOTE  * included '\dontrun{}' in ?jomo2datlist (due to changes in
 FIXED * fixed handling of factor levels in subset_datlist()
         (thanks to @jwilliman; Github issue #20)
 
-
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
-
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.7  |  2019-12-15  |  Last: miceadds 3.7-6
