@@ -1,5 +1,5 @@
 %% File Name: mice.impute.smcfcs.Rd
-%% File Version: 0.21
+%% File Version: 0.26
 
 \name{mice.impute.smcfcs}
 \alias{mice.impute.smcfcs}
@@ -126,6 +126,36 @@ dep_type$x <- "yj"
 imp <- mice::mice(dat, method=method, sm=sm, formulas=formulas, m=1, maxit=10,
                    dep_type=dep_type)
 summary(imp)
+
+#############################################################################
+# EXAMPLE 2: Substantive model with quadratic effects
+#############################################################################
+
+#** simulate data with missings
+set.seed(50)
+n <- 1000
+x <- stats::rnorm(n)
+z <- stats::rnorm(n)
+y <- 0.5 * z + x + x^2 + stats::rnorm(n)
+mm <- stats::runif(n)
+x[sample(1:n, size=370, prob=mm)] <- NA
+z[sample(1:n, size=480, prob=mm)] <- NA
+y[sample(1:n, size=500, prob=mm)] <- NA
+
+df <- data.frame(x=x,y=y,z=z)
+
+#** imputation
+imp <- mice::mice(df, method="smcfcs", sm=y ~ z + x + I(x^2), m=6, maxit=10)
+summary(imp)
+
+#** analysis
+summary(mice::pool(with(imp, stats::lm(y ~ z + x + I(x^2)))))
+
+#** imputation using the smcfcs package
+df$x_sq <- df$x^2
+nonmice <- smcfcs::smcfcs(df, smtype="lm", smformula=y ~ z + x + x_sq,
+             method=c("norm", "", "norm", "x^2"))
+mice::pool(lapply(nonmice$impDatasets, function(x) stats::lm(y ~ z + x + x_sq, data=x)))
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

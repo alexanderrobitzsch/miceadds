@@ -1,8 +1,8 @@
 ## File Name: ANSI_create_table.R
-## File Version: 0.54
+## File Version: 0.558
 
-#######################################################################
-# create table with results
+
+#*** create table with results
 ANSI_create_table <- function (dat, criterion,
         horiz_vars, horiz_vals=NULL, vert_vars, vert_vals=NULL,
         subset, digits=NULL, dec=".",
@@ -21,8 +21,7 @@ ANSI_create_table <- function (dat, criterion,
     }
     x <- x[r,]
 
-    #*********************
-    # horizontal variables
+    #--- horizontal variables
     NH <- length(horiz_vars)
     if ( is.null(horiz_vals) ){
         horiz_vals <- as.list( 1:NH)
@@ -49,8 +48,7 @@ ANSI_create_table <- function (dat, criterion,
     horiz_NR <- nrow(horiz_table)
     horiz_NC <- ncol(horiz_table)
 
-    #**************************
-    # vertical variables
+    #--- vertical variables
     NH <- length(vert_vars)
     if ( is.null(vert_vals) ){
         vert_vals <- as.list( 1:NH)
@@ -73,13 +71,11 @@ ANSI_create_table <- function (dat, criterion,
     for (nn in 1:NH){
         h2[[NH-nn+1]] <- vert_vals[[nn]]
     }
-    vert_table <- expand.grid( h2 )[, seq(NH,1,-1),drop=FALSE]
+    vert_table <- expand.grid(h2)[, seq(NH,1,-1),drop=FALSE]
     vert_NR <- nrow(vert_table)
     vert_NC <- ncol(vert_table)
 
-    #*********************************
-    # create complete table
-
+    #--- create complete table
     dfr <- matrix( NA, nrow=horiz_NR, ncol=vert_NR)
     NN <- nrow(x)
     for (hr in 1:horiz_NR){
@@ -104,20 +100,25 @@ ANSI_create_table <- function (dat, criterion,
             }
         }
     }
+
     #****
     # labels horizontal variables
     nn <- 1
     cn <- paste0( horiz_vars[nn], "=", horiz_table[,nn] )
-    for (nn in 2:horiz_NC){
-        cn <- paste0( cn, " # ", horiz_vars[nn], "=", horiz_table[,nn] )
+    if (horiz_NC>1){
+        for (nn in 2:horiz_NC){
+            cn <- paste0( cn, " # ", horiz_vars[nn], "=", horiz_table[,nn] )
+        }
     }
     rownames(dfr) <- cn
     #****
     # labels vertical variables
     nn <- 1
     cn <- paste0( vert_vars[nn], "=", vert_table[,nn] )
-    for (nn in 2:vert_NC){
-        cn <- paste0( cn, " # ", vert_vars[nn], "=", vert_table[,nn] )
+    if (vert_NC>1){
+        for (nn in 2:vert_NC){
+            cn <- paste0( cn, " # ", vert_vars[nn], "=", vert_table[,nn] )
+        }
     }
     colnames(dfr) <- cn
     if ( ! is.null(digits) ){
@@ -148,6 +149,3 @@ ANSI_create_table <- function (dat, criterion,
     }
     return(dfr)
 }
-##########################################################################
-
-

@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_smcfcs_evaluate_loglikelihood_model.R
-## File Version: 0.29
+## File Version: 0.302
 
 mice_imputation_smcfcs_evaluate_loglikelihood_model <- function(model, data)
 {

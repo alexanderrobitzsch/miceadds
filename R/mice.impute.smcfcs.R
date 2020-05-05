@@ -1,5 +1,5 @@
 ## File Name: mice.impute.smcfcs.R
-## File Version: 0.339
+## File Version: 0.363
 
 mice.impute.smcfcs <- function(y, ry, x, wy=NULL, sm, dep_type="norm",
     sm_type="norm", fac_sd_proposal=1, mh_iter=20, ...)
@@ -38,24 +38,41 @@ mice.impute.smcfcs <- function(y, ry, x, wy=NULL, sm, dep_type="norm",
     #- estimate model for variable to be imputed
     model1 <- mice_imputation_smcfcs_estimate_model(data=dat1, formula=formula_imp,
                         model_type=dep_type, dep=vname)
+    if (vname==sm_vname){
+        model1 <- NULL
+    }
+
     # estimate parameters of substantive model
     model2 <- mice_imputation_smcfcs_estimate_model(data=dat1, formula=sm,
                         model_type=sm_type, dep=sm_vname)
+
     #- samples for values
     dat2a <- dat0[ wy,, drop=FALSE ]
     nmis <- nrow(dat2a)
     accept <- rep(0, nmis)
+
+    #- define model for proposal
+    if (vname==sm_vname){
+        model_proposal <- model2
+    } else {
+        model_proposal <- model1
+    }
+
     for (ii in 1:mh_iter){
         ll_old <- mice_imputation_smcfcs_evaluate_loglikelihood(model1=model1,
                             model2=model2, data=dat2a)
+
         # sample new values
-        dat2b <- mice_imputation_new_proposal(model=model1, data=dat2a, vname=vname,
+        dat2b <- mice_imputation_new_proposal(model=model_proposal, data=dat2a, vname=vname,
                         fac_sd_proposal=fac_sd_proposal_temp)
+
         # evaluate new likelihood
         ll_new <- mice_imputation_smcfcs_evaluate_loglikelihood(model1=model1,
                             model2=model2, data=dat2b)
+
         # compute MH ratio
-        ll_diff <- min(10, ll_new - ll_old)
+        ll_diff <- ll_new - ll_old
+        ll_diff <- ifelse(ll_diff>10, 10, ll_diff)
         mh_ratio <- exp(ll_diff)
         acc <- stats::runif(nmis,0,1) < mh_ratio
         dat2a[,vname] <- ifelse( acc, dat2b[,vname], dat2a[,vname] )

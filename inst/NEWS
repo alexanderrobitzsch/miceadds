@@ -43,13 +43,16 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.9  |  2020-02-25  |  Last: miceadds 3.9-2
+VERSIONS miceadds 3.9  |  2020-05-05  |  Last: miceadds 3.9-9
 ---------------------------------------------------------------------
 
-xxxx  *
+FIXED * fixed a bug in mice.impute.smcfcs() (thanks to Bryor Snefjella)
+NOTE  * included example of substantive model with quadratic effects in
+        mice.impute.smcfcs() (provided by Bryor Snefjella)
+        
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: mice.impute.smcfcs (2)
 
 
 

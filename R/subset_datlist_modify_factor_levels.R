@@ -1,11 +1,11 @@
 ## File Name: subset_datlist_modify_factor_levels.R
-## File Version: 0.02
+## File Version: 0.03
 
 
 subset_datlist_modify_factor_levels <- function(dat)
 {
     V <- ncol(dat)
-    for (vv in 1:V){    
+    for (vv in 1:V){
         v1 <- dat[[vv]]
         if (is.factor(v1)){
             m1 <- sort(unique(v1))

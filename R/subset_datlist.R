@@ -1,5 +1,5 @@
 ## File Name: subset_datlist.R
-## File Version: 0.3693
+## File Version: 0.371
 
 subset_datlist <- function( datlist, subset=TRUE,
             select=NULL, expr_subset=NULL, index=NULL, toclass="datlist")

@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_smcfcs_estimate_model.R
-## File Version: 0.23
+## File Version: 0.244
 
 mice_imputation_smcfcs_estimate_model <- function(data, formula,
     model_type="norm", dep=NULL, ...)
