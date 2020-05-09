@@ -41,20 +41,35 @@ CHANGELOG miceadds
 
 
 
+---------------------------------------------------------------------
+VERSIONS miceadds 3.10  |  2020-05-09  |  Last: miceadds 3.10-2
+---------------------------------------------------------------------
+
+xxxx  *
+
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.9  |  2020-05-05  |  Last: miceadds 3.9-9
+VERSIONS miceadds 3.9  |  2020-05-09  |  Last: miceadds 3.9-14
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in mice.impute.smcfcs() (thanks to Bryor Snefjella)
 NOTE  * included example of substantive model with quadratic effects in
         mice.impute.smcfcs() (provided by Bryor Snefjella)
+ADDED * included wrapper imputation functions to imputeR package in
+        mice.impute.imputeR.lmFun() and mice.impute.imputeR.cFun()
+ADDED * included wrapper imputation methods to simputation package
+        in mice.impute.simputation() function
         
-
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: mice.impute.smcfcs (2)
-
-
+EXAMP * included/modified examples: mice.impute.smcfcs (2),
+        mice.impute.imputeR.lmFun (1), mice.impute.simputation (1)
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.8  |  2020-02-17  |  Last: miceadds 3.8-9

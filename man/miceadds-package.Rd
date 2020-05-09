@@ -1,5 +1,5 @@
 %% File Name: miceadds-package.Rd
-%% File Version: 1.721
+%% File Version: 1.722
 
 \name{miceadds-package}
 \alias{miceadds-package}
@@ -58,14 +58,18 @@ variables with measurement error) in the \pkg{mice} sequential imputation
 framework can be applied by using the method
 \code{\link{mice.impute.plausible.values}}.
 
+\item The method \code{\link{mice.impute.simputation}} is a wrapper function
+to imputation methods in the \pkg{simputation} package. 
+The methods \code{\link{mice.impute.imputeR.lmFun}} and
+\code{\link{mice.impute.imputeR.cFun}} are wrapper functions
+to imputation methods in the \pkg{imputeR} package.
+
 \item The \pkg{miceadds} package also includes some functions \R utility functions
 (e.g. \code{\link{write.pspp}}, \code{\link{ma.scale2}}).
 
 \item Imputations for questionnaire items can be
 accomplished by two-way imputation (\code{\link{tw.imputation}}).
 }
-
-
 
 }
 

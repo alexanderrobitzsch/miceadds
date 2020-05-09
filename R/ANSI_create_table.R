@@ -1,5 +1,5 @@
 ## File Name: ANSI_create_table.R
-## File Version: 0.558
+## File Version: 0.565
 
 
 #*** create table with results
@@ -21,29 +21,38 @@ ANSI_create_table <- function (dat, criterion,
     }
     x <- x[r,]
 
+    #** check for missing variables
+    l1 <- setdiff(c(horiz_vars,vert_vars), colnames(dat))
+    if (length(l1)>0){
+        l2 <- paste0( l1, collapse= " ")
+        stop(paste0( "The following variables were not found: ", l2, "\n"))
+    }
+
     #--- horizontal variables
     NH <- length(horiz_vars)
     if ( is.null(horiz_vals) ){
-        horiz_vals <- as.list( 1:NH)
+        horiz_vals <- as.list(1:NH)
         names(horiz_vals) <- horiz_vars
         for (nn in 1:NH){
-          horiz_vals[[nn]] <- sort( unique( x[, horiz_vars[nn]] ) )
+            horiz_vals[[nn]] <- sort( unique( x[, horiz_vars[nn]] ) )
         }
     }
     if ( ! is.null(horiz_vals) ){
-        horiz_vals1 <-     as.list(1:NH)
+        horiz_vals1 <- as.list(1:NH)
         names(horiz_vals1) <- horiz_vars
         if ( ! is.null( names(horiz_vals) ) ){
-              for (nn in horiz_vars)
-                horiz_vals1[[ nn ]] <- horiz_vals[[nn]]
-                }
-               horiz_vals <- horiz_vals1
-                }
+            for (nn in horiz_vars)
+                horiz_vals1[[nn]] <- horiz_vals[[nn]]
+                res <- ANSI_create_table_check_variable_values(variable=nn, 
+                            values=horiz_vals[[nn]], dat=dat)
+            }
+            horiz_vals <- horiz_vals1
+    }
     h2 <- as.list( 1:NH)
     names(h2) <- horiz_vars[ seq(NH,1,-1) ]
     for (nn in 1:NH){
-          h2[[NH-nn+1]] <- horiz_vals[[nn]]
-            }
+        h2[[NH-nn+1]] <- horiz_vals[[nn]]
+    }
     horiz_table <- expand.grid( h2 )[, seq(NH,1,-1),drop=FALSE]
     horiz_NR <- nrow(horiz_table)
     horiz_NC <- ncol(horiz_table)
@@ -54,18 +63,20 @@ ANSI_create_table <- function (dat, criterion,
         vert_vals <- as.list( 1:NH)
         names(vert_vals) <- vert_vars
         for (nn in 1:NH){
-          vert_vals[[nn]] <- sort( unique( x[, vert_vars[nn]] ) )
-                }
-                    }
+            vert_vals[[nn]] <- sort( unique( x[, vert_vars[nn]] ) )
+        }
+    }
     if ( ! is.null(vert_vals) ){
-        vert_vals1 <-     as.list(1:NH)
+        vert_vals1 <- as.list(1:NH)
         names(vert_vals1) <- vert_vars
         if ( ! is.null( names(vert_vals) ) ){
-              for (nn in vert_vars)
+            for (nn in vert_vars)
                 vert_vals1[[ nn ]] <- vert_vals[[nn]]
-                            }
-               vert_vals <- vert_vals1
-                }
+                res <- ANSI_create_table_check_variable_values(variable=nn, 
+                            values=vert_vals[[nn]], dat=dat)
+        }
+        vert_vals <- vert_vals1
+    }
     h2 <- as.list( 1:NH)
     names(h2) <- vert_vars[ seq(NH,1,-1) ]
     for (nn in 1:NH){
@@ -74,6 +85,9 @@ ANSI_create_table <- function (dat, criterion,
     vert_table <- expand.grid(h2)[, seq(NH,1,-1),drop=FALSE]
     vert_NR <- nrow(vert_table)
     vert_NC <- ncol(vert_table)
+Revalpr("colnames(dat)")
+Revalpr("horiz_vars")
+Revalpr("vert_vars")
 
     #--- create complete table
     dfr <- matrix( NA, nrow=horiz_NR, ncol=vert_NR)
