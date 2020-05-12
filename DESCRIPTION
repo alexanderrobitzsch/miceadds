@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 3.10-2
-Date: 2020-05-09 15:17:32
+Version: 3.10-20
+Date: 2020-05-12 12:25:33
 Author: 
     Alexander Robitzsch [aut, cre], Simon Grund [aut],
     Thorsten Henke [ctb]
@@ -24,9 +24,12 @@ Description:
     partial least squares (PLS) for high dimensional 
     predictors (Robitzsch, Pham & Yanagida, 2016), 
     nested multiple imputation (Rubin, 2003, 
-    <doi:10.1111/1467-9574.00217>) and substantive model
+    <doi:10.1111/1467-9574.00217>), substantive model
     compatible imputation (Bartlett et al., 2015,
-    <doi:10.1177/0962280214521348>).
+    <doi:10.1177/0962280214521348>), and features
+    for the generation of synthetic datasets
+    (Reiter, 2005, <doi:10.1111/j.1467-985X.2004.00343.x>;
+    Nowok, Raab, & Dibben, 2016, <doi:10.18637/jss.v074.i11>).
 Depends:
     R (>= 3.0), mice (>= 3.0.0)
 Imports: 
@@ -37,7 +40,7 @@ Suggests:
     BIFIEsurvey, blme, car, CDM, coda, foreign, grouped, 
     imputeR, inline, lme4, MASS, MBESS, MCMCglmm, mdmb, 
     numDeriv, readxl, sandwich, simputation, sirt, 
-    sjlabelled, TAM
+    sjlabelled, synthpop, TAM
 Enhances:
     Amelia, jomo, micemd, mitml, pan
 URL: 

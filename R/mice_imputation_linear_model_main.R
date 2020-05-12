@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_linear_model_main.R
-## File Version: 0.19
+## File Version: 0.25
 
 mice_imputation_linear_model_main <- function(x, y, ry, wy=NULL,
     lm_args=NULL, lm_fun="lm", trafo=NULL, antitrafo=NULL, ...)

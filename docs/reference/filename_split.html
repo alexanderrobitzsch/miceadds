@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -39,7 +43,6 @@
 <meta property="og:description" content="The function filename_split splits a file name into parts.
 The function string_extract_part extracts a part of a string.
 The function string_to_matrix converts a string into a matrix." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -57,7 +60,7 @@ The function string_to_matrix converts a string into a matrix." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -89,7 +92,7 @@ The function string_to_matrix converts a string into a matrix." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/alexanderrobitzsch/miceadds">
+  <a href="https://github.com/alexanderrobitzsch/miceadds/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -214,7 +217,7 @@ a way that it has to be always a numeric (see Example 5)</p></td>
 <span class='no'>file_name</span> <span class='kw'>&lt;-</span> <span class='st'>"pisa_all_waves_invariant_items_DATA_ITEMS_RENAMED__DESCRIPTIVES__2016-10-12_1000.csv"</span>
 
 <span class='co'># apply function</span>
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>filename_split</a></span>( <span class='no'>file_name</span> )
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>filename_split</span>( <span class='no'>file_name</span> )
   <span class='co'>##  $file_name</span>
   <span class='co'>##  [1] "pisa_all_waves_invariant_items_DATA_ITEMS_RENAMED__DESCRIPTIVES__2016-10-12_1000.csv"</span>
   <span class='co'>##  $stem</span>
@@ -232,8 +235,8 @@ a way that it has to be always a numeric (see Example 5)</p></td>
 
 <span class='no'>vec</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ertu__DES"</span>, <span class='st'>"ztu__DATA"</span>, <span class='st'>"guzeuue745_ghshgk34__INFO"</span>, <span class='st'>"zzu78347834_ghghwuz"</span>)
 
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_extract_part</a></span>( <span class='kw'>vec</span><span class='kw'>=</span><span class='no'>vec</span>, <span class='kw'>part</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>"__"</span> )
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_extract_part</a></span>( <span class='kw'>vec</span><span class='kw'>=</span><span class='no'>vec</span>, <span class='kw'>part</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>"__"</span> )
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_extract_part</span>( <span class='kw'>vec</span><span class='kw'>=</span><span class='no'>vec</span>, <span class='kw'>part</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>"__"</span> )
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_extract_part</span>( <span class='kw'>vec</span><span class='kw'>=</span><span class='no'>vec</span>, <span class='kw'>part</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>sep</span><span class='kw'>=</span><span class='st'>"__"</span> )
   <span class='co'>##  &gt; miceadds::string_extract_part( vec=vec, part=1, sep="__" )</span>
   <span class='co'>##  [1] "ertu"                "ztu"                 "guzeuue745_ghshgk34"</span>
   <span class='co'>##  [4] "zzu78347834_ghghwuz"</span>
@@ -249,7 +252,7 @@ a way that it has to be always a numeric (see Example 5)</p></td>
 
 <span class='co'>#**** reading correlations (I)</span>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.ma08</span>$<span class='no'>mat1</span>
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_to_matrix</a></span>(<span class='no'>dat</span>, <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>))
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_to_matrix</span>(<span class='no'>dat</span>, <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>))
 
 <span class='co'>#**** reading correlations including some processing (II)</span>
 <span class='no'>dat0</span> <span class='kw'>&lt;-</span> <span class='no'>data.ma08</span>$<span class='no'>mat2</span>
@@ -268,17 +271,17 @@ a way that it has to be always a numeric (see Example 5)</p></td>
 }
 
 <span class='co'># character matrix</span>
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_to_matrix</a></span>(<span class='no'>dat</span>)
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_to_matrix</span>(<span class='no'>dat</span>)
 <span class='co'># numeric matrix containing correlations</span>
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_to_matrix</a></span>(<span class='no'>dat</span>, <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>), <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>diag_val</span><span class='kw'>=</span><span class='fl'>1</span>,
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_to_matrix</span>(<span class='no'>dat</span>, <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>), <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>diag_val</span><span class='kw'>=</span><span class='fl'>1</span>,
            <span class='kw'>extend</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
 <span class='co'>#** reading means and SDs</span>
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_to_matrix</a></span>(<span class='no'>dat0</span>[ <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>,<span class='fl'>16</span>)], <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>), <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_to_matrix</span>(<span class='no'>dat0</span>[ <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>,<span class='fl'>16</span>)], <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>), <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
 
 <span class='co'>#**** reading correlations (III)</span>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.ma08</span>$<span class='no'>mat3</span>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='st'>" age "</span>, <span class='st'>"_age_"</span>, <span class='no'>dat</span>, <span class='kw'>fixed</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_to_matrix</a></span>(<span class='no'>dat</span>, <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>), <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>diag_val</span><span class='kw'>=</span><span class='fl'>1</span>,
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_to_matrix</span>(<span class='no'>dat</span>, <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>), <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>diag_val</span><span class='kw'>=</span><span class='fl'>1</span>,
        <span class='kw'>extend</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
 
 <span class='co'>#**** reading correlations (IV)</span>
@@ -298,7 +301,7 @@ a way that it has to be always a numeric (see Example 5)</p></td>
     }
 }
 
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_to_matrix</a></span>(<span class='no'>dat</span>, <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>), <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>diag_val</span><span class='kw'>=</span><span class='fl'>1</span>,
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_to_matrix</span>(<span class='no'>dat</span>, <span class='kw'>rownames</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>col_elim</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>2</span>), <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>diag_val</span><span class='kw'>=</span><span class='fl'>1</span>,
      <span class='kw'>extend</span><span class='kw'>=</span><span class='fl'>TRUE</span> )
 
 <span class='co'>#############################################################################</span>
@@ -313,7 +316,7 @@ a way that it has to be always a numeric (see Example 5)</p></td>
 0.532 0.428 0.501 0.606
 0.718 0.567 0.672 0.526 0.843"</span>
 
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_to_matrix</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>pm0</span>, <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>extend</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_to_matrix</span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>pm0</span>, <span class='kw'>as_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>extend</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 5: String with variable names and blanks</span>
@@ -327,18 +330,13 @@ Crossing Out Boxes .597 -.062 (.425) -.036 (.445)
 Numbers/Letters .731 .004 (.564) .003 (.513)
 Numbers/Letters mixed .682 .085 (.555) .082 (.514)"</span>
 
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/filename_split.html'>string_to_matrix</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>tab1</span>, <span class='kw'>col1_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>string_to_matrix</span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>tab1</span>, <span class='kw'>col1_numeric</span><span class='kw'>=</span><span class='fl'>TRUE</span>)
 }</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -349,7 +347,7 @@ Numbers/Letters mixed .682 .085 (.555) .082 (.514)"</span>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

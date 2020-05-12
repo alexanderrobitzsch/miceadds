@@ -1,7 +1,7 @@
 ## File Name: mice_imputation_get_states.R
-## File Version: 0.393
+## File Version: 0.407
 
-mice_imputation_get_states <- function( pos=parent.frame(n=1), n_index=1:8 )
+mice_imputation_get_states <- function( pos=parent.frame(n=1), n_index=1:20 )
 {
     if ( is.null(pos) ){
         pos <- parent.frame(n=1)
@@ -18,6 +18,11 @@ mice_imputation_get_states <- function( pos=parent.frame(n=1), n_index=1:8 )
     vname <- ma_exists_get(x='yname', pos=pos, n_index=n_index )
     dep <- newstate$dep
     vname <- dep
+    if (is.null(vname)){
+        vname <- ma_exists_get(x='vname', pos=pos, n_index=1:20 )
+        subst <- FALSE
+    }
+
     #-- blocks
     blocks <- ma_exists_get(x='blocks', pos=pos, n_index=n_index )
     block <- blocks[[ dep ]]

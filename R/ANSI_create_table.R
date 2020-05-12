@@ -1,5 +1,5 @@
 ## File Name: ANSI_create_table.R
-## File Version: 0.565
+## File Version: 0.567
 
 
 #*** create table with results
@@ -24,7 +24,7 @@ ANSI_create_table <- function (dat, criterion,
     #** check for missing variables
     l1 <- setdiff(c(horiz_vars,vert_vars), colnames(dat))
     if (length(l1)>0){
-        l2 <- paste0( l1, collapse= " ")
+        l2 <- paste0( l1, collapse=" ")
         stop(paste0( "The following variables were not found: ", l2, "\n"))
     }
 
@@ -43,7 +43,7 @@ ANSI_create_table <- function (dat, criterion,
         if ( ! is.null( names(horiz_vals) ) ){
             for (nn in horiz_vars)
                 horiz_vals1[[nn]] <- horiz_vals[[nn]]
-                res <- ANSI_create_table_check_variable_values(variable=nn, 
+                res <- ANSI_create_table_check_variable_values(variable=nn,
                             values=horiz_vals[[nn]], dat=dat)
             }
             horiz_vals <- horiz_vals1
@@ -72,7 +72,7 @@ ANSI_create_table <- function (dat, criterion,
         if ( ! is.null( names(vert_vals) ) ){
             for (nn in vert_vars)
                 vert_vals1[[ nn ]] <- vert_vals[[nn]]
-                res <- ANSI_create_table_check_variable_values(variable=nn, 
+                res <- ANSI_create_table_check_variable_values(variable=nn,
                             values=vert_vals[[nn]], dat=dat)
         }
         vert_vals <- vert_vals1

@@ -1,5 +1,5 @@
 %% File Name: miceadds-utilities.Rd
-%% File Version: 0.06
+%% File Version: 0.07
 
 \name{miceadds-utilities}
 \alias{miceadds-utilities}
@@ -17,7 +17,7 @@ Utility functions in \pkg{miceadds}.
 ## searches for objects in parent environments
 ma_exists_get( x, pos, n_index=1:8)
 ma_exists( x, pos, n_index=1:8)
-mice_imputation_get_states( pos=parent.frame(n=1), n_index=1:8 )
+mice_imputation_get_states( pos=parent.frame(n=1), n_index=1:20 )
 }
 
 

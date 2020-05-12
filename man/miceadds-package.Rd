@@ -1,5 +1,5 @@
 %% File Name: miceadds-package.Rd
-%% File Version: 1.722
+%% File Version: 1.727
 
 \name{miceadds-package}
 \alias{miceadds-package}
@@ -58,6 +58,17 @@ variables with measurement error) in the \pkg{mice} sequential imputation
 framework can be applied by using the method
 \code{\link{mice.impute.plausible.values}}.
 
+\item Substantive model compatible multiple imputation using fully conditional
+specification can be conducted with \code{\link{mice.impute.smcfcs}}.
+
+\item The function \code{\link{syn_mice}} allows the generation of
+synthetic datasets with imputation methods for \pkg{mice}. It has
+similar functionality as the \pkg{synthpop} package (Nowok, Raab, & Dibben, 2016).
+The function \code{\link{mice.impute.synthpop}} allows the usage of
+\pkg{synthpop} synthesization methods in \pkg{mice}, while
+\code{\link{syn.mice}} allows the usage of
+\pkg{mice} imputation methods in \pkg{synthpop}.
+
 \item The method \code{\link{mice.impute.simputation}} is a wrapper function
 to imputation methods in the \pkg{simputation} package. 
 The methods \code{\link{mice.impute.imputeR.lmFun}} and
@@ -89,6 +100,16 @@ data in organizational research. \emph{Organizational Research Methods, 21}(1), 
 Mislevy, R. J. (1991). Randomization-based inference about latent variables
 from complex samples. \emph{Psychometrika, 56}(2), 177-196.
 \doi{10.1007/BF02294457}
+
+Nowok, B., Raab, G., & Dibben, C. (2016).
+\pkg{synthpop}: Bespoke creation of synthetic data in \R.
+\emph{Journal of Statistical Software, 74}(11), 1-26.
+\doi{10.18637/jss.v074.i11}
+
+Reiter, J. P. (2005)  Releasing multiply-imputed, synthetic public use microdata: 
+An illustration and empirical study.  
+\emph{Journal of the Royal Statistical Society, Series A, 168}(1), 185-205.
+\doi{10.1111/j.1467-985X.2004.00343.x}
 
 Robitzsch, A., Pham, G., & Yanagida, T. (2016). Fehlende Daten und Plausible Values. 
 In S. Breit & C. Schreiner (Hrsg.). \emph{Large-Scale Assessment mit R: Methodische 

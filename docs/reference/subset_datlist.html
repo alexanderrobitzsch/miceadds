@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -42,7 +46,6 @@ index argument for multiply imputed datasets and index_between and
 index_within for nested multiply imputed datasets as well as the application
 of the base::subset S3 method for selecting
 cases and variables in datasets." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -60,7 +63,7 @@ cases and variables in datasets." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -92,7 +95,7 @@ cases and variables in datasets." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/alexanderrobitzsch/miceadds">
+  <a href="https://github.com/alexanderrobitzsch/miceadds/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -233,51 +236,51 @@ then informations about the imputation procedure are lost.</p>
 <span class='co'># define original list of datasets</span>
 <span class='no'>datlist1a</span> <span class='kw'>&lt;-</span> <span class='no'>data.ma02</span>
 <span class='co'># object of class datlist</span>
-<span class='no'>datlist1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/datlist_create.html'>datlist_create</a></span>(<span class='no'>datlist1a</span>)
+<span class='no'>datlist1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='datlist_create.html'>datlist_create</a></span>(<span class='no'>datlist1a</span>)
 <span class='no'>datlist1b</span>
 <span class='co'># object of class imputationList</span>
 <span class='no'>datlist1c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/imputationList.html'>imputationList</a></span>(<span class='no'>datlist1a</span>)
 <span class='no'>datlist1c</span>
 <span class='co'># object of class mids</span>
-<span class='no'>datlist1d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/datalist2mids.html'>datlist2mids</a></span>(<span class='no'>datlist1a</span>)
+<span class='no'>datlist1d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='datalist2mids.html'>datlist2mids</a></span>(<span class='no'>datlist1a</span>)
 <span class='no'>datlist1d</span>
 
 <span class='co'># select some imputed datasets</span>
-<span class='no'>datlist2a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>,<span class='fl'>3</span>,<span class='fl'>7</span>) )
+<span class='no'>datlist2a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>,<span class='fl'>3</span>,<span class='fl'>7</span>) )
 <span class='no'>datlist2a</span>
 <span class='co'># convert to class imputationList</span>
-<span class='no'>datlist2b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>,<span class='fl'>3</span>,<span class='fl'>7</span>),
+<span class='no'>datlist2b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>5</span>,<span class='fl'>3</span>,<span class='fl'>7</span>),
                       <span class='kw'>toclass</span><span class='kw'>=</span><span class='st'>"imputationList"</span>)
 <span class='no'>datlist2b</span>
 <span class='co'># convert to class mids</span>
-<span class='no'>datlist2c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>toclass</span><span class='kw'>=</span><span class='st'>"mids"</span>)
+<span class='no'>datlist2c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>toclass</span><span class='kw'>=</span><span class='st'>"mids"</span>)
 <span class='no'>datlist2c</span>
 
 <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># select some variables</span>
-<span class='no'>datlist3a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1a</span>, <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"books"</span>)  )
+<span class='no'>datlist3a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1a</span>, <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"books"</span>)  )
 <span class='no'>datlist3a</span>
 <span class='co'># Because datlist1b is a datlist it is equivalent to</span>
 <span class='no'>datlist3b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span>( <span class='no'>datlist1b</span>, <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"books"</span>)  )
 <span class='no'>datlist3b</span>
 <span class='co'># operating on imputationList class</span>
-<span class='no'>datlist3c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1c</span>, <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"books"</span>)  )
+<span class='no'>datlist3c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1c</span>, <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"books"</span>)  )
 <span class='no'>datlist3c</span>
 <span class='co'># operating on mids class</span>
-<span class='no'>datlist3d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1d</span>, <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"books"</span>)  )
+<span class='no'>datlist3d</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1d</span>, <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"books"</span>)  )
 <span class='no'>datlist3d</span>
 <span class='co'># selection of rows and columns in multiply imputed datasets</span>
-<span class='no'>datlist4a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>,
+<span class='no'>datlist4a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>,
                   <span class='kw'>subset</span><span class='kw'>=</span><span class='no'>datlist1a</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>idschool</span> <span class='kw'>&lt;</span> <span class='fl'>1067</span>,
                   <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"idschool"</span>,<span class='st'>"hisei"</span>) )
 <span class='no'>datlist4a</span>
 <span class='co'># convert to class mids</span>
-<span class='no'>datlist4b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>,
+<span class='no'>datlist4b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1a</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>,
                   <span class='kw'>subset</span><span class='kw'>=</span><span class='no'>datlist1a</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>idschool</span> <span class='kw'>&lt;</span> <span class='fl'>1067</span>,
                   <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"idschool"</span>,<span class='st'>"hisei"</span>), <span class='kw'>toclass</span><span class='kw'>=</span><span class='st'>"mids"</span> )
 <span class='no'>datlist4b</span>
 <span class='co'># The same functionality, but now applying to object of class mids datlist1d</span>
-<span class='no'>datlist4c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1d</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>,
+<span class='no'>datlist4c</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1d</span>, <span class='kw'>index</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>,
                <span class='kw'>subset</span><span class='kw'>=</span><span class='no'>datlist1a</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>idschool</span> <span class='kw'>&lt;</span> <span class='fl'>1067</span>,
                <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"idschool"</span>,<span class='st'>"hisei"</span>) )
 <span class='no'>datlist4c</span>
@@ -285,11 +288,11 @@ then informations about the imputation procedure are lost.</p>
 <span class='co'># expression for selecting rows specific in each data frame</span>
 <span class='co'># which can result in differently sized datasets (because the variable</span>
 <span class='co'># migrant is imputed)</span>
-<span class='no'>datlist5a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1a</span>,  <span class='kw'>expr_subset</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='no'>migrant</span><span class='kw'>==</span><span class='fl'>1</span>) )
+<span class='no'>datlist5a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1a</span>,  <span class='kw'>expr_subset</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='no'>migrant</span><span class='kw'>==</span><span class='fl'>1</span>) )
 <span class='no'>datlist5a</span>
 
 <span class='co'># select the first 100 cases</span>
-<span class='no'>datlist6a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/subset_datlist.html'>subset_datlist</a></span>( <span class='no'>datlist1a</span>, <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"books"</span>),
+<span class='no'>datlist6a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>subset_datlist</span>( <span class='no'>datlist1a</span>, <span class='kw'>select</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"idstud"</span>, <span class='st'>"books"</span>),
                        <span class='kw'>subset</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>100</span> )
 <span class='no'>datlist6a</span>
 
@@ -302,9 +305,9 @@ then informations about the imputation procedure are lost.</p>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.timss4</span>
 
 <span class='co'># create object of class 'nested.datlist'</span>
-<span class='no'>datlist1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/datlist_create.html'>nested.datlist_create</a></span>( <span class='no'>dat</span> )
+<span class='no'>datlist1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='datlist_create.html'>nested.datlist_create</a></span>( <span class='no'>dat</span> )
 <span class='co'># create object of class 'NestedImputationList'</span>
-<span class='no'>datlist1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/miceadds/man/NestedImputationList.html'>NestedImputationList</a></span>(<span class='no'>dat</span>)
+<span class='no'>datlist1b</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='NestedImputationList.html'>NestedImputationList</a></span>(<span class='no'>dat</span>)
 
 <span class='co'># select some between datasets</span>
 <span class='no'>datlist2a</span> <span class='kw'>&lt;-</span> <span class='fu'>subset_nested.datlist</span>( <span class='no'>datlist1a</span>, <span class='kw'>index_between</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>4</span>) )
@@ -335,16 +338,10 @@ then informations about the imputation procedure are lost.</p>
 <span class='no'>datlist5b</span>
 }</pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#note">Note</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -355,7 +352,7 @@ then informations about the imputation procedure are lost.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

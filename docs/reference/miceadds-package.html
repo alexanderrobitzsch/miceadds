@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -51,10 +55,12 @@
     partial least squares (PLS) for high dimensional 
     predictors (Robitzsch, Pham &amp;amp; Yanagida, 2016), 
     nested multiple imputation (Rubin, 2003, 
-    &amp;lt;doi:10.1111/1467-9574.00217&amp;gt;) and substantive model
+    &amp;lt;doi:10.1111/1467-9574.00217&amp;gt;), substantive model
     compatible imputation (Bartlett et al., 2015,
-    &amp;lt;doi:10.1177/0962280214521348&amp;gt;)." />
-<meta name="twitter:card" content="summary" />
+    &amp;lt;doi:10.1177/0962280214521348&amp;gt;), and features
+    for the generation of synthetic datasets
+    (Reiter, 2005, &amp;lt;doi:10.1111/j.1467-985X.2004.00343.x&amp;gt;;
+    Nowok, Raab, &amp;amp; Dibben, 2016, &amp;lt;doi:10.18637/jss.v074.i11&amp;gt;)." />
 
 
 
@@ -72,7 +78,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -104,7 +110,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/alexanderrobitzsch/miceadds">
+  <a href="https://github.com/alexanderrobitzsch/miceadds/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -143,9 +149,12 @@
     partial least squares (PLS) for high dimensional 
     predictors (Robitzsch, Pham &amp; Yanagida, 2016), 
     nested multiple imputation (Rubin, 2003, 
-    &lt;doi:10.1111/1467-9574.00217&gt;) and substantive model
+    &lt;doi:10.1111/1467-9574.00217&gt;), substantive model
     compatible imputation (Bartlett et al., 2015,
-    &lt;doi:10.1177/0962280214521348&gt;).</p>
+    &lt;doi:10.1177/0962280214521348&gt;), and features
+    for the generation of synthetic datasets
+    (Reiter, 2005, &lt;doi:10.1111/j.1467-985X.2004.00343.x&gt;;
+    Nowok, Raab, &amp; Dibben, 2016, &lt;doi:10.18637/jss.v074.i11&gt;).</p>
     </div>
 
 
@@ -181,6 +190,15 @@ in <code><a href='mice.impute.pls.html'>mice.impute.pls</a></code>.</p></li>
 variables with measurement error) in the <span class="pkg">mice</span> sequential imputation
 framework can be applied by using the method
 <code><a href='mice.impute.plausible.values.html'>mice.impute.plausible.values</a></code>.</p></li>
+<li><p>Substantive model compatible multiple imputation using fully conditional
+specification can be conducted with <code><a href='mice.impute.smcfcs.html'>mice.impute.smcfcs</a></code>.</p></li>
+<li><p>The function <code><a href='syn_mice.html'>syn_mice</a></code> allows the generation of
+synthetic datasets with imputation methods for <span class="pkg">mice</span>. It has
+similar functionality as the <span class="pkg">synthpop</span> package (Nowok, Raab, &amp; Dibben, 2016).
+The function <code><a href='mice.impute.synthpop.html'>mice.impute.synthpop</a></code> allows the usage of
+<span class="pkg">synthpop</span> synthesization methods in <span class="pkg">mice</span>, while
+<code><a href='syn.mice.html'>syn.mice</a></code> allows the usage of
+<span class="pkg">mice</span> imputation methods in <span class="pkg">synthpop</span>.</p></li>
 <li><p>The method <code><a href='mice.impute.simputation.html'>mice.impute.simputation</a></code> is a wrapper function
 to imputation methods in the <span class="pkg">simputation</span> package. 
 The methods <code><a href='mice.impute.imputeR.lmFun.html'>mice.impute.imputeR.lmFun</a></code> and
@@ -206,6 +224,14 @@ doi: <a href='https://doi.org/10.1177/1094428117703686'>10.1177/1094428117703686
 <p>Mislevy, R. J. (1991). Randomization-based inference about latent variables
 from complex samples. <em>Psychometrika, 56</em>(2), 177-196.
 doi: <a href='https://doi.org/10.1007/BF02294457'>10.1007/BF02294457</a></p>
+<p>Nowok, B., Raab, G., &amp; Dibben, C. (2016).
+<span class="pkg">synthpop</span>: Bespoke creation of synthetic data in <span style="R">R</span>.
+<em>Journal of Statistical Software, 74</em>(11), 1-26.
+doi: <a href='https://doi.org/10.18637/jss.v074.i11'>10.18637/jss.v074.i11</a></p>
+<p>Reiter, J. P. (2005)  Releasing multiply-imputed, synthetic public use microdata: 
+An illustration and empirical study.  
+<em>Journal of the Royal Statistical Society, Series A, 168</em>(1), 185-205.
+doi: <a href='https://doi.org/10.1111/j.1467-985X.2004.00343.x'>10.1111/j.1467-985X.2004.00343.x</a></p>
 <p>Robitzsch, A., Pham, G., &amp; Yanagida, T. (2016). Fehlende Daten und Plausible Values. 
 In S. Breit &amp; C. Schreiner (Hrsg.). <em>Large-Scale Assessment mit R: Methodische 
 Grundlagen der oesterreichischen Bildungsstandardueberpruefung</em> (S. 259-293). Wien: facultas.</p>
@@ -240,33 +266,24 @@ doi: <a href='https://doi.org/10.18637/jss.v045.i03'>10.18637/jss.v045.i03</a></
 ##  ----------------------- mice at work ---------------------------------
 ##
 ##                         (\-.
-##                         / _`> .---------.
+##                         / _`&gt; .---------.
 ##                 _)     / _)=  |'-------'|
 ##                (      / _/    |O   O   o|
 ##                 `-.__(___)_   | o O . o |
 ##                               `---------'
 ##
 ##                                          oo__
-##                                         <;___)------
+##                                         &lt;;___)------
 ##                                    oo__   " "
-##                                   <;___)------     oo__
-##                                     " "           <;___)------
+##                                   &lt;;___)------     oo__
+##                                     " "           &lt;;___)------
 ##                                                     " "
 </pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
-      <li><a href="#references">References</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Alexander Robitzsch [aut, cre], Simon Grund [aut],
-    Thorsten Henke [ctb]</p>
-<p>Maintainer: Alexander Robitzsch &lt;robitzsch@ipn.uni-kiel.de&gt;</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -277,7 +294,7 @@ doi: <a href='https://doi.org/10.18637/jss.v045.i03'>10.18637/jss.v045.i03</a></
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
