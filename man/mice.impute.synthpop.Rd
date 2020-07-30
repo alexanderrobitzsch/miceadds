@@ -1,5 +1,5 @@
 %% File Name: mice.impute.synthpop.Rd
-%% File Version: 0.11
+%% File Version: 0.12
 
 \name{mice.impute.synthpop}
 \alias{mice.impute.synthpop}
@@ -13,7 +13,8 @@ in the \code{\link[mice:mice]{mice::mice}} function of the \pkg{mice} package.
 }
 
 \usage{
-mice.impute.synthpop(y, ry, x, synthpop_fun="norm", synthpop_args=list(),    proper=TRUE, ...)
+mice.impute.synthpop(y, ry, x, synthpop_fun="norm", synthpop_args=list(), 
+     proper=TRUE, ...)
 }
 
 

@@ -73,7 +73,7 @@ for multiply imputed datasets" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.10-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.11-vv</span>
       </span>
     </div>
 
@@ -233,13 +233,13 @@ correlation coefficients.</p></div>
 <span class='co'>#*** Kendalls tau</span>
 <span class='co'># test of computation of tau for first imputed dataset</span>
 <span class='no'>dat1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>(<span class='no'>imp1</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>)
-<span class='no'>tau1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>psych</span><span class='kw ns'>::</span><span class='fu'>corr.test</span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>dat1</span>[,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>2</span>)], <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"kendall"</span>)
+<span class='no'>tau1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>psych</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psych/man/corr.test.html'>corr.test</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>dat1</span>[,<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>,<span class='fl'>2</span>)], <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"kendall"</span>)
 <span class='no'>tau1</span>$<span class='no'>r</span>[<span class='fl'>1</span>,<span class='fl'>2</span>]    <span class='co'># estimate</span>
 <span class='no'>tau1</span>$<span class='no'>se</span>     <span class='co'># standard error</span>
 
 <span class='co'># results of Kendalls tau for all imputed datasets</span>
 <span class='no'>res3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='no'>imp1</span>,
-        <span class='kw'>expr</span><span class='kw'>=</span><span class='kw pkg'>psych</span><span class='kw ns'>::</span><span class='fu'>corr.test</span>( <span class='kw'>x</span><span class='kw'>=</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/cbind.html'>cbind</a></span>( <span class='no'>chl</span>, <span class='no'>bmi</span> ), <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"kendall"</span>) )
+        <span class='kw'>expr</span><span class='kw'>=</span><span class='kw pkg'>psych</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psych/man/corr.test.html'>corr.test</a></span>( <span class='kw'>x</span><span class='kw'>=</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/cbind.html'>cbind</a></span>( <span class='no'>chl</span>, <span class='no'>bmi</span> ), <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"kendall"</span>) )
 <span class='co'># extract estimates</span>
 <span class='no'>betas</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>res3</span>$<span class='no'>analyses</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>ll</span>){ <span class='no'>ll</span>$<span class='no'>r</span>[<span class='fl'>1</span>,<span class='fl'>2</span>] } )
 <span class='co'># extract variances</span>

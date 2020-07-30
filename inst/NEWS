@@ -42,7 +42,19 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.10  |  2020-05-12  |  Last: miceadds 3.10-20
+VERSIONS miceadds 3.11  |  2020-07-30  |  Last: miceadds 3.11-1
+---------------------------------------------------------------------
+
+xxxx  *
+
+DATA  * included/modified datasets: ---
+EXAMP * included/modified examples: ---
+
+
+
+
+---------------------------------------------------------------------
+VERSIONS miceadds 3.10  |  2020-07-29  |  Last: miceadds 3.10-28
 ---------------------------------------------------------------------
 
 ADDED * added wrapper function syn.mice() for including mice imputation
@@ -56,15 +68,10 @@ ADDED * added wrapper function mice.impute.synthpop() for using a
 ADDED * function syn_mice() allows generation of synthesized data
         using mice imputation methods
 
-
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: syn.mice (1), syn.constant (1),
         mice.impute.synthpop (1), syn_mice (1), 
         mice.impute.constant(1)
-
-
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.9  |  2020-05-09  |  Last: miceadds 3.9-14

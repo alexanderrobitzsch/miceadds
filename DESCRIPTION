@@ -1,10 +1,11 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 3.10-20
-Date: 2020-05-12 12:25:33
+Version: 3.11-1
+Date: 2020-07-30 10:11:27
 Author: 
-    Alexander Robitzsch [aut, cre], Simon Grund [aut],
+    Alexander Robitzsch [aut,cre] (<https://orcid.org/0000-0002-8226-3132>),
+    Simon Grund [aut] (<https://orcid.org/0000-0002-1290-8986>),
     Thorsten Henke [ctb]
 Maintainer: 
     Alexander Robitzsch <robitzsch@ipn.uni-kiel.de>

@@ -76,7 +76,7 @@ for a data frame to a list of multiply imputed datasets." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.10-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.11-vv</span>
       </span>
     </div>
 
@@ -190,7 +190,7 @@ can also be a string indicating the variable used from
         <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/weighted.mean.html'>weighted.mean</a></span>( <span class='no'>data</span>$<span class='no'>hisei</span>, <span class='no'>data</span>$<span class='no'>studwgt</span> )  } ) ) )
 <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='ma.wtd.statNA.html'>ma.wtd.sdNA</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>datlist</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>datlist</span><span class='kw'>[[</span><span class='fl'>1</span>]]$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='st'>"hisei"</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>( <span class='no'>datlist</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='kw'>function</span>(<span class='no'>data</span>){
-        <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>( <span class='kw pkg'>Hmisc</span><span class='kw ns'>::</span><span class='fu'>wtd.var</span>( <span class='no'>data</span>$<span class='no'>hisei</span>, <span class='no'>data</span>$<span class='no'>studwgt</span> ) ) } ) ) )
+        <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>( <span class='kw pkg'>Hmisc</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Hmisc/man/wtd.stats.html'>wtd.var</a></span>( <span class='no'>data</span>$<span class='no'>hisei</span>, <span class='no'>data</span>$<span class='no'>studwgt</span> ) ) } ) ) )
 
 <span class='co'># standardize variable hisei to M=100 and SD=15</span>
 <span class='no'>datlist1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>scale_datlist</span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>datlist</span>, <span class='kw'>orig_var</span><span class='kw'>=</span><span class='st'>"hisei"</span>,
@@ -222,7 +222,7 @@ can also be a string indicating the variable used from
                     <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>dat0</span>$<span class='no'>studwgt</span>, <span class='kw'>M</span><span class='kw'>=</span><span class='fl'>100</span>, <span class='kw'>SD</span><span class='kw'>=</span><span class='fl'>15</span> )
 <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/weighted.mean.html'>weighted.mean</a></span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei"</span>],  <span class='kw'>w</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> )
 <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/weighted.mean.html'>weighted.mean</a></span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei100"</span>],  <span class='kw'>w</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> )
-<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>( <span class='kw pkg'>Hmisc</span><span class='kw ns'>::</span><span class='fu'>wtd.var</span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei100"</span>],  <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> ) )
+<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span>( <span class='kw pkg'>Hmisc</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Hmisc/man/wtd.stats.html'>wtd.var</a></span>( <span class='no'>dat0a</span>[,<span class='st'>"hisei100"</span>],  <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>dat0a</span>$<span class='no'>studwgt</span> ) )
 
 <span class='co'>#--- Standardizations for objects of class imputationList</span>
 <span class='no'>datlist2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/imputationList.html'>imputationList</a></span>(<span class='no'>datlist</span>)   <span class='co'># object class conversion</span>

@@ -1,5 +1,5 @@
 ## File Name: ANSI_create_table.R
-## File Version: 0.567
+## File Version: 0.568
 
 
 #*** create table with results
@@ -85,9 +85,6 @@ ANSI_create_table <- function (dat, criterion,
     vert_table <- expand.grid(h2)[, seq(NH,1,-1),drop=FALSE]
     vert_NR <- nrow(vert_table)
     vert_NC <- ncol(vert_table)
-Revalpr("colnames(dat)")
-Revalpr("horiz_vars")
-Revalpr("vert_vars")
 
     #--- create complete table
     dfr <- matrix( NA, nrow=horiz_NR, ncol=vert_NR)
@@ -96,7 +93,7 @@ Revalpr("vert_vars")
         for (vr in 1:vert_NR){
             ind <- 1:NN
             for (nn in 1:horiz_NC){
-                ind0 <- which( paste(x[, horiz_vars[nn] ])==paste(horiz_table[hr,nn]) )
+                ind0 <- which(  paste(x[, horiz_vars[nn] ])==paste(horiz_table[hr,nn]) )
                 ind <- intersect( ind, ind0 )
             }
             for (nn in 1:vert_NC){
