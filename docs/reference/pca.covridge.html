@@ -163,16 +163,16 @@ parameter is added on the diagonal of the covariance matrix.</p>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>( <span class='no'>data.internet</span>)
 
 <span class='co'># single imputation in mice</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span> )
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span> )
 
 <span class='co'># apply PCA</span>
-<span class='no'>pca.imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>pca.covridge</span>( <span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>) )
+<span class='no'>pca.imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>pca.covridge</span>( <span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>) )
   <span class='co'>##   &gt; pca.imp$sdev</span>
   <span class='co'>##      Comp.1    Comp.2    Comp.3    Comp.4    Comp.5    Comp.6    Comp.7</span>
   <span class='co'>##   3.0370905 2.3950176 2.2106816 2.0661971 1.8252900 1.7009921 1.6379599</span>
 
 <span class='co'># compare results with princomp</span>
-<span class='no'>pca2.imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/princomp.html'>princomp</a></span>( <span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>) )
+<span class='no'>pca2.imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/princomp.html'>princomp</a></span>( <span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>) )
   <span class='co'>##   &gt; pca2.imp</span>
   <span class='co'>##   Call:</span>
   <span class='co'>##   stats::princomp(x=complete(imp))</span>

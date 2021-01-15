@@ -223,7 +223,7 @@ plausible value imputation should be printed at the console</p></td>
     <tr>
       <th>extract_data</th>
       <td><p>Logical indicating whether input data should be extracted
-from parent environment within <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice::mice</a></code> routine</p></td>
+from parent environment within <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code> routine</p></td>
     </tr>
     <tr>
       <th>control_latreg</th>
@@ -335,13 +335,13 @@ models.</p></div>
 <span class='no'>scale.values</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='st'>"scale2"</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='st'>"M"</span><span class='kw'>=</span><span class='no'>M.scale2</span>, <span class='st'>"SE"</span><span class='kw'>=</span><span class='no'>SE.scale2</span> ) )
 
 <span class='co'>#*** Imputation Model 1: Imputation four using parallel chains</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>5</span>,
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>5</span>,
           <span class='kw'>alpha.se</span><span class='kw'>=</span><span class='no'>alpha.se</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>,  <span class='kw'>allow.na</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>alpha</span><span class='kw'>=</span><span class='no'>alpha</span>,
           <span class='kw'>scale.values</span><span class='kw'>=</span><span class='no'>scale.values</span>  )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp1</span>)
 
 <span class='co'># extract first imputed dataset</span>
-<span class='no'>dat11</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>( <span class='no'>imp</span>, <span class='fl'>1</span> )
+<span class='no'>dat11</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>( <span class='no'>imp</span>, <span class='fl'>1</span> )
 
 <span class='co'>#*** Imputation Model 2: Imputation using one long chain</span>
 <span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='mice.1chain.html'>mice.1chain</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>, <span class='kw'>burnin</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>iter</span><span class='kw'>=</span><span class='fl'>20</span>, <span class='kw'>Nimp</span><span class='kw'>=</span><span class='fl'>4</span>,
@@ -360,10 +360,10 @@ models.</p></div>
 <span class='no'>predM</span>[ <span class='st'>"scale2"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"V7"</span>,<span class='st'>"A1"</span>) ] <span class='kw'>&lt;-</span> <span class='fl'>2</span>
 
 <span class='co'># perform single imputation (m=1)</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span>,
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span>,
             <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>,  <span class='kw'>allow.na</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>alpha</span><span class='kw'>=</span><span class='no'>alpha</span>,
             <span class='kw'>scale.values</span><span class='kw'>=</span><span class='no'>scale.values</span> )
-<span class='no'>dat10</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>)
+<span class='no'>dat10</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>)
 
 <span class='co'># multilevel model</span>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>lme4</span>)
@@ -445,14 +445,14 @@ models.</p></div>
 <span class='no'>data.init</span>$<span class='no'>X2</span> <span class='kw'>&lt;-</span> <span class='no'>X.err</span>[,<span class='st'>"X2"</span>]
 
 <span class='co'>#-- imputation using the mice and miceadds package</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>), <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predictorMatrix</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>4</span>,
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data</span>), <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predictorMatrix</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>4</span>,
             <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>6</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>,  <span class='kw'>allow.na</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
             <span class='kw'>theta</span><span class='kw'>=</span><span class='no'>theta</span>, <span class='kw'>like</span><span class='kw'>=</span><span class='no'>like</span>, <span class='kw'>data.init</span><span class='kw'>=</span><span class='no'>data.init</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp1</span>)
 
 <span class='co'># compute linear regression</span>
 <span class='no'>mod4a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp1</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>PVA</span> ~ <span class='no'>X1</span> + <span class='no'>X2</span> ) )
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/pool.html'>pool</a></span>(<span class='no'>mod4a</span>) )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>(<span class='no'>mod4a</span>) )
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 3: Plausible value imputation with known error variance</span>
@@ -487,16 +487,16 @@ models.</p></div>
 <span class='no'>method</span>[<span class='st'>"theta"</span>] <span class='kw'>&lt;-</span> <span class='st'>"plausible.values"</span>
 
 <span class='co'>#-- imputation in mice</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>allow.na</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>,
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>allow.na</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>,
             <span class='kw'>scale.values</span><span class='kw'>=</span><span class='no'>scale.values</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp</span>)
 
 <span class='co'>#-- inspect first dataset</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) )
 
 <span class='co'>#-- linear regression based on imputed datasets</span>
 <span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>(<span class='no'>imp</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>theta</span> ~ <span class='no'>x1</span> + <span class='no'>x2</span> ) )
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/pool.html'>pool</a></span>(<span class='no'>mod1</span>) )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>(<span class='no'>mod1</span>) )
 }</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

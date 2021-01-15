@@ -170,7 +170,7 @@ imputed datasets.</p></td>
     <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># imputation nhanes data</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>nhanes</span>)
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>(<span class='no'>nhanes</span>)
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='no'>nhanes</span>)
 <span class='co'># write files to MLwiN</span>
 <span class='fu'>mids2mlwin</span>(<span class='no'>imp</span>, <span class='kw'>file.prefix</span><span class='kw'>=</span><span class='st'>"nhanes"</span> )
 }</pre>

@@ -191,9 +191,9 @@ function in the <span class="pkg">grouped</span> package.</p></div>
 <span class='no'>upp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"FC_imp"</span><span class='kw'>=</span><span class='no'>data</span>$<span class='no'>FC_upp</span> )
 
 <span class='co'># perform imputation</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>data</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impM</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>,
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>data</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impM</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>,
         <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>allow.na</span><span class='kw'>=</span><span class='fl'>TRUE</span>,  <span class='kw'>low</span><span class='kw'>=</span><span class='no'>low</span>, <span class='kw'>upp</span><span class='kw'>=</span><span class='no'>upp</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>))
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>))
 }</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

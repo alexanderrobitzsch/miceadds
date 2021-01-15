@@ -119,7 +119,7 @@ functions of the same functionality." />
     <div class="ref-description">
     <p>Statistical inference for multiply imputed datasets. See
 <code><a href='https://rdrr.io/pkg/mitools/man/MIcombine.html'>mitools::MIcombine</a></code> or
-<code><a href='http://stefvanbuuren.github.io/mice/reference/pool.html'>mice::pool</a></code> for
+<code><a href='https://rdrr.io/pkg/mice/man/pool.html'>mice::pool</a></code> for
 functions of the same functionality.</p>
     </div>
 
@@ -176,11 +176,11 @@ Any other input provides large sample inference.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Object of with similar output as produced by the
-<code><a href='http://stefvanbuuren.github.io/mice/reference/pool.html'>mice::pool</a></code> function.</p>
+<code><a href='https://rdrr.io/pkg/mice/man/pool.html'>mice::pool</a></code> function.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/mitools/man/MIcombine.html'>mitools::MIcombine</a></code>,
-<code><a href='http://stefvanbuuren.github.io/mice/reference/pool.html'>mice::pool</a></code>,
+<code><a href='https://rdrr.io/pkg/mice/man/pool.html'>mice::pool</a></code>,
 <code><a href='https://rdrr.io/pkg/mitml/man/testEstimates.html'>mitml::testEstimates</a></code></p>
 <p>For statistical inference for nested multiply imputed datasets see
 <code><a href='pool.mids.nmi.html'>NMIcombine</a></code>.</p></div>
@@ -233,7 +233,7 @@ Any other input provides large sample inference.</p></td>
 <span class='no'>res3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/MIcombine.html'>MIcombine</a></span>( <span class='kw'>results</span><span class='kw'>=</span><span class='no'>cmod</span>, <span class='kw'>variances</span><span class='kw'>=</span><span class='no'>vmod</span> )
 
 <span class='co'>#*** pooling with pool function in mice</span>
-<span class='no'>res4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/pool.html'>pool</a></span>( <span class='no'>mod0</span> )
+<span class='no'>res4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>( <span class='no'>mod0</span> )
 
 <span class='co'>#*** analysis in Zelig</span>
 <span class='co'># convert datalist into object of class amelia</span>

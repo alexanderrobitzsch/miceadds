@@ -179,7 +179,7 @@ using a bootstrap sample</p></td>
 <span class='no'>method</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"tricube.pmm"</span>, <span class='no'>VV</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>method</span>) <span class='kw'>&lt;-</span> <span class='no'>varnames</span>
 <span class='co'># imputation with mice</span>
-<span class='no'>imp.mi1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>nhanes</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span> )
+<span class='no'>imp.mi1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>nhanes</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span> )
 
 <span class='co'>#*** Model 2: use item-specific imputation methods</span>
 <span class='no'>iM2</span> <span class='kw'>&lt;-</span> <span class='no'>method</span>

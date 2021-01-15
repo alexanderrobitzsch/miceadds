@@ -188,7 +188,7 @@ imputation methods defined in <span class="pkg">mice</span>.</p>
 <span class='no'>imputationFunction</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"books"</span><span class='kw'>=</span><span class='st'>"norm"</span> )
 
 <span class='co'>#** conduct multiple imputation in mice</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predictorMatrix</span>,
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predictorMatrix</span>,
             <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='no'>group</span>, <span class='kw'>imputationFunction</span><span class='kw'>=</span><span class='no'>imputationFunction</span> )
 
 <span class='co'>#############################################################################</span>
@@ -219,7 +219,7 @@ imputation methods defined in <span class="pkg">mice</span>.</p>
 <span class='no'>imputationFunction</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"hisei"</span><span class='kw'>=</span><span class='st'>"2l.pan"</span> )
 
 <span class='co'>#** conduct multiple imputation in mice</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predictorMatrix</span>,
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predictorMatrix</span>,
             <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>group</span><span class='kw'>=</span><span class='no'>group</span>, <span class='kw'>imputationFunction</span><span class='kw'>=</span><span class='no'>imputationFunction</span> )
 <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>imp</span>)
 }</pre>

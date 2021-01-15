@@ -116,7 +116,7 @@ in the mice::mice function of the mice package." />
 
     <div class="ref-description">
     <p>The function allows to use a <span class="pkg">synthpop</span> synthesizing method to be used
-in the <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice::mice</a></code> function of the <span class="pkg">mice</span> package.</p>
+in the <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code> function of the <span class="pkg">mice</span> package.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mice.impute.synthpop</span>(<span class='no'>y</span>, <span class='no'>ry</span>, <span class='no'>x</span>, <span class='kw'>synthpop_fun</span><span class='kw'>=</span><span class='st'>"norm"</span>, <span class='kw'>synthpop_args</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
@@ -177,7 +177,7 @@ with the <span class="pkg">synthpop</span> package.</p></div>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>nhanes</span>
 
 <span class='co'>#* empty imputation</span>
-<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>(<span class='no'>dat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span>)
+<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='no'>dat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span>)
 <span class='no'>method</span> <span class='kw'>&lt;-</span> <span class='no'>imp0</span>$<span class='no'>method</span>
 
 <span class='co'>#* define synthpop method 'normrank' for variable 'chl'</span>
@@ -186,7 +186,7 @@ with the <span class="pkg">synthpop</span> package.</p></div>
 <span class='no'>synthpop_args</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>chl</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>smoothing</span><span class='kw'>=</span><span class='st'>"density"</span>) )
 
 <span class='co'>#* conduct imputation</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>(<span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>synthpop_fun</span><span class='kw'>=</span><span class='no'>synthpop_fun</span>,
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>synthpop_fun</span><span class='kw'>=</span><span class='no'>synthpop_fun</span>,
             <span class='kw'>synthpop_args</span><span class='kw'>=</span><span class='no'>synthpop_args</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp</span>)
 }</pre>

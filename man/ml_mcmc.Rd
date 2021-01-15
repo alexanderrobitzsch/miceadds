@@ -1,5 +1,5 @@
 %% File Name: ml_mcmc.Rd
-%% File Version: 0.445
+%% File Version: 0.446
 
 \name{ml_mcmc}
 \alias{ml_mcmc}
@@ -276,12 +276,12 @@ data$y <- y
 
 #*** estimate mixed effects model with miceadds::ml_mcmc() function
 formula <- y ~ x + miceadds::gm(x, idcluster) + w + ( 1 + x | idcluster)
-mod1 <- miceadds::ml_mcmc( formula, data)
+mod1 <- miceadds::ml_mcmc( formula=formula, data=data)
 plot(mod1)
 summary(mod1)
 
 #*** compare results with lme4 package
-mod2 <- lme4::lmer(formula, data=data)
+mod2 <- lme4::lmer(formula=formula, data=data)
 summary(mod2)
 
 #############################################################################
@@ -313,8 +313,8 @@ data$y <- cut( y, breaks=alpha, labels=FALSE ) - 1
 
 #*** estimate model
 formula <- y ~ miceadds::cwc(x, idcluster) + miceadds::gm(x,idcluster) + w + ( 1 | idcluster)
-mod <- miceadds::ml_mcmc( formula, data, iter=2000, burnin=500, outcome="probit",
-                inits_lme4=FALSE)
+mod <- miceadds::ml_mcmc( formula=formula, data=data, iter=2000, burnin=500, 
+                outcome="probit", inits_lme4=FALSE)
 summary(mod)
 plot(mod)
 }

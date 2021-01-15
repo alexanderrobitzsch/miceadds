@@ -117,7 +117,7 @@ method in the mice package." />
 
     <div class="ref-description">
     <p>This function imputes values by predictive mean matching like
-the <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.pmm.html'>mice::mice.impute.pmm</a></code>
+the <code><a href='https://rdrr.io/pkg/mice/man/mice.impute.pmm.html'>mice::mice.impute.pmm</a></code>
 method in the <span class="pkg">mice</span> package.</p>
     </div>
 
@@ -164,7 +164,7 @@ method in the <span class="pkg">mice</span> package.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The imputation method <code>pmm3</code> imitates
-<code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.pmm.html'>mice::mice.impute.pmm</a></code> imputation method
+<code><a href='https://rdrr.io/pkg/mice/man/mice.impute.pmm.html'>mice::mice.impute.pmm</a></code> imputation method
 in <span class="pkg">mice</span>.</p>
 <p>The imputation method <code>pmm4</code> ignores ties in predicted \(y\) values.
 With many predictors, this does not probably implies any substantial problem.</p>
@@ -210,25 +210,25 @@ matching.</p></div>
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>impmethod</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span>(<span class='no'>dat</span>)
 
 <span class='co'># pmm (in mice)</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmethod</span>)
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmethod</span>)
 <span class='co'># pmm3 (in miceadds)</span>
-<span class='no'>imp3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>,
+<span class='no'>imp3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>,
            <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='st'>"pmm"</span>,<span class='st'>"pmm3"</span>,<span class='no'>impmethod</span>)  )
 <span class='co'># pmm4 (in miceadds)</span>
-<span class='no'>imp4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>,
+<span class='no'>imp4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>,
            <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='st'>"pmm"</span>,<span class='st'>"pmm4"</span>,<span class='no'>impmethod</span>)  )
 <span class='co'># pmm5 (in miceadds)</span>
-<span class='no'>imp5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>,
+<span class='no'>imp5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>,
            <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='st'>"pmm"</span>,<span class='st'>"pmm5"</span>,<span class='no'>impmethod</span>)  )
 <span class='co'># pmm6 (in miceadds)</span>
-<span class='no'>imp6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>,
+<span class='no'>imp6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>,
            <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span>(<span class='st'>"pmm"</span>,<span class='st'>"pmm6"</span>,<span class='no'>impmethod</span>)  )
 
-<span class='no'>dat.imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>( <span class='no'>imp1</span>, <span class='fl'>1</span> )
-<span class='no'>dat.imp3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>( <span class='no'>imp3</span>, <span class='fl'>1</span> )
-<span class='no'>dat.imp4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>( <span class='no'>imp4</span>, <span class='fl'>1</span> )
-<span class='no'>dat.imp5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>( <span class='no'>imp5</span>, <span class='fl'>1</span> )
-<span class='no'>dat.imp6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>( <span class='no'>imp6</span>, <span class='fl'>1</span> )
+<span class='no'>dat.imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>( <span class='no'>imp1</span>, <span class='fl'>1</span> )
+<span class='no'>dat.imp3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>( <span class='no'>imp3</span>, <span class='fl'>1</span> )
+<span class='no'>dat.imp4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>( <span class='no'>imp4</span>, <span class='fl'>1</span> )
+<span class='no'>dat.imp5</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>( <span class='no'>imp5</span>, <span class='fl'>1</span> )
+<span class='no'>dat.imp6</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>( <span class='no'>imp6</span>, <span class='fl'>1</span> )
 
 <span class='no'>dfr</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
 <span class='co'># means</span>

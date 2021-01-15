@@ -174,8 +174,8 @@ imputations should be conducted.</p></td>
     <p>A vector of length <code>nmis</code> with imputations.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>See <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2lonly.norm.html'>mice::mice.impute.2lonly.norm</a></code> and
-the <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2lonly.pmm.html'>mice::mice.impute.2lonly.pmm</a></code>
+    <div class='dont-index'><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2lonly.norm.html'>mice::mice.impute.2lonly.norm</a></code> and
+the <code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2lonly.pmm.html'>mice::mice.impute.2lonly.pmm</a></code>
 function.</p>
 <p>See also the <span class="pkg">jomo</span> package (<code><a href='https://rdrr.io/pkg/jomo/man/jomo2.html'>jomo::jomo2</a></code>)
 for joint multilevel imputation of level 1 and
@@ -211,8 +211,8 @@ level 2 variables.</p></div>
 <span class='no'>dfr</span>[ <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>( <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='no'>G</span>), <span class='kw'>each</span><span class='kw'>=</span><span class='no'>n</span> ) <span class='kw'>&lt;</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>qnorm</a></span>(<span class='no'>missrate</span>), <span class='st'>"v"</span> ] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
 
 <span class='co'>#* initial predictor matrix and imputation methods</span>
-<span class='no'>predM</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/make.predictorMatrix.html'>make.predictorMatrix</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dfr</span>)
-<span class='no'>impM</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/make.method.html'>make.method</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dfr</span>)
+<span class='no'>predM</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/make.predictorMatrix.html'>make.predictorMatrix</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dfr</span>)
+<span class='no'>impM</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/make.method.html'>make.method</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dfr</span>)
 
 <span class='co'>#...</span>
 <span class='co'># multilevel imputation</span>
@@ -227,7 +227,7 @@ level 2 variables.</p></div>
 <span class='no'>cluster_var</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='st'>"w"</span><span class='kw'>=</span><span class='st'>"group"</span>, <span class='st'>"v"</span><span class='kw'>=</span><span class='st'>"group"</span> )
 
 <span class='co'># impute</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dfr</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impM1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>5</span>,
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dfr</span>), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impM1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>5</span>,
             <span class='kw'>imputationFunction</span><span class='kw'>=</span><span class='no'>imputationFunction</span>, <span class='kw'>cluster_var</span><span class='kw'>=</span><span class='no'>cluster_var</span> )
 }</pre>
   </div>

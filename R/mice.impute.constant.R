@@ -1,5 +1,5 @@
 ## File Name: mice.impute.constant.R
-## File Version: 0.02
+## File Version: 0.03
 
 
 mice.impute.constant <- function(y, ry, x, fixed_values, ... )
@@ -9,9 +9,9 @@ mice.impute.constant <- function(y, ry, x, fixed_values, ... )
     vname <- res$vname
     newstate <- res$newstate
     pos <- res$pos
-    state_data <- res$data    
+    state_data <- res$data
     fixed_default <- rep(-99, sum(!ry))
-    fixed_values <- mice_imputation_extract_list_arguments( micearg=fixed_values, 
+    fixed_values <- mice_imputation_extract_list_arguments( micearg=fixed_values,
                         vname=vname, miceargdefault=fixed_default)
     yimp <- fixed_values
     #-- output imputed values

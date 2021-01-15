@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc_initial_values.R
-## File Version: 0.13
+## File Version: 0.14
 
 ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thresh, K, NR,
     inits_lme4, X, Z_list, ncluster_list, formula )
@@ -43,7 +43,8 @@ ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thre
             umat <- umat * matrix( sqrt(diag(Psi_rr) ), nrow=ncluster_rr, ncol=nrr, byrow=TRUE)
             u_list[[rr]] <- umat
         }
-
+        mod <- stats::lm(y~0+X)
+        beta <- mod$coefficients
     }
 
     alpha <- c(-9.99, 0, 9.99)

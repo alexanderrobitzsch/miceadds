@@ -257,7 +257,7 @@ can also be a string indicating the variable used from
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>76</span>)
 
 <span class='co'>#--- impute nhanes data</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>(<span class='no'>nhanes</span>)
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='no'>nhanes</span>)
 <span class='co'>#--- convert into datlist</span>
 <span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='mids2datlist.html'>mids2datlist</a></span>(<span class='no'>imp</span>)
 <span class='co'>#--- scale datlist (all variables)</span>
@@ -266,8 +266,8 @@ can also be a string indicating the variable used from
 <span class='co'>#--- reconvert to mids object</span>
 <span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='datalist2mids.html'>datlist2mids</a></span>(<span class='no'>sdatlist</span>)
 <span class='co'>#*** compare descriptive statistics of objects</span>
-<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='stats0.html'>mean0</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) ), <span class='fl'>2</span> )
-<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='stats0.html'>mean0</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/complete.mids.html'>complete</a></span>(<span class='no'>imp2</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) ), <span class='fl'>2</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='stats0.html'>mean0</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>(<span class='no'>imp</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) ), <span class='fl'>2</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='stats0.html'>mean0</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>(<span class='no'>imp2</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>) ), <span class='fl'>2</span> )
 }</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

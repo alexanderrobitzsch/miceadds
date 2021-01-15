@@ -248,28 +248,28 @@ NEPS Working Paper No 31.</p>
 two levels (e.g., three-level datasets or cross-classified datasets).</p>
 <p>Variables at a higher level (e.g. at level 2) can be imputed using <code>2lonly</code>
 functions, for example the
-<code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2lonly.norm.html'>mice::mice.impute.2lonly.norm</a></code> function
+<code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2lonly.norm.html'>mice::mice.impute.2lonly.norm</a></code> function
 in the <span class="pkg">mice</span> package or the general <code><a href='mice.impute.2lonly.function.html'>mice.impute.2lonly.function</a></code>
 function in the <span class="pkg">miceadds</span> package which using an already defined imputation
 method at level 1. If a level-2 variable for 3-level data should be imputed,
 then <code><a href='mice.impute.ml.lmer.html'>mice.impute.ml.lmer</a></code> can also be used to impute this variable
 with a two-level imputation model in which level 1 corresponds to the original
 level-2 units and level 2 corresponds to the original level-3 units.</p>
-<p>See <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2l.norm.html'>mice::mice.impute.2l.norm</a></code> and
-<code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2l.pan.html'>mice::mice.impute.2l.pan</a></code> for
+<p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2l.norm.html'>mice::mice.impute.2l.norm</a></code> and
+<code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2l.pan.html'>mice::mice.impute.2l.pan</a></code> for
 imputation functions in the <span class="pkg">mice</span> package under fully conditional
 specification for normally distributed variables. The function
-<code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2l.norm.html'>mice::mice.impute.2l.norm</a></code> allows for
+<code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2l.norm.html'>mice::mice.impute.2l.norm</a></code> allows for
 residual variances which are allowed to vary across groups while
-<code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2l.pan.html'>mice::mice.impute.2l.pan</a></code> assumes
+<code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2l.pan.html'>mice::mice.impute.2l.pan</a></code> assumes
 homogeneous residual variances.</p>
 <p>The <span class="pkg">micemd</span> package provides further imputation methods for the <span class="pkg">mice</span>
 package for imputing multilevel data with fully conditional specification. The
 function <code><a href='https://rdrr.io/pkg/micemd/man/mice.impute.2l.jomo.html'>micemd::mice.impute.2l.jomo</a></code>
-has similar functionality like <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2l.pan.html'>mice::mice.impute.2l.pan</a></code>
+has similar functionality like <code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2l.pan.html'>mice::mice.impute.2l.pan</a></code>
 and imputes normally distributed two-level data with a Bayesian MCMC approach,
 but relies on the <span class="pkg">jomo</span> package instead of the <span class="pkg">pan</span> package.
-The functions <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.2l.lmer.html'>mice::mice.impute.2l.lmer</a></code> and
+The functions <code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2l.lmer.html'>mice::mice.impute.2l.lmer</a></code> and
 <code><a href='https://rdrr.io/pkg/micemd/man/mice.impute.2l.glm.norm.html'>micemd::mice.impute.2l.glm.norm</a></code>
 have similar functionality like <code>mice.impute.2l.continuous</code>
 and imputes normally distributed two-level data. The function
@@ -289,14 +289,14 @@ wrapper functions to these packages in the <span class="pkg">mitml</span>
 package.</p>
 <p>Imputation by chained equations can also be conducted in blocks of multivariate
 conditional distributions since <span class="pkg">mice</span> 3.0.0 (see the <code>blocks</code>
-argument in <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice::mice</a></code>). The
+argument in <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code>). The
 <code><a href='https://rdrr.io/pkg/mitml/man/panImpute.html'>mitml::panImpute</a></code> and
 <code><a href='https://rdrr.io/pkg/mitml/man/jomoImpute.html'>mitml::jomoImpute</a></code> functions can be used
-with <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice::mice</a></code> by specifying imputation
+with <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code> by specifying imputation
 methods <code>"panImpute"</code>
-(see <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.panImpute.html'>mice::mice.impute.panImpute</a></code>)) and
+(see <code><a href='https://rdrr.io/pkg/mice/man/mice.impute.panImpute.html'>mice::mice.impute.panImpute</a></code>)) and
 <code>"jomoImpute"</code>
-(see <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.impute.jomoImpute.html'>mice::mice.impute.jomoImpute</a></code>)).</p></div>
+(see <code><a href='https://rdrr.io/pkg/mice/man/mice.impute.jomoImpute.html'>mice::mice.impute.jomoImpute</a></code>)).</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -337,17 +337,17 @@ methods <code>"panImpute"</code>
 <span class='no'>impmeth</span>[<span class='st'>"y"</span>] <span class='kw'>&lt;-</span> <span class='st'>"2l.binary"</span>
 
 <span class='co'>#** imputation with logistic regression ('2l.binary')</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat1</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmeth</span>,
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat1</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmeth</span>,
                 <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predmat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span> )
 
 <span class='co'>#** imputation with predictive mean matching ('2l.pmm')</span>
 <span class='no'>impmeth</span>[<span class='st'>"y"</span>] <span class='kw'>&lt;-</span> <span class='st'>"2l.pmm"</span>
-<span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat1</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmeth</span>,
+<span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat1</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmeth</span>,
                 <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predmat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span> )
 
 <span class='co'>#** imputation with logistic regression using blme package</span>
 <span class='no'>blme_args</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='st'>"cov.prior"</span><span class='kw'>=</span><span class='st'>"invwishart"</span>)
-<span class='no'>imp3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat1</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmeth</span>,
+<span class='no'>imp3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='kw'>data</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>dat1</span>), <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmeth</span>,
                 <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predmat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>,
                 <span class='kw'>blme_use</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>blme_args</span><span class='kw'>=</span><span class='no'>blme_args</span> )
 }</pre>

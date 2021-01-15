@@ -118,7 +118,7 @@ a user should check the plausibility of the result." />
 
     <div class="ref-description">
     <p>This function automatically determines a visit sequence for a specified
-model in <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice::mice</a></code> when passive variables are defined
+model in <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code> when passive variables are defined
 as imputation methods. Note that redundant visits could be computed and
 a user should check the plausibility of the result.</p>
     </div>
@@ -151,8 +151,8 @@ a user should check the plausibility of the result.</p>
     <p>Updated vector of the visit sequence</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Used in  the <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice::mice</a></code> function as an argument.
-The function <code><a href='http://stefvanbuuren.github.io/mice/reference/make.visitSequence.html'>mice::make.visitSequence</a></code>
+    <div class='dont-index'><p>Used in  the <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code> function as an argument.
+The function <code><a href='https://rdrr.io/pkg/mice/man/make.visitSequence.html'>mice::make.visitSequence</a></code>
 creates a visit sequence.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -183,14 +183,14 @@ creates a visit sequence.</p></div>
 }
 
 <span class='co'># run empty imputation model to obtain initial vector of visit sequence</span>
-<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span> )
+<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span> )
 <span class='no'>imp0</span>$<span class='no'>vis</span>
 
 <span class='co'># update visit sequence</span>
 <span class='no'>vis1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>visitSequence.determine</span>( <span class='kw'>impMethod</span><span class='kw'>=</span><span class='no'>impMethod</span>, <span class='kw'>vis</span><span class='kw'>=</span><span class='no'>imp0</span>$<span class='no'>vis</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 
 <span class='co'># imputation with updated visit sequence</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>, <span class='kw'>visitSequence</span><span class='kw'>=</span><span class='no'>vis1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>2</span>)</pre>
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>, <span class='kw'>visitSequence</span><span class='kw'>=</span><span class='no'>vis1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>2</span>)</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

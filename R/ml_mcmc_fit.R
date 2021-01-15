@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc_fit.R
-## File Version: 0.508
+## File Version: 0.525
 
 ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     alpha, u_list, idcluster_list, onlyintercept_list, ncluster_list,
@@ -33,6 +33,7 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
                 est_parameter=est_parameter, npar=npar, iter=iter, save_iter=save_iter,
                 verbose=verbose, print_iter=print_iter, est_thresh=est_thresh, K=K,
                 sd_proposal=sd_proposal, ridge=ridge)
+
     #** output processing
     if ( is.null(parnames0) ){
         NS <- ncol(res$sampled_values)

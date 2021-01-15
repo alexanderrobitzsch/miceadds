@@ -500,12 +500,12 @@ the <span class="pkg">lme4</span> package for maximum likelihood estimation.</p>
 
 <span class='co'>#*** estimate mixed effects model with miceadds::ml_mcmc() function</span>
 <span class='no'>formula</span> <span class='kw'>&lt;-</span> <span class='no'>y</span> ~ <span class='no'>x</span> + <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='GroupMean.html'>gm</a></span>(<span class='no'>x</span>, <span class='no'>idcluster</span>) + <span class='no'>w</span> + ( <span class='fl'>1</span> + <span class='no'>x</span> <span class='kw'>|</span> <span class='no'>idcluster</span>)
-<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>ml_mcmc</span>( <span class='no'>formula</span>, <span class='no'>data</span>)
+<span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>ml_mcmc</span>( <span class='kw'>formula</span><span class='kw'>=</span><span class='no'>formula</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>mod1</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod1</span>)
 
 <span class='co'>#*** compare results with lme4 package</span>
-<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span>(<span class='no'>formula</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span>)
+<span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>lme4</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span>(<span class='kw'>formula</span><span class='kw'>=</span><span class='no'>formula</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>)
 
 <span class='co'>#############################################################################</span>
@@ -537,8 +537,8 @@ the <span class="pkg">lme4</span> package for maximum likelihood estimation.</p>
 
 <span class='co'>#*** estimate model</span>
 <span class='no'>formula</span> <span class='kw'>&lt;-</span> <span class='no'>y</span> ~ <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='GroupMean.html'>cwc</a></span>(<span class='no'>x</span>, <span class='no'>idcluster</span>) + <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='GroupMean.html'>gm</a></span>(<span class='no'>x</span>,<span class='no'>idcluster</span>) + <span class='no'>w</span> + ( <span class='fl'>1</span> <span class='kw'>|</span> <span class='no'>idcluster</span>)
-<span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>ml_mcmc</span>( <span class='no'>formula</span>, <span class='no'>data</span>, <span class='kw'>iter</span><span class='kw'>=</span><span class='fl'>2000</span>, <span class='kw'>burnin</span><span class='kw'>=</span><span class='fl'>500</span>, <span class='kw'>outcome</span><span class='kw'>=</span><span class='st'>"probit"</span>,
-                <span class='kw'>inits_lme4</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+<span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>ml_mcmc</span>( <span class='kw'>formula</span><span class='kw'>=</span><span class='no'>formula</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>data</span>, <span class='kw'>iter</span><span class='kw'>=</span><span class='fl'>2000</span>, <span class='kw'>burnin</span><span class='kw'>=</span><span class='fl'>500</span>,
+                <span class='kw'>outcome</span><span class='kw'>=</span><span class='st'>"probit"</span>, <span class='kw'>inits_lme4</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>mod</span>)
 }</pre>

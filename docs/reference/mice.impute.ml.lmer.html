@@ -143,7 +143,7 @@ model as implemented in <code><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>l
 or non-hierarchical and can be written in a general form
 \(\bold{y}=\bold{X} \bold{\beta} + \sum_{v=1}^V \bold{Z}_v \bold{u}_v\) for \(V\)
 multivariate random effects. While predictors can be selected by specifying the rows
-in the predictor matrix in <code><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice::mice</a></code> (i.e., modification of <code>type</code>),
+in the predictor matrix in <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code> (i.e., modification of <code>type</code>),
 the level of random effects can be specified with <code>levels_id</code> and random slopes
 can be selected with <code>random_slopes</code>.</p>
 <p>The function <code>mice.impute.ml.lmer</code> allows the imputation of variables at
@@ -336,14 +336,14 @@ for several links to other packages which enable multilevel imputation.</p></div
 <span class='no'>variables_levels</span>[ <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"z1"</span>,<span class='st'>"z2"</span>) ] <span class='kw'>&lt;-</span> <span class='st'>"id3"</span>
 
 <span class='co'>#----- specify predictor matrix</span>
-<span class='no'>predmat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/make.predictorMatrix.html'>make.predictorMatrix</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>predmat</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/make.predictorMatrix.html'>make.predictorMatrix</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>predmat</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id2"</span>, <span class='st'>"id3"</span>) ] <span class='kw'>&lt;-</span> <span class='fl'>0</span>
 <span class='co'># set -2 for cluster identifier for level 3 variable z1</span>
 <span class='co'># because "2lonly" function is used</span>
 <span class='no'>predmat</span>[ <span class='st'>"z1"</span>, <span class='st'>"id3"</span> ] <span class='kw'>&lt;-</span> -<span class='fl'>2</span>
 
 <span class='co'>#----- specify imputation methods</span>
-<span class='no'>method</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/make.method.html'>make.method</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>method</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/make.method.html'>make.method</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>method</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"x1"</span>,<span class='st'>"y1"</span>)] <span class='kw'>&lt;-</span> <span class='st'>"ml.lmer"</span>
 <span class='no'>method</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"z1"</span>)] <span class='kw'>&lt;-</span> <span class='st'>"2lonly.norm"</span>
 
@@ -362,7 +362,7 @@ for several links to other packages which enable multilevel imputation.</p></div
 <span class='co'># and only a random intercept is used in the imputation model</span>
 
 <span class='co'>#----- imputation in mice</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>,
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>,
             <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predmat</span>, <span class='kw'>levels_id</span><span class='kw'>=</span><span class='no'>levels_id</span>,  <span class='kw'>random_slopes</span><span class='kw'>=</span><span class='no'>random_slopes</span>,
             <span class='kw'>variables_levels</span><span class='kw'>=</span><span class='no'>variables_levels</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp1</span>)
@@ -380,7 +380,7 @@ for several links to other packages which enable multilevel imputation.</p></div
 <span class='no'>interactions</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"x1"</span><span class='kw'>=</span><span class='st'>"z2"</span>, <span class='st'>"y1"</span><span class='kw'>=</span><span class='st'>"z2"</span>)
 
 <span class='co'>#----- imputation in mice</span>
-<span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='http://stefvanbuuren.github.io/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predmat</span>,
+<span class='no'>imp2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predmat</span>,
                 <span class='kw'>levels_id</span><span class='kw'>=</span><span class='no'>levels_id</span>, <span class='kw'>random_slopes</span><span class='kw'>=</span><span class='no'>random_slopes</span>,
                 <span class='kw'>variables_levels</span><span class='kw'>=</span><span class='no'>variables_levels</span>, <span class='kw'>model</span><span class='kw'>=</span><span class='no'>model</span>, <span class='kw'>interactions</span><span class='kw'>=</span><span class='no'>interactions</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp2</span>)
