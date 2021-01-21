@@ -1,5 +1,5 @@
 %% File Name: ml_mcmc.Rd
-%% File Version: 0.446
+%% File Version: 0.447
 
 \name{ml_mcmc}
 \alias{ml_mcmc}
@@ -313,7 +313,7 @@ data$y <- cut( y, breaks=alpha, labels=FALSE ) - 1
 
 #*** estimate model
 formula <- y ~ miceadds::cwc(x, idcluster) + miceadds::gm(x,idcluster) + w + ( 1 | idcluster)
-mod <- miceadds::ml_mcmc( formula=formula, data=data, iter=2000, burnin=500, 
+mod <- miceadds::ml_mcmc( formula=formula, data=data, iter=2000, burnin=500,
                 outcome="probit", inits_lme4=FALSE)
 summary(mod)
 plot(mod)

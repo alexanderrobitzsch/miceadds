@@ -1,5 +1,5 @@
 %% File Name: data.allison.Rd
-%% File Version: 0.18
+%% File Version: 0.19
 
 \name{data.allison}
 \alias{data.allison}
@@ -81,7 +81,7 @@ data(data.allison.usnews)
 %}
 
 \source{
-The datasets are available from \url{http://www.ats.ucla.edu/stat/examples/md/}.
+The datasets were downloaded from \emph{http://www.ats.ucla.edu/stat/examples/md/}.
 }
 
 
