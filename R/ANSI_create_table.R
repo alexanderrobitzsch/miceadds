@@ -1,5 +1,5 @@
 ## File Name: ANSI_create_table.R
-## File Version: 0.568
+## File Version: 0.569
 
 
 #*** create table with results
@@ -158,5 +158,7 @@ ANSI_create_table <- function (dat, criterion,
     if ( ! is.null( vert_empty) ){
         dfr <- ANSI_matrix_include_cols(mat=dfr, empty=vert_empty, fill="")
     }
+    attr(dfr, "horiz_table") <- horiz_table
+    attr(dfr, "vert_table") <- vert_table
     return(dfr)
 }

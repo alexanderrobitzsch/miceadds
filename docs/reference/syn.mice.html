@@ -121,7 +121,7 @@ in the <code><a href='https://rdrr.io/pkg/synthpop/man/syn.html'>synthpop::syn</
 the <span class="pkg">synthpop</span> package (Nowok, Raab, &amp; Dibben, 2016).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>syn.mice</span>(<span class='no'>y</span>, <span class='no'>x</span>, <span class='no'>xp</span>, <span class='no'>mice_fun</span>, <span class='no'>mice_arg</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>syn.mice</span>(<span class='no'>y</span>, <span class='no'>x</span>, <span class='no'>xp</span>, <span class='no'>mice_fun</span>, <span class='no'>mice_args</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,7 +143,7 @@ the <span class="pkg">synthpop</span> package (Nowok, Raab, &amp; Dibben, 2016).
       <td><p>Name of imputation method for <span class="pkg">mice</span></p></td>
     </tr>
     <tr>
-      <th>mice_arg</th>
+      <th>mice_args</th>
       <td><p>Optional list of arguments for <code>mice_fun</code>, see Examples.</p></td>
     </tr>
     <tr>
@@ -183,6 +183,7 @@ doi: <a href='https://doi.org/10.18637/jss.v074.i11'>10.18637/jss.v074.i11</a></
 <span class='no'>vars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sex"</span>,<span class='st'>"age"</span>,<span class='st'>"ls"</span>,<span class='st'>"smoke"</span>)
 <span class='no'>dat</span>  <span class='kw'>&lt;-</span> <span class='no'>SD2011</span>[<span class='fl'>1</span>:<span class='fl'>1000</span>, <span class='no'>vars</span>]
 <span class='no'>dat</span>$<span class='no'>ls</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='no'>dat</span>$<span class='no'>ls</span>)
+<span class='no'>dat</span>$<span class='no'>smoke</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>*(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='no'>dat</span>$<span class='no'>smoke</span>)<span class='kw'>==</span><span class='st'>"YES"</span>)
 
 <span class='co'>#** default synthesis</span>
 <span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>synthpop</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/synthpop/man/syn.html'>syn</a></span>(<span class='no'>dat</span>)
@@ -190,14 +191,14 @@ doi: <a href='https://doi.org/10.18637/jss.v074.i11'>10.18637/jss.v074.i11</a></
 <span class='no'>method</span> <span class='kw'>&lt;-</span> <span class='no'>imp0</span>$<span class='no'>method</span>
 
 <span class='co'>#** use mice imputation method 'rlm' for variable 'ls'</span>
-<span class='no'>method</span>[<span class='st'>"ls"</span>] <span class='kw'>&lt;-</span> <span class='st'>"mice"</span>
-<span class='no'>mice_fun</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>ls</span><span class='kw'>=</span><span class='st'>"rlm"</span> )
-<span class='no'>mice_args</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>ls</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>trafo</span><span class='kw'>=</span><span class='kw pkg'>base</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>, <span class='kw'>antitrafo</span><span class='kw'>=</span><span class='kw pkg'>base</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span>) )
+<span class='no'>method</span>[<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ls"</span>,<span class='st'>"smoke"</span>)] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"mice"</span>,<span class='st'>"mice"</span>)
+<span class='no'>mice_fun</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>ls</span><span class='kw'>=</span><span class='st'>"rlm"</span>, <span class='kw'>smoke</span><span class='kw'>=</span><span class='st'>"pmm"</span>)
+<span class='no'>mice_args</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>ls</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>trafo</span><span class='kw'>=</span><span class='no'>log</span>, <span class='kw'>antitrafo</span><span class='kw'>=</span><span class='no'>exp</span>) )
 
 <span class='co'>#* synthesize data</span>
 <span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>synthpop</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/synthpop/man/syn.html'>syn</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>predictor.matrix</span><span class='kw'>=</span><span class='no'>pred</span>, <span class='kw'>k</span><span class='kw'>=</span><span class='fl'>2000</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>,
             <span class='kw'>rf.mice_fun</span><span class='kw'>=</span><span class='no'>mice_fun</span>, <span class='kw'>rf.mice_args</span><span class='kw'>=</span><span class='no'>mice_args</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span>(<span class='no'>imp</span>$<span class='no'>syn</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp</span>)
 }</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

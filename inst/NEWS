@@ -42,14 +42,15 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.12  |  2021-01-21  |  Last: miceadds 3.12-1
+VERSIONS miceadds 3.12  |  2021-04-11  |  Last: miceadds 3.12-5
 ---------------------------------------------------------------------
 
-xxxx  *
+FIXED * fixed a bug in syn.mice()
+
 
 
 DATA  * included/modified datasets: ---
-EXAMP * included/modified examples: ---
+EXAMP * included/modified examples: syn.mice (1)
 
 
 

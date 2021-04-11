@@ -1,8 +1,8 @@
 ## File Name: syn.mice.R
-## File Version: 0.238
+## File Version: 0.246
 
 
-syn.mice <- function(y, x, xp, mice_fun, mice_arg, ...)
+syn.mice <- function(y, x, xp, mice_fun, mice_args, ...)
 {
     #-- catch arguments
     arguments <- c("mice_fun", "mice_args")

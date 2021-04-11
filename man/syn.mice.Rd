@@ -1,5 +1,5 @@
 %% File Name: syn.mice.Rd
-%% File Version: 0.16
+%% File Version: 0.172
 
 \name{syn.mice}
 \alias{syn.mice}
@@ -17,7 +17,7 @@ the \pkg{synthpop} package (Nowok, Raab, & Dibben, 2016).
 }
 
 \usage{
-syn.mice(y, x, xp, mice_fun, mice_arg, ...)
+syn.mice(y, x, xp, mice_fun, mice_args, ...)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -26,7 +26,7 @@ syn.mice(y, x, xp, mice_fun, mice_arg, ...)
 \item{x}{Matrix (\eqn{n \times p}) of original covariates}
 \item{xp}{Matrix (\eqn{k \times p}) of synthesised covariates}
 \item{mice_fun}{Name of imputation method for \pkg{mice}}
-\item{mice_arg}{Optional list of arguments for \code{mice_fun}, see Examples.}
+\item{mice_args}{Optional list of arguments for \code{mice_fun}, see Examples.}
 \item{\dots}{
 Further arguments to be passed
 }
@@ -78,6 +78,7 @@ data(SD2011, package="synthpop")
 vars <- c("sex","age","ls","smoke")
 dat  <- SD2011[1:1000, vars]
 dat$ls <- as.numeric(dat$ls)
+dat$smoke <- 1*(paste(dat$smoke)=="YES")
 
 #** default synthesis
 imp0 <- synthpop::syn(dat)
@@ -85,14 +86,14 @@ pred <- imp0$predictor.matrix
 method <- imp0$method
 
 #** use mice imputation method 'rlm' for variable 'ls'
-method["ls"] <- "mice"
-mice_fun <- list( ls="rlm" )
-mice_args <- list( ls=list( trafo=base::log, antitrafo=base::exp) )
+method[c("ls","smoke")] <- c("mice","mice")
+mice_fun <- list( ls="rlm", smoke="pmm")
+mice_args <- list( ls=list( trafo=log, antitrafo=exp) )
 
 #* synthesize data
 imp <- synthpop::syn( dat, method=method, predictor.matrix=pred, k=2000, m=1,
             rf.mice_fun=mice_fun, rf.mice_args=mice_args)
-str(imp$syn)
+summary(imp)
 }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

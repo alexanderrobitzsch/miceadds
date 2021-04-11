@@ -1,5 +1,5 @@
 ## File Name: syn_mice_catch_arguments.R
-## File Version: 0.14
+## File Version: 0.160
 
 syn_mice_catch_arguments <- function(arguments)
 {
@@ -33,10 +33,11 @@ syn_mice_catch_arguments <- function(arguments)
             nn <- nn+1
         }
     }
+
     #- further search if mice_arg_list is empty
     if (length(mice_arg_list)==0){
         for (aa in arguments){
-            aa_val <- ma_exists_get(x=arguments[1], pos=pos, n_index=9 )
+            aa_val <- ma_exists_get(x=aa, pos=pos, n_index=9 )
             mice_arg_list[[aa]] <- aa_val
 
         }

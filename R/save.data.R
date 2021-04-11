@@ -1,5 +1,5 @@
 ## File Name: save.data.R
-## File Version: 0.36
+## File Version: 0.37
 
 
 #--- miceadds: saving data
@@ -7,7 +7,7 @@ save.data <- function( data, filename, type="Rdata", path=getwd(),
                 row.names=FALSE, na=NULL, suffix=NULL, suffix_space="__",
                 index=FALSE, systime=FALSE,  ...)
 {
-    if (type%in%"sav"){
+    if ("sav" %in% type){
         require_namespace("sjlabelled")
     }
 
