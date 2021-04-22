@@ -1,5 +1,5 @@
 ## File Name: files_move.R
-## File Version: 0.27
+## File Version: 0.282
 
 files_move <- function( path1, path2, file_sep="__", pattern=NULL,
     path2_name="__ARCH")
@@ -15,6 +15,7 @@ files_move <- function( path1, path2, file_sep="__", pattern=NULL,
     if ( ! is.null( pattern) ){
         files <- grep( pattern=pattern, x=files, value=TRUE)
     }
+
     #*** create file overview
     NF <- length(files)
     if (NF > 1){

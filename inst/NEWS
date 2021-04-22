@@ -42,11 +42,12 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.12  |  2021-04-11  |  Last: miceadds 3.12-5
+VERSIONS miceadds 3.12  |  2021-04-22  |  Last: miceadds 3.12-6
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in syn.mice()
-
+FIXED * fixed a bug in pool.mids.nmi()
+        (thanks to Francis Huang @flh3, Github issue #21)
 
 
 DATA  * included/modified datasets: ---

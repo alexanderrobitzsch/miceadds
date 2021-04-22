@@ -1,5 +1,5 @@
 ## File Name: MIcombine.NestedImputationResultList.R
-## File Version: 0.06
+## File Version: 0.07
 
 
 MIcombine.NestedImputationResultList <- function(results, ...)
@@ -25,7 +25,7 @@ MIcombine.NestedImputationResultList <- function(results, ...)
             qhat[bb,ww,] <- coef( results[[bb]][[ww]] )
         }
     }
-    rval <- pool.nmi.scalar.helper( qhat=qhat, u=u, NV=NV, NB=NB, NW=NW )
+    rval <- pool_nmi_scalar_helper( qhat=qhat, u=u, NV=NV, NB=NB, NW=NW )
     rval$Nimp <- Nimp
     class(rval) <- "mipo.nmi"
     return(rval)

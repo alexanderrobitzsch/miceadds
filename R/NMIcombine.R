@@ -1,5 +1,5 @@
 ## File Name: NMIcombine.R
-## File Version: 0.362
+## File Version: 0.363
 
 
 #* extension of MIcombine function to nested
@@ -116,7 +116,7 @@ NMIcombine <- function( qhat, u=NULL, se=NULL,
     }
 
     #--- NMI inference
-    res <- pool.nmi.scalar.helper( qhat=qhat, u=u, NV=NV, NB=NB, NW=NW,
+    res <- pool_nmi_scalar_helper( qhat=qhat, u=u, NV=NV, NB=NB, NW=NW,
                 comp_cov=comp_cov, method=method)
 
     if ( is.null(u0) ){

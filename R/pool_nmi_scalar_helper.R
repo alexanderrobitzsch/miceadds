@@ -1,16 +1,9 @@
-## File Name: pool.nmi.scalar.helper.R
-## File Version: 0.32
+## File Name: pool_nmi_scalar_helper.R
+## File Version: 0.341
 
-################################################################
-pool.nmi.scalar.helper <- function( qhat, u, NV, NB, NW, comp_cov=TRUE,
+pool_nmi_scalar_helper <- function( qhat, u, NV, NB, NW, comp_cov=TRUE,
         method=1 )
 {
-    # Input: qhat, u, NV, NB, NW
-    # qhat ... estimator
-    # u    ... covariance matrix
-    # NV   ... number of variables
-    # NB   ... number of between-nest imputations
-    # NW   ... number of within-nest imputations
 
     # formulas follow Reiter & Raghanuthan (2007)
     #  multiple adaptations of multiple imputation
@@ -62,19 +55,13 @@ pool.nmi.scalar.helper <- function( qhat, u, NV, NB, NW, comp_cov=TRUE,
         rmn <- ( ( 1 + 0 ) * diag(Bm) + ( 1 - 1 /NW ) * diag(Wm) ) / diag(Um)
     }
 
-
     #****
-    #@@@ Change ARb 2016-02-03
     # Harel & Schafer formula Sect. 3
     if ( method==2){
         rmn <- ( ( 1 + 1/NB) * diag(Bm) + ( 1 - 1 /NW ) * diag(Wm) ) / diag(Um)
     }
     lambda <- rmn / ( 1 + rmn )
 
-    #*** ARb 2016-02-01
-    # check correct formula for lambda because it differs
-    # in case of MI data.
-    #@@@ Change ARb 2016-02-03
     if (method==1){
          # lambda_Within <- diag( Wm / ( Um + Wm ) )
         rBA <- ( 1 + 0 ) * diag(Wm) / diag(Um)
@@ -97,4 +84,6 @@ pool.nmi.scalar.helper <- function( qhat, u, NV, NB, NW, comp_cov=TRUE,
                 lambda_Within=lambda_Within, tval=tval, pval=pval, NV=NV )
     return(fit)
 }
-###########################################
+
+
+pool.nmi.scalar.helper <- pool_nmi_scalar_helper
