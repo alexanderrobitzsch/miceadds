@@ -42,12 +42,15 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.12  |  2021-04-22  |  Last: miceadds 3.12-6
+VERSIONS miceadds 3.12  |  2021-06-18  |  Last: miceadds 3.12-7
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in syn.mice()
 FIXED * fixed a bug in pool.mids.nmi()
         (thanks to Francis Huang @flh3, Github issue #21)
+NOTE  * fixed memory issues in mice.impute.weighted.norm() and
+        and mice.impute.weighted.pmm() 
+        (thanks to Ryan Jarrett @jarretrt, Github issue #22)
 
 
 DATA  * included/modified datasets: ---

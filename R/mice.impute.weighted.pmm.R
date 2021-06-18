@@ -1,5 +1,5 @@
 ## File Name: mice.impute.weighted.pmm.R
-## File Version: 0.416
+## File Version: 0.418
 
 mice.impute.weighted.pmm <- function (y, ry, x, wy=NULL, imputationWeights=NULL,
         pls.facs=NULL, interactions=NULL, quadratics=NULL, donors=5, ...)
@@ -16,7 +16,7 @@ mice.impute.weighted.pmm <- function (y, ry, x, wy=NULL, imputationWeights=NULL,
     x <- res$x
 
     #** weighted pmm
-    if (is.null(pls.facs)){
+    if (is.null(pls.facs)){    
         parm <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
                         ry=ry, y=y, x=x, weights.obs=weights.obs, ... )
         wy <- mice_imputation_define_wy(wy=wy, ry=ry)
@@ -26,6 +26,10 @@ mice.impute.weighted.pmm <- function (y, ry, x, wy=NULL, imputationWeights=NULL,
         yimp <- miceadds_rcpp_weighted_pmm_match( yhatmis=yhatmis,
                     yhatobs=yhatobs, yobs=y[ry], weights_obs=weights.obs,
                     donors=donors)
+
     }
     return(yimp)
 }
+
+
+# cat(" * pmm") ; a1 <- Sys.time(); print(a1-a0) ; a0 <- a1                                                            

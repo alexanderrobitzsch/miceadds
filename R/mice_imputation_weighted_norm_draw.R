@@ -1,11 +1,11 @@
 ## File Name: mice_imputation_weighted_norm_draw.R
-## File Version: 0.26
+## File Version: 0.27
 
 mice_imputation_weighted_norm_draw <- function( yobs, xobs, ry, y, x,
     weights.obs, ridge=1e-5, sample_pars=TRUE,... )
 {
     n <- length(yobs)
-    WW <- diag(weights.obs)
+    # WW <- diag(weights.obs)
     # X'*W*X
     # xtx <- t(xobs) %*% WW %*% xobs
     weights_obs_sqrt <- sqrt(weights.obs)
