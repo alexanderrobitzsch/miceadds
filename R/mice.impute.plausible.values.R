@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.678
+## File Version: 2.692
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
@@ -93,8 +93,14 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         M.scale <- scale.values[[ vname ]][[ "M" ]]
         SE.scale <- scale.values[[ vname ]][[ "SE" ]]
         # compute true variance
-        var.ytrue <- stats::var( M.scale, na.rm=TRUE)  - mean( (SE.scale[ ! is.na(M.scale) ])^2, na.rm=TRUE )
+        ind1 <- ! is.na(M.scale)
+        # var.ytrue <- stats::var( M.scale[ind1] , na.rm=TRUE)  - mean( (SE.scale[ ind1 ])^2, na.rm=TRUE )
+        v2 <- stats::var( M.scale[ind1] , na.rm=TRUE)
+        var.ytrue <- v2  - stats::median( (SE.scale[ ind1 ])^2, na.rm=TRUE )
         true.var <- var.ytrue
+        if (true.var < 0){
+            true.var <- v2
+        }    
         miss <- ( is.na(M.scale) ) | ( is.na(SE.scale ) )
         M.scale[miss] <- Mscale <- mean( M.scale, na.rm=TRUE )
         SE.scale[miss] <- sig.e.miss
@@ -137,7 +143,6 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         xtx <- crossprod(xcov1a)
         diag(xtx) <- diag(xtx) * (1 + ridge)
         xtx1 <- miceadds_ginv(x=xtx)
-
         # begin iterations for drawing plausible values
         for (iter in 1:pviter){
             # draw plausible value for individuals
@@ -148,6 +153,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             yfitted <- xcov1a %*% cmod
             sigma2 <- mean( ( y.pv - yfitted )^2 )
             v <- sigma2 * xtx1
+            diag(v) <- diag(v) + ridge
             beta.star <- as.vector(cmod) + ma_rmvnorm( n=1, mu=rep(0,nrow(v)), sigma=v)
             #-> fitted regression coefficients
 
@@ -167,7 +173,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                 xcov1 <- cbind( xcov, gm )
             }
         }
-        ximp <- as.vector( y.pv )
+        ximp <- as.vector(y.pv)
     }
 
     #--- PV imputation scale score according to CTT (parallel measurements)
