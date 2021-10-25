@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.692
+## File Version: 2.694
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
@@ -94,13 +94,13 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         SE.scale <- scale.values[[ vname ]][[ "SE" ]]
         # compute true variance
         ind1 <- ! is.na(M.scale)
-        # var.ytrue <- stats::var( M.scale[ind1] , na.rm=TRUE)  - mean( (SE.scale[ ind1 ])^2, na.rm=TRUE )
-        v2 <- stats::var( M.scale[ind1] , na.rm=TRUE)
+        # var.ytrue <- stats::var( M.scale[ind1], na.rm=TRUE)  - mean( (SE.scale[ ind1 ])^2, na.rm=TRUE )
+        v2 <- stats::var( M.scale[ind1], na.rm=TRUE)
         var.ytrue <- v2  - stats::median( (SE.scale[ ind1 ])^2, na.rm=TRUE )
         true.var <- var.ytrue
         if (true.var < 0){
             true.var <- v2
-        }    
+        }
         miss <- ( is.na(M.scale) ) | ( is.na(SE.scale ) )
         M.scale[miss] <- Mscale <- mean( M.scale, na.rm=TRUE )
         SE.scale[miss] <- sig.e.miss

@@ -1,5 +1,5 @@
 ## File Name: mice_multilevel_add_groupmeans.R
-## File Version: 0.13
+## File Version: 0.149
 
 
 mice_multilevel_add_groupmeans <- function( y, ry, x, type,
@@ -11,12 +11,18 @@ mice_multilevel_add_groupmeans <- function( y, ry, x, type,
     #----
     # add groupmeans in the regression model
     if ( any( type %in% c( type3, type4) ) ){
-        x0 <- as.matrix(cbind( x[,type==-2], x[,type %in% c(type3, type4)] ))
-        colnames(x0) <- c( colnames(x)[type==-2], colnames(x)[type %in% c(type3, type4)] )
+        # x0 <- as.matrix(cbind( x[,type==-2], x[,type %in% c(type3, type4)] ))
+        sel_types <- names(type)[ type %in% c(-2, type3, type4) ]
+        sel_types <- intersect(sel_types, colnames(x))
+        x0 <- as.matrix(x[, sel_types, drop=FALSE] )
+        # colnames(x0) <- c( colnames(x)[type==-2], colnames(x)[type %in% c(type3, type4)] )
+        colnames(x0) <- sel_types
         type0 <- c( -2, rep(1,ncol(x0)-1) )
         x0.aggr <- as.matrix( mice_multilevel_impute_groupmean(y=y, ry=ry, x=x0,
                         type=type0, grmeanwarning=FALSE ))
-        colnames(x0.aggr) <- paste0( aggr_label, colnames(x0)[-1])
+        if (ncol(x0.aggr)>0){
+            colnames(x0.aggr) <- paste0( aggr_label, colnames(x0)[-1])
+        }
         # group mean centering
         if ( groupcenter.slope ){
           x0.aggr1 <- as.matrix(x0.aggr)
