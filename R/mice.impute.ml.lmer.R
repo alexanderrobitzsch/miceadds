@@ -1,5 +1,5 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.638
+## File Version: 0.708
 
 
 #*** main function for multilevel imputation with lme4 with several levels
@@ -9,7 +9,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 glmer.warnings=TRUE, model="continuous", donors=3, match_sampled_pars=FALSE,
                 blme_use=FALSE, blme_args=NULL, pls.facs=0, interactions=NULL,
                 quadratics=NULL, min.int.cor=0, min.all.cor=0,
-                pls.print.progress=FALSE, group_index=NULL, ... )
+                pls.print.progress=FALSE, group_index=NULL, iter_re=0, ... )
 {
     require_namespace("lme4")
     res <- mice_imputation_factor_pmm_prepare(y=y)
@@ -21,13 +21,12 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
         require_namespace("blme")
     }
 
-
     #--- extraction of arguments
     pos <- parent.frame(n=2)
     res <- mice_ml_lmer_extract_input( pos=pos, levels_id=levels_id, random_slopes=random_slopes,
                 variables_levels=variables_levels, pls.facs=pls.facs, min.int.cor=min.int.cor,
                 min.all.cor=min.all.cor, interactions=interactions, quadratics=quadratics,
-                model=model, group_index=group_index)
+                model=model, group_index=group_index, iter_re=iter_re)
     vname <- res$vname
     p <- res$p
     type <- res$type
@@ -42,6 +41,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     interactions <- res$interactions
     quadratics <- res$quadratics
     model <- res$model
+    iter_re <- res$iter_re
     y0 <- y
     ry0 <- ry
 
@@ -103,20 +103,23 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 warnings=glmer.warnings )
 
     #--- draw fixed effects
-    b.est <- b.star <- lme4::fixef(fit)
+    b.est <- b.star <- lme4::fixef(object=fit)
     if( draw.fixed ){     # posterior draw for fixed effects
         b.star <- mice_multilevel_draw_rnorm1( mu=b.star, Sigma=vcov(fit) )
     }
 
     #--- extract posterior distribution of random effects
-    fl <- lme4::getME(fit, "flist")
+    fl <- lme4::getME(object=fit, name="flist")
 
     #--- variance matrix of random effects
-    fit_vc <- lme4::VarCorr(fit)
-    # extract random effects
-    re0 <- lme4::ranef(fit, condVar=TRUE)
+    fit_vc <- lme4::VarCorr(x=fit)
 
+    # extract random effects
+    re0 <- lme4::ranef(object=fit, condVar=TRUE)
     predicted <- 0
+    predicted_umat <- mice_ml_lmer_define_predicted_umat( y=y, NL=NL,
+                            levels_id=levels_id )
+
     for (ll in 1:NL){
         levels_id_ll <- levels_id[ll]
         predicted_u <- mice_ml_lmer_draw_random_effects( clus=clus[[levels_id_ll]],
@@ -124,7 +127,8 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                             ry=ry, fl=fl[[levels_id_ll]], fit_vc=fit_vc[[levels_id_ll]],
                             re0=re0[[levels_id_ll]], ngr=ngr[[levels_id_ll]],
                             used_slopes=used_slopes, levels_id_ll=levels_id_ll, x=x,
-                            random.effects.shrinkage=random.effects.shrinkage)
+                            random.effects.shrinkage=random.effects.shrinkage, iter_re=iter_re)
+        predicted_umat[,ll] <- predicted_u
         predicted <- predicted + predicted_u
     }
 
@@ -140,11 +144,16 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     if (intercept){
         x0 <- cbind( 1, x0 )
     }
-
     #--- compute predicted values including fixed and random part
-    predicted <- x0 %*% b.star + predicted
+    pred_fixed <- x0 %*% b.star
+    predicted <- pred_fixed + predicted
 
-    #--- predicted values for cases with missing data
+    #--- iterations for random effects
+    predicted <- mice_ml_lmer_draw_random_effects_in_iterations( y=y,
+                    ry=ry, pred_fixed=pred_fixed, iter_re=iter_re, NL=NL, levels_id=levels_id,
+                    clus=clus, fit_vc=fit_vc, predicted_umat=predicted_umat, predicted=predicted )
+
+    #--- extract predicted values for cases with missing data
     predicted0 <- predicted[ !ry ]
 
     #--- predicted values for cases with observed data
@@ -175,6 +184,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 level_ids_upper=data[, vname_level ], extend=vname_level !="" )
     imp <- mice_imputation_factor_pmm_convert_factor(imp=imp,
                     is_factor=is_factor, y_aggr=y_aggr)
+
     #--- output imputed values
     return(imp)
 }

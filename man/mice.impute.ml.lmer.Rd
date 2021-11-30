@@ -1,5 +1,5 @@
 %% File Name: mice.impute.ml.lmer.Rd
-%% File Version: 0.384
+%% File Version: 0.386
 
 \name{mice.impute.ml.lmer}
 \alias{mice.impute.ml.lmer}
@@ -48,7 +48,7 @@ mice.impute.ml.lmer(y, ry, x, type, levels_id, variables_levels=NULL,
     glmer.warnings=TRUE, model="continuous", donors=3, match_sampled_pars=FALSE,
     blme_use=FALSE, blme_args=NULL, pls.facs=0, interactions=NULL,
     quadratics=NULL, min.int.cor=0, min.all.cor=0, pls.print.progress=FALSE,
-    group_index=NULL, ...)
+    group_index=NULL, iter_re=0, ...)
 }
 
 
@@ -126,6 +126,9 @@ Logical indicating whether progress of algorithm should be displayed
 }
 \item{group_index}{Optional vector for group identifiers (internally used
 in \code{mice.impute.bygroup}}
+\item{iter_re}{Number of iterations for sampling random effects in random intercept
+models for continuous outcomes. Using \code{iter_re>0} is necessary for cross-classified
+models with not fully balanced designs.}
   \item{\dots}{
 Further arguments to be passed
 }

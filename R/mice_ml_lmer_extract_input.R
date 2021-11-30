@@ -1,9 +1,9 @@
 ## File Name: mice_ml_lmer_extract_input.R
-## File Version: 0.28
+## File Version: 0.292
 
 mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_levels,
         pls.facs, min.int.cor, min.all.cor, interactions, quadratics, model,
-        group_index=NULL)
+        group_index=NULL, iter_re=0)
 {
     res <- mice_imputation_get_states( pos=pos )
     vname <- res$vname
@@ -43,6 +43,9 @@ mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_
     min.all.cor <- mice_imputation_extract_list_arguments( micearg=min.all.cor, vname=vname,
                         miceargdefault=0 )
 
+    iter_re <- mice_imputation_extract_list_arguments( micearg=iter_re, vname=vname,
+                        miceargdefault=0 )
+
     #--- interactions
     interactions <- mice_imputation_extract_arguments_list(v1=interactions, vname=vname)
 
@@ -58,7 +61,7 @@ mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_
                     random_slopes=random_slopes, imp.temp=imp.temp,
                     vname_level=vname_level, pls.facs=pls.facs, min.int.cor=min.int.cor,
                     min.all.cor=min.all.cor, interactions=interactions, quadratics=quadratics,
-                    model=model, predictorMatrix=predictorMatrix )
+                    model=model, predictorMatrix=predictorMatrix, iter_re=iter_re )
     return(res)
 }
 

@@ -1,5 +1,5 @@
 ## File Name: gm.R
-## File Version: 0.01
+## File Version: 0.03
 
 gm <- function(y, cluster)
 {

@@ -1,11 +1,12 @@
 ## File Name: GroupMean.R
-## File Version: 1.21
+## File Version: 1.244
 
 GroupMean  <- function( data, group, weights=NULL, extend=FALSE)
 {
     res <- GroupMean_group_indices(group=group)
     groups <- res$groups
     index.group <- res$index.group
+
     if ( is.null(weights) ){
         Ngroup <- rowsum( 1 - is.na(data), index.group )
         data1 <- rowsum( data, index.group, na.rm=TRUE)

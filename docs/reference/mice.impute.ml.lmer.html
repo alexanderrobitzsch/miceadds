@@ -171,7 +171,7 @@ missing values cannot (yet) be handled.</p>
     <span class='kw'>glmer.warnings</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>model</span><span class='kw'>=</span><span class='st'>"continuous"</span>, <span class='kw'>donors</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>match_sampled_pars</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
     <span class='kw'>blme_use</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>blme_args</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>pls.facs</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>interactions</span><span class='kw'>=</span><span class='kw'>NULL</span>,
     <span class='kw'>quadratics</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>min.int.cor</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>min.all.cor</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>pls.print.progress</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
-    <span class='kw'>group_index</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <span class='kw'>group_index</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>iter_re</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -288,6 +288,12 @@ package should be used.</p></td>
       <th>group_index</th>
       <td><p>Optional vector for group identifiers (internally used
 in <code>mice.impute.bygroup</code></p></td>
+    </tr>
+    <tr>
+      <th>iter_re</th>
+      <td><p>Number of iterations for sampling random effects in random intercept
+models for continuous outcomes. Using <code>iter_re&gt;0</code> is necessary for cross-classified
+models with not fully balanced designs.</p></td>
     </tr>
     <tr>
       <th>...</th>
