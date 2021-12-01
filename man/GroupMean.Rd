@@ -1,5 +1,5 @@
 %% File Name: GroupMean.Rd
-%% File Version: 0.36
+%% File Version: 0.372
 
 \name{GroupMean}
 \alias{GroupMean}
@@ -16,14 +16,14 @@ Calculation of Groupwise Descriptive Statistics for Matrices
 Calculates some groupwise descriptive statistics.
 }
 \usage{
-GroupMean(data, group, weights=NULL, extend=FALSE)
+GroupMean(data, group, weights=NULL, extend=FALSE, elim=FALSE)
 
 GroupSum(data, group, weights=NULL, extend=FALSE)
 
 GroupSD(data, group, weights=NULL, extend=FALSE)
 
 # group mean of a variable
-gm(y, cluster)
+gm(y, cluster, elim=FALSE)
 
 # centering within clusters
 cwc(y, cluster)
@@ -39,6 +39,8 @@ A vector of group identifiers
 \item{weights}{An optional vector of sample weights}
 \item{extend}{Optional logical indicating whether the group means (or sums)
 should be extended to the original dimensions of the dataset.}
+\item{elim}{Logical indicating whether a case in a row should be removed
+from the calculation of the mean in a cluster}
 \item{y}{Variable}
 \item{cluster}{Cluster identifier}
 }

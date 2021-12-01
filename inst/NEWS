@@ -42,7 +42,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.12  |  2021-11-30  |  Last: miceadds 3.12-15
+VERSIONS miceadds 3.12  |  2021-12-01  |  Last: miceadds 3.12-16
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in syn.mice()
@@ -56,6 +56,7 @@ FIXED * fixed incorrect matching in mice.impute.weighted.pmm()
 FIXED * fixed a bug in imputation method 'ml.lmer' when no
         aggragated variables are used
 ADDED * added argument 'iter_re' in mice.impute.ml.lmer()
+ADDED * added argument 'elim' in gm() and GroupMean()
 
 
 DATA  * included/modified datasets: ---

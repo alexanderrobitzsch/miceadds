@@ -117,14 +117,14 @@
     <p>Calculates some groupwise descriptive statistics.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>GroupMean</span>(<span class='no'>data</span>, <span class='no'>group</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>extend</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>GroupMean</span>(<span class='no'>data</span>, <span class='no'>group</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>extend</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>elim</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 
 <span class='fu'>GroupSum</span>(<span class='no'>data</span>, <span class='no'>group</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>extend</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 
 <span class='fu'>GroupSD</span>(<span class='no'>data</span>, <span class='no'>group</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>extend</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 
 <span class='co'># group mean of a variable</span>
-<span class='fu'>gm</span>(<span class='no'>y</span>, <span class='no'>cluster</span>)
+<span class='fu'>gm</span>(<span class='no'>y</span>, <span class='no'>cluster</span>, <span class='kw'>elim</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
 
 <span class='co'># centering within clusters</span>
 <span class='fu'>cwc</span>(<span class='no'>y</span>, <span class='no'>cluster</span>)</pre>
@@ -148,6 +148,11 @@
       <th>extend</th>
       <td><p>Optional logical indicating whether the group means (or sums)
 should be extended to the original dimensions of the dataset.</p></td>
+    </tr>
+    <tr>
+      <th>elim</th>
+      <td><p>Logical indicating whether a case in a row should be removed
+from the calculation of the mean in a cluster</p></td>
     </tr>
     <tr>
       <th>y</th>
