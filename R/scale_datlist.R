@@ -1,5 +1,5 @@
 ## File Name: scale_datlist.R
-## File Version: 0.32
+## File Version: 0.332
 
 
 #- application of scale for a list of multiply imputed datasets,
@@ -14,31 +14,31 @@ scale_datlist <- function( datlist, orig_var, trafo_var, weights=NULL,
     is_ndl <- FALSE
     is_dl <- FALSE
 
-    if ( class(datlist)=="nestedImputationList"){
+    if ( inherits(datlist,"nestedImputationList") ){
         datlist <- nested.datlist_create( datlist )
         is_iL <- TRUE
     }
 
-    if ( class(datlist)=="nested.datlist" ){
+    if ( inherits(datlist,"nested.datlist") ){
         datlist <- nested.datlist2datlist(datlist)
         Nimp <- attr(datlist, "Nimp" )
         is_ndl <- TRUE
     }
 
-    if ( class(datlist)=="imputationList"){
+    if ( inherits(datlist,"imputationList") ){
         datlist0 <- datlist
         datlist <- datlist_create( datlist )
         is_iL <- TRUE
     }
 
-    if ( class(datlist)=="datlist"){
+    if ( inherits(datlist,"datlist") ){
         datlist0 <- datlist
         datlist <- datlist_create( datlist )
         is_dl <- TRUE
     }
 
     #**** processing if datlist is a data frame
-    if ( ! ( class(datlist) %in% c("datlist") ) ){
+    if ( ! inherits(datlist,"datlist")  ){
         is_dfr <- TRUE
         datlist0 <- datlist
         datlist <- list( 1 )

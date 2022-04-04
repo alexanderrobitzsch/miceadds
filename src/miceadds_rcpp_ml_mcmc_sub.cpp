@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_ml_mcmc_sub.cpp
-//// File Version: 0.888
+//// File Version: 0.889
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -822,7 +822,7 @@ arma::colvec miceadds_rcpp_ml_mcmc_sample_thresholds( arma::mat X,
     for (int kk=2; kk<K+1; kk++){
         alpha1(kk,0) = miceadds_rcpp_rnorm_double( alpha(kk,0), sd_proposal[kk] );
         accept = FALSE;
-        if ( ( alpha1(kk,0) > alpha1(kk-1,0) ) & ( alpha1(kk,0) < alpha1(kk+1,0) ) ){
+        if ( ( alpha1(kk,0) > alpha1(kk-1,0) ) && ( alpha1(kk,0) < alpha1(kk+1,0) ) ){
             prob1 = miceadds_rcpp_ml_mcmc_probit_loglike( y_int, alpha1, mu1, TRUE );
             mh_logratio = prob1 - prob0;
             if ( mh_logratio > 0 ){    accept = TRUE; }

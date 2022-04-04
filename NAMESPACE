@@ -244,7 +244,7 @@ export(mice.impute.2lonly.norm2)	             # defunct
 export(mice.impute.2lonly.pmm2)		# defunct
 export(mice.impute.bygroup)
 export(mice.impute.constant)
-export(mice.impute.grouped)
+# export(mice.impute.grouped)
 export(mice.impute.hotDeck)
 export(mice.impute.imputeR.cFun)
 export(mice.impute.imputeR.lmFun)

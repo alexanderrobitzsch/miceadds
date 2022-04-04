@@ -1,15 +1,15 @@
 ## File Name: mids2datlist.R
-## File Version: 0.17
+## File Version: 0.182
 
 mids2datlist <- function( midsobj, X=NULL)
 {
     datlist <- midsobj   # init
-    if ( class(midsobj)=="mids.1chain" ){
+    if ( inherits(midsobj,"mids.1chain") ){
         midsobj <- midsobj$midsobj
     }
 
     #--- object of class mids
-    if ( class(midsobj) %in% c("mids" ) ){
+    if ( inherits(midsobj,"mids") ){
         m <- midsobj$m
         datlist <- as.list( 1:m )
         for (ii in 1:m){
@@ -23,7 +23,7 @@ mids2datlist <- function( midsobj, X=NULL)
         datlist <- datlist_create(datasets=datlist)
     }
     #--- object of class mids.nmi
-    if ( class(midsobj) %in% c("mids.nmi" ) ){
+    if ( inherits(midsobj,"mids.nmi") ){
         Nimp <- midsobj$Nimp
         datlist <- as.list(1:Nimp["between"])
         dat1 <- as.list(1:Nimp["within"])

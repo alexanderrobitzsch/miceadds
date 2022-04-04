@@ -42,7 +42,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.12  |  2021-12-01  |  Last: miceadds 3.12-16
+VERSIONS miceadds 3.12  |  2022-04-03  |  Last: miceadds 3.12-26
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in syn.mice()
@@ -57,7 +57,12 @@ FIXED * fixed a bug in imputation method 'ml.lmer' when no
         aggragated variables are used
 ADDED * added argument 'iter_re' in mice.impute.ml.lmer()
 ADDED * added argument 'elim' in gm() and GroupMean()
-
+NOTE  * fixed issues in Rcpp code: warning: use of bitwise '&' 
+        with boolean operands [-Wbitwise-instead-of-logical]
+        (https://cran.r-project.org/web/checks/check_results_miceadds.html;
+        communicated by Kurt Hornik)
+NOTE  * no longer export mice.impute.grouped() because
+        dependent grouped package is no longer available on CRAN
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: syn.mice (1)

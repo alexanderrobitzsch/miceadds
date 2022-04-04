@@ -1,5 +1,5 @@
 %% File Name: data.enders.Rd
-%% File Version: 0.14
+%% File Version: 0.151
 
 \name{data.enders}
 \alias{data.enders}
@@ -85,7 +85,7 @@ data(data.enders.employee)
 
 \source{
 The datasets were downloaded from
-\url{http://www.appliedmissingdata.com/book-examples.html}.
+\url{https://www.appliedmissingdata.com/}.
 }
 
 

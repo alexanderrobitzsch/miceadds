@@ -1,17 +1,14 @@
 ## File Name: mi.anova.R
-## File Version: 0.364
+## File Version: 0.366
 
 
 mi.anova <- function( mi.res, formula, type=2 )
 {
-    if (type==3){
-        require_namespace("car")
-    }
     mi.list <- mi.res
-    if( class(mi.list)=="mids.1chain" ){
+    if( inherits(mi.list,"mids.1chain") ){
         mi.list <- mi.list$midsobj
     }
-    if( class(mi.list)=="mids" ){
+    if( inherits(mi.list,"mids") ){
         # number of imputations
         m <- mi.list$m
         # list of completed datasets
@@ -22,19 +19,20 @@ mi.anova <- function( mi.res, formula, type=2 )
         mi.list <- h1
     }
     # converting mi.norm objects
-    if (class(mi.res)=="mi.norm" ){
+    if (inherits(mi.res,"mi.norm") ){
         mi.list <- mi.list$imp.data
     }
     #**** type II sum of squares
-    if ( type==2){
+    if (type==2){
         anova.imp0 <- lapply( mi.list, FUN=function(dat){
                         stats::lm( formula, data=dat ) } )
-        anova.imp <- lapply( anova.imp0, FUN=function( obj){
+        anova.imp <- lapply( anova.imp0, FUN=function(obj){
                     summary( stats::aov(obj))
                             } )
     }
     #**** type III sum of squares
     if (type==3){
+        require_namespace("car")
         Nimp <- length(mi.list)
         vars <- all.vars( stats::as.formula( formula ))[-1]
         VV <- length(vars)

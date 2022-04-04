@@ -1,15 +1,15 @@
 ## File Name: micombine.cor.R
-## File Version: 0.594
+## File Version: 0.597
 
 
 #-- inference for correlations | nested multiply and multiply imputed datasets
 micombine.cor <- function( mi.res, variables=NULL,
         conf.level=.95, method="pearson", nested=FALSE, partial=NULL )
 {
-    if (class(mi.res)=="data.frame"){
+    if ( inherits(mi.res,"data.frame") ){
         mi.res <- list( mi.res )
     }
-    if ( class(mi.res)=="nested.datlist" ){
+    if ( inherits(mi.res,"nested.datlist") ){
         nested <- TRUE
     }
     if (! nested ){
@@ -29,7 +29,7 @@ micombine.cor <- function( mi.res, variables=NULL,
     N_partial <- 0
 
     if (!is.null(partial)){
-        if (! class(partial)=="formula"){
+        if (! inherits(partial,"formula") ){
             partial <- as.formula( paste0(" ~ ", paste0( partial, collapse="+")))
         }
     }
@@ -74,7 +74,7 @@ micombine.cor <- function( mi.res, variables=NULL,
                                     use="pairwise.complete.obs" )
                         } ) )
                     }
-                    if ( nested){
+                    if (nested){
                         cor.ii.jj <- lapply( mi.list, FUN=function(mm){
                                 lapply( mm, FUN=function(dat){
                                     if ( ! is.null(partial) ){

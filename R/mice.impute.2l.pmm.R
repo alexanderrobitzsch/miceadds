@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.pmm.R
-## File Version: 0.26
+## File Version: 0.272
 
 mice.impute.2l.pmm <- function(y, ry, x, type, intercept=TRUE,
             groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,

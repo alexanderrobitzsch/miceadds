@@ -1,17 +1,16 @@
 ## File Name: micombine.cov.R
-## File Version: 1.19
+## File Version: 1.201
 
-#################################################################################
-# inference for correlations | nested multiply and multiply imputed datasets
+#--- inference for correlations | nested multiply and multiply imputed datasets
 micombine.cov <- function( mi.res, variables=NULL,
         conf.level=.95,  nested=FALSE )
 {
 
-    if (class(mi.res)=="data.frame"){
+    if (inherits(mi.res,"data.frame") ){
         mi.res <- list( mi.res )
     }
 
-    if ( class(mi.res)=="nested.datlist" ){
+    if ( inherits(mi.res,"nested.datlist") ){
         nested <- TRUE
     }
     if (! nested ){
@@ -76,6 +75,5 @@ micombine.cov <- function( mi.res, variables=NULL,
     attr(dfr,"covse_matrix") <- m1
     return(dfr)
 }
-###################################################################
 
 

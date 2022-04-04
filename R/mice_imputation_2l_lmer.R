@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_2l_lmer.R
-## File Version: 0.581
+## File Version: 0.586
 
 
 #**** main function for multilevel imputation with lme4 which
@@ -54,9 +54,10 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                     include_intercept=intercept )
     rhs.r <- mice_multilevel_create_formula( variables=colnames(x)[type==2],
                     include_intercept=TRUE )
-    # combine formulas
-    fml <- paste0( "dv._lmer~", rhs.f, "+(", rhs.r,"|", clus_name,")" )
 
+    # combine formula elements
+    fml <- paste0( "dv._lmer ~ ", rhs.f, "+(", rhs.r,"|", clus_name,")" )
+    
     #*** prepare arguments for lmer estimation
     y1 <- y
     y1[!ry] <- NA
