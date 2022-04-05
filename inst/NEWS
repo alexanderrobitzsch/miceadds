@@ -42,7 +42,7 @@ CHANGELOG miceadds
 
 
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.12  |  2022-04-03  |  Last: miceadds 3.12-26
+VERSIONS miceadds 3.13  |  2022-04-04  |  Last: miceadds 3.13-1
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in syn.mice()
