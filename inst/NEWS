@@ -41,8 +41,24 @@ CHANGELOG miceadds
 
 
 
+
+--------------------------------------------------------------------------
+VERSIONS miceadds 3.13  |  2022-05-20  |  Last: miceadds 3.13-4
+--------------------------------------------------------------------------
+ 
+FIXED * fixed an issue with automatic removal of predictors in lme4::lmer()
+        for imputation methods '2l.norm' and '2l.pmm'
+        (thanks to Adam Kuczynski)
+
+
+DATA  * ---
+EXAMP * ---
+
+
+
+
 ---------------------------------------------------------------------
-VERSIONS miceadds 3.13  |  2022-04-04  |  Last: miceadds 3.13-1
+VERSIONS miceadds 3.12  |  2022-04-04  |  Last: miceadds 3.12-26
 ---------------------------------------------------------------------
 
 FIXED * fixed a bug in syn.mice()

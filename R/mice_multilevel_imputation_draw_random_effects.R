@@ -1,11 +1,5 @@
 ## File Name: mice_multilevel_imputation_draw_random_effects.R
-## File Version: 0.12
-
-################################################
-# draw of random effects
-# INPUT:
-# means mu (NG, NR )
-# covariance matrices Sigma (NR,NR,NG)
+## File Version: 0.135
 
 mice_multilevel_imputation_draw_random_effects <- function( mu, Sigma, ridge=1E-20 )
 {
@@ -16,7 +10,7 @@ mice_multilevel_imputation_draw_random_effects <- function( mu, Sigma, ridge=1E-
     u <- matrix(0, nrow=ngr, ncol=NR)
     if (NR==1){
         u[,1] <- stats::rnorm(ngr, mean=mu[,1], sd=sqrt(Sigma[1,1,]) )
-    } else {
+    } else {  # NR > 1
         for(i in 1L:ngr){
             #-- compute covariance matrix with ridge
             Sigma1 <- Sigma[,,i] + diag(ridge,NR)

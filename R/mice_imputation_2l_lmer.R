@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_2l_lmer.R
-## File Version: 0.586
+## File Version: 0.609
 
 
 #**** main function for multilevel imputation with lme4 which
@@ -49,6 +49,7 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                 groupcenter.slope=groupcenter.slope)
     x <- res$x
     type <- res$type
+
     #--- create formulas for lme4
     rhs.f <- mice_multilevel_create_formula( variables=colnames(x)[type %in% c(1,2)],
                     include_intercept=intercept )
@@ -57,7 +58,7 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
 
     # combine formula elements
     fml <- paste0( "dv._lmer ~ ", rhs.f, "+(", rhs.r,"|", clus_name,")" )
-    
+
     #*** prepare arguments for lmer estimation
     y1 <- y
     y1[!ry] <- NA
@@ -109,7 +110,6 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     #--- draw random effects
     u <- mice_multilevel_imputation_draw_random_effects( mu=re, Sigma=pv,
                 ridge=random.effects.shrinkage )
-
     #--- x and z for prediction
     x0 <- as.matrix( x[,type>=1,drop=FALSE ] )
     z0 <- as.matrix( x[,type==2,drop=FALSE ] )
@@ -118,8 +118,18 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
         z0 <- cbind(1,z0)
     }
 
+    if (length(b.est)!=ncol(x0)){
+        x00 <- stats::model.matrix(fit)
+        select_cols <- intersect(colnames(x0), colnames(x00))
+        x0 <- x0[, select_cols]
+        if (intercept){
+            x0 <- cbind(1,x0)
+        }
+    }
+
     #--- compute predicted values including fixed and random part
     predicted <- x0 %*% b.star + rowSums( z0 * u[index_clus,1:NR,drop=FALSE])
+
     # predicted values for cases with missing data
     predicted0 <- predicted[ !ry ]
     # predicted values for cases with observed data
@@ -150,10 +160,10 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                     yhatobs=predicted1, yhatmis=predicted0,
                     donors=donors, noise=1E5, ...)
     }
+
     #--- output imputed values
     return(imp)
 }
-
 
 #----------------------------------
 # mice: predictive mean matching

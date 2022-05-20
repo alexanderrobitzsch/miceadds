@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.694
+## File Version: 2.710
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
@@ -67,7 +67,8 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                         imputationWeights=imputationWeights,
                         interactions=interactions, quadratics=quadratics,
                         pls.facs=pls.facs, envir_pos=pos, ... )$yimp
-            X <- plsout[,-1]
+            # X <- plsout[,-1]
+            X <- plsout
         }
 
         #*+*+*
@@ -79,8 +80,10 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             normal.approx <- TRUE
         }
         X <- X[,-1,drop=FALSE]  # exclude intercept
+
         #-- perform latent regression
         mod0 <- TAM::tam.latreg(like=like, theta=theta, Y=X, control=control_latreg )
+
         #-- draw plausible values
         cat("\n")
         mod1 <- TAM::tam.pv( tamobj=mod0, normal.approx=normal.approx, nplausible=1, samp.regr=TRUE )
@@ -98,6 +101,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         v2 <- stats::var( M.scale[ind1], na.rm=TRUE)
         var.ytrue <- v2  - stats::median( (SE.scale[ ind1 ])^2, na.rm=TRUE )
         true.var <- var.ytrue
+
         if (true.var < 0){
             true.var <- v2
         }
@@ -143,6 +147,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         xtx <- crossprod(xcov1a)
         diag(xtx) <- diag(xtx) * (1 + ridge)
         xtx1 <- miceadds_ginv(x=xtx)
+
         # begin iterations for drawing plausible values
         for (iter in 1:pviter){
             # draw plausible value for individuals
@@ -156,7 +161,6 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             diag(v) <- diag(v) + ridge
             beta.star <- as.vector(cmod) + ma_rmvnorm( n=1, mu=rep(0,nrow(v)), sigma=v)
             #-> fitted regression coefficients
-
             # update posterior distribution
             EAP <- ( SE_scale_2*M.scale + sigma2^(-1)*yfitted )/( SE_scale_2 + sigma2^(-1) )
             Var.EAP <- 1 / ( SE_scale_2 + sigma2^(-1) )
