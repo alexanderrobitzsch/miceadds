@@ -74,7 +74,7 @@ which is the approach employed in mice::mice." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.13-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.14-vv</span>
       </span>
     </div>
 
@@ -233,7 +233,9 @@ should be included in the traceplot</p></td>
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'>#############################################################################</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
+<span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: One chain nhanes data</span>
 <span class='co'>#############################################################################</span>
 
@@ -245,7 +247,6 @@ should be included in the traceplot</p></td>
 <span class='no'>imp.mi1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>mice.1chain</span>( <span class='no'>nhanes</span>, <span class='kw'>burnin</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>iter</span><span class='kw'>=</span><span class='fl'>40</span>, <span class='kw'>Nimp</span><span class='kw'>=</span><span class='fl'>4</span>,
                  <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"norm"</span>, <span class='fl'>4</span> ) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp.mi1</span>)       <span class='co'># summary of mids.1chain</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>( <span class='no'>imp.mi1</span> ) <span class='co'># trace plot excluding burnin iterations</span>
 <span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>( <span class='no'>imp.mi1</span>, <span class='kw'>plot.burnin</span><span class='kw'>=</span><span class='fl'>TRUE</span> ) <span class='co'># trace plot including burnin iterations</span>
 

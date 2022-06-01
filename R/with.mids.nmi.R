@@ -1,14 +1,13 @@
 ## File Name: with.mids.nmi.R
-## File Version: 0.09
+## File Version: 0.11
 
 
-#******************************************************************************
-# with function for objects of class mids
+#### with function for objects of class mids
 with.mids.nmi <- function(data, expr, ...)
 {
     # adapted from with.mids.1chain
     call <- match.call()
-    if (class(data) !="mids.nmi"){
+    if (! inherits(data,"mids.nmi")){
         stop("The data must have class mids.nmi")
     }
     Nimp <- data$Nimp
@@ -34,4 +33,3 @@ with.mids.nmi <- function(data, expr, ...)
     class(object) <- "mira.nmi"
     return(object)
 }
-#******************************************************************************

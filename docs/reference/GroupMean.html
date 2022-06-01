@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.13-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.14-vv</span>
       </span>
     </div>
 
@@ -175,8 +175,10 @@ from the calculation of the mean in a cluster</p></td>
 <code><a href='https://rdrr.io/r/stats/ave.html'>stats::ave</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'>#############################################################################</span>
-<span class='co'># EXAMPLE 1: Group means and SDs data.ma02</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
+<span class='co'>#############################################################################</span>
+<span class='co'># EXAMPLE 1: Group means and standard deviations for data.ma02</span>
 <span class='co'>#############################################################################</span>
 
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.ma02</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"miceadds"</span> )
@@ -197,7 +199,6 @@ from the calculation of the mean in a cluster</p></td>
 <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/ave.html'>ave</a></span>( <span class='no'>dat</span>[, <span class='st'>"read"</span> ], <span class='no'>dat</span>$<span class='no'>idschool</span>  )
 <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/ave.html'>ave</a></span>( <span class='no'>dat</span>[, <span class='st'>"read"</span> ], <span class='no'>dat</span>$<span class='no'>idschool</span>, <span class='kw'>FUN</span><span class='kw'>=</span><span class='no'>mean</span> )
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>#--- group standard deviations</span>
 <span class='fu'>GroupSD</span>( <span class='no'>dat</span>[, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"read"</span>,<span class='st'>"math"</span>) ], <span class='kw'>group</span><span class='kw'>=</span><span class='no'>dat</span>$<span class='no'>idschool</span>)[<span class='fl'>1</span>:<span class='fl'>10</span>,]
 <span class='co'># using aggregate</span>

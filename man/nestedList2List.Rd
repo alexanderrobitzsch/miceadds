@@ -1,5 +1,5 @@
 %% File Name: nestedList2List.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 
 
@@ -66,6 +66,7 @@ A list or a nested list
 %}
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: List conversions using a small example
 #############################################################################
@@ -83,6 +84,7 @@ v2 <- miceadds::nestedList2List( nestedList)
 v3 <- miceadds::List2nestedList(v2, N_between=5)
 # looping between first
 v4 <- miceadds::List2nestedList(v2, N_between=5, loop_within=FALSE)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

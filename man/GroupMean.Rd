@@ -1,5 +1,5 @@
 %% File Name: GroupMean.Rd
-%% File Version: 0.372
+%% File Version: 0.373
 
 \name{GroupMean}
 \alias{GroupMean}
@@ -69,8 +69,10 @@ A data frame or a vector with groupwise calculated statistics
 }
 
 \examples{
+\dontrun{
+
 #############################################################################
-# EXAMPLE 1: Group means and SDs data.ma02
+# EXAMPLE 1: Group means and standard deviations for data.ma02
 #############################################################################
 
 data(data.ma02, package="miceadds" )
@@ -91,7 +93,6 @@ GroupMean( dat[, c("read","math") ], group=dat$idschool, extend=TRUE )
 stats::ave( dat[, "read" ], dat$idschool  )
 stats::ave( dat[, "read" ], dat$idschool, FUN=mean )
 
-\dontrun{
 #--- group standard deviations
 GroupSD( dat[, c("read","math") ], group=dat$idschool)[1:10,]
 # using aggregate

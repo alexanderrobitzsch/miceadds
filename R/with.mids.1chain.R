@@ -1,14 +1,13 @@
 ## File Name: with.mids.1chain.R
-## File Version: 0.07
+## File Version: 0.08
 
 
-#******************************************************************************
-# with function for objects of class mids
+### with function for objects of class mids
 with.mids.1chain <- function(data, expr, ...)
 {
     # adapted from with.mids.1chain
     call <- match.call()
-    if (class(data) !="mids.1chain"){
+    if (! inherits(data,"mids.1chain")){
         stop("The data must have class mids.1chain")
     }
     data <- data$midsobj
@@ -30,4 +29,3 @@ with.mids.1chain <- function(data, expr, ...)
     oldClass(object) <- c("mira", "matrix")
     return(object)
 }
-#******************************************************************************

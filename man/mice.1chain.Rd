@@ -1,5 +1,5 @@
 %% File Name: mice.1chain.Rd
-%% File Version: 0.41
+%% File Version: 0.42
 
 \name{mice.1chain}
 \alias{mice.1chain}
@@ -113,6 +113,8 @@ Multiple imputation can also be used for determining causal effects
 
 
 \examples{
+\dontrun{
+
 #############################################################################
 # EXAMPLE 1: One chain nhanes data
 #############################################################################
@@ -125,7 +127,6 @@ set.seed(9090)
 imp.mi1 <- miceadds::mice.1chain( nhanes, burnin=5, iter=40, Nimp=4,
                  method=rep("norm", 4 ) )
 summary(imp.mi1)       # summary of mids.1chain
-\dontrun{
 plot( imp.mi1 ) # trace plot excluding burnin iterations
 plot( imp.mi1, plot.burnin=TRUE ) # trace plot including burnin iterations
 

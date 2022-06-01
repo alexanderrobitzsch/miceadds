@@ -1,5 +1,5 @@
 %% File Name: ma_rmvnorm.Rd
-%% File Version: 0.13
+%% File Version: 0.14
 
 \name{ma_rmvnorm}
 \alias{ma_rmvnorm}
@@ -64,12 +64,14 @@ Matrix of simulated values
 
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Two-dimensional simulation with zero variance at dimension 1
 #############################################################################
 
 sigma <- matrix( c(0,0,0,1), nrow=2, ncol=2)
 miceadds::ma_rmvnorm( n=10, sigma=sigma )
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

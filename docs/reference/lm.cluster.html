@@ -76,7 +76,7 @@ function in the sandwich package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.13-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.14-vv</span>
       </span>
     </div>
 
@@ -197,7 +197,9 @@ the model, see <code><a href='https://rdrr.io/r/stats/glm.html'>stats::glm</a></
 <code><a href='https://rdrr.io/pkg/sandwich/man/vcovCL.html'>sandwich::vcovCL</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'>#############################################################################</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
+<span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: Cluster robust standard errors data.ma01</span>
 <span class='co'>#############################################################################</span>
 
@@ -224,7 +226,6 @@ the model, see <code><a href='https://rdrr.io/r/stats/glm.html'>stats::glm</a></
 <span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span>(<span class='no'>mod2</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>mod2</span>)
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 2: Cluster robust standard errors for multiply imputed datasets</span>
 <span class='co'>#############################################################################</span>

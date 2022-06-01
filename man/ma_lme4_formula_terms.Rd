@@ -1,5 +1,5 @@
 %% File Name: ma_lme4_formula_terms.Rd
-%% File Version: 0.10
+%% File Version: 0.11
 
 \name{ma_lme4_formula}
 \alias{ma_lme4_formula}
@@ -55,6 +55,7 @@ List with several entries
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Splitting a lme4 formula
 #############################################################################
@@ -80,6 +81,7 @@ formula <- x1 ~ x2 + I( miceadds::gm( x2, id2)) + I( miceadds::gm( x2, id3)) + y
                     ( x2 | id2:id3 ) + ( 1 | id3 ) + ( 0 + x2 | id3 )
 res <- miceadds::ma_lme4_formula_design_matrices(formula, data=dat)
 str(res)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

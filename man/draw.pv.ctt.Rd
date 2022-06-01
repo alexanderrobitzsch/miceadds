@@ -1,5 +1,5 @@
 %% File Name: draw.pv.ctt.Rd
-%% File Version: 1.261
+%% File Version: 1.262
 
 \name{draw.pv.ctt}
 \alias{draw.pv.ctt}
@@ -105,6 +105,8 @@ priors, see \code{Amelia::moPrep} and
 
 
 \examples{
+\dontrun{
+
 #############################################################################
 # SIMULATED EXAMPLE 1: Scale scores
 #############################################################################
@@ -137,7 +139,6 @@ stats::lm( imp1 ~ x + y )
 imp2 <- miceadds::draw.pv.ctt( y=theta_obs, x=X, alpha=.74 )
 stats::lm( imp2 ~ x + y )
 
-\dontrun{
 #--- plausible value imputation in Amelia package
 library(Amelia)
 

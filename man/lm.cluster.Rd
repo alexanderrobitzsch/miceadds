@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.368
+%% File Version: 0.369
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -102,6 +102,8 @@ List with following entries
 
 
 \examples{
+\dontrun{
+
 #############################################################################
 # EXAMPLE 1: Cluster robust standard errors data.ma01
 #############################################################################
@@ -129,7 +131,6 @@ coef(mod2)
 vcov(mod2)
 summary(mod2)
 
-\dontrun{
 #############################################################################
 # EXAMPLE 2: Cluster robust standard errors for multiply imputed datasets
 #############################################################################

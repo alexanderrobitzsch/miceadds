@@ -1,5 +1,5 @@
 %% File Name: fleishman_sim.Rd
-%% File Version: 0.192
+%% File Version: 0.193
 
 \name{fleishman_sim}
 \alias{fleishman_sim}
@@ -87,6 +87,7 @@ multivariate variables.
 
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Simulating values with Fleishman polynomial
 #############################################################################
@@ -108,6 +109,7 @@ set.seed(2018)
 X <- miceadds::fleishman_sim(N=N, coef=coeff)
 #* simulate values based on input of moments
 X <- miceadds::fleishman_sim(N=N, mean=mean, sd=sd, skew=skew, kurt=kurt)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

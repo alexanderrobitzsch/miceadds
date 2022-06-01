@@ -1,5 +1,5 @@
 %% File Name: source.all.Rd
-%% File Version: 0.27
+%% File Version: 0.28
 
 \name{source.all}
 \alias{source.all}
@@ -81,7 +81,8 @@ before loading the header file using a line of the form
 # define path
 path <- "c:/myfiles/"
 # source all files containing the string 'Rex'
-source.all( path, "Rex" )}
+source.all( path, "Rex" )
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

@@ -1,12 +1,17 @@
 ## File Name: kernelpls.fit2.R
-## File Version: 0.19
+## File Version: 0.231
 
-#############################################
-# Rcpp version of kernel PLS regression
+#*** Rcpp version of kernel PLS regression
 kernelpls.fit2 <- function(X, Y, ncomp )
 {
     e1 <- environment()
     tsqs <- NULL
+    if (is.vector(Y)){
+        Y <- matrix(Y, ncol=1)
+    }
+    Y <- as.matrix(Y)
+    X <- as.matrix(X)
+    
     ## Save dimnames:
     dnX <- dimnames(X)
     dnY <- dimnames(Y)
@@ -43,20 +48,14 @@ kernelpls.fit2 <- function(X, Y, ncomp )
                             list(prednames, compnames)
     dimnames(tQ) <- list(compnames, respnames)
     dimnames(B) <- list(prednames, nCompnames)
-    dimnames(fitted) <- dimnames(residuals) <-
-                            list(objnames,  nCompnames)
+    dimnames(fitted) <- dimnames(residuals) <- list(objnames,  nCompnames)
     class(TT) <- class(U) <- "scores"
     class(P) <- class(W) <- class(tQ) <- "loadings"
 
-    res <- list(coefficients=B,
-                scores=TT, loadings=P,
-                loading.weights=W,
-                Yscores=U, Yloadings=t(tQ),
-                projection=R,
-                Xmeans=Xmeans, Ymeans=Ymeans,
-                fitted.values=fitted, residuals=residuals,
-                Xvar=colSums(P * P) * tsqs,
-                Xtotvar=sum(X * X) )
+    res <- list(coefficients=B, scores=TT, loadings=P, loading.weights=W,
+                Yscores=U, Yloadings=t(tQ), projection=R,
+                Xmeans=Xmeans, Ymeans=Ymeans, fitted.values=fitted, residuals=residuals,
+                Xvar=colSums(P * P) * tsqs, Xtotvar=sum(X * X) )
     # R^2 measures
     R2 <- cumsum(res$Xvar) / res$Xtotvar
     R21 <- sapply( 1:ncomp, FUN=function(cc){
@@ -69,8 +68,8 @@ kernelpls.fit2 <- function(X, Y, ncomp )
     class(res) <- "kernelpls.fit2"
     return(res)
 }
-#######################################################
-# attach all elements in a list in a local environment
+
+### attach all elements in a list in a local environment
 .attach.environment <- function( res, envir )
 {
     CC <- length(res)
@@ -78,10 +77,11 @@ kernelpls.fit2 <- function(X, Y, ncomp )
         assign( names(res)[cc], res[[cc]], envir=envir )
     }
 }
-########################################################
-# Call to Rcpp function
-kernelpls_1dim <- function (Y,X,comp){
+
+### Call to Rcpp function
+kernelpls_1dim <- function (Y,X,comp)
+{
     res <- kernelpls_1dim_C(Y,X,comp)
     return(res)
 }
-##########################################################
+

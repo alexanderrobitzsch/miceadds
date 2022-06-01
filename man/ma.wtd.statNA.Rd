@@ -1,5 +1,5 @@
 %% File Name: ma.wtd.statNA.Rd
-%% File Version: 1.571
+%% File Version: 1.572
 
 \name{ma.wtd.statNA}
 \alias{ma.wtd.statNA}
@@ -125,6 +125,7 @@ ma.wtd.covNA( dat, weights=data.ma01$studwgt, vars=c("books","hisei") )
 # weighted correlation
 ma.wtd.corNA( dat, weights=data.ma01$studwgt )
 
+\dontrun{
 # weighted skewness
 ma.wtd.skewnessNA( dat[,"books"], weights=data.ma01$studwgt )
 # compare with result in TAM
@@ -132,7 +133,6 @@ TAM::weighted_skewness( x=dat[,"books"], w=data.ma01$studwgt )
 
 # weighted kurtosis
 ma.wtd.kurtosisNA( dat, weights=data.ma01$studwgt, vars=c("books","hisei") )
-\dontrun{
 # compare with TAM
 TAM::weighted_kurtosis( dat[,"books"], w=data.ma01$studwgt )
 TAM::weighted_kurtosis( dat[,"hisei"], w=data.ma01$studwgt )

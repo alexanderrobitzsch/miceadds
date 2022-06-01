@@ -74,7 +74,7 @@ for a covariance matrix sigma which can have zero variances." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.13-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.14-vv</span>
       </span>
     </div>
 
@@ -152,12 +152,14 @@ for a covariance matrix <code>sigma</code> which can have zero variances.</p>
     <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/MASS/man/mvrnorm.html'>MASS::mvrnorm</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'>#############################################################################</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: Two-dimensional simulation with zero variance at dimension 1</span>
 <span class='co'>#############################################################################</span>
 
 <span class='no'>sigma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>0</span>,<span class='fl'>1</span>), <span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>ma_rmvnorm</span>( <span class='kw'>n</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>sigma</span><span class='kw'>=</span><span class='no'>sigma</span> )</pre>
+<span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>ma_rmvnorm</span>( <span class='kw'>n</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>sigma</span><span class='kw'>=</span><span class='no'>sigma</span> )
+}</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

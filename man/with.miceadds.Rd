@@ -1,5 +1,5 @@
 %% File Name: with.miceadds.Rd
-%% File Version: 0.41
+%% File Version: 0.42
 
 \name{with.miceadds}
 \alias{with.mids.1chain}
@@ -129,6 +129,7 @@ Imputation functions in \pkg{miceadds}:
 
 
 \examples{
+\dontrun{ 
 #############################################################################
 # EXAMPLE 1: One chain nhanes data | application of 'with' and 'within'
 #############################################################################
@@ -164,7 +165,6 @@ withPool_MI(res2b)
 datlist <- miceadds::mids2datlist( imp )
 datlist <- mitools::imputationList(datlist)
 
-\dontrun{
 # define formulas for modification of the data frames in imputationList object
 datlist2 <- within( datlist, {
                      age.D3 <- 1*(age==3)

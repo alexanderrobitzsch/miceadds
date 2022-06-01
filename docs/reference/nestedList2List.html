@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.13-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.14-vv</span>
       </span>
     </div>
 
@@ -152,7 +152,8 @@ list</p></td>
     <p>A list or a nested list</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'>#############################################################################</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: List conversions using a small example</span>
 <span class='co'>#############################################################################</span>
 
@@ -168,7 +169,8 @@ list</p></td>
 <span class='co'>## reconvert list v2 into a nested list, looping within first</span>
 <span class='no'>v3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>List2nestedList</span>(<span class='no'>v2</span>, <span class='kw'>N_between</span><span class='kw'>=</span><span class='fl'>5</span>)
 <span class='co'># looping between first</span>
-<span class='no'>v4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>List2nestedList</span>(<span class='no'>v2</span>, <span class='kw'>N_between</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>loop_within</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</pre>
+<span class='no'>v4</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>List2nestedList</span>(<span class='no'>v2</span>, <span class='kw'>N_between</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>loop_within</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+}</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

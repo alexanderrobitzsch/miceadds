@@ -73,7 +73,7 @@ A list of (nested) multiply imputed data sets is also allowed as input." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.13-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.14-vv</span>
       </span>
     </div>
 
@@ -224,6 +224,7 @@ coefficients.</p></div>
 <span class='co'># weighted correlation</span>
 <span class='fu'>ma.wtd.corNA</span>( <span class='no'>dat</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>data.ma01</span>$<span class='no'>studwgt</span> )
 
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># weighted skewness</span>
 <span class='fu'>ma.wtd.skewnessNA</span>( <span class='no'>dat</span>[,<span class='st'>"books"</span>], <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>data.ma01</span>$<span class='no'>studwgt</span> )
 <span class='co'># compare with result in TAM</span>
@@ -231,7 +232,6 @@ coefficients.</p></div>
 
 <span class='co'># weighted kurtosis</span>
 <span class='fu'>ma.wtd.kurtosisNA</span>( <span class='no'>dat</span>, <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>data.ma01</span>$<span class='no'>studwgt</span>, <span class='kw'>vars</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"books"</span>,<span class='st'>"hisei"</span>) )
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># compare with TAM</span>
 <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/weighted_Stats.html'>weighted_kurtosis</a></span>( <span class='no'>dat</span>[,<span class='st'>"books"</span>], <span class='kw'>w</span><span class='kw'>=</span><span class='no'>data.ma01</span>$<span class='no'>studwgt</span> )
 <span class='kw pkg'>TAM</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/TAM/man/weighted_Stats.html'>weighted_kurtosis</a></span>( <span class='no'>dat</span>[,<span class='st'>"hisei"</span>], <span class='kw'>w</span><span class='kw'>=</span><span class='no'>data.ma01</span>$<span class='no'>studwgt</span> )

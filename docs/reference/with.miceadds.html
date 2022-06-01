@@ -79,7 +79,7 @@ obtained by with or a list of results of imputed datasets." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.13-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.14-vv</span>
       </span>
     </div>
 
@@ -218,7 +218,8 @@ pooled estimates</p>
 <code><a href='mice.1chain.html'>mice.1chain</a></code>, <code><a href='mice.nmi.html'>mice.nmi</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'>#############################################################################</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: One chain nhanes data | application of 'with' and 'within'</span>
 <span class='co'>#############################################################################</span>
 
@@ -253,7 +254,6 @@ pooled estimates</p>
 <span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='mids2datlist.html'>mids2datlist</a></span>( <span class='no'>imp</span> )
 <span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/imputationList.html'>imputationList</a></span>(<span class='no'>datlist</span>)
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># define formulas for modification of the data frames in imputationList object</span>
 <span class='no'>datlist2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>within</a></span>( <span class='no'>datlist</span>, {
                      <span class='no'>age.D3</span> <span class='kw'>&lt;-</span> <span class='fl'>1</span>*(<span class='no'>age</span><span class='kw'>==</span><span class='fl'>3</span>)

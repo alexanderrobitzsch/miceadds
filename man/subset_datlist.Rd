@@ -1,5 +1,5 @@
 %% File Name: subset_datlist.Rd
-%% File Version: 0.39
+%% File Version: 0.41
 
 \name{subset_datlist}
 \alias{subset_datlist}
@@ -115,6 +115,7 @@ then informations about the imputation procedure are lost.
 
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Subsetting and selection of multiply imputed datasets
 #############################################################################
@@ -144,7 +145,6 @@ datlist2b
 datlist2c <- miceadds::subset_datlist( datlist1a, index=1:3, toclass="mids")
 datlist2c
 
-\dontrun{
 # select some variables
 datlist3a <- miceadds::subset_datlist( datlist1a, select=c("idstud", "books")  )
 datlist3a

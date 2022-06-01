@@ -1,5 +1,5 @@
 %% File Name: scan.vector.Rd
-%% File Version: 0.22
+%% File Version: 0.23
 
 \name{scan.vec}
 \alias{scan.vec}
@@ -65,9 +65,9 @@ See \code{\link[base:scan]{base::scan}}.
 #############################################################################
 
 
-vars <- miceadds::scan.vector( "female urbgrad \\n  groesse  \\t  Nausg    grpgroesse   privat  ")
+vars <- miceadds::scan.vector( "urbgrad \\n  groesse  \\t  Nausg  grpgroesse   privat  ")
 vars
-  ## [1] "female"     "urbgrad"    "groesse"    "Nausg"      "grpgroesse"
+  ## [1] "urbgrad"    "groesse"    "Nausg"      "grpgroesse"
   ## [6] "privat"
 
 ## the next lines are only commented out to fulfill CRAN checks

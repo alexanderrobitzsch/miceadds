@@ -1,5 +1,5 @@
 %% File Name: mice_inits.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 \name{mice_inits}
 \alias{mice_inits}
@@ -52,6 +52,7 @@ and a vector of imputation methods.
 }
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Inits for mice imputation
 #############################################################################
@@ -61,6 +62,7 @@ dat <- data.ma04
 
 res <- miceadds::mice_inits(dat, ignore=c("group") )
 str(res)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

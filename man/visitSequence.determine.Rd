@@ -1,5 +1,5 @@
 %% File Name: visitSequence.determine.Rd
-%% File Version: 0.14
+%% File Version: 0.151
 
 \name{visitSequence.determine}
 \alias{visitSequence.determine}
@@ -57,6 +57,7 @@ creates a visit sequence.
 
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Visit sequence for a small imputation model
 #############################################################################
@@ -92,6 +93,7 @@ vis1 <- miceadds::visitSequence.determine( impMethod=impMethod, vis=imp0$vis, da
 
 # imputation with updated visit sequence
 imp <- mice::mice( dat, m=1, method=impMethod, visitSequence=vis1, maxit=2)
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

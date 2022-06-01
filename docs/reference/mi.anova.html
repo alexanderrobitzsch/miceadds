@@ -75,7 +75,7 @@ micombine.F, micombine.chisquare)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.13-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.14-vv</span>
       </span>
     </div>
 
@@ -170,7 +170,8 @@ is also included in <code><a href='https://rdrr.io/pkg/mitml/man/testConstraints
 <code><a href='https://rdrr.io/pkg/mice/man/D2.html'>mice::D2</a></code> and <code><a href='https://rdrr.io/pkg/mice/man/D3.html'>mice::D3</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'>#############################################################################</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: nhanes2 data | two-way ANOVA</span>
 <span class='co'>#############################################################################</span>
 
@@ -187,7 +188,7 @@ is also included in <code><a href='https://rdrr.io/pkg/mitml/man/testConstraints
 <span class='co'># test of interaction effects using mitml::testModels()</span>
 <span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>mi.res</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>bmi</span> ~ <span class='no'>age</span>*<span class='no'>chl</span> ) )
 <span class='no'>mod0</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>mi.res</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>bmi</span> ~ <span class='no'>age</span>+<span class='no'>chl</span> ) )
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
 <span class='kw pkg'>mitml</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitml/man/testModels.html'>testModels</a></span>(<span class='kw'>model</span><span class='kw'>=</span><span class='no'>mod1</span>$<span class='no'>analyses</span>, <span class='kw'>null.model</span><span class='kw'>=</span><span class='no'>mod0</span>$<span class='no'>analyses</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"D1"</span>)
 <span class='kw pkg'>mitml</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitml/man/testModels.html'>testModels</a></span>(<span class='kw'>model</span><span class='kw'>=</span><span class='no'>mod1</span>$<span class='no'>analyses</span>, <span class='kw'>null.model</span><span class='kw'>=</span><span class='no'>mod0</span>$<span class='no'>analyses</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"D2"</span>)
 

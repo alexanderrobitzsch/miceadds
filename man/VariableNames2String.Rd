@@ -1,5 +1,5 @@
 %% File Name: VariableNames2String.Rd
-%% File Version: 0.08
+%% File Version: 0.09
 
 \name{VariableNames2String}
 \alias{VariableNames2String}
@@ -56,7 +56,7 @@ data(data.ma01)
 # extract variable names
 vars <- colnames(data.ma01)
 # convert into a long string with line breaks at column 25
-vars2 <- miceadds::VariableNames2String( vars, breaks=25)
+vars2 <- miceadds::VariableNames2String(vars, breaks=25)
 vars
   ##   [1] "idstud"   "idschool" "studwgt"  "math"     "read"     "migrant"
   ##   [7] "books"    "hisei"    "paredu"   "female"   "urban"

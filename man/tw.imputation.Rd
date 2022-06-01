@@ -1,5 +1,5 @@
 %% File Name: tw.imputation.Rd
-%% File Version: 0.252
+%% File Version: 0.253
 
 \name{tw.imputation}
 \alias{tw.imputation}
@@ -72,10 +72,11 @@ and questionnaires, and an accurate approximation.
 \seealso{
 The two-way imputation method is also implemented in
 the \code{TestDataImputation::Twoway} function of the
-\pkg{TestDataImputation} package.
+\bold{TestDataImputation} package.
 }
 
 \examples{
+\dontrun{
 #############################################################################
 # EXAMPLE 1: Two-way imputation data.internet
 #############################################################################
@@ -94,7 +95,6 @@ dat.imp[ 278:281,]
   ##   280   7 4.000000 7.00000 7.000000
   ##   281   4 3.000000 5.00000 5.000000
 
-\dontrun{
 #***
 # Model 2: Two-way imputation method using MCMC
 dat.imp <- miceadds::tw.mcmc.imputation( data, iter=3)

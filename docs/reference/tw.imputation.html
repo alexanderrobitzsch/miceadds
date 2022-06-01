@@ -73,7 +73,7 @@ and the MCMC based imputation of van Ginkel, van der Ark, Sijtsma and Vermunt (2
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.13-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.14-vv</span>
       </span>
     </div>
 
@@ -169,10 +169,11 @@ doi: <a href='https://doi.org/10.1016/j.csda.2006.12.022'>10.1016/j.csda.2006.12
 
     <div class='dont-index'><p>The two-way imputation method is also implemented in
 the <code>TestDataImputation::Twoway</code> function of the
-<span class="pkg">TestDataImputation</span> package.</p></div>
+<b>TestDataImputation</b> package.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'>#############################################################################</span>
+    <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 1: Two-way imputation data.internet</span>
 <span class='co'>#############################################################################</span>
 
@@ -190,7 +191,6 @@ the <code>TestDataImputation::Twoway</code> function of the
   <span class='co'>##   280   7 4.000000 7.00000 7.000000</span>
   <span class='co'>##   281   4 3.000000 5.00000 5.000000</span>
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>#***</span>
 <span class='co'># Model 2: Two-way imputation method using MCMC</span>
 <span class='no'>dat.imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>tw.mcmc.imputation</span>( <span class='no'>data</span>, <span class='kw'>iter</span><span class='kw'>=</span><span class='fl'>3</span>)
