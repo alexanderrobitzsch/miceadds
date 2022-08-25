@@ -1,5 +1,5 @@
 ## File Name: micombine.cor.R
-## File Version: 0.597
+## File Version: 0.599
 
 
 #-- inference for correlations | nested multiply and multiply imputed datasets
@@ -78,13 +78,15 @@ micombine.cor <- function( mi.res, variables=NULL,
                         cor.ii.jj <- lapply( mi.list, FUN=function(mm){
                                 lapply( mm, FUN=function(dat){
                                     if ( ! is.null(partial) ){
-                                        fm <- paste0( "dat_ii ", paste( partial, collapse=" ") )
+                                        fm <- paste0( "dat_ii ", paste( partial,
+                                                        collapse=" ") )
                                         mod_ii <- stats::lm( as.formula(fm), data=dat )
                                         rii <- resid(mod_ii)
                                         mii <- as.numeric(names( mod_ii$residuals))
                                         dat_ii <- NA*dat_ii
                                         dat_ii[ mii ] <- rii
-                                        fm <- paste0( "dat_jj ", paste( partial, collapse=" ") )
+                                        fm <- paste0( "dat_jj ", paste( partial,
+                                                            collapse=" ") )
                                         mod_jj <- stats::lm( as.formula(fm), data=dat )
                                         rjj <- resid(mod_jj)
                                         mjj <- as.numeric(names( mod_jj$residuals))
@@ -113,10 +115,10 @@ micombine.cor <- function( mi.res, variables=NULL,
     #*** define attributes
     class(dfr) <- "data.frame"
     m1 <- vector2matrix( index1=dfr$variable1, index2=dfr$variable2,
-            val=dfr$r, empty_val=1 )
+                    val=dfr$r, empty_val=1 )
     attr(dfr,"r_matrix") <- m1
     m1 <- vector2matrix( index1=dfr$variable1, index2=dfr$variable2,
-            val=dfr$rse, empty_val=NA )
+                    val=dfr$rse, empty_val=NA )
     attr(dfr,"rse_matrix") <- m1
     return(dfr)
 }

@@ -1,5 +1,5 @@
 ## File Name: Rcppfunction_remove_classes.R
-## File Version: 0.05
+## File Version: 0.07
 
 Rcppfunction_remove_classes <- function(string, maxlen=70, remove=TRUE)
 {
@@ -19,8 +19,8 @@ Rcppfunction_remove_classes <- function(string, maxlen=70, remove=TRUE)
     rcpp_classes <- c("double", "bool", "int", "arma::mat", "arma::colvec", "arma::umat",
                 "Rcpp::NumericVector", "Rcpp::IntegerVector", "Rcpp::LogicalVector",
                 "Rcpp::CharacterVector", "Rcpp::CharacterMatrix", "Rcpp::List",
-                "Rcpp::NumericMatrix", "Rcpp::IntegerMatrix", "Rcpp::LogicalMatrix", "char"
-                    )
+                "Rcpp::NumericMatrix", "Rcpp::IntegerMatrix",
+                "Rcpp::LogicalMatrix", "char" )
     rcpp_classes1 <- paste0( rcpp_classes, " " )
     if (remove){
         for (rr in rcpp_classes1 ){

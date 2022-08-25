@@ -1,5 +1,5 @@
 ## File Name: mice.impute.simputation.R
-## File Version: 0.06
+## File Version: 0.07
 
 
 mice.impute.simputation <- function(y, ry, x, Fun=NULL, Fun_args=NULL, ... )
@@ -21,7 +21,7 @@ mice.impute.simputation <- function(y, ry, x, Fun=NULL, Fun_args=NULL, ... )
     colnames(dat) <- c("y", paste0("x",1:ncol(x)) )
 
     Fun_args$dat <- dat
-    Fun_args$formula <- as.formula(paste0("y ~", paste0(colnames(dat)[-1], collapse="+") ))
+    Fun_args$formula <- as.formula(paste0("y ~", paste0(colnames(dat)[-1], collapse="+")))
     res <- do.call(what=Fun, args=Fun_args)
     yimp <- res[!ry,"y"]
 

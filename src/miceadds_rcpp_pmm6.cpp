@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_pmm6.cpp
-//// File Version: 1.11
+//// File Version: 1.122
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -13,9 +13,9 @@ using namespace arma;
 ///********************************************************************
 ///** miceadds_rcpp_impute_pmm6
 // [[Rcpp::export]]
-Rcpp::NumericVector miceadds_rcpp_impute_pmm6( Rcpp::NumericVector y, Rcpp::NumericVector ry01,
-    Rcpp::NumericMatrix x, double ridge, Rcpp::NumericVector coefu1,
-    Rcpp::NumericVector donorsample )
+Rcpp::NumericVector miceadds_rcpp_impute_pmm6( Rcpp::NumericVector y,
+        Rcpp::NumericVector ry01, Rcpp::NumericMatrix x, double ridge,
+        Rcpp::NumericVector coefu1, Rcpp::NumericVector donorsample )
 {
     // y // varlist only one variable
     //  ry01(ry01_); // varlist only one variable

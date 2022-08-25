@@ -1,9 +1,10 @@
 ## File Name: latent.regression.em.R
-## File Version: 0.23
+## File Version: 0.243
 
 latent.regression.em <- function( data, X, weights=rep(1,nrow(data)),
         beta.init=rep(0,ncol(X)), sigma.init=1, b=b, a=rep(1, length(b)),
-        c=rep(0, length(b)), max.parchange=.0001, theta.list=seq(-5,5,len=50), maxiter=300 )
+        c=rep(0, length(b)), max.parchange=.0001, theta.list=seq(-5,5,len=50),
+        maxiter=300 )
 {
     X <- as.matrix(X)   # matrix format
     # init parameters
@@ -24,7 +25,8 @@ latent.regression.em <- function( data, X, weights=rep(1,nrow(data)),
         # Calculation of residual sd
         sigma <- sqrt( mean( weights* ( pv1$SE.EAP^2 + stats::resid(mod)^2 ) ) )
         parchange <- max( abs(sigma - sig0), abs( cmod - beta0) )
-        cat( paste("Iteration ", iter,": max parm. change ", round( parchange, 8 ),sep=""),
+        cat( paste("Iteration ", iter,": max parm. change ",
+                    round( parchange, 8 ),sep=""),
                     " # Regr. Coeff. ", as.vector(cmod), "\n")
         utils::flush.console()
         # parameter update

@@ -1,5 +1,5 @@
 ## File Name: mice.1chain.R
-## File Version: 0.662
+## File Version: 0.664
 
 #*** apply mice algorithm in a single chain
 mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
@@ -92,9 +92,12 @@ mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
                                 byrow=TRUE ) )
     vars <- colnames(chainVar)
     VarObs[ is.na(VarObs) ] <- 0
-    chainVarPar <- ( chainVar * matrix( (NMiss[vars]), nrow=cM, ncol=length(vars), byrow=TRUE ) +
-                matrix( ( NObs[vars])* VarObs[vars], nrow=cM, ncol=length(vars), byrow=TRUE ) ) /
-                        ( eps+ matrix( NObs[vars] + NMiss[vars], nrow=cM, ncol=length(vars), byrow=TRUE ) )
+    chainVarPar <- ( chainVar * matrix( (NMiss[vars]), nrow=cM,
+                            ncol=length(vars), byrow=TRUE ) +
+                        matrix( ( NObs[vars])* VarObs[vars], nrow=cM,
+                            ncol=length(vars), byrow=TRUE ) ) /
+                        ( eps+ matrix( NObs[vars] + NMiss[vars], nrow=cM,
+                                ncol=length(vars), byrow=TRUE ) )
     midsobj <- mice::as.mids(datalong, .imp=1)
     imm <- implist[[mm+1]]
     midsobj$predictorMatrix <- imm$predictorMatrix

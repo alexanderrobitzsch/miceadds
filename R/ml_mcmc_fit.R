@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc_fit.R
-## File Version: 0.525
+## File Version: 0.527
 
 ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     alpha, u_list, idcluster_list, onlyintercept_list, ncluster_list,
@@ -25,9 +25,10 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     #** call Rcpp function
     res <- miceadds_rcpp_ml_mcmc_sampler( y_obs=y, X=X, xtx_inv=xtx_inv,
                 ztz_list=ztz_list, Z_list=Z_list, beta_init=beta, Psi_list_init=Psi_list,
-                sigma2_init=sigma2, alpha_init=alpha, u_list_init=u_list, idcluster_list=idcluster_list,
-                onlyintercept_list=onlyintercept_list, ncluster_list=ncluster_list,
-                sigma2_nu0=sigma2_nu0, sigma2_sigma2_0=sigma2_sigma2_0, psi_nu0_list=psi_nu0_list,
+                sigma2_init=sigma2, alpha_init=alpha, u_list_init=u_list,
+                idcluster_list=idcluster_list, onlyintercept_list=onlyintercept_list,
+                ncluster_list=ncluster_list, sigma2_nu0=sigma2_nu0,
+                sigma2_sigma2_0=sigma2_sigma2_0, psi_nu0_list=psi_nu0_list,
                 psi_S0_list=psi_S0_list, NR=NR, est_sigma2=est_sigma2,
                 est_probit=est_probit, parameter_index=parameter_index,
                 est_parameter=est_parameter, npar=npar, iter=iter, save_iter=save_iter,

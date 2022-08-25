@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.latentgroupmean.mcmc.R
-## File Version: 3.34
+## File Version: 3.352
 
 mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type,
                     pls.facs=NULL, imputationWeights=NULL,
@@ -19,7 +19,8 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type,
     }
 
     # retrieve state for current variable/imputation
-    storeState.latentgroupmean.MCMC <- get("storeState.latentgroupmean.MCMC", envir=parent.frame())
+    storeState.latentgroupmean.MCMC <- get("storeState.latentgroupmean.MCMC",
+                                            envir=parent.frame())
 
     if(k > 1){
         burnin.iter <- mcmc.adapt
@@ -58,10 +59,12 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type,
         # PLS interactions and quadratics
         newstate <- get( "newstate", pos=parent.frame() )
         vname <- get("vname", pos=parent.frame()) # get variable name
-        plsout <- mice_imputation_pls_helper( newstate=newstate, vname=vname, pls.impMethod="xplsfacs",
-                        x=h1, y=y.l2[,2], ry=( ! is.na(y.l2[,2] )),
+        plsout <- mice_imputation_pls_helper( newstate=newstate, vname=vname,
+                        pls.impMethod="xplsfacs", x=h1, y=y.l2[,2],
+                        ry=( ! is.na(y.l2[,2] )),
                         imputationWeights=rep( 1, nrow(covaggr.l2)),
-                        interactions=interactions, quadratics=quadratics,  pls.facs=pls.facs,  ... )
+                        interactions=interactions, quadratics=quadratics,
+                        pls.facs=pls.facs,  ... )
 
         # imputation PLS
         if( ! is.null( plsout$yimp ) ){
@@ -98,7 +101,8 @@ mice.impute.2l.latentgroupmean.mcmc <- function (y, ry, x, type,
                         liab=NULL, QUASI=TRUE )
     # overwrite previous iteration state
     storeState.latentgroupmean.MCMC[[vname]][[i]] <- new.state
-    assign("storeState.latentgroupmean.MCMC", storeState.latentgroupmean.MCMC, pos=parent.frame())
+    assign("storeState.latentgroupmean.MCMC", storeState.latentgroupmean.MCMC,
+                                pos=parent.frame())
 
     # parameter estimates (post. draw by default, EAP otherwise)
     if (draw.fixed){

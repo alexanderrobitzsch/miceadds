@@ -1,5 +1,5 @@
 %% File Name: ml_mcmc.Rd
-%% File Version: 0.447
+%% File Version: 0.448
 
 \name{ml_mcmc}
 \alias{ml_mcmc}
@@ -207,8 +207,8 @@ should be computed}
 }
 
 \details{
-Fits a linear mixed effects model \eqn{y=\boldmath{X}\boldmath{beta}+
-\boldmath{Z}\boldmath{u}+e} with MCMC sampling. In case of ordinal data,
+Fits a linear mixed effects model \eqn{y=\bm{X}\bm{beta}+
+\bm{Z}\bm{u}+e} with MCMC sampling. In case of ordinal data,
 the ordinal variable \eqn{y} is replaced by an underlying latent normally
 distributed variable \eqn{y^\ast} and the residual variance is fixed to 1.
 }

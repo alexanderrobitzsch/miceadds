@@ -1,11 +1,12 @@
 ## File Name: mice.impute.2l.pls2.R
-## File Version: 3.334
+## File Version: 3.341
 
 mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
             pls.impMethod="pmm", pls.print.progress=TRUE,
             imputationWeights=rep( 1,length(y) ), pcamaxcols=1E9,
             tricube.pmm.scale=NULL, min.int.cor=0, min.all.cor=0, N.largest=0,
-            pls.title=NULL, print.dims=TRUE, pls.maxcols=5000,    envir_pos=parent.frame(), ... )
+            pls.title=NULL, print.dims=TRUE, pls.maxcols=5000,
+            envir_pos=parent.frame(), ... )
 {
     time1 <- Sys.time()
     n <- NULL
@@ -20,8 +21,9 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
     pls.impMethod <- mice_imputation_extract_list_arguments( micearg=pls.impMethod,
                     vname=vname, miceargdefault="pmm" )
     # extract scaling factor for scaling factor in tricube weighted estimation
-    tricube.pmm.scale <- mice_imputation_extract_list_arguments( micearg=tricube.pmm.scale,
-                    vname=vname, miceargdefault=.2 )
+    tricube.pmm.scale <- mice_imputation_extract_list_arguments(
+                                micearg=tricube.pmm.scale,
+                                vname=vname, miceargdefault=.2 )
     # define minimal correlation for interactions
     min.int.cor <- mice_imputation_extract_list_arguments( micearg=min.int.cor,
                         vname=vname, miceargdefault=0 )
@@ -87,7 +89,8 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
     #--- create no interactions
     if ( is.null(pls.interactions) ){
         if( pls.print.progress ){
-            cat("\n", paste("Created no Interactions", substring( Sys.time(),1) ), "\n") ; flush.console()
+            cat("\n", paste("Created no Interactions", substring( Sys.time(),1) ), "\n")
+            utils::flush.console()
         }
     } else { # create some interactions
         use.int <- intersect( colnames(x), pls.interactions  )
@@ -101,7 +104,8 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
             dfr0 <- NULL
             if( pls.print.progress ){
                 cat("\nCreate Interactions")
-                cat("\n", "Minimal Absolute Correlation for Interactions of min.int.cor=", min.int.cor, "\n\n")
+                cat("\n", "Minimal Absolute Correlation for Interactions of min.int.cor=",
+                            min.int.cor, "\n\n")
             }
             N1t <- 0 ; N2t <- 0
             # which interactions should not be created?
@@ -111,9 +115,10 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
             dfr <- cbind( rep( ind.int, each=length(cols) ),
                                 rep(cols, length(ind.int) ) )
             dfr <- dfr[ dfr[, 1 ] !=dfr[,2], ]
-            ind <- intersect( which(dfr[, 1] %in% ind.int), which(dfr[, 2] %in% ind.int  ) )
+            ind <- intersect( which(dfr[, 1] %in% ind.int), which(dfr[,2] %in% ind.int ))
             dfr1 <- dfr[ ind, ]
-            dfr <- rbind( dfr[ setdiff( seq(1,nrow(dfr)),ind), ], dfr1[ dfr1[,1]< dfr1[,2], ])
+            dfr <- rbind( dfr[ setdiff( seq(1,nrow(dfr)),ind), ],
+                                dfr1[ dfr1[,1]< dfr1[,2], ])
             dfr <- dfr[ order( dfr[,1] ), ]
 
             # create interactions
@@ -143,15 +148,18 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
             if (pls.print.progress){
                 cat(" ")
                 cat(paste( seq( 1, nrow(N1t)), colnames(x[,ind.int]),
-                        "Created", N1t[,1], "Interactions | Kept", N1h[,1], "Interactions ", "\n") )
+                            "Created", N1t[,1], "Interactions | Kept", N1h[,1],
+                            "Interactions ", "\n") )
             }
             if( pls.print.progress ){
                 cat("\n")
-                cat(paste("Created", sum(N1t[,1]), "Interactions in Total | ", substring( Sys.time(),1) ), "\n")
+                cat(paste("Created", sum(N1t[,1]), "Interactions in Total | ",
+                            substring( Sys.time(),1) ), "\n")
                 utils::flush.console()
                 cat("Interactions with ", paste(use.int,collapse=" "), "\n", sep="")
                 cat("Kept ", N2t, " Interactions in Total \n", sep="")
-                cat("  Minimal Absolute Correlation for Interactions of min.int.cor=", min.int.cor, "\n")
+                cat("  Minimal Absolute Correlation for Interactions of min.int.cor=",
+                                min.int.cor, "\n")
                 utils::flush.console()
             }
         }
@@ -162,7 +170,7 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
     use.quad <- unique( intersect( colnames(x0),  pls.quadratics ) )
     # exclude variables from constructing quadratic terms if they only possess 2 values
     if ( length(use.quad)>0 ){
-        h1 <- apply( as.matrix(x0[,use.quad]), 2, FUN=function(tt){ length( table(tt) ) } )
+        h1 <- apply( as.matrix(x0[,use.quad]), 2, FUN=function(tt){ length( table(tt))})
         pls.quadratics <- intersect( pls.quadratics, use.quad[ h1 > 2 ] )
     }
 
@@ -251,7 +259,8 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
         xdims <- min( pcamaxcols, nrow(x)-2 )
         cat("\nDimension reduction with Principal Components Analysis\n")
         if (pcamaxcols > 1){
-            cat("Dimension of X:", ncol(x), " -> Dimension reduction to ", xdims, "dimensions\n")
+            cat("Dimension of X:", ncol(x), " -> Dimension reduction to ",
+                        xdims, "dimensions\n")
         }
         if (pcamaxcols < 1){
             cat("Dimension of X:", ncol(x), " -> Dimension reduction to ",
@@ -292,7 +301,8 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
         cat( "\n", paste( nfac, " PLS factors are used", sep="") )
         utils::flush.console()
         if ( pls.facs==0){
-            cat( "\n", "All", ncol(x), "predictors are used (no PLS dimension reduction)")
+            cat( "\n", "All", ncol(x),
+                        "predictors are used (no PLS dimension reduction)")
         }
         cat("\n\n" )
     }
@@ -321,14 +331,15 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
 
     #--- estimate linear regression
     if (pls.impMethod !="xplsfacs" ){
-        if ( stats::sd( imputationWeights) > 0  ){   # if there exists a real sample weight vector
+        if ( stats::sd( imputationWeights) > 0  ){
+            # if there exists a real sample weight vector
             x <- cbind(1, as.matrix(x))
             xobs <- x[ry,]
             yobs <- y[ry]
             weights.obs <- imputationWeights[ ry ]
             weights.obs <- length(weights.obs) * weights.obs / sum( weights.obs )
-            parm <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs, ry=ry, y=y, x=x,
-                                weights.obs=weights.obs, ... )
+            parm <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
+                                ry=ry, y=y, x=x, weights.obs=weights.obs, ... )
         } else {
                 parm <- mice_imputation_norm_draw( y=y, ry=ry, x=x )
         }
@@ -361,7 +372,8 @@ mice.impute.2l.pls2 <- function(y, ry, x, type, pls.facs=NULL,
 
     #*** imputation method 'tricube.pmm'
     if (pls.impMethod=="tricube.pmm" ){
-        x1 <- mice.impute.tricube.pmm(y=y, ry=ry, x=x, tricube.pmm.scale=tricube.pmm.scale )
+        x1 <- mice.impute.tricube.pmm(y=y, ry=ry, x=x,
+                        tricube.pmm.scale=tricube.pmm.scale )
     }
     if (pls.impMethod=="xplsfacs" ){
         x1 <- x

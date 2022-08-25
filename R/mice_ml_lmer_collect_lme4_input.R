@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_collect_lme4_input.R
-## File Version: 0.07
+## File Version: 0.09
 
 mice_ml_lmer_collect_lme4_input <- function(y, x, ry, data, levels_id, NL, fml,
         lmer_family, model, lmer_args, blme_args )
@@ -15,7 +15,8 @@ mice_ml_lmer_collect_lme4_input <- function(y, x, ry, data, levels_id, NL, fml,
         lmer_args$family <- lmer_family
     }
     # apply blme arguments if provided
-    lmer_args <- mice_multilevel_imputation_blme_args( lmer_args=lmer_args, blme_args=blme_args )
+    lmer_args <- mice_multilevel_imputation_blme_args( lmer_args=lmer_args,
+                        blme_args=blme_args )
     #--- output
     return(lmer_args)
 }

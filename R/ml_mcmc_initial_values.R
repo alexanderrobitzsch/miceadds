@@ -1,8 +1,8 @@
 ## File Name: ml_mcmc_initial_values.R
-## File Version: 0.14
+## File Version: 0.152
 
-ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thresh, K, NR,
-    inits_lme4, X, Z_list, ncluster_list, formula )
+ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thresh, K,
+            NR, inits_lme4, X, Z_list, ncluster_list, formula )
 {
     require_namespace("lme4")
     Psi_list <- list()
@@ -14,7 +14,8 @@ ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thre
         if (est_probit){
             var_lhs <- formula_terms$formula_lhs
             N <- length(y)
-            data[, var_lhs] <- stats::qnorm( rank( x=data[,var_lhs], ties.method="average") / ( N + 1) )
+            data[, var_lhs] <- stats::qnorm( rank( x=data[,var_lhs],
+                                    ties.method="average") / ( N + 1) )
         }
         mod <- lme4::lmer( formula=formula, data=data )
         smod <- summary(mod)
@@ -40,7 +41,8 @@ ml_mcmc_initial_values <- function( data, y, formula_terms, est_probit, est_thre
             Psi_list[[rr]] <- Psi_rr
             ncluster_rr <- ncluster_list[[rr]]
             umat <- matrix( stats::rnorm(nrr*ncluster_rr), nrow=ncluster_rr, ncol=nrr)
-            umat <- umat * matrix( sqrt(diag(Psi_rr) ), nrow=ncluster_rr, ncol=nrr, byrow=TRUE)
+            umat <- umat * matrix( sqrt(diag(Psi_rr) ), nrow=ncluster_rr,
+                                ncol=nrr, byrow=TRUE)
             u_list[[rr]] <- umat
         }
         mod <- stats::lm(y~0+X)

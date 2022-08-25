@@ -1,5 +1,5 @@
 ## File Name: ma_lme4_formula_design_matrices.R
-## File Version: 0.318
+## File Version: 0.320
 
 
 ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
@@ -41,7 +41,8 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
             #-- idcluster random effect rr
             onlyintercept_list[[rr]] <- mean( attr(Z_rr, "assign")==0 )==1
             re_id <- random_effects_id[[rr]]
-            cl1 <- stats::model.matrix( stats::as.formula( paste0(" ~ 0 +", re_id)), data )
+            cl1 <- stats::model.matrix( stats::as.formula( paste0(" ~ 0 +", re_id)),
+                                    data=data )
             cl1 <- cl1[,1]
             cluster_list[[rr]] <- cl1
             ucl1 <- unique(cl1)
@@ -51,7 +52,8 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
             NZ <- length(Z_names)
             eg1 <- expand.grid( 1:NZ, 1:NZ )
             eg1 <- eg1[ eg1[,1] >=eg1[,2],, drop=FALSE]
-            parnames_Psi[[re_id]] <- paste0("vcov_", re_id, "_", Z_names[eg1[,2]], "-", Z_names[eg1[,1]] )#
+            parnames_Psi[[re_id]] <- paste0("vcov_", re_id, "_", Z_names[eg1[,2]],
+                                            "-", Z_names[eg1[,1]] )#
         }
     }
 
@@ -59,7 +61,8 @@ ma_lme4_formula_design_matrices <- function(formula, data, start_index=0,
         parnames$Psi <- parnames_Psi
         parnames$sigma2 <- "sigma2"
         names(onlyintercept_list) <- names(Z) <- random_effects_id
-        names(cluster_list) <- names(idcluster_list) <- names(ncluster_list) <- random_effects_id
+        names(cluster_list) <- names(idcluster_list) <-
+                        names(ncluster_list) <- random_effects_id
     }
     #--- output
     res <- list( formula_terms=formula_terms, data=data, observed_cases=observed_cases,

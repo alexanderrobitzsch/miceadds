@@ -1,5 +1,5 @@
 ## File Name: save.data.R
-## File Version: 0.37
+## File Version: 0.382
 
 
 #--- miceadds: saving data
@@ -32,19 +32,22 @@ save.data <- function( data, filename, type="Rdata", path=getwd(),
     if ("csv2" %in% type  ){
         if ( is.null(na)){ na <- "" }
         file <- save_data_calc_filename( file=file0, type="csv2")
-        utils::write.csv2( x=data, file=file.path(dir,file), row.names=row.names, na=na,... )
+        utils::write.csv2( x=data, file=file.path(dir,file),
+                                row.names=row.names, na=na,... )
     }
     #*** csv objects
     if ("csv" %in% type ){
         if ( is.null(na)){ na <- "" }
         file <- save_data_calc_filename( file=file0, type="csv")
-        utils::write.csv( x=data, file=file.path(dir,file), row.names=row.names, na=na,  ... )
+        utils::write.csv( x=data, file=file.path(dir,file),
+                                row.names=row.names, na=na,  ... )
     }
     #*** table objects
     if ("table" %in% type ){
         if ( is.null(na)){ na <- "." }
         file <- save_data_calc_filename( file=file0, type="table")
-        utils::write.table( x=data, file=file.path(dir,file), na=na, row.names=row.names, ... )
+        utils::write.table( x=data, file=file.path(dir,file), na=na,
+                                row.names=row.names, ... )
     }
     #*** sav objects (SPSS objects)
     if ( "sav" %in% type ){

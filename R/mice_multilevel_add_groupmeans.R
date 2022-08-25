@@ -1,5 +1,5 @@
 ## File Name: mice_multilevel_add_groupmeans.R
-## File Version: 0.149
+## File Version: 0.151
 
 
 mice_multilevel_add_groupmeans <- function( y, ry, x, type,
@@ -15,7 +15,6 @@ mice_multilevel_add_groupmeans <- function( y, ry, x, type,
         sel_types <- names(type)[ type %in% c(-2, type3, type4) ]
         sel_types <- intersect(sel_types, colnames(x))
         x0 <- as.matrix(x[, sel_types, drop=FALSE] )
-        # colnames(x0) <- c( colnames(x)[type==-2], colnames(x)[type %in% c(type3, type4)] )
         colnames(x0) <- sel_types
         type0 <- c( -2, rep(1,ncol(x0)-1) )
         x0.aggr <- as.matrix( mice_multilevel_impute_groupmean(y=y, ry=ry, x=x0,

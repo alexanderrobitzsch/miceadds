@@ -1,5 +1,5 @@
 %% File Name: with.miceadds.Rd
-%% File Version: 0.42
+%% File Version: 0.43
 
 \name{with.miceadds}
 \alias{with.mids.1chain}
@@ -129,7 +129,7 @@ Imputation functions in \pkg{miceadds}:
 
 
 \examples{
-\dontrun{ 
+\dontrun{
 #############################################################################
 # EXAMPLE 1: One chain nhanes data | application of 'with' and 'within'
 #############################################################################

@@ -1,5 +1,5 @@
 ## File Name: mice.impute.2l.latentgroupmean.ml.R
-## File Version: 2.15
+## File Version: 2.162
 
 mice.impute.2l.latentgroupmean.ml <- function (y, ry, x, type,
             pls.facs=NULL, imputationWeights=NULL, interactions=NULL, quadratics=NULL,
@@ -30,7 +30,8 @@ mice.impute.2l.latentgroupmean.ml <- function (y, ry, x, type,
         vname <- res$vname
         newstate <- res$newstate
         plsout <- mice_imputation_pls_helper( newstate=newstate, vname=vname,
-                        pls.impMethod="xplsfacs", x=h1, y=y.l2[,2], ry=( ! is.na(y.l2[,2] )),
+                        pls.impMethod="xplsfacs", x=h1, y=y.l2[,2],
+                        ry=( ! is.na(y.l2[,2] )),
                         imputationWeights=rep( 1, nrow(covaggr.l2)),
                         interactions=interactions, quadratics=quadratics,
                         pls.facs=pls.facs, ... )

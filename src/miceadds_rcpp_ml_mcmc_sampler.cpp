@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_ml_mcmc_sampler.cpp
-//// File Version: 0.896
+//// File Version: 0.898
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -66,16 +66,19 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sampler( arma::colvec y_obs, arma::mat X,
                     idcluster_list, sigma2, onlyintercept_list, NR, ridge);
 
         //-- sampling Psi matrix
-        Psi_list = miceadds_rcpp_ml_mcmc_sample_psi( u_list, psi_nu0_list, psi_S0_list, NR, ridge );
+        Psi_list = miceadds_rcpp_ml_mcmc_sample_psi( u_list, psi_nu0_list,
+                                psi_S0_list, NR, ridge );
 
         //-- sample random effects u
-        u_list = miceadds_rcpp_ml_mcmc_sample_u( X, beta, Z_list, y, ztz_list, idcluster_list,
-                        ncluster_list, sigma2, Psi_list, onlyintercept_list, NR, u_list, ridge );
+        u_list = miceadds_rcpp_ml_mcmc_sample_u( X, beta, Z_list, y, ztz_list,
+                        idcluster_list, ncluster_list, sigma2, Psi_list,
+                        onlyintercept_list, NR, u_list, ridge );
 
         //-- sample sigma2
         if (est_sigma2){
             sigma2 = miceadds_rcpp_ml_mcmc_sample_sigma2( y, X,  beta, Z_list, u_list,
-                    idcluster_list, onlyintercept_list, sigma2_nu0, sigma2_sigma2_0, NR, ridge );
+                    idcluster_list, onlyintercept_list, sigma2_nu0,
+                    sigma2_sigma2_0, NR, ridge );
         }
 
         //-- sample thresholds in case of ordinal data

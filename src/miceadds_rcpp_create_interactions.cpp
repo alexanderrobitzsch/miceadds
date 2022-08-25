@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_create_interactions.cpp
-//// File Version: 2.237
+//// File Version: 2.239
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -65,7 +65,8 @@ Rcpp::List miceadds_rcpp_create_interactions( Rcpp::NumericVector Yr,
         cii = arma::abs( cor_temp );
         allcorrs(nn,0) =  cii(0,0);
         if ( cii(0,0) > min_int_cor ){
-            xxi2 = arma::mat( xall.col( index_int(nn,0)-1 ) % xall.col( index_int(nn,1)-1 ) );
+            xxi2 = arma::mat( xall.col( index_int(nn,0)-1 ) %
+                                    xall.col( index_int(nn,1)-1 ) );
             IM.col(zz) = xxi2.col(0);
             allcorrs(nn,1)=1;
             zz = zz + 1;

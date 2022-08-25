@@ -1,5 +1,5 @@
 ## File Name: plausible.value.draw.R
-## File Version: 0.13
+## File Version: 0.15
 
 
 plausible.value.draw <- function( data, X, beta0, sig0, b=b,
@@ -23,7 +23,8 @@ plausible.value.draw <- function( data, X, beta0, sig0, b=b,
     dens.Resp <- matrix( 0, nrow=n, ncol=ncol(dens.Regr) )
     for (tt in seq(1, length(theta.list)) ){
     ptt <- outer( rep(1, n), c + (1-c)*stats::plogis( a * ( theta.list[tt] - b ) ) )
-        dens.Resp[,tt] <- exp( rowSums( respind *y * log( ptt) + respind*(1-y) * log( 1-ptt)  ) )
+        dens.Resp[,tt] <- exp( rowSums( respind *y * log( ptt) + respind*(1-y) *
+                                    log( 1-ptt)  ) )
     }
     dens.total <- dens.Resp * dens.Regr
     dens.total <- dens.total / rowSums( dens.total)

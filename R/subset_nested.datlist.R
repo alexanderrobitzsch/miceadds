@@ -1,5 +1,5 @@
 ## File Name: subset_nested.datlist.R
-## File Version: 1.17
+## File Version: 1.18
 
 subset_nested.datlist <- function( datlist, subset=TRUE,
                 select=NULL, expr_subset=NULL,
@@ -117,7 +117,8 @@ subset_nested.datlist <- function( datlist, subset=TRUE,
         # simplify between nest
         if ( simplify){
             if ( a2[1]==1){
-                datlist2 <- miceadds_import_mitools_imputationList( datlist2$imputations[[1]] )
+                datlist2 <- miceadds_import_mitools_imputationList(
+                                        datlist2$imputations[[1]] )
             }
         }
     }

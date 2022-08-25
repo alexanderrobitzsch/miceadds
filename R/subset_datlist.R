@@ -1,5 +1,5 @@
 ## File Name: subset_datlist.R
-## File Version: 0.371
+## File Version: 0.373
 
 subset_datlist <- function( datlist, subset=TRUE,
             select=NULL, expr_subset=NULL, index=NULL, toclass="datlist")
@@ -97,7 +97,8 @@ subset_datlist <- function( datlist, subset=TRUE,
 
 ############################################################
 # object of class datlist
-subset.datlist <- function( x, subset, select=NULL, expr_subset=NULL, index=NULL, ... )
+subset.datlist <- function( x, subset, select=NULL, expr_subset=NULL,
+                            index=NULL, ... )
 {
     CALL <- match.call()
     if (missing(subset)){  subset <- TRUE }
@@ -123,7 +124,8 @@ subset.mids <- function( x, subset, select=NULL, expr_subset=NULL, index=NULL, .
 
 #---------------------------------------------------------------
 # object of class mids.1chain
-subset.mids.1chain <- function( x, subset, select=NULL,  expr_subset=NULL, index=NULL, ... )
+subset.mids.1chain <- function( x, subset, select=NULL,  expr_subset=NULL,
+                    index=NULL, ... )
 {
     CALL <- match.call()
     if (missing(subset)){ subset <- TRUE }
@@ -135,7 +137,8 @@ subset.mids.1chain <- function( x, subset, select=NULL,  expr_subset=NULL, index
 
 #---------------------------------------------------------------
 # object of class imputationList
-subset.imputationList <- function( x, subset, select=NULL, expr_subset=NULL, index=NULL, ... )
+subset.imputationList <- function( x, subset, select=NULL, expr_subset=NULL,
+                            index=NULL, ... )
 {
     CALL <- match.call()
     if (missing(subset)){ subset <- TRUE }

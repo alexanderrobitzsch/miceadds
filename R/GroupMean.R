@@ -1,5 +1,5 @@
 ## File Name: GroupMean.R
-## File Version: 1.249
+## File Version: 1.252
 
 GroupMean  <- function( data, group, weights=NULL, extend=FALSE, elim=FALSE)
 {
@@ -22,7 +22,8 @@ GroupMean  <- function( data, group, weights=NULL, extend=FALSE, elim=FALSE)
     if (elim){
         eps <- 1e-15
         Ngroup0 <- cbind(Ngroup, Ngroup)
-        Ngroup1 <- GroupMean_extend_data(data=Ngroup0, index.group=index.group, extend=extend)
+        Ngroup1 <- GroupMean_extend_data(data=Ngroup0, index.group=index.group,
+                                extend=extend)
         ng <- Ngroup1[,1]
         data2 <- ( ng*data1[,-1] - data ) / (ng-1+eps)
         data1[,-1] <- data2

@@ -1,5 +1,5 @@
 ## File Name: lmer_vcov.R
-## File Version: 0.26
+## File Version: 0.272
 
 ## covariance matrix for fitted models with lmer including
 ## variance components
@@ -76,8 +76,8 @@ lmer_vcov <- function(object, level=.95, use_reml=FALSE, ...)
     dfr$se <- se
     dfr <- sirt::parmsummary_extend(dfr=dfr, level=level, est_label="est", se_label="se")
     #-- output
-    res <- list( par_summary=dfr, coef=coef1, vcov=vcov1, se=se, fixed=fixed, random=random,
-                np=np, np_random=np_random, np_fixed=np_fixed,
+    res <- list( par_summary=dfr, coef=coef1, vcov=vcov1, se=se, fixed=fixed,
+                random=random, np=np, np_random=np_random, np_fixed=np_fixed,
                 ind_fixed=ind_fixed, ind_random=ind_random )
     class(res) <- "lmer_vcov"
     return(res)

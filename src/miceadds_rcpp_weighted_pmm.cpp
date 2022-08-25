@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_weighted_pmm.cpp
-//// File Version: 0.292
+//// File Version: 0.294
 
 // [[Rcpp::depends(RcppArmadillo)]]
 
@@ -91,7 +91,8 @@ Rcpp::NumericVector miceadds_rcpp_weighted_pmm_match( Rcpp::NumericVector yhatmi
             // correction thanks to @jarretrt, Github Issue #23
             ds[oo] = std::abs(z-yhatobs[oo]);
         }
-        samp_index = miceadds_rcpp_weighted_pmm_match_case(ds, weights_obs, donors, donor_ind);
+        samp_index = miceadds_rcpp_weighted_pmm_match_case(ds, weights_obs,
+                            donors, donor_ind);
         yimp[nn] = yobs[samp_index];
     }
     return yimp;

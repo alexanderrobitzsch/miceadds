@@ -1,9 +1,9 @@
 ## File Name: save.Rdata.R
-## File Version: 1.08
+## File Version: 1.092
 
 
-#****************************************
-# save R data objects
+
+### save R data objects
 save.Rdata <- function( dat, name, path=NULL, part.numb=1000 )
 {
     if ( is.null(path) ){ path <- getwd() }
@@ -25,7 +25,7 @@ save.Rdata <- function( dat, name, path=NULL, part.numb=1000 )
     cat( utils::str( dat, list.len=ncol(dat) + 50 ))
         sink()
     dfr <- data.frame( "column"=1:(ncol(dat)), "variable"=colnames(dat) )
-    utils::write.csv2( dfr, file=file.path( path, paste( name, "__VARIABLES.csv", sep="") ),
-                quote=TRUE, row.names=F, na="" )
+    utils::write.csv2( dfr, file=file.path( path,
+                            paste( name, "__VARIABLES.csv", sep="") ),
+                            quote=TRUE, row.names=F, na="" )
 }
-#****************************************

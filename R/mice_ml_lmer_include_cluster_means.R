@@ -1,9 +1,9 @@
 ## File Name: mice_ml_lmer_include_cluster_means.R
-## File Version: 0.179
+## File Version: 0.182
 
 
-mice_ml_lmer_include_cluster_means <- function(y, ry, type, x, levels_id, aggregate_automatically,
-        clus, groupcenter.slope, variables_levels )
+mice_ml_lmer_include_cluster_means <- function(y, ry, type, x, levels_id,
+        aggregate_automatically, clus, groupcenter.slope, variables_levels )
 {
     types_sel <- names(type)[ type==1 ]
     types_sel <- intersect(types_sel, colnames(x))

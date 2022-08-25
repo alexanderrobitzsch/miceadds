@@ -1,5 +1,5 @@
 ## File Name: mice.impute.tricube.pmm.R
-## File Version: 0.301
+## File Version: 0.304
 
 mice.impute.tricube.pmm <- function (y, ry, x, tricube.pmm.scale=.2,
             tricube.boot=FALSE, ...)
@@ -45,7 +45,8 @@ mice.impute.tricube.pmm <- function (y, ry, x, tricube.pmm.scale=.2,
     cat( paste( "  R2 (sampled coefficients): ", round(R2.samp,4), "\n"))
 
     if ( tricube.boot ){
-        R2.boot <- 1 - sum( ( x[ry, ] %*% parm2$beta - y[ry] )^2 ) / sum( ( y[ry] - ymean)^2 )
+        R2.boot <- 1 - sum( ( x[ry, ] %*% parm2$beta - y[ry] )^2 ) /
+                            sum( ( y[ry] - ymean)^2 )
         cat( paste( "  R2 (Bootstrap): ", round(R2.boot,4), "\n"))
     }
     utils::flush.console()
@@ -58,7 +59,8 @@ mice.impute.tricube.pmm <- function (y, ry, x, tricube.pmm.scale=.2,
     # add some small noise to create unique entries in matrix d0
     d00 <- abs(d0)
     fg1 <- min( d00[ d00 > 0 ] )
-    d0 <- d0 + matrix( stats::runif( nrow(d0)*ncol(d0), 0, fg1/10000000 ), ncol=ncol(d0) )
+    d0 <- d0 + matrix( stats::runif( nrow(d0)*ncol(d0), 0, fg1/10000000 ),
+                                ncol=ncol(d0) )
     ND <- ncol(d0)
     NY <- nrow(d0)
     # DONOR1
@@ -82,7 +84,8 @@ mice.impute.tricube.pmm <- function (y, ry, x, tricube.pmm.scale=.2,
     d <- d  + eps * ( dg==outer( rmin2, xd ) )
     d <- d  + eps * ( dg==outer( rmin3, xd ) )
     prob.x <- d / ( rowSums(d) + eps )
-    probcs <- t( sapply( seq(1,nrow(prob.x)), FUN=function(ii){ cumsum(prob.x[ii,]) } ) )
+    probcs <- t( sapply( seq(1,nrow(prob.x)), FUN=function(ii){
+                            cumsum(prob.x[ii,]) } ) )
     probcs2 <- probcs
     # draw a random number
     RU <- stats::runif( nrow(d) )

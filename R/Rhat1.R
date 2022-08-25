@@ -1,5 +1,5 @@
 ## File Name: Rhat1.R
-## File Version: 1.06
+## File Version: 1.071
 
 
 ####################################
@@ -7,12 +7,6 @@
 ############################################################################
         # Code from rube package
         # Source: http://www.stat.cmu.edu/~hseltman/rube/rube0.2-16/R/Rhat.R
-        # Inference from Iterative Simulation Using Multiple Sequences
-        # Author(s): Andrew Gelman and Donald B. Rubin
-        # Source: Statistical Science, Vol. 7, No. 4 (Nov., 1992), pp. 457-472
-        # Stable URL: http://www.jstor.org/stable/2246093
-        ## Matches gelman.diag() from package "coda", but not WinBUGS() "summary" component.
-        ## Better than gelman.diag() because multivariate stat is not bothered to be calculated
 
 Rhat1 <- function(mat)
 {

@@ -1,5 +1,5 @@
 ## File Name: draw.pv.ctt.R
-## File Version: 3.234
+## File Version: 3.236
 
 draw.pv.ctt <- function( y, dat.scale=NULL, x=NULL, samp.pars=TRUE, alpha=NULL,
                     sig.e=NULL, var.e=NULL, true.var=NULL )
@@ -92,7 +92,8 @@ draw.pv.ctt <- function( y, dat.scale=NULL, x=NULL, samp.pars=TRUE, alpha=NULL,
     cat( "Observed variance:", h1, "\n")
     cat( "Sampled PV variance:", h2, "\n")
     cat( "PV Reliability:", round(h2 / h1,4  ), "\n")
-    cat( "Conditional Reliability of Y given X:", round( mean(rho.c, na.rm=TRUE),4  ), "\n")
+    cat( "Conditional Reliability of Y given X:",
+                round( mean(rho.c, na.rm=TRUE),4  ), "\n")
     return( y.pv )
 }
 

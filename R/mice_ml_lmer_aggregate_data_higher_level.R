@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_aggregate_data_higher_level.R
-## File Version: 0.14
+## File Version: 0.16
 
 mice_ml_lmer_aggregate_data_higher_level <- function(vname_level, y, ry, x, data,
         levels_id, vname=NULL )
@@ -10,7 +10,8 @@ mice_ml_lmer_aggregate_data_higher_level <- function(vname_level, y, ry, x, data
     if (vname_level !=""){
         #--- cluster identifiers
         clus <- data[, vname_level]
-        data1 <- GroupMean(data=data[, c(vname_level, levels_id), drop=FALSE ], group=clus )
+        data1 <- GroupMean(data=data[, c(vname_level, levels_id), drop=FALSE ],
+                            group=clus )
         data <- data1[, -1 ]
         #--- y
         y1 <- GroupMean(data=y, group=clus )

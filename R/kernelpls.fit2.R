@@ -1,5 +1,5 @@
 ## File Name: kernelpls.fit2.R
-## File Version: 0.231
+## File Version: 0.232
 
 #*** Rcpp version of kernel PLS regression
 kernelpls.fit2 <- function(X, Y, ncomp )
@@ -11,7 +11,7 @@ kernelpls.fit2 <- function(X, Y, ncomp )
     }
     Y <- as.matrix(Y)
     X <- as.matrix(X)
-    
+
     ## Save dimnames:
     dnX <- dimnames(X)
     dnY <- dimnames(Y)

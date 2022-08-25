@@ -1,5 +1,5 @@
 ## File Name: plausible.value.imputation.R
-## File Version: 0.14
+## File Version: 0.16
 
 
 plausible.value.imputation <- function( data, X, Z=NULL, beta0=rep(0,ncol(X)), sig0=1,
@@ -34,12 +34,14 @@ plausible.value.imputation <- function( data, X, Z=NULL, beta0=rep(0,ncol(X)), s
                 b=b, a=a, c=c, theta.list=theta.list, pvdraw=1 )
         # calculate adjusted group mean in case of clustering
         if ( !  is.null( cluster ) ){
-            X1 <- cbind( X, .adj.groupmean( variable=pv1$plausible.value[,1],cluster=cluster ))
+            X1 <- cbind( X, .adj.groupmean( variable=pv1$plausible.value[,1],
+                                    cluster=cluster ))
         } else {
             X1 <- X
         }
         # sample latent regression model / draw regression parameters
-        s2 <- latent_regression_em_sampling( pv=pv1$plausible.value[,1], X=X1, Z=as.matrix(Z) )
+        s2 <- latent_regression_em_sampling( pv=pv1$plausible.value[,1],
+                                    X=X1, Z=as.matrix(Z) )
         beta0 <- s2$samp.beta   # sampling of regression coefficients
         sig0 <- s2$fitted.sigma
         coefs[ii,] <- beta0

@@ -1,5 +1,5 @@
 ## File Name: mice.impute.smcfcs.R
-## File Version: 0.363
+## File Version: 0.365
 
 mice.impute.smcfcs <- function(y, ry, x, wy=NULL, sm, dep_type="norm",
     sm_type="norm", fac_sd_proposal=1, mh_iter=20, ...)
@@ -63,8 +63,8 @@ mice.impute.smcfcs <- function(y, ry, x, wy=NULL, sm, dep_type="norm",
                             model2=model2, data=dat2a)
 
         # sample new values
-        dat2b <- mice_imputation_new_proposal(model=model_proposal, data=dat2a, vname=vname,
-                        fac_sd_proposal=fac_sd_proposal_temp)
+        dat2b <- mice_imputation_new_proposal(model=model_proposal, data=dat2a,
+                        vname=vname, fac_sd_proposal=fac_sd_proposal_temp)
 
         # evaluate new likelihood
         ll_new <- mice_imputation_smcfcs_evaluate_loglikelihood(model1=model1,

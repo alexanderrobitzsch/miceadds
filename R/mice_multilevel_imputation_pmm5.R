@@ -1,5 +1,5 @@
 ## File Name: mice_multilevel_imputation_pmm5.R
-## File Version: 0.219
+## File Version: 0.221
 
 
 mice_multilevel_imputation_pmm5 <- function (y, ry, x, yhatobs,
@@ -35,7 +35,8 @@ mice_multilevel_imputation_pmm5 <- function (y, ry, x, yhatobs,
     dfr0 <- dfr0[ order(dfr0$index_obs_miss), ]
     for ( dd in 1:donors){
         ydonors[,dd] <- dfr1[ mice::squeeze( dfr0$obsindex_low - dd + 1,c(1,Ny) ), "y"]
-        ydonors[,dd+donors] <- dfr1[ mice::squeeze( dfr0$obsindex_upp + dd - 1,c(1,Ny) ), "y"]
+        ydonors[,dd+donors] <- dfr1[ mice::squeeze( dfr0$obsindex_upp + dd - 1,c(1,Ny) ),
+                                            "y"]
     }
     ind.sample <- sample( 1:(2*donors), N0, replace=TRUE )
     imp <- ydonors[ cbind( 1:N0, ind.sample) ]

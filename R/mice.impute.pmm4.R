@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pmm4.R
-## File Version: 2.20
+## File Version: 2.22
 
 mice.impute.pmm4 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...)
 {
@@ -32,7 +32,8 @@ mice.impute.pmm4 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...
     N1 <- nrow(dfr1)
     for (dd in 1:donors){
         dfr1[, paste("donor.p",dd,sep="") ] <- c( dfr1$yhat[-seq(1,dd)], rep(NA,dd) )
-        dfr1[, paste("donor.m",dd,sep="") ] <- c( rep(NA,dd), dfr1$yhat[-c( seq( N1,N1+1 - dd) ) ]  )
+        dfr1[, paste("donor.m",dd,sep="") ] <- c( rep(NA,dd),
+                                            dfr1$yhat[-c( seq( N1,N1+1 - dd) ) ]  )
     }
     dfr1$yhatdonor <- dfr1$yhat
     #**** look at appropriate donors
@@ -42,7 +43,7 @@ mice.impute.pmm4 <- function (y, ry, x, donors=3, noise=10^5, ridge=10^(-5), ...
     dfr$sortindex.obs2[ dfr$sortindex.obs2 > N1 ] <- N1
     dfr2 <- dfr[ dfr$obs==0, ]
     dfr2a <- dfr1[ dfr2$sortindex.obs1, grep( "donor", colnames(dfr1) ) ]
-    dfr2a <- cbind( dfr2a, dfr1[ dfr2$sortindex.obs2, grep( "donor", colnames(dfr1) ) ]     )
+    dfr2a <- cbind( dfr2a, dfr1[ dfr2$sortindex.obs2, grep( "donor", colnames(dfr1) ) ] )
     dfr2 <- cbind( dfr2, dfr2a )
     gc <- grep( "donor", colnames(dfr2))
     d1 <- dfr2.abs <- abs( dfr2$yhat - dfr2[, gc ] )
