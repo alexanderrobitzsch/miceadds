@@ -176,6 +176,7 @@ export(datlist2mids)
 export(datlist2nested.datlist)
 export(datalist2mids)
 export(datlist_create)
+export(datlist2Amelia)
 export(draw.pv.ctt)
 export(fast.groupmean)		# defunct
 export(fast.groupsum)		# defunct

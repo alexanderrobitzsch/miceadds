@@ -44,14 +44,15 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.15  |  2022-08-25  |  Last: miceadds 3.15-3
+VERSIONS miceadds 3.15  |  2022-09-03  |  Last: miceadds 3.15-8
 --------------------------------------------------------------------------
  
-xxx   * ---
+ADDED * included utility function datlist2Amelia()
+        (suggested by @atanasj, Github Issue #26)
 
 
 DATA  * ---
-EXAMP * ---
+EXAMP * datlist2Amelia (1)
 
 
 --------------------------------------------------------------------------
