@@ -1,8 +1,9 @@
 ## File Name: mice_imputation_pls_estimate_pls_regression.R
-## File Version: 0.302
+## File Version: 0.325
 
 mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
-    use.ymat, imputationWeights, use_weights, pls.print.progress )
+    use.ymat, imputationWeights, use_weights, pls.print.progress,
+    pls.impMethod="pmm")
 {
     x00 <- x
     x11a <- NULL
@@ -13,14 +14,17 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
     if (use.ymat){
         yobs <- y[ry,]
     }
+    is_catpmm <- pls.impMethod=="catpmm"
     # center y obs
     weight.obs <- normalize_vector(x=imputationWeights[ry])
-    yobs <- yobs - stats::weighted.mean( x=yobs, w=weight.obs )
+    if (! is_catpmm ){
+        yobs <- yobs - stats::weighted.mean( x=yobs, w=weight.obs )
+    }
     xobs <- x[ry, ]
 
     # include imputationWeights here and calculate weight.obs
     # in the regression model, only PLS factors of X are used
-    if( use_weights ){
+    if( use_weights & ( ! is_catpmm) ){
         weight_obs_sqrt <- sqrt(weight.obs)
         nobs <- length(weight.obs)
         cm1 <- miceadds_weighted_colMeans(x=xobs, imputationWeights=weight.obs)
@@ -43,12 +47,49 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
 
     if ( do_pls ){
         VV <- ncol(xobs)
-        mod <- kernelpls.fit2( X=as.matrix(xobs), Y=matrix(yobs,ncol=1),ncomp=nfac)
+        X <- as.matrix(xobs)
+        if (is_catpmm){
+            dfr <- data.frame(yobs, xobs)
+            res <- mice_impute_catpmm_create_dummies_y(y=yobs, dfr, ridge=1e-10)
+            Y <- as.matrix(res$y1)
+            requireNamespace("pls")
+            pls_fun <- pls::kernelpls.fit
+        } else {
+            Y <- matrix(yobs,ncol=1)
+            pls_fun <- kernelpls.fit2
+        }
+
+
+        # apply PLS dimension reduction
+        pls_args <- list( X=X, Y=Y, ncomp=nfac)
+        mod <- do.call( what=pls_fun, args=pls_args)
+
+        if (is_catpmm){
+            mod <- mice_impute_pls_catpmm_R2(res=mod, Y=Y, nfac=nfac)
+        }
+
+
+        # mod <- kernelpls.fit2( X=as.matrix(xobs), Y=matrix(yobs,ncol=1), ncomp=nfac)
         if( pls.print.progress ){
             print( round( 100*mod$R2, 2 ))
         }
         dfr2 <- x
-        pmod <- predict.kernelpls.fit2( mod, X=as.matrix(x) )
+
+        X <- as.matrix(x)
+        if (is_catpmm){
+            mod$ncomp <- ncomp <- nfac
+            class(mod) <- "mvr"
+            pmod1 <- predict( mod, newdata=X)
+            np <- dim(pmod1)
+            pmod <- matrix(0, nrow=np[1], ncol=np[2]*np[3])
+            for (dd in 1:ncol(Y)){
+                pmod[, (dd-1)*ncomp + 1:ncomp] <- pmod1[,dd,]
+            }
+            colnames(pmod) <- paste0("x",1:ncol(pmod))
+        } else {
+            pmod <- predict.kernelpls.fit2( mod, X=X)
+        }
+
         x <- cbind(1, as.matrix(pmod))
         x11a <- x
         if( pls.print.progress ){

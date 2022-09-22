@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.197
+## File Version: 0.200
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
@@ -38,16 +38,19 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
 
         # draw regression coefficients
         sample_pars <- ! use_boot
-        parm <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
-                    ry=ry, y=y, x=x, weights.obs=weights.obs,
-                    sample_pars=sample_pars, ... )
-        if (use_boot){
-            weights.obs <- 1+0*weights.obs
-            parm1 <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
-                    ry=ry, y=y, x=x, weights.obs=weights.obs,
-                    sample_pars=sample_pars, ... )
-            parm$coef <- parm1$coef
+        if (pls.impMethod %in% imp_methods_special){
+            parm <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
+                        ry=ry, y=y, x=x, weights.obs=weights.obs,
+                        sample_pars=sample_pars, ... )
+            if (use_boot){
+                weights.obs <- 1+0*weights.obs
+                parm1 <- mice_imputation_weighted_norm_draw( yobs=yobs, xobs=xobs,
+                        ry=ry, y=y, x=x, weights.obs=weights.obs,
+                        sample_pars=sample_pars, ... )
+                parm$coef <- parm1$coef
+            }
         }
+
         if (pls.impMethod=="norm"){
             x1 <- x[ !ry, ] %*% parm$beta + stats::rnorm(sum(!ry)) * parm$sigma
         }

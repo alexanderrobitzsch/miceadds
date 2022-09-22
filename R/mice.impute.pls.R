@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.679
+## File Version: 3.694
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
@@ -109,9 +109,10 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     x10 <- x    # copy dataset of predictors
 
     #--- perform PLS regression
-    res <- mice_imputation_pls_estimate_pls_regression( pls.facs=pls.facs, x=x, y=y, ry=ry,
-                use.ymat=use.ymat, imputationWeights=imputationWeights, use_weights=use_weights,
-                pls.print.progress=pls.print.progress )
+    res <- mice_imputation_pls_estimate_pls_regression( pls.facs=pls.facs, x=x, y=y,
+                ry=ry, use.ymat=use.ymat, imputationWeights=imputationWeights,
+                use_weights=use_weights, pls.print.progress=pls.print.progress,
+                pls.impMethod=pls.impMethod)
     x <- res$x
     x11a <- res$x11a
 
@@ -126,6 +127,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                 pls.impMethod=pls.impMethod, pls.print.progress=pls.print.progress,
                 pls.impMethodArgs=pls.impMethodArgs, type=type, use_boot=use_boot,
                 vname=vname, donors=donors, ... )
+
     #--- finished all steps!
     time2 <- Sys.time()
     res <- mice_imputation_pls_print_progress3( pls.print.progress=pls.print.progress,

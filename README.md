@@ -8,9 +8,9 @@ all necessary information on the used librarys, the R version, and the OS it is 
 
 #### Manual
 
-The manual may be found here [https://alexanderrobitzsch.github.io/miceadds/](https://alexanderrobitzsch.github.io/miceadds/) 
+The manual can be found here [https://alexanderrobitzsch.github.io/miceadds/](https://alexanderrobitzsch.github.io/miceadds/) 
 
-#### CRAN version `miceadds` 3.14-3 (2022-08-24)
+#### CRAN version `miceadds` 3.15-21 (2022-09-22)
 
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-last-release/miceadds)](https://cran.r-project.org/package=miceadds)
@@ -24,12 +24,12 @@ The CRAN version can be installed from within R using:
 utils::install.packages("miceadds")
 ```
 
-#### GitHub version `miceadds` 3.15-8 (2022-09-03)
+#### GitHub version `miceadds` 3.16-2 (2022-09-22)
 
-[![](https://img.shields.io/badge/github%20version-3.15--8-orange.svg)](https://github.com/alexanderrobitzsch/miceadds)&#160;&#160;
+[![](https://img.shields.io/badge/github%20version-3.16--2-orange.svg)](https://github.com/alexanderrobitzsch/miceadds)&#160;&#160;
 
 The version hosted [here](https://github.com/alexanderrobitzsch/miceadds) is the development version of `miceadds`. 
-The GitHub version can be installed using `devtools` as:
+The GitHub version can be installed from within R using:
 
 ```r
 devtools::install_github("alexanderrobitzsch/miceadds")

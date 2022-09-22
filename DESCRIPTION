@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 3.15-8
-Date: 2022-09-03 15:49:30
+Version: 3.16-2
+Date: 2022-09-22 12:16:15
 Author: 
     Alexander Robitzsch [aut,cre] (<https://orcid.org/0000-0002-8226-3132>),
     Simon Grund [aut] (<https://orcid.org/0000-0002-1290-8986>),
@@ -14,7 +14,7 @@ Description:
     complements existing functionality in R.
     In particular, several imputation methods for the
     mice package (van Buuren & Groothuis-Oudshoorn, 2011,
-    <doi:10.18637/jss.v045.i03>) are included.
+    <doi:10.18637/jss.v045.i03>) are implemented.
     Main features of the miceadds package include
     plausible value imputation (Mislevy, 1991,
     <doi:10.1007/BF02294457>), multilevel imputation for
@@ -40,7 +40,7 @@ LinkingTo:
 Suggests: 
     BIFIEsurvey, blme, car, CDM, coda, foreign, 
     inline, lme4, MASS, MBESS, MCMCglmm, mdmb, 
-    numDeriv, readxl, sandwich, sirt, 
+    pls, numDeriv, readxl, sandwich, sirt, 
     sjlabelled, synthpop, TAM
 Enhances:
     Amelia, imputeR, jomo, micemd, mitml, pan,

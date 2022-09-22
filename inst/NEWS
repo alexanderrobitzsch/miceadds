@@ -44,16 +44,31 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.15  |  2022-09-03  |  Last: miceadds 3.15-8
+VERSIONS miceadds 3.16  |  2022-09-22  |  Last: miceadds 3.16-2
+--------------------------------------------------------------------------
+ 
+xxx   * ---
+
+
+DATA  * ---
+EXAMP * ---
+
+
+
+
+
+--------------------------------------------------------------------------
+VERSIONS miceadds 3.15  |  2022-09-22  |  Last: miceadds 3.15-21
 --------------------------------------------------------------------------
  
 ADDED * included utility function datlist2Amelia()
         (suggested by @atanasj, Github Issue #26)
-
+ADDED * added imputation function mice.impute.catpmm() that performs
+        multivariate predictive mean matching for categotical variables
+NOTE  * included imputation method 'catpmm' in mice.impute.pls()
 
 DATA  * ---
-EXAMP * datlist2Amelia (1)
-
+EXAMP * datlist2Amelia (1), mice.impute.catpmm (1)
 
 --------------------------------------------------------------------------
 VERSIONS miceadds 3.14  |  2022-08-24  |  Last: miceadds 3.14-3

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.373
+%% File Version: 2.382
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -62,9 +62,12 @@ for all variables to be imputed.
 }
   \item{pls.impMethod}{Imputation method used for in PLS estimation.
         Any imputation method can be used except if \code{imputationWeights}
-  is provided. Then, only \code{norm} and \code{pmm} are available.
-The method \code{xplsfacs} creates only PLS factors of the regression
-model.
+  is provided. Imputation weights are available for \code{norm} and \code{pmm}.
+  Categorical variables can be imputed with the method \code{catpmm}
+ (see \code{\link{mice.impute.catpmm}}). For the method \code{catpmm},
+ multivariate PLS regression is employed for dummy-coded categories of
+ the outcome variable. The method \code{xplsfacs} creates only PLS factors 
+ of the regression model.
 }
 \item{donors}{Number of donors if predictive mean matching is used
 (\code{pls.impMethod="pmm"}).}

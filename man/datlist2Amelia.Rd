@@ -1,5 +1,5 @@
 %% File Name: datlist2Amelia.Rd
-%% File Version: 0.05
+%% File Version: 0.06
 
 \name{datlist2Amelia}
 \alias{datlist2Amelia}
@@ -19,7 +19,7 @@ datlist2Amelia(datlist)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{dat.list}{
+  \item{datlist}{
 List of multiply imputed data sets or an object of class \code{mids}
 }
 }

@@ -74,7 +74,7 @@ reduction of the predictor space." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.15-vv</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Versions">3.16-vv</span>
       </span>
     </div>
 
@@ -172,9 +172,12 @@ for all variables to be imputed.</p></td>
       <th>pls.impMethod</th>
       <td><p>Imputation method used for in PLS estimation.
         Any imputation method can be used except if <code>imputationWeights</code>
-  is provided. Then, only <code>norm</code> and <code>pmm</code> are available.
-The method <code>xplsfacs</code> creates only PLS factors of the regression
-model.</p></td>
+  is provided. Imputation weights are available for <code>norm</code> and <code>pmm</code>.
+  Categorical variables can be imputed with the method <code>catpmm</code>
+ (see <code><a href='mice.impute.catpmm.html'>mice.impute.catpmm</a></code>). For the method <code>catpmm</code>,
+ multivariate PLS regression is employed for dummy-coded categories of
+ the outcome variable. The method <code>xplsfacs</code> creates only PLS factors 
+ of the regression model.</p></td>
     </tr>
     <tr>
       <th>donors</th>

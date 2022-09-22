@@ -1,16 +1,18 @@
 ## File Name: mice_imputation_pls_largest_correlations.R
-## File Version: 0.22
+## File Version: 0.27
 
 mice_imputation_pls_largest_correlations <- function( y, x, ry, type,
-    use.ymat, pls.print.progress, x10, N.largest, min.all.cor,
-    imputationWeights=NULL, eps=1e-20)
+        use.ymat, pls.print.progress, x10, N.largest, min.all.cor,
+        imputationWeights=NULL, eps=1e-20)
 {
 
     # compute correlations
-    c1 <- mice_imputation_pls_correlation_criteria( y=y, x=x, ry=ry,
-                    use.ymat=use.ymat, wt=imputationWeights)
-
-    elim.ind <- which( abs(c1) < min.all.cor )
+    if (min.all.cor>0){
+        c1 <- mice_imputation_pls_correlation_criteria( y=y, x=x, ry=ry,
+                        use.ymat=use.ymat, wt=imputationWeights)
+        elim.ind <- which( abs(c1) < min.all.cor )
+    }
+    elim.ind <- NULL
     N11 <- ncol(x)
 
     Nelim <- length(elim.ind)
@@ -19,7 +21,7 @@ mice_imputation_pls_largest_correlations <- function( y, x, ry, type,
     }
     if ( length(elim.ind) > 0){
         x <- x[, - elim.ind, drop=FALSE]
-        }
+    }
     N12 <- ncol(x)
     if ( pls.print.progress){
         cat("\n", paste( N11, " Predictor Variables", sep="") )

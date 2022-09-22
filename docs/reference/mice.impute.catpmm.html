@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Using a <span class="pkg">synthpop</span> Synthesizing Method in the <span class="pkg">mice</span> Package — mice.impute.synthpop • miceadds</title>
+<title>Imputation of a Categorical Variable Using Multivariate Predictive
+Mean Matching — mice.impute.catpmm • miceadds</title>
 
 
 <!-- jquery -->
@@ -39,9 +40,9 @@
 
 
 
-<meta property="og:title" content="Using a <span class="pkg">synthpop</span> Synthesizing Method in the <span class="pkg">mice</span> Package — mice.impute.synthpop" />
-<meta property="og:description" content="The function allows to use a synthpop synthesizing method to be used
-in the mice::mice function of the mice package." />
+<meta property="og:title" content="Imputation of a Categorical Variable Using Multivariate Predictive
+Mean Matching — mice.impute.catpmm" />
+<meta property="og:description" content="Imputes a categorical variable using multivariate predictive mean matching." />
 
 
 
@@ -109,18 +110,17 @@ in the mice::mice function of the mice package." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Using a <span class="pkg">synthpop</span> Synthesizing Method in the <span class="pkg">mice</span> Package</h1>
+    <h1>Imputation of a Categorical Variable Using Multivariate Predictive
+Mean Matching</h1>
     
-    <div class="hidden name"><code>mice.impute.synthpop.Rd</code></div>
+    <div class="hidden name"><code>mice.impute.catpmm.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The function allows to use a <span class="pkg">synthpop</span> synthesizing method to be used
-in the <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code> function of the <span class="pkg">mice</span> package.</p>
+    <p>Imputes a categorical variable using multivariate predictive mean matching.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mice.impute.synthpop</span>(<span class='no'>y</span>, <span class='no'>ry</span>, <span class='no'>x</span>, <span class='kw'>synthpop_fun</span><span class='kw'>=</span><span class='st'>"norm"</span>, <span class='kw'>synthpop_args</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-     <span class='kw'>proper</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>mice.impute.catpmm</span>(<span class='no'>y</span>, <span class='no'>ry</span>, <span class='no'>x</span>, <span class='kw'>donors</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>ridge</span><span class='kw'>=</span><span class='fl'>10</span>^(-<span class='fl'>5</span>), <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -139,16 +139,14 @@ in the <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></co
       <td><p>Matrix (<code>n</code> x <code>p</code>) of complete covariates.</p></td>
     </tr>
     <tr>
-      <th>synthpop_fun</th>
-      <td><p>Synthesizing method in the <span class="pkg">synthpop</span> package</p></td>
+      <th>donors</th>
+      <td><p>Number of donors used for random sampling of nearest
+neighbors in imputation</p></td>
     </tr>
     <tr>
-      <th>synthpop_args</th>
-      <td><p>Function arguments of <code>syn_fun</code></p></td>
-    </tr>
-    <tr>
-      <th>proper</th>
-      <td><p>Logical value specifying whether proper synthesis should be conducted.</p></td>
+      <th>ridge</th>
+      <td><p>Numerical constant used for avioding collinearity issues. Noise
+is added to covariates.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -156,38 +154,46 @@ in the <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></co
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The categorical outcome variable is recoded as a vector of dummy variables.
+A multivariate linear regression is specified for computing predicted values.
+The L1 distance (i.e., sum of absolute deviations) is utilized for
+predictive mean matching. Predictive mean matching for categorical variables
+has been proposed by Meinfelder (2009) using a multinomial regression instead of
+ordinary linear regression.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A vector of length <code>nmis=sum(!ry)</code> with imputed values.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <div class='dont-index'><p>See <code><a href='syn.mice.html'>syn.mice</a></code> for using a <span class="pkg">mice</span> imputation method in the
-<span class="pkg">synthpop</span> package.</p>
-<p>See <code><a href='https://rdrr.io/pkg/synthpop/man/syn.html'>synthpop::syn</a></code> for generating synthetic datasets
-with the <span class="pkg">synthpop</span> package.</p></div>
+    <p>Meinfelder, F. (2009). <em>Analysis of Incomplete Survey Data - Multiple
+Imputation via Bayesian Bootstrap Predictive Mean Matching</em>. 
+Dissertation thesis. University of Bamberg, Germany.
+<a href='https://fis.uni-bamberg.de/handle/uniba/213'>https://fis.uni-bamberg.de/handle/uniba/213</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'>#############################################################################</span>
-<span class='co'># EXAMPLE 1: Imputation of NHANES data using the 'syn.normrank' method</span>
+<span class='co'># EXAMPLE 1: Imputation internat data</span>
 <span class='co'>#############################################################################</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>synthpop</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>nhanes</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"mice"</span>)
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>nhanes</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>data.internet</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"miceadds"</span>)
+<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>data.internet</span>
 
-<span class='co'>#* empty imputation</span>
-<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='no'>dat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span>)
+<span class='co'>#** empty imputation</span>
+<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span>)
 <span class='no'>method</span> <span class='kw'>&lt;-</span> <span class='no'>imp0</span>$<span class='no'>method</span>
+<span class='no'>predmat</span> <span class='kw'>&lt;-</span> <span class='no'>imp0</span>$<span class='no'>predictorMatrix</span>
 
-<span class='co'>#* define synthpop method 'normrank' for variable 'chl'</span>
-<span class='no'>method</span>[<span class='st'>"chl"</span>] <span class='kw'>&lt;-</span> <span class='st'>"synthpop"</span>
-<span class='no'>synthpop_fun</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>chl</span><span class='kw'>=</span><span class='st'>"normrank"</span> )
-<span class='no'>synthpop_args</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='kw'>chl</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>smoothing</span><span class='kw'>=</span><span class='st'>"density"</span>) )
+<span class='co'>#** define factor variable</span>
 
-<span class='co'>#* conduct imputation</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>synthpop_fun</span><span class='kw'>=</span><span class='no'>synthpop_fun</span>,
-            <span class='kw'>synthpop_args</span><span class='kw'>=</span><span class='no'>synthpop_args</span>)
+<span class='no'>dat1</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>
+<span class='no'>dat1</span>[,<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>(<span class='no'>dat1</span>[,<span class='fl'>1</span>])
+<span class='no'>method</span>[<span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='st'>"catpmm"</span>
+
+<span class='co'>#** impute with 'catpmm''</span>
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='no'>dat1</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>method1</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp</span>)
 }</pre>
   </div>
