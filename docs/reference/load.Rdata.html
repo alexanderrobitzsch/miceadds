@@ -127,7 +127,7 @@ loads the object only specified environments. Hence, usage of
 
     <pre class="usage"><span class='fu'>load.Rdata</span>(<span class='no'>filename</span>, <span class='no'>objname</span>)
 
-<span class='fu'>load.Rdata2</span>(<span class='no'>filename</span>, <span class='kw'>path</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>())</pre>
+<span class='fu'>load.Rdata2</span>(<span class='no'>filename</span>, <span class='kw'>path</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/getwd.html'>getwd</a></span>(), <span class='kw'>RDS</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,6 +143,10 @@ loads the object only specified environments. Hence, usage of
     <tr>
       <th>path</th>
       <td><p>Directory from which the dataset should be loaded</p></td>
+    </tr>
+    <tr>
+      <th>RDS</th>
+      <td><p>logical if object is saved as an RDS object</p></td>
     </tr>
     </table>
 

@@ -136,7 +136,7 @@ Therefore, unreliability of group means when treating subjects as
 indicators is taken into account.</p>
 <p>The imputation method <code>mice.impute.2l.groupmean</code> just imputes (i.e. computes)
 the manifest group mean. See also
-<code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2lonly.mean.html'>mice::mice.impute.2lonly.mean</a></code>.</p>
+<code><a href='https://amices.org/mice/reference/mice.impute.2lonly.mean.html'>mice::mice.impute.2lonly.mean</a></code>.</p>
 <p>The imputation method <code>mice.impute.2l.groupmean.elim</code> computes the
 group mean eliminating the subject under study from the calculation.
 Therefore, this imputation method will lead to different values of
@@ -258,7 +258,7 @@ from complex samples. <em>Psychometrika, 56</em>(2), 177-196.
 doi: <a href='https://doi.org/10.1007/BF02294457'>10.1007/BF02294457</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/mice/man/mice.impute.2lonly.mean.html'>mice::mice.impute.2lonly.mean</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://amices.org/mice/reference/mice.impute.2lonly.mean.html'>mice::mice.impute.2lonly.mean</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -276,14 +276,14 @@ doi: <a href='https://doi.org/10.1007/BF02294457'>10.1007/BF02294457</a></p>
 <span class='no'>dat</span>$<span class='no'>LM.Mscore</span> <span class='kw'>&lt;-</span> <span class='fl'>NA</span>    <span class='co'>#=&gt; LM: latent group mean</span>
 
 <span class='co'># define predictor matrix</span>
-<span class='no'>predM</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/make.predictorMatrix.html'>make.predictorMatrix</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>predM</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/make.predictorMatrix.html'>make.predictorMatrix</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='co'># exclude student ISs</span>
 <span class='no'>predM</span>[, <span class='st'>"idstud"</span>] <span class='kw'>&lt;-</span> <span class='fl'>0</span>
 <span class='co'># idclass is the cluster identifier</span>
 <span class='no'>predM</span>[, <span class='st'>"idclass"</span> ] <span class='kw'>&lt;-</span> -<span class='fl'>2</span>
 
 <span class='co'># define imputation methods</span>
-<span class='no'>impMethod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/make.method.html'>make.method</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>impMethod</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/make.method.html'>make.method</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='co'># initialize with norm</span>
 <span class='no'>impMethod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>( <span class='st'>"norm"</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>impMethod</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>impMethod</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>( <span class='no'>imp</span>$<span class='no'>method</span> )
@@ -331,7 +331,7 @@ doi: <a href='https://doi.org/10.1007/BF02294457'>10.1007/BF02294457</a></p>
 <span class='no'>predM</span>[ <span class='st'>"LM.Mscore"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>( <span class='st'>"Dscore"</span>, <span class='st'>"sprengel"</span> ) ] <span class='kw'>&lt;-</span> <span class='fl'>1</span>
 
 <span class='co'># do imputations</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>,  <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>4</span>,
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>,  <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>4</span>,
          <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>, <span class='kw'>allow.na</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>pan.iter</span><span class='kw'>=</span><span class='fl'>100</span>)
 }</pre>
   </div>

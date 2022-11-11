@@ -255,7 +255,7 @@ doi: <a href='https://doi.org/10.1007/978-1-4614-4018-5'>10.1007/978-1-4614-4018
 <span class='no'>impM</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"norm"</span>, <span class='no'>V</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>impM</span>) <span class='kw'>&lt;-</span> <span class='no'>vars</span>
 <span class='co'># mice imputation</span>
-<span class='no'>imp1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impM</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='no'>M</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>4</span> )
+<span class='no'>imp1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impM</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='no'>M</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>4</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp1a</span>)
 <span class='co'># convert into a list of datasets</span>
 <span class='no'>datlist1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='mids2datlist.html'>mids2datlist</a></span>(<span class='no'>imp1a</span>)
@@ -288,7 +288,7 @@ doi: <a href='https://doi.org/10.1007/978-1-4614-4018-5'>10.1007/978-1-4614-4018
 
 <span class='co'>#*******************************</span>
 <span class='co'># imputation in mice using predictive mean matching</span>
-<span class='no'>imp1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span>)
+<span class='no'>imp1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span>)
 <span class='no'>datlist1a</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mitools</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mitools/man/imputationList.html'>imputationList</a></span>( <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='mids2datlist.html'>mids2datlist</a></span>(<span class='no'>imp1a</span>) )
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>datlist1a</span>)
 

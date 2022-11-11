@@ -149,7 +149,7 @@ Cambridge University Press.</p>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>9090</span>)
 
 <span class='co'># nhanes 3 parallel chains</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>nhanes</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"norm"</span>, <span class='fl'>4</span> ))
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>nhanes</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"norm"</span>, <span class='fl'>4</span> ))
 <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>Rhat.mice</span>( <span class='no'>imp1</span> )
   <span class='co'>##     variable MissProp Rhat.M.imp Rhat.Var.imp</span>
   <span class='co'>##   1      bmi       36  1.0181998     1.155807</span>

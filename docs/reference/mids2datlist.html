@@ -152,7 +152,7 @@ imputed datasets.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>nhanes</span>,<span class='kw'>package</span><span class='kw'>=</span><span class='st'>"mice"</span>)
 
 <span class='co'>#**** imputation using mice</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>nhanes</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>5</span> )
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>nhanes</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>5</span> )
 <span class='co'># convert mids object into list</span>
 <span class='no'>datlist1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>mids2datlist</span>( <span class='no'>imp1</span> )
 
@@ -200,7 +200,7 @@ imputed datasets.</p></td>
 
 <span class='co'># imputation</span>
 <span class='no'>resp</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[, - <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>) ]
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>resp</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"norm"</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span> )
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>resp</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"norm"</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span> )
 
 <span class='co'># convert mids object into datalist</span>
 <span class='no'>datlist0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>mids2datlist</span>( <span class='no'>imp</span> )

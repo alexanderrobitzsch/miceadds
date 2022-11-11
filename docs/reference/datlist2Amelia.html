@@ -147,7 +147,7 @@ to an object of class <code>amelia</code>.</p>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>566</span>)  <span class='co'># fix random seed</span>
 
 <span class='co'># imputation with mice</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='no'>nhanes</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>7</span>)
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>(<span class='no'>nhanes</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>7</span>)
 
 <span class='co'># conversion to amelia object</span>
 <span class='no'>amp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'>datlist2Amelia</span>(<span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>imp</span>)

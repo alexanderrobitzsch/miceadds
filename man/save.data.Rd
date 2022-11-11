@@ -1,5 +1,5 @@
 %% File Name: save.data.Rd
-%% File Version: 0.32
+%% File Version: 0.33
 
 \name{save.data}
 \alias{save.data}
@@ -33,8 +33,9 @@ This can be \code{Rdata} (for \R binary format, using
 \code{\link[base:save]{base::save}},
 \code{csv} (using \code{\link[utils:write.csv2]{utils::write.csv2}}),
 \code{csv} (using \code{\link[utils:write.csv]{utils::write.csv}}),
-\code{table} (using \code{\link[utils:write.table]{utils::write.table}}) or
-\code{sav} (using \code{\link[sjlabelled:write_spss]{sjlabelled::write_spss}}).
+\code{table} (using \code{\link[utils:write.table]{utils::write.table}}),
+\code{sav} (using \code{\link[sjlabelled:write_spss]{sjlabelled::write_spss}}),
+\code{RDS} (using \code{\link{saveRDS}}).
   \code{type} can also be a vector if the data frame should be
   saved in multiple formats.
         }

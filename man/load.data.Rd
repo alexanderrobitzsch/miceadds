@@ -1,5 +1,5 @@
 %% File Name: load.data.Rd
-%% File Version: 0.447
+%% File Version: 0.449
 
 \name{load.data}
 \alias{load.data}
@@ -42,8 +42,8 @@ This can be \code{Rdata} (for \R binary format, using \code{\link{load.Rdata2}})
 must have the file extension \code{dat} or \code{txt}),
 \code{xlsx} (using \code{\link[readxl:read_excel]{readxl::read_excel}}; or using
 the extension \code{xls}),
-or \code{sav} (using \code{\link[foreign:read.spss]{foreign::read.spss}}).
-If an alternative data loading function \code{load_fun} is chosen,
+\code{sav} (using \code{\link[foreign:read.spss]{foreign::read.spss}}),
+\code{RDS}. If an alternative data loading function \code{load_fun} is chosen,
 \code{type} must be the file extension.
 }
 \item{path}{Directory from which the dataset should be loaded.

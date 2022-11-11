@@ -173,8 +173,8 @@ a subdirectory.</p></td>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>See also <code><a href='https://rdrr.io/pkg/mice/man/mids2mplus.html'>mice::mids2mplus</a></code>,
-<code><a href='https://rdrr.io/pkg/mice/man/mids2spss.html'>mice::mids2spss</a></code> and
+    <div class='dont-index'><p>See also <code><a href='https://amices.org/mice/reference/mids2mplus.html'>mice::mids2mplus</a></code>,
+<code><a href='https://amices.org/mice/reference/mids2spss.html'>mice::mids2spss</a></code> and
 <code><a href='write.mice.imputation.html'>write.mice.imputation</a></code> for writing objects of class
 <code>mids</code>.</p>
 <p>See also <code><a href='https://rdrr.io/pkg/Amelia/man/write.amelia.html'>Amelia::write.amelia</a></code> for
@@ -190,7 +190,7 @@ writing imputed datasets in <span class="pkg">Amelia</span>.</p></div>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>(<span class='no'>data.ma01</span>)
 
 <span class='co'># start with empty imputation</span>
-<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span>)
+<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span>)
 
 <span class='co'># modify predictor matrix</span>
 <span class='no'>predM</span> <span class='kw'>&lt;-</span> <span class='no'>imp0</span>$<span class='no'>predictorMatrix</span>
@@ -200,7 +200,7 @@ writing imputed datasets in <span class="pkg">Amelia</span>.</p></div>
 <span class='no'>impMeth</span>[ <span class='no'>impMeth</span><span class='kw'>==</span><span class='st'>"pmm"</span> ] <span class='kw'>&lt;-</span> <span class='st'>"norm"</span>
 
 <span class='co'># do imputations in mice</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMeth</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>4</span> )
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predM</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMeth</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>4</span> )
 
 <span class='co'># write imputed data in format "csv2" and round after 4 digits</span>
 <span class='fu'>write.datlist</span>( <span class='kw'>datlist</span><span class='kw'>=</span><span class='no'>imp</span>, <span class='kw'>name</span><span class='kw'>=</span><span class='st'>"mice_imp_csv2"</span>, <span class='kw'>round</span><span class='kw'>=</span><span class='fl'>4</span> )

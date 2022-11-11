@@ -195,7 +195,7 @@ which means that no PLS regression is used for dimension reduction.</p></td>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[ <span class='fl'>1</span>:<span class='fl'>1000</span>, ]
 
 <span class='co'># empty imputation</span>
-<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span>)
+<span class='no'>imp0</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>0</span>)
 
 <span class='co'># redefine imputation methods</span>
 <span class='no'>meth</span> <span class='kw'>&lt;-</span> <span class='no'>imp0</span>$<span class='no'>method</span>
@@ -205,7 +205,7 @@ which means that no PLS regression is used for dimension reduction.</p></td>
 <span class='no'>pm</span> <span class='kw'>&lt;-</span> <span class='no'>imp0</span>$<span class='no'>predictorMatrix</span>
 <span class='no'>pm</span>[, <span class='fl'>1</span>:<span class='fl'>3</span> ] <span class='kw'>&lt;-</span> <span class='fl'>0</span>
 <span class='co'># do imputation</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>pm</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>meth</span>,
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>pm</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>meth</span>,
            <span class='kw'>imputationWeights</span><span class='kw'>=</span><span class='no'>dat</span>[,<span class='st'>"studwgt"</span>], <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>5</span>)
 }</pre>
   </div>

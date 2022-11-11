@@ -1,5 +1,5 @@
 %% File Name: data.ma.Rd
-%% File Version: 0.37
+%% File Version: 0.39
 
 \name{data.ma}
 \alias{data.ma}
@@ -12,6 +12,7 @@
 \alias{data.ma06}
 \alias{data.ma07}
 \alias{data.ma08}
+\alias{data.ma09}
 
 \docType{data}
 
@@ -174,6 +175,21 @@ these strings into matrices.
 \code{ $ mat3: chr [1:12] "1. TOWRE age 7\t-\t\t\t\t\t\t" ...} \cr
 \code{ $ mat4: chr [1:18] "1. Vocab. age 7\t-\t\t\t\t\t" ...} \cr
 
+\item Dataset \code{data.ma09}:
+
+This is a subset of a PISA dataset that is used for generating synthetic data. 
+
+\code{'data.frame':   342 obs. of  41 variables:} \cr
+\code{ $ SEX    : int  1 2 1 2 1 2 2 2 2 1 ...} \cr
+\code{ $ AGE    : num  16 15.9 16.3 15.5 15.9 ...} \cr
+\code{ $ HISEI  : int  37 46 66 51 25 NA 54 52 51 69 ...} \cr
+\code{ $ FISCED : int  3 3 6 3 3 NA 3 3 2 2 ...} \cr
+\code{ $ MISCED : int  3 4 4 4 3 NA 4 3 4 4 ...} \cr
+\code{ $ PV1MATH: num  643 556 510 604 462 ...} \cr
+\code{ $ M474Q01: int  1 1 1 1 0 1 1 1 1 0 ...} \cr
+\code{ $ M155Q02: int  2 2 2 2 2 0 0 2 2 2 ...} \cr
+\code{ $ M155Q01: int  1 1 0 1 1 1 1 1 1 1 ...} \cr
+\code{[...]} \cr
 }
 }
 

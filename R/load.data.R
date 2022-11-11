@@ -1,5 +1,5 @@
 ## File Name: load.data.R
-## File Version: 0.487
+## File Version: 0.491
 
 
 
@@ -15,7 +15,8 @@ load.data <- function( filename, type=NULL, path=getwd(), load_fun=NULL,
         type <- "user_"
         file0 <- file
     }
-    i1 <- grep.vec( c("Rdata", "RData", "csv", "csv2", "table", "sav", "xls",
+    i1 <- grep.vec( c("RDS", "Rdata", "RData", 
+                        "csv", "csv2", "table", "sav", "xls",
                     "xlsx", type0 ), x=file, operator="OR" )$x
     if ( length(i1)==0 ){
         files <- list.files( dir, filename )
@@ -54,6 +55,10 @@ load.data <- function( filename, type=NULL, path=getwd(), load_fun=NULL,
     #*** Rdata objects
     if (type %in% c("Rdata","RData") ){
         dat4 <- load.Rdata2( filename=file, path=dir )
+    }
+    #*** Rdata objects
+    if (type %in% c("RDS") ){
+        dat4 <- load.Rdata2( filename=file, path=dir, RDS=TRUE )
     }
     #*** csv2 objects
     if (type %in% c("csv2","CSV2")){

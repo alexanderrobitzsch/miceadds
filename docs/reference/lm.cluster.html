@@ -236,7 +236,7 @@ the model, see <code><a href='https://rdrr.io/r/stats/glm.html'>stats::glm</a></
 
 <span class='co'># imputation of the dataset: use six imputations</span>
 <span class='no'>resp</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[, - <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>) ]
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>resp</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"norm"</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>6</span> )
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>resp</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='st'>"norm"</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>6</span> )
 <span class='no'>datlist</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='mids2datlist.html'>mids2datlist</a></span>( <span class='no'>imp</span> )
 
 <span class='co'># linear regression with cluster robust standard errors</span>

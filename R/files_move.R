@@ -1,13 +1,21 @@
 ## File Name: files_move.R
-## File Version: 0.282
+## File Version: 0.287
 
 files_move <- function( path1, path2, file_sep="__", pattern=NULL,
     path2_name="__ARCH")
 {
+    if ( ! file.exists(path1) ){
+        dir.create(path1)
+    }
+    
     #*** include missing path2 argument
     if ( missing(path2) ){
         f1 <- list.files(path1, path2_name)
         path2 <- file.path(path1, f1)
+        if (length(path2)==0){
+            path2 <- file.path(path1, "__ARCHIVE")
+            dir.create(path2)            
+        }
     }
 
     #*** search for all relevant files

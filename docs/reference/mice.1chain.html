@@ -116,9 +116,9 @@ which is the approach employed in mice::mice." />
     </div>
 
     <div class="ref-description">
-    <p>This function modifies the <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code> function to
+    <p>This function modifies the <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code> function to
 multiply impute a dataset using a long chain instead of multiple parallel chains
-which is the approach employed in <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code>.</p>
+which is the approach employed in <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>mice.1chain</span>(<span class='no'>data</span>, <span class='kw'>burnin</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>iter</span><span class='kw'>=</span><span class='fl'>20</span>, <span class='kw'>Nimp</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='kw'>NULL</span>,
@@ -156,39 +156,39 @@ which is the approach employed in <code><a href='https://rdrr.io/pkg/mice/man/mi
     </tr>
     <tr>
       <th>method</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     <tr>
       <th>where</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     <tr>
       <th>visitSequence</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     <tr>
       <th>blots</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     <tr>
       <th>post</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     <tr>
       <th>defaultMethod</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     <tr>
       <th>printFlag</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     <tr>
       <th>seed</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     <tr>
       <th>data.init</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     <tr>
       <th>object</th>
@@ -209,7 +209,7 @@ should be included in the traceplot</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>See <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></td>
+      <td><p>See <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></td>
     </tr>
     </table>
 
@@ -230,7 +230,7 @@ should be included in the traceplot</p></td>
 (see Example 3; Schafer &amp; Kang, 2008).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -256,7 +256,7 @@ should be included in the traceplot</p></td>
 
 <span class='co'># apply mice functionality lm.mids</span>
 <span class='no'>mod</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp.mi2</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>bmi</span> ~ <span class='no'>age</span> ) )
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>( <span class='no'>mod</span> ) )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span>( <span class='no'>mod</span> ) )
 
 <span class='co'>#############################################################################</span>
 <span class='co'># EXAMPLE 2: One chain (mixed data: numeric and factor)</span>
@@ -315,12 +315,12 @@ should be included in the traceplot</p></td>
 
 <span class='co'># imputation using mice function and PLS imputation with</span>
 <span class='co'># predictive mean matching method 'pmm6'</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmethod</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>pm</span>,
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impmethod</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>pm</span>,
             <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>4</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>pls.impMethod</span><span class='kw'>=</span><span class='st'>"pmm5"</span> )
 
 <span class='co'>#*** Model 1: Raw score difference</span>
 <span class='no'>mod1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>read</span> ~ <span class='no'>migrant</span> ) )
-<span class='no'>smod1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>(<span class='no'>mod1</span>) )
+<span class='no'>smod1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span>(<span class='no'>mod1</span>) )
   <span class='co'>##   &gt; smod1</span>
   <span class='co'>##                  est    se      t     df Pr(&gt;|t|)  lo 95  hi 95 nmis    fmi lambda</span>
   <span class='co'>##   (Intercept) 510.21 1.460 349.37 358.26        0 507.34 513.09   NA 0.1053 0.1004</span>
@@ -328,7 +328,7 @@ should be included in the traceplot</p></td>
 
 <span class='co'>#*** Model 2: ANCOVA - regression adjustment</span>
 <span class='no'>mod2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>read</span> ~ <span class='no'>migrant</span> + <span class='no'>hisei</span> + <span class='no'>paredu</span> + <span class='no'>female</span> + <span class='no'>books</span>) )
-<span class='no'>smod2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>(<span class='no'>mod2</span>) )
+<span class='no'>smod2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span>(<span class='no'>mod2</span>) )
   <span class='co'>##   &gt; smod2</span>
   <span class='co'>##                    est      se      t      df  Pr(&gt;|t|)    lo 95   hi 95 nmis      fmi   lambda</span>
   <span class='co'>##   (Intercept) 385.1506 4.12027 93.477 3778.66 0.000e+00 377.0725 393.229   NA 0.008678 0.008153</span>
@@ -340,7 +340,7 @@ should be included in the traceplot</p></td>
 
 <span class='co'>#*** Model 3a: Estimation using counterfactuals</span>
 <span class='no'>mod3a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span>( <span class='no'>read.migrant1</span> - <span class='no'>read.migrant0</span>) ~ <span class='fl'>1</span> ) )
-<span class='no'>smod3a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>(<span class='no'>mod3a</span>) )
+<span class='no'>smod3a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span>(<span class='no'>mod3a</span>) )
   <span class='co'>##   &gt; smod3a</span>
   <span class='co'>##                  est    se      t    df Pr(&gt;|t|)  lo 95  hi 95 nmis    fmi lambda</span>
   <span class='co'>##   (Intercept) -22.54 7.498 -3.007 4.315  0.03602 -42.77 -2.311   NA 0.9652 0.9521</span>
@@ -348,7 +348,7 @@ should be included in the traceplot</p></td>
 <span class='co'>#*** Model 3b: Like Model 3a but using student weights</span>
 <span class='no'>mod3b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span>( <span class='no'>read.migrant1</span> - <span class='no'>read.migrant0</span>) ~ <span class='fl'>1</span>,
                         <span class='kw'>weights</span><span class='kw'>=</span><span class='no'>data.ma01</span>$<span class='no'>studwgt</span> ) )
-<span class='no'>smod3b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>(<span class='no'>mod3b</span>) )
+<span class='no'>smod3b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span>(<span class='no'>mod3b</span>) )
   <span class='co'>##   &gt; smod3b</span>
   <span class='co'>##                  est    se      t  df Pr(&gt;|t|)  lo 95  hi 95 nmis    fmi lambda</span>
   <span class='co'>##   (Intercept) -21.88 7.605 -2.877 4.3  0.04142 -42.43 -1.336   NA 0.9662 0.9535</span>
@@ -356,7 +356,7 @@ should be included in the traceplot</p></td>
 <span class='co'>#*** Model 4: Average treatment effect on the treated (ATT, migrants)</span>
 <span class='co'>#             and non-treated (ATN, non-migrants)</span>
 <span class='no'>mod4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp</span>, <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span>( <span class='no'>read.migrant1</span> - <span class='no'>read.migrant0</span>) ~ <span class='fl'>0</span> + <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span>( <span class='no'>migrant</span>) )   )
-<span class='no'>smod4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>(<span class='no'>mod4</span>) )
+<span class='no'>smod4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span>(<span class='no'>mod4</span>) )
   <span class='co'>##   &gt; smod4</span>
   <span class='co'>##                          est    se      t    df Pr(&gt;|t|)  lo 95   hi 95 nmis    fmi lambda</span>
   <span class='co'>##   as.factor(migrant)0 -23.13 8.664 -2.669  4.27 0.052182 -46.59  0.3416   NA 0.9682 0.9562</span>

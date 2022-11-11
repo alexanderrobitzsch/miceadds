@@ -287,11 +287,11 @@ function for the creation of design matrices.</p>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[, - <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>4</span>) ]
 
 <span class='co'># perform multiple imputation</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>6</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span> )
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='no'>dat</span>, <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>6</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span> )
 
 <span class='co'># define analysis model</span>
 <span class='no'>res1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp</span>, <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>likesc</span> ~ <span class='no'>female</span>*<span class='no'>migrant</span> + <span class='no'>female</span>*<span class='no'>books</span>  ) )
-<span class='no'>pres1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>( <span class='no'>res1</span> )
+<span class='no'>pres1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span>( <span class='no'>res1</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>pres1</span>)
 
 <span class='co'># Wald test for zero interaction effects</span>

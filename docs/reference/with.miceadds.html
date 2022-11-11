@@ -123,7 +123,7 @@ obtained by with or a list of results of imputed datasets." />
     <div class="ref-description">
     <p>Evaluates an expression for (nested) multiply imputed datasets. These
 functions extend the following functions:
-<code><a href='https://rdrr.io/pkg/mice/man/with.mids.html'>mice::with.mids</a></code>,
+<code><a href='https://amices.org/mice/reference/with.mids.html'>mice::with.mids</a></code>,
 <code><a href='https://rdrr.io/r/base/with.html'>base::with</a></code>,
 <code><a href='https://rdrr.io/r/base/with.html'>base::within.data.frame</a></code>,
 <code><a href='https://rdrr.io/pkg/mitools/man/with.imputationList.html'>mitools::with.imputationList</a></code>.</p>
@@ -207,13 +207,13 @@ pooled estimates</p>
 
     <div class='dont-index'><p>See the corresponding functionality in <span class="pkg">base</span>, <span class="pkg">mice</span>,
 <span class="pkg">mitools</span> and <span class="pkg">mitml</span> packages:<br />
-<code><a href='https://rdrr.io/pkg/mice/man/with.mids.html'>mice::with.mids</a></code>,
+<code><a href='https://amices.org/mice/reference/with.mids.html'>mice::with.mids</a></code>,
 <code><a href='https://rdrr.io/pkg/mitools/man/with.imputationList.html'>mitools::with.imputationList</a></code>,
 <code><a href='https://rdrr.io/pkg/mitml/man/with.mitml.list.html'>mitml::with.mitml.list</a></code>,
 <code><a href='https://rdrr.io/r/base/with.html'>base::with</a></code></p>
 <p><code><a href='https://rdrr.io/r/base/with.html'>base::within.data.frame</a></code>,
 <code><a href='https://rdrr.io/pkg/mitml/man/with.mitml.list.html'>mitml::within.mitml.list</a></code>,</p>
-<p><code><a href='https://rdrr.io/pkg/mice/man/summary.html'>mice::summary.mira</a></code>,</p>
+<p><code><a href='https://amices.org/mice/reference/summary.html'>mice::summary.mira</a></code>,</p>
 <p>Imputation functions in <span class="pkg">miceadds</span>:
 <code><a href='mice.1chain.html'>mice.1chain</a></code>, <code><a href='mice.nmi.html'>mice.nmi</a></code></p></div>
 
@@ -233,7 +233,7 @@ pooled estimates</p>
 <span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp</span>, <span class='kw'>expr</span><span class='kw'>=</span><span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>( <span class='no'>hyp</span> ~ <span class='no'>age</span> + <span class='no'>bmi</span>  ) )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>res</span>)
 <span class='co'># pool results</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/pool.html'>pool</a></span>(<span class='no'>res</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>( <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/pool.html'>pool</a></span>(<span class='no'>res</span>))
 
 <span class='co'># calculate some descriptive statistics</span>
 <span class='no'>res2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span>( <span class='no'>imp</span>, <span class='kw'>expr</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"M1"</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>hyp</span>), <span class='st'>"SD_age"</span><span class='kw'>=</span><span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span>(<span class='no'>age</span>) ) )

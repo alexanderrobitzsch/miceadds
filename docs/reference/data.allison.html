@@ -201,7 +201,7 @@
   <span class='co'>##   5      5     1      0     12     1     NA     2      0     NA</span>
 
 <span class='co'># imputation of the hip wide dataset</span>
-<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>( <span class='no'>hip.wide</span>[,-<span class='fl'>1</span>] ), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span> )
+<span class='no'>imp</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span>( <span class='no'>hip.wide</span>[,-<span class='fl'>1</span>] ), <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>3</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp</span>)
 }</pre>
   </div>

@@ -243,7 +243,7 @@ be extracted.</p></td>
     <tr>
       <th>extract_data</th>
       <td><p>Logical indicating whether input data should be extracted
-from parent environment within <code><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice::mice</a></code>  routine</p></td>
+from parent environment within <code><a href='https://amices.org/mice/reference/mice.html'>mice::mice</a></code>  routine</p></td>
     </tr>
     <tr>
       <th>remove_lindep</th>
@@ -315,7 +315,7 @@ backward compatibility to former <span class="pkg">miceadds</span> versions.</p>
                            <span class='st'>"IN2"</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='st'>"ridge2"</span><span class='kw'>=</span><span class='fl'>1E-4</span> ) )
 
 <span class='co'># Model 1: Three parallel chains</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/mice.html'>mice</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>,
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/mice.html'>mice</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>,
      <span class='kw'>m</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>maxit</span><span class='kw'>=</span><span class='fl'>5</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predictorMatrix</span>,
      <span class='kw'>pls.facs</span><span class='kw'>=</span><span class='no'>pls.facs</span>, <span class='co'># number of PLS factors</span>
      <span class='kw'>pls.impMethod</span><span class='kw'>=</span><span class='no'>pls.impMethod</span>,  <span class='co'># Imputation Method in PLS imputation</span>
@@ -333,7 +333,7 @@ backward compatibility to former <span class="pkg">miceadds</span> versions.</p>
 <span class='co'>#*** example for using imputation function at the level of a variable</span>
 
 <span class='co'># extract first imputed dataset</span>
-<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mice/man/complete.mids.html'>complete</a></span>(<span class='no'>imp1</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>)
+<span class='no'>imp1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>mice</span><span class='kw ns'>::</span><span class='fu'><a href='https://amices.org/mice/reference/complete.mids.html'>complete</a></span>(<span class='no'>imp1</span>, <span class='kw'>action</span><span class='kw'>=</span><span class='fl'>1</span>)
 <span class='no'>data_imp1</span>[ <span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='no'>dat</span>$<span class='no'>IN1</span>), <span class='st'>"IN1"</span> ] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
 
 <span class='co'># define variables</span>

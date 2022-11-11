@@ -44,13 +44,18 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.16  |  2022-09-22  |  Last: miceadds 3.16-2
+VERSIONS miceadds 3.16  |  2022-11-11  |  Last: miceadds 3.16-4
 --------------------------------------------------------------------------
  
-xxx   * ---
+NOTE  * allow RDS objects in load.data() and save.data()
+NOTE  * added argument 'RDS' in load.Rdata2()
+NOTE  * automatically create missing directories in calls 
+        of files_move()
+ADDED * added function for generating synthetic data syn_da()
+        based on the data augmentation method of Jiang et al. (2022)
 
 
-DATA  * ---
+DATA  * data.ma09
 EXAMP * ---
 
 

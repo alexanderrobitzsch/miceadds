@@ -1,5 +1,5 @@
 ## File Name: save.data.R
-## File Version: 0.382
+## File Version: 0.383
 
 
 #--- miceadds: saving data
@@ -28,6 +28,13 @@ save.data <- function( data, filename, type="Rdata", path=getwd(),
         file <- save_data_calc_filename( file=file0, type="Rdata")
         save( data, file=file.path( dir, file ) )
     }
+    #*** RDS objects
+    if ( "RDS" %in% type  ){
+        file <- save_data_calc_filename( file=file0, type="RDS")
+        saveRDS( object=data, file=file.path( dir, file ) )
+    }
+    
+    
     #*** csv2 objects
     if ("csv2" %in% type  ){
         if ( is.null(na)){ na <- "" }
