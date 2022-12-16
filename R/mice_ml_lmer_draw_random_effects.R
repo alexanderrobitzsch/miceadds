@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_draw_random_effects.R
-## File Version: 0.175
+## File Version: 0.177
 
 
 mice_ml_lmer_draw_random_effects <- function( clus, clus_unique, y, ry, fl, fit_vc,
@@ -25,12 +25,12 @@ mice_ml_lmer_draw_random_effects <- function( clus, clus_unique, y, ry, fl, fit_
     pv <- array(0, dim=c(NR,NR,ngr))
     pv[,,clus_obs] <- pv0                # pv: post. variance if partially observed
     pv[,,-clus_obs] <- vu                # pv: random effects cov. if fully unobserved
-
+    
     #--- draw random effects
     u <- mice_multilevel_imputation_draw_random_effects( mu=re, Sigma=pv,
                 ridge=random.effects.shrinkage )
     used_slopes_ll <- used_slopes[[ levels_id_ll ]]
-    if (length(used_slopes_ll)>0){
+    if (( length(used_slopes_ll)>0) & iter_re>0 ){
         stop("Cannot apply 'iter_re' in random slope models!\n")
     }
     z0 <- matrix(1, nrow=length(y), ncol=1 )
