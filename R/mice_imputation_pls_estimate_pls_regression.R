@@ -1,11 +1,16 @@
 ## File Name: mice_imputation_pls_estimate_pls_regression.R
-## File Version: 0.325
+## File Version: 0.335
 
 mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
     use.ymat, imputationWeights, use_weights, pls.print.progress,
     pls.impMethod="pmm")
 {
+    # clean missing values
+    x <- mice_imputation_pls_clean_missings(x=x, eps=1e-12)
+
+    #-- process input
     x00 <- x
+    
     x11a <- NULL
     # calculate partial least squares regression
     nfac <- min( pls.facs, ncol(x) )
@@ -21,7 +26,7 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         yobs <- yobs - stats::weighted.mean( x=yobs, w=weight.obs )
     }
     xobs <- x[ry, ]
-
+    
     # include imputationWeights here and calculate weight.obs
     # in the regression model, only PLS factors of X are used
     if( use_weights & ( ! is_catpmm) ){
@@ -33,7 +38,7 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         yobs <- weight_obs_sqrt * yobs
         xobs <- weight_obs_sqrt * xobs
     }
-
+    
     if( pls.print.progress ){
         cat( "\n", paste( ncol(xobs), " Dimensions", sep="")  )
         cat( "\n", paste( nfac, " PLS factors are used", sep="") )
@@ -58,7 +63,6 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
             Y <- matrix(yobs,ncol=1)
             pls_fun <- kernelpls.fit2
         }
-
 
         # apply PLS dimension reduction
         pls_args <- list( X=X, Y=Y, ncomp=nfac)

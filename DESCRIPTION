@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 3.16-6
-Date: 2022-12-16 12:35:21
+Version: 3.16-8
+Date: 2022-12-19 15:46:37
 Author: 
     Alexander Robitzsch [aut,cre] (<https://orcid.org/0000-0002-8226-3132>),
     Simon Grund [aut] (<https://orcid.org/0000-0002-1290-8986>),
@@ -39,7 +39,7 @@ LinkingTo:
     Rcpp, RcppArmadillo
 Suggests: 
     BIFIEsurvey, blme, car, CDM, coda, foreign, 
-    inline, lme4, MASS, MBESS, MCMCglmm, mdmb, 
+    inline, lme4, MASS, Matrix, MBESS, MCMCglmm, mdmb, 
     pls, numDeriv, readxl, sandwich, sirt, 
     sjlabelled, synthpop, TAM
 Enhances:
