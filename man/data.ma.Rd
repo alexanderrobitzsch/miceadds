@@ -1,5 +1,5 @@
 %% File Name: data.ma.Rd
-%% File Version: 0.39
+%% File Version: 0.40
 
 \name{data.ma}
 \alias{data.ma}
@@ -177,7 +177,7 @@ these strings into matrices.
 
 \item Dataset \code{data.ma09}:
 
-This is a subset of a PISA dataset that is used for generating synthetic data. 
+This is a subset of a PISA dataset that is used for generating synthetic data.
 
 \code{'data.frame':   342 obs. of  41 variables:} \cr
 \code{ $ SEX    : int  1 2 1 2 1 2 2 2 2 1 ...} \cr

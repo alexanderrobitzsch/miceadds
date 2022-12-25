@@ -44,7 +44,7 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.16  |  2022-12-19  |  Last: miceadds 3.16-8
+VERSIONS miceadds 3.16  |  2022-12-25  |  Last: miceadds 3.16-14
 --------------------------------------------------------------------------
  
 NOTE  * allow RDS objects in load.data() and save.data()

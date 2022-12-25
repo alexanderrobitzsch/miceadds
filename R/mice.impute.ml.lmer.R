@@ -1,5 +1,5 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.732
+## File Version: 0.733
 
 
 #*** main function for multilevel imputation with lme4 with several levels
@@ -44,7 +44,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     iter_re <- res$iter_re
     y0 <- y
     ry0 <- ry
-    
+
     #--- aggregate data to a higher level if requested
     res <- mice_ml_lmer_aggregate_data_higher_level( vname_level=vname_level, y=y, ry=ry,
                     x=x, data=data, levels_id=levels_id, vname=vname )
@@ -71,7 +71,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 groupcenter.slope=groupcenter.slope, variables_levels=variables_levels )
     x <- res$x
     type <- res$type
-    
+
     #--- pls regression if required
     res <- mice_ml_lmer_interactions_pls( type=type, interactions=interactions,
                 quadratics=quadratics, y=y, ry=ry, x=x, pls.facs=pls.facs,
@@ -86,7 +86,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     fml <- res$fml
     fixed_effects <- res$fixed_effects
     used_slopes <- res$used_slopes
-    
+
     #--- prepare arguments for lmer estimation
     lmer_args <- mice_ml_lmer_collect_lme4_input( y=y, x=x, ry=ry, data=data,
                         levels_id=levels_id, NL=NL, fml=fml, lmer_family=lmer_family,
@@ -97,20 +97,20 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
         control <- mice_imputation_multilevel_lmerControl_define_optimizer(model=model, ...)
         lmer_args$control <- control
     }
-    
+
     #--- fit lme4 or blme model based on observed y
     fit <- mice_multilevel_doCall_suppressWarnings( what=lmer_function, args=lmer_args,
                 warnings=glmer.warnings )
-                
+
     #--- draw fixed effects
     b.est <- b.star <- lme4::fixef(object=fit)
     if( draw.fixed ){     # posterior draw for fixed effects
         b.star <- mice_multilevel_draw_rnorm1( mu=b.star, Sigma=vcov(fit) )
     }
-    
+
     #--- extract posterior distribution of random effects
     fl <- lme4::getME(object=fit, name="flist")
-    
+
     #--- variance matrix of random effects
     fit_vc <- lme4::VarCorr(x=fit)
 

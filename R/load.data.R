@@ -1,5 +1,5 @@
 ## File Name: load.data.R
-## File Version: 0.491
+## File Version: 0.492
 
 
 
@@ -15,7 +15,7 @@ load.data <- function( filename, type=NULL, path=getwd(), load_fun=NULL,
         type <- "user_"
         file0 <- file
     }
-    i1 <- grep.vec( c("RDS", "Rdata", "RData", 
+    i1 <- grep.vec( c("RDS", "Rdata", "RData",
                         "csv", "csv2", "table", "sav", "xls",
                     "xlsx", type0 ), x=file, operator="OR" )$x
     if ( length(i1)==0 ){

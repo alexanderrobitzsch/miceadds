@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_weighted_norm_draw.R
-## File Version: 0.299
+## File Version: 0.300
 
 mice_imputation_weighted_norm_draw <- function( yobs, xobs, ry, y, x,
     weights.obs, ridge=1e-5, sample_pars=TRUE,... )
@@ -21,7 +21,7 @@ mice_imputation_weighted_norm_draw <- function( yobs, xobs, ry, y, x,
         pen <- matrix(pen)
     }
     # v <- solve(xtx + diag(pen))
-    v <- MASS::ginv(xtx + diag(pen))    
+    v <- MASS::ginv(xtx + diag(pen))
     # V * ( X'*W*Y)
     # coef <- t(yobs %*% WW %*% xobs %*% v)
     yobs1 <- weights_obs_sqrt * yobs
@@ -29,7 +29,7 @@ mice_imputation_weighted_norm_draw <- function( yobs, xobs, ry, y, x,
     residuals <- yobs - xobs %*% coef
     # calculate weighted residuals
     residuals2 <- sqrt(weights.obs) * residuals
-    
+
     if (sample_pars){
         sigma.star <- sqrt(sum((residuals2)^2)/ stats::rchisq(1, sum(ry) - ncol(x)))
         V <- (v + t(v))/2

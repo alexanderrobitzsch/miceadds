@@ -1,5 +1,5 @@
 %% File Name: mice.impute.catpmm.Rd
-%% File Version: 0.06
+%% File Version: 0.07
 
 \name{mice.impute.catpmm}
 \alias{mice.impute.catpmm}
@@ -54,7 +54,7 @@ A vector of length \code{nmis=sum(!ry)} with imputed values.
 
 \references{
 Meinfelder, F. (2009). \emph{Analysis of Incomplete Survey Data - Multiple
-Imputation via Bayesian Bootstrap Predictive Mean Matching}. 
+Imputation via Bayesian Bootstrap Predictive Mean Matching}.
 Dissertation thesis. University of Bamberg, Germany.
 \url{https://fis.uni-bamberg.de/handle/uniba/213}
 }

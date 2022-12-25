@@ -1,5 +1,5 @@
 %% File Name: syn_da.Rd
-%% File Version: 0.01
+%% File Version: 0.04
 
 \name{syn_da}
 \alias{syn_da}
@@ -8,15 +8,15 @@
 Generation of Synthetic Data Utilizing Data Augmentation
 }
 \description{
-This function generates synthetic data utilizing data augmentation 
+This function generates synthetic data utilizing data augmentation
 (Jiang et al., 2022; Grund et al., 2022). Continuous
 and ordinal variables can be handled. The order of the synthesized variables
 can be defined using the argument \code{syn_vars}.
 }
 \usage{
-syn_da(dat, syn_vars = NULL, fix_vars = NULL, ord_vars = NULL, da_noise = 0.5, 
-   use_pls = TRUE, ncomp = 20, exact_regression = TRUE, exact_marginal = TRUE, 
-   imp_maxit = 5)
+syn_da(dat, syn_vars=NULL, fix_vars=NULL, ord_vars=NULL, da_noise=0.5,
+   use_pls=TRUE, ncomp=20, exact_regression=TRUE, exact_marginal=TRUE,
+   imp_maxit=5)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -71,13 +71,13 @@ A list with entries
 }
 
 \references{
-Grund, S., Luedtke, O., & Robitzsch, A. (2022). Using synthetic data to improve 
-the reproducibility of statistical results in psychological research. 
+Grund, S., Luedtke, O., & Robitzsch, A. (2022). Using synthetic data to improve
+the reproducibility of statistical results in psychological research.
 \emph{Psychological Methods}. Epub ahead of print. \doi{10.1037/met0000526}
 
-Jiang, B., Raftery, A. E., Steele, R. J., & Wang, N. (2022). Balancing inferential 
-integrity and disclosure risk via model targeted masking and multiple imputation. 
-\emph{Journal of the American Statistical Association, 117}(537), 52-66. 
+Jiang, B., Raftery, A. E., Steele, R. J., & Wang, N. (2022). Balancing inferential
+integrity and disclosure risk via model targeted masking and multiple imputation.
+\emph{Journal of the American Statistical Association, 117}(537), 52-66.
 \doi{10.1080/01621459.2021.1909597}
 }
 
@@ -112,8 +112,8 @@ ord_vars <- c("FISCED", "MISCED", items)
 syn_vars <- c("HISEI", "FISCED", "MISCED", items)
 
 #-- synthesize data
-mod <- miceadds::syn_da( dat=dat0, syn_vars=syn_vars, fix_vars=fix_vars, 
-            ord_vars=ord_vars, da_noise=0.5, imp_maxit=2, use_pls=TRUE, ncomp=20, 
+mod <- miceadds::syn_da( dat=dat0, syn_vars=syn_vars, fix_vars=fix_vars,
+            ord_vars=ord_vars, da_noise=0.5, imp_maxit=2, use_pls=TRUE, ncomp=20,
             exact_regression=TRUE, exact_marginal=TRUE)
 #- extract synthetic dataset
 mod$dat_syn

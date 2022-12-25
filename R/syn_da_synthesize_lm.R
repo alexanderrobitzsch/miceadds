@@ -1,7 +1,7 @@
 ## File Name: syn_da_synthesize_lm.R
-## File Version: 0.178
+## File Version: 0.180
 
-syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss, 
+syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
             fix_vars, ord_vars, miss, ncomp=20, use_pls=TRUE, exact_regression=TRUE,
             exact_marginal=TRUE)
 {
@@ -14,27 +14,27 @@ syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
         form <- paste0( form, " + ", v2 )
     }
     if (ss>1){
-        v2 <- syn_da_create_formula(wv=syn_vars[1:(ss-1)], ord_vars=ord_vars)    
+        v2 <- syn_da_create_formula(wv=syn_vars[1:(ss-1)], ord_vars=ord_vars)
         form <- paste0( form, " + ", v2 )
     }
     if (! is.null(da_vars) ){
-        v2 <- syn_da_create_formula(wv=da_vars, ord_vars=ord_vars)        
+        v2 <- syn_da_create_formula(wv=da_vars, ord_vars=ord_vars)
         form <- paste0( form, " + ", v2 )
     }
     form <- as.formula(form)
-    
+
     #-- perform PLS if requested
     if (use_pls){
-        res_pls <- syn_da_compute_pls_factors(dat2=dat2, ncomp=ncomp, syn_vars_ss=syn_vars_ss, 
+        res_pls <- syn_da_compute_pls_factors(dat2=dat2, ncomp=ncomp, syn_vars_ss=syn_vars_ss,
                     form=form, ind0=ind0, ind1=ind1)
         dat20 <- res_pls$dat20
-        form20 <- res_pls$form20                
+        form20 <- res_pls$form20
     } else {
         dat20 <- dat2
         form20 <- paste0(" y ~ ", paste(form)[3] )
     }
-    dat20$y <- dat20[,syn_vars_ss]    
-    
+    dat20$y <- dat20[,syn_vars_ss]
+
     #-- synthesis using regression
     mod <- stats::lm( form20, data=dat20[ ind0, ] )
     smod <- summary(mod)
@@ -54,12 +54,12 @@ syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
 
     dfr1$index <- 1:nrow(dfr1)
     dfr1$is_miss <- miss[, syn_vars_ss]
-    dfr1 <- dfr1[ order( dfr1$syn_sim) , ]        
+    dfr1 <- dfr1[ order( dfr1$syn_sim), ]
     cc <- ! dfr1$is_miss
     dfr1$syn[ cc ] <- sort(y1[cc])
     cc <- dfr1$is_miss
     if (sum(cc)>0){
-        dfr1$syn[ cc ] <- sort(y1[cc])    
+        dfr1$syn[ cc ] <- sort(y1[cc])
     }
     dfr1 <- dfr1[ order(dfr1$index), ]
     #-- should marginal distribution be preserved?

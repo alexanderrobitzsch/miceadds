@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_factor_pmm_convert_factor.R
-## File Version: 0.05
+## File Version: 0.11
 
 mice_imputation_factor_pmm_convert_factor <- function(imp, is_factor, y_aggr)
 {

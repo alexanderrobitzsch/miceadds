@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_draw_random_effects.R
-## File Version: 0.177
+## File Version: 0.178
 
 
 mice_ml_lmer_draw_random_effects <- function( clus, clus_unique, y, ry, fl, fit_vc,
@@ -25,7 +25,7 @@ mice_ml_lmer_draw_random_effects <- function( clus, clus_unique, y, ry, fl, fit_
     pv <- array(0, dim=c(NR,NR,ngr))
     pv[,,clus_obs] <- pv0                # pv: post. variance if partially observed
     pv[,,-clus_obs] <- vu                # pv: random effects cov. if fully unobserved
-    
+
     #--- draw random effects
     u <- mice_multilevel_imputation_draw_random_effects( mu=re, Sigma=pv,
                 ridge=random.effects.shrinkage )

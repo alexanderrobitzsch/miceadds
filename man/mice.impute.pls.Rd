@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.382
+%% File Version: 2.383
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -66,7 +66,7 @@ for all variables to be imputed.
   Categorical variables can be imputed with the method \code{catpmm}
  (see \code{\link{mice.impute.catpmm}}). For the method \code{catpmm},
  multivariate PLS regression is employed for dummy-coded categories of
- the outcome variable. The method \code{xplsfacs} creates only PLS factors 
+ the outcome variable. The method \code{xplsfacs} creates only PLS factors
  of the regression model.
 }
 \item{donors}{Number of donors if predictive mean matching is used

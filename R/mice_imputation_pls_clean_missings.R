@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_clean_missings.R
-## File Version: 0.01
+## File Version: 0.02
 
 
 mice_imputation_pls_clean_missings <- function(x, eps=1e-12)
@@ -11,5 +11,5 @@ mice_imputation_pls_clean_missings <- function(x, eps=1e-12)
     if (L>0){
         x[,ind_na] <- matrix( stats::runif(N*L,-eps,eps), ncol=L)
     }
-    return(x)    
+    return(x)
 }

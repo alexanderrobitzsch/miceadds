@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.714
+## File Version: 3.741
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
@@ -17,7 +17,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     is_factor <- res$is_factor
     x_ <- x
     type_ <- type
-    
+
     #--- extract arguments
     if ( is.null(envir_pos) ){
         pos <- parent.frame(n=2)
@@ -26,7 +26,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     }
     res <- mice_imputation_get_states( pos=pos )
     vname <- res$vname
-
+    
     imp.temp <- res$newstate
     if (extract_data){
         res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos,
@@ -35,6 +35,10 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
         x <- res$x
         ry <- res$ry
         type <- res$type
+        res <- mice_imputation_factor_pmm_prepare(y=y)
+        y <- res$y
+        y_aggr <- res$y_aggr
+        is_factor <- res$is_factor
     }
     n <- NULL
     # normalize imputation weights
@@ -65,17 +69,17 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     use.ymat <- ( ! is.null( dim(y) ) )
     x <- as.matrix(x)
     use_weights <- stats::sd(imputationWeights) > 1E-30
-    
+
     # standardize matrix of covariates
     x <- mice_imputation_pls_scale_x( x=x, imputationWeights=imputationWeights,
             use_weights=use_weights )
-            
+
     # include cluster effects (adjusted group mean)
     res <- mice_imputation_include_cluster_effect( x=x, y=y, ry=ry, type=type )
     type <- res$type
     x0 <- x10 <- x <- res$x
     N <- ncol(x)
-    
+
     #*** print progress | print section 2
     res <- mice_imputation_pls_print_progress2(    pls.print.progress=pls.print.progress,
                 imp.temp=imp.temp, pls.title=pls.title, y=y, x=x )
@@ -91,19 +95,20 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                 imputationWeights=imputationWeights, use_weights=use_weights)
     x <- res$x
     xs <- res$xs
-    
+
     #-- include quadratic terms
     res <- mice_imputation_pls_include_quadratics( pls.quadratics=pls.quadratics,
-                pls.interactions=pls.interactions, x0=x0, x=x, pls.print.progress=pls.print.progress,
-                xs=xs )
+                pls.interactions=pls.interactions, x0=x0, x=x, 
+                pls.print.progress=pls.print.progress, xs=xs )
     x <- res$x
 
     #-- include only terms with largest correlations
     res <- mice_imputation_pls_largest_correlations( y=y, x=x, ry=ry, type=type,
-                use.ymat=use.ymat, pls.print.progress=pls.print.progress, x10=x10, N.largest=N.largest,
-                min.all.cor=min.all.cor, imputationWeights=imputationWeights )
+                use.ymat=use.ymat, pls.print.progress=pls.print.progress, x10=x10, 
+                N.largest=N.largest, min.all.cor=min.all.cor, 
+                imputationWeights=imputationWeights )
     x <- res$x
-    
+
     #-- perform PCA if requested
     x <- mice_imputation_pls_pca_reduction( x=x, pcamaxcols=pcamaxcols,
                 imputationWeights=imputationWeights, pls.print.progress=pls.print.progress,
@@ -117,7 +122,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                 pls.impMethod=pls.impMethod)
     x <- res$x
     x11a <- res$x11a
-    
+
     #- handle type vector for multilevel models
     res <- mice_imputation_pls_type_multilevel_models(x=x, x_=x_, type=type, type_=type_)
     x <- res$x
@@ -136,6 +141,5 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                     time1=time1, time2=time2 )
     x1 <- mice_imputation_factor_pmm_convert_factor(imp=x1,
                     is_factor=is_factor, y_aggr=y_aggr)
-                    
     return(x1)
 }

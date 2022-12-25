@@ -1,5 +1,5 @@
 ## File Name: source.Rcpp.all.R
-## File Version: 0.395
+## File Version: 0.396
 
 # function for sourcing Rcpp files
 source.Rcpp.all <- function( path, file_names=NULL, ext="\\.cpp", excl="RcppExports",
@@ -25,10 +25,10 @@ source.Rcpp.all <- function( path, file_names=NULL, ext="\\.cpp", excl="RcppExpo
         file_source <- c( file_source, file )
     }
     file_source0 <- file_source
-    
+
     s1 <- lapply( strsplit( file_source, split="__" ), FUN=function(ll){ ll[[1]][1] } )
     file_source <- unique(unlist(s1))
-    
+
     nmax <- length(file_source)
     file_source <- file_source[ ! is.na( file_source )  ]
     file_source <- paste0( file_source, "__")

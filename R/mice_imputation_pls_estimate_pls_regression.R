@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_estimate_pls_regression.R
-## File Version: 0.335
+## File Version: 0.336
 
 mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
     use.ymat, imputationWeights, use_weights, pls.print.progress,
@@ -10,7 +10,7 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
 
     #-- process input
     x00 <- x
-    
+
     x11a <- NULL
     # calculate partial least squares regression
     nfac <- min( pls.facs, ncol(x) )
@@ -26,7 +26,7 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         yobs <- yobs - stats::weighted.mean( x=yobs, w=weight.obs )
     }
     xobs <- x[ry, ]
-    
+
     # include imputationWeights here and calculate weight.obs
     # in the regression model, only PLS factors of X are used
     if( use_weights & ( ! is_catpmm) ){
@@ -38,7 +38,7 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         yobs <- weight_obs_sqrt * yobs
         xobs <- weight_obs_sqrt * xobs
     }
-    
+
     if( pls.print.progress ){
         cat( "\n", paste( ncol(xobs), " Dimensions", sep="")  )
         cat( "\n", paste( nfac, " PLS factors are used", sep="") )

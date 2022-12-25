@@ -1,14 +1,14 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.206
+## File Version: 0.207
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
     pls.impMethodArgs, type, use_boot=FALSE, vname=NULL, donors=5, ... )
 {
     # clean missing values
-    x <- as.matrix(x)    
+    x <- as.matrix(x)
     x <- mice_imputation_pls_clean_missings(x=x, eps=1e-12)
-    
+
     colnames(x) <- gsub(" ", "", colnames(x) )
 
     #*** logical whether an imputation should be conducted
@@ -16,7 +16,7 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
 
     #-- admissible pmm methods
     pls_avai <- paste0("pmm",3:6)
-    
+
     if ( do_imputation ){
         if (! use_weights){
             use_weights <- TRUE
