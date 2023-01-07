@@ -1,5 +1,5 @@
 ## File Name: write.datlist.R
-## File Version: 0.11
+## File Version: 0.122
 
 write.datlist <- function( datlist, name, include.varnames=TRUE,
         type="csv2", separate=TRUE, Mplus=FALSE, round=NULL,
@@ -75,12 +75,14 @@ write.datlist <- function( datlist, name, include.varnames=TRUE,
     if ( mplus ){
         vars2 <- VariableNames2String( vars, breaks=60)
         l1 <- c("TITLE: xxxx ;", "", "DATA: ", "",
-                    paste( "FILE IS ", name, "__IMP_LIST.txt;", sep=""),  "TYPE=IMPUTATION;", "",
+                    paste( "FILE IS ", name, "__IMP_LIST.txt;", sep=""),
+                        "TYPE=IMPUTATION;", "",
                         "VARIABLE:", "", "NAMES ARE",
                         vars2, ";", "", "! edit usevariables are;", "!usevar are",
                         "   ", "", "MISSING=. ;", "", "!.........................",
                         "! Mplus statements" )
-        writeLines( l1, file.path( pf.subf, paste( name, "__MPLUS-INPUT-BODY.inp", sep="") ))
+        writeLines( l1, file.path( pf.subf, paste( name, "__MPLUS-INPUT-BODY.inp",
+                            sep="") ))
     }
 }
 

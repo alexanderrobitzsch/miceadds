@@ -1,10 +1,10 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.741
+## File Version: 3.745
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
-            pls.impMethod="pmm", donors=5, pls.impMethodArgs=NULL, pls.print.progress=TRUE,
-            imputationWeights=rep(1, length(y)), pcamaxcols=1E9,
+            pls.impMethod="pmm", donors=5, pls.impMethodArgs=NULL,
+            pls.print.progress=TRUE, imputationWeights=rep(1, length(y)), pcamaxcols=1E9,
             min.int.cor=0, min.all.cor=0, N.largest=0, pls.title=NULL, print.dims=TRUE,
             pls.maxcols=5000, use_boot=FALSE, envir_pos=NULL, extract_data=TRUE,
             remove_lindep=TRUE, ... )
@@ -26,7 +26,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     }
     res <- mice_imputation_get_states( pos=pos )
     vname <- res$vname
-    
+
     imp.temp <- res$newstate
     if (extract_data){
         res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos,
@@ -98,21 +98,21 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
 
     #-- include quadratic terms
     res <- mice_imputation_pls_include_quadratics( pls.quadratics=pls.quadratics,
-                pls.interactions=pls.interactions, x0=x0, x=x, 
+                pls.interactions=pls.interactions, x0=x0, x=x,
                 pls.print.progress=pls.print.progress, xs=xs )
     x <- res$x
 
     #-- include only terms with largest correlations
     res <- mice_imputation_pls_largest_correlations( y=y, x=x, ry=ry, type=type,
-                use.ymat=use.ymat, pls.print.progress=pls.print.progress, x10=x10, 
-                N.largest=N.largest, min.all.cor=min.all.cor, 
+                use.ymat=use.ymat, pls.print.progress=pls.print.progress, x10=x10,
+                N.largest=N.largest, min.all.cor=min.all.cor,
                 imputationWeights=imputationWeights )
     x <- res$x
 
     #-- perform PCA if requested
     x <- mice_imputation_pls_pca_reduction( x=x, pcamaxcols=pcamaxcols,
-                imputationWeights=imputationWeights, pls.print.progress=pls.print.progress,
-                use_weights=use_weights)
+                imputationWeights=imputationWeights,
+                pls.print.progress=pls.print.progress, use_weights=use_weights)
     x10 <- x    # copy dataset of predictors
 
     #--- perform PLS regression

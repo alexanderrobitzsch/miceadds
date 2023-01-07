@@ -1,5 +1,5 @@
 ## File Name: subset_nested.datlist.R
-## File Version: 1.18
+## File Version: 1.19
 
 subset_nested.datlist <- function( datlist, subset=TRUE,
                 select=NULL, expr_subset=NULL,
@@ -9,7 +9,7 @@ subset_nested.datlist <- function( datlist, subset=TRUE,
     CALL <- match.call()
 
     #*** check here for classes
-    if ( class(datlist) %in% "NestedImputationList" ){
+    if ( inherits(datlist, c("NestedImputationList")) ){
         datlist <- datlist$imputations
     }
 

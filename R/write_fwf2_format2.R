@@ -1,8 +1,8 @@
 ## File Name: write_fwf2_format2.R
-## File Version: 0.08
+## File Version: 0.092
 
-#----------------------------------------------------------------
-# utility function for formatting output in write.fwf2
+
+#---- utility function for formatting output in write.fwf2
 write_fwf2_format2 <- function( vec1, ff, fr )
 {
     do_round <- TRUE
@@ -22,9 +22,9 @@ write_fwf2_format2 <- function( vec1, ff, fr )
         blank.vv <- paste( rep( " ", ff+1 ), collapse="" )
         d.vv <- paste( substring( blank.vv, 1, ff+1 - nchar(d.vv) ), d.vv, sep="")
         g.vv <- grep("NA",d.vv)
-        d.vv[ g.vv  ] <- ifelse( ff > 1,  gsub( "NA", " .", d.vv[g.vv] ), gsub( "NA", ".", d.vv[g.vv] ) )
+        d.vv[ g.vv  ] <- ifelse( ff > 1,  gsub( "NA", " .", d.vv[g.vv] ),
+                                gsub( "NA", ".", d.vv[g.vv] ) )
         vec2 <- substring( d.vv, 1, ff )
     }
     return(vec2)
 }
-#---------------------------------------------------------------

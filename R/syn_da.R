@@ -1,5 +1,5 @@
 ## File Name: syn_da.R
-## File Version: 0.185
+## File Version: 0.187
 
 
 syn_da <- function(dat, syn_vars=NULL, fix_vars=NULL, ord_vars=NULL,
@@ -58,7 +58,8 @@ syn_da <- function(dat, syn_vars=NULL, fix_vars=NULL, ord_vars=NULL,
     for (ss in 1:NSV){
         dat2 <- syn_da_synthesize_lm(dat2=dat2, ind0=ind0, ind1=ind1, syn_vars=syn_vars,
                     da_vars=da_vars, ss=ss, fix_vars=fix_vars, ord_vars=ord_vars,
-                    ncomp=ncomp[ss], use_pls=use_pls[ss], exact_regression=exact_regression[ss],
+                    ncomp=ncomp[ss], use_pls=use_pls[ss],
+                    exact_regression=exact_regression[ss],
                     exact_marginal=exact_marginal[ss], miss=miss)
         cat( paste0( "synthesize variable ", ss, " of ", NSV, "\n") )
         utils::flush.console()

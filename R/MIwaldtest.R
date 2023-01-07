@@ -1,15 +1,15 @@
 ## File Name: MIwaldtest.R
-## File Version: 0.18
+## File Version: 0.201
 
 
 #--- MI Wald test
 MIwaldtest <- function( qhat, u, Cdes=NULL, rdes=NULL, testnull=NULL)
 {
     # conversion of inputs
-    if ( class(qhat) %in% c("array","data.frame","matrix") ){
+    if ( inherits(qhat, c("array","data.frame","matrix") ) ){
         qhat <- MIwaldtest_qhat2list(qhat=qhat)
     }
-    if ( class(u) %in% c("array") ){
+    if ( inherits(u, c("array") ) ){
         u <- MIwaldtest_u2list(u=u)
     }
 

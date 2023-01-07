@@ -1,5 +1,5 @@
 ## File Name: write.mice.imputation.R
-## File Version: 0.25
+## File Version: 0.265
 
 #--- write mice imputation object
 write.mice.imputation <- function( mi.res, name, include.varnames=TRUE, long=TRUE,
@@ -17,7 +17,8 @@ write.mice.imputation <- function( mi.res, name, include.varnames=TRUE, long=TRU
     pf.subf <- file.path( getwd(), paste( name, sep=""))
     dir.create(pf.subf)                 # define subdirectory
     # write legend of variables
-    writeLines( colnames(mi.res$data), file.path( pf.subf, paste( name, "__LEGEND.txt", sep="") ))
+    writeLines( colnames(mi.res$data), file.path( pf.subf,
+                    paste( name, "__LEGEND.txt", sep="") ))
     l1 <- paste( name, "__IMPDATA", 1:mi.res$m, ".dat", sep="")
     utils::write.table( l1, file.path( pf.subf, paste( name, "__IMP_LIST.txt", sep="") ),
             col.names=FALSE, row.names=FALSE, quote=FALSE)
@@ -45,12 +46,14 @@ write.mice.imputation <- function( mi.res, name, include.varnames=TRUE, long=TRU
 
     for (i in 1:mi.res$m ){
         dat_i <- mice::complete( mi.res, action=i )
-        utils::write.table( dat_i, file=file.path( pf.subf, paste( name, "__IMPDATA", i, ".dat", sep="")),
+        utils::write.table( dat_i, file=file.path( pf.subf,
+                            paste( name, "__IMPDATA", i, ".dat", sep="")),
                     quote=FALSE, row.names=FALSE, col.names=include.varnames, na="." )
         if ( ! is.null(dattype) ){
             if (dattype=="csv2" ){
-                write.csv2( dat_i, file=file.path( pf.subf, paste( name, "__IMPDATA", i, ".csv", sep="")),
-                        quote=FALSE, row.names=FALSE, na="." )
+                write.csv2( dat_i, file=file.path( pf.subf,
+                            paste( name, "__IMPDATA", i, ".csv", sep="")),
+                            quote=FALSE, row.names=FALSE, na="." )
                 }
             }
         cat("\n",i)
@@ -75,20 +78,22 @@ write.mice.imputation <- function( mi.res, name, include.varnames=TRUE, long=TRU
         vars <- colnames(mi.res$data)
         vars2 <- VariableNames2String( vars, breaks=60)
         l1 <- c("TITLE: xxxx ;", "", "DATA: ", "",
-                    paste( "FILE IS ", name, "__IMP_LIST.txt;", sep=""),  "TYPE=IMPUTATION;", "",
+                    paste( "FILE IS ", name, "__IMP_LIST.txt;", sep=""),
+                    "TYPE=IMPUTATION;", "",
                     "VARIABLE:", "", "NAMES ARE",
                     vars2, ";", "", "! edit usevariables are;", "!usevar are",
                         "   ", "", "MISSING=. ;", "", "!.........................",
                     "! Mplus statements"
                 )
-        writeLines( l1, file.path( pf.subf, paste( name, "__MPLUS-INPUT-BODY.inp", sep="") ))
+        writeLines( l1, file.path( pf.subf,
+                            paste( name, "__MPLUS-INPUT-BODY.inp", sep="") ))
     }
 
     # write predictorMatrix and imputationMethod
-    utils::write.csv2( mi.res$method, file.path( pf.subf, paste( name, "__IMPMETHOD.csv", sep="")),
-                            quote=FALSE)
-    utils::write.csv2( mi.res$predictorMatrix, file.path( pf.subf, paste( name, "__PREDICTORMATRIX.csv", sep="")),
-                            quote=FALSE)
+    utils::write.csv2( mi.res$method, file.path( pf.subf,
+                            paste( name, "__IMPMETHOD.csv", sep="")), quote=FALSE)
+    utils::write.csv2( mi.res$predictorMatrix, file.path( pf.subf,
+                            paste( name, "__PREDICTORMATRIX.csv", sep="")), quote=FALSE)
 
     #* write mice object as a Rdata object
     save( mi.res, file=file.path( pf.subf, paste( name, ".Rdata", sep="") ) )

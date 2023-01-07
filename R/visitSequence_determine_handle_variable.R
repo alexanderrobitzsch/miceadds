@@ -1,5 +1,5 @@
 ## File Name: visitSequence_determine_handle_variable.R
-## File Version: 0.07
+## File Version: 0.082
 
 
 # handle one passive variable
@@ -12,11 +12,12 @@ visitSequence_determine_handle_variable <- function( var.ii, impMethod, vis1, da
     for (nn in seq_len(IN) ){
         i2 <- match( ness.ii[nn], names(vis1) )
         for (oo in seq_len( length(i2) ) ){
-            vis1 <- visitSequence_determine_add_entry( ness.ii.nn=ness.ii[nn], var.ii=var.ii,
-                        vis1=vis1, occ=oo)
+            vis1 <- visitSequence_determine_add_entry( ness.ii.nn=ness.ii[nn],
+                            var.ii=var.ii, vis1=vis1, occ=oo)
         }
     }
-    vis1 <- visitSequence_determine_remove_entry( vis1=vis1, ness.ii=ness.ii, var.ii=var.ii )
+    vis1 <- visitSequence_determine_remove_entry( vis1=vis1, ness.ii=ness.ii,
+                        var.ii=var.ii )
     return(vis1)
 }
 

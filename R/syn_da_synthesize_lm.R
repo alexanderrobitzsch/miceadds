@@ -1,5 +1,5 @@
 ## File Name: syn_da_synthesize_lm.R
-## File Version: 0.180
+## File Version: 0.182
 
 syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
             fix_vars, ord_vars, miss, ncomp=20, use_pls=TRUE, exact_regression=TRUE,
@@ -25,8 +25,8 @@ syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
 
     #-- perform PLS if requested
     if (use_pls){
-        res_pls <- syn_da_compute_pls_factors(dat2=dat2, ncomp=ncomp, syn_vars_ss=syn_vars_ss,
-                    form=form, ind0=ind0, ind1=ind1)
+        res_pls <- syn_da_compute_pls_factors(dat2=dat2, ncomp=ncomp,
+                        syn_vars_ss=syn_vars_ss, form=form, ind0=ind0, ind1=ind1)
         dat20 <- res_pls$dat20
         form20 <- res_pls$form20
     } else {

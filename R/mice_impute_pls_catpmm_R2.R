@@ -1,5 +1,5 @@
 ## File Name: mice_impute_pls_catpmm_R2.R
-## File Version: 0.03
+## File Version: 0.05
 
 mice_impute_pls_catpmm_R2 <- function(res, Y, nfac)
 {
@@ -9,7 +9,9 @@ mice_impute_pls_catpmm_R2 <- function(res, Y, nfac)
     ny <- ncol(Y)
     for (dd in 1:ny){
         R21 <- sapply( 1:ncomp, FUN=function(cc){
-                    1 - stats::var( Y[,dd] -  res$fitted.values[,dd,cc] ) / stats::var( Y[,dd] )
+                    e1 <- res$fitted.values[,dd,cc]
+                    y <- Y[,dd]
+                    1 - stats::var(y-e1) / stats::var(y)
                 } )
         R2 <- rbind( R2, R21)
     }

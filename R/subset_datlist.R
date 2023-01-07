@@ -1,15 +1,15 @@
 ## File Name: subset_datlist.R
-## File Version: 0.373
+## File Version: 0.374
 
 subset_datlist <- function( datlist, subset=TRUE,
             select=NULL, expr_subset=NULL, index=NULL, toclass="datlist")
 {
     CALL <- match.call()
     #*** check here for classes
-    if ( class(datlist) %in% "imputationList" ){
+    if ( inherits(datlist, c("imputationList")) ){
         datlist <- datlist$imputations
     }
-    if ( class(datlist) %in% c("mids","mids.1chain") ){
+    if ( inherits(datlist, c("mids","mids.1chain")) ){
         datlist <- mids2datlist( datlist )
     }
     M <- length(datlist)

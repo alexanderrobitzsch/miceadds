@@ -1,5 +1,5 @@
 ## File Name: write.pspp.R
-## File Version: 1.283
+## File Version: 1.286
 
 
 write.pspp <- function (data, datafile, pspp.path, decmax=6,
@@ -18,7 +18,8 @@ write.pspp <- function (data, datafile, pspp.path, decmax=6,
         dfn <- lapply(df, function(x)
             if (is.factor(x)) paste(x)  else x )
 }
-    if(is.null(attributes(df)$variable.labels)) varlabels <- names(df) else varlabels <- attributes(df)$variable.labels
+    if(is.null(attributes(df)$variable.labels)) varlabels <- names(df) else
+                varlabels <- attributes(df)$variable.labels
     if (is.null(varnames)) {
         varnames <- abbreviate(names(df), 8)
         if (any(sapply(varnames, nchar) > 8))
@@ -30,7 +31,7 @@ write.pspp <- function (data, datafile, pspp.path, decmax=6,
     eps2 <- .001
     ldfn <- lapply( dfn,  FUN=function(vv){
             if ( is.numeric(vv) ){
-                floor( max( log(abs(vv)+1,10), na.rm=TRUE ) )+2  } else { max( nchar(vv) ) }
+                floor( max( log(abs(vv)+1,10), na.rm=TRUE ) )+2  } else { max(nchar(vv)) }
                 } )
     # number of decimals after digits
     V <- length(dfn)
@@ -61,7 +62,8 @@ write.pspp <- function (data, datafile, pspp.path, decmax=6,
     utils::write.csv2( dfn1, paste0( datafile, ".csv" ), row.names=FALSE,
             quote=FALSE, na="")
 
-    cat(paste0( "GET DATA \n /TYPE=TXT \n /FILE='", gsub( "\\", "//", getwd(), fixed=TRUE ), "/", datafile,
+    cat(paste0( "GET DATA \n /TYPE=TXT \n /FILE='",
+                gsub( "\\", "//", getwd(), fixed=TRUE ), "/", datafile,
                 ".csv' \n",
                 "/IMPORTCASES=ALL\n",
                 "/ARRANGEMENT=DELIMITED\n",

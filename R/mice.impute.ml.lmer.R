@@ -1,14 +1,14 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.733
+## File Version: 0.736
 
 
 #*** main function for multilevel imputation with lme4 with several levels
 mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL,
                 random_slopes=NULL, aggregate_automatically=TRUE, intercept=TRUE,
                 groupcenter.slope=FALSE, draw.fixed=TRUE, random.effects.shrinkage=1E-6,
-                glmer.warnings=TRUE, model="continuous", donors=3, match_sampled_pars=FALSE,
-                blme_use=FALSE, blme_args=NULL, pls.facs=0, interactions=NULL,
-                quadratics=NULL, min.int.cor=0, min.all.cor=0,
+                glmer.warnings=TRUE, model="continuous", donors=3,
+                match_sampled_pars=FALSE, blme_use=FALSE, blme_args=NULL, pls.facs=0,
+                interactions=NULL, quadratics=NULL, min.int.cor=0, min.all.cor=0,
                 pls.print.progress=FALSE, group_index=NULL, iter_re=0, ... )
 {
     require_namespace("lme4")
@@ -23,10 +23,12 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
 
     #--- extraction of arguments
     pos <- parent.frame(n=2)
-    res <- mice_ml_lmer_extract_input( pos=pos, levels_id=levels_id, random_slopes=random_slopes,
-                variables_levels=variables_levels, pls.facs=pls.facs, min.int.cor=min.int.cor,
-                min.all.cor=min.all.cor, interactions=interactions, quadratics=quadratics,
-                model=model, group_index=group_index, iter_re=iter_re)
+    res <- mice_ml_lmer_extract_input( pos=pos, levels_id=levels_id,
+                random_slopes=random_slopes, variables_levels=variables_levels,
+                pls.facs=pls.facs, min.int.cor=min.int.cor,
+                min.all.cor=min.all.cor, interactions=interactions,
+                quadratics=quadratics, model=model, group_index=group_index,
+                iter_re=iter_re)
     vname <- res$vname
     p <- res$p
     type <- res$type
@@ -66,9 +68,10 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     clus_unique <- res$clus_unique
 
     #--- aggregate group effects for mixed effects model
-    res <- mice_ml_lmer_include_cluster_means( y=y, ry=ry, type=type, x=x, levels_id=levels_id,
-                aggregate_automatically=aggregate_automatically, clus=clus,
-                groupcenter.slope=groupcenter.slope, variables_levels=variables_levels )
+    res <- mice_ml_lmer_include_cluster_means( y=y, ry=ry, type=type, x=x,
+                levels_id=levels_id, aggregate_automatically=aggregate_automatically,
+                clus=clus, groupcenter.slope=groupcenter.slope,
+                variables_levels=variables_levels )
     x <- res$x
     type <- res$type
 
@@ -81,8 +84,9 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     type <- res$type
 
     #--- create formulas for lme4
-    res <- mice_ml_lmer_construct_lme4_formula( x=x, intercept=intercept, levels_id=levels_id,
-                fixed_effects=colnames(x), NL=NL, random_slopes=random_slopes )
+    res <- mice_ml_lmer_construct_lme4_formula( x=x, intercept=intercept,
+                levels_id=levels_id, fixed_effects=colnames(x), NL=NL,
+                random_slopes=random_slopes )
     fml <- res$fml
     fixed_effects <- res$fixed_effects
     used_slopes <- res$used_slopes
@@ -94,13 +98,14 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     # control_input <- FALSE
     control_input <- TRUE
     if (control_input){
-        control <- mice_imputation_multilevel_lmerControl_define_optimizer(model=model, ...)
+        control <- mice_imputation_multilevel_lmerControl_define_optimizer(model=model,
+                            ...)
         lmer_args$control <- control
     }
 
     #--- fit lme4 or blme model based on observed y
     fit <- mice_multilevel_doCall_suppressWarnings( what=lmer_function, args=lmer_args,
-                warnings=glmer.warnings )
+                        warnings=glmer.warnings )
 
     #--- draw fixed effects
     b.est <- b.star <- lme4::fixef(object=fit)
@@ -127,7 +132,8 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                             ry=ry, fl=fl[[levels_id_ll]], fit_vc=fit_vc[[levels_id_ll]],
                             re0=re0[[levels_id_ll]], ngr=ngr[[levels_id_ll]],
                             used_slopes=used_slopes, levels_id_ll=levels_id_ll, x=x,
-                            random.effects.shrinkage=random.effects.shrinkage, iter_re=iter_re)
+                            random.effects.shrinkage=random.effects.shrinkage,
+                            iter_re=iter_re)
         predicted_umat[,ll] <- predicted_u
         predicted <- predicted + predicted_u
     }
@@ -150,8 +156,9 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
 
     #--- iterations for random effects
     predicted <- mice_ml_lmer_draw_random_effects_in_iterations( y=y,
-                    ry=ry, pred_fixed=pred_fixed, iter_re=iter_re, NL=NL, levels_id=levels_id,
-                    clus=clus, fit_vc=fit_vc, predicted_umat=predicted_umat, predicted=predicted )
+                    ry=ry, pred_fixed=pred_fixed, iter_re=iter_re, NL=NL,
+                    levels_id=levels_id, clus=clus, fit_vc=fit_vc,
+                    predicted_umat=predicted_umat, predicted=predicted )
 
     #--- extract predicted values for cases with missing data
     predicted0 <- predicted[ !ry ]

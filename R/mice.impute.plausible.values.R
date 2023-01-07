@@ -1,5 +1,5 @@
 ## File Name: mice.impute.plausible.values.R
-## File Version: 2.710
+## File Version: 2.712
 
 mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             alpha.se=0, scale.values=NULL, sig.e.miss=1000000,
@@ -86,7 +86,8 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
 
         #-- draw plausible values
         cat("\n")
-        mod1 <- TAM::tam.pv( tamobj=mod0, normal.approx=normal.approx, nplausible=1, samp.regr=TRUE )
+        mod1 <- TAM::tam.pv( tamobj=mod0, normal.approx=normal.approx, nplausible=1,
+                                samp.regr=TRUE )
         # extract pv imputation
         ximp <- mod1$pv[,2]
     }
@@ -97,7 +98,8 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         SE.scale <- scale.values[[ vname ]][[ "SE" ]]
         # compute true variance
         ind1 <- ! is.na(M.scale)
-        # var.ytrue <- stats::var( M.scale[ind1], na.rm=TRUE)  - mean( (SE.scale[ ind1 ])^2, na.rm=TRUE )
+        # var.ytrue <- stats::var( M.scale[ind1], na.rm=TRUE)
+        #                    - mean( (SE.scale[ ind1 ])^2, na.rm=TRUE )
         v2 <- stats::var( M.scale[ind1], na.rm=TRUE)
         var.ytrue <- v2  - stats::median( (SE.scale[ ind1 ])^2, na.rm=TRUE )
         true.var <- var.ytrue
@@ -110,7 +112,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         SE.scale[miss] <- sig.e.miss
         # calculate initial means and variances of posterior distribution
         SE_scale_2 <- SE.scale^(-2)
-        EAP <- ( SE_scale_2*M.scale + true.var^(-1)*Mscale )/( SE_scale_2 + true.var^(-1) )
+        EAP <- ( SE_scale_2*M.scale + true.var^(-1)*Mscale )/(SE_scale_2 + true.var^(-1))
         Var.EAP <- 1 / ( SE_scale_2 + true.var^(-1) )
         x1 <- x
         # group mean where the actual observation is eliminated
@@ -162,7 +164,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             beta.star <- as.vector(cmod) + ma_rmvnorm( n=1, mu=rep(0,nrow(v)), sigma=v)
             #-> fitted regression coefficients
             # update posterior distribution
-            EAP <- ( SE_scale_2*M.scale + sigma2^(-1)*yfitted )/( SE_scale_2 + sigma2^(-1) )
+            EAP <- ( SE_scale_2*M.scale + sigma2^(-1)*yfitted )/(SE_scale_2+sigma2^(-1))
             Var.EAP <- 1 / ( SE_scale_2 + sigma2^(-1) )
             # draw plausible value
             y.pv <- stats::rnorm( length(y),  mean=EAP, sd=sqrt(Var.EAP) )
@@ -173,7 +175,8 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             # add mean plausible value
             if ( sum( type==-2) ){
                 x1b <- cbind( x[, type==-2 ], y.pv )
-                gm <- mice.impute.2l.groupmean.elim(y=y, ry=FALSE * ry, x=x1b, type=c(-2,1) )
+                gm <- mice.impute.2l.groupmean.elim(y=y, ry=FALSE * ry,
+                                x=x1b, type=c(-2,1) )
                 xcov1 <- cbind( xcov, gm )
             }
         }
@@ -210,7 +213,7 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
         # group mean where the actual observation is eliminated
         if ( sum( type==-2 ) > 0 ){
             x1b <- cbind( x[, type==-2 ], y )
-            gm <- mice.impute.2l.groupmean.elim(y=y, ry=FALSE * ry, x=x1b, type=c(-2,1) )
+            gm <- mice.impute.2l.groupmean.elim(y=y, ry=FALSE * ry, x=x1b, type=c(-2,1))
             x1 <- cbind( x1, gm )
         }
         # compute scale score
@@ -221,7 +224,8 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
             if (pvmethod==2){
                 require_namespace("MBESS")
                 cirel.type <- "Normal Theory"
-                cir <- MBESS::ci.reliability( data=dat.scale, type=cirel.type, interval.type=TRUE )
+                cir <- MBESS::ci.reliability( data=dat.scale, type=cirel.type,
+                                    interval.type=TRUE )
                 alpha.est <- cir$Estimated.reliability
                 alpha.se <- cir$SE.reliability
             }
@@ -250,12 +254,14 @@ mice.impute.plausible.values <- function (y, ry, x, type, alpha=NULL,
                 "and known standard error of", alpha.se, "\n")  )
         }
         if (pvmethod==2){
-            cat( paste( "with estimated measurement error variance for", scale.type, "items\n      "))
+            cat( paste( "with estimated measurement error variance for",
+                            scale.type, "items\n      "))
             cat( paste("estimated Cronbach's alpha of", round( alpha.est, 3 ) ),
                     "(SE=", round( alpha.se,3),") \n")
         }
         if (pvmethod %in% c(1,2) ){
-            cat( paste("        sampled Cronbach's alpha of", round( alpha.samp, 3 ) ), "\n")
+            cat( paste("        sampled Cronbach's alpha of",
+                            round( alpha.samp, 3 ) ), "\n")
         }
         if (pvmethod==3){
             cat("with known scale scores and known measurement",

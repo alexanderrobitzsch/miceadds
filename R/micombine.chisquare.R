@@ -1,5 +1,5 @@
 ## File Name: micombine.chisquare.R
-## File Version: 0.22
+## File Version: 0.23
 
 
 micombine.chisquare <- function( dk, df, display=TRUE, version=1)
@@ -8,7 +8,7 @@ micombine.chisquare <- function( dk, df, display=TRUE, version=1)
     if (version==0){
         mean.dk <-  mean( dk )
         sdk.square <- stats::var( sqrt(dk) )
-        Dval <- ( mean.dk / df  - ( 1 - 1/M) * sdk.square )/ ( 1+ ( 1 + 1/M) * sdk.square )
+        Dval <- ( mean.dk / df  - ( 1 - 1/M) * sdk.square )/ (1+(1 + 1/M) * sdk.square)
         df2 <- ( M - 1 )/ df^(3/M)  * ( 1  + M / ( M + 1/M) / sdk.square )^2
     }
     if (version==1){

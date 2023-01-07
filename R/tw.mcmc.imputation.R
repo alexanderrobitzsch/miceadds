@@ -1,5 +1,5 @@
 ## File Name: tw.mcmc.imputation.R
-## File Version: 1.15
+## File Version: 1.163
 
 tw.mcmc.imputation <- function( data, iter=100, integer=FALSE )
 {
@@ -21,23 +21,27 @@ tw.mcmc.imputation <- function( data, iter=100, integer=FALSE )
     mu <- mean( as.matrix(data.imp1 ), na.rm=TRUE )
     beta <- colMeans( data.imp1, na.rm=TRUE) - mu
     alpha <- rowMeans( data.imp1, na.rm=TRUE )
-    sig2 <- sum( ( data.imp1 - outer( alpha, rep(1,J) ) - outer( rep(1,N), beta ) )^2 ) / ( N - 1 ) / ( J - 1 )
+    sig2 <- sum( ( data.imp1 - outer( alpha, rep(1,J) ) -
+                        outer( rep(1,N), beta ) )^2 ) / ( N - 1 ) / ( J - 1 )
     tau2 <- stats::var( alpha - mu )
 
     #**** MCMC algorithm
     for ( ii in 1:iter ){
         # sample alpha
-        mean.alpha <- ( mu / tau2 + rowSums( data  - outer( rep(1,N), beta ), na.rm=TRUE ) / sig2 ) /
-                        ( 1 / tau2 + rowSums( ! is.na(data) ) / sig2 )
+        mean.alpha <- ( mu / tau2 + rowSums( data  -
+                            outer( rep(1,N), beta ), na.rm=TRUE ) / sig2 ) /
+                            ( 1 / tau2 + rowSums( ! is.na(data) ) / sig2 )
         sd.alpha <-  sqrt( 1 / ( 1 / tau2 + rowSums( !is.na(data) ) / sig2 ) )
         alpha <- stats::rnorm( N, mean=mean.alpha, sd=sd.alpha )
         # sample beta
-        mean.beta <- colSums( data - outer( alpha, rep( 1, J ) ), na.rm=TRUE ) / colSums( ! is.na(data) )
+        mean.beta <- colSums( data - outer( alpha, rep( 1, J ) ), na.rm=TRUE ) /
+                            colSums( ! is.na(data) )
         sd.beta <- sqrt( sig2 / colSums( ! is.na(data) ) )
         beta <- stats::rnorm( J, mean=mean.beta, sd=sd.beta )
         # sample sigma2
         nu <- sum( ! is.na(data)  )
-        scale.S <- sum( ( data - outer( alpha, rep(1,J) ) - outer( rep(1,N), beta ) )^2, na.rm=TRUE ) / nu
+        scale.S <- sum( ( data - outer( alpha, rep(1,J) ) -
+                            outer( rep(1,N), beta ) )^2, na.rm=TRUE ) / nu
         sig2 <- nu * scale.S / stats::rchisq( 1, df=nu )
         # sample mu
         mu <- stats::rnorm( 1, mean=mean( alpha  ), sd=sqrt( tau2 / N ) )

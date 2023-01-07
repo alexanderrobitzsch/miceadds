@@ -1,16 +1,15 @@
 ## File Name: nested.datlist_create.R
-## File Version: 1.11
+## File Version: 1.131
 
 
-#######################################################
-# create nested.datlist
+#***** create nested.datlist
 nested.datlist_create <- function(datasets)
 {
     CALL <- match.call()
-    if ( class(datasets) %in% c("mids.nmi") ){
+    if ( inherits(datasets, c("mids.nmi")) ){
         datasets <- mids2datlist(datasets)
     }
-    if ( class(datasets) %in% "NestedImputationList" ){
+    if ( inherits(datasets, c("NestedImputationList")) ){
         datasets <- datasets$imputations
     }
     v1 <- c("between"=length(datasets), "within"=length(datasets[[1]]) )
@@ -41,5 +40,5 @@ print.nested.datlist <- function(x,...)
     attr(x,"nvars"), " variables \n" )
     cat(v1)
 }
-#######################################################
+
 
