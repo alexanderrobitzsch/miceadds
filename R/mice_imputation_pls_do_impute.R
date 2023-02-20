@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_do_impute.R
-## File Version: 0.207
+## File Version: 0.212
 
 mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     use_weights, pls.impMethod, pls.print.progress,
@@ -8,7 +8,6 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
     # clean missing values
     x <- as.matrix(x)
     x <- mice_imputation_pls_clean_missings(x=x, eps=1e-12)
-
     colnames(x) <- gsub(" ", "", colnames(x) )
 
     #*** logical whether an imputation should be conducted
@@ -63,6 +62,7 @@ mice_imputation_pls_do_impute <- function( x, y, ry, imputationWeights,
             x1 <- mice_imputation_pls_pmm_match(yhatobs=yhatobs, yhatmis=yhatmis,
                         y=y, ry=ry, donors=donors)
         }
+
         if ( ! ( pls.impMethod %in% imp_methods_special) ){
             if (use_boot){
                 warning( paste0("Argument 'use_boot' cannot be used for imputation ",

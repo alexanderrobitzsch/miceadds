@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.383
+%% File Version: 2.384
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -81,7 +81,7 @@ Vector of sample weights to be used in imputation models.
 }
   \item{pcamaxcols}{
 Amount of variance explained by principal components (must be a number between
-0 and 1)
+0 and 1) or number of factors used in PCA (an integer larger than 1).
 }
   \item{min.int.cor}{
 Minimum absolute correlation for an interaction of two predictors

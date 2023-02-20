@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.745
+## File Version: 3.752
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
@@ -53,6 +53,9 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
                 vname, list() )
     # define minimal correlation for interactions
     min.int.cor <- mice_imputation_extract_list_arguments( min.int.cor, vname, 0 )
+
+    # proportion of explained variance in PCA
+    pcamaxcols <- mice_imputation_extract_list_arguments( pcamaxcols, vname,  1e9 )
 
     #*** print progress | print section 1
     res <- mice_imputation_pls_print_progress1( pls.print.progress=pls.print.progress,

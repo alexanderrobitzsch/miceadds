@@ -1,5 +1,5 @@
 ## File Name: syn_da_create_formula.R
-## File Version: 0.03
+## File Version: 0.04
 
 syn_da_create_formula <- function(wv, ord_vars)
 {
