@@ -126,7 +126,7 @@ reduction of the predictor space.</p>
    <span class='kw'>imputationWeights</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>y</span>)), <span class='kw'>pcamaxcols</span><span class='kw'>=</span><span class='fl'>1E+09</span>,
    <span class='kw'>min.int.cor</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>min.all.cor</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>N.largest</span><span class='kw'>=</span><span class='fl'>0</span>, <span class='kw'>pls.title</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>print.dims</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
    <span class='kw'>pls.maxcols</span><span class='kw'>=</span><span class='fl'>5000</span>, <span class='kw'>use_boot</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>envir_pos</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>extract_data</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
-   <span class='kw'>remove_lindep</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='no'>...</span>)
+   <span class='kw'>remove_lindep</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>derived_vars</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='fu'>mice.impute.2l.pls2</span>(<span class='no'>y</span>, <span class='no'>ry</span>, <span class='no'>x</span>, <span class='no'>type</span>, <span class='kw'>pls.facs</span><span class='kw'>=</span><span class='kw'>NULL</span>, <span class='kw'>pls.impMethod</span><span class='kw'>=</span><span class='st'>"pmm"</span>,
    <span class='kw'>pls.print.progress</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>imputationWeights</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>y</span>)), <span class='kw'>pcamaxcols</span><span class='kw'>=</span><span class='fl'>1E+09</span>,
@@ -251,6 +251,11 @@ from parent environment within <code><a href='https://amices.org/mice/reference/
 be automatically detected and some predictors are removed</p></td>
     </tr>
     <tr>
+      <th>derived_vars</th>
+      <td><p>Optional list containing formulas with derived variables for
+inclusion in PLS dimension reduction</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Further arguments to be passed.</p></td>
     </tr>
@@ -329,6 +334,17 @@ backward compatibility to former <span class="pkg">miceadds</span> versions.</p>
      <span class='kw'>pls.facs</span><span class='kw'>=</span><span class='no'>pls.facs</span>, <span class='kw'>pls.impMethod</span><span class='kw'>=</span><span class='no'>pls.impMethod</span>,
      <span class='kw'>pls.impMethodArgs</span><span class='kw'>=</span><span class='no'>pls.impMethodArgs</span>, <span class='kw'>ls.meth</span><span class='kw'>=</span><span class='st'>"ridge"</span> )
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp2</span>)
+
+<span class='co'># Model 3: inclusion of additional derived variables</span>
+
+<span class='co'># define derived variables for IN1</span>
+<span class='no'>derived_vars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>( <span class='st'>"IN1"</span><span class='kw'>=</span>~<span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>( <span class='no'>IN2</span><span class='kw'>&gt;</span><span class='no'>IN3</span>, <span class='no'>IN2</span>, <span class='no'>IN3</span> ) ) + <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span>( <span class='fu'><a href='https://rdrr.io/r/base/Trig.html'>sin</a></span>(<span class='no'>IN2</span>) ) )
+
+<span class='no'>imp3</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>miceadds</span><span class='kw ns'>::</span><span class='fu'><a href='mice.1chain.html'>mice.1chain</a></span>(<span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>method</span><span class='kw'>=</span><span class='no'>impMethod</span>, <span class='kw'>derived_vars</span><span class='kw'>=</span><span class='no'>derived_vars</span>,
+     <span class='kw'>burnin</span><span class='kw'>=</span><span class='fl'>10</span>, <span class='kw'>iter</span><span class='kw'>=</span><span class='fl'>21</span>, <span class='kw'>Nimp</span><span class='kw'>=</span><span class='fl'>3</span>, <span class='kw'>predictorMatrix</span><span class='kw'>=</span><span class='no'>predictorMatrix</span>,
+     <span class='kw'>pls.facs</span><span class='kw'>=</span><span class='no'>pls.facs</span>, <span class='kw'>pls.impMethod</span><span class='kw'>=</span><span class='no'>pls.impMethod</span>,
+     <span class='kw'>pls.impMethodArgs</span><span class='kw'>=</span><span class='no'>pls.impMethodArgs</span>, <span class='kw'>ls.meth</span><span class='kw'>=</span><span class='st'>"ridge"</span> )
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>imp3</span>)
 
 <span class='co'>#*** example for using imputation function at the level of a variable</span>
 

@@ -44,14 +44,16 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.17  |  2023-02-28  |  Last: miceadds 3.17-10
+VERSIONS miceadds 3.17  |  2023-03-01  |  Last: miceadds 3.17-18
 --------------------------------------------------------------------------
  
-xxx   * ---
+ADDED * added argument 'derived_vars' in mice.impute.pls() for including
+        derived variables in PLS dimension reduction
+        (requested by Karoline Sachse)
 
 
 DATA  * ---
-EXAMP * ---
+EXAMP * mice.impute.pls (1)
 
 
 
@@ -133,9 +135,6 @@ NOTE  * no longer export mice.impute.grouped() because
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: syn.mice (1)
-
-
-
 
 ---------------------------------------------------------------------
 VERSIONS miceadds 3.11  |  2021-01-21  |  Last: miceadds 3.11-6
@@ -557,7 +556,7 @@ ADDED * added imputation function mice.impute.ml.lmer() for imputation
         imputation at higher levels is accomodated.
 NOTE  * added utility functions ma_rmvnorm(), 
         Rfunction_include_argument_values() and
-        Rfunction_output_list_result_function ()
+        Rfunction_output_list_result_function()
 
 DATA  * included/modified datasets: data.ma07
 EXAMP * included/modified examples: jomo2datlist (1), 

@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 3.17-10
-Date: 2023-02-28 11:26:10
+Version: 3.17-18
+Date: 2023-03-01 15:42:12
 Author: 
     Alexander Robitzsch [aut,cre] (<https://orcid.org/0000-0002-8226-3132>),
     Simon Grund [aut] (<https://orcid.org/0000-0002-1290-8986>),
@@ -32,7 +32,7 @@ Description:
     (Reiter, 2005, <doi:10.1111/j.1467-985X.2004.00343.x>;
     Nowok, Raab, & Dibben, 2016, <doi:10.18637/jss.v074.i11>).
 Depends:
-    R (>= 3.0), mice (>= 3.0.0)
+    R (>= 3.5-0), mice (>= 3.0.0)
 Imports: 
     graphics, methods, mitools, Rcpp, stats, utils     
 LinkingTo: 

@@ -1,5 +1,5 @@
 %% File Name: mice.impute.pls.Rd
-%% File Version: 2.384
+%% File Version: 2.392
 
 \name{mice.impute.pls}
 \alias{mice.impute.pls}
@@ -20,7 +20,7 @@ mice.impute.pls(y, ry, x, type, pls.facs=NULL,
    imputationWeights=rep(1, length(y)), pcamaxcols=1E+09,
    min.int.cor=0, min.all.cor=0, N.largest=0, pls.title=NULL, print.dims=TRUE,
    pls.maxcols=5000, use_boot=FALSE, envir_pos=NULL, extract_data=TRUE,
-   remove_lindep=TRUE, ...)
+   remove_lindep=TRUE, derived_vars=NULL, ...)
 
 mice.impute.2l.pls2(y, ry, x, type, pls.facs=NULL, pls.impMethod="pmm",
    pls.print.progress=TRUE, imputationWeights=rep(1, length(y)), pcamaxcols=1E+09,
@@ -113,6 +113,8 @@ be extracted.}
 from parent environment within \code{\link[mice:mice]{mice::mice}}  routine}
 \item{remove_lindep}{Logical indicating whether linear dependencies should
 be automatically detected and some predictors are removed}
+\item{derived_vars}{Optional list containing formulas with derived variables for
+inclusion in PLS dimension reduction}
   \item{\dots}{
 Further arguments to be passed.
 }
@@ -203,6 +205,17 @@ imp2 <- miceadds::mice.1chain(data=dat, method=impMethod,
      pls.facs=pls.facs, pls.impMethod=pls.impMethod,
      pls.impMethodArgs=pls.impMethodArgs, ls.meth="ridge" )
 summary(imp2)
+
+# Model 3: inclusion of additional derived variables
+
+# define derived variables for IN1
+derived_vars <- list( "IN1"=~I( ifelse( IN2>IN3, IN2, IN3 ) ) + I( sin(IN2) ) )
+
+imp3 <- miceadds::mice.1chain(data=dat, method=impMethod, derived_vars=derived_vars,
+     burnin=10, iter=21, Nimp=3, predictorMatrix=predictorMatrix,
+     pls.facs=pls.facs, pls.impMethod=pls.impMethod,
+     pls.impMethodArgs=pls.impMethodArgs, ls.meth="ridge" )
+summary(imp3)
 
 #*** example for using imputation function at the level of a variable
 

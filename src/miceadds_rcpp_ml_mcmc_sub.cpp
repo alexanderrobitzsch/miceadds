@@ -1,5 +1,5 @@
 //// File Name: miceadds_rcpp_ml_mcmc_sub.cpp
-//// File Version: 0.889
+//// File Version: 0.897
 
 
 // [[Rcpp::depends(RcppArmadillo)]]
@@ -47,7 +47,8 @@ arma::colvec miceadds_rcpp_mvrnorm(arma::colvec mu, arma::mat sigma, double ridg
 ///********************************************************************
 
 ///********************************************************************
-//*** copied from https://github.com/coatless/r-to-armadillo/blob/master/src/distributions.cpp
+//*** copied from
+//*** https://github.com/coatless/r-to-armadillo/blob/master/src/distributions.cpp
 ///** miceadds_rcpp_rwishart
 // [[Rcpp::export]]
 arma::mat miceadds_rcpp_rwishart(int df, arma::mat S, double ridge)
@@ -79,7 +80,8 @@ arma::mat miceadds_rcpp_rwishart(int df, arma::mat S, double ridge)
 ///********************************************************************
 
 ///********************************************************************
-//*** copied from https://github.com/coatless/r-to-armadillo/blob/master/src/distributions.cpp
+//*** copied from
+//*** https://github.com/coatless/r-to-armadillo/blob/master/src/distributions.cpp
 ///** miceadds_rcpp_riwishart
 // [[Rcpp::export]]
 arma::mat miceadds_rcpp_riwishart(int df, arma::mat S, double ridge)
@@ -415,20 +417,20 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sample_u( arma::mat X, arma::colvec beta,
     //** fill u with u0 elements
     for (int rr=0; rr<NR; rr++){
         u_list[rr] = Rcpp::as< arma::mat >(u0_list[rr]);
-    }
+    } // end rr
     // random effects level rr
     for (int rr=0; rr<NR; rr++){
         ytilde = ytilde0;
         for (int hh=0; hh<NR; hh++){
             if ( hh != rr ){
-                    arma::mat Z_hh = Rcpp::as< arma::mat >(Z_list[hh]);
-                    arma::mat u_hh = Rcpp::as< arma::mat >(u_list[hh]);
-                    Rcpp::IntegerVector idcluster_hh = Rcpp::as< Rcpp::IntegerVector >(idcluster_list[hh]);
-                    bool onlyintercept_hh = Rcpp::as< bool >(onlyintercept_list[hh]);
-                    ytilde = miceadds_rcpp_ml_mcmc_subtract_random( ytilde, Z_hh, u_hh,
+                arma::mat Z_hh = Rcpp::as< arma::mat >(Z_list[hh]);
+                arma::mat u_hh = Rcpp::as< arma::mat >(u_list[hh]);
+                Rcpp::IntegerVector idcluster_hh = Rcpp::as< Rcpp::IntegerVector >(idcluster_list[hh]);
+                bool onlyintercept_hh = Rcpp::as< bool >(onlyintercept_list[hh]);
+                ytilde = miceadds_rcpp_ml_mcmc_subtract_random( ytilde, Z_hh, u_hh,
                                     idcluster_hh, onlyintercept_hh);
-            }
-        }
+            }  // end if
+        } // end hh
         arma::mat Z = Rcpp::as< arma::mat >(Z_list[rr]);
         arma::mat Psi = Rcpp::as< arma::mat >(Psi_list[rr]);
         arma::mat ztz = Rcpp::as< arma::mat >(ztz_list[rr]);
@@ -456,8 +458,8 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sample_u( arma::mat X, arma::colvec beta,
                 }
                 int cc_temp = idcluster[nn];
                 ze_sum( cc_temp, hh ) += ze(nn,hh);
-            }
-        }
+            } // end hh
+        } // end nn
         arma::mat Psi_inv = arma::pinv(Psi);
 
         //****** sample u for all clusters cc
@@ -473,22 +475,22 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sample_u( arma::mat X, arma::colvec beta,
                         invmat(uu,hh) = invmat(hh,uu);
                     }
                 }
-            }
+            } // end hh
             invmat = arma::pinv(invmat);
             mu.fill(0);
             for (int hh=0; hh<NC_Z; hh++){
                 for (int uu=0; uu<NC_Z; uu++){
                     mu(hh,0) += invmat(hh,uu)*ze_sum(cc,uu);
                 }
-            }
+            } // end hh
             Sigma = sigma2*invmat;
             u_samp = miceadds_rcpp_mvrnorm(mu, Sigma, ridge);
             for (int hh=0; hh<NC_Z; hh++){
                 u(cc,hh) = u_samp(hh,0);
-            }
-        }
+            } // end hh
+        }  // end cc
         u_list[rr] = u;
-    }
+    } // end rr
     //--- output
     return u_list;
 }
@@ -566,7 +568,8 @@ Rcpp::List miceadds_rcpp_ml_mcmc_sample_psi( Rcpp::List u_list,
         arma::mat u = Rcpp::as< arma::mat >(u_list[rr]);
         int nu0 = Rcpp::as< int >(nu0_list[rr]);
         arma::mat S0 = Rcpp::as< arma::mat >(S0_list[rr]);
-        arma::mat Psi = miceadds_rcpp_ml_mcmc_sample_covariance_matrix( u, nu0, S0, ridge );
+        arma::mat Psi = miceadds_rcpp_ml_mcmc_sample_covariance_matrix( u, nu0,
+                                S0, ridge );
         Psi_list[rr] = Psi;
     }
     //--- output
@@ -584,7 +587,8 @@ double miceadds_rcpp_ml_mcmc_sample_variance( arma::colvec e,
 {
     arma::mat S0(1,1);
     S0(0,0) = sigma2_0;
-    arma::mat covmat = miceadds_rcpp_ml_mcmc_sample_covariance_matrix( e, nu0, S0, ridge );
+    arma::mat covmat = miceadds_rcpp_ml_mcmc_sample_covariance_matrix( e, nu0,
+                                S0, ridge );
     double samp = covmat(0,0);
     //--- output
     return samp;
@@ -708,8 +712,8 @@ arma::colvec miceadds_rcpp_ml_mcmc_sample_latent_probit( arma::mat X,
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_probit_fill_index_lower
 // [[Rcpp::export]]
-Rcpp::NumericVector miceadds_rcpp_ml_mcmc_probit_fill_index_lower( Rcpp::IntegerVector y_int,
-    arma::colvec alpha )
+Rcpp::NumericVector miceadds_rcpp_ml_mcmc_probit_fill_index_lower(
+            Rcpp::IntegerVector y_int, arma::colvec alpha )
 {
     int N = y_int.size();
     Rcpp::NumericVector lower(N);
@@ -724,8 +728,8 @@ Rcpp::NumericVector miceadds_rcpp_ml_mcmc_probit_fill_index_lower( Rcpp::Integer
 ///********************************************************************
 ///** miceadds_rcpp_ml_mcmc_probit_fill_index_upper
 // [[Rcpp::export]]
-Rcpp::NumericVector miceadds_rcpp_ml_mcmc_probit_fill_index_upper( Rcpp::IntegerVector y_int,
-        arma::colvec alpha )
+Rcpp::NumericVector miceadds_rcpp_ml_mcmc_probit_fill_index_upper(
+        Rcpp::IntegerVector y_int, arma::colvec alpha )
 {
     int N = y_int.size();
     Rcpp::NumericVector upper(N);
