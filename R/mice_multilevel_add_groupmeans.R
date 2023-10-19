@@ -1,5 +1,5 @@
 ## File Name: mice_multilevel_add_groupmeans.R
-## File Version: 0.151
+## File Version: 0.154
 
 
 mice_multilevel_add_groupmeans <- function( y, ry, x, type,
@@ -10,6 +10,7 @@ mice_multilevel_add_groupmeans <- function( y, ry, x, type,
     # type 4: group means and random slopes should be included
     #----
     # add groupmeans in the regression model
+
     if ( any( type %in% c( type3, type4) ) ){
         # x0 <- as.matrix(cbind( x[,type==-2], x[,type %in% c(type3, type4)] ))
         sel_types <- names(type)[ type %in% c(-2, type3, type4) ]

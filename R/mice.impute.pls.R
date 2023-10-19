@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.767
+## File Version: 3.788
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
@@ -9,7 +9,6 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
             pls.maxcols=5000, use_boot=FALSE, envir_pos=NULL, extract_data=TRUE,
             remove_lindep=TRUE, derived_vars=NULL, ... )
 {
-
     time1 <- Sys.time()
     res <- mice_imputation_factor_pmm_prepare(y=y)
     y <- res$y
@@ -58,8 +57,6 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     pcamaxcols <- mice_imputation_extract_list_arguments( pcamaxcols, vname, 1e9 )
 
     # derived variables
-Revalpr("derived_vars")
-Revalpr("vname")
     derived_vars <- mice_imputation_extract_list_arguments( derived_vars, vname, NULL )
 
     #*** print progress | print section 1
@@ -97,7 +94,8 @@ Revalpr("vname")
     pls.quadratics <- names(type)[ type==5 ]
 
     #-- include derived variables in x
-    res <- mice_imputation_pls_include_derived_vars(x=x, derived_vars=derived_vars)
+    res <- mice_imputation_pls_include_derived_vars(x=x, derived_vars=derived_vars,
+                y=y, vname=vname)
     x <- res$x
     added_vars <- res$added_vars
 

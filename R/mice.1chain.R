@@ -1,5 +1,5 @@
 ## File Name: mice.1chain.R
-## File Version: 0.664
+## File Version: 0.669
 
 #*** apply mice algorithm in a single chain
 mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
@@ -55,17 +55,16 @@ mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
         cat("\n --- Imputation", mm, "| Iterations",
         iterstep0[mm] + 1, "-", iterstep0[mm+1], "\n" )
         utils::flush.console()
-        implist[[mm+1]] <- imp1 <- mice::mice( data, maxit=burnin, m=1,
-                    method=method, where=where,
-                    visitSequence=visitSequence, blots=blots, post=post,
-                    defaultMethod=defaultMethod, printFlag=printFlag, seed=seed,
-                    data.init=data.init, ... )
+        maxit_temp <- (iter-burnin)/Nimp
+        implist[[mm+1]] <- imp1 <- mice::mice( data, maxit=maxit_temp, m=1,
+                    method=method, where=where, visitSequence=visitSequence,
+                    blots=blots, post=post, defaultMethod=defaultMethod,
+                    printFlag=printFlag, seed=seed, data.init=data.init, ... )
         datlist[[mm]] <- dat0 <- mice::complete( imp1, 1 )
         chainMean <- rbind( chainMean, t( imp1$chainMean[,,1] ) )
         chainVar <- rbind( chainVar, t( imp1$chainVar[,,1] ) )
-        rownames(chainVar)[ nrow(chainVar) ] <-
-            rownames(chainMean)[ nrow(chainMean) ] <-
-                paste0( "imp_", mm )
+        rownames(chainVar)[ nrow(chainVar) ] <- paste0( "imp_", mm )
+        rownames(chainMean)[ nrow(chainMean) ] <- paste0( "imp_", mm )
     }
 
     #------ post-processing

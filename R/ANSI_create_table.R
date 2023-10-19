@@ -1,5 +1,5 @@
 ## File Name: ANSI_create_table.R
-## File Version: 0.569
+## File Version: 0.574
 
 
 #*** create table with results
@@ -25,7 +25,8 @@ ANSI_create_table <- function (dat, criterion,
     l1 <- setdiff(c(horiz_vars,vert_vars), colnames(dat))
     if (length(l1)>0){
         l2 <- paste0( l1, collapse=" ")
-        stop(paste0( "The following variables were not found: ", l2, "\n"))
+        # stop(paste0( "The following variables were not found: ", l2, "\n"))
+        warning(paste0( "The following variables were not found: ", l2, "\n"))
     }
 
     #--- horizontal variables

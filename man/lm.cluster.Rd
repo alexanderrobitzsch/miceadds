@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.369
+%% File Version: 0.373
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -170,6 +170,58 @@ dimnames(uhat) <- list( beta_names, beta_names, NULL )
 # compute global F-test
 Ftest <- mitml::testConstraints( qhat=betas, uhat=vars, constraints=constraints )
 print(Ftest)
+
+#############################################################################
+# EXAMPLE 3: Comparing miceadds::lm.cluster() and lme4::lmer()
+#############################################################################
+
+data(data.ma01, package="miceadds")
+dat <- na.omit(data.ma01)
+
+# center hisei variable
+dat$hisei <- dat$hisei - mean(dat$hisei)
+
+# define school mean hisei
+dat$hisei_gm <- miceadds::GroupMean(dat$hisei, dat$idschool, extend=TRUE)[,2]
+dat$cluster_size <- miceadds::GroupSum(1+0*dat$hisei, dat$idschool, extend=TRUE)[,2]
+dat$hisei_wc <- dat$hisei - dat$hisei_gm
+
+
+
+#*** Model 1a: lm, hisei with clustering
+mod1a <- miceadds::lm.cluster( data=dat, formula=read~hisei, cluster="idschool" )
+
+#*** Model 1b: lmer, hisei
+mod1b <- lme4::lmer( data=dat, formula=read~hisei+(1|idschool) )
+
+cbind( coef(mod1a), fixef(mod1b))
+ ##  > cbind( coef(mod1a), fixef(mod1b))
+ ##                    [,1]        [,2]
+ ##  (Intercept) 509.181691 507.8684752
+ ##  hisei         1.524776   0.8161745
+
+# variance explanation
+vmod1b <- r2mlm::r2mlm(mod1b)
+vmod1b$Decompositions
+
+#*** Model 2a: lm, hisei and hisei_gm with clustering
+mod2a <- miceadds::lm.cluster( data=dat, formula=read~hisei_wc+hisei_gm,
+                                   cluster="idschool" )
+
+#*** Model 2b: lmer, multilevel model
+mod2b <- lme4::lmer( data=dat, formula=read~hisei_wc+hisei_gm + (1|idschool) )
+
+# variance explanation
+vmod2b <- r2mlm::r2mlm(mod2b)
+vmod2b$Decompositions
+
+cbind( coef(mod2a), fixef(mod2b))
+ ##  > cbind( coef(mod2a), fixef(mod2b))
+ ##                     [,1]        [,2]
+ ##  (Intercept) 509.1816911 508.0478629
+ ##  hisei_wc      0.7503773   0.7503773
+ ##  hisei_gm      5.8424012   5.5681941
+
 }
 }
 
