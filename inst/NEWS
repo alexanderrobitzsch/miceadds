@@ -44,12 +44,13 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.17  |  2023-10-19  |  Last: miceadds 3.17-33
+VERSIONS miceadds 3.17  |  2023-10-20  |  Last: miceadds 3.17-34
 --------------------------------------------------------------------------
  
 ADDED * added argument 'derived_vars' in mice.impute.pls() for including
         derived variables in PLS dimension reduction
         (requested by Karoline Sachse)
+FIXED * fixed specification issues in mice.1chain()
 
 
 DATA  * ---

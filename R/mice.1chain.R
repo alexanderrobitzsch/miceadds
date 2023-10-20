@@ -1,5 +1,5 @@
 ## File Name: mice.1chain.R
-## File Version: 0.669
+## File Version: 0.672
 
 #*** apply mice algorithm in a single chain
 mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
@@ -59,7 +59,8 @@ mice.1chain <- function(data, burnin=10, iter=20, Nimp=10,
         implist[[mm+1]] <- imp1 <- mice::mice( data, maxit=maxit_temp, m=1,
                     method=method, where=where, visitSequence=visitSequence,
                     blots=blots, post=post, defaultMethod=defaultMethod,
-                    printFlag=printFlag, seed=seed, data.init=data.init, ... )
+                    printFlag=printFlag, seed=seed, 
+                    data.init=mice::complete(implist[[mm]], action=1), ... )
         datlist[[mm]] <- dat0 <- mice::complete( imp1, 1 )
         chainMean <- rbind( chainMean, t( imp1$chainMean[,,1] ) )
         chainVar <- rbind( chainVar, t( imp1$chainVar[,,1] ) )

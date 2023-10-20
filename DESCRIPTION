@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 3.17-33
-Date: 2023-10-19 14:22:59.71054
+Version: 3.17-34
+Date: 2023-10-20 20:14:09.576992
 Author: 
     Alexander Robitzsch [aut,cre] (<https://orcid.org/0000-0002-8226-3132>),
     Simon Grund [aut] (<https://orcid.org/0000-0002-1290-8986>),
