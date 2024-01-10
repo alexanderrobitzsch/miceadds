@@ -1,11 +1,12 @@
 ## File Name: systime.R
-## File Version: 0.11
+## File Version: 0.124
 
 
 #-- several variants for getting system time
 systime <- function()
 {
     s1 <- paste(Sys.time())
+    s1 <- substring(s1,1,19)
     res <- c( s1, substring( s1, 1,10) )
     res <- c(res, gsub("-","",res[2] ) )
     s1a <- substring( s1, 1, 16 )

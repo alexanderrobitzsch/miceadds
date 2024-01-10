@@ -44,20 +44,33 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.17  |  2023-10-20  |  Last: miceadds 3.17-34
+VERSIONS miceadds 3.18  |  2024-01-10  |  Last: miceadds 3.18-2
+--------------------------------------------------------------------------
+ 
+xxx   * ---
+
+
+DATA  * ---
+EXAMP * ---
+
+
+
+--------------------------------------------------------------------------
+VERSIONS miceadds 3.17  |  2024-01-08  |  Last: miceadds 3.17-44
 --------------------------------------------------------------------------
  
 ADDED * added argument 'derived_vars' in mice.impute.pls() for including
         derived variables in PLS dimension reduction
         (requested by Karoline Sachse)
 FIXED * fixed specification issues in mice.1chain()
-
+NOTE  * rechanged functionality of systime() due to changes of the 
+        Sys.time() function since R 4.3.1
+NOTE  * complete functions in miceadds are now declared as a method in
+        the manual. Moreover, renamed argument 'x' into 'data'
+        (requested by Kurt Hornik from the CRAN team)
 
 DATA  * ---
 EXAMP * mice.impute.pls (1), lm.cluster (3)
-
-
-
 
 --------------------------------------------------------------------------
 VERSIONS miceadds 3.16  |  2023-01-06  |  Last: miceadds 3.16-18

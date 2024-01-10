@@ -1,5 +1,5 @@
 ## File Name: datalist2mids.R
-## File Version: 0.41
+## File Version: 0.432
 
 datalist2mids <- function( dat.list, progress=FALSE )
 {
