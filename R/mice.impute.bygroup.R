@@ -1,5 +1,5 @@
 ## File Name: mice.impute.bygroup.R
-## File Version: 0.591
+## File Version: 0.594
 
 mice.impute.bygroup <- function( y, ry, x, wy=NULL, group,
         imputationFunction, ... )
@@ -21,13 +21,13 @@ mice.impute.bygroup <- function( y, ry, x, wy=NULL, group,
 
     # imputation function
     imputationFunction_vname <- mice_imputation_extract_list_arguments(
-                micearg=imputationFunction, vname=vname, miceargdefault="norm" )
+                micearg=imputationFunction, vname=vname, miceargdefault='norm' )
 
     # group variable
     group_vname <- mice_imputation_extract_list_arguments(
-                micearg=group, vname=vname, miceargdefault="" )
-    l2_imp_fct <- substring(imputationFunction_vname,1,2)=="2l"
-    ml_lmer_imp_fct <- imputationFunction_vname=="ml.lmer"
+                micearg=group, vname=vname, miceargdefault='' )
+    l2_imp_fct <- substring(imputationFunction_vname,1,2)=='2l'
+    ml_lmer_imp_fct <- imputationFunction_vname=='ml.lmer'
 
     #*** full data frame with indices and all groups
     if (group_vname %in% colnames(x)){
@@ -51,8 +51,8 @@ mice.impute.bygroup <- function( y, ry, x, wy=NULL, group,
         type <- type[ vars1 ]
     }
     x <- x[, vars1, drop=FALSE ]
-    imp_function <- paste0("mice.impute.", imputationFunction_vname )
-    for (gg in 1:G){
+    imp_function <- paste0('mice.impute.', imputationFunction_vname )
+    for (gg in 1L:G){
         group_gg <- groups[gg]
         ind_gg <- which( dfr_index$group_==group_gg )
         #-- argument list for imputations
@@ -69,10 +69,10 @@ mice.impute.bygroup <- function( y, ry, x, wy=NULL, group,
             ximp <- do.call( what=imp_function, args=args )
             ind0_gg <- which( dfr_index$wy )
             ind0_gg <- intersect( ind_gg, ind0_gg )
-            dfr_index[ ind0_gg, "y"] <- as.vector(ximp)
+            dfr_index[ ind0_gg, 'y'] <- as.vector(ximp)
         }
     }
-    imp <- dfr_index[ wy, "y"]
+    imp <- dfr_index[ wy, 'y']
     imp <- mice_imputation_factor_pmm_convert_factor(imp=imp,
                     is_factor=is_factor, y_aggr=y_aggr)
     return(imp)

@@ -1,5 +1,5 @@
 ## File Name: tw.mcmc.imputation.R
-## File Version: 1.163
+## File Version: 1.166
 
 tw.mcmc.imputation <- function( data, iter=100, integer=FALSE )
 {
@@ -9,10 +9,10 @@ tw.mcmc.imputation <- function( data, iter=100, integer=FALSE )
     data0 <- data
     round.near <- integer
     # Two-way imputed data (with original non-MCMC procedure)
-    data.imp1 <- tw.imputation( data )
+    data.imp1 <- tw.imputation( data=data )
     # eliminate cases with exclusively missings
     ind1 <- which( rowMeans(is.na(data0))==1 )
-    ind2 <- setdiff( 1:(nrow(data)), ind1 )
+    ind2 <- setdiff( 1L:(nrow(data)), ind1 )
     if ( length(ind1) > 0 ){
         data <- data[ -ind1, ]
         data.imp1 <- data.imp1[ -ind1,]
@@ -26,7 +26,7 @@ tw.mcmc.imputation <- function( data, iter=100, integer=FALSE )
     tau2 <- stats::var( alpha - mu )
 
     #**** MCMC algorithm
-    for ( ii in 1:iter ){
+    for ( ii in 1L:iter ){
         # sample alpha
         mean.alpha <- ( mu / tau2 + rowSums( data  -
                             outer( rep(1,N), beta ), na.rm=TRUE ) / sig2 ) /
@@ -47,7 +47,7 @@ tw.mcmc.imputation <- function( data, iter=100, integer=FALSE )
         mu <- stats::rnorm( 1, mean=mean( alpha  ), sd=sqrt( tau2 / N ) )
         # sample tau
         nu <- N
-        scale.S <- sum( ( alpha - mu )^2 ) / N
+        scale.S <- sum(( alpha - mu )^2 ) / N
         tau2 <- nu * scale.S / stats::rchisq( 1, df=nu )
     }
     # impute missing data
@@ -55,7 +55,8 @@ tw.mcmc.imputation <- function( data, iter=100, integer=FALSE )
     sd.X <- sqrt( sig2 )
     data.imp2 <- matrix( stats::rnorm( N*J, mean=mean.X, sd=sd.X ), ncol=J)
     data.imp <- data
-    data.imp[ is.na( data ) ] <- data.imp2[ is.na(data) ]
+    ind <- is.na(data)
+    data.imp[ind] <- data.imp2[ind]
     # Round to the nearest integer
     if (round.near){
         mindat <- min( data, na.rm=TRUE)

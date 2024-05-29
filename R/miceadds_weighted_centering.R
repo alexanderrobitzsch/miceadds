@@ -1,9 +1,9 @@
 ## File Name: miceadds_weighted_centering.R
-## File Version: 0.06
+## File Version: 0.07
 
 miceadds_weighted_centering <- function(x, w)
 {
-    require_namespace(pkg="sirt")
+    require_namespace(pkg='sirt')
     if (is.matrix(x)){
         n <- nrow(x)
         cx <- colSums(x*w) / sum(w)

@@ -1,5 +1,5 @@
 ## File Name: with.datlist.R
-## File Version: 0.09
+## File Version: 0.101
 
 # with function for datlist
 # This function is copied and modified from with.imputationList (mitools package)
@@ -12,11 +12,11 @@ with.datlist <- function( data, expr, fun, ... )
     } else {
         results<-lapply(data, fun,...)
     }
-    if (all(sapply(results, inherits,  what="imputationResult"))){
-        class(results)<-"imputationResultList"
+    if (all(sapply(results, inherits,  what='imputationResult'))){
+        class(results)<-'imputationResultList'
         results$call<-sys.call(-1)
     } else {
-        attr(results,"call")<-sys.call(-1)
+        attr(results,'call')<-sys.call(-1)
     }
     return(results)
 }

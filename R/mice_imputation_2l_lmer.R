@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_2l_lmer.R
-## File Version: 0.621
+## File Version: 0.624
 
 
 #**** main function for multilevel imputation with lme4 which
@@ -11,9 +11,9 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                     match_sampled_pars=FALSE,
                     blme_use=FALSE, blme_args=NULL,...)
 {
-    require_namespace("lme4")
+    require_namespace('lme4')
     if (blme_use){
-        require_namespace("blme")
+        require_namespace('blme')
     }
 
     #--- preliminary calculations
@@ -22,7 +22,7 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     ngr <- length(clus_unique)
     clus_name <- colnames(x)[type==-2]  # name of cluster identifier
 
-    #* select previous lme4 optimizer "bobyqa"
+    #* select previous lme4 optimizer 'bobyqa'
     # control_input <- FALSE
     control_input <- TRUE
     if (control_input){
@@ -31,15 +31,15 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     }
 
     # arguments for lmer model
-    if ( model=="binary"){
-        lmer_family <- stats::binomial(link="logit")
+    if ( model=='binary'){
+        lmer_family <- stats::binomial(link='logit')
         if (blme_use){
             lmer_function <- blme::bglmer
         } else {
             lmer_function <- lme4::glmer
         }
     }
-    if ( model %in% c("continuous","pmm") ){
+    if ( model %in% c('continuous','pmm') ){
         if (blme_use){
             lmer_function <- blme::blmer
         } else {
@@ -60,17 +60,17 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
                     include_intercept=TRUE )
 
     # combine formula elements
-    fml <- paste0( "dv._lmer ~ ", rhs.f, "+(", rhs.r,"|", clus_name,")" )
+    fml <- paste0( 'dv._lmer ~ ', rhs.f, '+(', rhs.r,'|', clus_name,')' )
 
     #*** prepare arguments for lmer estimation
     y1 <- y
     y1[!ry] <- NA
     dat_lme4 <- data.frame(dv._lmer=y1, x)
-    lmer_args <- list( formula=fml, data=dat_lme4, na.action="na.omit")
+    lmer_args <- list( formula=fml, data=dat_lme4, na.action='na.omit')
     if (control_input){
         lmer_args$control <- control
     }
-    if ( model=="binary"){
+    if ( model=='binary'){
         lmer_args$family <- lmer_family
     }
 
@@ -92,7 +92,7 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     }
 
     #--- extract posterior distribution of random effects
-    fl <- lme4::getME(fit, "flist")[[1]]
+    fl <- lme4::getME(fit, 'flist')[[1]]
     # ind <- match( clus0, clus_unique)
     index_clus <- match( clus, clus_unique)
     # clusters with at least one observation
@@ -105,7 +105,7 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     re <- matrix(0, nrow=ngr, ncol=NR)     # re: 0 if fully unobserved
     re[clus_obs,] <- as.matrix(re0)        # re: EAP if partially observed
 
-    pv0 <- attr(re0, "postVar")
+    pv0 <- attr(re0, 'postVar')
     pv <- array(0, dim=c(NR,NR,ngr))
     pv[,,clus_obs] <- pv0                # pv: post. variance if partially observed
     pv[,,-clus_obs] <- vu                # pv: random effects cov. if fully unobserved
@@ -131,34 +131,34 @@ mice_imputation_2l_lmer <- function(y, ry, x, type, intercept=TRUE,
     }
 
     #--- compute predicted values including fixed and random part
-    predicted <- x0 %*% b.star + rowSums( z0 * u[index_clus,1:NR,drop=FALSE])
+    predicted <- x0 %*% b.star + rowSums( z0 * u[index_clus, 1L:NR, drop=FALSE])
 
     # predicted values for cases with missing data
     predicted0 <- predicted[ !ry ]
     # predicted values for cases with observed data
-    if ( model=="pmm"){
+    if ( model=='pmm'){
         # use non-sampled values here, see corresponding mice approach
         # after this function
         if (match_sampled_pars){
             # non-mice approach
-            pred <- x0 %*% b.star + rowSums( z0 * u[index_clus,1:NR,drop=FALSE] )
+            pred <- x0 %*% b.star + rowSums( z0 * u[index_clus,1L:NR,drop=FALSE] )
         } else {
-            # "the mice approach"
-            pred <- x0 %*% b.est + rowSums( z0 * re[index_clus,1:NR,drop=FALSE] )
+            # 'the mice approach'
+            pred <- x0 %*% b.est + rowSums( z0 * re[index_clus,1L:NR,drop=FALSE] )
         }
         predicted1 <- pred[ ry ]
     }
 
     #---- draw imputations
-    if ( model=="binary"){
+    if ( model=='binary'){
         imp <- mice_multilevel_draw_binomial( probs=inverse_logit(predicted0) )
     }
-    if ( model=="continuous"){
-        sigma <- attr( fit_VarCorr,"sc")
+    if ( model=='continuous'){
+        sigma <- attr( fit_VarCorr,'sc')
         imp <- mice_multilevel_imputation_draw_residuals( predicted=predicted0,
                             sigma=sigma )
     }
-    if ( model=="pmm"){
+    if ( model=='pmm'){
         imp <- mice_multilevel_imputation_pmm5(y=y, ry=ry, x=x,
                     yhatobs=predicted1, yhatmis=predicted0,
                     donors=donors, noise=1E5, ...)

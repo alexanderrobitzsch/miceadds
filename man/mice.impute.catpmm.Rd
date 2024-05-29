@@ -1,5 +1,5 @@
 %% File Name: mice.impute.catpmm.Rd
-%% File Version: 0.07
+%% File Version: 0.08
 
 \name{mice.impute.catpmm}
 \alias{mice.impute.catpmm}
@@ -95,7 +95,7 @@ dat1[,1] <- as.factor(dat1[,1])
 method[1] <- "catpmm"
 
 #** impute with 'catpmm''
-imp <- mice::mice(dat1, method=method1, m=5)
+imp <- mice::mice(dat1, method=method, m=5)
 summary(imp)
 }
 }

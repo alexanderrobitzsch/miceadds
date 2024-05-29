@@ -1,5 +1,5 @@
 ## File Name: visitSequence.determine.R
-## File Version: 0.252
+## File Version: 0.253
 
 
 visitSequence.determine <- function( impMethod, vis, data, maxit=10)
@@ -13,7 +13,7 @@ visitSequence.determine <- function( impMethod, vis, data, maxit=10)
         names(vis) <- vis0
     }
     dat <- data
-    ind <- grep( "~ I", impMethod )
+    ind <- grep( '~ I', impMethod )
     I1 <- length(ind)
     # inits
     vis1 <- vis0 <- vis

@@ -1,14 +1,14 @@
 ## File Name: covTest.R
-## File Version: 0.08
+## File Version: 0.091
 
-############################################
-# function for testing the covariance
-covTest <- function( x, y, conf.level=.95 ){
+
+#-- function for testing the covariance
+covTest <- function( x, y, conf.level=.95 )
+{
     #*** exclude missings
     ind <- ( ! is.na(x) ) & ( ! is.na(y) )
     x <- x[ind]
     y <- y[ind]
-    #***
     N <- length(x)
     est <- stats::cov(x=x,y=y)
     mx <- mean(x)
@@ -27,7 +27,6 @@ covTest <- function( x, y, conf.level=.95 ){
     # confidence interval
     quant <- stats::qnorm( 1 - (1-conf.level)/2 )
     inter <- est + quant * se * c(-1,1)
-    res <- list("est"=est, "se"=se, "lower"=inter[1], "upper"=inter[2] )
+    res <- list(est=est, se=se, lower=inter[1], upper=inter[2] )
     return(res)
 }
-##############################################

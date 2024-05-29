@@ -44,10 +44,11 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.18  |  2024-01-10  |  Last: miceadds 3.18-2
+VERSIONS miceadds 3.18  |  2024-05-29  |  Last: miceadds 3.18-20
 --------------------------------------------------------------------------
  
-xxx   * ---
+FIXED * fixed a bug in mice.impute.catpmm() if there is only one case with
+        missing data (thanks to Abdessattar Saoudi)
 
 
 DATA  * ---

@@ -1,5 +1,5 @@
 %% File Name: lm.cluster.Rd
-%% File Version: 0.373
+%% File Version: 0.376
 
 \name{lm.cluster}
 \alias{lm.cluster}
@@ -89,9 +89,10 @@ List with following entries
 
 
 
-%\note{
-%%  ~~further notes~~
-%}
+\note{
+If \code{lm.cluster} is used inside a function, add \code{wgt__ <<- weight} for
+assigning the \code{weight} to \code{wgt__} in the global environment.
+}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
@@ -185,8 +186,6 @@ dat$hisei <- dat$hisei - mean(dat$hisei)
 dat$hisei_gm <- miceadds::GroupMean(dat$hisei, dat$idschool, extend=TRUE)[,2]
 dat$cluster_size <- miceadds::GroupSum(1+0*dat$hisei, dat$idschool, extend=TRUE)[,2]
 dat$hisei_wc <- dat$hisei - dat$hisei_gm
-
-
 
 #*** Model 1a: lm, hisei with clustering
 mod1a <- miceadds::lm.cluster( data=dat, formula=read~hisei, cluster="idschool" )

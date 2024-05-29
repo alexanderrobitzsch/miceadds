@@ -1,8 +1,7 @@
 ## File Name: within.NestedImputationList.R
-## File Version: 0.17
+## File Version: 0.181
 
 
-#########################################################
 within.NestedImputationList <- function (data, expr, ...)
 {
     res <- data
@@ -24,7 +23,7 @@ within.NestedImputationList <- function (data, expr, ...)
             if (nD)
                 data[del] <- if (nD==1)
                     NULL
-                else vector("list", nD)
+                else vector('list', nD)
             imp[[ii]][[ww]] <- data
         }
     }
@@ -33,4 +32,3 @@ within.NestedImputationList <- function (data, expr, ...)
     res$call <- CALL
     return(res)
 }
-###############################################################

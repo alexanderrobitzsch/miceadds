@@ -1,5 +1,5 @@
 ## File Name: scale_datlist.R
-## File Version: 0.332
+## File Version: 0.333
 
 
 #- application of scale for a list of multiply imputed datasets,
@@ -56,7 +56,7 @@ scale_datlist <- function( datlist, orig_var, trafo_var, weights=NULL,
     orig_var0 <- orig_var
     trafo_var0 <- trafo_var
     N0 <- length(orig_var0)
-    for (nn in 1:N0){
+    for (nn in 1L:N0){
         orig_var <- orig_var0[nn]
         trafo_var <- trafo_var0[nn]
         #---- compute means and standard deviations
@@ -73,7 +73,7 @@ scale_datlist <- function( datlist, orig_var, trafo_var, weights=NULL,
         res <- matrix( unlist(res),ncol=2, byrow=TRUE )
         a1 <- colMeans(res)
         #---- create derived variable
-        for (pp in 1:PP){
+        for (pp in 1L:PP){
             dd <- datlist[[pp]]
             dd[,trafo_var] <- M + SD * ( dd[,orig_var] - a1[1] ) / a1[2]
             if ( ! is.null(digits) ){

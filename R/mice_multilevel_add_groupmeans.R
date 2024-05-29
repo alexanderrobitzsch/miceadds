@@ -1,5 +1,5 @@
 ## File Name: mice_multilevel_add_groupmeans.R
-## File Version: 0.154
+## File Version: 0.155
 
 
 mice_multilevel_add_groupmeans <- function( y, ry, x, type,
@@ -39,6 +39,6 @@ mice_multilevel_add_groupmeans <- function( y, ry, x, type,
         type1[ type1==type4 ] <- 2
         type <- type1
     }
-    res <- list( "x"=x, "type"=type)
+    res <- list( x=x, type=type)
     return(res)
 }

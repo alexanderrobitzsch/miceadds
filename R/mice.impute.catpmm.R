@@ -1,10 +1,10 @@
 ## File Name: mice.impute.catpmm.R
-## File Version: 0.37
+## File Version: 0.389
 
 
 mice.impute.catpmm <- function(y, ry, x, donors=5, ridge=10^(-5), ...)
 {
-    require_namespace(pkg="sirt")
+    require_namespace(pkg='sirt')
     res <- mice_imputation_factor_pmm_prepare(y=y)
     y <- res$y
     y_aggr <- res$y_aggr
@@ -29,28 +29,28 @@ mice.impute.catpmm <- function(y, ry, x, donors=5, ridge=10^(-5), ...)
     #- bootstrap sample
     boot_sample <- sample(ind1, size=n1, replace=TRUE)
     #- run linear model on bootstrap sample
-    form1 <- paste0("cbind(",paste0(colnames(y1), collapse=","), ")")
-    form2 <- paste0(vars_x, collapse=" + ")
-    form <- as.formula(paste0(form1, " ~ ", form2 ))
+    form1 <- paste0('cbind(',paste0(colnames(y1), collapse=','), ')')
+    form2 <- paste0(vars_x, collapse=' + ')
+    form <- as.formula(paste0(form1, ' ~ ', form2 ))
     mod <- stats::lm( formula=form, data=dfr[boot_sample, ])
 
     #-- predictions
     pred <- predict(mod, newdata=dfr )
-    pred1 <- pred[ind1,]
-    pred0 <- pred[ind0,]
+    pred1 <- pred[ind1,,drop=FALSE]
+    pred0 <- pred[ind0,,drop=FALSE]
 
     # define distance matrix
     distmat <- matrix(0, nrow=n0, ncol=n1)
-    for (ii in 1:ny){
+    for (ii in 1L:ny){
         M1 <- matrix( pred1[,ii], nrow=n0, ncol=n1, byrow=TRUE )
         M0 <- matrix( pred0[,ii], nrow=n0, ncol=n1, byrow=FALSE )
         distmat <- distmat + abs(M0-M1)
     }
     donor_ind <- sirt::rowKSmallest2.sirt(matr=distmat, K=donors )$smallind
     # sampled indices
-    ind_sample <- sample( 1:donors, n0, replace=TRUE )
+    ind_sample <- sample( 1L:donors, n0, replace=TRUE )
     # select indices
-    res1 <- donor_ind[ cbind( 1:n0, ind_sample) ]
+    res1 <- donor_ind[ cbind( 1L:n0, ind_sample) ]
 
     # search for imputed values
     imp <- y[ ind1[res1] ]

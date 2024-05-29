@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_create_contextual_variables.R
-## File Version: 1.07
+## File Version: 1.081
 
 
 mice_imputation_create_contextual_variables <- function( y, ry, x, type, ...)
@@ -12,7 +12,7 @@ mice_imputation_create_contextual_variables <- function( y, ry, x, type, ...)
         z <-  as.matrix(x[,type==2 ])
         # calculate aggregated values
         a1 <- stats::aggregate( z, clusterx_list, mean, na.rm=FALSE)
-        colnames(a1)[-1] <- paste0( "M.", colnames(z) )
+        colnames(a1)[-1] <- paste0( 'M.', colnames(z) )
     }
     # calculate aggregated value for y
     a21 <- stats::aggregate( y, clusterx_list, sum, na.rm=FALSE)
@@ -25,8 +25,8 @@ mice_imputation_create_contextual_variables <- function( y, ry, x, type, ...)
     } else {
         xcov <- as.matrix( cbind(  x1,  y2 ) )
     }
-    vname <- ma_exists_get("vname", pos=parent.frame(n=1))
-    colnames(xcov)[ ncol(xcov) ] <- paste0("M1.", vname )
+    vname <- ma_exists_get('vname', pos=parent.frame(n=1))
+    colnames(xcov)[ ncol(xcov) ] <- paste0('M1.', vname )
     return(xcov)
 }
 

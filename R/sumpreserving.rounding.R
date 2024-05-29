@@ -1,5 +1,5 @@
 ## File Name: sumpreserving.rounding.R
-## File Version: 0.142
+## File Version: 0.143
 
 
 sumpreserving.rounding <- function (data, digits=0, preserve=TRUE )
@@ -10,8 +10,8 @@ sumpreserving.rounding <- function (data, digits=0, preserve=TRUE )
         err.r <- data.r <- matrix(0, nrow=nrow(data), ncol=DD)
         data.r[, 1] <- round(data[, 1], digits)
         err.r[, 1] <- data[, 1] - data.r[, 1]
-        for (dd in 2:DD) {
-            data.r[, dd] <- round(data[, dd] + rowSums(err.r[, 1:(dd - 1),drop=FALSE]),
+        for (dd in 2L:DD) {
+            data.r[, dd] <- round(data[, dd] + rowSums(err.r[, 1L:(dd - 1),drop=FALSE]),
                                     digits)
             err.r[, dd] <- data[, dd] - data.r[, dd]
         }
@@ -25,8 +25,8 @@ sumpreserving.rounding <- function (data, digits=0, preserve=TRUE )
         err.r <- data.r <- rep(0, DD)
         data.r[1] <- round(data[1], digits)
         err.r[1] <- data[1] - data.r[1]
-        for (dd in 2:DD) {
-            data.r[dd] <- round(data[dd] + sum(err.r[1:(dd - 1)]), digits)
+        for (dd in 2L:DD) {
+            data.r[dd] <- round(data[dd] + sum(err.r[1L:(dd - 1)]), digits)
             err.r[dd] <- data[dd] - data.r[dd]
         }
         if ( ! preserve ){

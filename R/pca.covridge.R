@@ -1,5 +1,5 @@
 ## File Name: pca.covridge.R
-## File Version: 0.20
+## File Version: 0.211
 
 pca.covridge <- function( x, ridge=1E-10, wt=NULL )
 {
@@ -21,6 +21,6 @@ pca.covridge <- function( x, ridge=1E-10, wt=NULL )
     sdev <- pcax$sdev
     D <- diag(pcax$sdev^2)
     scores <- x %*% L
-    res <- list( "loadings"=L, "scores"=scores, "sdev"=sdev )
+    res <- list( loadings=L, scores=scores, sdev=sdev )
     return(res)
 }
