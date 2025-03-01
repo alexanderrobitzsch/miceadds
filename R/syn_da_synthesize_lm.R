@@ -1,11 +1,10 @@
 ## File Name: syn_da_synthesize_lm.R
-## File Version: 0.182
+## File Version: 0.192
 
 syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
             fix_vars, ord_vars, miss, ncomp=20, use_pls=TRUE, exact_regression=TRUE,
-            exact_marginal=TRUE)
+            formula_syn=NULL, exact_marginal=TRUE)
 {
-
     #-- create formula
     syn_vars_ss <- syn_vars[ss]
     form <- paste0( syn_vars[ss], " ~ 1")
@@ -14,12 +13,16 @@ syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
         form <- paste0( form, " + ", v2 )
     }
     if (ss>1){
-        v2 <- syn_da_create_formula(wv=syn_vars[1:(ss-1)], ord_vars=ord_vars)
+        v2 <- syn_da_create_formula(wv=syn_vars[1L:(ss-1)], ord_vars=ord_vars)
         form <- paste0( form, " + ", v2 )
     }
     if (! is.null(da_vars) ){
         v2 <- syn_da_create_formula(wv=da_vars, ord_vars=ord_vars)
         form <- paste0( form, " + ", v2 )
+    }
+    form <- as.formula(form)
+    if (!is.null(formula_syn)){
+        form <- formula_syn
     }
     form <- as.formula(form)
 
@@ -52,7 +55,7 @@ syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
     imp_ss <- pmod + e
     dfr1 <- data.frame( orig=dat2[ind0, syn_vars_ss], syn_sim=imp_ss )
 
-    dfr1$index <- 1:nrow(dfr1)
+    dfr1$index <- 1L:nrow(dfr1)
     dfr1$is_miss <- miss[, syn_vars_ss]
     dfr1 <- dfr1[ order( dfr1$syn_sim), ]
     cc <- ! dfr1$is_miss

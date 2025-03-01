@@ -44,15 +44,17 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.18  |  2024-05-29  |  Last: miceadds 3.18-20
+VERSIONS miceadds 3.18  |  2025-03-01  |  Last: miceadds 3.18-24
 --------------------------------------------------------------------------
  
 FIXED * fixed a bug in mice.impute.catpmm() if there is only one case with
         missing data (thanks to Abdessattar Saoudi)
+ADDED * included argument 'formula_syn' in syn_da() for specifiying
+        nonlinear effects when synthesizing variables
 
 
 DATA  * ---
-EXAMP * ---
+EXAMP * syn_da (2)
 
 
 

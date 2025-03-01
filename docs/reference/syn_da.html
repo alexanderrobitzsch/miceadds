@@ -57,8 +57,8 @@ can be defined using the argument <code>syn_vars</code>.</p>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">syn_da</span><span class="op">(</span><span class="va">dat</span>, syn_vars<span class="op">=</span><span class="cn">NULL</span>, fix_vars<span class="op">=</span><span class="cn">NULL</span>, ord_vars<span class="op">=</span><span class="cn">NULL</span>, da_noise<span class="op">=</span><span class="fl">0.5</span>,</span>
-<span>   use_pls<span class="op">=</span><span class="cn">TRUE</span>, ncomp<span class="op">=</span><span class="fl">20</span>, exact_regression<span class="op">=</span><span class="cn">TRUE</span>, exact_marginal<span class="op">=</span><span class="cn">TRUE</span>,</span>
-<span>   imp_maxit<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<span>   formula_syn<span class="op">=</span><span class="cn">NULL</span>, use_pls<span class="op">=</span><span class="cn">TRUE</span>, ncomp<span class="op">=</span><span class="fl">20</span>, exact_regression<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<span>   exact_marginal<span class="op">=</span><span class="cn">TRUE</span>, imp_maxit<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -79,7 +79,15 @@ as predictors in the regression model</p></dd>
   <dt>da_noise</dt>
 <dd><p>Proportion of variance (i.e., unreliability) that is added as noise in data
 augmentation. The argument can be numeric or a vector, depending on whether it is made
-variable-specific.</p></dd>
+variable-specific. Can also be a vector of the same dimension as <code>syn_vars</code>
+if different unreliabilities should be used. Variables that should not receive
+a noise variable should be specified with an <code>1</code> entry (see Example 2).
+If <code>da_noise=1</code>, no noisy versions of the original variables are specified.</p></dd>
+
+<dt>formula_syn</dt>
+<dd><p>Optional list of regression formulas for conditional models.
+Formulas can be a specified for a subset of synthesized variables.
+Non-specified formulas are automatically specified by linear models.</p></dd>
 
   <dt>use_pls</dt>
 <dd><p>Logical indicating whether partial least squares (PLS) should be used for dimension
@@ -145,11 +153,41 @@ integrity and disclosure risk via model targeted masking and multiple imputation
 <span><span class="va">syn_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"HISEI"</span>, <span class="st">"FISCED"</span>, <span class="st">"MISCED"</span>, <span class="va">items</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#-- synthesize data</span></span>
-<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu">miceadds</span><span class="fu">::</span><span class="fu">syn_da</span><span class="op">(</span> dat<span class="op">=</span><span class="va">dat0</span>, syn_vars<span class="op">=</span><span class="va">syn_vars</span>, fix_vars<span class="op">=</span><span class="va">fix_vars</span>,</span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu">miceadds</span><span class="fu">::</span><span class="fu">syn_da</span><span class="op">(</span> dat<span class="op">=</span><span class="va">dat</span>, syn_vars<span class="op">=</span><span class="va">syn_vars</span>, fix_vars<span class="op">=</span><span class="va">fix_vars</span>,</span>
 <span>            ord_vars<span class="op">=</span><span class="va">ord_vars</span>, da_noise<span class="op">=</span><span class="fl">0.5</span>, imp_maxit<span class="op">=</span><span class="fl">2</span>, use_pls<span class="op">=</span><span class="cn">TRUE</span>, ncomp<span class="op">=</span><span class="fl">20</span>,</span>
 <span>            exact_regression<span class="op">=</span><span class="cn">TRUE</span>, exact_marginal<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#- extract synthetic dataset</span></span>
 <span><span class="va">mod</span><span class="op">$</span><span class="va">dat_syn</span></span>
+<span></span>
+<span><span class="co">#############################################################################</span></span>
+<span><span class="co"># EXAMPLE 2: Not all variables are augmented, formula specifications</span></span>
+<span><span class="co">#############################################################################</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">data.ma09</span>, package<span class="op">=</span><span class="st">"miceadds"</span><span class="op">)</span></span>
+<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">data.ma09</span></span>
+<span></span>
+<span><span class="co"># fixed variables in synthesis</span></span>
+<span><span class="va">fix_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PV1MATH"</span>, <span class="st">"SEX"</span><span class="op">)</span></span>
+<span><span class="co"># ordinal variables in synthesis</span></span>
+<span><span class="va">ord_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"FISCED"</span>, <span class="st">"MISCED"</span><span class="op">)</span></span>
+<span><span class="co"># variables that should be synthesized</span></span>
+<span><span class="va">syn_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"AGE"</span>,<span class="st">"HISEI"</span>, <span class="st">"FISCED"</span>, <span class="st">"MISCED"</span><span class="op">)</span></span>
+<span><span class="co"># no noise variable for FISCED and MISCED should be specified</span></span>
+<span><span class="va">da_noise</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>AGE<span class="op">=</span><span class="fl">0.1</span>, HISEI<span class="op">=</span><span class="fl">0.1</span>, FISCED<span class="op">=</span><span class="fl">0</span>, MISCED<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co"># define conditional models for some variables</span></span>
+<span><span class="va">formula_syn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>        AGE<span class="op">=</span><span class="va">AGE</span> <span class="op">~</span> <span class="fl">1</span> <span class="op">+</span> <span class="va">PV1MATH</span> <span class="op">+</span> <span class="va">SEX</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">PV1MATH</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="va">AGE_DA</span> <span class="op">+</span> <span class="va">HISEI_DA</span>,</span>
+<span>        HISEI<span class="op">=</span><span class="va">HISEI</span> <span class="op">~</span> <span class="fl">1</span> <span class="op">+</span> <span class="va">PV1MATH</span> <span class="op">+</span> <span class="va">SEX</span> <span class="op">+</span> <span class="va">AGE</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">PV1MATH</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>                   <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">AGE</span><span class="op">*</span><span class="va">PV1MATH</span><span class="op">)</span> <span class="op">+</span> <span class="va">AGE_DA</span> <span class="op">+</span> <span class="va">HISEI_DA</span></span>
+<span>                     <span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">#-- synthesize data</span></span>
+<span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu">miceadds</span><span class="fu">::</span><span class="fu">syn_da</span><span class="op">(</span> dat<span class="op">=</span><span class="va">dat</span>, syn_vars<span class="op">=</span><span class="va">syn_vars</span>, fix_vars<span class="op">=</span><span class="va">fix_vars</span>,</span>
+<span>            ord_vars<span class="op">=</span><span class="va">ord_vars</span>, da_noise<span class="op">=</span><span class="va">da_noise</span>,</span>
+<span>            formula_syn<span class="op">=</span><span class="va">formula_syn</span>, imp_maxit<span class="op">=</span><span class="fl">2</span>, use_pls<span class="op">=</span><span class="cn">TRUE</span>, ncomp<span class="op">=</span><span class="fl">20</span>,</span>
+<span>            exact_regression<span class="op">=</span><span class="cn">TRUE</span>, exact_marginal<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">mod</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
     </div>
   </div>
