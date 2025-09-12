@@ -20,7 +20,7 @@ functions of the same functionality."><!-- mathjax --><script src="https://cdnjs
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.18</span
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.19</span
       </span>
     </div>
 
@@ -209,7 +209,7 @@ Any other input provides large sample inference.</p></dd>
 <span><span class="va">res6c</span> <span class="op">&lt;-</span> <span class="fu">miceadds</span><span class="fu">::</span><span class="fu">pool_mi</span><span class="op">(</span> qhat<span class="op">=</span><span class="va">qhat</span>, se<span class="op">=</span><span class="va">se</span> <span class="op">)</span></span>
 <span></span>
 <span><span class="co"># function runMI in semTools package</span></span>
-<span><span class="va">res6d</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/runMI.html" class="external-link">runMI</a></span><span class="op">(</span>model<span class="op">=</span><span class="va">lavmodel</span>, data<span class="op">=</span><span class="va">imp1</span>, m<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">imp1</span><span class="op">)</span> <span class="op">)</span></span>
+<span><span class="va">res6d</span> <span class="op">&lt;-</span> <span class="fu">semTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/semTools/man/semTools-deprecated.html" class="external-link">runMI</a></span><span class="op">(</span>model<span class="op">=</span><span class="va">lavmodel</span>, data<span class="op">=</span><span class="va">imp1</span>, m<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">imp1</span><span class="op">)</span> <span class="op">)</span></span>
 <span>  <span class="co"># semTools version 0.4-9 provided an error message</span></span>
 <span><span class="co"># perform inference with mitml package</span></span>
 <span><span class="va">se2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span> <span class="va">se</span>, FUN<span class="op">=</span><span class="kw">function</span><span class="op">(</span><span class="va">ss</span><span class="op">)</span><span class="op">{</span>  <span class="va">ss</span><span class="op">^</span><span class="fl">2</span>  <span class="op">}</span> <span class="op">)</span>  <span class="co"># input variances</span></span>
@@ -244,7 +244,7 @@ Any other input provides large sample inference.</p></dd>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Alexander Robitzsch.</p>
+  <p></p><p>Developed by Alexander Robitzsch, Simon Grund.</p>
 </div>
 
 <div class="pkgdown">

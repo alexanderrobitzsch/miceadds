@@ -1,5 +1,5 @@
 ## File Name: include.2l.predictors_v1.R
-## File Version: 0.12
+## File Version: 0.131
 
 
 # function for inclusion of group level predictors
@@ -17,7 +17,7 @@ include.2l.predictors_v1 <- function( y, x, ry, type, vname, newstate, ... )
                             type=c( -2, rep(1, ncol(x1a)-1 ) ),
                             grmeanwarning=FALSE, ... )
             gm0 <- as.matrix(gm0)
-            colnames(gm0) <- paste0("M.", colnames(x1a)[-1] )
+            colnames(gm0) <- paste0('M.', colnames(x1a)[-1] )
             X <- as.matrix( cbind( X, gm0 ))
         }
     } else {

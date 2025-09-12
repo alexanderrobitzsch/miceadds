@@ -18,7 +18,7 @@ to a mice::mids object."><!-- mathjax --><script src="https://cdnjs.cloudflare.c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.18</span
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.19</span
       </span>
     </div>
 
@@ -48,7 +48,7 @@ to a mice::mids object."><!-- mathjax --><script src="https://cdnjs.cloudflare.c
 
     <div class="ref-description">
     <p>This function converts a list of multiply imputed data sets
-to a <code><a href="https://amices.org/mice/reference/mids-class.html" class="external-link">mice::mids</a></code> object.</p>
+to a <code><a href="https://amices.org/mice/reference/mids.html" class="external-link">mice::mids</a></code> object.</p>
     </div>
 
     <div id="ref-usage">
@@ -96,7 +96,7 @@ a multiply imputed dataset in long format into a <code>mids</code> object.</p></
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">566</span><span class="op">)</span>  <span class="co"># fix random seed</span></span>
 <span></span>
 <span><span class="co"># impute 10 datasets using Amelia</span></span>
-<span><span class="va">a.out</span> <span class="op">&lt;-</span> <span class="fu">Amelia</span><span class="fu">::</span><span class="fu">amelia</span><span class="op">(</span>x<span class="op">=</span><span class="va">nhanes</span>, m<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">a.out</span> <span class="op">&lt;-</span> <span class="fu">Amelia</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Amelia/man/amelia.html" class="external-link">amelia</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">nhanes</span>, m<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co"># plot of observed and imputed data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">a.out</span><span class="op">)</span></span>
 <span></span>
@@ -145,7 +145,7 @@ a multiply imputed dataset in long format into a <code>mids</code> object.</p></
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Alexander Robitzsch.</p>
+  <p></p><p>Developed by Alexander Robitzsch, Simon Grund.</p>
 </div>
 
 <div class="pkgdown">

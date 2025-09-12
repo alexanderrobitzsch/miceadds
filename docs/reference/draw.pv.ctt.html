@@ -22,7 +22,7 @@ provided by the user."><!-- mathjax --><script src="https://cdnjs.cloudflare.com
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miceadds</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.18</span
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.19</span
       </span>
     </div>
 
@@ -131,8 +131,8 @@ for plausible value imputation.</p>
 <p>Plausible value imputations can be conducted in <span class="pkg">mice</span> using the
 imputation method <code><a href="mice.impute.plausible.values.html">mice.impute.plausible.values</a></code>.</p>
 <p>Plausible values can be drawn in <span class="pkg">Amelia</span> by specifying observation-level
-priors, see <code>Amelia::moPrep</code> and
-<code>Amelia::amelia</code>.</p></div>
+priors, see <code><a href="https://rdrr.io/pkg/Amelia/man/moPrep.html" class="external-link">Amelia::moPrep</a></code> and
+<code><a href="https://rdrr.io/pkg/Amelia/man/amelia.html" class="external-link">Amelia::amelia</a></code>.</p></div>
     </div>
 
     <div id="ref-examples">
@@ -181,7 +181,7 @@ priors, see <code>Amelia::moPrep</code> and
 <span>             <span class="co"># 3 indicates column index for theta</span></span>
 <span><span class="va">overimp</span> <span class="op">&lt;-</span> <span class="va">priors</span><span class="op">[</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span></span>
 <span><span class="co"># run Amelia</span></span>
-<span><span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu">Amelia</span><span class="fu">::</span><span class="fu">amelia</span><span class="op">(</span> <span class="va">dat</span>, priors<span class="op">=</span><span class="va">priors</span>, overimp<span class="op">=</span><span class="va">overimp</span>, m<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">imp</span> <span class="op">&lt;-</span> <span class="fu">Amelia</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Amelia/man/amelia.html" class="external-link">amelia</a></span><span class="op">(</span> <span class="va">dat</span>, priors<span class="op">=</span><span class="va">priors</span>, overimp<span class="op">=</span><span class="va">overimp</span>, m<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co"># create object of class datlist and evaluate results</span></span>
 <span><span class="va">datlist</span> <span class="op">&lt;-</span> <span class="fu">miceadds</span><span class="fu">::</span><span class="fu"><a href="datlist_create.html">datlist_create</a></span><span class="op">(</span> <span class="va">imp</span><span class="op">$</span><span class="va">imputations</span> <span class="op">)</span></span>
 <span><span class="fu"><a href="with.miceadds.html">withPool_MI</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span> <span class="va">datlist</span>, <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span> <span class="op">)</span> <span class="op">)</span></span>
@@ -198,7 +198,7 @@ priors, see <code>Amelia::moPrep</code> and
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Alexander Robitzsch.</p>
+  <p></p><p>Developed by Alexander Robitzsch, Simon Grund.</p>
 </div>
 
 <div class="pkgdown">

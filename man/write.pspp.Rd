@@ -1,5 +1,5 @@
 %% File Name: write.pspp.Rd
-%% File Version: 0.35
+%% File Version: 0.363
 
 \name{write.pspp}
 \alias{write.pspp}
@@ -10,12 +10,14 @@ Writing a Data Frame into SPSS Format Using PSPP Software
 \description{
 Writes a data frame into SPSS format using the \emph{PSPP} software.
 To use this function, download and install PSPP at first:
-\url{http://www.gnu.org/software/pspp/pspp.html}.
+\url{https://en.wikipedia.org/wiki/PSPP}.
 }
 
+%% original link: \url{http://www.gnu.org/software/pspp/pspp.html}
+
+
 \usage{
-write.pspp(data, datafile, pspp.path, decmax=6,
-   as.factors=TRUE, use.bat=FALSE)
+write.pspp(data, datafile, pspp.path, decmax=6, as.factors=TRUE, use.bat=FALSE)
 }
 
 %- maybe also 'usage' for other objects documented here.
@@ -28,7 +30,7 @@ Name of the output file (without file ending)
 }
   \item{pspp.path}{
 Path where the PSPP executable is located, e.g.
-\code{"C:/Program Files (x86)/PSPP/bin/"}
+\code{'C:/Program Files (x86)/PSPP/bin/'}
 }
 \item{decmax}{
 Maximum number of digits after decimal

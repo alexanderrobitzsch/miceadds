@@ -1,11 +1,11 @@
 ## File Name: datalist2mids.R
-## File Version: 0.434
+## File Version: 0.436
 
 datalist2mids <- function( dat.list, progress=FALSE )
 {
     CALL <- match.call()
     #--- preliminary check whether dat.list of type imputationList
-    if ( inherits(dat.list, "imputationList" ) ){
+    if ( inherits(dat.list, 'imputationList' ) ){
         dat.list <- dat.list$imputations
     }
 
@@ -38,7 +38,7 @@ datalist2mids <- function( dat.list, progress=FALSE )
             cat('Analyze missing pattern\n-')
             utils::flush.console()
         }
-        for (ii in 2:M){
+        for (ii in 2L:M){
             datl2 <- dat.list[[ii]]
             r1[, impvars] <- r1[,impvars] + 1*( datl2[,impvars] !=datl1[,impvars ] )
             datl1 <- datl2
