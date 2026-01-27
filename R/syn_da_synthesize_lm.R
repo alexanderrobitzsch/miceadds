@@ -1,5 +1,5 @@
 ## File Name: syn_da_synthesize_lm.R
-## File Version: 0.192
+## File Version: 0.193
 
 syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
             fix_vars, ord_vars, miss, ncomp=20, use_pls=TRUE, exact_regression=TRUE,
@@ -7,18 +7,18 @@ syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
 {
     #-- create formula
     syn_vars_ss <- syn_vars[ss]
-    form <- paste0( syn_vars[ss], " ~ 1")
+    form <- paste0( syn_vars[ss], ' ~ 1')
     if (!is.null(fix_vars)){
         v2 <- syn_da_create_formula(wv=fix_vars, ord_vars=ord_vars)
-        form <- paste0( form, " + ", v2 )
+        form <- paste0( form, ' + ', v2 )
     }
     if (ss>1){
         v2 <- syn_da_create_formula(wv=syn_vars[1L:(ss-1)], ord_vars=ord_vars)
-        form <- paste0( form, " + ", v2 )
+        form <- paste0( form, ' + ', v2 )
     }
     if (! is.null(da_vars) ){
         v2 <- syn_da_create_formula(wv=da_vars, ord_vars=ord_vars)
-        form <- paste0( form, " + ", v2 )
+        form <- paste0( form, ' + ', v2 )
     }
     form <- as.formula(form)
     if (!is.null(formula_syn)){
@@ -34,7 +34,7 @@ syn_da_synthesize_lm <- function(dat2, ind0, ind1, syn_vars, da_vars, ss,
         form20 <- res_pls$form20
     } else {
         dat20 <- dat2
-        form20 <- paste0(" y ~ ", paste(form)[3] )
+        form20 <- paste0(' y ~ ', paste(form)[3] )
     }
     dat20$y <- dat20[,syn_vars_ss]
 

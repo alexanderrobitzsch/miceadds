@@ -1,5 +1,5 @@
 ## File Name: syn_mice_catch_arguments.R
-## File Version: 0.160
+## File Version: 0.161
 
 syn_mice_catch_arguments <- function(arguments)
 {
@@ -22,7 +22,7 @@ syn_mice_catch_arguments <- function(arguments)
     }
     for (fun_name in vals){
         arg_name <- grep( fun_name, arg_names, value=TRUE)
-        arg_split <- strsplit(arg_name, split=".", fixed=TRUE)[[1]]
+        arg_split <- strsplit(arg_name, split='.', fixed=TRUE)[[1]]
         mth.args <- ma_exists_get(x='mth.args', pos=pos, n_index=9 )
         mth.args <- mth.args[[ arg_split[[1]] ]][[ fun_name ]]
         nn <- 2

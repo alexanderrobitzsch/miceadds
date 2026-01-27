@@ -1,5 +1,5 @@
 ## File Name: syn_mice.R
-## File Version: 0.16
+## File Version: 0.173
 
 syn_mice <- function(data, m=5, k=NULL, syn_check=TRUE, ...)
 {
@@ -9,7 +9,7 @@ syn_mice <- function(data, m=5, k=NULL, syn_check=TRUE, ...)
     }
     #- arrange data
     n <- nrow(data)
-    data1 <- data[ c(1:n,rep(1,k)), ]
+    data1 <- data[ c(1L:n,rep(1,k)), ]
     syn_cases <- seq(n+1,n+k)
     data1[ syn_cases, ] <- NA
 
@@ -17,7 +17,7 @@ syn_mice <- function(data, m=5, k=NULL, syn_check=TRUE, ...)
     if (syn_check){
         #* empty mice imputation
         imp0 <- mice::mice(data=data1, m=m, maxit=0, ...)
-        for (vv in c("predictorMatrix", "visitSequence") ){
+        for (vv in c('predictorMatrix', 'visitSequence') ){
             if (! ( vv %in% names(dots) ) ){
                 dots[[ vv ]] <- imp0[[ vv ]]
             }
@@ -38,6 +38,6 @@ syn_mice <- function(data, m=5, k=NULL, syn_check=TRUE, ...)
     #- arrange output object
     imp$k <- k
     imp$syn <- syn_mice_completed_datasets(imp=imp, syn_cases=syn_cases)
-    class(imp) <- c("synds")
+    class(imp) <- c('synds')
     return(imp)
 }

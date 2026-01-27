@@ -1,5 +1,5 @@
 ## File Name: ml_mcmc_fit.R
-## File Version: 0.527
+## File Version: 0.528
 
 ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
     alpha, u_list, idcluster_list, onlyintercept_list, ncluster_list,
@@ -45,7 +45,7 @@ ml_mcmc_fit <- function(y, X, Z_list, beta, Psi_list, sigma2,
 
     #-- parameter summary
     if (parm_summary){
-        dfr <- data.frame("par"=parnames0)
+        dfr <- data.frame(par=parnames0)
         dfr$mean <- ma_colMeans(x=sampled_values)
         dfr$mode <- ma_colMode(x=sampled_values)
         dfr$se <- ma_colSD(x=sampled_values)

@@ -1,9 +1,9 @@
 ## File Name: mice_imputation_prepare_2l_functions.R
-## File Version: 0.683
+## File Version: 0.695
 
 #############################################
 # This preparation function is partly copied
-# from the mice:::sampler function
+# from the mice:::sampler() function
 mice_imputation_prepare_2l_functions <- function( vname, envir,
     use_formula=FALSE, frame=4, remove_lindep=TRUE, ... )
 {
@@ -27,13 +27,16 @@ mice_imputation_prepare_2l_functions <- function( vname, envir,
     # predictors <- p_predictorMatrix[j, ] !=0
 
     # RB: formula-based specification
-    if ( calltype=="formula" ) {
-        myform <- paste(p_form[j], "0", sep="+")
+    if (length(calltype)>1){
+        calltype <- calltype[vname]
+    }
+    if ( calltype=='formula' ) {
+        myform <- paste(p_form[j], '0', sep='+')
         x <- stats::model.matrix( stats::formula(myform), p_data)
         ry <- r[, j]
         type <- 0
     }
-    if (calltype=="type" ){
+    if (calltype %in% c('type','pred') ){
         # x <- p_data[, predictors, drop=FALSE]
         # y <- p_data[, j]
         # type <- p_predictorMatrix[j, predictors]
@@ -47,13 +50,13 @@ mice_imputation_prepare_2l_functions <- function( vname, envir,
         type <- p_predictorMatrix[j, ]
         vars <- colnames(data)[type !=0]
         formula <- stats::reformulate(setdiff(vars, j), response=j)
-        formula <- stats::update(formula, ". ~ . ")
+        formula <- stats::update(formula, '. ~ . ')
 
-        fcall <- paste0("x <- mice", paste0(rep(":",3), collapse=""),
-                    "obtain.design(data=data, formula=formula)")
+        fcall <- paste0('x <- mice', paste0(rep(':',3), collapse=''),
+                    'obtain.design(data=data, formula=formula)')
         eval(parse( text=fcall ))
 
-        type <- type[labels(terms(formula))][attr(x, "assign")]
+        type <- type[labels(terms(formula))][attr(x, 'assign')]
         x <- x[, -1L, drop=FALSE]
         names(type) <- colnames(x)
         # define y, ry and wy
@@ -67,8 +70,8 @@ mice_imputation_prepare_2l_functions <- function( vname, envir,
             # if (k==1L) check.df(x, y, ry)
         # remove linear dependencies
         if (remove_lindep){
-            fcall <- miceadds_call_internal(pkg="mice", fct="remove.lindep",
-                        args="(x=x, y=y, ry=ry, frame=frame, ...)", value="keep")
+            fcall <- miceadds_call_internal(pkg='mice', fct='remove.lindep',
+                        args='(x=x, y=y, ry=ry, frame=frame, ...)', value='keep')
             eval(parse(text=fcall))
             x <- x[, keep, drop=FALSE]
             type <- type[keep]

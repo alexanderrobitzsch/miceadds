@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.788
+## File Version: 3.801
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
@@ -25,7 +25,6 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     }
     res <- mice_imputation_get_states( pos=pos )
     vname <- res$vname
-
     imp.temp <- res$newstate
     if (extract_data){
         res <- mice_imputation_prepare_2l_functions( vname=vname, envir=pos,
@@ -47,7 +46,7 @@ mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,
     pls.facs <- mice_imputation_extract_list_arguments( pls.facs, vname, 20 )
     # extract PLS imputation method
     pls.impMethod <- mice_imputation_extract_list_arguments( pls.impMethod,
-                vname, "pmm" )
+                vname, 'pmm' )
     pls.impMethodArgs <- mice_imputation_extract_list_arguments( pls.impMethodArgs,
                 vname, list() )
     # define minimal correlation for interactions

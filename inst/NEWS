@@ -44,10 +44,12 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.19  |  2025-09-12  |  Last: miceadds 3.19-4
+VERSIONS miceadds 3.19  |  2026-01-27  |  Last: miceadds 3.19-8
 --------------------------------------------------------------------------
  
-xxx   * ---
+FIXED * fixed issues in imputation functions caused by the recent release
+        of new mice package versions due to the 'calltype' argument in
+        mice::mice()
 
 
 DATA  * ---

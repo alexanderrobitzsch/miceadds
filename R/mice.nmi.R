@@ -1,5 +1,5 @@
 ## File Name: mice.nmi.R
-## File Version: 0.201
+## File Version: 0.203
 
 
 #--- nested multiple imputation
@@ -20,7 +20,7 @@ mice.nmi <- function( datlist, type="mice", ... )
             imp[[dd]] <- mice.1chain( data, ... )
         }
     }
-    res <- list('imp'=imp, 'type'=type )
+    res <- list(imp=imp, type=type )
     if ( type=='mice'){
         NW <- imp[[1]]$m
     }

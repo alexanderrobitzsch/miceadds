@@ -1,11 +1,11 @@
 ## File Name: syn.mice.R
-## File Version: 0.246
+## File Version: 0.247
 
 
 syn.mice <- function(y, x, xp, mice_fun, mice_args, ...)
 {
     #-- catch arguments
-    arguments <- c("mice_fun", "mice_args")
+    arguments <- c('mice_fun', 'mice_args')
     res <- syn_mice_catch_arguments(arguments=arguments)
     vname <- res$vname
     mice_arg_list <- res$mice_arg_list
@@ -16,11 +16,11 @@ syn.mice <- function(y, x, xp, mice_fun, mice_args, ...)
     xp <- res$xp
 
     #-- arrange data for mice imputation
-    args <- mice_arg_list[["mice_args"]][[vname]]
+    args <- mice_arg_list[['mice_args']][[vname]]
     args <- syn_mice_create_argument_list(args=args, y=y, x=x, xp=xp)
 
     #-- apply mice imputation method for synthesization
-    mice_fun <- paste0("mice.impute.", mice_arg_list[["mice_fun"]][[vname]])
+    mice_fun <- paste0('mice.impute.', mice_arg_list[['mice_fun']][[vname]])
     yimp <- do.call(what=mice_fun, args=args)
 
     #-- output

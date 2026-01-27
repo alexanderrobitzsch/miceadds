@@ -1,5 +1,5 @@
 ## File Name: syn_da.R
-## File Version: 0.221
+## File Version: 0.222
 
 
 syn_da <- function(dat, syn_vars=NULL, fix_vars=NULL, ord_vars=NULL,
@@ -44,8 +44,8 @@ syn_da <- function(dat, syn_vars=NULL, fix_vars=NULL, ord_vars=NULL,
             if (da_noise[ss]>eps1){
                 x <- dat1[,syn_vars[ss]]
                 e <- stats::rnorm(length(x), mean=0, sd=sd_noise[ss])
-                dat1[, paste0( syn_vars[ss], "_DA")] <- x + e
-                da_vars <- c( da_vars, paste0(syn_vars[ss], "_DA") )
+                dat1[, paste0( syn_vars[ss], '_DA')] <- x + e
+                da_vars <- c( da_vars, paste0(syn_vars[ss], '_DA') )
             }
         }
     } else {
@@ -67,7 +67,7 @@ syn_da <- function(dat, syn_vars=NULL, fix_vars=NULL, ord_vars=NULL,
                     exact_regression=exact_regression[ss],
                     exact_marginal=exact_marginal[ss],
                     formula_syn=formula_syn[[ syn_vars[ss] ]], miss=miss)
-        cat( paste0( "synthesize variable ", ss, " of ", NSV, "\n") )
+        cat( paste0( 'synthesize variable ', ss, ' of ', NSV, '\n') )
         utils::flush.console()
     }
 
