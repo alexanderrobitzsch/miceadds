@@ -1,5 +1,5 @@
 %% File Name: write.pspp.Rd
-%% File Version: 0.363
+%% File Version: 0.364
 
 \name{write.pspp}
 \alias{write.pspp}
@@ -9,8 +9,7 @@ Writing a Data Frame into SPSS Format Using PSPP Software
 }
 \description{
 Writes a data frame into SPSS format using the \emph{PSPP} software.
-To use this function, download and install PSPP at first:
-\url{https://en.wikipedia.org/wiki/PSPP}.
+To use this function, download and install PSPP at first.
 }
 
 %% original link: \url{http://www.gnu.org/software/pspp/pspp.html}

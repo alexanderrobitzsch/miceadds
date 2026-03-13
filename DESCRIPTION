@@ -1,8 +1,8 @@
 Package: miceadds
 Type: Package
 Title: Some Additional Multiple Imputation Functions, Especially for 'mice'
-Version: 3.19-8
-Date: 2026-01-27 10:55:27
+Version: 3.20-1
+Date: 2026-03-13 12:09:01
 Authors@R: 
     c(person(given = "Alexander",
                         family = "Robitzsch",
