@@ -1,5 +1,5 @@
 ## File Name: mice.impute.pls.R
-## File Version: 3.801
+## File Version: 3.804
 
 
 mice.impute.pls <- function(y, ry, x, type, pls.facs=NULL,

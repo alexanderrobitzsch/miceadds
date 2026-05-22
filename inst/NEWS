@@ -45,17 +45,14 @@ CHANGELOG miceadds
 
 
 ------------------------------------------------------------------------
-VERSIONS miceadds 3.20  |  2026-03-13  |  Last: miceadds 3.20-1
+VERSIONS miceadds 3.20  |  2026-05-22  |  Last: miceadds 3.20-5
 ------------------------------------------------------------------------
 
-xxx   * ...
-
+FIXED * fixed incorrect extraction of PLS components in mice.impute.pls()
+        with imputation method 'catpmm' (reported by Björn Rohr)  
 
 DATA  * included/modified datasets: ---
 EXAMP * included/modified examples: ---
-
-
-
 
 --------------------------------------------------------------------------
 VERSIONS miceadds 3.19  |  2026-03-13  |  Last: miceadds 3.19-16

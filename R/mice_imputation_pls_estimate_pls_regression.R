@@ -1,5 +1,5 @@
 ## File Name: mice_imputation_pls_estimate_pls_regression.R
-## File Version: 0.336
+## File Version: 0.344
 
 mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
     use.ymat, imputationWeights, use_weights, pls.print.progress,
@@ -67,7 +67,6 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         # apply PLS dimension reduction
         pls_args <- list( X=X, Y=Y, ncomp=nfac)
         mod <- do.call( what=pls_fun, args=pls_args)
-
         if (is_catpmm){
             mod <- mice_impute_pls_catpmm_R2(res=mod, Y=Y, nfac=nfac)
         }
@@ -83,12 +82,8 @@ mice_imputation_pls_estimate_pls_regression <- function( pls.facs, x, y, ry,
         if (is_catpmm){
             mod$ncomp <- ncomp <- nfac
             class(mod) <- "mvr"
-            pmod1 <- predict( mod, newdata=X)
-            np <- dim(pmod1)
-            pmod <- matrix(0, nrow=np[1], ncol=np[2]*np[3])
-            for (dd in 1:ncol(Y)){
-                pmod[, (dd-1)*ncomp + 1:ncomp] <- pmod1[,dd,]
-            }
+            # pmod1 <- predict( mod, newdata=X)
+            pmod <- predict( mod, newdata=X, type="scores")
             colnames(pmod) <- paste0("x",1:ncol(pmod))
         } else {
             pmod <- predict.kernelpls.fit2( mod, X=X)
