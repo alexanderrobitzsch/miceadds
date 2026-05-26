@@ -45,7 +45,7 @@ CHANGELOG miceadds
 
 
 ------------------------------------------------------------------------
-VERSIONS miceadds 3.20  |  2026-05-22  |  Last: miceadds 3.20-5
+VERSIONS miceadds 3.20  |  2026-05-26  |  Last: miceadds 3.20-7
 ------------------------------------------------------------------------
 
 FIXED * fixed incorrect extraction of PLS components in mice.impute.pls()
