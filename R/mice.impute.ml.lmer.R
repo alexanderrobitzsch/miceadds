@@ -1,5 +1,5 @@
 ## File Name: mice.impute.ml.lmer.R
-## File Version: 0.736
+## File Version: 0.749
 
 
 #*** main function for multilevel imputation with lme4 with several levels
@@ -11,14 +11,14 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
                 interactions=NULL, quadratics=NULL, min.int.cor=0, min.all.cor=0,
                 pls.print.progress=FALSE, group_index=NULL, iter_re=0, ... )
 {
-    require_namespace("lme4")
+    require_namespace('lme4')
     res <- mice_imputation_factor_pmm_prepare(y=y)
     y <- res$y
     y_aggr <- res$y_aggr
     is_factor <- res$is_factor
 
     if (blme_use){
-        require_namespace("blme")
+        require_namespace('blme')
     }
 
     #--- extraction of arguments
@@ -46,6 +46,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     iter_re <- res$iter_re
     y0 <- y
     ry0 <- ry
+
 
     #--- aggregate data to a higher level if requested
     res <- mice_ml_lmer_aggregate_data_higher_level( vname_level=vname_level, y=y, ry=ry,
@@ -114,7 +115,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     }
 
     #--- extract posterior distribution of random effects
-    fl <- lme4::getME(object=fit, name="flist")
+    fl <- lme4::getME(object=fit, name='flist')
 
     #--- variance matrix of random effects
     fit_vc <- lme4::VarCorr(x=fit)
@@ -124,8 +125,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     predicted <- 0
     predicted_umat <- mice_ml_lmer_define_predicted_umat( y=y, NL=NL,
                             levels_id=levels_id )
-
-    for (ll in 1:NL){
+    for (ll in 1L:NL){
         levels_id_ll <- levels_id[ll]
         predicted_u <- mice_ml_lmer_draw_random_effects( clus=clus[[levels_id_ll]],
                             clus_unique=clus_unique[[levels_id_ll]], y=y,
@@ -164,21 +164,21 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     predicted0 <- predicted[ !ry ]
 
     #--- predicted values for cases with observed data
-    if ( model=="pmm"){
+    if ( model=='pmm'){
         pred <- predicted
         predicted1 <- pred[ ry ]
     }
 
     #---- draw imputations
-    if ( model=="binary"){
+    if ( model=='binary'){
         imp <- mice_multilevel_draw_binomial( probs=inverse_logit(predicted0) )
     }
-    if ( model=="continuous"){
-        sigma <- attr( fit_vc,"sc")
+    if ( model=='continuous'){
+        sigma <- attr( fit_vc,'sc')
         imp <- mice_multilevel_imputation_draw_residuals(
                     predicted=predicted0, sigma=sigma  )
     }
-    if ( model=="pmm"){
+    if ( model=='pmm'){
         imp <- mice_multilevel_imputation_pmm5(y=y, ry=ry, x,
                     yhatobs=predicted1, yhatmis=predicted0,
                     donors=donors, noise=1E5, ...)
@@ -188,7 +188,7 @@ mice.impute.ml.lmer <- function(y, ry, x, type, levels_id, variables_levels=NULL
     #    at lowest level
     imp <- mice_ml_lmer_extend_imputed_values_lower_level( imp_upper=imp, ry_lower=ry0,
                 ry_upper=ry, level_ids_lower=data0[, vname_level ],
-                level_ids_upper=data[, vname_level ], extend=vname_level !="" )
+                level_ids_upper=data[, vname_level ], extend=vname_level !='' )
     imp <- mice_imputation_factor_pmm_convert_factor(imp=imp,
                     is_factor=is_factor, y_aggr=y_aggr)
 

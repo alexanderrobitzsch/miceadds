@@ -43,10 +43,11 @@ CHANGELOG miceadds
 
 
 --------------------------------------------------------------------------
-VERSIONS miceadds 3.21  |  2026-05-29  |  Last: miceadds 3.21-1
+VERSIONS miceadds 3.21  |  2026-08-07  |  Last: miceadds 3.21-6
 --------------------------------------------------------------------------
  
-xxx   * ---
+FIXED * fixed a bug in data processing internal in mice.impute.ml.lmer()
+        (reported by @gemurray-ps in Github issue #32 and Katie Gwinell)
 
 
 DATA  * ---

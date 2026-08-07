@@ -1,5 +1,5 @@
 ## File Name: mice_ml_lmer_extract_input.R
-## File Version: 0.297
+## File Version: 0.304
 
 mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_levels,
         pls.facs, min.int.cor, min.all.cor, interactions, quadratics, model,
@@ -37,6 +37,7 @@ mice_ml_lmer_extract_input <- function(pos, levels_id, random_slopes, variables_
     # extract PLS factors
     pls.facs <- mice_imputation_extract_list_arguments( micearg=pls.facs, vname=vname,
                         miceargdefault=20 )
+
     # correlations interactions
     min.int.cor <- mice_imputation_extract_list_arguments( micearg=min.int.cor,
                         vname=vname, miceargdefault=0 )
